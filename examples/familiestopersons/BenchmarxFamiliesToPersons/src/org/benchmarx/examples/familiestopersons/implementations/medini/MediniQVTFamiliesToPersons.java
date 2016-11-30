@@ -33,7 +33,7 @@ import de.ikv.medini.qvt.QVTProcessorConsts;
 import uk.ac.kent.cs.kmf.util.ILog;
 import uk.ac.kent.cs.kmf.util.OutputStreamLog;
 
-public class MediniQVTR extends BXToolForEMF<FamilyRegister, PersonRegister, Decisions> {
+public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonRegister, Decisions> {
 	private static final String RULESET = "families2persons.qvt";
 
 	private ILog logger;
@@ -48,7 +48,7 @@ public class MediniQVTR extends BXToolForEMF<FamilyRegister, PersonRegister, Dec
 	private static final String bwdDir = "famDB";
 
 	
-	public MediniQVTR() {
+	public MediniQVTFamiliesToPersons() {
 		super(new FamiliesComparator(), new PersonsComparator());
 		
 		logger = new OutputStreamLog(new PrintStream(new NullOutputStream())); 

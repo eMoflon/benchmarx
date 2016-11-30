@@ -10,7 +10,7 @@ import org.benchmarx.examples.familiestopersons.families.core.FamiliesComparator
 import org.benchmarx.examples.familiestopersons.families.core.FamilyHelper;
 import org.benchmarx.examples.familiestopersons.implementations.bigul.BiGULFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
-import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTR;
+import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.persons.core.PersonHelper;
 import org.benchmarx.examples.familiestopersons.persons.core.PersonsComparator;
 import org.junit.Before;
@@ -52,7 +52,7 @@ public abstract class FamiliesToPersonsTestCase {
 		return Arrays.asList(
 				new EMoflonFamiliesToPersons()
 				,
-				new MediniQVTR()
+				new MediniQVTFamiliesToPersons()
 				,
 				new BiGULFamiliesToPersons()
 			);
