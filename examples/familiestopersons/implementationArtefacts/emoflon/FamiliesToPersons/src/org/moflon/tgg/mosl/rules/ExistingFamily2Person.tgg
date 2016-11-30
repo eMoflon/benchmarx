@@ -1,0 +1,11 @@
+#using FamiliesToPersons.*
+#using AttrCondDefLibrary.*
+
+#abstract #rule ExistingFamily2Person #extends FamilyMember2Person #with FamiliesToPersons
+
+#source { 
+	families : FamilyRegister {
+		-families->f
+	}
+	f : Family
+}

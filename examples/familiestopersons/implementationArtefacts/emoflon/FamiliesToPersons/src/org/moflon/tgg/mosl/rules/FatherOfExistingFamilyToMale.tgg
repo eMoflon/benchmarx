@@ -1,0 +1,12 @@
+#using FamiliesToPersons.*
+#using AttrCondDefLibrary.*
+
+#rule FatherOfExistingFamilyToMale #extends ExistingFamily2Person, FatherToMale #with FamiliesToPersons
+
+#source {
+	! existingFather : FamilyMember
+	
+	f : Family {
+		-father->existingFather
+	}
+}

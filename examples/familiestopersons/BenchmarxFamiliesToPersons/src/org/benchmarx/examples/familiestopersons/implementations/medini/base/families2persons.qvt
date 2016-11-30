@@ -1,0 +1,144 @@
+transformation families2persons (famDB : Families, perDB : Persons) {
+
+    -- Bidirectional transformation between families and persons databases
+    -- In forward direction, each family member is mapped to a person
+    -- with the same gender and the same full name. In backward direction,
+    -- each person is mapped to a parent with the same gender and full
+    -- name. In batch mode, the backward transformation generates singleton
+    -- families. In incremental mode, the backward transformation converts
+    -- all children to  parents and partially destroys the family structure. 
+
+    -- Queries
+	-- For indexOf: Actual value = expected value - 1 
+	
+	query familyName(name : String) : String {
+		name.substring(1, name.indexOf(','))
+	}
+	
+	query firstName(name : String) : String {
+		name.substring(name.indexOf(',') + 3, name.size())
+	}
+
+
+    -- Top-level relations
+
+	top relation FamilyRegister2PersonRegister {
+		enforce domain famDB familyRegister : Families::FamilyRegister {};
+		
+		enforce domain perDB personRegister : Persons::PersonRegister {};
+    }
+    
+	top relation Father2Male {
+		familyName, firstName, fullName : String;
+		
+		enforce domain famDB father : Families::FamilyMember {
+			name = firstName,
+			fatherInverse = family : Families::Family {
+				name = familyName,
+				familiesInverse = familyRegister : Families::FamilyRegister {}
+			}
+		};
+		
+		enforce domain perDB male : Persons::Male {
+			name = fullName,
+			personsInverse = personRegister : Persons::PersonRegister {}
+		};
+
+        when {
+        	FamilyRegister2PersonRegister(familyRegister, personRegister);
+        }
+		
+		where {
+			fullName = familyName + ', ' + firstName;
+			firstName = firstName(fullName);
+			familyName = familyName(fullName);
+		}
+	}
+
+	top relation Mother2Female {
+		familyName, firstName, fullName : String;
+		
+		enforce domain famDB mother : Families::FamilyMember {
+			name = firstName,
+			motherInverse = family : Families::Family {
+				name = familyName,
+				familiesInverse = familyRegister : Families::FamilyRegister {}
+			}
+		};
+		
+		enforce domain perDB female : Persons::Female {
+			name = fullName,
+			personsInverse = personRegister : Persons::PersonRegister {}
+		};
+
+        when {
+        	FamilyRegister2PersonRegister(familyRegister, personRegister);
+        }
+		
+		where {
+			fullName = familyName + ', ' + firstName;
+			firstName = firstName(fullName);
+			familyName = familyName(fullName);
+		}
+	}
+
+	top relation Son2Male {
+		familyName, firstName, fullName : String;
+		
+		enforce domain famDB son : Families::FamilyMember {
+			name = firstName,
+			sonsInverse = family : Families::Family {
+				name = familyName,
+				familiesInverse = familyRegister : Families::FamilyRegister {}
+			}
+		};
+
+		enforce domain perDB male : Persons::Male {
+			name = fullName,
+			personsInverse = personRegister : Persons::PersonRegister {}
+		};
+
+        when {
+        	male.oclIsUndefined();
+        	-- This condition is checked after the domain has been matched
+        	-- In forward direction, the variable 'male' is still unbound.
+        	-- Please note that this solution is specific to medini QVT,
+        	-- since the standard requires to process the when clause first.
+        	FamilyRegister2PersonRegister(familyRegister, personRegister);
+        }
+		
+		where {
+			fullName = familyName + ', ' + firstName;
+			firstName = firstName(fullName);
+			familyName = familyName(fullName);
+		}
+	}
+
+	top relation Daughter2Female {
+		familyName, firstName, fullName : String;
+		
+		enforce domain famDB daughter : Families::FamilyMember {
+			name = firstName,
+			daughtersInverse = family : Families::Family {
+				name = familyName,
+				familiesInverse = familyRegister : Families::FamilyRegister {}
+			}
+		};
+		
+		enforce domain perDB female : Persons::Female {
+			name = fullName,
+			personsInverse = personRegister : Persons::PersonRegister {}
+		};
+
+        when {
+        	female.oclIsUndefined(); -- See comment above
+        	FamilyRegister2PersonRegister(familyRegister, personRegister);
+        }
+		
+		where {
+			fullName = familyName + ', ' + firstName;
+			firstName = firstName(fullName);
+			familyName = familyName(fullName);
+		}
+	}
+}

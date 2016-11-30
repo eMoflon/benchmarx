@@ -1,0 +1,19 @@
+If you haven’t installed GHC (8.0.1), please visit
+
+ https://www.haskell.org/platform/
+
+You’ll also need the latest development version of BiGUL (1.0.2.3).
+
+Execute the following in the directory with this README file:
+
+ git clone https://bitbucket.org/prl_tokyo/BiGUL.git
+ cd BiGUL/Haskell/
+ cabal update
+ cabal install
+
+Then the command for compiling the file (to be executed in the directory with this README) is just:
+
+ ghc FamiliesToPersons
+
+which should produce an executable named FamiliesToPersons. 
+(Put in -O2 as well if it’s too slow.)
