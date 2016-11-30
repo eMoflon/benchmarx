@@ -1,0 +1,6 @@
+#using FamiliesToPersons.*
+#using AttrCondDefLibrary.*
+
+#rule DaughterOfExistingFamilyToFemale #extends ExistingFamily2Person, 
+												DaughterToFemale 
+									   #with FamiliesToPersons

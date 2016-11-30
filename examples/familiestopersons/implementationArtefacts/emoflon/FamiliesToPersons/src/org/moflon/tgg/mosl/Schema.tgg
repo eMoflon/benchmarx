@@ -1,0 +1,27 @@
+#import "platform:/plugin/Families/model/Families.ecore"
+#import "platform:/plugin/Persons/model/Persons.ecore"
+
+#schema FamiliesToPersons
+	
+#source {
+	Families
+}
+
+#target { 
+	Persons
+} 
+
+#correspondence {
+	FamiliesToPersonsCorr{
+		#src->FamilyRegister
+		#trg->PersonRegister
+	}
+	FamilyMemberToPerson{
+		#src->FamilyMember
+		#trg->Person
+	}
+}
+
+#attributeConditions {
+	
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Persons:PersonRegister
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore">
+  <persons xsi:type="Persons:Male"
+      name="Simpson, Bart"
+      birthday="2013-03-09T10:11:12.000+0100"/>
+  <persons xsi:type="Persons:Female"
+      name="Simpson, Marge"
+      birthday="2013-02-09T10:11:12.000+0100"/>
+  <persons xsi:type="Persons:Female"
+      name="Simpson, Lisa"
+      birthday="2013-03-08T10:11:12.000+0100"/>
+  <persons xsi:type="Persons:Male"
+      name="Simpson, Homer"
+      birthday="2013-01-09T10:11:12.000+0100"/>
+  <persons xsi:type="Persons:Female"
+      name="Simpson, Maggie"
+      birthday="2013-03-07T10:11:12.000+0100"/>
+  <persons xsi:type="Persons:Male"
+      name="Bachchan, Amitabh"
+      birthday="2013-01-09T10:11:12.000+0100"/>
+  <persons xsi:type="Persons:Female"
+      name="Bachchan, Jaya"
+      birthday="2013-02-09T10:11:12.000+0100"/>
+  <persons xsi:type="Persons:Male"
+      name="Bachchan, Abhishek"
+      birthday="2013-03-09T10:11:12.000+0100"/>
+  <persons xsi:type="Persons:Female"
+      name="Bachchan, Shweta"
+      birthday="2013-03-08T10:11:12.000+0100"/>
+</Persons:PersonRegister>
