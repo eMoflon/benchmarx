@@ -117,7 +117,8 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 			e.printStackTrace();
 		}
 		
-		return "ERROR";
+		return "ERROR__Have_you_set_up_the_BiGUL_implementation_properly?__"
+				+ "Please_consult_the_\"/implementations/bigul/README-SETUP\"_file!";
 	}
 
 	@Override
