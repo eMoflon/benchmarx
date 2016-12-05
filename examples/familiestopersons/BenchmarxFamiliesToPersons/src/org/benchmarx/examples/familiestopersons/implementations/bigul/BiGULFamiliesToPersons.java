@@ -103,7 +103,7 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 			InputStream stdout = process.getInputStream();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(stdout));
 			
-			System.out.println(input);
+			//System.out.println(input);
 			
 			writer.write(input);
 			writer.flush();
