@@ -1,4 +1,4 @@
-package org.benchmarx.examples.familiestopersons.families.core;
+package org.benchmarx.families.core;
 
 import static org.junit.Assert.assertTrue;
 

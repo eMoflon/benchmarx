@@ -1,5 +1,5 @@
-package org.benchmarx.examples.familiestopersons.persons.core
-
+package org.benchmarx.persons.core
+ 
 import Persons.Male
 import Persons.Person
 import Persons.PersonRegister

@@ -14,9 +14,9 @@ import java.util.stream.Collectors;
 
 import org.benchmarx.BXTool;
 import org.benchmarx.Configurator;
-import org.benchmarx.examples.familiestopersons.families.core.FamiliesComparator;
-import org.benchmarx.examples.familiestopersons.persons.core.PersonsComparator;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
+import org.benchmarx.families.core.FamiliesComparator;
+import org.benchmarx.persons.core.PersonsComparator;
 import org.junit.Assert;
 
 import Families.FamiliesFactory;

@@ -1,12 +1,12 @@
 package org.benchmarx.examples.familiestopersons.testsuite.scalability;
 
 import org.benchmarx.BXToolTimer;
-import org.benchmarx.examples.familiestopersons.families.core.FamilyHelper;
 import org.benchmarx.examples.familiestopersons.implementations.bigul.BiGULFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
-import org.benchmarx.examples.familiestopersons.persons.core.PersonHelper;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
+import org.benchmarx.families.core.FamilyHelper;
+import org.benchmarx.persons.core.PersonHelper;
 
 import Families.FamilyRegister;
 import Persons.PersonRegister;
