@@ -21,6 +21,7 @@ public class FamilyHelper {
 		assertTrue(family.isPresent());
 		return family.get();
 	}
+	
 	public void createSimpsonFamily(FamilyRegister register) {
 		Family family = FamiliesFactory.eINSTANCE.createFamily();
 		family.setName("Simpson");

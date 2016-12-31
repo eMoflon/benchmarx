@@ -32,8 +32,16 @@ public class BXToolTimer<S, T, D> {
 		return timeFromScratch(() -> tool.performAndPropagateSourceEdit(edit));
 	}
 	
+	public double timeSourceEditFromScratchInS(Consumer<S> edit){
+		return timeSourceEditFromScratchInMS(edit)/1000.0;
+	}
+	
 	public long timeTargetEditFromScratchInMS(Consumer<T> edit){
 		return timeFromScratch(() -> tool.performAndPropagateTargetEdit(edit));
+	}
+	
+	public double timeTargetEditFromScratchInS(Consumer<T> edit){
+		return timeTargetEditFromScratchInMS(edit)/1000.0;
 	}
 	
 	public long timeSourceEditAfterSetUpInMS(Consumer<S> setup, Consumer<S> edit){
