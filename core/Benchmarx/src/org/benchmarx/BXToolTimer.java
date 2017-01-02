@@ -1,18 +1,35 @@
 package org.benchmarx;
 
+import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class BXToolTimer<S, T, D> {
 	
 	private BXTool<S,T,D> tool;
+	private final int REPEAT;
 	
-	public BXToolTimer(BXTool<S, T, D> tool){
+	public BXToolTimer(BXTool<S, T, D> tool, int repeat){
 		this.tool = tool;
+		this.REPEAT = repeat;
 	}
 	
 	private long timeFromScratch(Runnable action){
 		tool.initiateSynchronisationDialogue();
 		return timeAction(action);
+	}
+
+	private long median(Supplier<Long> measurement) {		
+		List<Long> measurements = 
+				Stream.generate(measurement)
+					 .limit(REPEAT)
+					 .sorted()
+					 .collect(Collectors.toList());
+		
+		//System.out.print(measurements);
+		return measurements.get(REPEAT/2);
 	}
 
 	private long timeAction(Runnable action) {
@@ -29,7 +46,7 @@ public class BXToolTimer<S, T, D> {
 	}
 	
 	public long timeSourceEditFromScratchInMS(Consumer<S> edit){
-		return timeFromScratch(() -> tool.performAndPropagateSourceEdit(edit));
+		return median(() -> timeFromScratch(() -> tool.performAndPropagateSourceEdit(edit)));
 	}
 	
 	public double timeSourceEditFromScratchInS(Consumer<S> edit){
@@ -37,7 +54,7 @@ public class BXToolTimer<S, T, D> {
 	}
 	
 	public long timeTargetEditFromScratchInMS(Consumer<T> edit){
-		return timeFromScratch(() -> tool.performAndPropagateTargetEdit(edit));
+		return median(() -> timeFromScratch(() -> tool.performAndPropagateTargetEdit(edit)));
 	}
 	
 	public double timeTargetEditFromScratchInS(Consumer<T> edit){
@@ -58,5 +75,9 @@ public class BXToolTimer<S, T, D> {
 		tool.initiateSynchronisationDialogue();
 		setup.run();
 		return timeAction(action);
+	}
+
+	public String getName() {
+		return tool.getName();
 	}
 }
