@@ -31,7 +31,7 @@ public class BatchScalability {
 	public BatchScalability(int numberOfFamilies, int noOfChildren, int repeat) {
 		this.NO_OF_FAMILIES = numberOfFamilies;
 		this.NO_OF_CHILDREN = noOfChildren;
-		this.NO_OF_ELEMENTS = NO_OF_FAMILIES * (NO_OF_CHILDREN + 2);
+		this.NO_OF_ELEMENTS = 1 + 2*NO_OF_FAMILIES + NO_OF_FAMILIES * 2*(NO_OF_CHILDREN + 2);
 		
 		timer1 = new BXToolTimer<>(tool1, repeat);
 		timer2 = new BXToolTimer<>(tool2, repeat);
@@ -42,12 +42,14 @@ public class BatchScalability {
 		for(int i = 0; i < NO_OF_FAMILIES; i++){
 			Person mother = PersonsFactory.eINSTANCE.createFemale();
 			mother.setName("Doe_" + i + ", Jane");
+			register.getPersons().add(mother);
 			Person father = PersonsFactory.eINSTANCE.createMale();
 			father.setName("Doe_" + i + ", John");
+			register.getPersons().add(father);
 			
 			for (int j = 0; j < NO_OF_CHILDREN; j++) {
 				Person person = Math.random() < 0.5 ? PersonsFactory.eINSTANCE.createFemale() : PersonsFactory.eINSTANCE.createMale();
-				person.setName("Doe_" + i + ", Child_" + i);
+				person.setName("Doe_" + i + ", Child_" + j);
 				register.getPersons().add(person);
 			}
 		}
@@ -119,17 +121,12 @@ public class BatchScalability {
 		printHeader();
 		runFWDMeasurements(100, 3, 21);
 		runFWDMeasurements(500, 3, 5);
-		runFWDMeasurements(1000, 3, 5);
-		runFWDMeasurements(10000, 3, 3);
-		runFWDMeasurements(50000, 3, 1);
-		runFWDMeasurements(100000, 3, 1);
+		runFWDMeasurements(1000, 3, 3);
+		runFWDMeasurements(5000, 3, 1);
 		
 		printHeader();
 		runBWDMeasurements(100, 3, 21);
-		runBWDMeasurements(500, 3, 5);
-		runBWDMeasurements(1000, 3, 5);
-		runBWDMeasurements(10000, 3, 3);
-		runBWDMeasurements(50000, 3, 1);
-		runBWDMeasurements(100000, 3, 1);
+		runBWDMeasurements(500, 3, 3);
+		runBWDMeasurements(1000, 3, 1);
 	}
 }
