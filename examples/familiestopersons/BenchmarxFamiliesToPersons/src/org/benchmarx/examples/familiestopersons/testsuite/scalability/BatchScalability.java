@@ -15,8 +15,15 @@ import Persons.PersonRegister;
 import Persons.PersonsFactory;
 
 public class BatchScalability {
-	private static final int NO_OF_FAMILIES = 20000;
-	private static final int NO_OF_PERSONS  = 60000;
+	private final int NO_OF_FAMILIES;
+	private final int NO_OF_PERSONS;
+	private final int REPEAT;
+	
+	public BatchScalability(int numberOfFamilies, int numberOfPersons, int repeat) {
+		this.NO_OF_FAMILIES = numberOfFamilies;
+		this.NO_OF_PERSONS = numberOfPersons;
+		this.REPEAT = repeat;
+	}
 	
 	public PersonRegister createPersons(PersonRegister register){
 		for(int i = 0; i < NO_OF_PERSONS; i++){
@@ -54,19 +61,33 @@ public class BatchScalability {
 		return register;
 	}
 	
+	public void runMeasurements() {
+		for (int i = 0; i < REPEAT; i++) {
+			System.out.println();
+			System.out.println("(" + NO_OF_FAMILIES + ", " + NO_OF_PERSONS + "), " + (i+1) + " of " + REPEAT);
+			
+			BXToolTimer<FamilyRegister, PersonRegister, Decisions> timer1 = new BXToolTimer<>(new EMoflonFamiliesToPersons());
+			System.out.print("eMoflon: ");
+			System.out.print(timer1.timeSourceEditFromScratchInS(this::createFamiliesWithMembers) + "s;");
+			System.out.println(timer1.timeTargetEditFromScratchInS(this::createPersons) + "s;");
+
+			BXToolTimer<FamilyRegister, PersonRegister, Decisions> timer2 = new BXToolTimer<>(new BiGULFamiliesToPersons());
+			System.out.print("BiGUL:   ");
+			System.out.print(timer2.timeSourceEditFromScratchInS(this::createFamiliesWithMembers) + "s;");
+			System.out.println(timer2.timeTargetEditFromScratchInS(this::createPersons) + "s;");
+
+			BXToolTimer<FamilyRegister, PersonRegister, Decisions> timer3 = new BXToolTimer<>(new MediniQVTFamiliesToPersons());
+			System.out.print("Medini:  ");
+			System.out.print(timer3.timeSourceEditFromScratchInS(this::createFamiliesWithMembers) + "s;");
+			System.out.println(timer3.timeTargetEditFromScratchInS(this::createPersons) + "s;");			
+		}
+	}
+	
 	public static void main(String[] args) {
-		BatchScalability scalabilityTest = new BatchScalability();
+		BatchScalability scalabilityTest = new BatchScalability(1000, 1000, 5);
+		scalabilityTest.runMeasurements();
 		
-		BXToolTimer<FamilyRegister, PersonRegister, Decisions> timer1 = new BXToolTimer<>(new EMoflonFamiliesToPersons());
-		System.out.print(timer1.timeSourceEditFromScratchInS(scalabilityTest::createFamiliesWithMembers) + "s;");
-		System.out.println(timer1.timeTargetEditFromScratchInS(scalabilityTest::createPersons) + "s;");
-		
-		BXToolTimer<FamilyRegister, PersonRegister, Decisions> timer2 = new BXToolTimer<>(new BiGULFamiliesToPersons());
-		System.out.print(timer2.timeSourceEditFromScratchInS(scalabilityTest::createFamiliesWithMembers) + "s;");
-		System.out.println(timer2.timeTargetEditFromScratchInS(scalabilityTest::createPersons) + "s;");
-		
-		BXToolTimer<FamilyRegister, PersonRegister, Decisions> timer3 = new BXToolTimer<>(new MediniQVTFamiliesToPersons());
-		System.out.print(timer3.timeSourceEditFromScratchInS(scalabilityTest::createFamiliesWithMembers) + "s;");
-		System.out.println(timer3.timeTargetEditFromScratchInS(scalabilityTest::createPersons) + "s;");
+		scalabilityTest = new BatchScalability(5000, 5000, 5);
+		scalabilityTest.runMeasurements();
 	}
 }
