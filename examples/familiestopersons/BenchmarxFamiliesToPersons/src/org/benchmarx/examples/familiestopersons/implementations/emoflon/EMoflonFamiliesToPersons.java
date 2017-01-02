@@ -33,6 +33,11 @@ public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, Perso
 	private SynchronizationHelper helper;
 	
 	@Override
+	public String getName() {
+		return "eMoflon";
+	}
+	
+	@Override
 	public void initiateSynchronisationDialogue() {
 		BasicConfigurator.configure();
 		helper = new SynchronizationHelper(FamiliesToPersonsPackage.eINSTANCE, "../implementationArtefacts/emoflon/FamiliesToPersons");

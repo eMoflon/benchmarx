@@ -47,6 +47,10 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 	private static final String fwdDir = "perDB";
 	private static final String bwdDir = "famDB";
 
+	@Override
+	public String getName() {
+		return "MediniQVT";
+	}
 	
 	public MediniQVTFamiliesToPersons() {
 		super(new FamiliesComparator(), new PersonsComparator());
