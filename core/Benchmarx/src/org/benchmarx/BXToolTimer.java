@@ -28,7 +28,6 @@ public class BXToolTimer<S, T, D> {
 					 .sorted()
 					 .collect(Collectors.toList());
 		
-		//System.out.print(measurements);
 		return measurements.get(REPEAT/2);
 	}
 
@@ -62,13 +61,21 @@ public class BXToolTimer<S, T, D> {
 	}
 	
 	public long timeSourceEditAfterSetUpInMS(Consumer<S> setup, Consumer<S> edit){
-		return timeAfterSetup(() -> tool.performAndPropagateSourceEdit(setup), 
-							  () -> tool.performAndPropagateSourceEdit(edit));
+		return median(() -> timeAfterSetup(() -> tool.performAndPropagateSourceEdit(setup), 
+							  			   () -> tool.performAndPropagateSourceEdit(edit)));
 	}
 	
 	public long timeTargetEditAfterSetUpInMS(Consumer<T> setup, Consumer<T> edit){
-		return timeAfterSetup(() -> tool.performAndPropagateTargetEdit(setup), 
-							  () -> tool.performAndPropagateTargetEdit(edit));
+		return median(() -> timeAfterSetup(() -> tool.performAndPropagateTargetEdit(setup), 
+							  			   () -> tool.performAndPropagateTargetEdit(edit)));
+	}
+	
+	public double timeTargetEditAfterSetUpInS(Consumer<T> setup, Consumer<T> edit){
+		return timeTargetEditAfterSetUpInMS(setup, edit)/1000.0;
+	}
+	
+	public double timeSourceEditAfterSetUpInS(Consumer<S> setup, Consumer<S> edit){
+		return timeSourceEditAfterSetUpInMS(setup, edit)/1000.0;
 	}
 	
 	private long timeAfterSetup(Runnable setup, Runnable action){
