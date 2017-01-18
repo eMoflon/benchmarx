@@ -132,9 +132,9 @@ public class BatchScalability {
 	
 	private void runIncrBWDMeasurements(){
 		System.out.print(NO_OF_ELEMENTS + DELIMITER);
-		System.out.print(timer1.timeTargetEditAfterSetUpInS(this::createPersons, this::createOnePerson) + UNIT + DELIMITER);
+		//System.out.print(timer1.timeTargetEditAfterSetUpInS(this::createPersons, this::createOnePerson) + UNIT + DELIMITER);
 		System.out.print(timer2.timeTargetEditAfterSetUpInS(this::createPersons, this::createOnePerson) + UNIT + DELIMITER);
-		System.out.print(timer3.timeTargetEditAfterSetUpInS(this::createPersons, this::createOnePerson) + UNIT);
+		//System.out.print(timer3.timeTargetEditAfterSetUpInS(this::createPersons, this::createOnePerson) + UNIT);
 		System.out.println();
 	}
 
@@ -162,7 +162,6 @@ public class BatchScalability {
 	}
 	
 	public static void main(String[] args) {
-		
 		printHeader("Batch BWD:");
 		for (int i = 50; i < 100000; i+=500) {			
 			runBatchBWDMeasurements(i, 3, 5);
@@ -174,13 +173,13 @@ public class BatchScalability {
 		}
 		
 		printHeader("Incr. FWD:");
-		runIncrFWDMeasurements(100, 3, 5);
-		runIncrFWDMeasurements(500, 3, 5);
-		runIncrFWDMeasurements(1000, 3, 5);
+		for (int i = 50; i < 100000; i+=500) {			
+			runIncrFWDMeasurements(i, 3, 5);
+		}		
 		
 		printHeader("Incr. BWD:");
-		runIncrBWDMeasurements(100, 3, 5);
-		runIncrBWDMeasurements(500, 3, 5);
-		runIncrBWDMeasurements(1000, 3, 5);
+		for (int i = 50; i < 100000; i+=500) {			
+			runIncrBWDMeasurements(i, 3, 5);
+		}
 	}
 }
