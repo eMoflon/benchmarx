@@ -15,25 +15,12 @@ public class RenamingPersonsWithDecisions extends FamiliesToPersonsTestCase {
 	}
 	
 	/**
-	 * <b>Test</b> for changing a person's family name.
-	 * <p>
+	 * <b>Test</b> for changing a person's family name. <br/>
 	 * <b>Expect</b> the corresponding family member must be associated with
 	 * another family as their family name does not fit anymore. In this case, a
 	 * fitting family already exists and must be used as this is preferred.
-	 * <p>
-	 * <b>Classification</b>: incr-wocorr-delta-config
-	 * <ul>
-	 * <li><b>incr</b>: old family register is required to avoid information
-	 * loss (mapping of (fe)males to mothers/fathers or daughters/sons).
-	 * <li><b>wocorr</b>: assumption based on unique naming works here as there
-	 * are no persons with the same name.
-	 * <li><b>delta</b>: renaming cannot be distinguished from combined creation
-	 * and deletion.
-	 * <li><b>config</b>: there are actually two decisions to be made here: (i)
-	 * whether the member is to be created as a child or parent in their new
-	 * family, and (ii) if a new family is to be created or an existing suitable
-	 * family is to be used.
-	 * </ul>
+	 * <br/>
+	 * <b>Features</b>: round trip, add+attribute, structural, runtime
 	 */
 	@Test
 	public void testFamilyNameChangeOfPersonWhereSuitableFamilyExists() {
@@ -53,9 +40,11 @@ public class RenamingPersonsWithDecisions extends FamiliesToPersonsTestCase {
 	}
 	
 	/**
-	 * Analogous to {@link #testFamilyNameChangeOfPersonWhereSuitableFamilyExists()},
-	 * but here a new family is to be created even though a suitable family
-	 * actually exists and could be used.
+	 * Analogous to
+	 * {@link #testFamilyNameChangeOfPersonWhereSuitableFamilyExists()}, but
+	 * here a new family is to be created even though a suitable family actually
+	 * exists and could be used. <br/>
+	 * <b>Features</b>: round trip, add+attribute, structural, runtime
 	 */
 	@Test
 	public void testFamilyNameChangeOfPersonButPreferCreatingNewFamily() {
@@ -80,7 +69,8 @@ public class RenamingPersonsWithDecisions extends FamiliesToPersonsTestCase {
 	 * {@link #testFamilyNameChangeOfPersonWhereSuitableFamilyExists()} but here
 	 * a suitable family does not exist. The only choice to be made, therefore,
 	 * is if the female person should be a daughter or mother (preferred here)
-	 * of the new family.
+	 * of the new family. <br/>
+	 * <b>Features</b>: round trip, add+attribute, structural, runtime
 	 */
 	@Test
 	public void testFamilyNameChangeOfPersonWhereSuitableFamilyDoesNotExist() {
@@ -96,27 +86,12 @@ public class RenamingPersonsWithDecisions extends FamiliesToPersonsTestCase {
 		//----------------
 		util.assertPostcondition("MemberFamilyNameChange","PersonFamilyNameChange");
 	}
-	
+
 	/**
-	 * <b>Test</b> for changing a person's full name.
-	 * <p>
+	 * <b>Test</b> for changing a person's full name. <br/>
 	 * <b>Expected</b>: first name of the corresponding family member and their
-	 * family name must be changed in the families model
-	 * <p>
-	 * <b>Classification</b>: incr-wocorr-delta-config
-	 * <ul>
-	 * <li><b>incr</b>: renaming persons full name requires old consistent state
-	 * as it replace old member name and family name with new one in families
-	 * model.
-	 * <li><b>wocorr</b>: it's possible to guess, as only one person is
-	 * available with this name and the related member's name has to be renamed
-	 * in the families model which is clear.
-	 * <li><b>delta</b>: renaming is mostly delta bases as it is impossible to
-	 * decide weather it is renamed, deleted or recreated.
-	 * <li><b>config</b>: as there is no suitable family, a new one must be
-	 * created (so no decision for this), but one has to decide if a parent or
-	 * child should be preferred (here parent).
-	 * </ul>
+	 * family name must be changed in the families model <br/>
+	 * <b>Features</b>: round trip, add+attribute, structural, runtime
 	 */
 	@Test
 	public void testFullNameChangeFather() {
@@ -135,7 +110,8 @@ public class RenamingPersonsWithDecisions extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * Analogous to @link {@link #testFullNameChangeFather()}, but here the
-	 * corresponding family member is a son, not a father in the family.
+	 * corresponding family member is a son, not a father in the family. <br/>
+	 * <b>Features</b>: round trip, add+attribute, structural, runtime
 	 */
 	@Test
 	public void testFullNameChangeSon() {
