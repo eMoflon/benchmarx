@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="BXTestCase">
+				<alt mandatory="true" name="direction">
+					<feature mandatory="true" name="fwd"/>
+					<feature mandatory="true" name="bwd"/>
+					<feature mandatory="true" name="roundtrip"/>
+				</alt>
+				<and name="incremental">
+					<or mandatory="true" name="update type">
+						<feature mandatory="true" name="del"/>
+						<feature mandatory="true" name="add"/>
+						<feature mandatory="true" name="attribute change"/>
+					</or>
+					<feature name="corr"/>
+					<alt name="delta">
+						<feature mandatory="true" name="operational"/>
+						<feature mandatory="true" name="structural"/>
+					</alt>
+				</and>
+				<or mandatory="true" name="update policy">
+					<feature mandatory="true" name="runtime"/>
+					<feature mandatory="true" name="fixed"/>
+				</or>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>roundtrip</var>
+					<var>incremental</var>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>
