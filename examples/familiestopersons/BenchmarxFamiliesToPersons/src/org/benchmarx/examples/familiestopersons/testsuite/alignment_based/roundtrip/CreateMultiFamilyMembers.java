@@ -16,21 +16,10 @@ public class CreateMultiFamilyMembers extends FamiliesToPersonsTestCase {
 
 	/**
 	 * <b>Test</b> for creation of multiple family members in an existing
-	 * family.
-	 * <p>
+	 * family. <br/>
 	 * <b>Expect</b> the creation of multiple persons (male/female as required)
-	 * associated to the new family members.
-	 * <p>
-	 * <b>Classification</b>: incr-wocorr-state-auto
-	 * <ul>
-	 * <li><b>incr</b>: creation of family and multiple family member requires
-	 * old(er) states, otherwise birthdays would be lost (here for the father).
-	 * <li><b>wocorr</b>: assumption based on unique names works for this
-	 * example.
-	 * <li><b>state</b>: easy to guess/compute the delta involved here based on
-	 * the old and new states (what was added is clear).
-	 * <li><b>auto</b>: propagation is deterministic so no choice involved.
-	 * <ul>
+	 * associated to the new family members. <br/>
+	 * <b>Features</b>: round trip, add+attribute, fixed
 	 */
 	@Test
 	public void testCreateMultiFamilyMember()

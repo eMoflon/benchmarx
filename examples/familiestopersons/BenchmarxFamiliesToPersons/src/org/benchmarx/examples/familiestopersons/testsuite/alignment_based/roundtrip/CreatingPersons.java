@@ -16,26 +16,13 @@ public class CreatingPersons extends FamiliesToPersonsTestCase {
 
 	/**
 	 * <b>Test</b> for creation of a single male person, for which a suitable
-	 * father already exists in the family register.
-	 * <p>
+	 * father already exists in the family register. <br/>
 	 * <b>Expect</b> the creation of a son in the families model with the given
-	 * first name.
-	 * <p>
-	 * <b>Classification</b>: incr-wocorr-state-config
-	 * <ul>
-	 * <li><b>batch</b>: old state of the family register is required to avoid
-	 * losing the mapping of (fe)males to mothers/daughters and fathers/sons.
-	 * <li><b>wocorr</b>: assumption based on unique naming works here as there
-	 * are no members with the same name.
-	 * <li><b>state</b>: it's possible to determine that a new person was
-	 * created.
-	 * <li><b>config</b>: even though creating parents is preferred to creating
-	 * children, as existing families are to be used, bart must be created as a
-	 * son since Homer is already the father of the existing family.
-	 * <ul>
+	 * first name. <br/>
+	 * <b>Features</b>: round trip, add, runtime
 	 */
 	@Test
-	public void testCreateMalePersonForWhichFatherExist()
+	public void testCreateMalePersonForWhichFatherExists()
 	{
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
@@ -53,7 +40,8 @@ public class CreatingPersons extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * Analogous to {@link #testCreateMalePersonForWhichFatherExist()}, but here
-	 * for a mother and daughter.
+	 * for a mother and daughter.<br/>
+	 * <b>Features</b>: round trip, add, runtime
 	 */
 	@Test
 	public void testCreatePersonDaughterMotherExist()
@@ -73,24 +61,11 @@ public class CreatingPersons extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * <b>Test</b> for creating multiple persons with different last names.
-	 * <p>
+	 * <br/>
 	 * <b>Expect</b> the creation of corresponding family members in the
 	 * families model with the given first names (based on specified
-	 * preferences).
-	 * <p>
-	 * <b>Classification</b>: incr-wocorr-state-config
-	 * <ul>
-	 * <li><b>incr</b>: family register is required to avoid information loss
-	 * (mapping of (fe)males to mothers/fathers or daughters/sons).
-	 * <li><b>wocorr</b>: assumption based on unique naming works here as there
-	 * are no members with the same names.
-	 * <li><b>state</b>: it's possible to determine the applied changes from old
-	 * and new states.
-	 * <li><b>config</b>: there are two decisions to be made: (i) whether the
-	 * member is to be created as a child or parent (preferred here) in their
-	 * new family, and (ii) if a new family is to be created or an existing
-	 * suitable family (preferred here) is to be used.
-	 * <ul>
+	 * preferences). <br/>
+	 * <b>Features</b>: round trip, add, runtime
 	 */
 	@Test
 	public void testMultiPersonWithDiffFamilyNamesTT() {
@@ -116,7 +91,9 @@ public class CreatingPersons extends FamiliesToPersonsTestCase {
 	}	
 	
 	/**
-	 * Analogous to @link {@link #testMultiPersonWithDiffFamilyNamesTT()}, but preferring creating children.
+	 * Analogous to @link {@link #testMultiPersonWithDiffFamilyNamesTT()}, but
+	 * preferring creating children.<br/>
+	 * <b>Features</b>: round trip, add, runtime
 	 */
 	@Test
 	public void testMultiPersonWithDiffFamilyNamesWithDiffPrefFT() {
@@ -139,7 +116,9 @@ public class CreatingPersons extends FamiliesToPersonsTestCase {
 	}	
 	
 	/**
-	 * Analogous to @link {@link #testMultiPersonWithDiffFamilyNamesTT()}, but preferring creating new families.
+	 * Analogous to @link {@link #testMultiPersonWithDiffFamilyNamesTT()}, but
+	 * preferring creating new families.<br/>
+	 * <b>Features</b>: round trip, add, runtime
 	 */
 	@Test
 	public void testMultiPersonWithDiffFamilyNamesWithDiffPrefTF() {
@@ -161,7 +140,9 @@ public class CreatingPersons extends FamiliesToPersonsTestCase {
 	}	
 	
 	/**
-	 * Analogous to @link {@link #testMultiPersonWithDiffFamilyNamesTT()}, but preferring creating children and new families.
+	 * Analogous to @link {@link #testMultiPersonWithDiffFamilyNamesTT()}, but
+	 * preferring creating children and new families.<br/>
+	 * <b>Features</b>: round trip, add, runtime
 	 */
 	@Test
 	public void testMultiPersonWithDiffFamilyNamesWithDiffPrefFF() {

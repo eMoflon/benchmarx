@@ -15,21 +15,11 @@ public class RenamingFamilies extends FamiliesToPersonsTestCase {
 	}
 
 	/**
-	 * <b>Test</b> for name change of a family.
-	 * <p>
+	 * <b>Test</b> for name change of a family. <br/>
 	 * <b>Expect</b> a change in the family name part of the full name of all
 	 * associated persons in the person register, i.e., by replacing the old
-	 * family name with the new one.
-	 * <p>
-	 * <b>Classification</b>: incr-wocorr-delta-auto
-	 * <ul>
-	 * <li><b>incr</b>: old person register is required to avoid losing
-	 * birthdays.
-	 * <li><b>wocorr</b>: it's possible to guess required correspondences as there is only one family and full names of persons are unique (in this example).
-	 * name has to be renamed in the persons model which is clear.
-	 * <li><b>delta</b>: renaming cannot be distinguished from combined deletion and creation.
-	 * <li><b>auto</b>: propagation is deterministic.
-	 * </ul>
+	 * family name with the new one. <br/>
+	 * <b>Features</b>: fwd, add+attribute, structural, fixed
 	 */
 	@Test
 	public void testFamilyNameChange()
@@ -48,20 +38,10 @@ public class RenamingFamilies extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * <b>Test</b> for first name change of a family member (here the father).
-	 * <p>
+	 * <br/>
 	 * <b>Expect</b> a full name change of the corresponding person by replacing
-	 * the old first name with the new one.
-	 * <p>
-	 * <b>Classification</b>: incr-wocorr-delta-auto
-	 * <ul>
-	 * <li><b>incr</b>: old person register is required to avoid losing
-	 * birthdays.
-	 * <li><b>wocorr</b>: assumption based on unique names works for this
-	 * example.
-	 * <li><b>delta</b>: renaming cannot be distinguised from combined deletion
-	 * and creation.
-	 * <li><b>auto</b>: propagation is deterministic.
-	 * </ul>
+	 * the old first name with the new one. <br/>
+	 * <b>Features</b>: fwd, add+attribute, structural,fixed
 	 */
 	@Test
 	public void testFamilyMemberNameChangeFather()
@@ -79,6 +59,7 @@ public class RenamingFamilies extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * Analogous to {@link #testFamilyMemberNameChangeFather()}
+	 * <b>Features</b>: fwd, add+attribute, structural,fixed
 	 */
 	@Test
 	public void testFamilyMemberNameChangeMother() {
@@ -96,6 +77,7 @@ public class RenamingFamilies extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * Analogous to {@link #testFamilyMemberNameChangeFather()}
+	 * <b>Features</b>: fwd, add+attribute, structural,fixed
 	 */
 	@Test
 	public void testFamilyMemberNameChangeDaughter() {
@@ -113,6 +95,7 @@ public class RenamingFamilies extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * Analogous to {@link #testFamilyMemberNameChangeFather()}
+	 * <b>Features</b>: fwd, add+attribute, structural,fixed
 	 */
 	@Test
 	public void testFamilyMemberNameChangeSon() {
@@ -130,23 +113,11 @@ public class RenamingFamilies extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * <b>Test</b> for name change of one family, where another family with the
-	 * same (old) name exists.
-	 * <p>
+	 * same (old) name exists. <br/>
 	 * <b>Expect</b> a change in the family name part of the full name of all
 	 * associated persons (corresponding to family members) in the persons
-	 * model, i.e., by replacing the old family name with the new one.
-	 * <p>
-	 * <b>Classification</b>: incr-wcorr-delta-auto
-	 * <ul>
-	 * <li><b>incr</b>: renaming persons requires the old consistent state as
-	 * their birthdays would be otherwise lost.
-	 * <li><b>wcorr</b>: traceability links are required as it is impossible to
-	 * guess correctly which persons correspond to which family members, given
-	 * that there are multiple persons with the exact same full name.
-	 * <li><b>delta</b>: renaming is inherently delta-based as it is impossible to
-	 * distinguish between renaming and deletion + creation.
-	 * <li><b>auto</b>: propagation is deterministic so no choice involved.
-	 * </ul>
+	 * model, i.e., by replacing the old family name with the new one. <br/>
+	 * <b>Features</b>: fwd, add+attribute, corr-based, operational, fixed
 	 */
 	@Test
 	public void testNonUniqueFamilyNameChange()
@@ -169,23 +140,10 @@ public class RenamingFamilies extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * <b>Test</b> for first name change of the mother of a family (where
-	 * another family with the same name exists). 
-	 * <p>
-	 * <b>Expect</b> the
-	 * corresponding person's full name to be changed by replacing the first
-	 * name part with the new value.
-	 * <p>
-	 * <b>Classification</b>: incr-wocorr-delta-auto
-	 * <ul>
-	 * <li><b>incr</b>: renaming the corresponding person requires the old state
-	 * to avoid losing their birthday.
-	 * <li><b>wcorr</b>: traceability links are required as it is impossible to
-	 * guess the right "mother" from persons with exactly the same name in the
-	 * persons register.
-	 * <li><b>delta</b>: renaming is inherently delta-based as it is impossible
-	 * to distinguish between renaming and deletion + creation.
-	 * <li><b>auto</b>: propagation is deterministic so no choice involved.
-	 * </ul>
+	 * another family with the same name exists). <br/>
+	 * <b>Expect</b> the corresponding person's full name to be changed by
+	 * replacing the first name part with the new value. <br/>
+	 * <b>Features</b>: fwd, add+attribute, structural, fixed
 	 */
 	@Test
 	public void testNameChangeOfMotherInNonUniqueFamily() {
@@ -207,6 +165,7 @@ public class RenamingFamilies extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * Analogous to {@link #testNameChangeOfMotherInNonUniqueFamily()}
+	 * <b>Features</b>: fwd, add+attribute, structural, fixed 
 	 */
 	@Test
 	public void testNameChangeOfDaughterInNonUniqueFamily() {
@@ -228,6 +187,7 @@ public class RenamingFamilies extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * Analogous to {@link #testNameChangeOfMotherInNonUniqueFamily()}
+	 * <b>Features</b>: fwd, add+attribute, structural, fixed
 	 */
 	@Test
 	public void testNameChangeOfSonInNonUniqueFamily() {
@@ -249,6 +209,7 @@ public class RenamingFamilies extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * Analogous to {@link #testNameChangeOfMotherInNonUniqueFamily()}
+	 * <b>Features</b>: fwd, add+attribute, structural, fixed
 	 */
 	@Test
 	public void testFamilyMemberNameChangeFatherOfSameFamilyName()

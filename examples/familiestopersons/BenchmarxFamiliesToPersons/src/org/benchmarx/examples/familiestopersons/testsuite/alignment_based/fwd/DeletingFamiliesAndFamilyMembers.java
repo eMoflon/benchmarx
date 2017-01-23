@@ -16,24 +16,10 @@ public class DeletingFamiliesAndFamilyMembers extends FamiliesToPersonsTestCase 
 	}
 	
 	/**
-	 * <b>Test</b> for deletion of a single family member.
-	 * <p>
+	 * <b>Test</b> for deletion of a single family member. <br/>
 	 * <b>Expect</b> the associated person to be deleted from the persons
-	 * register.
-	 * <p>
-	 * <b>Classification</b>: incr-wocorr-state-auto
-	 * <ul>
-	 * <li><b>incr</b>: deleting a family member requires old consistent state
-	 * of the persons register as the associated birthdays of all other family
-	 * members (to be precise: of their associated persons) would be otherwise
-	 * lost.
-	 * <li><b>wocorr</b>: it's possible to guess the required correspondences as
-	 * full names of persons are unique (in this example).
-	 * <li><b>state</b>: deletion in this example is state-based, as it's
-	 * reasonably easy to determine what changed from the old and new state of
-	 * the families register.
-	 * <li><b>auto</b>: propagation is deterministic so no choice involved.
-	 * <ul>
+	 * register. <br/>
+	 * <b>Features</b>: fwd, add+del, fixed
 	 */
 	@Test
 	public void testDeleteFamilyMemberOneFamily() {
@@ -51,7 +37,8 @@ public class DeletingFamiliesAndFamilyMembers extends FamiliesToPersonsTestCase 
 
 	/**
 	 * Analogous to @link {@link #testDeleteFamilyMemberOneFamily()}, but here
-	 * there is another family in the families register.
+	 * there is another family in the families register. <br/>
+	 * <b>Features</b>: fwd, add+del, fixed
 	 */
 	@Test
 	public void testDeleteFamilyMemberMultipleFamilies() {
@@ -74,24 +61,10 @@ public class DeletingFamiliesAndFamilyMembers extends FamiliesToPersonsTestCase 
 	/**
 	 * <b>Test</b> for deletion of a single family member, where two members
 	 * (one of which is deleted) have the same name. In this case, mother and
-	 * daughter have same name.
-	 * <p>
+	 * daughter have same name. <br/>
 	 * <b>Expect</b> the associated person to be deleted from the persons
-	 * register.
-	 * <p>
-	 * <b>Classification</b>: incr-wcorr-state-auto
-	 * <ul>
-	 * <li><b>incr</b>: deletion requires the old consistent state of the
-	 * persons register as the birthdays (of all other family members) would be
-	 * otherwise lost.
-	 * <li><b>wcorr</b>: traceability links are required as it is impossible to
-	 * guess correctly which persons correspond to which family members, given
-	 * that there are multiple persons with the exact same full name.
-	 * <li><b>state</b>: deletion is state-based, as it is reasonably easy to
-	 * determine what was changed from the old and new states of the family
-	 * register.
-	 * <li><b>auto</b>: propagation is deterministic so no choice involved.
-	 * <ul>
+	 * register. <br/>
+	 * <b>Features</b>: fwd, add+del, corr-based, fixed
 	 */
 	@Test
 	public void testDeleteNonUniqueDaughter() {
@@ -109,7 +82,9 @@ public class DeletingFamiliesAndFamilyMembers extends FamiliesToPersonsTestCase 
 	}
 	
 	/**
-	 * Analogous to @link {@link #testDeleteNonUniqueDaughter()}, but here for father/son.
+	 * Analogous to @link {@link #testDeleteNonUniqueDaughter()}, but here for
+	 * father/son.<br/>
+	 * <b>Features</b>: fwd, add+del, corr-based, fixed
 	 */
 	@Test
 	public void testDeleteNonUniqueSon() {
@@ -128,20 +103,10 @@ public class DeletingFamiliesAndFamilyMembers extends FamiliesToPersonsTestCase 
 	
 	/**
 	 * <b>Test</b> for deletion of an entire family with all its family members.
-	 * <p>
+	 * <br/>
 	 * <b>Expect</b> Delete all corresponding persons in the persons model.
-	 * <p>
-	 * <b>Classification</b>: incr-wcorr-state-auto
-	 * <ul>
-	 * <li><b>incr</b>: deleting a family requires old consistent state of
-	 * persons register as all other birthdays would be otherwise lost.
-	 * <li><b>wcorr</b>: traceability links are required as it is impossible to
-	 * guess correctly which persons correspond to which family members, given
-	 * that there are multiple persons with the exact same family name.
-	 * <li><b>state</b>: deletion is state-based, as it's possible to determine
-	 * the change from old and new states.
-	 * <li><b>auto</b>: propagation is deterministic so no choice involved.
-	 * <ul>
+	 * <br/>
+	 * <b>Features</b>: fwd, add+del+attribute, corr-based, fixed
 	 */
 	@Test
 	public void testDeleteFamilyOfSameName() {

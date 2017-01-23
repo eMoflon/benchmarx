@@ -15,19 +15,9 @@ public class ChangingBirthdays extends FamiliesToPersonsTestCase {
 	}
 
 	/**
-	 * <b>Test</b> for changing the birthday of a person.
-	 * <p>
-	 * <b>Expected</b>: Nothing has to be changed in the families model.
-	 * <p>
-	 * <b>Classification</b>: incr-wocorr-state-auto
-	 * <ul>
-	 * <li><b>incr</b>: old family register is required as decision to map Homer
-	 * to a father would otherwise be lost.
-	 * <li><b>wocorr</b>: assumption based on unique naming works here.
-	 * <li><b>state</b>: as the name of the person remains the same, computing
-	 * the change here is pretty straightforward.
-	 * <li><b>auto</b>: propagation is deterministic (namely doing nothing).
-	 * </ul>
+	 * <b>Test</b> for changing the birthday of a person. <br/>
+	 * <b>Expected</b>: Nothing has to be changed in the families model. <br/>
+	 * <b>Features</b>: round trip, add+attribute, fixed
 	 */
 	@Test
 	public void testBirthdayChange()
@@ -41,5 +31,89 @@ public class ChangingBirthdays extends FamiliesToPersonsTestCase {
 		tool.performAndPropagateTargetEdit((helperPerson::birthdayChangeOfHomer));
 		//-----------------------------
 		util.assertPostcondition("OneFamilyWithOneFamilyMember","PersonBirthdayChange");
+	}
+	
+	/**
+	 * <b>Test</b> for a swap of family member roles via renaming of the family
+	 * members (here father and son). <br/>
+	 * <b>Expect</b> appropriate persons should be renamed. <br/>
+	 * <b>Features</b>: round trip, add+attribute, structural, fixed
+	 */
+	@Test
+	public void testFamilyMemberSwapRoleFatherToSonViaRenaming() {
+		tool.initiateSynchronisationDialogue();
+		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
+		tool.performAndPropagateSourceEdit(helperFamily::createFatherHomer);
+		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdaysOfSimpson);
+		
+		util.assertPrecondition("Pre_RoleChangeFamilyMember", "Pre_NoChangePerson");
+		//------------
+		tool.performAndPropagateSourceEdit(helperFamily::familyFatherHomerRoleChangeToSon);
+		//------------
+		util.assertPostcondition("RoleChangeFamilyMember", "NoChangePerson");
+	}
+	
+	/**
+	 * Analogous to @link
+	 * {@link #testFamilyMemberSwapRoleFatherToSonViaRenaming()}, but here for
+	 * daughter <-> mother.<br/>
+	 * <b>Features</b>: round trip, add+attribute, structural, fixed
+	 */
+	@Test
+	public void testFamilyMemberSwapRoleMotherToDaughterViaRenaming() {
+		tool.initiateSynchronisationDialogue();
+		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
+		tool.performAndPropagateSourceEdit(helperFamily::createFatherHomer);
+		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdaysOfSimpson);
+		
+		util.assertPrecondition("Pre_RoleChangeFamilyMember", "Pre_NoChangePerson");
+		//------------
+		tool.performAndPropagateSourceEdit(helperFamily::familyMotherMargeRoleChangeToDaughterLisa);
+		//------------
+		util.assertPostcondition("RoleChangeFamilyMemberMoToDau", "NoChangePersonFemale");
+	}
+	
+	/**
+	 * Analogous to @link
+	 * {@link #testFamilyMemberSwapRoleFatherToSonViaRenaming()}, but here for
+	 * mother <-> father.<br/>
+	 * <b>Features</b>: round trip, add+attribute, structural, fixed
+	 */
+	@Test
+	public void testFamilyMemberSwapRoleFatherToMotherViaRenaming() {
+		tool.initiateSynchronisationDialogue();
+		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
+		tool.performAndPropagateSourceEdit(helperFamily::createFatherHomer);
+		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdaysOfSimpson);
+		
+		util.assertPrecondition("Pre_RoleChangeFamilyMember", "Pre_NoChangePerson");
+		//------------
+		tool.performAndPropagateSourceEdit(helperFamily::familyFatherHomerRoleChangeToMotherMarge);
+		//------------
+		util.assertPostcondition("RoleChangeFamilyMemberFaToMo", "ChangePersonMToF");
+	}
+	
+	/**
+	 * Analogous to @link
+	 * {@link #testFamilyMemberSwapRoleFatherToSonViaRenaming()}, but here for
+	 * mother <-> son.<br/>
+	 * <b>Features</b>: round trip, add+attribute, structural, fixed
+	 */
+	@Test
+	public void testFamilyMemberRoleChangeSonToMother() {
+		tool.initiateSynchronisationDialogue();
+		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
+		tool.performAndPropagateSourceEdit(helperFamily::createFatherHomer);
+		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdaysOfSimpson);
+		
+		util.assertPrecondition("Pre_RoleChangeFamilyMember", "Pre_NoChangePerson");
+		//------------
+		tool.performAndPropagateSourceEdit(helperFamily::familySonBartRoleChangeToMotherMarge);
+		//------------
+		util.assertPostcondition("RoleChangeFamilyMemberSoToMo", "ChangePersonMaToFe");
 	}
 }
