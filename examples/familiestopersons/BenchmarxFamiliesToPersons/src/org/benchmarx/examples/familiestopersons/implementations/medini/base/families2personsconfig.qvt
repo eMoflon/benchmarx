@@ -1,0 +1,335 @@
+transformation families2personsconfig(famDB : Families, conf : Config,  perDB : Persons) {
+
+	    -- Queries
+	-- For indexOf: Actual value = expected value - 1 
+	
+	query familyName(name : String) : String {
+		name.substring(1, name.indexOf(','))
+	}
+	
+	query firstName(name : String) : String {
+		name.substring(name.indexOf(',') + 3, name.size())
+	}
+	
+	query family(familyRegister : Families::FamilyRegister, familyName : String) : Families::Family {
+		familyRegister.families->select(f | f.name = familyName)->first()
+	}
+	
+	query familyWithoutFather(familyRegister : Families::FamilyRegister, familyName : String) : Families::Family {
+		familyRegister.families->select(f | f.name = familyName and f.father.oclIsUndefined())->first()
+	}
+
+	query familyWithoutMother(familyRegister : Families::FamilyRegister, familyName : String) : Families::Family {
+		familyRegister.families->select(f | f.name = familyName and f.mother.oclIsUndefined())->first()
+	}
+	
+	query isMale(member : Families::FamilyMember) : Boolean {
+		not (fatherInverse.oclIsUndefined() and sonsInverse.oclIsUndefined())
+	}
+	
+	-- Top-level relations
+
+	top relation FamilyRegister2PersonRegister {		
+		enforce domain famDB familyRegister : Families::FamilyRegister {};
+				
+		enforce domain perDB personRegister : Persons::PersonRegister {};		
+    } 
+    -- Does not depend on the parameters of the configuration model.
+    -- It is assumed that there is a unique root in each model (i.e.,
+    -- not multiple instances of FamilyRegister and PersonRegister, respectively.
+    
+	top relation Member2Male {
+		fromPersonsToFamilies, preferParentToChild, preferExistingToNewFamily : Boolean;
+		createSon : Boolean;
+		
+		enforce domain famDB member : Families::FamilyMember {};
+		
+		enforce domain famDB familyRegister : Families::FamilyRegister {};
+		
+		checkonly domain conf configuration : Config::Configuration {
+			fromPersonsToFamilies = fromPersonsToFamilies,
+			preferParentToChild = preferParentToChild,
+			preferExistingToNewFamily = preferExistingToNewFamily
+		};
+		
+		enforce domain perDB male : Persons::Male {};
+		
+		enforce domain perDB personRegister : Persons::PersonRegister {};
+		
+		when {
+			FamilyRegister2PersonRegister(familyRegister, personRegister);
+			if fromPersonsToFamilies then
+				true
+			else
+				isMale(member)
+			endif;
+		}
+		
+		where {
+       		if not fromPersonsToFamilies and member.fatherInverse.oclIsUndefined() then
+       			Son2Male(member, configuration, male)
+       		else
+       			true
+       		endif;
+       		if not fromPersonsToFamilies and member.sonsInverse.oclIsUndefined() then
+       			Father2Male(member, configuration, male)
+       		else 
+       			true
+       		endif;
+       		if fromPersonsToFamilies and not preferParentToChild then
+       			Son2Male(member, configuration, male)
+       		else
+       			true
+       		endif;
+       		if fromPersonsToFamilies and preferParentToChild and not preferExistingToNewFamily then
+       			Father2Male(member, configuration, male)
+       		else 
+       			true
+       		endif;
+       		createSon = 
+       			(familyWithoutFather(familyRegister, familyName(male.name)).oclIsUndefined() and
+       			 not family(familyRegister, familyName(male.name)).oclIsUndefined()); 
+       		if createSon and fromPersonsToFamilies and preferParentToChild and preferExistingToNewFamily then
+       			Son2Male(member, configuration, male)
+       		else
+       			true
+       		endif;
+       		if not createSon and fromPersonsToFamilies and preferParentToChild and preferExistingToNewFamily then
+       			Father2Male(member, configuration, male)
+       		else
+       			true
+       		endif;       			       								
+		}
+	}
+	
+	relation Father2Male {
+		fromPersonsToFamilies, preferParentToChild, preferExistingToNewFamily : Boolean;
+		firstName, familyName, fullName : String;
+
+		enforce domain famDB father : Families::FamilyMember {
+			name = firstName,
+			fatherInverse = family : Families::Family {
+				name = familyName,
+				familiesInverse = familyRegister : Families::FamilyRegister {}
+			}
+		};
+
+		checkonly domain conf configuration : Config::Configuration {
+			fromPersonsToFamilies = fromPersonsToFamilies,
+			preferParentToChild = preferParentToChild,
+			preferExistingToNewFamily = preferExistingToNewFamily
+		};
+		
+		enforce domain perDB male : Persons::Male {
+			name = fullName,
+			personsInverse = personRegister : Persons::PersonRegister {}
+		};
+		
+		when {
+			FamilyRegister2PersonRegister(familyRegister, personRegister);
+        	-- Name calculation already in when clause required
+        	fullName = familyName + ', ' + firstName;
+			firstName = firstName(fullName);
+			familyName = familyName(fullName);
+			-- If executed in the direction of the families database, try
+			-- to locate an existing family into which the member is to
+			-- be inserted if an existing family is preferred
+ 			-- Otherwise, keep the current binding
+			family = if fromPersonsToFamilies and preferExistingToNewFamily then
+						 familyWithoutFather(familyRegister, familyName)
+					 else
+					 	 family
+					 endif;       	
+
+		}			
+	}		
+
+	relation Son2Male {
+		fromPersonsToFamilies, preferParentToChild, preferExistingToNewFamily : Boolean;
+		firstName, familyName, fullName : String;
+
+		enforce domain famDB son : Families::FamilyMember {
+			name = firstName,
+			sonsInverse = family : Families::Family {
+				name = familyName,
+				familiesInverse = familyRegister : Families::FamilyRegister {}
+			}
+		};
+		
+		checkonly domain conf configuration : Config::Configuration {
+			fromPersonsToFamilies = fromPersonsToFamilies,
+			preferParentToChild = preferParentToChild,
+			preferExistingToNewFamily = preferExistingToNewFamily
+		};
+				
+		enforce domain perDB male : Persons::Male {
+			name = fullName,
+			personsInverse = personRegister : Persons::PersonRegister {}
+		};
+		
+		when {
+			FamilyRegister2PersonRegister(familyRegister, personRegister);
+        	-- Name calculation already in when clause required
+        	fullName = familyName + ', ' + firstName;
+			firstName = firstName(fullName);
+			familyName = familyName(fullName);
+			-- If executed in the direction of the families database, try
+			-- to locate an existing family into which the member is to
+			-- be inserted if an existing family is preferred
+ 			-- Otherwise, keep the current binding
+			family = if fromPersonsToFamilies and preferExistingToNewFamily then
+						 family(familyRegister, familyName)
+					 else
+					 	 family
+					 endif;       	
+		}
+	}		
+
+	top relation Member2Female {
+		fromPersonsToFamilies, preferParentToChild, preferExistingToNewFamily : Boolean;
+		createDaughter : Boolean;
+		
+		enforce domain famDB member : Families::FamilyMember {};
+		
+		enforce domain famDB familyRegister : Families::FamilyRegister {};
+		
+		checkonly domain conf configuration : Config::Configuration {
+			fromPersonsToFamilies = fromPersonsToFamilies,
+			preferParentToChild = preferParentToChild,
+			preferExistingToNewFamily = preferExistingToNewFamily
+		};
+		
+		enforce domain perDB female : Persons::Female {};
+		
+		enforce domain perDB personRegister : Persons::PersonRegister {};
+		
+		when {
+			FamilyRegister2PersonRegister(familyRegister, personRegister);
+			if fromPersonsToFamilies then
+				true
+			else
+				not isMale(member)
+			endif;
+		}
+		
+		where {
+       		if not fromPersonsToFamilies and member.motherInverse.oclIsUndefined() then
+       			Daughter2Female(member, configuration, female)
+       		else
+       			true
+       		endif;
+       		if not fromPersonsToFamilies and member.daughtersInverse.oclIsUndefined() then
+       			Mother2Female(member, configuration, female)
+       		else 
+       			true
+       		endif;
+       		if fromPersonsToFamilies and not preferParentToChild then
+       			Daughter2Female(member, configuration, female)
+       		else
+       			true
+       		endif;
+       		if fromPersonsToFamilies and preferParentToChild and not preferExistingToNewFamily then
+       			Mother2Female(member, configuration, female)
+       		else 
+       			true
+       		endif;
+       		createDaughter = 
+       			(familyWithoutMother(familyRegister, familyName(female.name)).oclIsUndefined() and
+       			 not family(familyRegister, familyName(female.name)).oclIsUndefined()); 
+       		if createDaughter and fromPersonsToFamilies and preferParentToChild and preferExistingToNewFamily then
+       			Daughter2Female(member, configuration, female)
+       		else
+       			true
+       		endif;
+       		if not createDaughter and fromPersonsToFamilies and preferParentToChild and preferExistingToNewFamily then
+       			Mother2Female(member, configuration, female)
+       		else
+       			true
+       		endif;       			       								
+		}
+	}
+	
+	relation Mother2Female {
+		fromPersonsToFamilies, preferParentToChild, preferExistingToNewFamily : Boolean;
+		firstName, familyName, fullName : String;
+
+		enforce domain famDB mother : Families::FamilyMember {
+			name = firstName,
+			motherInverse = family : Families::Family {
+				name = familyName,
+				familiesInverse = familyRegister : Families::FamilyRegister {}
+			}
+		};
+
+		checkonly domain conf configuration : Config::Configuration {
+			fromPersonsToFamilies = fromPersonsToFamilies,
+			preferParentToChild = preferParentToChild,
+			preferExistingToNewFamily = preferExistingToNewFamily
+		};
+		
+		enforce domain perDB female : Persons::Female {
+			name = fullName,
+			personsInverse = personRegister : Persons::PersonRegister {}
+		};
+		
+		when {
+			FamilyRegister2PersonRegister(familyRegister, personRegister);
+        	-- Name calculation already in when clause required
+        	fullName = familyName + ', ' + firstName;
+			firstName = firstName(fullName);
+			familyName = familyName(fullName);
+			-- If executed in the direction of the families database, try
+			-- to locate an existing family into which the member is to
+			-- be inserted if an existing family is preferred
+ 			-- Otherwise, keep the current binding
+			family = if fromPersonsToFamilies and preferExistingToNewFamily then
+						 familyWithoutMother(familyRegister, familyName)
+					 else
+					 	 family
+					 endif;       	
+		}			
+	}		
+
+	relation Daughter2Female {
+		fromPersonsToFamilies, preferParentToChild, preferExistingToNewFamily : Boolean;
+		firstName, familyName, fullName : String;
+
+		enforce domain famDB daughter : Families::FamilyMember {
+			name = firstName,
+			daughtersInverse = family : Families::Family {
+				name = familyName,
+				familiesInverse = familyRegister : Families::FamilyRegister {}
+			}
+		};
+		
+		checkonly domain conf configuration : Config::Configuration {
+			fromPersonsToFamilies = fromPersonsToFamilies,
+			preferParentToChild = preferParentToChild,
+			preferExistingToNewFamily = preferExistingToNewFamily
+		};
+				
+		enforce domain perDB female : Persons::Female {
+			name = fullName,
+			personsInverse = personRegister : Persons::PersonRegister {}
+		};
+		
+		when {
+			FamilyRegister2PersonRegister(familyRegister, personRegister);
+        	-- Name calculation already in when clause required
+        	fullName = familyName + ', ' + firstName;
+			firstName = firstName(fullName);
+			familyName = familyName(fullName);
+			-- If executed in the direction of the families database, try
+			-- to locate an existing family into which the member is to
+			-- be inserted if an existing family is preferred
+ 			-- Otherwise, keep the current binding
+			family = if fromPersonsToFamilies and preferExistingToNewFamily then
+						 family(familyRegister, familyName)
+					 else
+					 	 family
+					 endif;       	
+		}
+	}		
+
+
+}
