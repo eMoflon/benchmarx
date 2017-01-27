@@ -3,6 +3,7 @@
 import Control.Arrow
 import Data.Function
 import Data.List
+import Data.Ord
 import GHC.Generics
 import System.Exit
 
@@ -30,6 +31,14 @@ data Family = Family { familyName :: String
                      , daughters  :: [FamilyMember] }
   deriving (Show, Read, Eq)
 
+instance Ord Family where
+  compare = comparing normalRep
+    where normalRep :: Family -> (String, String, String, String, String)
+          normalRep (Family familyName father mother sons daughters) =
+            (familyName, maybe "" firstName mother, maybe "" firstName father,
+             concat (intersperse "-" (map firstName daughters)),
+             concat (intersperse "-" (map firstName sons)))
+
 newtype FamilyMember = FamilyMember { firstName :: String }
   deriving (Show, Read, Eq)
 
@@ -49,6 +58,12 @@ data Person = Male   { fullName :: String
             | Female { fullName :: String
                      , birthday :: String }
   deriving (Show, Read, Eq)
+
+instance Ord Person where
+  compare = comparing normalRep
+    where normalRep :: Person -> (String, String, Bool)
+          normalRep (Male   n b) = (n, b, True )
+          normalRep (Female n b) = (n, b, False)
 
 deriveBiGULGeneric ''PersonRegister
 deriveBiGULGeneric ''Person
@@ -176,6 +191,6 @@ main :: IO ()
 main = do
   (dir, familyRegister, personRegister) <- fmap read getContents
   case dir of
-    "fwd" -> print (get (syncL `Compose` syncM) familyRegister & put syncR personRegister)
-    "bwd" -> print (get syncR personRegister & put (syncL `Compose` syncM) familyRegister)
+    "fwd" -> print . PersonRegister . sort . persons  $ get (syncL `Compose` syncM) familyRegister & put syncR personRegister
+    "bwd" -> print . FamilyRegister . sort . families $ get syncR personRegister & put (syncL `Compose` syncM) familyRegister
     _     -> exitFailure
