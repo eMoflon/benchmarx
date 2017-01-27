@@ -36,31 +36,6 @@ public class RenamingPersons extends FamiliesToPersonsTestCase {
 	}
 	
 	/**
-	 * <b>Test</b> for changing a person's full name (where another person with
-	 * the same name exists). <br/>
-	 * <b>Expected</b>: first name of the corresponding member and their family
-	 * name must be changed. As no fitting family exists, a new family must be
-	 * created and the member moved to this new family (as the father of this
-	 * family). <br/>
-	 * <b>Features</b>: round trip, add+attribute, corr-based, structural, runtime
-	 */
-	@Test
-	public void testFullNameChangeOfNonUniquePerson() {
-		tool.initiateSynchronisationDialogue();
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
-		tool.performAndPropagateSourceEdit(helperFamily::createFatherHomer);
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
-		tool.performAndPropagateTargetEdit(helperPerson::createOtherBart);
-			
-		util.assertPrecondition("Pre_MemberNameChangeOther", "Pre_PersonNameChangeOther");
-		//----------------
-		util.configure().makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
-		tool.performAndPropagateTargetEdit(helperPerson::fullNameChangeOfOtherBart);
-		//----------------
-		util.assertPostcondition("MemberFullNameChangeOther","PersonFullNameChangeOther");
-	}
-	
-	/**
 	 * <b>Test</b> for changing a person's first name (where another person with
 	 * the same name exists). <br/>
 	 * <b>Expected</b>: the first name of the corresponding member in the

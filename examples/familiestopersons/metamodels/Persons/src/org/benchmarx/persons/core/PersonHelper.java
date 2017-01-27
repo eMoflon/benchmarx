@@ -156,15 +156,13 @@ public class PersonHelper {
 	
 	public void fullNameChangeOfOtherBart(PersonRegister register) {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2013, Calendar.JANUARY, 9, 10, 11, 12); 
+		cal.set(2013, Calendar.JANUARY, 9, 10, 11, 12);
 		Date date = cal.getTime();
-		
-		for(int i =0;i<register.getPersons().size();i++)
-		{
-				if(register.getPersons().get(i).getBirthday().toString().equals(date.toString()))
-				{
-					register.getPersons().get(i).setName("Orbit, Henry");
-				}
+
+		for (int i = 0; i < register.getPersons().size(); i++) {
+			if (register.getPersons().get(i).getBirthday().toString().equals(date.toString())) {
+				register.getPersons().get(i).setName("Orbit, Henry");
+			}
 		}
 	}
 	
@@ -179,21 +177,18 @@ public class PersonHelper {
 	}
 	
 	public void createBart(PersonRegister register) {
-		Person person = PersonsFactory.eINSTANCE.createMale();
-		person.setName("Simpson, Bart");
-		register.getPersons().add(person);
+		createMalePerson(register, "Simpson, Bart");
 	}
 	
 	public void createOtherBart(PersonRegister register) {
-		Person person = PersonsFactory.eINSTANCE.createMale();
-		person.setName("Simpson, Bart");
+		Person otherBart = PersonsFactory.eINSTANCE.createMale();
+		addPerson(register, otherBart, "Simpson, Bart");
 		
 		Calendar cal = Calendar.getInstance();
 		cal.set(2013, Calendar.JANUARY, 9, 10, 11, 12); 
 		Date date = cal.getTime();
 		
-		person.setBirthday(date);
-		register.getPersons().add(person);
+		otherBart.setBirthday(date);
 	}
 	
 	public void createAmitabh(PersonRegister register) {
@@ -223,5 +218,29 @@ public class PersonHelper {
 	public void familyNameChangeShweta(PersonRegister register) {
 		Person person = getFromRegister("Bachchan, Shweta", register);
 		person.setName("Nanda, Shweta");
+	}
+	
+	public void createParentSimpsons(PersonRegister register){
+		createFemalePerson(register, "Simpson, Marge");
+		createMalePerson(register, "Simpson, Homer");
+	}
+	
+	public void createChildrenSimpsons(PersonRegister register){
+		createFemalePerson(register, "Simpson, Maggie");
+		createFemalePerson(register, "Simpson, Lisa");
+		createMalePerson(register, "Simpson, Bart");
+	}
+
+	private void createMalePerson(PersonRegister register, String fullName) {
+		addPerson(register, PersonsFactory.eINSTANCE.createMale(), fullName);
+	}
+	
+	private void createFemalePerson(PersonRegister register, String fullName){
+		addPerson(register, PersonsFactory.eINSTANCE.createFemale(), fullName);
+	}
+
+	private void addPerson(PersonRegister register, Person person, String fullName) {
+		person.setName(fullName);
+		register.getPersons().add(person);
 	}
 }
