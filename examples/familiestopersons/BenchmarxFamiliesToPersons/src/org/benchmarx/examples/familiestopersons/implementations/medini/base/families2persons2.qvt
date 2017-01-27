@@ -1,0 +1,165 @@
+transformation families2persons (famDB : Families, perDB : Persons) {
+
+	-- Bidirectional transformation between family and person databases
+	--
+	-- The transformation works as expected in forward direction.
+	-- With the trace-based semantics of medini QVT, a bijective mapping
+	-- is created between member and person objects. With check-before-
+	-- enforce, the mapping would be n:1 in the case
+	-- the database contains duplicate objects, i.e., objects with
+    -- duplicate names. 
+    --
+    -- In backward direction, each person is transformed twice (as
+    -- father and son or as mother and daughter, respectively), since
+    -- QVT-R applies each relation to each pattern instance. For
+    -- each person, a new family is generated, i.e., the database
+    -- is populated with single families.
+    --
+    -- One might expect that duplicate transformations in the backward
+    -- direction may be prevented by changing the domain qualifier
+    -- of the family db domain to 'checkonly' for those relations
+    -- which should not be applied in backward direction (e.g.,
+    -- 'Son2Male' and 'Daughter2Female'). In medini QVT, the
+    -- change of the domain qualifier does not have any effect at all.
+    -- According to the standard, 'checkonly' should prevent updates.
+    -- However, it does not prevent consistency checks in the direction
+    -- of the 'checkonly' domain. Thus, domain qualifiers cannot be used
+    -- to skip the application of a relation altogether, as would be
+    -- desirable in this transformation case. They can be used only to
+    -- control whether updates are possible if the transformation is
+    -- executed in the direction of a specific domain.
+
+	top relation FamilyRegister2PersonRegister {
+		enforce domain famDB familyRegister : Families::FamilyRegister {};
+		
+		enforce domain perDB personRegister : Persons::PersonRegister {};
+		
+		where {
+			Father2Male(familyRegister, personRegister);
+			Son2Male(familyRegister, personRegister);
+			Mother2Female(familyRegister, personRegister);
+			Daughter2Female(familyRegister, personRegister);
+		}
+	}
+	
+	-- For indexOf: Actual value = expected value - 1 
+	
+	query familyName(name : String) : String {
+		name.substring(1, name.indexOf(','))
+	}
+	
+	query firstName(name : String) : String {
+		name.substring(name.indexOf(',') + 3, name.size())
+	}
+
+	
+	relation Father2Male {
+		familyName, firstName, fullName : String;
+	
+		enforce domain famDB familyRegister : Families::FamilyRegister {
+			families = family : Families::Family {
+				name = familyName,
+				father = father : Families::FamilyMember {
+					name = firstName
+				}
+			}
+		};
+		
+		enforce domain perDB personRegister : Persons::PersonRegister {
+			persons = male : Persons::Male {
+				name = fullName
+			}
+		};
+		
+		where {
+			fullName = familyName + ', ' + firstName;
+			firstName = firstName(fullName);
+			familyName = familyName(fullName);
+		}
+	}
+
+	relation Son2Male {
+		familyName, firstName, fullName : String;
+	
+		enforce domain famDB familyRegister : Families::FamilyRegister {
+			families = family : Families::Family {
+				name = familyName,
+				sons = son : Families::FamilyMember {
+					name = firstName
+				}
+			}
+		};
+		
+		enforce domain perDB personRegister : Persons::PersonRegister {
+			persons = male : Persons::Male {
+				name = fullName
+			}
+		};
+		
+		when {
+			male.oclIsUndefined();
+		} -- Prevents application in backward direction
+		
+		where {
+			fullName = familyName + ', ' + firstName;
+			firstName = firstName(fullName);
+			familyName = familyName(fullName);
+		}
+	}
+
+	relation Mother2Female {
+		familyName, firstName, fullName : String;
+	
+		enforce domain famDB familyRegister : Families::FamilyRegister {
+			families = family : Families::Family {
+				name = familyName,
+				mother = mother : Families::FamilyMember {
+					name = firstName
+				}
+			}
+		};
+		
+		enforce domain perDB personRegister : Persons::PersonRegister {
+			persons = female : Persons::Female {
+				name = fullName
+			}
+		};
+		
+		where {
+			fullName = familyName + ', ' + firstName;
+			firstName = firstName(fullName);
+			familyName = familyName(fullName);
+		}
+	}
+
+	relation Daughter2Female {
+		familyName, firstName, fullName : String;
+	
+		enforce domain famDB familyRegister : Families::FamilyRegister {
+			families = family : Families::Family {
+				name = familyName,
+				daughters = daughter : Families::FamilyMember {
+					name = firstName
+				}
+			}
+		};
+		
+		enforce domain perDB personRegister : Persons::PersonRegister {
+			persons = female : Persons::Female {
+				name = fullName
+			}
+		};
+		
+		when {
+			female.oclIsUndefined();
+		} -- Prevents application in backward direction
+		
+		where {
+			fullName = familyName + ', ' + firstName;
+			firstName = firstName(fullName);
+			familyName = familyName(fullName);
+		}
+	}
+
+
+}
