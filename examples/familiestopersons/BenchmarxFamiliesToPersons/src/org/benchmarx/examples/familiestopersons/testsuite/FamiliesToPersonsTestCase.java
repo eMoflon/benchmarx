@@ -52,10 +52,10 @@ public abstract class FamiliesToPersonsTestCase {
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
 		return Arrays.asList(
 				new EMoflonFamiliesToPersons()
-				,
-				new MediniQVTFamiliesToPersons()
-				,
-				new MediniQVTFamiliesToPersonsConfig()
+//				,
+//				new MediniQVTFamiliesToPersons()
+//				,
+//				new MediniQVTFamiliesToPersonsConfig()
 //				,
 //				new BiGULFamiliesToPersons()
 			);

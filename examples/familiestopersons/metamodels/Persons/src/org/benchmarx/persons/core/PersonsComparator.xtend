@@ -8,6 +8,8 @@ import java.util.List
 import org.benchmarx.Comparator
 
 import static org.junit.Assert.*
+import java.util.Date
+import java.text.SimpleDateFormat
 
 public class PersonsComparator implements Comparator<PersonRegister>{
 	PersonNormaliser comparator
@@ -18,6 +20,10 @@ public class PersonsComparator implements Comparator<PersonRegister>{
 	
 	override compare(PersonRegister expected, PersonRegister actual) {
 		assertTrue(personsToString(expected).startsWith("PersonRegister"))
+//		println("Expected:")
+//		println(personsToString(expected))
+//		println("Actual:")
+//		println(personsToString(actual))
 		assertEquals(personsToString(expected), personsToString(actual))
 	}
 	
@@ -31,12 +37,12 @@ public class PersonsComparator implements Comparator<PersonRegister>{
 				«IF p instanceof Male»
 				 Male  {   
 				          fullName = "«p.name»"
-				        , birthday = "«p.birthday»"
+				        , birthday = "«p.birthday.toMyString»"
 				 }
 				«ELSE»
 				 Female  {   
 				          fullName = "«p.name»"
-				        , birthday = "«p.birthday»"
+				        , birthday = "«p.birthday.toMyString»"
 				 }
 				«ENDIF»
 				«ENDFOR»
@@ -44,5 +50,9 @@ public class PersonsComparator implements Comparator<PersonRegister>{
 		}
 		'''
 	}
-	
+
+	def toMyString(Date d) {
+		val sm = new SimpleDateFormat("yyyy-mm-dd")
+		return sm.format(d)
+	}	
 }

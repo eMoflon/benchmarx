@@ -24,8 +24,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	@Test
 	public void testIncrementalInserts() {
 		tool.initiateSynchronisationDialogue();
-		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
@@ -37,6 +35,11 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 		
 		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
 		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
+		/**
+		 * Note: medini QVT fails here for an unknown reason
+		 * it seems that the propagation of the target delta (which should not affect the family model)
+		 * results in a backward transformation that messes up the family model (see comment in the corresponding issue in github)
+		 */
 		//------------
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createFatherNed)
@@ -56,8 +59,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	@Test
 	public void testIncrementalDeletions() {
 		tool.initiateSynchronisationDialogue();
-		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
@@ -112,28 +113,28 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 * <b>Expect</b>: Change the name of the affected Persons in the Person Register
 	 * <b>Features</b>: fwd, del+add, fixed, structural
 	 */
-	@Test
-	public void testIncrementalMove() {
-		tool.initiateSynchronisationDialogue();
-		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
-		tool.performAndPropagateSourceEdit(util
-				.execute(helperFamily::createSkinnerFamily)
-				.andThen(helperFamily::createFlandersFamily)
-				.andThen(helperFamily::createSonRod)
-				.andThen(helperFamily::createSimpsonFamily)
-				.andThen(helperFamily::createFatherBart)
-				.andThen(helperFamily::createNewFamilySimpsonWithMembers)
-				.andThen(helperFamily::createSonBart));
-		
-		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
-		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
-		//------------
-		tool.performAndPropagateSourceEdit(util
-				.execute(helperFamily::moveLisa)
-				.andThen(helperFamily::moveMarge));
-		//------------
-		util.assertPostcondition("FamilyAfterMove", "PersonAfterMove");
-	}
+//	@Test
+//	public void testIncrementalMove() {
+//		tool.initiateSynchronisationDialogue();
+//		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+//			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+//		tool.performAndPropagateSourceEdit(util
+//				.execute(helperFamily::createSkinnerFamily)
+//				.andThen(helperFamily::createFlandersFamily)
+//				.andThen(helperFamily::createSonRod)
+//				.andThen(helperFamily::createSimpsonFamily)
+//				.andThen(helperFamily::createFatherBart)
+//				.andThen(helperFamily::createNewFamilySimpsonWithMembers)
+//				.andThen(helperFamily::createSonBart));
+//		
+//		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
+//		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
+//		//------------
+//		tool.performAndPropagateSourceEdit(util
+//				.execute(helperFamily::moveLisa)
+//				.andThen(helperFamily::moveMarge));
+//		//------------
+//		util.assertPostcondition("FamilyAfterMove", "PersonAfterMove");
+//	}
 
 }

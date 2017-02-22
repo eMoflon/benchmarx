@@ -4,13 +4,14 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import Persons.Person;
 import Persons.PersonRegister;
-import Persons.PersonsFactory;
 
 public class PersonHelper {
 	
@@ -23,6 +24,14 @@ public class PersonHelper {
 				
 		assertTrue(person.isPresent());
 		return person.get();
+	}
+	
+	private List<Person> getAllFromRegister(String name, PersonRegister register) {
+		List<Person> result = register.getPersons().stream()
+				.filter(p -> p.getName().equals(name))
+				.collect(Collectors.toList());
+		
+		return result;
 	}
 	
 	public void createRod(PersonRegister register) {
@@ -56,12 +65,16 @@ public class PersonHelper {
 	}
 	
 	public void changeAllBirthdays(PersonRegister register) {
-		int i = 1;
-		for (Person p : register.getPersons()) {
-			Calendar cal = Calendar.getInstance();
-			cal.set(2000, Calendar.JANUARY, i, 12, 13, 14);
-			i++;
-		}
+//		int i = 1;
+//		for (Person p : register.getPersons()) {
+//			Calendar cal = Calendar.getInstance();
+//			cal.set(2000, Calendar.JANUARY, i, 12, 13, 14);
+//			Date date = cal.getTime();
+//			p.setBirthday(date);
+//			i++;
+//		}
+		setBirthdaysOfSimpson(register);
+		setBirthdayOfRod(register);
 	}
 	
 	
@@ -72,6 +85,17 @@ public class PersonHelper {
 		cal.set(2013, Calendar.JANUARY, 9, 10, 11, 12); 
 		Date date = cal.getTime();
 		person.setBirthday(date);
+	}
+	
+	public void setBirthdayOfRod(PersonRegister register) {
+		Calendar cal = Calendar.getInstance();
+		Date date;
+		
+		Person person1 = getFromRegister("Flanders, Rod", register);
+		
+		cal.set(2013, Calendar.OCTOBER, 1, 10, 11, 12);
+		date = cal.getTime();
+		person1.setBirthday(date);
 	}
 	
 	public void setBirthdaysOfSimpson(PersonRegister register) {
@@ -90,11 +114,21 @@ public class PersonHelper {
 		date = cal.getTime();
 		person2.setBirthday(date);
 		
+		/*
 		Person person3 = getFromRegister("Simpson, Bart", register);
 		
 		cal.set(2013, Calendar.MARCH, 9, 10, 11, 12); 
 		date = cal.getTime();
 		person3.setBirthday(date);
+		*/
+		List<Person> barts = getAllFromRegister("Simpson, Bart", register);
+		int i = 9;
+		for (Person p : barts) {
+			cal.set(2013, Calendar.MARCH, i, 10, 11, 12); 
+			date = cal.getTime();
+			p.setBirthday(date);
+			i++;
+		}
 		
 		Person person4 = getFromRegister("Simpson, Lisa", register);
 		
