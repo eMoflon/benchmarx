@@ -44,12 +44,12 @@ public class ChangingBirthdays extends FamiliesToPersonsTestCase {
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
 		tool.performAndPropagateSourceEdit(helperFamily::createFatherHomer);
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+		//tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
 		tool.performAndPropagateTargetEdit(helperPerson::setBirthdaysOfSimpson);
 		
 		util.assertPrecondition("Pre_RoleChangeFamilyMember", "Pre_NoChangePerson");
 		//------------
-		tool.performAndPropagateSourceEdit(helperFamily::familyFatherHomerRoleChangeToSon);
+//		tool.performAndPropagateSourceEdit(helperFamily::familyFatherHomerRoleChangeToSon);
 		//------------
 		util.assertPostcondition("RoleChangeFamilyMember", "NoChangePerson");
 	}
@@ -65,12 +65,12 @@ public class ChangingBirthdays extends FamiliesToPersonsTestCase {
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
 		tool.performAndPropagateSourceEdit(helperFamily::createFatherHomer);
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+		//tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
 		tool.performAndPropagateTargetEdit(helperPerson::setBirthdaysOfSimpson);
 		
 		util.assertPrecondition("Pre_RoleChangeFamilyMember", "Pre_NoChangePerson");
 		//------------
-		tool.performAndPropagateSourceEdit(helperFamily::familyMotherMargeRoleChangeToDaughterLisa);
+//		tool.performAndPropagateSourceEdit(helperFamily::familyMotherMargeRoleChangeToDaughterLisa);
 		//------------
 		util.assertPostcondition("RoleChangeFamilyMemberMoToDau", "NoChangePersonFemale");
 	}
@@ -86,12 +86,12 @@ public class ChangingBirthdays extends FamiliesToPersonsTestCase {
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
 		tool.performAndPropagateSourceEdit(helperFamily::createFatherHomer);
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+		//tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
 		tool.performAndPropagateTargetEdit(helperPerson::setBirthdaysOfSimpson);
 		
 		util.assertPrecondition("Pre_RoleChangeFamilyMember", "Pre_NoChangePerson");
 		//------------
-		tool.performAndPropagateSourceEdit(helperFamily::familyFatherHomerRoleChangeToMotherMarge);
+//		tool.performAndPropagateSourceEdit(helperFamily::familyFatherHomerRoleChangeToMotherMarge);
 		//------------
 		util.assertPostcondition("RoleChangeFamilyMemberFaToMo", "ChangePersonMToF");
 	}
@@ -107,12 +107,12 @@ public class ChangingBirthdays extends FamiliesToPersonsTestCase {
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
 		tool.performAndPropagateSourceEdit(helperFamily::createFatherHomer);
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+		//tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
 		tool.performAndPropagateTargetEdit(helperPerson::setBirthdaysOfSimpson);
 		
 		util.assertPrecondition("Pre_RoleChangeFamilyMember", "Pre_NoChangePerson");
 		//------------
-		tool.performAndPropagateSourceEdit(helperFamily::familySonBartRoleChangeToMotherMarge);
+//		tool.performAndPropagateSourceEdit(helperFamily::familySonBartRoleChangeToMotherMarge);
 		//------------
 		util.assertPostcondition("RoleChangeFamilyMemberSoToMo", "ChangePersonMaToFe");
 	}

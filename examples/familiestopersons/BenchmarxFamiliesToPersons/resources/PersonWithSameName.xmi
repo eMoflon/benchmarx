@@ -1,12 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ASCII"?>
 <Persons:PersonRegister
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore"
-    xsi:schemaLocation="platform:/plugin/Persons/model/Persons.ecore ../../Persons/model/Persons.ecore">
-  <persons xsi:type="Persons:Male"
-      name="Flanders, Rod"/>
+    xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore">
   <persons xsi:type="Persons:Male"
       name="Simpson, Homer"/>
   <persons xsi:type="Persons:Female"
@@ -17,4 +14,6 @@
       name="Simpson, Lisa"/>
   <persons xsi:type="Persons:Female"
       name="Simpson, Maggie"/>
+  <persons xsi:type="Persons:Male"
+      name="Simpson, Bart"/>
 </Persons:PersonRegister>

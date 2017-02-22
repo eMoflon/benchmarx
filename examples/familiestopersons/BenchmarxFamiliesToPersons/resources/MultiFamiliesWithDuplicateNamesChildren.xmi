@@ -7,17 +7,41 @@
     xsi:schemaLocation="platform:/plugin/Families/model/Families.ecore ../../Families/model/Families.ecore">
   <families
       name="Flanders">
-    <sons name="Rod"/>
+    <sons
+        name="Rod"/>
   </families>
   <families
       name="Simpson">
-    <father
+    <sons
+        name="Bart"/>
+  </families>
+  <families
+      name="Simpson">
+    <sons
         name="Homer"/>
-    <mother
+  </families>
+  <families
+      name="Simpson">
+    <sons
+        name="Bart"/>
+  </families>
+  <families
+      name="Simpson">
+    <sons
+        name="Bart"/>
+  </families>
+  <families
+      name="Simpson">
+    <daughters
         name="Marge"/>
-    <sons name="Bart"/>
+  </families>
+  <families
+      name="Simpson">
     <daughters
         name="Lisa"/>
+  </families>
+  <families
+      name="Simpson">
     <daughters
         name="Maggie"/>
   </families>

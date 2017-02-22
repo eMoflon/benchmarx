@@ -8,9 +8,13 @@
   <persons xsi:type="Persons:Male"
       name="Flanders, Rod"/>
   <persons xsi:type="Persons:Male"
+      name="Simpson, Bart"/>
+  <persons xsi:type="Persons:Male"
       name="Simpson, Homer"/>
   <persons xsi:type="Persons:Female"
       name="Simpson, Marge"/>
+  <persons xsi:type="Persons:Male"
+      name="Simpson, Bart"/>
   <persons xsi:type="Persons:Male"
       name="Simpson, Bart"/>
   <persons xsi:type="Persons:Female"

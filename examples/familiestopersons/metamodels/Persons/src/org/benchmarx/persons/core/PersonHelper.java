@@ -14,6 +14,8 @@ import Persons.PersonsFactory;
 
 public class PersonHelper {
 	
+	private PersonRegisterBuilder builder = null;
+	
 	private Person getFromRegister(String name, PersonRegister register) {
 		Optional<Person> person = register.getPersons().stream()
 				.filter(p -> p.getName().equals(name))
@@ -23,11 +25,45 @@ public class PersonHelper {
 		return person.get();
 	}
 	
-	public void createHomer(PersonRegister register) {
-		Person person = PersonsFactory.eINSTANCE.createMale();
-		person.setName("Simpson, Homer");
-		register.getPersons().add(person);
+	public void createRod(PersonRegister register) {
+		builder = new PersonRegisterBuilder(register);
+		builder.male("Flanders, Rod");
 	}
+	
+	public void createHomer(PersonRegister register) {
+		builder = new PersonRegisterBuilder(register);
+		builder.male("Simpson, Homer");
+	}
+	
+	public void createBart(PersonRegister register) {
+		builder = new PersonRegisterBuilder(register);
+		builder.male("Simpson, Bart");
+	}
+	
+	public void createMarge(PersonRegister register) {
+		builder = new PersonRegisterBuilder(register);
+		builder.female("Simpson, Marge");
+	}
+	
+	public void createLisa(PersonRegister register) {
+		builder = new PersonRegisterBuilder(register);
+		builder.female("Simpson, Lisa");
+	}
+	
+	public void createMaggie(PersonRegister register) {
+		builder = new PersonRegisterBuilder(register);
+		builder.female("Simpson, Maggie");
+	}
+	
+	public void changeAllBirthdays(PersonRegister register) {
+		int i = 1;
+		for (Person p : register.getPersons()) {
+			Calendar cal = Calendar.getInstance();
+			cal.set(2000, Calendar.JANUARY, i, 12, 13, 14);
+			i++;
+		}
+	}
+	
 	
 	public void birthdayChangeOfHomer(PersonRegister register) {
 		Person person = getFromRegister("Simpson, Homer", register);
@@ -71,47 +107,6 @@ public class PersonHelper {
 		cal.set(2013, Calendar.MARCH, 7, 10, 11, 12); 
 		date = cal.getTime();
 		person5.setBirthday(date);
-	}
-	
-	public void setBirthdaysOfBachchan(PersonRegister register) {
-		Calendar cal = Calendar.getInstance();
-		Date date;
-		
-		Person person1 = getFromRegister("Bachchan, Amitabh", register);
-		
-		cal.set(2013, Calendar.JANUARY, 9, 10, 11, 12); 
-		date = cal.getTime();
-		person1.setBirthday(date);
-		
-		Person person2 = getFromRegister("Bachchan, Jaya", register);
-		
-		cal.set(2013, Calendar.FEBRUARY, 9, 10, 11, 12); 
-		date = cal.getTime();
-		person2.setBirthday(date);
-		
-		Person person3 = getFromRegister("Bachchan, Abhishek", register);
-		
-		cal.set(2013, Calendar.MARCH, 9, 10, 11, 12); 
-		date = cal.getTime();
-		person3.setBirthday(date);
-		
-		Person person4 = getFromRegister("Bachchan, Shweta", register);
-		
-		cal.set(2013, Calendar.MARCH, 8, 10, 11, 12); 
-		date = cal.getTime();
-		person4.setBirthday(date);
-	}
-	
-	public void createMarge(PersonRegister register) {
-		Person person = PersonsFactory.eINSTANCE.createFemale();
-		person.setName("Simpson, Marge");
-		register.getPersons().add(person);
-	}
-	
-	public void createLisa(PersonRegister register){
-		Person person = PersonsFactory.eINSTANCE.createFemale();
-		person.setName("Simpson, Lisa");
-		register.getPersons().add(person);
 	}
 	
 	public void firstNameChangeOfHomer(PersonRegister register) {
@@ -174,73 +169,12 @@ public class PersonHelper {
 	public void deleteHomer(PersonRegister register) {
 		Person person = getFromRegister("Simpson, Homer", register);
 		EcoreUtil.delete(person);
-	}
-	
-	public void createBart(PersonRegister register) {
-		createMalePerson(register, "Simpson, Bart");
-	}
-	
-	public void createOtherBart(PersonRegister register) {
-		Person otherBart = PersonsFactory.eINSTANCE.createMale();
-		addPerson(register, otherBart, "Simpson, Bart");
-		
-		Calendar cal = Calendar.getInstance();
-		cal.set(2013, Calendar.JANUARY, 9, 10, 11, 12); 
-		Date date = cal.getTime();
-		
-		otherBart.setBirthday(date);
-	}
-	
-	public void createAmitabh(PersonRegister register) {
-		Person person = PersonsFactory.eINSTANCE.createMale();
-		person.setName("Bachchan, Amitabh");
-		register.getPersons().add(person);		
-	}
-	
-	public void createJaya(PersonRegister register) {
-		Person person = PersonsFactory.eINSTANCE.createFemale();
-		person.setName("Bachchan, Jaya");
-		register.getPersons().add(person);
-	}
-
-	public void createAbhishek(PersonRegister register) {
-		Person person = PersonsFactory.eINSTANCE.createMale();
-		person.setName("Bachchan, Abhishek");
-		register.getPersons().add(person);	
-	}
-	
-	public void createShweta(PersonRegister register) {
-		Person person = PersonsFactory.eINSTANCE.createFemale();
-		person.setName("Bachchan, Shweta");
-		register.getPersons().add(person);
-	}
+	}			
 	
 	public void familyNameChangeShweta(PersonRegister register) {
 		Person person = getFromRegister("Bachchan, Shweta", register);
 		person.setName("Nanda, Shweta");
 	}
-	
-	public void createParentSimpsons(PersonRegister register){
-		createFemalePerson(register, "Simpson, Marge");
-		createMalePerson(register, "Simpson, Homer");
-	}
-	
-	public void createChildrenSimpsons(PersonRegister register){
-		createFemalePerson(register, "Simpson, Maggie");
-		createFemalePerson(register, "Simpson, Lisa");
-		createMalePerson(register, "Simpson, Bart");
-	}
 
-	private void createMalePerson(PersonRegister register, String fullName) {
-		addPerson(register, PersonsFactory.eINSTANCE.createMale(), fullName);
-	}
-	
-	private void createFemalePerson(PersonRegister register, String fullName){
-		addPerson(register, PersonsFactory.eINSTANCE.createFemale(), fullName);
-	}
 
-	private void addPerson(PersonRegister register, Person person, String fullName) {
-		person.setName(fullName);
-		register.getPersons().add(person);
-	}
 }

@@ -5,5 +5,5 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore">
   <persons xsi:type="Persons:Male"
-      name="Simpson, Homer"/>
+      name="Flanders, Rod"/>
 </Persons:PersonRegister>

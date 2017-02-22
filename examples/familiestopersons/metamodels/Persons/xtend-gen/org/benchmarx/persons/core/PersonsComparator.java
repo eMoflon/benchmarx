@@ -23,12 +23,8 @@ public class PersonsComparator implements Comparator<PersonRegister> {
   
   @Override
   public void compare(final PersonRegister expected, final PersonRegister actual) {
-    String _personsToString = this.personsToString(expected);
-    boolean _startsWith = _personsToString.startsWith("PersonRegister");
-    Assert.assertTrue(_startsWith);
-    String _personsToString_1 = this.personsToString(expected);
-    String _personsToString_2 = this.personsToString(actual);
-    Assert.assertEquals(_personsToString_1, _personsToString_2);
+    Assert.assertTrue(this.personsToString(expected).startsWith("PersonRegister"));
+    Assert.assertEquals(this.personsToString(expected), this.personsToString(actual));
   }
   
   public String personsToString(final PersonRegister persons) {

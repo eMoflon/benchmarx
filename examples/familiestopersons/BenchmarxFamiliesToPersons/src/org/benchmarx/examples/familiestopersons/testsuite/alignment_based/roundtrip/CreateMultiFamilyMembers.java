@@ -31,7 +31,7 @@ public class CreateMultiFamilyMembers extends FamiliesToPersonsTestCase {
 		
 		util.assertPrecondition("Pre_NameChangeFamilyMember", "PersonBirthdayChange");
 		//------------
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+		//tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
 		//------------
 		util.assertPostcondition("FamilyWithMultiFamilyMember", "PersonWithMultiMember");
 	}

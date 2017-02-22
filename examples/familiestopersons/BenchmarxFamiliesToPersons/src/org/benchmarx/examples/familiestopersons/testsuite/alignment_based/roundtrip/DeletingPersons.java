@@ -25,7 +25,7 @@ public class DeletingPersons extends FamiliesToPersonsTestCase {
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util.execute(helperFamily::createSimpsonFamily)
 				   							   .andThen(helperFamily::createFatherHomer));
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+		//tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
 		
 		util.assertPrecondition("Pre_NameChangeFamily", "Pre_NameChangePerson");
 		//---------------------- 
@@ -44,7 +44,7 @@ public class DeletingPersons extends FamiliesToPersonsTestCase {
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util.execute(helperFamily::createSimpsonFamily)
 											   .andThen(helperFamily::createFatherHomer));
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+		//tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
 		
 		util.assertPrecondition("Pre_NameChangeFamily", "Pre_NameChangePerson");
 		//---------------------- 

@@ -42,7 +42,7 @@ public class Initialisation extends FamiliesToPersonsTestCase {
 
 		util.assertPrecondition("Pre_NameChangeFamilyEmpty", "Pre_NameChangePersonEmpty");
 		//------------
-		tool.performAndPropagateSourceEdit(helperFamily::familyNameSimpsonChangeEmpty);
+		tool.performAndPropagateSourceEdit(helperFamily::renameEmptySimpsonToBouvier);
 		//------------
 		util.assertPostcondition("NameChangeFamilyEmpty", "NameChangePersonEmpty");
 	}

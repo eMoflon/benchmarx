@@ -23,10 +23,10 @@ public class RenamingPersons extends FamiliesToPersonsTestCase {
 	@Test
 	public void testFirstNameChangePerson() {
 		tool.initiateSynchronisationDialogue();
-		tool.performAndPropagateSourceEdit(util
-				.execute(helperFamily::createSimpsonFamily)
-				.andThen(helperFamily::createFatherHomer)
-				.andThen(helperFamily::createSimpsonFamilyMembers));
+//		tool.performAndPropagateSourceEdit(util
+//				.execute(helperFamily::createSimpsonFamily)
+//				.andThen(helperFamily::createFatherHomer)
+//				.andThen(helperFamily::createSimpsonFamilyMembers));
 		
 		util.assertPrecondition("Pre_NameChangeFamily", "Pre_NameChangePerson");	
 		//----------------
@@ -45,11 +45,11 @@ public class RenamingPersons extends FamiliesToPersonsTestCase {
 	@Test
 	public void testFirstNameChangeOfNonUniquePerson() {
 		tool.initiateSynchronisationDialogue();
-		tool.performAndPropagateSourceEdit(util
-				.execute(helperFamily::createSimpsonFamily)
-				.andThen(helperFamily::createFatherHomer)
-				.andThen(helperFamily::createSimpsonFamilyMembers));
-		tool.performAndPropagateTargetEdit(helperPerson::createOtherBart);
+//		tool.performAndPropagateSourceEdit(util
+//				.execute(helperFamily::createSimpsonFamily)
+//				.andThen(helperFamily::createFatherHomer)
+//				.andThen(helperFamily::createSimpsonFamilyMembers));
+//		tool.performAndPropagateTargetEdit(helperPerson::createOtherBart);
 			
 		util.assertPrecondition("Pre_MemberNameChangeOther", "Pre_PersonNameChangeOther");
 		//----------------

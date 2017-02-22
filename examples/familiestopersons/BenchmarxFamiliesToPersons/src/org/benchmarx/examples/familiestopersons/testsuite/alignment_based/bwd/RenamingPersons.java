@@ -28,10 +28,10 @@ public class RenamingPersons extends FamiliesToPersonsTestCase {
 		tool.initiateSynchronisationDialogue();
 		util.configure().makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true)
 						.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true);
-		tool.performAndPropagateTargetEdit(helperPerson::createParentSimpsons);
+//		tool.performAndPropagateTargetEdit(helperPerson::createParentSimpsons);
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true);
-		tool.performAndPropagateTargetEdit(helperPerson::createChildrenSimpsons);
-		tool.performAndPropagateTargetEdit(helperPerson::createOtherBart);
+//		tool.performAndPropagateTargetEdit(helperPerson::createChildrenSimpsons);
+//		tool.performAndPropagateTargetEdit(helperPerson::createOtherBart);
 			
 		util.assertPrecondition("Pre_MemberNameChangeOther", "Pre_PersonNameChangeOther");
 		//----------------

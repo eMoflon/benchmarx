@@ -6,5 +6,13 @@
     xmlns:Families="platform:/plugin/Families/model/Families.ecore"
     xsi:schemaLocation="platform:/plugin/Families/model/Families.ecore ../../Families/model/Families.ecore">
   <families
-      name="Bouvier"/>
+      name="Flanders">
+    <sons name="Rod"/>
+  </families>
+  <families
+      name="Simpson">
+    <sons name="Homer"/>
+    <daughters
+        name="Marge"/>
+  </families>
 </Families:FamilyRegister>

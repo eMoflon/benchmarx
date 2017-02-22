@@ -8,6 +8,10 @@ import org.junit.Test;
 import Families.FamilyRegister;
 import Persons.PersonRegister;
 
+/**
+ * This class covers the Test Case (TC 1) as specified on github
+ *
+ */
 public class CreatingNewFamiliesAndMembers extends FamiliesToPersonsTestCase {
 
 	public CreatingNewFamiliesAndMembers(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
@@ -15,7 +19,7 @@ public class CreatingNewFamiliesAndMembers extends FamiliesToPersonsTestCase {
 	}
 	
 	/**
-	 * <b>Test</b> for creation of a single family in an empty root container.
+	 * <b>Test</b> for creation of a single family (Skinner) in an empty root container.
 	 * <br/>
 	 * <b>Expect</b> nothing to be changed in the person model.
 	 * <br/>
@@ -27,14 +31,13 @@ public class CreatingNewFamiliesAndMembers extends FamiliesToPersonsTestCase {
 		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		//------------
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
+		tool.performAndPropagateSourceEdit(helperFamily::createSkinnerFamily);
 		//------------
-		util.assertPostcondition("oneFamily", "personsForOneFamily");
+		util.assertPostcondition("OneFamily", "PersonsForOneFamily");
 	}
 
 	/**
-	 * <b>Test</b> for creation of a single family member (a father) in the only
-	 * existing family. <br/>
+	 * <b>Test</b> for creation of a single family member (a son - Rod) in a new family (Flanders). <br/>
 	 * <b>Expect</b> the creation of a new male person in the persons model,
 	 * with full name consisting of the first name and family name of the
 	 * associated family member. <br/>
@@ -47,15 +50,15 @@ public class CreatingNewFamiliesAndMembers extends FamiliesToPersonsTestCase {
 		// No precondition!
 		//------------
 		tool.performAndPropagateSourceEdit(util
-				.execute(helperFamily::createSimpsonFamily)
-				.andThen(helperFamily::createFatherHomer));
+				.execute(helperFamily::createFlandersFamily)
+				.andThen(helperFamily::createSonRod));
 		//------------
-		util.assertPostcondition("oneFamilyWithOneFamilyMember", "PersonWithOneMaleMember");
+		util.assertPostcondition("OneFamilyWithOneFamilyMemberSon", "PersonOneMaleMember");
 	}
 	
 	/**
 	 * Analogous to @link {@link #testCreateFamilyMember()}, but now for
-	 * multiple new family members.<br/>
+	 * multiple new family members (Simpsons Family).<br/>
 	 * <b>Features:</b>: fwd, fixed
 	 */
 	@Test 
@@ -63,8 +66,47 @@ public class CreatingNewFamiliesAndMembers extends FamiliesToPersonsTestCase {
 		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		//------------
-		tool.performAndPropagateSourceEdit(helperFamily::createNewfamilyBachchanWithMembers);
+		tool.performAndPropagateSourceEdit(util
+				.execute(helperFamily::createFlandersFamily)
+				.andThen(helperFamily::createSonRod)
+				.andThen(helperFamily::createNewFamilySimpsonWithMembers));
 		//------------
 		util.assertPostcondition("NewFamilyWithMembers", "PersonsMulti");
+	}
+	
+	/**
+	 * <b>Test</b> for creation of another Family with the same name (Simpson).<br/>
+	 * In the new Simpson family, Bart is the father. 
+	 * <b>Expect</b> a new male Person with the name "Simpson, Bart" is created in the person register.<br/>
+	 * <b>Features:</b>: fwd, fixed
+	 */
+	@Test
+	public void testNewDuplicateFamilyNames() {
+		tool.initiateSynchronisationDialogue();
+		// No precondition!
+		//------------
+		tool.performAndPropagateSourceEdit(util
+				.execute(helperFamily::createNewFamilySimpsonWithMembers)
+				.andThen(helperFamily::createSimpsonFamily)
+				.andThen(helperFamily::createFatherBart));
+		//------------
+		util.assertPostcondition("FamiliesWithSameName", "PersonWithSameName");
+	}
+	
+	/**
+	 * <b>Test</b> for creation of another family member with the same name (Bart).<br/>
+	 * <b>Expect</b> a new male Person with the name "Simpson, Bart" is created in the person register.<br/>
+	 * <b>Features:</b>: fwd, fixed
+	 */
+	@Test
+	public void testDuplicateFamilyMemberNames() {
+		tool.initiateSynchronisationDialogue();
+		// No precondition!
+		//------------
+		tool.performAndPropagateSourceEdit(util
+				.execute(helperFamily::createNewFamilySimpsonWithMembers)
+				.andThen(helperFamily::createSonBart));
+		//------------
+		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
 	}
 }

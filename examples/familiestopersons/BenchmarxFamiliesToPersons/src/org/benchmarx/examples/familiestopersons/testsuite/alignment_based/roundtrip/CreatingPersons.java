@@ -81,10 +81,10 @@ public class CreatingPersons extends FamiliesToPersonsTestCase {
 		tool.performAndPropagateTargetEdit(helperPerson::createMarge);
 		tool.performAndPropagateTargetEdit(helperPerson::createLisa);
 		
-		tool.performAndPropagateTargetEdit(helperPerson::createAmitabh);
-		tool.performAndPropagateTargetEdit(helperPerson::createJaya);
-		tool.performAndPropagateTargetEdit(helperPerson::createAbhishek);
-		tool.performAndPropagateTargetEdit(helperPerson::createShweta);
+//		tool.performAndPropagateTargetEdit(helperPerson::createAmitabh);
+//		tool.performAndPropagateTargetEdit(helperPerson::createJaya);
+//		tool.performAndPropagateTargetEdit(helperPerson::createAbhishek);
+//		tool.performAndPropagateTargetEdit(helperPerson::createShweta);
 		//----------------
 		
 		util.assertPostcondition("familyMulti", "PersonsNewMulti");
@@ -108,8 +108,8 @@ public class CreatingPersons extends FamiliesToPersonsTestCase {
 		tool.performAndPropagateTargetEdit(helperPerson::createBart);
 		tool.performAndPropagateTargetEdit(helperPerson::createLisa);
 		
-		tool.performAndPropagateTargetEdit(helperPerson::createAbhishek);
-		tool.performAndPropagateTargetEdit(helperPerson::createShweta);
+//		tool.performAndPropagateTargetEdit(helperPerson::createAbhishek);
+//		tool.performAndPropagateTargetEdit(helperPerson::createShweta);
 		//----------------
 			
 		util.assertPostcondition("familyMultiDiffPref", "PersonsNewMultiDiffPref");
@@ -132,8 +132,8 @@ public class CreatingPersons extends FamiliesToPersonsTestCase {
 					    .makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false);
 		tool.performAndPropagateTargetEdit(helperPerson::createBart);
 		
-		tool.performAndPropagateTargetEdit(helperPerson::createAmitabh);
-		tool.performAndPropagateTargetEdit(helperPerson::createAbhishek);
+//		tool.performAndPropagateTargetEdit(helperPerson::createAmitabh);
+//		tool.performAndPropagateTargetEdit(helperPerson::createAbhishek);
 		//----------------
 			
 		util.assertPostcondition("familyMultiDiffPrefTF", "PersonsNewMultiDiffPrefTF");
@@ -156,8 +156,8 @@ public class CreatingPersons extends FamiliesToPersonsTestCase {
 					    .makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false);
 		tool.performAndPropagateTargetEdit(helperPerson::createBart);
 		
-		tool.performAndPropagateTargetEdit(helperPerson::createAbhishek);
-		tool.performAndPropagateTargetEdit(helperPerson::createShweta);
+//		tool.performAndPropagateTargetEdit(helperPerson::createAbhishek);
+//		tool.performAndPropagateTargetEdit(helperPerson::createShweta);
 		//----------------
 		
 		util.assertPostcondition("familyMultiDiffPrefFF", "PersonsNewMultiDiffPrefFF");

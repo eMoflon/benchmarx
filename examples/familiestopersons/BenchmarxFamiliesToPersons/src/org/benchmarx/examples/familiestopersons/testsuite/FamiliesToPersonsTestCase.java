@@ -56,8 +56,8 @@ public abstract class FamiliesToPersonsTestCase {
 				new MediniQVTFamiliesToPersons()
 				,
 				new MediniQVTFamiliesToPersonsConfig()
-				,
-				new BiGULFamiliesToPersons()
+//				,
+//				new BiGULFamiliesToPersons()
 			);
 	}
 	

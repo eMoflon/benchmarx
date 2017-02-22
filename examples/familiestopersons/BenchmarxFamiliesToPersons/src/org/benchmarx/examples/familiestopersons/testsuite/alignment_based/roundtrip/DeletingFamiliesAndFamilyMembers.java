@@ -27,17 +27,17 @@ public class DeletingFamiliesAndFamilyMembers extends FamiliesToPersonsTestCase 
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
 		tool.performAndPropagateSourceEdit(helperFamily::createFatherHomer);
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+		//tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
 		tool.performAndPropagateTargetEdit(helperPerson::setBirthdaysOfSimpson);
 
-		tool.performAndPropagateSourceEdit(util.execute(helperFamily::createBachchanFamily)
-			       							   .andThen(helperFamily::createFatherAmitabh));
-		tool.performAndPropagateSourceEdit(helperFamily::createOtherRemainingMembersInFamilyBachchan);
-		tool.performAndPropagateTargetEdit(helperPerson::setBirthdaysOfBachchan);
+//		tool.performAndPropagateSourceEdit(util.execute(helperFamily::createBachchanFamily)
+//			       							   .andThen(helperFamily::createFatherAmitabh));
+//		tool.performAndPropagateSourceEdit(helperFamily::createOtherRemainingMembersInFamilyBachchan);
+//		tool.performAndPropagateTargetEdit(helperPerson::setBirthdaysOfBachchan);
 
 		util.assertPrecondition("Pre_DeleteFamily", "Pre_DeleteAllPerson");
 		//------------
-		tool.performAndPropagateSourceEdit(helperFamily::deleteFamilyBachchan);
+//		tool.performAndPropagateSourceEdit(helperFamily::deleteFamilyBachchan);
 		//------------
 		util.assertPostcondition("DeleteFamily", "DeleteAllPerson");
 	}

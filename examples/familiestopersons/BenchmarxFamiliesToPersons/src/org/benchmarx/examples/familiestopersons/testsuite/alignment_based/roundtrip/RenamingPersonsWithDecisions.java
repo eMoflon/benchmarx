@@ -25,10 +25,10 @@ public class RenamingPersonsWithDecisions extends FamiliesToPersonsTestCase {
 	@Test
 	public void testFamilyNameChangeOfPersonWhereSuitableFamilyExists() {
 		tool.initiateSynchronisationDialogue();
-		tool.performAndPropagateSourceEdit(util.execute(helperFamily::createBachchanFamily)
-			       							   .andThen(helperFamily::createFatherAmitabh));
-		tool.performAndPropagateSourceEdit(helperFamily::createOtherRemainingMembersInFamilyBachchan);
-		tool.performAndPropagateSourceEdit(helperFamily::createNandaFamily);
+//		tool.performAndPropagateSourceEdit(util.execute(helperFamily::createBachchanFamily)
+//			       							   .andThen(helperFamily::createFatherAmitabh));
+//		tool.performAndPropagateSourceEdit(helperFamily::createOtherRemainingMembersInFamilyBachchan);
+//		tool.performAndPropagateSourceEdit(helperFamily::createNandaFamily);
 		
 		util.assertPrecondition("Pre_MemberFamilyNameChangeToExist", "Pre_PersonFamilyNameChangeToExist");
 		//----------------
@@ -49,11 +49,11 @@ public class RenamingPersonsWithDecisions extends FamiliesToPersonsTestCase {
 	@Test
 	public void testFamilyNameChangeOfPersonButPreferCreatingNewFamily() {
 		tool.initiateSynchronisationDialogue();
-		tool.performAndPropagateSourceEdit(util.execute(helperFamily::createBachchanFamily)
-			       							   .andThen(helperFamily::createFatherAmitabh));
-		tool.performAndPropagateSourceEdit(helperFamily::createOtherRemainingMembersInFamilyBachchan);
-		
-		tool.performAndPropagateSourceEdit(helperFamily::createNandaFamily);
+//		tool.performAndPropagateSourceEdit(util.execute(helperFamily::createBachchanFamily)
+//			       							   .andThen(helperFamily::createFatherAmitabh));
+//		tool.performAndPropagateSourceEdit(helperFamily::createOtherRemainingMembersInFamilyBachchan);
+//		
+//		tool.performAndPropagateSourceEdit(helperFamily::createNandaFamily);
 		
 		util.assertPrecondition("Pre_MemberFamilyNameChangeToExist", "Pre_PersonFamilyNameChangeToExist");
 		//----------------
@@ -77,7 +77,7 @@ public class RenamingPersonsWithDecisions extends FamiliesToPersonsTestCase {
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util.execute(helperFamily::createSimpsonFamily)
 											   .andThen(helperFamily::createFatherHomer));
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+//		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
 			
 		util.assertPrecondition("Pre_NameChangeFamily", "Pre_NameChangePerson");
 		//----------------
@@ -98,7 +98,7 @@ public class RenamingPersonsWithDecisions extends FamiliesToPersonsTestCase {
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
 		tool.performAndPropagateSourceEdit(helperFamily::createFatherHomer);
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+//		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
 		
 		util.assertPrecondition("Pre_NameChangeFamily", "Pre_NameChangePerson");
 		//----------------
@@ -118,7 +118,7 @@ public class RenamingPersonsWithDecisions extends FamiliesToPersonsTestCase {
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
 		tool.performAndPropagateSourceEdit(helperFamily::createFatherHomer);
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
+//		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamilyMembers);
 		
 		util.assertPrecondition("Pre_NameChangeFamily", "Pre_NameChangePerson");
 		//----------------

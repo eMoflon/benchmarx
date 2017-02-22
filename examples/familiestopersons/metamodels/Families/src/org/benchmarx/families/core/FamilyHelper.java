@@ -13,6 +13,8 @@ import Families.FamilyRegister;
 
 public class FamilyHelper {
 	
+	private FamilyRegisterBuilder builder = null;	
+	
 	private Family getFromRegister(String name, FamilyRegister register) {
 		Optional<Family> family = register.getFamilies().stream()
 				.filter(f -> f.getName().equals(name))
@@ -22,355 +24,278 @@ public class FamilyHelper {
 		return family.get();
 	}
 	
-	public void createSimpsonFamily(FamilyRegister register) {
-		Family family = FamiliesFactory.eINSTANCE.createFamily();
-		family.setName("Simpson");
-		register.getFamilies().add(family);
+	private Family getSimpsonFamily(FamilyRegister register) {
+		Optional<Family> family = register.getFamilies().stream()
+				.filter(f -> f.getName().equals("Simpson") && f.getFather().getName().equals("Homer"))
+				.findAny();
+				
+		assertTrue(family.isPresent());
+		
+		Family fam = family.get();
+		assertTrue(fam.getName().equals("Simpson"));
+		assertTrue(fam.getFather().getName().equals("Homer"));
+		
+		return fam;
+	}
+	
+	private FamilyMember getLisa(FamilyRegister register) {
+		Family fam = getSimpsonFamily(register);
+		Optional<FamilyMember> liz = fam.getDaughters().stream()
+				.filter(f -> f.getName().equals("Lisa"))
+				.findAny();
+		
+		assertTrue(liz.isPresent());
+		FamilyMember lisa = liz.get();
+		assertTrue(lisa.getName().equals("Lisa"));
+		return lisa;		
+	}
+	
+	// helpers required for basic behavior
+	
+	public void createSkinnerFamily(FamilyRegister register) {
+		builder = new FamilyRegisterBuilder(register);
+		builder.family("Skinner");
+	}
+
+	public void createFlandersFamily(FamilyRegister register) {	
+		builder = new FamilyRegisterBuilder(register);
+		builder.family("Flanders");
+	}
+	
+	public void createFatherNed(FamilyRegister register) {
+		Family family = getFromRegister("Flanders", register);
+		assertTrue(family.getName().equals("Flanders"));
+		builder = new FamilyRegisterBuilder(register);
+		builder.family(family).father("Ned");
+	}
+	
+	public void createMotherMaude(FamilyRegister register) {
+		Family family = getFromRegister("Flanders", register);
+		assertTrue(family.getName().equals("Flanders"));
+		builder = new FamilyRegisterBuilder(register);
+		builder.family(family).mother("Maude");
+	}
+	
+	public void createSonTodd(FamilyRegister register) {
+		Family family = getFromRegister("Flanders", register);
+		assertTrue(family.getName().equals("Flanders"));
+		builder = new FamilyRegisterBuilder(register);
+		builder.family(family).son("Todd");
+	}
+	
+	public void createSonRod(FamilyRegister register) {
+		Family family = getFromRegister("Flanders", register);
+		assertTrue(family.getName().equals("Flanders"));
+			
+		builder = new FamilyRegisterBuilder(register);
+		builder.family(family).son("Rod");
+	}
+	
+	public void createSimpsonFamily(FamilyRegister register) {		
+		builder = new FamilyRegisterBuilder(register);
+		builder.family("Simpson");		
+	}	
+		
+	public void createFatherHomer(FamilyRegister register) {
+		Optional<Family> family = register.getFamilies().stream()
+				.filter(f -> f.getName().equals("Simpson") && f.getFather() == null)
+				.findAny();
+				
+		assertTrue(family.isPresent());
+		Family fam = family.get();
+				
+		builder = new FamilyRegisterBuilder(register);
+		builder.family(fam).father("Homer");		
+	}
+	
+	public void createMotherMarge(FamilyRegister register) {
+		Family family = getSimpsonFamily(register);
+		builder = new FamilyRegisterBuilder(register);
+		builder.family(family).mother("Marge");
+	}
+	
+	public void createSonBart(FamilyRegister register) {
+		Family family = getSimpsonFamily(register);
+		builder = new FamilyRegisterBuilder(register);
+		builder.family(family).son("Bart");
+	}		
+	
+	public void createDaughterLisa(FamilyRegister register) {
+		Family family = getSimpsonFamily(register);
+		builder = new FamilyRegisterBuilder(register);
+		builder.family(family).daughter("Lisa");
+	}
+	
+	public void createDaughterMaggie(FamilyRegister register) {
+		Family family = getSimpsonFamily(register);
+		builder = new FamilyRegisterBuilder(register);
+		builder.family(family).daughter("Maggie");
+	}
+	
+	public void createFatherBart(FamilyRegister register) {
+		Optional<Family> family = register.getFamilies().stream()
+				.filter(f -> f.getName().equals("Simpson") && f.getFather() == null)
+				.findAny();
+				
+		assertTrue(family.isPresent());
+		Family fam = family.get();
+		builder = new FamilyRegisterBuilder(register);
+		builder.family(fam).father("Bart");
+	}
+	
+	public void createNewFamilySimpsonWithMembers(FamilyRegister register) {
+		createSimpsonFamily(register);
+		createFatherHomer(register);
+		createMotherMarge(register);
+		createSonBart(register);
+		createDaughterLisa(register);
+		createDaughterMaggie(register);
 	}	
 	
-	public void createBachchanFamily(FamilyRegister register) {
-		Family family = FamiliesFactory.eINSTANCE.createFamily();
-		family.setName("Bachchan");
-		register.getFamilies().add(family);
-	}	
+	// helpers required for incremental behavior	
 	
-	public void createFatherHomer(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
-		assertTrue(family.getName().equals("Simpson"));
-			
-		FamilyMember familyFather = FamiliesFactory.eINSTANCE.createFamilyMember();
-		family.setFather(familyFather);
-		familyFather.setName("Homer");
-	}
-	
-	public void createFatherAmitabh(FamilyRegister register){
-		Family family = getFromRegister("Bachchan", register);
-		assertTrue(family.getName().equals("Bachchan"));
-			
-		FamilyMember familyFather = FamiliesFactory.eINSTANCE.createFamilyMember();
-		family.setFather(familyFather);
-		familyFather.setName("Amitabh");
-	}
-	
-	public void createSonHomer(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
-		assertTrue(family.getName().equals("Simpson"));
-		assertTrue(family.getFather().getName().equals("Homer"));
-			
-		FamilyMember familySon = FamiliesFactory.eINSTANCE.createFamilyMember();
-		familySon.setName("Homer");
-		family.getSons().add(familySon);
-	}
-	
-	public void createFatherGeorge(FamilyRegister register){
-		Family family = register.getFamilies().get(1);
+	public void deleteFirstSonBart(FamilyRegister register) {
+		Family family = getSimpsonFamily(register);
 		assertTrue(family.getName().equals("Simpson"));
 		
-		if(family.getFather()==null)
-		{
-			FamilyMember familyFather = FamiliesFactory.eINSTANCE.createFamilyMember();
-			family.setFather(familyFather);
-			familyFather.setName("George");
-		}
-		
+		EcoreUtil.delete(family.getSons().get(0), true);
 	}
 	
-	public void createMotherMarge(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
+	public void renameEmptySimpsonToBouvier(FamilyRegister register) {
+		Family fam = getFromRegister("Simpson", register);
+		assertTrue(fam.getName().equals("Simpson"));
+		
+		fam.setName("Bouvier");
+	}
+	
+	public void renameSimpsonToBouvier(FamilyRegister register){
+		Family family = getSimpsonFamily(register);
 		assertTrue(family.getName().equals("Simpson"));
 		
-		FamilyMember familyMother = FamiliesFactory.eINSTANCE.createFamilyMember();
-		family.setMother(familyMother);
-		familyMother.setName("Marge");
+		family.setName("Bouvier");
 	}
 	
-	public void createDaughterMarge(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
-		assertTrue(family.getName().equals("Simpson"));
-		assertTrue(family.getMother().getName().equals("Marge"));
-		
-		FamilyMember familyDaughter = FamiliesFactory.eINSTANCE.createFamilyMember();
-		familyDaughter.setName("Marge");
-		family.getDaughters().add(familyDaughter);
+	public void moveLisa(FamilyRegister register) {
+		Family fam = getFromRegister("Flanders", register);
+		FamilyMember lisa = getLisa(register);
+		fam.setMother(lisa);
 	}
 	
-	public void createSimpsonFamilyMembers(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
-		assertTrue(family.getName().equals("Simpson"));
-		
-		FamilyMember familyMother = FamiliesFactory.eINSTANCE.createFamilyMember();
-		familyMother.setName("Marge");
-		family.setMother(familyMother);
-		
-		FamilyMember familySon = FamiliesFactory.eINSTANCE.createFamilyMember();
-		familySon.setName("Bart");
-		family.getSons().add(familySon);
-		
-		FamilyMember familyDaughterOne = FamiliesFactory.eINSTANCE.createFamilyMember();
-		familyDaughterOne.setName("Lisa");
-		family.getDaughters().add(familyDaughterOne);
-		
-		FamilyMember familyDaughterTwo = FamiliesFactory.eINSTANCE.createFamilyMember();
-		familyDaughterTwo.setName("Maggie");
-		family.getDaughters().add(familyDaughterTwo);
-		
+	public void moveMarge(FamilyRegister register) {
+		Family skinner = getFromRegister("Skinner", register);
+		FamilyMember marge = getSimpsonFamily(register).getMother();
+		skinner.setMother(marge);
 	}
 	
-	public void createOtherSimpsonFamilyMembers(FamilyRegister register){
-		Family family = register.getFamilies().get(1);
-		assertTrue(family.getName().equals("Simpson"));
-		assertTrue(family.getFather().getName().equals("George"));
-		
-		FamilyMember familyMother = FamiliesFactory.eINSTANCE.createFamilyMember();
-		familyMother.setName("Jane");
-		family.setMother(familyMother);
-		
-		FamilyMember familySon = FamiliesFactory.eINSTANCE.createFamilyMember();
-		familySon.setName("Elroy");
-		family.getSons().add(familySon);
-		
-		FamilyMember familyDaughterOne = FamiliesFactory.eINSTANCE.createFamilyMember();
-		familyDaughterOne.setName("Judy");
-		family.getDaughters().add(familyDaughterOne);
-		
-	}
 	
-	public void familyNameSimpsonChange(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
-		assertTrue(family.getName().equals("Simpson"));
-		
-		family.setName("Jetson");
-	}
+//	public void familyFatherHomerNameChange(FamilyRegister register){
+//		Family family = getFromRegister("Simpson", register);
+//		assertTrue(family.getName().equals("Simpson"));
+//		
+//		family.getFather().setName("Jay");
+//	}
+//	
+//	public void familyMotherMargeNameChange(FamilyRegister register){
+//		Family family = getFromRegister("Simpson", register);
+//		assertTrue(family.getName().equals("Simpson"));
+//		
+//		family.getMother().setName("Julie");
+//	}
+//	
+//	public void familyDaughterLisaNameChange(FamilyRegister register){
+//		Family family = getFromRegister("Simpson", register);
+//		assertTrue(family.getName().equals("Simpson"));
+//		
+//		family.getDaughters().get(0).setName("Nancy");
+//	}	
+//	
+//	public void familySonBartNameChange(FamilyRegister register){
+//		Family family = getFromRegister("Simpson", register);
+//		assertTrue(family.getName().equals("Simpson"));
+//		
+//		family.getSons().get(0).setName("Harry");
+//	}
 	
-	public void familyNameOtherSimpsonChange(FamilyRegister register){
-		Family family = register.getFamilies().get(1);
-		assertTrue(family.getName().equals("Simpson"));
-		assertTrue(family.getFather().getName().equals("George"));
-		
-		family.setName("Jetson");
-	}
-	
-	public void familyNameSimpsonChangeEmpty(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
-		assertTrue(family.getName().equals("Simpson"));
-		
-		family.setName("Jetson");
-	}
-	
-	public void familyFatherHomerNameChange(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
-		assertTrue(family.getName().equals("Simpson"));
-		
-		family.getFather().setName("Jay");
-	}
-	
-	public void familyFatherGeorgeNameChange(FamilyRegister register){
-		Family family = register.getFamilies().get(1);
-		assertTrue(family.getName().equals("Simpson"));
-		assertTrue(family.getFather().getName().equals("George"));
-		
-		family.getFather().setName("Jay");
-	}
-	
-	public void familyMotherMargeNameChange(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
-		assertTrue(family.getName().equals("Simpson"));
-		
-		family.getMother().setName("Julie");
-	}
-	
-	public void familyMotherJaneNameChange(FamilyRegister register){
-		Family family = register.getFamilies().get(1);
-		assertTrue(family.getName().equals("Simpson"));
-		assertTrue(family.getFather().getName().equals("George"));
-		
-		family.getMother().setName("Julie");
-	}
-	
-	public void familyDaughterLisaNameChange(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
-		assertTrue(family.getName().equals("Simpson"));
-		
-		family.getDaughters().get(0).setName("Nancy");
-	}
-	
-	public void familyDaughterJudyNameChange(FamilyRegister register){
-		Family family = register.getFamilies().get(1);
-		assertTrue(family.getName().equals("Simpson"));
-		assertTrue(family.getFather().getName().equals("George"));
-		
-		family.getDaughters().get(0).setName("Nancy");
-	}
-	
-	public void familySonBartNameChange(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
-		assertTrue(family.getName().equals("Simpson"));
-		
-		family.getSons().get(0).setName("Harry");
-	}
-	
-	public void familySonElroyNameChange(FamilyRegister register){
-		Family family = register.getFamilies().get(1);
-		assertTrue(family.getName().equals("Simpson"));
-		assertTrue(family.getFather().getName().equals("George"));
-		
-		family.getSons().get(0).setName("Harry");
-	}
-	
-	public void familyFatherHomerRoleChangeToSon(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
-		assertTrue(family.getName().equals("Simpson"));
-		
-		String familySonName = family.getSons().get(0).getName();
-		String familyFatherName = family.getFather().getName();
-		
-		family.getFather().setName(familySonName);
-		family.getSons().get(0).setName(familyFatherName);
-	}
-	
-	public void familyMotherMargeRoleChangeToDaughterLisa(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
-		assertTrue(family.getName().equals("Simpson"));
-		
-		String familyDaughterName = family.getDaughters().get(0).getName();
-		String familyMotherName = family.getMother().getName();
-		
-		family.getMother().setName(familyDaughterName);
-		family.getDaughters().get(0).setName(familyMotherName);
-	}
-	
-	public void familyFatherHomerRoleChangeToMotherMarge(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
-		assertTrue(family.getName().equals("Simpson"));
-		
-		String familyMotherName = family.getMother().getName();
-		String familyFatherName = family.getFather().getName();
-		
-		family.getFather().setName(familyMotherName);
-		family.getMother().setName(familyFatherName);
-	}
-	
-	public void familySonBartRoleChangeToMotherMarge(FamilyRegister register){
-		Family family = getFromRegister("Simpson", register);
-		assertTrue(family.getName().equals("Simpson"));
-		
-		String familyMotherName = family.getMother().getName();
-		String familySonName = family.getSons().get(0).getName();
-		
-		family.getSons().get(0).setName(familyMotherName);
-		family.getMother().setName(familySonName);
-	}
-	
-	public void createNewfamilyBachchanWithMembers(FamilyRegister register){
-		Family family = FamiliesFactory.eINSTANCE.createFamily();
-		family.setName("Bachchan");
-		register.getFamilies().add(family);
-		
-		FamilyMember familyFather = FamiliesFactory.eINSTANCE.createFamilyMember();
-		family.setFather(familyFather);
-		familyFather.setName("Amitabh");
-		
-		FamilyMember familyMother = FamiliesFactory.eINSTANCE.createFamilyMember();
-		family.setMother(familyMother);
-		familyMother.setName("Jaya");
-		
-		FamilyMember familySon = FamiliesFactory.eINSTANCE.createFamilyMember();
-		familySon.setName("Abhishek");
-		family.getSons().add(familySon);
-		
-		FamilyMember familyDaughter = FamiliesFactory.eINSTANCE.createFamilyMember();
-		familyDaughter.setName("Shweta");
-		family.getDaughters().add(familyDaughter);
-	}
-	
-	public void createOtherRemainingMembersInFamilyBachchan(FamilyRegister register){
-		Family family = getFromRegister("Bachchan", register);
-		assertTrue(family.getName().equals("Bachchan"));
-		
-		FamilyMember familyMother = FamiliesFactory.eINSTANCE.createFamilyMember();
-		family.setMother(familyMother);
-		familyMother.setName("Jaya");
-		
-		FamilyMember familySon = FamiliesFactory.eINSTANCE.createFamilyMember();
-		familySon.setName("Abhishek");
-		family.getSons().add(familySon);
-		
-		FamilyMember familyDaughter = FamiliesFactory.eINSTANCE.createFamilyMember();
-		familyDaughter.setName("Shweta");
-		family.getDaughters().add(familyDaughter);
-	}
-	
-	public void createNandaFamily(FamilyRegister register) {
-		Family family = FamiliesFactory.eINSTANCE.createFamily();
-		family.setName("Nanda");
-		register.getFamilies().add(family);
-	}
-	
-	public void moveDaughterToMotherOfNewFamily(FamilyRegister register){
-		Family family = getFromRegister("Bachchan", register);
-		assertTrue(family.getName().equals("Bachchan"));
-		
-		FamilyMember familyDaughter = family.getDaughters().get(0);
-		assertTrue(familyDaughter.getName().equals("Shweta"));
-		
-		Family newFamily = FamiliesFactory.eINSTANCE.createFamily();
-		newFamily.setName("Nanda");
-		register.getFamilies().add(newFamily);
-		
-		// This also moves the daughter from the old family to the mother in the new family
-		newFamily.setMother(familyDaughter);
-	}
-	
-	public void deleteFamilyFatherAmitabh(FamilyRegister eObject){
-		Family family = eObject.getFamilies().get(1);
-		assertTrue(family.getName().equals("Bachchan"));
-		
-		EcoreUtil.delete(family.getFather());
-	}
-	
-	public void deleteFamilyFatherHomer(FamilyRegister eObject){
-		Family family = eObject.getFamilies().get(0);
-		assertTrue(family.getName().equals("Simpson"));
-		
-		EcoreUtil.delete(family.getFather());
-	}
-	
-	public void deleteFamilySonHomer(FamilyRegister eObject){
-		Family family = eObject.getFamilies().get(0);
-		assertTrue(family.getName().equals("Simpson"));
-		assertTrue(family.getFather().getName().equals("Homer"));
-		assertTrue(family.getSons().get(0).getName().equals("Homer"));
-		
-		EcoreUtil.delete(family.getSons().get(0));
-	}
-	
-	public void deleteFamilyDaughterMarge(FamilyRegister eObject){
-		Family family = eObject.getFamilies().get(0);
-		assertTrue(family.getName().equals("Simpson"));
-		assertTrue(family.getMother().getName().equals("Marge"));
-		assertTrue(family.getDaughters().get(0).getName().equals("Marge"));
-		
-		EcoreUtil.delete(family.getDaughters().get(0));
-	}
-	
-	public void deleteFamilyBachchan(FamilyRegister eObject){
-		Family family = eObject.getFamilies().get(1);
-		assertTrue(family.getName().equals("Bachchan"));
-		
-		EcoreUtil.delete(family);
-	}
-	
-	public void deleteFirstSimpsonFamily(FamilyRegister eObject){
-		Family family = eObject.getFamilies().get(0);
-		assertTrue(family.getName().equals("Simpson"));
-		assertTrue(family.getFather().getName().equals("Homer"));
-		
-		EcoreUtil.delete(family.getFather());
-		EcoreUtil.delete(family.getMother());
-		EcoreUtil.delete(family.getSons().get(0));
-		EcoreUtil.delete(family.getDaughters().get(0));
-		EcoreUtil.delete(family.getDaughters().get(0));
-		
-		EcoreUtil.delete(family);
-	}
+//	public void familyFatherHomerRoleChangeToSon(FamilyRegister register){
+//		Family family = getFromRegister("Simpson", register);
+//		assertTrue(family.getName().equals("Simpson"));
+//		
+//		String familySonName = family.getSons().get(0).getName();
+//		String familyFatherName = family.getFather().getName();
+//		
+//		family.getFather().setName(familySonName);
+//		family.getSons().get(0).setName(familyFatherName);
+//	}
+//	
+//	public void familyMotherMargeRoleChangeToDaughterLisa(FamilyRegister register){
+//		Family family = getFromRegister("Simpson", register);
+//		assertTrue(family.getName().equals("Simpson"));
+//		
+//		String familyDaughterName = family.getDaughters().get(0).getName();
+//		String familyMotherName = family.getMother().getName();
+//		
+//		family.getMother().setName(familyDaughterName);
+//		family.getDaughters().get(0).setName(familyMotherName);
+//	}
+//	
+//	public void familyFatherHomerRoleChangeToMotherMarge(FamilyRegister register){
+//		Family family = getFromRegister("Simpson", register);
+//		assertTrue(family.getName().equals("Simpson"));
+//		
+//		String familyMotherName = family.getMother().getName();
+//		String familyFatherName = family.getFather().getName();
+//		
+//		family.getFather().setName(familyMotherName);
+//		family.getMother().setName(familyFatherName);
+//	}
+//	
+//	public void familySonBartRoleChangeToMotherMarge(FamilyRegister register){
+//		Family family = getFromRegister("Simpson", register);
+//		assertTrue(family.getName().equals("Simpson"));
+//		
+//		String familyMotherName = family.getMother().getName();
+//		String familySonName = family.getSons().get(0).getName();
+//		
+//		family.getSons().get(0).setName(familyMotherName);
+//		family.getMother().setName(familySonName);
+//	}
+//		
+//	public void deleteFamilyFatherHomer(FamilyRegister eObject){
+//		Family family = eObject.getFamilies().get(0);
+//		assertTrue(family.getName().equals("Simpson"));
+//		
+//		EcoreUtil.delete(family.getFather());
+//	}
+//	
+//	public void deleteFamilySonHomer(FamilyRegister eObject){
+//		Family family = eObject.getFamilies().get(0);
+//		assertTrue(family.getName().equals("Simpson"));
+//		assertTrue(family.getFather().getName().equals("Homer"));
+//		assertTrue(family.getSons().get(0).getName().equals("Homer"));
+//		
+//		EcoreUtil.delete(family.getSons().get(0));
+//	}
+//	
+//	public void deleteFamilyDaughterMarge(FamilyRegister eObject){
+//		Family family = eObject.getFamilies().get(0);
+//		assertTrue(family.getName().equals("Simpson"));
+//		assertTrue(family.getMother().getName().equals("Marge"));
+//		assertTrue(family.getDaughters().get(0).getName().equals("Marge"));
+//		
+//		EcoreUtil.delete(family.getDaughters().get(0));
+//	}
+//	
+//	public void deleteFirstSimpsonFamily(FamilyRegister eObject){
+//		Family family = eObject.getFamilies().get(0);
+//		assertTrue(family.getName().equals("Simpson"));
+//		assertTrue(family.getFather().getName().equals("Homer"));
+//		
+//		EcoreUtil.delete(family.getFather());
+//		EcoreUtil.delete(family.getMother());
+//		EcoreUtil.delete(family.getSons().get(0));
+//		EcoreUtil.delete(family.getDaughters().get(0));
+//		EcoreUtil.delete(family.getDaughters().get(0));
+//		
+//		EcoreUtil.delete(family);
+//	}
 }
