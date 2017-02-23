@@ -11,6 +11,7 @@ import org.benchmarx.Comparator;
 import org.benchmarx.persons.core.PersonNormaliser;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.junit.Assert;
 
 @SuppressWarnings("all")
@@ -25,6 +26,10 @@ public class PersonsComparator implements Comparator<PersonRegister> {
   @Override
   public void compare(final PersonRegister expected, final PersonRegister actual) {
     Assert.assertTrue(this.personsToString(expected).startsWith("PersonRegister"));
+    InputOutput.<String>println("Expected:");
+    InputOutput.<String>println(this.personsToString(expected));
+    InputOutput.<String>println("Actual:");
+    InputOutput.<String>println(this.personsToString(actual));
     Assert.assertEquals(this.personsToString(expected), this.personsToString(actual));
   }
   

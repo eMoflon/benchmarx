@@ -23,6 +23,7 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalInserts() {
+		System.out.println("Incremental Insert:");
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
@@ -58,6 +59,7 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalDeletions() {
+		System.out.println("Incremental Delete:");
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
@@ -85,6 +87,7 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalRename() {
+		System.out.println("Incremental Rename:");
 		tool.initiateSynchronisationDialogue();
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
@@ -113,28 +116,29 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 * <b>Expect</b>: Change the name of the affected Persons in the Person Register
 	 * <b>Features</b>: fwd, del+add, fixed, structural
 	 */
-//	@Test
-//	public void testIncrementalMove() {
-//		tool.initiateSynchronisationDialogue();
-//		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
-//			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
-//		tool.performAndPropagateSourceEdit(util
-//				.execute(helperFamily::createSkinnerFamily)
-//				.andThen(helperFamily::createFlandersFamily)
-//				.andThen(helperFamily::createSonRod)
-//				.andThen(helperFamily::createSimpsonFamily)
-//				.andThen(helperFamily::createFatherBart)
-//				.andThen(helperFamily::createNewFamilySimpsonWithMembers)
-//				.andThen(helperFamily::createSonBart));
-//		
-//		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
-//		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
-//		//------------
-//		tool.performAndPropagateSourceEdit(util
-//				.execute(helperFamily::moveLisa)
-//				.andThen(helperFamily::moveMarge));
-//		//------------
-//		util.assertPostcondition("FamilyAfterMove", "PersonAfterMove");
-//	}
+	@Test
+	public void testIncrementalMove() {
+		System.out.println("Incremental Move:");
+		tool.initiateSynchronisationDialogue();
+		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.performAndPropagateSourceEdit(util
+				.execute(helperFamily::createSkinnerFamily)
+				.andThen(helperFamily::createFlandersFamily)
+				.andThen(helperFamily::createSonRod)
+				.andThen(helperFamily::createSimpsonFamily)
+				.andThen(helperFamily::createFatherBart)
+				.andThen(helperFamily::createNewFamilySimpsonWithMembers)
+				.andThen(helperFamily::createSonBart));
+		
+		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
+		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
+		//------------
+		tool.performAndPropagateSourceEdit(util
+				.execute(helperFamily::moveLisa)
+				.andThen(helperFamily::moveMarge));
+		//------------
+		util.assertPostcondition("FamilyAfterMove", "PersonAfterMove");
+	}
 
 }

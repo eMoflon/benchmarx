@@ -20,10 +20,10 @@ public class PersonsComparator implements Comparator<PersonRegister>{
 	
 	override compare(PersonRegister expected, PersonRegister actual) {
 		assertTrue(personsToString(expected).startsWith("PersonRegister"))
-//		println("Expected:")
-//		println(personsToString(expected))
-//		println("Actual:")
-//		println(personsToString(actual))
+		println("Expected:")
+		println(personsToString(expected))
+		println("Actual:")
+		println(personsToString(actual))
 		assertEquals(personsToString(expected), personsToString(actual))
 	}
 	
