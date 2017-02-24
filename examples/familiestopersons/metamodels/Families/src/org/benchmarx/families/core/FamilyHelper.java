@@ -187,6 +187,13 @@ public class FamilyHelper {
 		skinner.setMother(marge);
 	}
 	
+	public void deleteFatherHomer(FamilyRegister register) {
+		Family simpson = getSimpsonFamily(register);
+		FamilyMember homer = simpson.getFather();
+		
+		EcoreUtil.delete(homer, true);
+	}
+	
 	
 //	public void familyFatherHomerNameChange(FamilyRegister register){
 //		Family family = getFromRegister("Simpson", register);

@@ -137,5 +137,36 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 		//------------
 		util.assertPostcondition("FamilyAfterMove", "PersonAfterMove");
 	}
+	
+	/**
+	 * <b>Test</b> for deleting an re-creating family members.
+	 * After creating the person register, set birthdates. Then delete and re-create Homer
+	 * <b>Expect</b>: Person register remains unchanged, except for "Simpson, Homer", which
+	 * should be re-created with default birthdate.
+	 * <b>Features</b>: fwd, structural, add+del, fixed 
+	 */
+	@Test
+	public void testIncrementalMixed() {
+		tool.initiateSynchronisationDialogue();
+		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.performAndPropagateSourceEdit(util
+				.execute(helperFamily::createSkinnerFamily)
+				.andThen(helperFamily::createFlandersFamily)
+				.andThen(helperFamily::createSonRod)
+				.andThen(helperFamily::createSimpsonFamily)
+				.andThen(helperFamily::createFatherBart)
+				.andThen(helperFamily::createNewFamilySimpsonWithMembers)
+				.andThen(helperFamily::createSonBart));
+		
+		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
+		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
+		//------------
+		tool.performAndPropagateSourceEdit(util
+				.execute(helperFamily::deleteFatherHomer)
+				.andThen(helperFamily::createFatherHomer));
+		//------------
+		util.assertPostcondition("FamilyAfterMixed", "PersonAfterMixed");
+	}
 
 }
