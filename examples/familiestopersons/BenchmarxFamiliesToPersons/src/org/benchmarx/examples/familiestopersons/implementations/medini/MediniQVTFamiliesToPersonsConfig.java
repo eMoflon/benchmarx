@@ -54,6 +54,8 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	private static final String bwdDir = "famDB";
 	private Configurator<Decisions> configurator;
 	
+	private static final String RESULTPATH = "results/mediniConfig";
+	
 	/**
 	 * An extension of the standard XMIResourceFactory
 	 * that allows the creation of XMIResources using UUIDs
@@ -128,7 +130,7 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		    Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 		
 		// Use the next line with XMI ids
-		// this.resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new UUIDResourceFactoryImpl());	
+		 this.resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new UUIDResourceFactoryImpl());	
 		
 		// Collect all necessary packages from the metamodel(s)
 		Collection<EPackage> metaPackages = new ArrayList<EPackage>();
@@ -138,9 +140,9 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		init(metaPackages);
 		
 		// Create resources for models
-		source = resourceSet.createResource(URI.createURI("source.xmi"));
-		config = resourceSet.createResource(URI.createURI("config.xmi"));
-		target = resourceSet.createResource(URI.createURI("target.xmi"));
+		source = resourceSet.createResource(URI.createURI(RESULTPATH + "/source.xmi"));
+		config = resourceSet.createResource(URI.createURI(RESULTPATH + "/config.xmi"));
+		target = resourceSet.createResource(URI.createURI(RESULTPATH + "/target.xmi"));
 		
 		// Collect the models, which should participate in the transformation.
 		// You can provide a list of models for each direction.
@@ -215,50 +217,50 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	public void performAndPropagateTargetEdit(Consumer<PersonRegister> edit) {
 		edit.accept(getTargetModel());
 		
-		/* With XMI ids include the following lines
+		// With XMI ids include the following lines
 		try {
 			target.save(null);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
+		
 		
 		launchBWD();
 		
-		/* With XMI ids include the following lines
+		// With XMI ids include the following lines
 		try {
 			source.save(null);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
+		
 	}
 
 	@Override
 	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
 		edit.accept(getSourceModel());
 		
-		/* With XMI ids include the following lines
+		// With XMI ids include the following lines
 		try {
 			source.save(null);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
+		
 		
 		launchFWD();
 		
-		/* With XMI ids include the following lines
+		// With XMI ids include the following lines
 		try {
 			target.save(null);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
+		
 	}
 
 	@Override
@@ -355,5 +357,25 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		metaPackages.add(PersonsPackage.eINSTANCE);
 		metaPackages.add(ConfigPackage.eINSTANCE);
 		metaPackages.add(FamiliesPackage.eINSTANCE);
+	}
+	
+	public void saveModels(String name) {
+		ResourceSet set = new ResourceSetImpl();
+		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new UUIDResourceFactoryImpl());//XMIResourceFactoryImpl());
+		URI srcURI = URI.createFileURI(RESULTPATH + "/" + name + "Family.xmi");
+		URI trgURI = URI.createFileURI(RESULTPATH + "/" + name + "Person.xmi");
+		Resource resSource = set.createResource(srcURI);
+		Resource resTarget = set.createResource(trgURI);
+		
+		resSource.getContents().add(getSourceModel());
+		resTarget.getContents().add(getTargetModel());
+		
+		try {
+			resSource.save(null);
+			resTarget.save(null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 }

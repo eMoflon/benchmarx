@@ -151,6 +151,10 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 	@Override
 	public void setConfigurator(Configurator<Decisions> configurator) {
 		// No configuration
-	}	 
+	}	
+	
+	public void saveModels(String name) {
+		
+	}
 }
 

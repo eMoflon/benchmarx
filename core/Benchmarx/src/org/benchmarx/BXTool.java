@@ -30,5 +30,7 @@ public interface BXTool<S, T, D> {
 	
 	public void assertPrecondition(S source, T target);
 	
+	public void saveModels(String name);
+	
 	default public String getName() { return "Please set the name of your bx tool!"; }
 }

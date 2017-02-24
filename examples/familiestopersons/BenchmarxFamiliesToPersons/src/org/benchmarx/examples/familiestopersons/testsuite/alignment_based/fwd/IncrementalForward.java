@@ -23,7 +23,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalInserts() {
-		System.out.println("Incremental Insert:");
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
@@ -46,7 +45,7 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 				.execute(helperFamily::createFatherNed)
 				.andThen(helperFamily::createMotherMaude)
 				.andThen(helperFamily::createSonTodd));
-		//------------
+		//------------		
 		util.assertPostcondition("FamilyAfterInsertion", "PersonAfterInsertion");
 	}
 	
@@ -59,7 +58,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalDeletions() {
-		System.out.println("Incremental Delete:");
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
@@ -72,6 +70,7 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 		
 		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
 		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
+		tool.saveModels("IncrDeleteAfterBirthdayChange");
 		//------------
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::deleteFirstSonBart));
@@ -87,7 +86,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalRename() {
-		System.out.println("Incremental Rename:");
 		tool.initiateSynchronisationDialogue();
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
@@ -118,7 +116,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalMove() {
-		System.out.println("Incremental Move:");
 		tool.initiateSynchronisationDialogue();
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);

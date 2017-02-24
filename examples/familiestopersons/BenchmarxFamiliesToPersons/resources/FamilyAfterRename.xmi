@@ -23,6 +23,7 @@
     <mother
         name="Marge"/>
     <sons name="Bart"/>
+    <sons name="Bart"/>
     <daughters
         name="Lisa"/>
     <daughters

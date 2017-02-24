@@ -48,6 +48,8 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 	private FileReader qvtRuleSet;
 	private static final String fwdDir = "perDB";
 	private static final String bwdDir = "famDB";
+	
+	private static final String RESULTPATH = "results/medini";
 
 	@Override
 	public String getName() {
@@ -218,5 +220,9 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 	protected void collectMetaModels(Collection<EPackage> metaPackages) {
 		metaPackages.add(PersonsPackage.eINSTANCE);
 		metaPackages.add(FamiliesPackage.eINSTANCE);
+	}
+	
+	public void saveModels(String name) {
+		
 	}
 }
