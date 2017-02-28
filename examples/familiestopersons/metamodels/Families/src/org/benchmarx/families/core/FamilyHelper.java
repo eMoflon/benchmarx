@@ -13,7 +13,8 @@ import Families.FamilyRegister;
 
 public class FamilyHelper {
 	
-	private FamilyRegisterBuilder builder = null;	
+	private FamilyRegisterBuilder builder = null;
+	private FamilyMember firstBart = null;
 	
 	private Family getFromRegister(String name, FamilyRegister register) {
 		Optional<Family> family = register.getFamilies().stream()
@@ -118,6 +119,9 @@ public class FamilyHelper {
 		Family family = getSimpsonFamily(register);
 		builder = new FamilyRegisterBuilder(register);
 		builder.family(family).son("Bart");
+		if (firstBart == null) {
+			firstBart = family.getSons().get(0);
+		}
 	}		
 	
 	public void createDaughterLisa(FamilyRegister register) {
@@ -155,10 +159,13 @@ public class FamilyHelper {
 	// helpers required for incremental behavior	
 	
 	public void deleteFirstSonBart(FamilyRegister register) {
+		/*
 		Family family = getSimpsonFamily(register);
 		assertTrue(family.getName().equals("Simpson"));
 		
 		EcoreUtil.delete(family.getSons().get(0), true);
+		*/
+		EcoreUtil.delete(firstBart, true);
 	}
 	
 	public void renameEmptySimpsonToBouvier(FamilyRegister register) {
