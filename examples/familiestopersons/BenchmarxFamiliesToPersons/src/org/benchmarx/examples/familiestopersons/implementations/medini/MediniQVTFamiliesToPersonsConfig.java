@@ -18,10 +18,12 @@ import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
@@ -217,24 +219,24 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	public void performAndPropagateTargetEdit(Consumer<PersonRegister> edit) {
 		edit.accept(getTargetModel());
 		
-		// With XMI ids include the following lines
-		try {
-			target.save(null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		// With XMI ids include the following lines
+//		try {
+//			target.save(null);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		
 		launchBWD();
 		
-		// With XMI ids include the following lines
-		try {
-			source.save(null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		// With XMI ids include the following lines
+//		try {
+//			source.save(null);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 	}
 
@@ -242,24 +244,24 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
 		edit.accept(getSourceModel());
 		
-		// With XMI ids include the following lines
-		try {
-			source.save(null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		// With XMI ids include the following lines
+//		try {
+//			source.save(null);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		
 		launchFWD();
 		
-		// With XMI ids include the following lines
-		try {
-			target.save(null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		// With XMI ids include the following lines
+//		try {
+//			target.save(null);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 	}
 
@@ -361,14 +363,17 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	
 	public void saveModels(String name) {
 		ResourceSet set = new ResourceSetImpl();
-		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new UUIDResourceFactoryImpl());//XMIResourceFactoryImpl());
+		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 		URI srcURI = URI.createFileURI(RESULTPATH + "/" + name + "Family.xmi");
 		URI trgURI = URI.createFileURI(RESULTPATH + "/" + name + "Person.xmi");
 		Resource resSource = set.createResource(srcURI);
 		Resource resTarget = set.createResource(trgURI);
 		
-		resSource.getContents().add(getSourceModel());
-		resTarget.getContents().add(getTargetModel());
+		EObject colSource = EcoreUtil.copy(getSourceModel());
+		EObject colTarget = EcoreUtil.copy(getTargetModel());
+		
+		resSource.getContents().add(colSource);
+		resTarget.getContents().add(colTarget);
 		
 		try {
 			resSource.save(null);
@@ -377,5 +382,15 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
+	}
+	
+	@Override
+	public void performTargetEdit(Consumer<PersonRegister> edit) {
+		edit.accept(getTargetModel());
+	}
+
+	@Override
+	public void performSourceEdit(Consumer<FamilyRegister> edit) {
+		edit.accept(getSourceModel());
 	}
 }

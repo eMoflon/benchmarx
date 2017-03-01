@@ -257,6 +257,7 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 			return;
 		} catch (Throwable throwable) {
 			throwable.printStackTrace();
+			System.out.println(throwable.getMessage());
 		} finally {		
 			System.setOut(ps);
 			System.setErr(ps_err);
@@ -282,11 +283,11 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 		Resource resSource = set.createResource(srcURI);
 		Resource resTarget = set.createResource(trgURI);
 		
-		Collection<EObject> colSource = EcoreUtil.copyAll(source.getContents());
-		Collection<EObject> colTarget = EcoreUtil.copyAll(target.getContents());
+		EObject colSource = EcoreUtil.copy(getSourceModel());
+		EObject colTarget = EcoreUtil.copy(getTargetModel());
 		
-		resSource.getContents().add(colSource.iterator().next());
-		resTarget.getContents().add(colTarget.iterator().next());
+		resSource.getContents().add(colSource);
+		resTarget.getContents().add(colTarget);
 		
 		try {
 			resSource.save(null);
@@ -295,5 +296,15 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}			
+	}
+
+	@Override
+	public void performTargetEdit(Consumer<PersonRegister> edit) {
+		edit.accept(getTargetModel());
+	}
+
+	@Override
+	public void performSourceEdit(Consumer<FamilyRegister> edit) {
+		edit.accept(getSourceModel());
 	}
 }

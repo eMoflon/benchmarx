@@ -155,4 +155,14 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public void performTargetEdit(Consumer<PersonRegister> edit) {
+		edit.accept(getTargetModel());
+	}
+
+	@Override
+	public void performSourceEdit(Consumer<FamilyRegister> edit) {
+		edit.accept(getSourceModel());
+	}
 }

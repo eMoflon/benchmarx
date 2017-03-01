@@ -23,6 +23,10 @@ public interface BXTool<S, T, D> {
 	public void performAndPropagateTargetEdit(Consumer<T> edit);
 
 	public void performAndPropagateSourceEdit(Consumer<S> edit);
+	
+	public void performTargetEdit(Consumer<T> edit);
+
+	public void performSourceEdit(Consumer<S> edit);
 
 	public void setConfigurator(Configurator<D> configurator);
 

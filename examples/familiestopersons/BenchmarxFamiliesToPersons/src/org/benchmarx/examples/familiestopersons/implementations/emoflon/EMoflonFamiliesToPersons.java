@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.moflon.tgg.algorithm.configuration.RuleResult;
 import org.moflon.tgg.algorithm.synchronization.SynchronizationHelper;
@@ -133,8 +134,11 @@ public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, Perso
 		Resource resSource = set.createResource(srcURI);
 		Resource resTarget = set.createResource(trgURI);
 		
-		resSource.getContents().add(getSourceModel());
-		resTarget.getContents().add(getTargetModel());
+		EObject colSource = EcoreUtil.copy(getSourceModel());
+		EObject colTarget = EcoreUtil.copy(getTargetModel());
+		
+		resSource.getContents().add(colSource);
+		resTarget.getContents().add(colTarget);
 		
 		try {
 			resSource.save(null);
@@ -144,5 +148,15 @@ public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, Perso
 			e.printStackTrace();
 		}
 		
+	}
+	
+	@Override
+	public void performTargetEdit(Consumer<PersonRegister> edit) {
+		edit.accept(getTargetModel());
+	}
+
+	@Override
+	public void performSourceEdit(Consumer<FamilyRegister> edit) {
+		edit.accept(getSourceModel());
 	}
 }

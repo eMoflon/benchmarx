@@ -156,5 +156,15 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 	public void saveModels(String name) {
 		
 	}
+	
+	@Override
+	public void performTargetEdit(Consumer<PersonRegister> edit) {
+		
+	}
+
+	@Override
+	public void performSourceEdit(Consumer<FamilyRegister> edit) {
+		
+	}
 }
 
