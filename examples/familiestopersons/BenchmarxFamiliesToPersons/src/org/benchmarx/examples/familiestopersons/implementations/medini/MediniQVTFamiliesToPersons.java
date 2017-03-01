@@ -3,6 +3,7 @@ package org.benchmarx.examples.familiestopersons.implementations.medini;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.io.Reader;
 import java.util.ArrayList;
@@ -13,15 +14,20 @@ import java.util.function.Consumer;
 import org.apache.commons.io.output.NullOutputStream;
 import org.benchmarx.BXToolForEMF;
 import org.benchmarx.Configurator;
+import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersonsConfig.UUIDResourceFactoryImpl;
+import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersonsConfig.UUIDXMIResourceImpl;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 import Families.FamiliesFactory;
 import Families.FamiliesPackage;
@@ -50,6 +56,52 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 	private static final String bwdDir = "famDB";
 	
 	private static final String RESULTPATH = "results/medini";
+	
+	/**
+	 * An extension of the standard XMIResourceFactory
+	 * that allows the creation of XMIResources using UUIDs
+	 * @author tbuchmann
+	 *
+	 */
+	class UUIDResourceFactoryImpl extends XMIResourceFactoryImpl {
+
+	    public UUIDResourceFactoryImpl() {
+	        super();
+	    }
+
+	    @Override
+	    public Resource createResource(URI uri) {
+	        return new UUIDXMIResourceImpl(uri);
+	    }
+	}
+
+	/**
+	 * A simple extension of the standard XMIResource
+	 * providing UUIDs.
+	 *
+	 * usage: Register UUIDResourceFactoryImpl
+	 * ResourceSet set = new ResourceSetImpl();
+	 * set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new UUIDResourceFactoryImpl());
+	 *
+	 * @author tbuchmann
+	 *
+	 */
+	class UUIDXMIResourceImpl extends XMIResourceImpl implements Resource {
+
+	    public UUIDXMIResourceImpl() {
+	        super();
+	    }
+
+	    public UUIDXMIResourceImpl(URI uri) {
+	        super(uri);
+	    }
+
+	    @Override
+	    protected boolean useUUIDs() {
+	        return true;
+	    }
+	} 
+
 
 	@Override
 	public String getName() {
@@ -223,6 +275,25 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 	}
 	
 	public void saveModels(String name) {
+		ResourceSet set = new ResourceSetImpl();
+		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
+		URI srcURI = URI.createFileURI(RESULTPATH + "/" + name + "Family.xmi");
+		URI trgURI = URI.createFileURI(RESULTPATH + "/" + name + "Person.xmi");
+		Resource resSource = set.createResource(srcURI);
+		Resource resTarget = set.createResource(trgURI);
 		
+		Collection<EObject> colSource = EcoreUtil.copyAll(source.getContents());
+		Collection<EObject> colTarget = EcoreUtil.copyAll(target.getContents());
+		
+		resSource.getContents().add(colSource.iterator().next());
+		resTarget.getContents().add(colTarget.iterator().next());
+		
+		try {
+			resSource.save(null);
+			resTarget.save(null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}			
 	}
 }

@@ -49,7 +49,8 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 				.execute(helperFamily::createFatherNed)
 				.andThen(helperFamily::createMotherMaude)
 				.andThen(helperFamily::createSonTodd));
-		//------------		
+		//------------
+		tool.saveModels("AfterIncrInsert");
 		util.assertPostcondition("FamilyAfterInsertion", "PersonAfterInsertion");
 	}
 	
@@ -81,6 +82,7 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::deleteFirstSonBart));
 		//------------
+		tool.saveModels("AfterIncrDelete");
 		util.assertPostcondition("FamilyAfterDeletion", "PersonAfterDeletion");
 	}
 	
@@ -111,6 +113,7 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::renameSimpsonToBouvier));
 		//------------
+		tool.saveModels("AfterIncrRename");
 		util.assertPostcondition("FamilyAfterRename", "PersonAfterRename");
 	}
 	
@@ -143,6 +146,7 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 				.execute(helperFamily::moveLisa)
 				.andThen(helperFamily::moveMarge));
 		//------------
+		tool.saveModels("AfterIncrMove");
 		util.assertPostcondition("FamilyAfterMove", "PersonAfterMove");
 	}
 	
@@ -175,6 +179,7 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 				.execute(helperFamily::deleteFatherHomer)
 				.andThen(helperFamily::createFatherHomer));
 		//------------
+		tool.saveModels("AfterIncrMixed");
 		util.assertPostcondition("FamilyAfterMixed", "PersonAfterMixed");
 	}
 
