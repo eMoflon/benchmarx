@@ -124,6 +124,13 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	
 	@Override
 	public void initiateSynchronisationDialogue() {
+		// delete content of traces folder
+		File tracesFolder = new File("./src/org/benchmarx/examples/familiestopersons/implementations/medini/base/traces");
+		final File[] files = tracesFolder.listFiles();
+		for (File f : files) {
+			f.delete();
+		}
+		
 		// Initialise resource set of models
 		this.resourceSet = new ResourceSetImpl();
 		
