@@ -29,12 +29,16 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 				.andThen(helperFamily::createFlandersFamily)
 				.andThen(helperFamily::createSonRod)
 				.andThen(helperFamily::createSimpsonFamily)
-				.andThen(helperFamily::createFatherBart)
-				.andThen(helperFamily::createNewFamilySimpsonWithMembers)
-				.andThen(helperFamily::createSonBart));
+				.andThen(helperFamily::createFatherBart));
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfRod);
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfFatherBart);
+		tool.performAndPropagateSourceEdit(helperFamily::createNewFamilySimpsonWithMembers);
+		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
+		tool.performAndPropagateSourceEdit(helperFamily::createSonBart);
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfYoungerBart);
 		
 		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
-		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
+		
 		/**
 		 * Note: medini QVT fails here for an unknown reason
 		 * it seems that the propagation of the target delta (which should not affect the family model)
@@ -64,13 +68,15 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 				.andThen(helperFamily::createFlandersFamily)
 				.andThen(helperFamily::createSonRod)
 				.andThen(helperFamily::createSimpsonFamily)
-				.andThen(helperFamily::createFatherBart)
-				.andThen(helperFamily::createNewFamilySimpsonWithMembers)
-				.andThen(helperFamily::createSonBart));
+				.andThen(helperFamily::createFatherBart));
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfRod);
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfFatherBart);
+		tool.performAndPropagateSourceEdit(helperFamily::createNewFamilySimpsonWithMembers);
+		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
+		tool.performAndPropagateSourceEdit(helperFamily::createSonBart);
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfYoungerBart);
 		
 		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
-		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
-		tool.saveModels("IncrDeleteAfterBirthdayChange");
 		//------------
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::deleteFirstSonBart));
@@ -87,19 +93,20 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	@Test
 	public void testIncrementalRename() {
 		tool.initiateSynchronisationDialogue();
-		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
 				.andThen(helperFamily::createSonRod)
 				.andThen(helperFamily::createSimpsonFamily)
-				.andThen(helperFamily::createFatherBart)
-				.andThen(helperFamily::createNewFamilySimpsonWithMembers)
-				.andThen(helperFamily::createSonBart));
+				.andThen(helperFamily::createFatherBart));
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfRod);
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfFatherBart);
+		tool.performAndPropagateSourceEdit(helperFamily::createNewFamilySimpsonWithMembers);
+		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
+		tool.performAndPropagateSourceEdit(helperFamily::createSonBart);
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfYoungerBart);
 		
 		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
-		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
 		//------------
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::renameSimpsonToBouvier));
@@ -117,19 +124,20 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	@Test
 	public void testIncrementalMove() {
 		tool.initiateSynchronisationDialogue();
-		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
 				.andThen(helperFamily::createSonRod)
 				.andThen(helperFamily::createSimpsonFamily)
-				.andThen(helperFamily::createFatherBart)
-				.andThen(helperFamily::createNewFamilySimpsonWithMembers)
-				.andThen(helperFamily::createSonBart));
+				.andThen(helperFamily::createFatherBart));
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfRod);
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfFatherBart);
+		tool.performAndPropagateSourceEdit(helperFamily::createNewFamilySimpsonWithMembers);
+		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
+		tool.performAndPropagateSourceEdit(helperFamily::createSonBart);
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfYoungerBart);
 		
 		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
-		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
 		//------------
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::moveLisa)
@@ -148,19 +156,20 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	@Test
 	public void testIncrementalMixed() {
 		tool.initiateSynchronisationDialogue();
-		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
 				.andThen(helperFamily::createSonRod)
 				.andThen(helperFamily::createSimpsonFamily)
-				.andThen(helperFamily::createFatherBart)
-				.andThen(helperFamily::createNewFamilySimpsonWithMembers)
-				.andThen(helperFamily::createSonBart));
+				.andThen(helperFamily::createFatherBart));
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfRod);
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfFatherBart);
+		tool.performAndPropagateSourceEdit(helperFamily::createNewFamilySimpsonWithMembers);
+		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
+		tool.performAndPropagateSourceEdit(helperFamily::createSonBart);
+		tool.performAndPropagateTargetEdit(helperPerson::setBirthdayOfYoungerBart);
 		
 		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
-		tool.performAndPropagateTargetEdit(helperPerson::changeAllBirthdays);
 		//------------
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::deleteFatherHomer)

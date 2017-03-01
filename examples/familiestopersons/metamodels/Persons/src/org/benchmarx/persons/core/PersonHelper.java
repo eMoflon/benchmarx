@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import Persons.Person;
@@ -98,6 +100,17 @@ public class PersonHelper {
 		person1.setBirthday(date);
 	}
 	
+	public void setBirthdayOfFatherBart(PersonRegister register) {
+		Calendar cal = Calendar.getInstance();
+		Date date;
+		
+		Person bart = getFromRegister("Simpson, Bart", register);
+		
+		cal.set(2013, Calendar.MARCH, 9, 10, 11, 12);
+		date = cal.getTime();
+		bart.setBirthday(date);
+	}
+	
 	public void setBirthdaysOfSimpson(PersonRegister register) {
 		Calendar cal = Calendar.getInstance();
 		Date date;
@@ -122,12 +135,14 @@ public class PersonHelper {
 		person3.setBirthday(date);
 		*/
 		List<Person> barts = getAllFromRegister("Simpson, Bart", register);
-		int i = 9;
+		int i = 10;
+		Date defaultDate = (Date) EcoreFactory.eINSTANCE.createFromString(EcorePackage.eINSTANCE.getEDate(), "0000-1-1");
 		for (Person p : barts) {
-			cal.set(2013, Calendar.MARCH, i, 10, 11, 12); 
-			date = cal.getTime();
-			p.setBirthday(date);
-			i++;
+			if (p.getBirthday().equals(defaultDate)) {
+				cal.set(2013, Calendar.MARCH, 10, 10, 11, 12); 
+				date = cal.getTime();
+				p.setBirthday(date);
+			}
 		}
 		
 		Person person4 = getFromRegister("Simpson, Lisa", register);
@@ -141,6 +156,20 @@ public class PersonHelper {
 		cal.set(2013, Calendar.MARCH, 7, 10, 11, 12); 
 		date = cal.getTime();
 		person5.setBirthday(date);
+	}
+	
+	public void setBirthdayOfYoungerBart(PersonRegister register) {
+		Calendar cal = Calendar.getInstance();
+		Date date;
+		List<Person> barts = getAllFromRegister("Simpson, Bart", register);	
+		Date defaultDate = (Date) EcoreFactory.eINSTANCE.createFromString(EcorePackage.eINSTANCE.getEDate(), "0000-1-1");
+		for (Person p : barts) {
+			if (p.getBirthday().equals(defaultDate)) {
+				cal.set(2013, Calendar.MARCH, 11, 10, 11, 12); 
+				date = cal.getTime();
+				p.setBirthday(date);
+			}
+		}
 	}
 	
 	public void firstNameChangeOfHomer(PersonRegister register) {
