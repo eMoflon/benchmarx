@@ -28,7 +28,7 @@ public interface BXTool<S, T, D> {
 
 	public void performIdleSourceEdit(Consumer<S> edit);
 
-	public void setConfigurator(Configurator<D> configurator);
+	public void setConfigurator(Configurator<D> configurator);	
 
 	public void assertPostcondition(S source, T target);
 	

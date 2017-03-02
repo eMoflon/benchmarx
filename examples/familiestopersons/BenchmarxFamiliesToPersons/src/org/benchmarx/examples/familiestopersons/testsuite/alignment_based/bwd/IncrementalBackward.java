@@ -27,7 +27,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 * <b>Features</b>: bwd, add, fixed
 	 */
 	@Test
-	public void testIncrementalInserts() {
+	public void testIncrementalInsertsFixedConfig() {
 		tool.initiateSynchronisationDialogue();
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
@@ -43,6 +43,64 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 		util.assertPostcondition("FamilyAfterBwdInsertion1", "PersonAfterBwdInsertion1");
 		tool.performAndPropagateTargetEdit(helperPerson::createSeymour);
 		util.assertPostcondition("FamilyAfterBwdInsertion2", "PersonAfterBwdInsertion2");
+		//------------			
+	}
+	
+	/**
+	 * <b>Test</b> for inserting of a Persons in a PersonRegister after the initial
+	 * register has been transformed into a family model.<br/>
+	 * <b>Expect</b> : FamilyRegister and Person model are structured as specified int he corresponding
+	 * assertPostcondition statements.<br/>
+	 * <b>Features</b>: bwd, add, fixed
+	 */
+	@Test
+	public void testIncrementalInsertsDynamicConfig() {
+		tool.initiateSynchronisationDialogue();
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.performAndPropagateTargetEdit(util
+					.execute(helperPerson::createHomer)
+					.andThen(helperPerson::createMaggie));	
+		tool.performIdleTargetEdit(helperPerson::setBirthdaysOfSimpson);
+		util.assertPrecondition("Pre_IncrBwdFamily", "Pre_IncrBwdPerson");
+
+		//------------		
+		tool.performAndPropagateTargetEdit(helperPerson::createSeymour);
+		util.assertPostcondition("FamilyAfterBwdInsertion1", "PersonAfterBwdInsertion1");
+		tool.performAndPropagateTargetEdit(helperPerson::createSeymour);
+		util.assertPostcondition("FamilyAfterBwdInsertion2", "PersonAfterBwdInsertion2");
+		
+		// now setting !e^p
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.performAndPropagateTargetEdit(helperPerson::createSeymour);
+		util.assertPostcondition("FamilyAfterBwdInsertion3", "PersonAfterBwdInsertion3");
+		
+		// now setting !e^!p
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.performAndPropagateTargetEdit(helperPerson::createSeymour);
+		util.assertPostcondition("FamilyAfterBwdInsertion4", "PersonAfterBwdInsertion4");
+		
+		// now setting e^p
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.performAndPropagateTargetEdit(helperPerson::createSeymour);
+		tool.saveModels("DynamicEandP");
+		util.assertPostcondition("FamilyAfterBwdInsertion5", "PersonAfterBwdInsertion5");
+		
+		// now setting e^!p
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.performAndPropagateTargetEdit(util
+				.execute(helperPerson::createBart)
+				.andThen(helperPerson::createLisa));
+		util.assertPostcondition("FamilyAfterBwdInsertion5", "PersonAfterBwdInsertion5");
 		//------------			
 	}
 

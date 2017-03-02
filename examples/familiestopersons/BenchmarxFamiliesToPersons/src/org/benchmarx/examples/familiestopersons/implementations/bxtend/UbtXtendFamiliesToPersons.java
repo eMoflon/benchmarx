@@ -1,5 +1,6 @@
 package org.benchmarx.examples.familiestopersons.implementations.bxtend;
 
+import java.io.IOException;
 import java.util.function.Consumer;
 
 import org.benchmarx.BXToolForEMF;
@@ -8,9 +9,11 @@ import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
@@ -30,6 +33,10 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 	private Configurator<Decisions> conf;
 	private Configurator<Decisions> defaultConf;
 	
+	//private Configurator<Decisions> configurator = new Configurator<Decisions>();
+	
+	private static final String RESULTPATH = "results/BXtend";
+	
 	public UbtXtendFamiliesToPersons() {
 		super(new FamiliesComparator(), new PersonsComparator());
 	}
@@ -41,6 +48,11 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 	
 	@Override
 	public void initiateSynchronisationDialogue() {
+		// Fix default preferences (which can be overwritten)
+		setConfigurator(new Configurator<Decisions>()
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true)
+		    .makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true));			
+		
 		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("family", new UUIDResourceFactoryImpl());
 		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("person", new UUIDResourceFactoryImpl());
 		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("corr", new UUIDResourceFactoryImpl());
@@ -91,16 +103,16 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 		if(defaultConf == null)
 			defaultConf = configurator;
 		conf = configurator;
-		try{
-			configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
-		} catch(IllegalArgumentException e) {
-			conf.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, defaultConf.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW));
-		}
-		try{
-			configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
-		} catch(IllegalArgumentException e) {
-			conf.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, defaultConf.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD));
-		}
+//		try{
+//			configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
+//		} catch(IllegalArgumentException e) {
+//			conf.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, defaultConf.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW));
+//		}
+//		try{
+//			configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
+//		} catch(IllegalArgumentException e) {
+//			conf.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, defaultConf.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD));
+//		}
 	}
 	
 	/**
@@ -152,8 +164,26 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 
 	@Override
 	public void saveModels(String name) {
-		// TODO Auto-generated method stub
+		ResourceSet set = new ResourceSetImpl();
+		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
+		URI srcURI = URI.createFileURI(RESULTPATH + "/" + name + "Family.xmi");
+		URI trgURI = URI.createFileURI(RESULTPATH + "/" + name + "Person.xmi");
+		Resource resSource = set.createResource(srcURI);
+		Resource resTarget = set.createResource(trgURI);
 		
+		EObject colSource = EcoreUtil.copy(getSourceModel());
+		EObject colTarget = EcoreUtil.copy(getTargetModel());
+		
+		resSource.getContents().add(colSource);
+		resTarget.getContents().add(colTarget);
+		
+		try {
+			resSource.save(null);
+			resTarget.save(null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}			
 	}
 	
 	@Override
@@ -165,4 +195,23 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
 		edit.accept(getSourceModel());
 	}
+	
+//	private void checkConfiguration() {
+//		try {
+//			configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
+//		}
+//		catch (IllegalArgumentException iae) {
+//			configurator.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+//		}
+//		try {
+//			configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
+//		}
+//		catch (IllegalArgumentException iae) {
+//			configurator.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true);
+//		}		
+//	}
+//	
+//	public Configurator<Decisions> getConfigurator() {
+//		return configurator;
+//	}
 }

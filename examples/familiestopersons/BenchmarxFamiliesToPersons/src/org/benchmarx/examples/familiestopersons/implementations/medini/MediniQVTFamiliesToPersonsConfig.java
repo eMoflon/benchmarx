@@ -54,7 +54,7 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	private FileReader qvtRuleSet;
 	private static final String fwdDir = "perDB";
 	private static final String bwdDir = "famDB";
-	private Configurator<Decisions> configurator;
+	private Configurator<Decisions> configurator = new Configurator<Decisions>();
 	
 	private static final String RESULTPATH = "results/mediniConfig";
 	
@@ -130,6 +130,9 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		for (File f : files) {
 			f.delete();
 		}
+		
+		// in case, no configuration is set, switch to default
+		checkConfiguration();
 		
 		// Initialise resource set of models
 		this.resourceSet = new ResourceSetImpl();
@@ -399,5 +402,24 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	@Override
 	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
 		edit.accept(getSourceModel());
+	}
+	
+	private void checkConfiguration() {
+		try {
+			configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
+		}
+		catch (IllegalArgumentException iae) {
+			configurator.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		}
+		try {
+			configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
+		}
+		catch (IllegalArgumentException iae) {
+			configurator.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true);
+		}		
+	}
+	
+	public Configurator<Decisions> getConfigurator() {
+		return configurator;
 	}
 }
