@@ -100,7 +100,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 		tool.performAndPropagateTargetEdit(util
 				.execute(helperPerson::createBart)
 				.andThen(helperPerson::createLisa));
-		util.assertPostcondition("FamilyAfterBwdInsertion5", "PersonAfterBwdInsertion5");
+		util.assertPostcondition("FamilyAfterBwdInsertion6", "PersonAfterBwdInsertion6");
 		//------------			
 	}
 
