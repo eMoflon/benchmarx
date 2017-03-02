@@ -51,6 +51,18 @@ public class FamilyHelper {
 		return lisa;		
 	}
 	
+	private FamilyMember getMaggie(FamilyRegister register) {
+		Family fam = getSimpsonFamily(register);
+		Optional<FamilyMember> mag = fam.getDaughters().stream()
+				.filter(f -> f.getName().equals("Maggie"))
+				.findAny();
+		
+		assertTrue(mag.isPresent());
+		FamilyMember maggie = mag.get();
+		assertTrue(maggie.getName().equals("Maggie"));
+		return maggie;		
+	}
+	
 	// helpers required for basic behavior
 	
 	public void createSkinnerFamily(FamilyRegister register) {
@@ -186,6 +198,12 @@ public class FamilyHelper {
 		Family fam = getFromRegister("Flanders", register);
 		FamilyMember lisa = getLisa(register);
 		fam.setMother(lisa);
+	}
+	
+	public void moveMaggieAndChangeRole(FamilyRegister register) {
+		Family fam = getFromRegister("Flanders", register);
+		FamilyMember maggie = getMaggie(register);
+		fam.getSons().add(maggie);
 	}
 	
 	public void moveMarge(FamilyRegister register) {

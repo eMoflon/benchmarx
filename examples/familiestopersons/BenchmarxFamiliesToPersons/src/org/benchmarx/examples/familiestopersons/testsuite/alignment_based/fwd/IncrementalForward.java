@@ -177,5 +177,36 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 		tool.saveModels("AfterIncrMixed");
 		util.assertPostcondition("FamilyAfterMixed", "PersonAfterMixed");
 	}
+	
+	/**
+	 * <b>Test</b> for moving a family member to a new family and changing its role from daughter to son
+	 * After creating the person register, set birthdates. Then move daughter Lisa to the Flanders family
+	 * as a son.
+	 * <b>Expect</b>: A new male person should be created in the PersonRegister, but the birthdate of Lisa
+	 * should be retained.
+	 * <b>Features</b>: fwd, structural, add+del, fixed 
+	 */
+	@Test
+	public void testIncrementalMoveRoleChange() {
+		tool.initiateSynchronisationDialogue();
+		tool.performAndPropagateSourceEdit(util
+				.execute(helperFamily::createSkinnerFamily)
+				.andThen(helperFamily::createFlandersFamily)
+				.andThen(helperFamily::createSonRod)
+				.andThen(helperFamily::createSimpsonFamily)
+				.andThen(helperFamily::createFatherBart));
+		tool.performTargetEdit(helperPerson::setBirthdayOfRod);
+		tool.performTargetEdit(helperPerson::setBirthdayOfFatherBart);
+		tool.performAndPropagateSourceEdit(helperFamily::createNewFamilySimpsonWithMembers);
+		tool.performTargetEdit(helperPerson::changeAllBirthdays);
+		tool.performAndPropagateSourceEdit(helperFamily::createSonBart);
+		tool.performTargetEdit(helperPerson::setBirthdayOfYoungerBart);
+		
+		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
+		//------------
+		tool.performAndPropagateSourceEdit(helperFamily::moveMaggieAndChangeRole);
+		//------------
+		util.assertPostcondition("FamilyAfterMoveRoleChange", "PersonAfterMoveRoleChange");
+	}
 
 }
