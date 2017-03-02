@@ -158,13 +158,13 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 	}
 	
 	@Override
-	public void performTargetEdit(Consumer<PersonRegister> edit) {
-		
+	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
+		performAndPropagateTargetEdit(edit);
 	}
 
 	@Override
-	public void performSourceEdit(Consumer<FamilyRegister> edit) {
-		
+	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
+		performAndPropagateSourceEdit(edit);
 	}
 }
 

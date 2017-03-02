@@ -151,12 +151,12 @@ public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, Perso
 	}
 	
 	@Override
-	public void performTargetEdit(Consumer<PersonRegister> edit) {
-		edit.accept(getTargetModel());
+	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
+		performAndPropagateTargetEdit(edit);
 	}
 
 	@Override
-	public void performSourceEdit(Consumer<FamilyRegister> edit) {
-		edit.accept(getSourceModel());
+	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
+		performAndPropagateSourceEdit(edit);
 	}
 }

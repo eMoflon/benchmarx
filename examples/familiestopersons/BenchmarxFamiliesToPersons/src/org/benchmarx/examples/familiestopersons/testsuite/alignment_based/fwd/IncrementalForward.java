@@ -30,12 +30,12 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 				.andThen(helperFamily::createSonRod)
 				.andThen(helperFamily::createSimpsonFamily)
 				.andThen(helperFamily::createFatherBart));
-		tool.performTargetEdit(helperPerson::setBirthdayOfRod);
-		tool.performTargetEdit(helperPerson::setBirthdayOfFatherBart);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfRod);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfFatherBart);
 		tool.performAndPropagateSourceEdit(helperFamily::createNewFamilySimpsonWithMembers);
-		tool.performTargetEdit(helperPerson::changeAllBirthdays);
+		tool.performIdleTargetEdit(helperPerson::changeAllBirthdays);
 		tool.performAndPropagateSourceEdit(helperFamily::createSonBart);
-		tool.performTargetEdit(helperPerson::setBirthdayOfYoungerBart);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfYoungerBart);
 		
 		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
 
@@ -65,12 +65,12 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 				.andThen(helperFamily::createSonRod)
 				.andThen(helperFamily::createSimpsonFamily)
 				.andThen(helperFamily::createFatherBart));
-		tool.performTargetEdit(helperPerson::setBirthdayOfRod);
-		tool.performTargetEdit(helperPerson::setBirthdayOfFatherBart);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfRod);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfFatherBart);
 		tool.performAndPropagateSourceEdit(helperFamily::createNewFamilySimpsonWithMembers);
-		tool.performTargetEdit(helperPerson::changeAllBirthdays);
+		tool.performIdleTargetEdit(helperPerson::changeAllBirthdays);
 		tool.performAndPropagateSourceEdit(helperFamily::createSonBart);
-		tool.performTargetEdit(helperPerson::setBirthdayOfYoungerBart);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfYoungerBart);
 		
 		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
 		//------------
@@ -96,12 +96,12 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 				.andThen(helperFamily::createSonRod)
 				.andThen(helperFamily::createSimpsonFamily)
 				.andThen(helperFamily::createFatherBart));
-		tool.performTargetEdit(helperPerson::setBirthdayOfRod);
-		tool.performTargetEdit(helperPerson::setBirthdayOfFatherBart);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfRod);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfFatherBart);
 		tool.performAndPropagateSourceEdit(helperFamily::createNewFamilySimpsonWithMembers);
-		tool.performTargetEdit(helperPerson::changeAllBirthdays);
+		tool.performIdleTargetEdit(helperPerson::changeAllBirthdays);
 		tool.performAndPropagateSourceEdit(helperFamily::createSonBart);
-		tool.performTargetEdit(helperPerson::setBirthdayOfYoungerBart);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfYoungerBart);
 		
 		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
 		//------------
@@ -128,12 +128,12 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 				.andThen(helperFamily::createSonRod)
 				.andThen(helperFamily::createSimpsonFamily)
 				.andThen(helperFamily::createFatherBart));
-		tool.performTargetEdit(helperPerson::setBirthdayOfRod);
-		tool.performTargetEdit(helperPerson::setBirthdayOfFatherBart);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfRod);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfFatherBart);
 		tool.performAndPropagateSourceEdit(helperFamily::createNewFamilySimpsonWithMembers);
-		tool.performTargetEdit(helperPerson::changeAllBirthdays);
+		tool.performIdleTargetEdit(helperPerson::changeAllBirthdays);
 		tool.performAndPropagateSourceEdit(helperFamily::createSonBart);
-		tool.performTargetEdit(helperPerson::setBirthdayOfYoungerBart);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfYoungerBart);
 		
 		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
 		//------------
@@ -161,12 +161,12 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 				.andThen(helperFamily::createSonRod)
 				.andThen(helperFamily::createSimpsonFamily)
 				.andThen(helperFamily::createFatherBart));
-		tool.performTargetEdit(helperPerson::setBirthdayOfRod);
-		tool.performTargetEdit(helperPerson::setBirthdayOfFatherBart);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfRod);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfFatherBart);
 		tool.performAndPropagateSourceEdit(helperFamily::createNewFamilySimpsonWithMembers);
-		tool.performTargetEdit(helperPerson::changeAllBirthdays);
+		tool.performIdleTargetEdit(helperPerson::changeAllBirthdays);
 		tool.performAndPropagateSourceEdit(helperFamily::createSonBart);
-		tool.performTargetEdit(helperPerson::setBirthdayOfYoungerBart);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfYoungerBart);
 		
 		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
 		//------------
@@ -195,12 +195,12 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 				.andThen(helperFamily::createSonRod)
 				.andThen(helperFamily::createSimpsonFamily)
 				.andThen(helperFamily::createFatherBart));
-		tool.performTargetEdit(helperPerson::setBirthdayOfRod);
-		tool.performTargetEdit(helperPerson::setBirthdayOfFatherBart);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfRod);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfFatherBart);
 		tool.performAndPropagateSourceEdit(helperFamily::createNewFamilySimpsonWithMembers);
-		tool.performTargetEdit(helperPerson::changeAllBirthdays);
+		tool.performIdleTargetEdit(helperPerson::changeAllBirthdays);
 		tool.performAndPropagateSourceEdit(helperFamily::createSonBart);
-		tool.performTargetEdit(helperPerson::setBirthdayOfYoungerBart);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfYoungerBart);
 		
 		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
 		//------------

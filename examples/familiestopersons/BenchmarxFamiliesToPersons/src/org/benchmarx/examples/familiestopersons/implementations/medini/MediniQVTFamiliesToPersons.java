@@ -306,12 +306,12 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 	}
 
 	@Override
-	public void performTargetEdit(Consumer<PersonRegister> edit) {
+	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
 		edit.accept(getTargetModel());
 	}
 
 	@Override
-	public void performSourceEdit(Consumer<FamilyRegister> edit) {
+	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
 		edit.accept(getSourceModel());
 	}
 }
