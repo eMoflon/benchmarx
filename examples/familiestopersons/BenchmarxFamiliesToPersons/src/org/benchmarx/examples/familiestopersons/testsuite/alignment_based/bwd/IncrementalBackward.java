@@ -116,11 +116,14 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
-		tool.performAndPropagateTargetEdit(util
-					.execute(helperPerson::createHomer)
-					.andThen(helperPerson::createMaggie));	
+		tool.performAndPropagateTargetEdit(helperPerson::createHomer);
+		// reconfigure, to allow the creation of a child in the existing family
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.performAndPropagateTargetEdit(helperPerson::createMaggie);	
 		tool.performIdleTargetEdit(helperPerson::setBirthdaysOfSimpson);
-		util.assertPrecondition("Pre_IncrBwdFamily", "Pre_IncrBwdPerson");
+		util.assertPrecondition("Pre_IncrBwdFamilyFatherChild", "Pre_IncrBwdPerson");
 		
 		//------------		
 		tool.performAndPropagateTargetEdit(helperPerson::deleteHomer);
