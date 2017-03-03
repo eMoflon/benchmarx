@@ -51,7 +51,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 * register has been transformed into a family model.<br/>
 	 * <b>Expect</b> : FamilyRegister and Person model are structured as specified int he corresponding
 	 * assertPostcondition statements.<br/>
-	 * <b>Features</b>: bwd, add, fixed
+	 * <b>Features</b>: bwd, add, runtime
 	 */
 	@Test
 	public void testIncrementalInsertsDynamicConfig() {
@@ -102,6 +102,31 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 				.andThen(helperPerson::createLisa));
 		util.assertPostcondition("FamilyAfterBwdInsertion6", "PersonAfterBwdInsertion6");
 		//------------			
+	}
+	
+	/**
+	 * <b>Test</b> for deleting Persons from the PersonRegister.<br/>
+	 * <b>Expect</b> : FamilyRegister and Person model are structured as specified in the corresponding
+	 * assertPostcondition statements.<br/>
+	 * <b>Features</b>: bwd, del
+	 */
+	@Test
+	public void testIncrementalDeletions() {
+		tool.initiateSynchronisationDialogue();
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.performAndPropagateTargetEdit(util
+					.execute(helperPerson::createHomer)
+					.andThen(helperPerson::createMaggie));	
+		tool.performIdleTargetEdit(helperPerson::setBirthdaysOfSimpson);
+		util.assertPrecondition("Pre_IncrBwdFamily", "Pre_IncrBwdPerson");
+		
+		//------------		
+		tool.performAndPropagateTargetEdit(helperPerson::deleteHomer);
+		tool.performAndPropagateTargetEdit(helperPerson::deleteMaggie);
+		util.assertPostcondition("FamilyAfterBwdDeletion", "PersonAfterBwdDeletion");
+		//------------
 	}
 
 }

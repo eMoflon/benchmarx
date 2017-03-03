@@ -238,7 +238,12 @@ public class PersonHelper {
 	public void deleteHomer(PersonRegister register) {
 		Person person = getFromRegister("Simpson, Homer", register);
 		EcoreUtil.delete(person);
-	}			
+	}
+	
+	public void deleteMaggie(PersonRegister register) {
+		Person person = getFromRegister("Simpson, Maggie", register);
+		EcoreUtil.delete(person);
+	}
 	
 	public void familyNameChangeShweta(PersonRegister register) {
 		Person person = getFromRegister("Bachchan, Shweta", register);
