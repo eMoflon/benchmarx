@@ -27,7 +27,7 @@ public class CreateMultiFamilyMembers extends FamiliesToPersonsTestCase {
 		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
 		tool.performAndPropagateSourceEdit(helperFamily::createFatherHomer);
-		tool.performAndPropagateTargetEdit(helperPerson::birthdayChangeOfHomer);
+//		tool.performAndPropagateTargetEdit(helperPerson::birthdayChangeOfHomer);
 		
 		util.assertPrecondition("Pre_NameChangeFamilyMember", "PersonBirthdayChange");
 		//------------

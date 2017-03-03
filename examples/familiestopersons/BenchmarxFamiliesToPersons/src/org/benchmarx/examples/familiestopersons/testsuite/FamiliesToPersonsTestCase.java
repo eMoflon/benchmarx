@@ -54,10 +54,10 @@ public abstract class FamiliesToPersonsTestCase {
 		return Arrays.asList(
 				new EMoflonFamiliesToPersons()
 				,
-				new MediniQVTFamiliesToPersons()
-				,
-				new MediniQVTFamiliesToPersonsConfig()
-				,
+//				new MediniQVTFamiliesToPersons()
+//				,
+//				new MediniQVTFamiliesToPersonsConfig()
+//				,
 //				new BiGULFamiliesToPersons()
 //				,
 				new UbtXtendFamiliesToPersons()

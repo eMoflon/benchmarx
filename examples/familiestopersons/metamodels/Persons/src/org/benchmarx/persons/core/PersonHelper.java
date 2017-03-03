@@ -29,6 +29,18 @@ public class PersonHelper {
 			return null;
 	}
 	
+	private Person getFromRegister(String name, Date birthdate, PersonRegister register) {
+		Optional<Person> person = register.getPersons().stream()
+				.filter(p -> (p.getName().equals(name) && p.getBirthday().equals(birthdate)))
+				.findAny();
+				
+		//assertTrue(person.isPresent());
+		if (person.isPresent())
+			return person.get();
+		else 
+			return null;
+	}
+	
 	private List<Person> getAllFromRegister(String name, PersonRegister register) {
 		List<Person> result = register.getPersons().stream()
 				.filter(p -> p.getName().equals(name))
@@ -86,7 +98,7 @@ public class PersonHelper {
 	}
 	
 	
-	public void birthdayChangeOfHomer(PersonRegister register) {
+	public void setBirthdayOfHomer(PersonRegister register) {
 		Person person = getFromRegister("Simpson, Homer", register);
 		
 		Calendar cal = Calendar.getInstance();
@@ -109,12 +121,22 @@ public class PersonHelper {
 	public void setBirthdayOfFatherBart(PersonRegister register) {
 		Calendar cal = Calendar.getInstance();
 		Date date;
+				
+//		Person bart = getFromRegister("Simpson, Bart", register);
+//		cal.set(2013, Calendar.MARCH, 9, 10, 11, 12);
+//		date = cal.getTime();
+//		bart.setBirthday(date);
 		
-		Person bart = getFromRegister("Simpson, Bart", register);
-		
-		cal.set(2013, Calendar.MARCH, 9, 10, 11, 12);
-		date = cal.getTime();
-		bart.setBirthday(date);
+		List<Person> barts = getAllFromRegister("Simpson, Bart", register);
+		Date defaultDate = (Date) EcoreFactory.eINSTANCE.createFromString(EcorePackage.eINSTANCE.getEDate(), "0000-1-1");
+		for (Person bart : barts) {
+			if  (bart.getBirthday().equals(defaultDate)) {
+				cal.set(2013, Calendar.MARCH, 9, 10, 11, 12);
+				date = cal.getTime();
+				bart.setBirthday(date);
+				return;
+			}
+		}
 	}
 	
 	public void setBirthdaysOfSimpson(PersonRegister register) {
@@ -183,52 +205,51 @@ public class PersonHelper {
 		person.setName("Simpson, HomerX");
 	}
 	
-	public void firstNameChangeOfBart(PersonRegister register) {
+	public void firstNameChangeOfBart(PersonRegister register) {		
 		Calendar cal = Calendar.getInstance();
-		cal.set(2013, Calendar.JANUARY, 9, 10, 11, 12); 
+		cal.set(2013, Calendar.MARCH, 10, 10, 11, 12); 
 		Date date = cal.getTime();
 		
-		for(int i =0;i<register.getPersons().size();i++)
-		{
-				if(register.getPersons().get(i).getBirthday().toString().equals(date.toString()))
-				{
-					register.getPersons().get(i).setName("Simpson, BartX");
-				}
-		}
-		
-	}
-
-	public void familyNameChangeOfLisa(PersonRegister register) {
-		Person person = getFromRegister("Simpson, Lisa", register);
-		person.setName("Jetson, Lisa");
-	}
-	
-	public void familyNameChangeOfShweta(PersonRegister register) {
-		Person person = getFromRegister("Bachchan, Shweta", register);
-		person.setName("Nanda, Shweta");
-	}
-	
-	public void fullNameChangeOfHomer(PersonRegister register) {
-		Person person = getFromRegister("Simpson, Homer", register);
-		person.setName("Jetson, Elroy");
-	}
-	
-	public void fullNameChangeOfBart(PersonRegister register) {
-		Person person = getFromRegister("Simpson, Bart", register);
-		person.setName("Orbit, Henry");
+		List<Person> barts = getAllFromRegister("Simpson, Bart", register);
+		for (Person bart : barts) {
+			if (bart.getBirthday().getDay() == date.getDay())
+				bart.setName("Simpson, Bartholomew");
+		}					
 	}
 	
 	public void fullNameChangeOfOtherBart(PersonRegister register) {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2013, Calendar.JANUARY, 9, 10, 11, 12);
+		cal.set(2013, Calendar.MARCH, 11, 10, 11, 12); 
 		Date date = cal.getTime();
-
-		for (int i = 0; i < register.getPersons().size(); i++) {
-			if (register.getPersons().get(i).getBirthday().toString().equals(date.toString())) {
-				register.getPersons().get(i).setName("Orbit, Henry");
-			}
-		}
+		
+		List<Person> barts = getAllFromRegister("Simpson, Bart", register);
+		for (Person bart : barts) {
+			if (bart.getBirthday().getDay() == date.getDay())
+				bart.setName("Skinner, Seymour");			
+		}	
 	}
+	
+	public void fullNameChangeOfFatherBart(PersonRegister register) {
+		Calendar cal = Calendar.getInstance();
+		cal.set(2013, Calendar.MARCH, 9, 10, 11, 12); 
+		Date date = cal.getTime();
+		
+		List<Person> barts = getAllFromRegister("Simpson, Bart", register);
+		for (Person bart : barts) {
+			if (bart.getBirthday().getDay() == date.getDay())
+				bart.setName("Flanders, Todd");
+		}	
+	}
+
+	public void familyNameChangeOfLisa(PersonRegister register) {
+		Person person = getFromRegister("Simpson, Lisa", register);
+		person.setName("Flanders, Lisa");
+	}
+	
+	public void fullNameChangeOfMarge(PersonRegister register) {
+		Person person = getFromRegister("Simpson, Marge", register);
+		person.setName("Flanders, Maude");
+	}		
 	
 	public void deleteMarge(PersonRegister register) {
 		Person person = getFromRegister("Simpson, Marge", register);
@@ -244,11 +265,5 @@ public class PersonHelper {
 		Person person = getFromRegister("Simpson, Maggie", register);
 		EcoreUtil.delete(person);
 	}
-	
-	public void familyNameChangeShweta(PersonRegister register) {
-		Person person = getFromRegister("Bachchan, Shweta", register);
-		person.setName("Nanda, Shweta");
-	}
-
 
 }

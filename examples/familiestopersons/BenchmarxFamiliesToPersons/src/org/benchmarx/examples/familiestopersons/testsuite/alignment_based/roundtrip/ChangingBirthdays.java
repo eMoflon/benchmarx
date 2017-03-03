@@ -28,7 +28,7 @@ public class ChangingBirthdays extends FamiliesToPersonsTestCase {
 		
 		util.assertPrecondition("Pre_OneFamilyWithOneFamilyMember", "Pre_PersonBirthdayChange");
 		//-----------------------------
-		tool.performAndPropagateTargetEdit((helperPerson::birthdayChangeOfHomer));
+//		tool.performAndPropagateTargetEdit((helperPerson::birthdayChangeOfHomer));
 		//-----------------------------
 		util.assertPostcondition("OneFamilyWithOneFamilyMember","PersonBirthdayChange");
 	}
