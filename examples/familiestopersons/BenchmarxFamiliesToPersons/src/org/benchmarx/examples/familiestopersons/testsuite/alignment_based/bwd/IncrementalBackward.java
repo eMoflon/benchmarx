@@ -89,8 +89,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
-		tool.performAndPropagateTargetEdit(helperPerson::createSeymour);
-		tool.saveModels("DynamicEandP");
+		tool.performAndPropagateTargetEdit(helperPerson::createSeymour);		
 		util.assertPostcondition("FamilyAfterBwdInsertion5", "PersonAfterBwdInsertion5");
 		
 		// now setting e^!p

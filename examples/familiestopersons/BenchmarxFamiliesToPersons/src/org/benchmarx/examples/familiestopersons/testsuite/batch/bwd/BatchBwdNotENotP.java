@@ -8,9 +8,9 @@ import org.junit.Test;
 import Families.FamilyRegister;
 import Persons.PersonRegister;
 
-public class CreatingPeopleNotENotP extends FamiliesToPersonsTestCase {
+public class BatchBwdNotENotP extends FamiliesToPersonsTestCase {
 
-	public CreatingPeopleNotENotP(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
+	public BatchBwdNotENotP(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
 		super(tool);
 	}
 	

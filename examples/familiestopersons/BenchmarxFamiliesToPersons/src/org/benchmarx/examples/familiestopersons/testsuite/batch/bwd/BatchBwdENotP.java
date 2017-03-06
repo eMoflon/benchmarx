@@ -8,9 +8,9 @@ import org.junit.Test;
 import Families.FamilyRegister;
 import Persons.PersonRegister;
 
-public class CreatingPeopleNotEAndP extends FamiliesToPersonsTestCase {
+public class BatchBwdENotP extends FamiliesToPersonsTestCase {
 
-	public CreatingPeopleNotEAndP(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
+	public BatchBwdENotP(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
 		super(tool);
 	}
 	
@@ -26,27 +26,27 @@ public class CreatingPeopleNotEAndP extends FamiliesToPersonsTestCase {
 		// No precondition!
 		// ---------------------------------
 		util.configure()
-			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
 		tool.performAndPropagateTargetEdit(helperPerson::createRod);
 		// ---------------------------------
-		util.assertPostcondition("OneFamilyWithOneFamilyMember", "PersonOneMaleMember"); 
+		util.assertPostcondition("OneFamilyWithOneFamilyMemberSon", "PersonOneMaleMember"); 
 	}
 	
 	/**
 	 * <b>Test</b> for creation of family members in existing families.<br/>
 	 * <b>Expect</b> the creation of a family member in the families model with
-	 * the given first name, in a suitable family.  Creation of Parents is preferred.<br/>
+	 * the given first name, in a suitable family.  Creation of Children is preferred.<br/>
 	 * <b>Features</b>: bwd, runtime
 	 */
 	@Test
-	public void testCreateFamilyMembersInNewFamilyAsParents() {
+	public void testCreateFamilyMembersInExistingFamilyAsChildren() {
 		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		// ---------------------------------
 		util.configure()
-			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
 		tool.performAndPropagateTargetEdit(util
 				.execute(helperPerson::createRod)
 				.andThen(helperPerson::createHomer)
@@ -55,17 +55,17 @@ public class CreatingPeopleNotEAndP extends FamiliesToPersonsTestCase {
 				.andThen(helperPerson::createLisa)
 				.andThen(helperPerson::createMaggie));
 		// ---------------------------------
-		util.assertPostcondition("MultiFamiliesParents", "PersonsMulti"); 
+		util.assertPostcondition("FamiliesWithChildrenOnly", "PersonsMulti"); 
 	}
 	
 	@Test
-	public void testCreateDuplicateFamilyMembersInNewFamilyAsParents() {
+	public void testCreateDuplicateFamilyMembersInExistingFamilyAsChildren() {
 		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		// ---------------------------------
 		util.configure()
-			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
 		tool.performAndPropagateTargetEdit(util
 				.execute(helperPerson::createRod)
 				.andThen(helperPerson::createBart)
@@ -76,7 +76,7 @@ public class CreatingPeopleNotEAndP extends FamiliesToPersonsTestCase {
 				.andThen(helperPerson::createLisa)
 				.andThen(helperPerson::createMaggie));
 		// ---------------------------------
-		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti"); 
+		util.assertPostcondition("FamilyWithDuplicateChildrenOnly", "PersonsDuplicateMulti"); 
 	}
 	
 	@Test
@@ -85,8 +85,8 @@ public class CreatingPeopleNotEAndP extends FamiliesToPersonsTestCase {
 		// No precondition!
 		// ---------------------------------
 		util.configure()
-			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
 		tool.performAndPropagateTargetEdit(util
 				.execute(helperPerson::createRod)
 				.andThen(helperPerson::createBart)
@@ -97,10 +97,10 @@ public class CreatingPeopleNotEAndP extends FamiliesToPersonsTestCase {
 				.andThen(helperPerson::createLisa)
 				.andThen(helperPerson::createMaggie));
 		// ---------------------------------
-		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti"); 
+		util.assertPostcondition("FamilyWithDuplicateChildrenOnly", "PersonsDuplicateMulti"); 
 		
 		tool.performAndPropagateTargetEdit(helperPerson::idleDelta);
-		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti");
+		util.assertPostcondition("FamilyWithDuplicateChildrenOnly", "PersonsDuplicateMulti");
 	}
 	
 	@Test
@@ -109,8 +109,8 @@ public class CreatingPeopleNotEAndP extends FamiliesToPersonsTestCase {
 		// No precondition!
 		// ---------------------------------
 		util.configure()
-			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
 		tool.performAndPropagateTargetEdit(util
 				.execute(helperPerson::createRod)
 				.andThen(helperPerson::createBart)
@@ -121,9 +121,9 @@ public class CreatingPeopleNotEAndP extends FamiliesToPersonsTestCase {
 				.andThen(helperPerson::createLisa)
 				.andThen(helperPerson::createMaggie));
 		// ---------------------------------
-		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti"); 
+		util.assertPostcondition("FamilyWithDuplicateChildrenOnly", "PersonsDuplicateMulti"); 
 		
 		tool.performAndPropagateTargetEdit(helperPerson::hippocraticDelta);
-		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti2");
+		util.assertPostcondition("FamilyWithDuplicateChildrenOnly", "PersonsDuplicateMulti2");
 	}
 }

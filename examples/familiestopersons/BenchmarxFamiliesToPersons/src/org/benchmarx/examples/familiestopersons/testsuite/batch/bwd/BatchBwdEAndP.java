@@ -15,9 +15,9 @@ import Persons.PersonRegister;
  * configuration, which allows to deterministically execute the backward
  * transformation. (c.f., Test Case 2d on GitHub).
  */
-public class CreatingPeopleEAndP extends FamiliesToPersonsTestCase {
+public class BatchBwdEAndP extends FamiliesToPersonsTestCase {
 
-	public CreatingPeopleEAndP(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
+	public BatchBwdEAndP(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
 		super(tool);
 	}
 	
