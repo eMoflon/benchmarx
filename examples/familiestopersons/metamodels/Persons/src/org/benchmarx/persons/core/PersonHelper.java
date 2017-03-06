@@ -278,5 +278,15 @@ public class PersonHelper {
 	public void idleDelta(PersonRegister register) {
 		
 	}
+	
+	public void hippocraticDelta(PersonRegister register) {
+		// change birthday for each person
+		for (Person p : register.getPersons()) {
+			Calendar cal = Calendar.getInstance();
+			cal.set(2013, Calendar.MARCH, 9, 10, 11, 12); 
+			Date date = cal.getTime();
+			p.setBirthday(date);
+		}
+	}
 
 }

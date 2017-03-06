@@ -223,6 +223,11 @@ public class FamilyHelper {
 		
 	}
 	
+	public void hippocraticDelta(FamilyRegister register) {
+		builder = new FamilyRegisterBuilder(register);
+		builder.family("Van Houten");
+	}
+	
 	
 //	public void familyFatherHomerNameChange(FamilyRegister register){
 //		Family family = getFromRegister("Simpson", register);

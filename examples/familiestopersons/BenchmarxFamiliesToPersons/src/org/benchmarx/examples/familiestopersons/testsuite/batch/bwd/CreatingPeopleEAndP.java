@@ -87,4 +87,23 @@ public class CreatingPeopleEAndP extends FamiliesToPersonsTestCase {
 		util.assertPostcondition("FamilyWithParentsOnly", "PersonsMultiDeterministic"); 
 	}
 	
+	@Test
+	public void testHippocraticness() {
+		tool.initiateSynchronisationDialogue();
+		// No precondition!
+		// ---------------------------------
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.performAndPropagateTargetEdit(util
+				.execute(helperPerson::createRod)
+				.andThen(helperPerson::createHomer)				
+				.andThen(helperPerson::createMarge));
+		// ---------------------------------
+		util.assertPostcondition("FamilyWithParentsOnly", "PersonsMultiDeterministic"); 
+		
+		tool.performAndPropagateTargetEdit(helperPerson::hippocraticDelta);
+		util.assertPostcondition("FamilyWithParentsOnly", "PersonsMultiDeterministic2"); 
+	}
+	
 }
