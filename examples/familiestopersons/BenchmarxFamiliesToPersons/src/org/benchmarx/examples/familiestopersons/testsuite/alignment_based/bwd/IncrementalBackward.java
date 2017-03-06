@@ -189,6 +189,12 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 		//----------------------
 	}
 	
+	/**
+	 * <b>Test</b> for deleting and recreating a Person in a PersonRegister after the initial
+	 * register has been transformed into a family model.<br/>
+	 * <b>Expect</b> : Model states as described in the postcondition.<br/>
+	 * <b>Features</b>: bwd , del+add , structural , , runtime
+	 */
 	@Test
 	public void testIncrementalMixedDynamic() {
 		tool.initiateSynchronisationDialogue();
@@ -211,6 +217,14 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 		util.assertPostcondition("FamilyAfterBwdMixed", "PersonAfterBwdMixed");
 	}
 	
+	/**
+	 * <b>Test</b> for creating Persons in a PersonRegister after the initial
+	 * register has been transformed into a family model. In the subsequent
+	 * backward transformations, the order of inserting the persons affects
+	 * the target model. <br/>
+	 * <b>Expect</b> : Model states as described in the postcondition.<br/>
+	 * <b>Features</b>: bwd , add , operational, runtime
+	 */
 	@Test
 	public void testIncrementalOperational() {
 		tool.initiateSynchronisationDialogue();
