@@ -211,5 +211,29 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 				.andThen(helperPerson::createHomer));
 		util.assertPostcondition("FamilyAfterBwdMixed", "PersonAfterBwdMixed");
 	}
+	
+	@Test
+	public void testIncrementalOperational() {
+		tool.initiateSynchronisationDialogue();
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.performAndPropagateTargetEdit(helperPerson::createMaggie);
+		tool.performIdleTargetEdit(helperPerson::setBirthdayOfMaggie);
+		util.assertPrecondition("Pre_IncrBwdOpFamily", "Pre_IncrBwdOpPerson");
+		
+		//------------		
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.performAndPropagateTargetEdit(util
+				.execute(helperPerson::createMarge)
+				.andThen(helperPerson::createLisa));
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.performAndPropagateTargetEdit(helperPerson::createLisa);					
+		util.assertPostcondition("FamilyAfterIncrOp", "PersonAfterIncrOp");
+	}
 
 }

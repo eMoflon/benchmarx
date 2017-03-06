@@ -116,6 +116,15 @@ public class PersonHelper {
 		person2.setBirthday(date);
 	}
 	
+	public void setBirthdayOfMaggie(PersonRegister register) {
+		Person person5 = getFromRegister("Simpson, Maggie", register);
+		
+		Calendar cal = Calendar.getInstance();
+		cal.set(2013, Calendar.MARCH, 7, 10, 11, 12); 
+		Date date = cal.getTime();
+		person5.setBirthday(date);		
+	}
+	
 	public void setBirthdayOfRod(PersonRegister register) {
 		Calendar cal = Calendar.getInstance();
 		Date date;
