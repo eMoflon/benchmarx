@@ -135,16 +135,9 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	/**
 	 * <b>Test</b> for renaming of a Person in a PersonRegister after the initial
 	 * register has been transformed into a family model.<br/>
-	 * <b>Expect</b> : After the first backward propagation, a new Family "Skinner" with
-	 * father "Seymour" is introduced to the family model. The second run then must create a
-	 * son "Seymor" in the now already existing family "Skinner".<br/>
+	 * <b>Expect</b> : Model states as described in the postcondition.<br/>
 	 * <b>Features</b>: bwd , attribute , structural , corr-based , runtime
 	 */
-	@Test
-	public void testIncrementalRenamingFixed() {
-		
-	}
-	
 	@Test
 	public void testInrementalRenamingDynamic() {
 		tool.initiateSynchronisationDialogue();
@@ -195,6 +188,28 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 		tool.performAndPropagateTargetEdit(helperPerson::fullNameChangeOfMarge);
 		util.assertPostcondition("FamilyAfterBwdIncrRenameDynamic", "PersonAfterBwdIncrRenameDynamic");
 		//----------------------
+	}
+	
+	@Test
+	public void testIncrementalMixedDynamic() {
+		tool.initiateSynchronisationDialogue();
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.performAndPropagateTargetEdit(util
+					.execute(helperPerson::createHomer)
+					.andThen(helperPerson::createMaggie));	
+		tool.performIdleTargetEdit(helperPerson::setBirthdaysOfSimpson);
+		util.assertPrecondition("Pre_IncrBwdFamily", "Pre_IncrBwdPerson");
+
+		//------------		
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.performAndPropagateTargetEdit(util
+				.execute(helperPerson::deleteHomer)
+				.andThen(helperPerson::createHomer));
+		util.assertPostcondition("FamilyAfterBwdMixed", "PersonAfterBwdMixed");
 	}
 
 }

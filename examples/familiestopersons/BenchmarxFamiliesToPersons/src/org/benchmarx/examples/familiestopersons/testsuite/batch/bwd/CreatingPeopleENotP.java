@@ -78,4 +78,28 @@ public class CreatingPeopleENotP extends FamiliesToPersonsTestCase {
 		// ---------------------------------
 		util.assertPostcondition("FamilyWithDuplicateChildrenOnly", "PersonsDuplicateMulti"); 
 	}
+	
+	@Test
+	public void testStability() {
+		tool.initiateSynchronisationDialogue();
+		// No precondition!
+		// ---------------------------------
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.performAndPropagateTargetEdit(util
+				.execute(helperPerson::createRod)
+				.andThen(helperPerson::createBart)
+				.andThen(helperPerson::createHomer)
+				.andThen(helperPerson::createBart)
+				.andThen(helperPerson::createBart)
+				.andThen(helperPerson::createMarge)
+				.andThen(helperPerson::createLisa)
+				.andThen(helperPerson::createMaggie));
+		// ---------------------------------
+		util.assertPostcondition("FamilyWithDuplicateChildrenOnly", "PersonsDuplicateMulti"); 
+		
+		tool.performAndPropagateTargetEdit(helperPerson::idleDelta);
+		util.assertPostcondition("FamilyWithDuplicateChildrenOnly", "PersonsDuplicateMulti");
+	}
 }

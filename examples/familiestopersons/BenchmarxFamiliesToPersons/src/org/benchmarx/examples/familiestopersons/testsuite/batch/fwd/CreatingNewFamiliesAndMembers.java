@@ -109,4 +109,19 @@ public class CreatingNewFamiliesAndMembers extends FamiliesToPersonsTestCase {
 		//------------
 		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
 	}
+	
+	@Test
+	public void testStability() {
+		tool.initiateSynchronisationDialogue();
+		// No precondition!
+		//------------
+		tool.performAndPropagateSourceEdit(util
+				.execute(helperFamily::createNewFamilySimpsonWithMembers)
+				.andThen(helperFamily::createSonBart));
+		//------------
+		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
+		
+		tool.performAndPropagateSourceEdit(helperFamily::idleDelta);
+		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
+	}
 }

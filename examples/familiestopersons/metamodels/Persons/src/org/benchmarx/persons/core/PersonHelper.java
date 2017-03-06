@@ -107,6 +107,15 @@ public class PersonHelper {
 		person.setBirthday(date);
 	}
 	
+	public void setBirthdayOfMarge(PersonRegister register) {
+		Person person2 = getFromRegister("Simpson, Marge", register);
+		
+		Calendar cal = Calendar.getInstance();
+		cal.set(2013, Calendar.FEBRUARY, 9, 10, 11, 12); 
+		Date date = cal.getTime();
+		person2.setBirthday(date);
+	}
+	
 	public void setBirthdayOfRod(PersonRegister register) {
 		Calendar cal = Calendar.getInstance();
 		Date date;
@@ -264,6 +273,10 @@ public class PersonHelper {
 	public void deleteMaggie(PersonRegister register) {
 		Person person = getFromRegister("Simpson, Maggie", register);
 		EcoreUtil.delete(person);
+	}
+	
+	public void idleDelta(PersonRegister register) {
+		
 	}
 
 }

@@ -219,6 +219,10 @@ public class FamilyHelper {
 		EcoreUtil.delete(homer, true);
 	}
 	
+	public void idleDelta(FamilyRegister register) {
+		
+	}
+	
 	
 //	public void familyFatherHomerNameChange(FamilyRegister register){
 //		Family family = getFromRegister("Simpson", register);
