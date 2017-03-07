@@ -180,11 +180,11 @@ public class BatchScalability {
 			runBatchFWDMeasurements(i, 3, 5);
 		}
 		
-		printHeader("Incr. FWD:");
-		for (int i = 50; i < 100000; i+=500) {			
-			runIncrFWDMeasurements(i, 3, 5);
-		}		
-		
+//		printHeader("Incr. FWD:");
+//		for (int i = 50; i < 100000; i+=500) {			
+//			runIncrFWDMeasurements(i, 3, 5);
+//		}		
+//		
 		printHeader("Incr. BWD:");
 		for (int i = 50; i < 100000; i+=500) {			
 			runIncrBWDMeasurements(i, 3, 5);
