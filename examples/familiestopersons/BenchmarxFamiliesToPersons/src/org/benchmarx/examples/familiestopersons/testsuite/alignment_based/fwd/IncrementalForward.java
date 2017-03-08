@@ -174,10 +174,10 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	}
 	
 	/**
-	 * <b>Test</b> for moving a family member to a new family and changing its role from daughter to son
-	 * After creating the person register, set birthdates. Then move daughter Lisa to the Flanders family
+	 * <b>Test</b> for moving a family member to a new family and changing her role from daughter to son.
+	 * After creating the person register, set birthdates. Then move daughter Maggie to the Flanders family
 	 * as a son.
-	 * <b>Expect</b>: A new male person should be created in the PersonRegister, but the birthdate of Lisa
+	 * <b>Expect</b>: A new male person should be created in the PersonRegister, but the birthdate of Maggie
 	 * should be retained.
 	 * <b>Features</b>: fwd, structural, add+del, fixed 
 	 */
