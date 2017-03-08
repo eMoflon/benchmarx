@@ -144,7 +144,6 @@ public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, Perso
 			resSource.save(null);
 			resTarget.save(null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
