@@ -23,12 +23,18 @@ public interface BXTool<S, T, D> {
 	public void performAndPropagateTargetEdit(Consumer<T> edit);
 
 	public void performAndPropagateSourceEdit(Consumer<S> edit);
+	
+	public void performIdleTargetEdit(Consumer<T> edit);
 
-	public void setConfigurator(Configurator<D> configurator);
+	public void performIdleSourceEdit(Consumer<S> edit);
+
+	public void setConfigurator(Configurator<D> configurator);	
 
 	public void assertPostcondition(S source, T target);
 	
 	public void assertPrecondition(S source, T target);
+	
+	public void saveModels(String name);
 	
 	default public String getName() { return "Please set the name of your bx tool!"; }
 }

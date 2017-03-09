@@ -28,12 +28,8 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
   
   @Override
   public void compare(final FamilyRegister expected, final FamilyRegister actual) {
-    String _familyToString = this.familyToString(expected);
-    boolean _startsWith = _familyToString.startsWith("FamilyRegister");
-    Assert.assertTrue(_startsWith);
-    String _familyToString_1 = this.familyToString(expected);
-    String _familyToString_2 = this.familyToString(actual);
-    Assert.assertEquals(_familyToString_1, _familyToString_2);
+    Assert.assertTrue(this.familyToString(expected).startsWith("FamilyRegister"));
+    Assert.assertEquals(this.familyToString(expected), this.familyToString(actual));
   }
   
   public String familyToString(final FamilyRegister families) {
@@ -69,14 +65,12 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
         _builder.newLineIfNotEmpty();
         _builder.append("\t    ");
         _builder.append(",father     = ");
-        FamilyMember _father = f.getFather();
-        String _maybeFamilyMember = this.maybeFamilyMember(_father);
+        String _maybeFamilyMember = this.maybeFamilyMember(f.getFather());
         _builder.append(_maybeFamilyMember, "\t    ");
         _builder.newLineIfNotEmpty();
         _builder.append("\t    ");
         _builder.append(",mother     = ");
-        FamilyMember _mother = f.getMother();
-        String _maybeFamilyMember_1 = this.maybeFamilyMember(_mother);
+        String _maybeFamilyMember_1 = this.maybeFamilyMember(f.getMother());
         _builder.append(_maybeFamilyMember_1, "\t    ");
         _builder.newLineIfNotEmpty();
         EList<FamilyMember> _sons = f.getSons();
@@ -141,7 +135,7 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
       if (_notEquals) {
         _builder.append("Just (");
         String _familyMember = this.familyMember(fm);
-        _builder.append(_familyMember, "");
+        _builder.append(_familyMember);
         _builder.append(")");
       } else {
         _builder.append("Nothing");
@@ -154,7 +148,7 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("FamilyMember { firstName = \"");
     String _name = fm.getName();
-    _builder.append(_name, "");
+    _builder.append(_name);
     _builder.append("\" }");
     return _builder.toString();
   }

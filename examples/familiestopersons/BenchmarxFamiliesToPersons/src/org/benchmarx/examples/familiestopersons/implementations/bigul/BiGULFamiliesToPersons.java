@@ -151,6 +151,20 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 	@Override
 	public void setConfigurator(Configurator<Decisions> configurator) {
 		// No configuration
-	}	 
+	}	
+	
+	public void saveModels(String name) {
+		
+	}
+	
+	@Override
+	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
+
+	}
+
+	@Override
+	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
+	
+	}
 }
 

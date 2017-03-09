@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Families:FamilyRegister
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:Families="platform:/plugin/Families/model/Families.ecore"
+    xsi:schemaLocation="platform:/plugin/Families/model/Families.ecore ../../Families/model/Families.ecore">
+  <families
+      name="Flanders">
+    <father
+        name="Rod"/>
+  </families>
+  <families
+      name="Simpson">
+    <father
+        name="Bart"/>
+  </families>
+  <families
+      name="Simpson">
+    <father
+        name="Homer"/>
+  </families>
+  <families
+      name="Simpson">
+    <father
+        name="Bart"/>
+  </families>
+  <families
+      name="Simpson">
+    <father
+        name="Bart"/>
+  </families>
+  <families
+      name="Simpson">
+    <mother
+        name="Marge"/>
+  </families>
+  <families
+      name="Simpson">
+    <mother
+        name="Lisa"/>
+  </families>
+  <families
+      name="Simpson">
+    <mother
+        name="Maggie"/>
+  </families>
+</Families:FamilyRegister>

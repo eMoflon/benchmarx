@@ -1,4 +1,5 @@
 package org.benchmarx.examples.familiestopersons.implementations.emoflon;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.function.Consumer;
 
@@ -11,6 +12,10 @@ import org.benchmarx.persons.core.PersonsComparator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.moflon.tgg.algorithm.configuration.RuleResult;
 import org.moflon.tgg.algorithm.synchronization.SynchronizationHelper;
 
@@ -25,6 +30,8 @@ import Persons.PersonRegister;
  * @author aanjorin
  */
 public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonRegister, Decisions>   {
+	
+	private static final String RESULTPATH = "results/emoflon";
 	
 	public EMoflonFamiliesToPersons() {
 		super(new FamiliesComparator(), new PersonsComparator());
@@ -117,5 +124,38 @@ public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, Perso
 		}
 		
 		alternatives.removeIf(rr -> rr.isEmpty());
+	}
+	
+	public void saveModels(String name) {
+		ResourceSet set = new ResourceSetImpl();
+		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
+		URI srcURI = URI.createFileURI(RESULTPATH + "/" + name + "Family.xmi");
+		URI trgURI = URI.createFileURI(RESULTPATH + "/" + name + "Person.xmi");
+		Resource resSource = set.createResource(srcURI);
+		Resource resTarget = set.createResource(trgURI);
+		
+		EObject colSource = EcoreUtil.copy(getSourceModel());
+		EObject colTarget = EcoreUtil.copy(getTargetModel());
+		
+		resSource.getContents().add(colSource);
+		resTarget.getContents().add(colTarget);
+		
+		try {
+			resSource.save(null);
+			resTarget.save(null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Override
+	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
+		performAndPropagateTargetEdit(edit);
+	}
+
+	@Override
+	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
+		performAndPropagateSourceEdit(edit);
 	}
 }

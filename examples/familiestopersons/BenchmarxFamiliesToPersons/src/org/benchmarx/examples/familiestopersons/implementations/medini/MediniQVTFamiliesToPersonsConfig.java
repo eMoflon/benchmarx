@@ -18,10 +18,12 @@ import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
@@ -52,7 +54,9 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	private FileReader qvtRuleSet;
 	private static final String fwdDir = "perDB";
 	private static final String bwdDir = "famDB";
-	private Configurator<Decisions> configurator;
+	private Configurator<Decisions> configurator = new Configurator<Decisions>();
+	
+	private static final String RESULTPATH = "results/mediniConfig";
 	
 	/**
 	 * An extension of the standard XMIResourceFactory
@@ -120,6 +124,16 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	
 	@Override
 	public void initiateSynchronisationDialogue() {
+		// delete content of traces folder
+		File tracesFolder = new File("./src/org/benchmarx/examples/familiestopersons/implementations/medini/base/traces");
+		final File[] files = tracesFolder.listFiles();
+		for (File f : files) {
+			f.delete();
+		}
+		
+		// in case, no configuration is set, switch to default
+		checkConfiguration();
+		
 		// Initialise resource set of models
 		this.resourceSet = new ResourceSetImpl();
 		
@@ -128,7 +142,7 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		    Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 		
 		// Use the next line with XMI ids
-		// this.resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new UUIDResourceFactoryImpl());	
+		 this.resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new UUIDResourceFactoryImpl());	
 		
 		// Collect all necessary packages from the metamodel(s)
 		Collection<EPackage> metaPackages = new ArrayList<EPackage>();
@@ -138,9 +152,9 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		init(metaPackages);
 		
 		// Create resources for models
-		source = resourceSet.createResource(URI.createURI("source.xmi"));
-		config = resourceSet.createResource(URI.createURI("config.xmi"));
-		target = resourceSet.createResource(URI.createURI("target.xmi"));
+		source = resourceSet.createResource(URI.createURI(RESULTPATH + "/source.xmi"));
+		config = resourceSet.createResource(URI.createURI(RESULTPATH + "/config.xmi"));
+		target = resourceSet.createResource(URI.createURI(RESULTPATH + "/target.xmi"));
 		
 		// Collect the models, which should participate in the transformation.
 		// You can provide a list of models for each direction.
@@ -215,50 +229,50 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	public void performAndPropagateTargetEdit(Consumer<PersonRegister> edit) {
 		edit.accept(getTargetModel());
 		
-		/* With XMI ids include the following lines
-		try {
-			target.save(null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
+//		// With XMI ids include the following lines
+//		try {
+//			target.save(null);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 		
 		launchBWD();
 		
-		/* With XMI ids include the following lines
-		try {
-			source.save(null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
+//		// With XMI ids include the following lines
+//		try {
+//			source.save(null);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 	}
 
 	@Override
 	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
 		edit.accept(getSourceModel());
 		
-		/* With XMI ids include the following lines
-		try {
-			source.save(null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
+//		// With XMI ids include the following lines
+//		try {
+//			source.save(null);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 		
 		launchFWD();
 		
-		/* With XMI ids include the following lines
-		try {
-			target.save(null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
+//		// With XMI ids include the following lines
+//		try {
+//			target.save(null);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 	}
 
 	@Override
@@ -355,5 +369,57 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		metaPackages.add(PersonsPackage.eINSTANCE);
 		metaPackages.add(ConfigPackage.eINSTANCE);
 		metaPackages.add(FamiliesPackage.eINSTANCE);
+	}
+	
+	public void saveModels(String name) {
+		ResourceSet set = new ResourceSetImpl();
+		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
+		URI srcURI = URI.createFileURI(RESULTPATH + "/" + name + "Family.xmi");
+		URI trgURI = URI.createFileURI(RESULTPATH + "/" + name + "Person.xmi");
+		Resource resSource = set.createResource(srcURI);
+		Resource resTarget = set.createResource(trgURI);
+		
+		EObject colSource = EcoreUtil.copy(getSourceModel());
+		EObject colTarget = EcoreUtil.copy(getTargetModel());
+		
+		resSource.getContents().add(colSource);
+		resTarget.getContents().add(colTarget);
+		
+		try {
+			resSource.save(null);
+			resTarget.save(null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+	
+	@Override
+	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
+		edit.accept(getTargetModel());
+	}
+
+	@Override
+	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
+		edit.accept(getSourceModel());
+	}
+	
+	private void checkConfiguration() {
+		try {
+			configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
+		}
+		catch (IllegalArgumentException iae) {
+			configurator.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		}
+		try {
+			configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
+		}
+		catch (IllegalArgumentException iae) {
+			configurator.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true);
+		}		
+	}
+	
+	public Configurator<Decisions> getConfigurator() {
+		return configurator;
 	}
 }

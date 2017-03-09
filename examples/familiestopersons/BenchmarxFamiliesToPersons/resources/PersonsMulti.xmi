@@ -5,12 +5,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore"
     xsi:schemaLocation="platform:/plugin/Persons/model/Persons.ecore ../../Persons/model/Persons.ecore">
-  <persons xsi:type="Persons:Female"
-      name="Bachchan, Jaya"/>
   <persons xsi:type="Persons:Male"
-      name="Bachchan, Abhishek"/>
+      name="Flanders, Rod"/>
   <persons xsi:type="Persons:Male"
-      name="Bachchan, Amitabh"/>
+      name="Simpson, Homer"/>
   <persons xsi:type="Persons:Female"
-      name="Bachchan, Shweta"/>
+      name="Simpson, Marge"/>
+  <persons xsi:type="Persons:Male"
+      name="Simpson, Bart"/>
+  <persons xsi:type="Persons:Female"
+      name="Simpson, Lisa"/>
+  <persons xsi:type="Persons:Female"
+      name="Simpson, Maggie"/>
 </Persons:PersonRegister>

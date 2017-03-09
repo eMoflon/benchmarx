@@ -6,5 +6,5 @@
     xmlns:Families="platform:/plugin/Families/model/Families.ecore"
     xsi:schemaLocation="platform:/plugin/Families/model/Families.ecore ../../Families/model/Families.ecore">
   <families
-      name="Jetson"/>
+      name="Bouvier"/>
 </Families:FamilyRegister>

@@ -3,6 +3,7 @@ package org.benchmarx.persons.core;
 import Persons.Male;
 import Persons.Person;
 import Persons.PersonRegister;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,12 +24,8 @@ public class PersonsComparator implements Comparator<PersonRegister> {
   
   @Override
   public void compare(final PersonRegister expected, final PersonRegister actual) {
-    String _personsToString = this.personsToString(expected);
-    boolean _startsWith = _personsToString.startsWith("PersonRegister");
-    Assert.assertTrue(_startsWith);
-    String _personsToString_1 = this.personsToString(expected);
-    String _personsToString_2 = this.personsToString(actual);
-    Assert.assertEquals(_personsToString_1, _personsToString_2);
+    Assert.assertTrue(this.personsToString(expected).startsWith("PersonRegister"));
+    Assert.assertEquals(this.personsToString(expected), this.personsToString(actual));
   }
   
   public String personsToString(final PersonRegister persons) {
@@ -68,8 +65,8 @@ public class PersonsComparator implements Comparator<PersonRegister> {
             _builder.append("\t\t");
             _builder.append("       ");
             _builder.append(", birthday = \"");
-            Date _birthday = ((Male)p).getBirthday();
-            _builder.append(_birthday, "\t\t       ");
+            String _myString = this.toMyString(((Male)p).getBirthday());
+            _builder.append(_myString, "\t\t       ");
             _builder.append("\"");
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t");
@@ -89,8 +86,8 @@ public class PersonsComparator implements Comparator<PersonRegister> {
             _builder.append("\t\t");
             _builder.append("       ");
             _builder.append(", birthday = \"");
-            Date _birthday_1 = p.getBirthday();
-            _builder.append(_birthday_1, "\t\t       ");
+            String _myString_1 = this.toMyString(p.getBirthday());
+            _builder.append(_myString_1, "\t\t       ");
             _builder.append("\"");
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t");
@@ -106,5 +103,10 @@ public class PersonsComparator implements Comparator<PersonRegister> {
     _builder.append("}");
     _builder.newLine();
     return _builder.toString();
+  }
+  
+  public String toMyString(final Date d) {
+    final SimpleDateFormat sm = new SimpleDateFormat("yyyy-mm-dd");
+    return sm.format(d);
   }
 }
