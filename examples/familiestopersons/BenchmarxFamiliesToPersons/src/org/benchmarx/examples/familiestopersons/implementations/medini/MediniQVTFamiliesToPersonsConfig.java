@@ -141,6 +141,7 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		
 		source.getContents().add(FamiliesFactory.eINSTANCE.createFamilyRegister());
 		config.getContents().add(ConfigFactory.eINSTANCE.createConfiguration());
+		launchFWD();
 	}
 
 	private void launchFWD() {
