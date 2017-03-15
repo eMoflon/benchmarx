@@ -33,8 +33,6 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 	private Configurator<Decisions> conf;
 	private Configurator<Decisions> defaultConf;
 	
-	//private Configurator<Decisions> configurator = new Configurator<Decisions>();
-	
 	private static final String RESULTPATH = "results/BXtend";
 	
 	public UbtXtendFamiliesToPersons() {
@@ -43,9 +41,15 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 	
 	@Override
 	public String getName() {
-		return "UBT Xtend";
+		return "BXtend";
 	}
 	
+	/**
+	 * Initiates a synchronization between a source and a target model. The BXtend Transformation is
+	 * initialized and empty source, target and correspondence models are created.
+	 * Finally a FamilyRegister is added to the source model and an initial forward transformation is issued
+	 * to create a corresponding PersonRegister.
+	 */
 	@Override
 	public void initiateSynchronisationDialogue() {
 		// Fix default preferences (which can be overwritten)
@@ -53,11 +57,9 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true)
 		    .makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true));			
 		
-		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("family", new UUIDResourceFactoryImpl());
-		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("person", new UUIDResourceFactoryImpl());
-		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("corr", new UUIDResourceFactoryImpl());
-		
-		//set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new UUIDResourceFactoryImpl());
+		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("family", new XMIResourceFactoryImpl());
+		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("person", new XMIResourceFactoryImpl());
+		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("corr", new XMIResourceFactoryImpl());		
 		
 		source = set.createResource(URI.createURI("sourceModel.family"));
 		target = set.createResource(URI.createURI("targetModel.person"));
@@ -74,6 +76,11 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 		f2pt.Family2Person();
 	}
 
+	/**
+	 * Perform an edit delta on the target model and propagate the change to the source model
+	 * 
+	 * @param edit : the source edit delta
+	 */
 	@Override
 	public void performAndPropagateTargetEdit(Consumer<PersonRegister> edit) {
 		edit.accept(getTargetModel());
@@ -81,6 +88,11 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 		f2pt.Person2Family();
 	}
 
+	/**
+	 * Perform an edit delta on the source model and propagate the change to the target model
+	 * 
+	 * @param edit : the source edit delta
+	 */
 	@Override
 	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
 		edit.accept(getSourceModel());
@@ -103,65 +115,13 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 		if(defaultConf == null)
 			defaultConf = configurator;
 		conf = configurator;
-//		try{
-//			configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
-//		} catch(IllegalArgumentException e) {
-//			conf.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, defaultConf.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW));
-//		}
-//		try{
-//			configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
-//		} catch(IllegalArgumentException e) {
-//			conf.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, defaultConf.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD));
-//		}
 	}
 	
 	/**
-	  * An extension of the standard XMIResourceFactory
-	  * that allows the creation of XMIResources using UUIDs
-	  * @author tbuchmann
-	  *
-	  */
-	public class UUIDResourceFactoryImpl extends XMIResourceFactoryImpl {
-
-	     public UUIDResourceFactoryImpl() {
-	         super();
-	     }
-
-	     @Override
-	     public Resource createResource(URI uri) {
-	         return new UUIDXMIResourceImpl(uri);
-	     }
-	}
-
-	/**
-	  * A simple extension of the standard XMIResource
-	  * providing UUIDs.
-	  *
-	  * usage: Register UUIDResourceFactoryImpl
-	  * ResourceSet set = new ResourceSetImpl();
-	  *
-	set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi",
-	new UUIDResourceFactoryImpl());
-	  *
-	  * @author tbuchmann
-	  *
-	  */
-	public class UUIDXMIResourceImpl extends XMIResourceImpl implements Resource {
-
-	     public UUIDXMIResourceImpl() {
-	         super();
-	     }
-
-	     public UUIDXMIResourceImpl(URI uri) {
-	         super(uri);
-	     }
-
-	     @Override
-	     protected boolean useUUIDs() {
-	         return true;
-	     }
-	}
-
+	 * Allows to save the current state of the source and target models
+	 * 
+	 * @param name : Filename 
+	 */
 	@Override
 	public void saveModels(String name) {
 		ResourceSet set = new ResourceSetImpl();
@@ -181,37 +141,28 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 			resSource.save(null);
 			resTarget.save(null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}			
 	}
 	
+	/**
+	 * Perform an edit operation on the target model, without propagating the change to the source model
+	 * 
+	 * @param edit : the edit delta
+	 */
 	@Override
 	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
 		edit.accept(getTargetModel());
 	}
 
+	/**
+	 * Perform an edit operation on the source model, without propagating the change to the target model
+	 * 
+	 * @param edit : the edit delta
+	 */
 	@Override
 	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
 		edit.accept(getSourceModel());
 	}
-	
-//	private void checkConfiguration() {
-//		try {
-//			configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
-//		}
-//		catch (IllegalArgumentException iae) {
-//			configurator.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
-//		}
-//		try {
-//			configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
-//		}
-//		catch (IllegalArgumentException iae) {
-//			configurator.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true);
-//		}		
-//	}
-//	
-//	public Configurator<Decisions> getConfigurator() {
-//		return configurator;
-//	}
+
 }

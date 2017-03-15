@@ -57,52 +57,11 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	private Configurator<Decisions> configurator = new Configurator<Decisions>();
 	
 	private static final String RESULTPATH = "results/mediniConfig";
-	
-	/**
-	 * An extension of the standard XMIResourceFactory
-	 * that allows the creation of XMIResources using UUIDs
-	 * @author tbuchmann
-	 *
-	 */
-	class UUIDResourceFactoryImpl extends XMIResourceFactoryImpl {
-
-	    public UUIDResourceFactoryImpl() {
-	        super();
-	    }
-
-	    @Override
-	    public Resource createResource(URI uri) {
-	        return new UUIDXMIResourceImpl(uri);
-	    }
+		
+	@Override
+	public String getName() {
+		return "MediniQVT-Configurable";
 	}
-
-	/**
-	 * A simple extension of the standard XMIResource
-	 * providing UUIDs.
-	 *
-	 * usage: Register UUIDResourceFactoryImpl
-	 * ResourceSet set = new ResourceSetImpl();
-	 * set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new UUIDResourceFactoryImpl());
-	 *
-	 * @author tbuchmann
-	 *
-	 */
-	class UUIDXMIResourceImpl extends XMIResourceImpl implements Resource {
-
-	    public UUIDXMIResourceImpl() {
-	        super();
-	    }
-
-	    public UUIDXMIResourceImpl(URI uri) {
-	        super(uri);
-	    }
-
-	    @Override
-	    protected boolean useUUIDs() {
-	        return true;
-	    }
-	} 
-
 	
 	public MediniQVTFamiliesToPersonsConfig() {
 		super(new FamiliesComparator(), new PersonsComparator());
@@ -122,6 +81,12 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		tracesFile.delete();
 	}
 	
+	/**
+	 * Initiates a synchronization between a source and a target model. The medini QVT engine is initialized,
+	 * the required metamodels are registered and empty source, target and configuration models are created.
+	 * Finally a FamilyRegister is added to the source model and an initial forward transformation is issued
+	 * to create a corresponding PersonRegister.
+	 */
 	@Override
 	public void initiateSynchronisationDialogue() {
 		// delete content of traces folder
@@ -139,13 +104,8 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		
 		// Initialise resource set of models
 		this.resourceSet = new ResourceSetImpl();
-		
-		// Use the following lines without XMI ids
 		this.resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
-		    Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
-		
-		// Use the next line with XMI ids
-		 this.resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new UUIDResourceFactoryImpl());	
+		    Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());	
 		
 		// Collect all necessary packages from the metamodel(s)
 		Collection<EPackage> metaPackages = new ArrayList<EPackage>();
@@ -181,32 +141,6 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		
 		source.getContents().add(FamiliesFactory.eINSTANCE.createFamilyRegister());
 		config.getContents().add(ConfigFactory.eINSTANCE.createConfiguration());
-		
-		/* With XMI ids include the following lines
-		try {
-			source.save(null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			config.save(null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
-		
-		launchFWD();
-		
-		/* With XMI ids include the following lines
-		try {
-			target.save(null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
 	}
 
 	private void launchFWD() {
@@ -227,54 +161,30 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		configuration.setPreferExistingToNewFamily(preferExistingFamilyToNew);
 		launch(bwdDir);
 	}
-
+	
+	/**
+	 * Perform an edit delta on the target model and propagate the change to the source model
+	 * 
+	 * @param edit : the source edit delta
+	 */
 	@Override
 	public void performAndPropagateTargetEdit(Consumer<PersonRegister> edit) {
-		edit.accept(getTargetModel());
-		
-//		// With XMI ids include the following lines
-//		try {
-//			target.save(null);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-		
+		edit.accept(getTargetModel());	
+				
 		launchBWD();
-		
-//		// With XMI ids include the following lines
-//		try {
-//			source.save(null);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		
 	}
 
+	/**
+	 * Perform an edit delta on the source model and propagate the change to the target model
+	 * 
+	 * @param edit : the source edit delta
+	 */
 	@Override
 	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
 		edit.accept(getSourceModel());
 		
-//		// With XMI ids include the following lines
-//		try {
-//			source.save(null);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-		
 		launchFWD();
-		
-//		// With XMI ids include the following lines
-//		try {
-//			target.save(null);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		
 	}
 
@@ -291,7 +201,7 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	@Override
 	public void setConfigurator(Configurator<Decisions> configurator) {
 		// Store the passed configurator reference and initialize it
-		// default decisions, which can be overridden
+		// with default decisions, which can be overridden
 		this.configurator = configurator;
 		configurator.
 			makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true).
@@ -340,6 +250,11 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		processorImpl.evaluateQVT(qvtRuleSet, transformation, true, direction, new Object[0], null, this.logger);
 	}
 
+	/**
+	 * launch the transformation in the QVT execution engine
+	 * 
+	 * @param direction : the desired execution direction
+	 */
 	public void launch(String direction) {
 		PrintStream ps = System.out;
 		PrintStream ps_err = System.err;
@@ -374,6 +289,11 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		metaPackages.add(FamiliesPackage.eINSTANCE);
 	}
 	
+	/**
+	 * Allows to save the current state of the source and target models
+	 * 
+	 * @param name : Filename 
+	 */
 	public void saveModels(String name) {
 		ResourceSet set = new ResourceSetImpl();
 		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
@@ -392,21 +312,34 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 			resSource.save(null);
 			resTarget.save(null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 	}
 	
+	/**
+	 * Perform an edit operation on the target model, without propagating the change to the source model
+	 * 
+	 * @param edit : the edit delta
+	 */
 	@Override
 	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
 		edit.accept(getTargetModel());
 	}
 
+	/**
+	 * Perform an edit operation on the source model, without propagating the change to the target model
+	 * 
+	 * @param edit : the edit delta
+	 */
 	@Override
 	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
 		edit.accept(getSourceModel());
 	}
 	
+	/**
+	 * Check if configuration parameters are set properly. In case of missing parameters,
+	 * switch to default values (e ^ p)
+	 */
 	private void checkConfiguration() {
 		try {
 			configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
