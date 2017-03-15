@@ -143,43 +143,4 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
 	}
 	
-	/**
-	 * <b>Test</b> for stability of the transformation.<br/>
-	 * <b>Expect</b> re-running the transformation after an idle source delta does not change the target model.<br/>
-	 * <b>Features:</b>: fwd, fixed
-	 */
-	@Test
-	public void testStability() {
-		tool.initiateSynchronisationDialogue();
-		// No precondition!
-		//------------
-		tool.performAndPropagateSourceEdit(util
-				.execute(helperFamily::createNewFamilySimpsonWithMembers)
-				.andThen(helperFamily::createSonBart));
-		//------------
-		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
-		
-		tool.performAndPropagateSourceEdit(helperFamily::idleDelta);
-		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
-	}
-	
-	/**
-	 * <b>Test</b> for hippocraticness of the transformation.<br/>
-	 * <b>Expect</b> re-running the transformation after creating an empty family does not change the person register.<br/>
-	 * <b>Features:</b>: fwd, fixed
-	 */
-	@Test
-	public void testHippocraticness() {
-		tool.initiateSynchronisationDialogue();
-		// No precondition!
-		//------------
-		tool.performAndPropagateSourceEdit(util
-				.execute(helperFamily::createNewFamilySimpsonWithMembers)
-				.andThen(helperFamily::createSonBart));
-		//------------
-		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
-		
-		tool.performAndPropagateSourceEdit(helperFamily::hippocraticDelta);
-		util.assertPostcondition("FamilyWithDuplicateMember2", "PersonWithSameName");
-	}
 }

@@ -127,8 +127,11 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 		// delete content of traces folder
 		File tracesFolder = new File("./src/org/benchmarx/examples/familiestopersons/implementations/medini/base/traces");
 		final File[] files = tracesFolder.listFiles();
-		for (File f : files) {
-			f.delete();
+		if (files != null) {
+			for (File f : files) {
+				if (f != null)
+					f.delete();
+			}
 		}
 		
 		// in case, no configuration is set, switch to default
