@@ -40,7 +40,7 @@ public class BatchBwdNotENotP extends FamiliesToPersonsTestCase {
 	 * <b>Features</b>: bwd, runtime
 	 */
 	@Test
-	public void testCreateFamilyMembersInNewFamilyAsParents() {
+	public void testCreateFamilyMembersInNewFamilyAsChildren() {
 		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		// ---------------------------------
@@ -59,7 +59,7 @@ public class BatchBwdNotENotP extends FamiliesToPersonsTestCase {
 	}
 	
 	@Test
-	public void testCreateDuplicateFamilyMembersInNewFamilyAsParents() {
+	public void testCreateDuplicateFamilyMembersInNewFamilyAsChildren() {
 		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		// ---------------------------------

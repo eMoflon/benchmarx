@@ -24,11 +24,11 @@ public class BatchBwdEAndP extends FamiliesToPersonsTestCase {
 	/**
 	 * <b>Test</b> for creation of a single male person (Flanders, Rod).<br/>
 	 * <b>Expect</b> the creation of a family member in the families model with
-	 * the given first name, in a suitable family.  Creation of Children is preferred.<br/>
+	 * the given first name, in a suitable family.  Creation of parents is preferred.<br/>
 	 * <b>Features</b>: bwd, runtime
 	 */
 	@Test
-	public void testCreateMalePersonAsSon() {
+	public void testCreateMalePersonAsParent() {
 		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		// ---------------------------------
