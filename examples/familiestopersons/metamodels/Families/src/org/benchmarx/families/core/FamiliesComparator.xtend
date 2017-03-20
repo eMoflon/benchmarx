@@ -1,13 +1,13 @@
 package org.benchmarx.families.core
 
 import Families.Family
+import Families.FamilyMember
 import Families.FamilyRegister
 import java.util.ArrayList
 import java.util.List
-import org.benchmarx.Comparator
+import org.benchmarx.emf.Comparator
 
 import static org.junit.Assert.*
-import Families.FamilyMember
 
 public class FamiliesComparator implements Comparator<FamilyRegister> {
 	FamilyNormaliser comparator
@@ -18,7 +18,7 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
 		familyMemberComparator = new FamilyMemberNormaliser();
 	}
 	
-	override compare(FamilyRegister expected, FamilyRegister actual) {	
+	override assertEquals(FamilyRegister expected, FamilyRegister actual) {	
 		assertTrue(familyToString(expected).startsWith("FamilyRegister"))
 //		println("Expected:")
 //		println(familyToString(expected))
