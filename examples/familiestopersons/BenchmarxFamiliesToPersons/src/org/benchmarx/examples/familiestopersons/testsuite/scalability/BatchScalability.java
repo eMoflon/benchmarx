@@ -1,12 +1,12 @@
 package org.benchmarx.examples.familiestopersons.testsuite.scalability;
 
 import org.benchmarx.BXTool;
-import org.benchmarx.BXToolTimer;
 import org.benchmarx.examples.familiestopersons.implementations.bigul.BiGULFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
+import org.benchmarx.util.BXToolTimer;
 
 import Families.FamiliesFactory;
 import Families.Family;
@@ -17,9 +17,9 @@ import Persons.PersonRegister;
 import Persons.PersonsFactory;
 
 public class BatchScalability {
-	//private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool1 = new BiGULFamiliesToPersons();
+	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool1 = new BiGULFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool2 = new EMoflonFamiliesToPersons();
-	//private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool3 = new MediniQVTFamiliesToPersons();
+	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool3 = new MediniQVTFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool4 = new UbtXtendFamiliesToPersons();
 	
 	private static final String DELIMITER = ",";
@@ -44,9 +44,9 @@ public class BatchScalability {
 							+ 1 /* person register */
 							+ NO_OF_FAMILIES * 2*allFamilyMembers; /* person and connection to register */
 		
-		//timer1 = new BXToolTimer<>(tool1, repeat);
+		timer1 = new BXToolTimer<>(tool1, repeat);
 		timer2 = new BXToolTimer<>(tool2, repeat);
-		//timer3 = new BXToolTimer<>(tool3, repeat);;
+		timer3 = new BXToolTimer<>(tool3, repeat);;
 		timer4 = new BXToolTimer<>(tool4, repeat);
 	}
 	
@@ -180,11 +180,11 @@ public class BatchScalability {
 			runBatchFWDMeasurements(i, 3, 5);
 		}
 		
-//		printHeader("Incr. FWD:");
-//		for (int i = 50; i < 100000; i+=500) {			
-//			runIncrFWDMeasurements(i, 3, 5);
-//		}		
-//		
+		printHeader("Incr. FWD:");
+		for (int i = 50; i < 100000; i+=500) {			
+			runIncrFWDMeasurements(i, 3, 5);
+		}		
+		
 		printHeader("Incr. BWD:");
 		for (int i = 50; i < 100000; i+=500) {			
 			runIncrBWDMeasurements(i, 3, 5);

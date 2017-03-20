@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import Families.FamiliesFactory;
 import Families.Family;
 import Families.FamilyMember;
 import Families.FamilyRegister;
