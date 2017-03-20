@@ -17,11 +17,11 @@ public class BatchBwdNotEAndP extends FamiliesToPersonsTestCase {
 	/**
 	 * <b>Test</b> for creation of a single male person (Flanders, Rod).<br/>
 	 * <b>Expect</b> the creation of a family member in the families model with
-	 * the given first name, in a suitable family.  Creation of Children is preferred.<br/>
+	 * the given first name, in a suitable family.  Creation of parents is preferred.<br/>
 	 * <b>Features</b>: bwd, runtime
 	 */
 	@Test
-	public void testCreateMalePersonAsSon() {
+	public void testCreateMalePersonAsParent() {
 		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		// ---------------------------------
@@ -79,51 +79,51 @@ public class BatchBwdNotEAndP extends FamiliesToPersonsTestCase {
 		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti"); 
 	}
 	
-	@Test
-	public void testStability() {
-		tool.initiateSynchronisationDialogue();
-		// No precondition!
-		// ---------------------------------
-		util.configure()
-			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
-		tool.performAndPropagateTargetEdit(util
-				.execute(helperPerson::createRod)
-				.andThen(helperPerson::createBart)
-				.andThen(helperPerson::createHomer)
-				.andThen(helperPerson::createBart)
-				.andThen(helperPerson::createBart)
-				.andThen(helperPerson::createMarge)
-				.andThen(helperPerson::createLisa)
-				.andThen(helperPerson::createMaggie));
-		// ---------------------------------
-		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti"); 
-		
-		tool.performAndPropagateTargetEdit(helperPerson::idleDelta);
-		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti");
-	}
-	
-	@Test
-	public void testHippocraticness() {
-		tool.initiateSynchronisationDialogue();
-		// No precondition!
-		// ---------------------------------
-		util.configure()
-			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
-		tool.performAndPropagateTargetEdit(util
-				.execute(helperPerson::createRod)
-				.andThen(helperPerson::createBart)
-				.andThen(helperPerson::createHomer)
-				.andThen(helperPerson::createBart)
-				.andThen(helperPerson::createBart)
-				.andThen(helperPerson::createMarge)
-				.andThen(helperPerson::createLisa)
-				.andThen(helperPerson::createMaggie));
-		// ---------------------------------
-		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti"); 
-		
-		tool.performAndPropagateTargetEdit(helperPerson::hippocraticDelta);
-		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti2");
-	}
+//	@Test
+//	public void testStability() {
+//		tool.initiateSynchronisationDialogue();
+//		// No precondition!
+//		// ---------------------------------
+//		util.configure()
+//			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
+//			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+//		tool.performAndPropagateTargetEdit(util
+//				.execute(helperPerson::createRod)
+//				.andThen(helperPerson::createBart)
+//				.andThen(helperPerson::createHomer)
+//				.andThen(helperPerson::createBart)
+//				.andThen(helperPerson::createBart)
+//				.andThen(helperPerson::createMarge)
+//				.andThen(helperPerson::createLisa)
+//				.andThen(helperPerson::createMaggie));
+//		// ---------------------------------
+//		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti"); 
+//		
+//		tool.performAndPropagateTargetEdit(helperPerson::idleDelta);
+//		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti");
+//	}
+//	
+//	@Test
+//	public void testHippocraticness() {
+//		tool.initiateSynchronisationDialogue();
+//		// No precondition!
+//		// ---------------------------------
+//		util.configure()
+//			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
+//			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+//		tool.performAndPropagateTargetEdit(util
+//				.execute(helperPerson::createRod)
+//				.andThen(helperPerson::createBart)
+//				.andThen(helperPerson::createHomer)
+//				.andThen(helperPerson::createBart)
+//				.andThen(helperPerson::createBart)
+//				.andThen(helperPerson::createMarge)
+//				.andThen(helperPerson::createLisa)
+//				.andThen(helperPerson::createMaggie));
+//		// ---------------------------------
+//		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti"); 
+//		
+//		tool.performAndPropagateTargetEdit(helperPerson::hippocraticDelta);
+//		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti2");
+//	}
 }

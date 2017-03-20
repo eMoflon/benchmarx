@@ -138,7 +138,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 * <b>Features</b>: bwd , attribute , structural , corr-based , runtime
 	 */
 	@Test
-	public void testInrementalRenamingDynamic() {
+	public void testIncrementalRenamingDynamic() {
 		tool.initiateSynchronisationDialogue();
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
@@ -247,6 +247,50 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
 		tool.performAndPropagateTargetEdit(helperPerson::createLisa);					
 		util.assertPostcondition("FamilyAfterIncrOp", "PersonAfterIncrOp");
+	}
+	
+	/**
+	 * <b>Test</b> for stability of the transformation.<br/>
+	 * <b>Expect</b> Nothing should be changed after an idle target delta.<br/>
+	 * <b>Features</b>: bwd, runtime
+	 */
+	@Test
+	public void testStability() {
+		tool.initiateSynchronisationDialogue();
+		// No precondition!
+		// ---------------------------------
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.performAndPropagateTargetEdit(util
+				.execute(helperPerson::createRod)
+				.andThen(helperPerson::createHomer)				
+				.andThen(helperPerson::createMarge));
+		// ---------------------------------
+		util.assertPostcondition("FamilyWithParentsOnly", "PersonsMultiDeterministic"); 
+		
+		// issue the same transformation a second time
+		tool.performAndPropagateTargetEdit(helperPerson::idleDelta);
+		util.assertPostcondition("FamilyWithParentsOnly", "PersonsMultiDeterministic"); 
+	}
+	
+	@Test
+	public void testHippocraticness() {
+		tool.initiateSynchronisationDialogue();
+		// No precondition!
+		// ---------------------------------
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.performAndPropagateTargetEdit(util
+				.execute(helperPerson::createRod)
+				.andThen(helperPerson::createHomer)				
+				.andThen(helperPerson::createMarge));
+		// ---------------------------------
+		util.assertPostcondition("FamilyWithParentsOnly", "PersonsMultiDeterministic"); 
+		
+		tool.performAndPropagateTargetEdit(helperPerson::hippocraticDelta);
+		util.assertPostcondition("FamilyWithParentsOnly", "PersonsMultiDeterministic2"); 
 	}
 
 }
