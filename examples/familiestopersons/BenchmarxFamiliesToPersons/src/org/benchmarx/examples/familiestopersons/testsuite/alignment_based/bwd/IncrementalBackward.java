@@ -138,7 +138,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 * <b>Features</b>: bwd , attribute , structural , corr-based , runtime
 	 */
 	@Test
-	public void testInrementalRenamingDynamic() {
+	public void testIncrementalRenamingDynamic() {
 		tool.initiateSynchronisationDialogue();
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
