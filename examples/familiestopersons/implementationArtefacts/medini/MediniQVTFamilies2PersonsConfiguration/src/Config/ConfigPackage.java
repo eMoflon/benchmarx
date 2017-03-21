@@ -37,7 +37,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://bx2017.f2p.config.ecore";
+	String eNS_URI = "platform:/resource/MediniQVTFamilies2PersonsConfiguration/model/Configuration.ecore";
 
 	/**
 	 * The package namespace name.
