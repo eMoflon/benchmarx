@@ -28,17 +28,22 @@ import Persons.PersonsFactory;
  * The trick applied by this testrunner is simply to set the source and target
  * models A and B, when
  * {@link #assertPrecondition(FamilyRegister, PersonRegister)} is invoked (BiGUL
- * does not require any internal state).<br/>
+ * is state-based and does not require any internal state). As idle updates are
+ * only used to establish the precondition, these can be simply ignored.
+ * 
  * Any subsequent invocations of
  * {@link #performAndPropagateSourceEdit(Consumer)} or
  * {@link #performAndPropagateTargetEdit(Consumer)} are then used to update the
- * models, e.g., to A' and B. This means that round trips are not directly
- * supported (only multiple source or multiple target updates are allowed, not a
- * mixture), and have to be split into separate tests! Finally, when
- * {@link #assertPostcondition(FamilyRegister, PersonRegister)} is invoked,
- * BiGUL is called with the current state of A' and B to produce B'.
+ * models, e.g., to A' and B.
  * 
- * @author Anthony Anjorin
+ * This means that round trips are not directly supported (only multiple source
+ * or multiple target updates are allowed, not a mixture), and have to be split
+ * into separate tests!
+ * 
+ * Finally, when {@link #assertPostcondition(FamilyRegister, PersonRegister)} is
+ * invoked, BiGUL is called with the current state of A' and B to produce B'.
+ * 
+ * @author anthony anjorin
  */
 public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegister, Decisions> {
 	private static final String BIGUL_EXE = "src/org/benchmarx/examples/familiestopersons/implementations/bigul/FamiliesToPersons";

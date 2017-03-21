@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Configuration -->
       <package
-            uri="http://bx2017.f2p.config.ecore"
+            uri="platform:/resource/MediniQVTFamilies2PersonsConfiguration/model/Configuration.ecore"
             class="Config.ConfigPackage"
             genModel="model/Configuration.genmodel"/>
    </extension>

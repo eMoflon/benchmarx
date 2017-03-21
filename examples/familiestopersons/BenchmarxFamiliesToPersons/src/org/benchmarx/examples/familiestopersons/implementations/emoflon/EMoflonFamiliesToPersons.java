@@ -25,9 +25,15 @@ import FamiliesToPersons.FamiliesToPersonsPackage;
 import Persons.PersonRegister;
 
 /**
- * This class implements the bx tool interface for the eMoflon tool.
+ * This class implements the bx tool interface for the eMoflon tool. eMoflon is
+ * structural-delta-based and corr-based.
  * 
- * @author aanjorin
+ * The test runner is implemented by delegating to an internal helper. The
+ * initial state is established by creating an empty family register and forward
+ * transforming it. Idle edits are handled and propagated exactly as normal
+ * edits.
+ * 
+ * @author anthony anjorin
  */
 public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonRegister, Decisions>   {
 	
