@@ -28,7 +28,7 @@ public class BatchBwdEAndP extends FamiliesToPersonsTestCase {
 	 * <b>Features</b>: bwd, runtime
 	 */
 	@Test
-	public void testCreateMalePersonAsParent() {
+	public void testCreateMalePersonAsSon() {
 		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		// ---------------------------------
@@ -61,5 +61,4 @@ public class BatchBwdEAndP extends FamiliesToPersonsTestCase {
 		// ---------------------------------
 		util.assertPostcondition("FamilyWithParentsOnly", "PersonsMultiDeterministic"); 
 	}
-		
 }

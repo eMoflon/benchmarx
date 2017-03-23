@@ -142,5 +142,4 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 		//------------
 		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
 	}
-	
 }

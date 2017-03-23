@@ -240,6 +240,10 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
 		tool.performAndPropagateTargetEdit(util
 				.execute(helperPerson::createMarge)
+				.andThen(helperPerson::createLisa)				
+				.andThen(helperPerson::createHomer)
+				.andThen(helperPerson::createBart)
+				.andThen(helperPerson::createMaggie)
 				.andThen(helperPerson::createLisa));
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)

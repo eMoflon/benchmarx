@@ -60,6 +60,11 @@ public abstract class FamiliesToPersonsTestCase {
 				,
 				new MediniQVTFamiliesToPersonsConfig()
 				,
+<<<<<<< HEAD
+=======
+//				new BiGULFamiliesToPersons()
+//				,
+>>>>>>> refs/remotes/origin/currentTBchanges
 				new UbtXtendFamiliesToPersons()
 			);
 	}
