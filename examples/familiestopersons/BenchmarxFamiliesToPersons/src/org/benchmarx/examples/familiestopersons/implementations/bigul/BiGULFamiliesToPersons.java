@@ -54,6 +54,7 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 	private FamiliesComparator srcHelper = new FamiliesComparator();
 	private PersonsComparator trgHelper = new PersonsComparator();
 	private BiConsumer<String, String> propagation;
+	private Configurator<Decisions> configurator;
 	
 	@Override
 	public String getName() {
@@ -69,6 +70,9 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 		// Initial results
 		resultSrc = srcHelper.familyToString(src);
 		resultTrg = trgHelper.personsToString(trg);
+		
+		configurator = new Configurator<Decisions>();
+		propagation = (s,t) -> {};
 	}
 
 	@Override
@@ -118,7 +122,7 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 	private String runBigul(String dir, String familyRegister, String personsRegister) {
 		try {
 			File pathToExecutable = new File(BIGUL_EXE);
-			String input = "(" + "\"" + dir + "\"" + ", " + familyRegister + "," + personsRegister + ")";
+			String input = "(" + "\"" + dir + "\"" + ", " + updatePolicy() + ", " + familyRegister + "," + personsRegister + ")";
 			ProcessBuilder processBuilder = new ProcessBuilder(pathToExecutable.getAbsoluteFile().toString());
 			processBuilder.redirectErrorStream(true);
 			Process process = processBuilder.start();
@@ -129,7 +133,7 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 			InputStream stdout = process.getInputStream();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(stdout));
 			
-			//System.out.println(input);
+			System.out.println(input);
 			
 			writer.write(input);
 			writer.flush();
@@ -147,6 +151,25 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 				+ "Please_consult_the_\"/implementations/bigul/README-SETUP\"_file!";
 	}
 
+	private String updatePolicy() {
+		try {
+			boolean b = configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
+			boolean e = configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
+			
+			String policy = "[";
+			if(b)
+				policy += "PREFER_CREATING_PARENT_TO_CHILD";
+			if(b && e)
+				policy += ", ";
+			if(e)
+				policy += "PREFER_EXISTING_FAMILY_TO_NEW";
+			
+			return policy + "]";
+		} catch (Exception e) {
+			return "[]";
+		}
+	}
+
 	@Override
 	public void assertPrecondition(FamilyRegister source, PersonRegister target) {
 		src = source;
@@ -155,7 +178,7 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 
 	@Override
 	public void setConfigurator(Configurator<Decisions> configurator) {
-		// No configuration
+		this.configurator = configurator;
 	}	
 	
 	public void saveModels(String name) {
