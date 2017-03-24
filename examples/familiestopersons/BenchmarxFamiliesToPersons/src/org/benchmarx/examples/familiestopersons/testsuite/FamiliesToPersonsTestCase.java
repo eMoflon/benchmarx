@@ -53,14 +53,14 @@ public abstract class FamiliesToPersonsTestCase {
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
 		return Arrays.asList(
 				new BiGULFamiliesToPersons()
-				,
-				new EMoflonFamiliesToPersons()
-				,
-				new MediniQVTFamiliesToPersons()
-				,
-				new MediniQVTFamiliesToPersonsConfig()
-				,
-				new UbtXtendFamiliesToPersons()
+//				,
+//				new EMoflonFamiliesToPersons()
+//				,
+//				new MediniQVTFamiliesToPersons()
+//				,
+//				new MediniQVTFamiliesToPersonsConfig()
+//				,
+//				new UbtXtendFamiliesToPersons()
 			);
 	}
 	

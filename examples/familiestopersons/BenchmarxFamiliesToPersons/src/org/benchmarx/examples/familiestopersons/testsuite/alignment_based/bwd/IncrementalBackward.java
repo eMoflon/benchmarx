@@ -49,7 +49,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	/**
 	 * <b>Test</b> for inserting of a Persons in a PersonRegister after the initial
 	 * register has been transformed into a family model.<br/>
-	 * <b>Expect</b> : FamilyRegister and Person model are structured as specified int he corresponding
+	 * <b>Expect</b> : FamilyRegister and Person model are structured as specified in the corresponding
 	 * assertPostcondition statements.<br/>
 	 * <b>Features</b>: bwd, add, runtime
 	 */
@@ -135,7 +135,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 * <b>Test</b> for renaming of a Person in a PersonRegister after the initial
 	 * register has been transformed into a family model.<br/>
 	 * <b>Expect</b> : Model states as described in the postcondition.<br/>
-	 * <b>Features</b>: bwd , attribute , structural , corr-based , runtime
+	 * <b>Features</b>: bwd, attribute, structural, corr-based, runtime
 	 */
 	@Test
 	public void testIncrementalRenamingDynamic() {
@@ -185,6 +185,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
 		tool.performAndPropagateTargetEdit(helperPerson::fullNameChangeOfMarge);
+		
 		util.assertPostcondition("FamilyAfterBwdIncrRenameDynamic", "PersonAfterBwdIncrRenameDynamic");
 		//----------------------
 	}
@@ -193,7 +194,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 * <b>Test</b> for deleting and recreating a Person in a PersonRegister after the initial
 	 * register has been transformed into a family model.<br/>
 	 * <b>Expect</b> : Model states as described in the postcondition.<br/>
-	 * <b>Features</b>: bwd , del+add , structural , , runtime
+	 * <b>Features</b>: bwd , del+add , structural, runtime
 	 */
 	@Test
 	public void testIncrementalMixedDynamic() {
@@ -222,7 +223,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 * backward transformations, the order of inserting the persons affects
 	 * the target model. <br/>
 	 * <b>Expect</b> : Model states as described in the postcondition.<br/>
-	 * <b>Features</b>: bwd , add , operational, runtime
+	 * <b>Features</b>: bwd, add, operational, runtime
 	 */
 	@Test
 	public void testIncrementalOperational() {

@@ -36,13 +36,15 @@ public class BatchBwdNotEAndP extends FamiliesToPersonsTestCase {
 	/**
 	 * <b>Test</b> for creation of family members in existing families.<br/>
 	 * <b>Expect</b> the creation of a family member in the families model with
-	 * the given first name, in a suitable family.  Creation of Parents is preferred.<br/>
+	 * the given first name, in a suitable family.  Creation of parents is preferred.<br/>
 	 * <b>Features</b>: bwd, runtime
 	 */
 	@Test
 	public void testCreateFamilyMembersInNewFamilyAsParents() {
 		tool.initiateSynchronisationDialogue();
+		
 		// No precondition!
+		
 		// ---------------------------------
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
@@ -55,6 +57,7 @@ public class BatchBwdNotEAndP extends FamiliesToPersonsTestCase {
 				.andThen(helperPerson::createLisa)
 				.andThen(helperPerson::createMaggie));
 		// ---------------------------------
+		
 		util.assertPostcondition("MultiFamiliesParents", "PersonsMulti"); 
 	}
 	

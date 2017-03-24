@@ -20,10 +20,6 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
 	
 	override assertEquals(FamilyRegister expected, FamilyRegister actual) {	
 		assertTrue(familyToString(expected).startsWith("FamilyRegister"))
-//		println("Expected:")
-//		println(familyToString(expected))
-//		println("Actual:")
-//		println(familyToString(actual))
 		assertEquals(familyToString(expected), familyToString(actual))
 	}
 	
