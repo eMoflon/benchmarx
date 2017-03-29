@@ -53,7 +53,7 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 	private String resultTrg;
 	private FamiliesComparator srcHelper = new FamiliesComparator();
 	private PersonsComparator trgHelper = new PersonsComparator();
-	private BiConsumer<String, String> propagation;
+	private Runnable propagation;
 	private Configurator<Decisions> configurator;
 	
 	@Override
@@ -72,7 +72,7 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 		resultTrg = trgHelper.personsToString(trg);
 		
 		configurator = new Configurator<Decisions>();
-		propagation = (s,t) -> {};
+		propagation = () -> {};
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 		performEdit(edit, src, this::runBigulFWD);
 	}
 	
-	private <M> void performEdit(Consumer<M> edit, M model, BiConsumer<String, String> p){
+	private <M> void performEdit(Consumer<M> edit, M model, Runnable p){
 		try {
 			edit.accept(model);
 			propagation =  p;
@@ -94,19 +94,19 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 		}
 	}
 
-	private void runBigulBWD(String familyToString, String personsToString) {
-		resultSrc = runBigul("bwd", familyToString, personsToString);
-		resultTrg = personsToString;
+	private void runBigulBWD() {
+		resultSrc = runBigul("bwd", resultSrc, trgHelper.personsToString(trg));
+		resultTrg = trgHelper.personsToString(trg);
 	}
 
-	private void runBigulFWD(String familyToString, String personsToString) {
-		resultTrg = runBigul("fwd", familyToString, personsToString);
-		resultSrc = familyToString;
+	private void runBigulFWD() {
+		resultTrg = runBigul("fwd", srcHelper.familyToString(src), resultTrg);
+		resultSrc = srcHelper.familyToString(src);
 	}
 
 	@Override
 	public void assertPostcondition(FamilyRegister fr, PersonRegister pr) {
-		propagation.accept(srcHelper.familyToString(src), trgHelper.personsToString(trg));
+		propagation.run();
 		
 		String expectedFamilyRegister = srcHelper.familyToString(fr);
 		String expectedPersonsRegister = trgHelper.personsToString(pr);
@@ -174,6 +174,8 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 	public void assertPrecondition(FamilyRegister source, PersonRegister target) {
 		src = source;
 		trg = target;
+		resultSrc = srcHelper.familyToString(src);
+		resultTrg = trgHelper.personsToString(trg);
 	}
 
 	@Override

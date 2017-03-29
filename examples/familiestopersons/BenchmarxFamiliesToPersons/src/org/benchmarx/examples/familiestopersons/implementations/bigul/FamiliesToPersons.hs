@@ -140,7 +140,9 @@ syncM preferExistingFamily = Case
   ]
   where
     adapt :: MediumL -> MediumR -> MediumL
-    adapt [] vs = map ((fst . fst . head) &&& map (snd *** id)) (groupBy ((==) `on` (fst . fst)) vs)
+    adapt [] vs = if preferExistingFamily
+                  then map ((fst . fst . head) &&& map (snd *** id)) (groupBy ((==) `on` (fst . fst)) vs)
+                  else map (\((familyName, firstName), gender) -> (familyName, [(firstName, gender)])) vs
     adapt ((familyName, ns):ss) vs =
       let ns' :: [(String, Bool)]
           ns' = concat (map snd (filter ((== familyName) . fst) ss))
