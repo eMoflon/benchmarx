@@ -50,7 +50,7 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * <b>Test</b> for deleting family members. After creating the person register,
-	 * set birthdates and make sure, that the sons with the name Bart can be 
+	 * set birthdays and make sure that the sons with the name Bart can be 
 	 * distinguished. Then delete the younger son Bart from the Family register.
 	 * <b>Expect</b>: Delete the correct Person in the Person Register
 	 * <b>Features</b>: fwd, del, corr-based, structural
@@ -81,7 +81,7 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * <b>Test</b> for renaming a family. After creating the person register,
-	 * set birthdates. Then rename the name of the complete Family Simpson to Bouvier
+	 * set birthdays. Then rename the complete Family Simpson to Bouvier.
 	 * <b>Expect</b>: Change the name of the affected Persons in the Person Register
 	 * <b>Features</b>: fwd, attribute, fixed, structural, corr-based
 	 */
@@ -110,8 +110,8 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	}
 	
 	/**
-	 * <b>Test</b> for moving family members to different families and also changing their role. 
-	 * After creating the person register, set birthdates. Then move Lisa to Flanders as mother
+	 * <b>Test</b> for moving family members to different families and also changing their roles. 
+	 * After creating the person register, set birthdays. Then move Lisa to Flanders as mother
 	 * and Marge to Skinner as mother.
 	 * <b>Expect</b>: Change the name of the affected Persons in the Person Register
 	 * <b>Features</b>: fwd, del+add, fixed, structural
@@ -142,10 +142,10 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	}
 	
 	/**
-	 * <b>Test</b> for deleting an re-creating family members.
-	 * After creating the person register, set birthdates. Then delete and re-create Homer
-	 * <b>Expect</b>: Person register remains unchanged, except for "Simpson, Homer", which
-	 * should be re-created with default birthdate.
+	 * <b>Test</b> for deleting and re-creating family members.
+	 * After creating the person register, set birthdays. Then delete and re-create Homer
+	 * <b>Expect</b>: Person register remains unchanged, except for "Simpson, Homer", who
+	 * should be re-created with the default birthday.
 	 * <b>Features</b>: fwd, structural, add+del, fixed 
 	 */
 	@Test
@@ -175,9 +175,9 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * <b>Test</b> for moving a family member to a new family and changing her role from daughter to son.
-	 * After creating the person register, set birthdates. Then move daughter Maggie to the Flanders family
+	 * After creating the person register, set birthdays. Then move daughter Maggie to the Flanders family
 	 * as a son.
-	 * <b>Expect</b>: A new male person should be created in the PersonRegister, but the birthdate of Maggie
+	 * <b>Expect</b>: A new male person should be created in the PersonRegister, but the birthday of Maggie
 	 * should be retained.
 	 * <b>Features</b>: fwd, structural, add+del, fixed 
 	 */

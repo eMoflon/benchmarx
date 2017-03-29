@@ -194,7 +194,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 * <b>Test</b> for deleting and recreating a Person in a PersonRegister after the initial
 	 * register has been transformed into a family model.<br/>
 	 * <b>Expect</b> : Model states as described in the postcondition.<br/>
-	 * <b>Features</b>: bwd , del+add , structural, runtime
+	 * <b>Features</b>: bwd, del+add, structural, runtime
 	 */
 	@Test
 	public void testIncrementalMixedDynamic() {

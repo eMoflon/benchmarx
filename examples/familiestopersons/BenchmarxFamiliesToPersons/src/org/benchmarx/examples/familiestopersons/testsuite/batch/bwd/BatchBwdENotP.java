@@ -58,6 +58,12 @@ public class BatchBwdENotP extends FamiliesToPersonsTestCase {
 		util.assertPostcondition("FamiliesWithChildrenOnly", "PersonsMulti"); 
 	}
 	
+	/**
+	 * <b>Test</b> for creation of family members in existing families.<br/>
+	 * <b>Expect</b> As creation of children is preferred, two families should be created with no parents.
+	 * All Barts should be in the same family as sons with the same first name.<br/>
+	 * <b>Features</b>: bwd, runtime
+	 */
 	@Test
 	public void testCreateDuplicateFamilyMembersInExistingFamilyAsChildren() {
 		tool.initiateSynchronisationDialogue();
