@@ -12,7 +12,7 @@ Infrastructure for implementing benchmarx: benchmarks for bidirectional transfor
 6.  Choose the tools you want to execute by appropriately manipulating `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/testsuite/FamiliesToPersonsTestCase.java/tools()`.
 7.  (Optional) If you want to setup the bx tool BiGUL, then work through `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/implementations/bigul/README-SETUP` to do this.
 8.  Choose the project **BenchmarxFamiliesToPersons** and select "Run As/JUnit Test" to execute the benchmarx "Families to Persons" for all tools chosen in Step 5.
-9.  You can compare your results with `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/testsuite/resultsAsOf_30_11_2016.xlsx`.
+9.  You can compare your results with `/BenchmarxFamiliesToPersons/results/TestResults.xlsx`.
 
 ## How to extend the benchmarx by adding a new implementation (and/or new test cases!)
 
