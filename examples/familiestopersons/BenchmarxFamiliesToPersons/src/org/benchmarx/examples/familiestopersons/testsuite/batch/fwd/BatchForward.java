@@ -8,10 +8,7 @@ import org.junit.Test;
 import Families.FamilyRegister;
 import Persons.PersonRegister;
 
-/**
- * This class covers the Test Case (TC 1) as specified on github
- *
- */
+
 public class BatchForward extends FamiliesToPersonsTestCase {
 
 	public BatchForward(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
@@ -28,8 +25,6 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	{
 		// No precondition!
 		//------------
-		tool.initiateSynchronisationDialogue();
-		//------------
 		util.assertPostcondition("RootElementFamilies", "RootElementPersons");
 	}
 	
@@ -41,7 +36,6 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	@Test
 	public void testFamilyNameChangeOfEmpty()
 	{
-		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
 
 		util.assertPrecondition("Pre_NameChangeFamilyEmpty", "Pre_NameChangePersonEmpty");
@@ -61,7 +55,6 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	@Test
 	public void testCreateFamily()
 	{
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		//------------
 		tool.performAndPropagateSourceEdit(helperFamily::createSkinnerFamily);
@@ -79,7 +72,6 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	@Test
 	public void testCreateFamilyMember()
 	{
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		//------------
 		tool.performAndPropagateSourceEdit(util
@@ -96,7 +88,6 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test 
 	public void testNewFamilyWithMultiMembers(){
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		//------------
 		tool.performAndPropagateSourceEdit(util
@@ -115,7 +106,6 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testNewDuplicateFamilyNames() {
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		//------------
 		tool.performAndPropagateSourceEdit(util
@@ -133,7 +123,6 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testDuplicateFamilyMemberNames() {
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		//------------
 		tool.performAndPropagateSourceEdit(util

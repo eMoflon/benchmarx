@@ -33,6 +33,14 @@ public interface BXTool<S, T, D> {
 	public void initiateSynchronisationDialogue();
 
 	/**
+	 * This method should be invoked once at the end of every test
+	 * (synchronisation dialogue) to give the BX tool the chance to shut down as
+	 * required. No update propagation or assertions should be performed after
+	 * this method is invoked.
+	 */
+	default public void terminateSynchronisationDialogue() {}
+	
+	/**
 	 * Request the bx tool to perform the source edit on the soure model and to
 	 * propagate it to the target model.
 	 * 

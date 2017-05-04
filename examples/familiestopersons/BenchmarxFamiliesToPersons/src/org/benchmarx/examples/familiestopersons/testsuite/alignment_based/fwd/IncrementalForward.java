@@ -23,7 +23,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalInserts() {
-		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
@@ -57,7 +56,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalDeletions() {
-		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
@@ -87,7 +85,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalRename() {
-		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
@@ -118,7 +115,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalMove() {
-		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
@@ -150,7 +146,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalMixed() {
-		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
@@ -183,7 +178,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalMoveRoleChange() {
-		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
@@ -211,7 +205,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testStability() {
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		//------------
 		tool.performAndPropagateSourceEdit(util
@@ -231,7 +224,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testHippocraticness() {
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		//------------
 		tool.performAndPropagateSourceEdit(util
