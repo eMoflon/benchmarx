@@ -1,15 +1,11 @@
 package org.benchmarx.util;
 
-import java.io.IOException;
+import static org.benchmarx.util.EMFUtil.loadExpectedModel;
+
 import java.util.function.Consumer;
 
 import org.benchmarx.BXTool;
 import org.benchmarx.Configurator;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 /**
  * A collection of helper methods used by the test framework. See {@link BXTool}
@@ -27,24 +23,6 @@ public class BenchmarxUtil<S,T, D> {
 	
 	public BenchmarxUtil(BXTool<S,T,D> tool){
 		this.tool = tool;
-	}
-	
-	private <M> M loadExpectedModel(String path){
-		ResourceSet resourceSet = new ResourceSetImpl();
-		return loadExpectedModel(path, resourceSet);
-	}
-	
-	@SuppressWarnings("unchecked")
-	private <M> M loadExpectedModel(String path, ResourceSet resourceSet) {
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
-	      
-		Resource resource = resourceSet.createResource(URI.createFileURI("resources/" + path + ".xmi"));
-		try {
-			resource.load(null);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return (M)resource.getContents().get(0);
 	}
 	
 	/**
