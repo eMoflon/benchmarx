@@ -84,6 +84,8 @@ namespace TTC2017.FamiliesToPersons.NMF
         
         private TimeSpan? timeOfLastPropagate;
 
+        private TimeSpan? timeOfLastPropagate;
+
         private void Propagate(string argument)
         {
             var changes = repository.Resolve(argument).RootElements[0] as ModelChangeSet;
