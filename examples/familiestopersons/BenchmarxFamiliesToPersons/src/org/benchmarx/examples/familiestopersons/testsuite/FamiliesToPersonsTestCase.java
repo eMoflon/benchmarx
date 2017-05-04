@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import org.benchmarx.BXTool;
 import org.benchmarx.emf.Comparator;
+import org.benchmarx.examples.familiestopersons.implementations.nmf.NMFFamiliesToPersonsIncremental;
 import org.benchmarx.examples.familiestopersons.implementations.bigul.BiGULFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
@@ -52,15 +53,15 @@ public abstract class FamiliesToPersonsTestCase {
 	@Parameters
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
 		return Arrays.asList(
-				new BiGULFamiliesToPersons()
-				,
-				new EMoflonFamiliesToPersons()
-				,
-				new MediniQVTFamiliesToPersons()
-				,
-				new MediniQVTFamiliesToPersonsConfig()
-				,
-				new UbtXtendFamiliesToPersons()
+				new NMFFamiliesToPersonsIncremental()
+				//,
+				//new EMoflonFamiliesToPersons()
+				//,
+				//new MediniQVTFamiliesToPersons()
+				//,
+				//new MediniQVTFamiliesToPersonsConfig()
+				//,
+				//new UbtXtendFamiliesToPersons()
 			);
 	}
 	

@@ -6,7 +6,6 @@ using NMF.Models.Meta;
 using NMF.Synchronizations;
 using NMF.Utilities;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using TTC2017.FamiliesToPersons.NMF.Families;
 using TTC2017.FamiliesToPersons.NMF.Persons;
@@ -15,9 +14,6 @@ namespace TTC2017.FamiliesToPersons.NMF
 {
     public class FamiliesToPersonsSynchronization : ReflectiveSynchronization
     {
-        public static bool PreferCreatingParentToChild = true;
-        public static bool PreferExistingFamilyToNew = true;
-
         public class FamilyRegisterToPersonRegister : SynchronizationRule<FamilyRegister, PersonRegister>
         {
             public override void DeclareSynchronization()
@@ -46,10 +42,11 @@ namespace TTC2017.FamiliesToPersons.NMF
             protected override IFamilyMember CreateLeftOutput(IMale input, IEnumerable<IFamilyMember> candidates, ISynchronizationContext context, out bool existing)
             {
                 var member = base.CreateLeftOutput(input, candidates, context, out existing);
-                var temp = new TemporaryStereotype(member);
-                temp.IsMale = true;
-                temp.LastName = input.Name.Substring(0, input.Name.IndexOf(','));
-                member.Extensions.Add(temp);
+                member.Extensions.Add(new TemporaryStereotype(member)
+                {
+                    IsMale = true,
+                    LastName = input.Name.Substring(0, input.Name.IndexOf(','))
+                });
                 return member;
             }
         }
@@ -64,10 +61,11 @@ namespace TTC2017.FamiliesToPersons.NMF
             protected override IFamilyMember CreateLeftOutput(IFemale input, IEnumerable<IFamilyMember> candidates, ISynchronizationContext context, out bool existing)
             {
                 var member = base.CreateLeftOutput(input, candidates, context, out existing);
-                var temp = new TemporaryStereotype(member);
-                temp.IsMale = false;
-                temp.LastName = input.Name.Substring(0, input.Name.IndexOf(','));
-                member.Extensions.Add(temp);
+                member.Extensions.Add(new TemporaryStereotype(member)
+                {
+                    IsMale = false,
+                    LastName = input.Name.Substring(0, input.Name.IndexOf(','))
+                });
                 return member;
             }
         }
@@ -77,7 +75,7 @@ namespace TTC2017.FamiliesToPersons.NMF
             public FamilyRegister Register { get; private set; }
 
             public FamilyMemberCollection(FamilyRegister register)
-                : base(register.Families.SelectMany(fam => fam.Sons.Concat(fam.Daughters).Concat(fam.Father).Concat(fam.Mother)))
+                : base(register.Families.SelectMany(fam => fam.Children.OfType<IFamilyMember>()))
             {
                 Register = register;
             }
@@ -85,50 +83,8 @@ namespace TTC2017.FamiliesToPersons.NMF
             public override void Add(IFamilyMember item)
             {
                 var temp = item.GetExtension<TemporaryStereotype>();
-                IFamily family = null;
-                if (PreferExistingFamilyToNew)
-                {
-                    IEnumerable<IFamily> candidateFamilies = Register.Families.AsEnumerable().Where(fam => fam.Name == temp.LastName);
-                    if (PreferCreatingParentToChild)
-                    {
-                        if (temp.IsMale)
-                        {
-                            candidateFamilies = candidateFamilies.Where(fam => fam.Father == null);
-                        }
-                        else
-                        {
-                            candidateFamilies = candidateFamilies.Where(fam => fam.Mother == null);
-                        }
-                    }
-                    family = candidateFamilies.FirstOrDefault();
-                }
-                if (family == null)
-                {
-                    family = new Family { Name = temp.LastName };
-                    Register.Families.Add(family);
-                }
-                if (temp.IsMale)
-                {
-                    if (family.Father == null)
-                    {
-                        family.Father = item;
-                    }
-                    else
-                    {
-                        family.Sons.Add(item);
-                    }
-                }
-                else
-                {
-                    if (family.Mother == null)
-                    {
-                        family.Mother = item;
-                    }
-                    else
-                    {
-                        family.Daughters.Add(item);
-                    }
-                }
+                item.AddToFamily(Register, temp.IsMale, temp.LastName);
+                item.Extensions.Remove(temp);
             }
 
             public override void Clear()
@@ -138,7 +94,6 @@ namespace TTC2017.FamiliesToPersons.NMF
 
             public override bool Remove(IFamilyMember item)
             {
-                if (item == null) Debugger.Break();
                 item.Delete();
                 return true;
             }
@@ -158,6 +113,9 @@ namespace TTC2017.FamiliesToPersons.NMF
 
     public static class Helpers
     {
+        public static bool PreferCreatingParentToChild = true;
+        public static bool PreferExistingFamilyToNew = true;
+
         private static ObservingFunc<IFamilyMember, string> fullName = new ObservingFunc<IFamilyMember, string>(
             m => m.Name == null ? null : ((IFamily)m.Parent).Name + ", " + m.Name);
         
@@ -173,10 +131,56 @@ namespace TTC2017.FamiliesToPersons.NMF
             return fullName.Observe(member);
         }
 
+        public static void AddToFamily(this IFamilyMember item, IFamilyRegister register, bool isMale, string name)
+        {
+            IFamily family = null;
+            if (PreferExistingFamilyToNew)
+            {
+                IEnumerable<IFamily> candidateFamilies = register.Families.AsEnumerable().Where(fam => fam.Name == name);
+                if (PreferCreatingParentToChild)
+                {
+                    if (isMale)
+                    {
+                        candidateFamilies = candidateFamilies.Where(fam => fam.Father == null);
+                    }
+                    else
+                    {
+                        candidateFamilies = candidateFamilies.Where(fam => fam.Mother == null);
+                    }
+                }
+                family = candidateFamilies.FirstOrDefault();
+            }
+            if (family == null)
+            {
+                family = new Family { Name = name };
+                register.Families.Add(family);
+            }
+            if (isMale)
+            {
+                if (family.Father == null && PreferCreatingParentToChild)
+                {
+                    family.Father = item;
+                }
+                else
+                {
+                    family.Sons.Add(item);
+                }
+            }
+            else
+            {
+                if (family.Mother == null && PreferCreatingParentToChild)
+                {
+                    family.Mother = item;
+                }
+                else
+                {
+                    family.Daughters.Add(item);
+                }
+            }
+        }
+
         public static void SetFullName(this IFamilyMember member, string newName)
         {
-            if (member == null) Debugger.Break();
-            if (newName == null) Debugger.Break();
             var family = member.Parent as IFamily;
             var separator = newName.IndexOf(", ");
             var lastName = newName.Substring(0, separator);
@@ -184,7 +188,8 @@ namespace TTC2017.FamiliesToPersons.NMF
             member.Name = firstName;
             if (family != null && family.Name != lastName)
             {
-                
+                var isMale = member.FatherInverse != null || member.SonsInverse != null;
+                member.AddToFamily(family.FamiliesInverse, isMale, lastName);
             }
         }
     }
