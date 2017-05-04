@@ -15,6 +15,7 @@ import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
 import org.benchmarx.persons.core.PersonsComparator;
 import org.benchmarx.util.BenchmarxUtil;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -47,8 +48,16 @@ public abstract class FamiliesToPersonsTestCase {
 		util = new BenchmarxUtil<>(tool);
 		helperFamily = new FamilyHelper();
 		helperPerson = new PersonHelper();
+		
+		// Initialise the bx tool
+		tool.initiateSynchronisationDialogue();
 	}
 
+	@After
+	public void terminate(){
+		tool.terminateSynchronisationDialogue();
+	}
+	
 	@Parameters
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
 		return Arrays.asList(

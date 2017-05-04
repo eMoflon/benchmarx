@@ -28,7 +28,6 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalInsertsFixedConfig() {
-		tool.initiateSynchronisationDialogue();
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
@@ -55,7 +54,6 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalInsertsDynamicConfig() {
-		tool.initiateSynchronisationDialogue();
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
@@ -111,7 +109,6 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalDeletions() {
-		tool.initiateSynchronisationDialogue();
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
@@ -139,7 +136,6 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalRenamingDynamic() {
-		tool.initiateSynchronisationDialogue();
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
@@ -198,7 +194,6 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalMixedDynamic() {
-		tool.initiateSynchronisationDialogue();
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
@@ -227,7 +222,6 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalOperational() {
-		tool.initiateSynchronisationDialogue();
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
@@ -260,7 +254,6 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testStability() {
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		// ---------------------------------
 		util.configure()
@@ -280,7 +273,6 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	
 	@Test
 	public void testHippocraticness() {
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		// ---------------------------------
 		util.configure()

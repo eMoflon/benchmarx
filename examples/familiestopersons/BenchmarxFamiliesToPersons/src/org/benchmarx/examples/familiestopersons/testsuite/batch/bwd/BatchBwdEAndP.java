@@ -29,7 +29,6 @@ public class BatchBwdEAndP extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testCreateMalePersonAsSon() {
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		// ---------------------------------
 		util.configure()
@@ -48,7 +47,6 @@ public class BatchBwdEAndP extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testCreateFamilyMembersInExistingFamilyAsParents() {
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		// ---------------------------------
 		util.configure()

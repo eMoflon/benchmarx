@@ -22,7 +22,6 @@ public class BatchBwdNotEAndP extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testCreateMalePersonAsParent() {
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		// ---------------------------------
 		util.configure()
@@ -41,10 +40,7 @@ public class BatchBwdNotEAndP extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testCreateFamilyMembersInNewFamilyAsParents() {
-		tool.initiateSynchronisationDialogue();
-		
-		// No precondition!
-		
+		// No precondition!		
 		// ---------------------------------
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
@@ -63,7 +59,6 @@ public class BatchBwdNotEAndP extends FamiliesToPersonsTestCase {
 	
 	@Test
 	public void testCreateDuplicateFamilyMembersInNewFamilyAsParents() {
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		// ---------------------------------
 		util.configure()
