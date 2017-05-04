@@ -5,6 +5,7 @@ using NMF.Synchronizations;
 using NMF.Transformations;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,10 +82,16 @@ namespace TTC2017.FamiliesToPersons.NMF
             return true;
         }
 
+        private TimeSpan? timeOfLastPropagate;
+
         private void Propagate(string argument)
         {
             var changes = repository.Resolve(argument).RootElements[0] as ModelChangeSet;
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
             changes.Apply();
+            stopwatch.Stop();
+            timeOfLastPropagate = stopwatch.Elapsed;
         }
 
         static void Main(string[] args)
@@ -93,7 +100,15 @@ namespace TTC2017.FamiliesToPersons.NMF
             var command = Console.In.ReadLine();
             while (program.AcceptCommand(command))
             {
-                Console.Out.WriteLine("OK");
+                if (program.timeOfLastPropagate.HasValue)
+                {
+                    Console.Out.WriteLine(program.timeOfLastPropagate.Value.Ticks * 100);
+                    program.timeOfLastPropagate = null;
+                }
+                else
+                {
+                    Console.Out.WriteLine("OK");
+                }
                 command = Console.In.ReadLine();
             }
             Console.WriteLine("Bye");

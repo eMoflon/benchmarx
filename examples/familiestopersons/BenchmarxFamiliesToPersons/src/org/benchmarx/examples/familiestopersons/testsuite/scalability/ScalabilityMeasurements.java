@@ -5,6 +5,7 @@ import org.benchmarx.examples.familiestopersons.implementations.bigul.BiGULFamil
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.implementations.nmf.NMFFamiliesToPersonsIncremental;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.util.BXToolTimer;
 
@@ -17,7 +18,7 @@ import Persons.PersonRegister;
 import Persons.PersonsFactory;
 
 public class ScalabilityMeasurements {
-	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool1 = new BiGULFamiliesToPersons();
+	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool1 = new NMFFamiliesToPersonsIncremental();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool2 = new EMoflonFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool3 = new MediniQVTFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool4 = new UbtXtendFamiliesToPersons();
