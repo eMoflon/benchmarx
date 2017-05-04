@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changes:ModelChangeSet xmi:version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xmi="http://www.omg.org/XMI" xmlns:changes="http://nmf.codeplex.com/changes">
+	<changes xsi:type="changes:CompositionListInsertion" feature="platform:/plugin/Families/model/Families.ecore#//FamilyRegister/families" affectedElement="ttc:source#//" index="0">
+		<addedElement xsi:type="Families:Family" xmlns:Families="platform:/plugin/Families/model/Families.ecore" name="Simpson" />
+	</changes>
+	<changes xsi:type="changes:CompositionChange" feature="platform:/plugin/Families/model/Families.ecore#//Family/father" affectedElement="#//changes.0/addedElement">
+		<newValue xsi:type="Families:FamilyMember" xmlns:Families="platform:/plugin/Families/model/Families.ecore" name="Homer" />
+	</changes>
+	<changes xsi:type="changes:CompositionChange" feature="platform:/plugin/Families/model/Families.ecore#//Family/mother" affectedElement="#//changes.0/addedElement">
+		<newValue xsi:type="Families:FamilyMember" xmlns:Families="platform:/plugin/Families/model/Families.ecore" name="Marge" />
+	</changes>
+	<changes xsi:type="changes:CompositionListInsertion" feature="platform:/plugin/Families/model/Families.ecore#//Family/sons" affectedElement="#//changes.0/addedElement" index="0">
+		<addedElement xsi:type="Families:FamilyMember" xmlns:Families="platform:/plugin/Families/model/Families.ecore" name="Bart" />
+	</changes>
+	<changes xsi:type="changes:CompositionListInsertion" feature="platform:/plugin/Families/model/Families.ecore#//Family/daughters" affectedElement="#//changes.0/addedElement" index="0">
+		<addedElement xsi:type="Families:FamilyMember" xmlns:Families="platform:/plugin/Families/model/Families.ecore" name="Lisa" />
+	</changes>
+	<changes xsi:type="changes:CompositionListInsertion" feature="platform:/plugin/Families/model/Families.ecore#//Family/daughters" affectedElement="#//changes.0/addedElement" index="1">
+		<addedElement xsi:type="Families:FamilyMember" xmlns:Families="platform:/plugin/Families/model/Families.ecore" name="Maggie" />
+	</changes>
+	<changes xsi:type="changes:CompositionListInsertion" feature="platform:/plugin/Families/model/Families.ecore#//Family/sons" affectedElement="#//changes.0/addedElement" index="1">
+		<addedElement xsi:type="Families:FamilyMember" xmlns:Families="platform:/plugin/Families/model/Families.ecore" name="Bart" />
+	</changes>
+</changes:ModelChangeSet>

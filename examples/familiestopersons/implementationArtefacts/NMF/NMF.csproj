@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FE99D98D-55EF-4B96-8725-B032BCAE546C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TTC2017.FamiliesToPersons.NMF</RootNamespace>
+    <RootNamespace>TTC2017.FamiliesToPersons</RootNamespace>
     <AssemblyName>NMFSolution</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -26,47 +26,38 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NMF.Collections, Version=1.0.79.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Collections.dll</HintPath>
+    <Reference Include="NMF.Collections">
+      <HintPath>..\..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Expressions, Version=1.0.79.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Expressions.dll</HintPath>
+    <Reference Include="NMF.Expressions">
+      <HintPath>..\..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Expressions.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Expressions.Linq, Version=1.0.79.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Expressions.Linq.dll</HintPath>
+    <Reference Include="NMF.Expressions.Linq">
+      <HintPath>..\..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Expressions.Linq.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Models, Version=1.0.79.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Models.dll</HintPath>
+    <Reference Include="NMF.Models">
+      <HintPath>..\..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Models.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Serialization, Version=1.0.79.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Serialization.dll</HintPath>
+    <Reference Include="NMF.Serialization">
+      <HintPath>..\..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Synchronizations, Version=1.0.79.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\NMF\Synchronizations\Synchronizations\bin\Debug\NMF.Synchronizations.dll</HintPath>
+    <Reference Include="NMF.Synchronizations">
+      <HintPath>..\..\..\..\..\..\NMF\Synchronizations\Synchronizations\bin\Debug\NMF.Synchronizations.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Transformations, Version=1.0.79.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\NMF\Synchronizations\Synchronizations\bin\Debug\NMF.Transformations.dll</HintPath>
+    <Reference Include="NMF.Transformations">
+      <HintPath>..\..\..\..\..\..\NMF\Synchronizations\Synchronizations\bin\Debug\NMF.Transformations.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Transformations.Core, Version=1.0.79.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\NMF\Synchronizations\Synchronizations\bin\Debug\NMF.Transformations.Core.dll</HintPath>
+    <Reference Include="NMF.Transformations.Core">
+      <HintPath>..\..\..\..\..\..\NMF\Synchronizations\Synchronizations\bin\Debug\NMF.Transformations.Core.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Utilities, Version=1.0.79.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Utilities.dll</HintPath>
+    <Reference Include="NMF.Utilities">
+      <HintPath>..\..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
