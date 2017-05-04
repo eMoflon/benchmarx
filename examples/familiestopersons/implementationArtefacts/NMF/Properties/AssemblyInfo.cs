@@ -37,4 +37,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: ModelMetadata("platform:/plugin/Families/model/Families.ecore", "TTC2017.FamiliesToPersons.Families.nmeta")]
-[assembly: ModelMetadata("platform:/plugin/Persons/model/Persons.ecore", "TTC2017.FamiliesToPersons.Persons.ecore")]
+[assembly: ModelMetadata("platform:/plugin/Persons/model/Persons.ecore", "TTC2017.FamiliesToPersons.Persons.nmeta")]
