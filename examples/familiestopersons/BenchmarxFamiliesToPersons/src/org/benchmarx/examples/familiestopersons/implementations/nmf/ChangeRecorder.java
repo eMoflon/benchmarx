@@ -72,8 +72,14 @@ class ChangeRecorder extends org.eclipse.emf.ecore.util.EContentAdapter {
         
         super.notifyChanged(n);
         
+        if (n.getEventType() == Notification.REMOVING_ADAPTER) return;
+        
         EObject affectedElement = (EObject)n.getNotifier();
         EStructuralFeature feature = (EStructuralFeature)n.getFeature();
+        
+        if (feature == null) {
+        	System.out.println("This comes unexpected.");
+        }
         
         if (feature instanceof EReference) {
         	EReference reference = (EReference)feature;
