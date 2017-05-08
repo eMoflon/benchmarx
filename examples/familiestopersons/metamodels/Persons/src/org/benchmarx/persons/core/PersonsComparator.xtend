@@ -20,10 +20,6 @@ public class PersonsComparator implements Comparator<PersonRegister>{
 	
 	override assertEquals(PersonRegister expected, PersonRegister actual) {
 		assertTrue(personsToString(expected).startsWith("PersonRegister"))
-//		println("Expected:")
-//		println(personsToString(expected))
-//		println("Actual:")
-//		println(personsToString(actual))
 		assertEquals(personsToString(expected), personsToString(actual))
 	}
 	
@@ -52,7 +48,7 @@ public class PersonsComparator implements Comparator<PersonRegister>{
 	}
 
 	def toMyString(Date d) {
-		val sm = new SimpleDateFormat("yyyy-mm-dd")
+		val sm = new SimpleDateFormat("YYYY-MM-dd")
 		return sm.format(d)
 	}	
 }

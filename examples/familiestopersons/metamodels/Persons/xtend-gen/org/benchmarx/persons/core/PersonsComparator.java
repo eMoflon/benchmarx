@@ -112,7 +112,7 @@ public class PersonsComparator implements Comparator<PersonRegister> {
   }
   
   public String toMyString(final Date d) {
-    final SimpleDateFormat sm = new SimpleDateFormat("yyyy-mm-dd");
+    final SimpleDateFormat sm = new SimpleDateFormat("YYYY-MM-dd");
     return sm.format(d);
   }
 }
