@@ -19,7 +19,7 @@ import Persons.*;
 
 class ChangeRecorder extends org.eclipse.emf.ecore.util.EContentAdapter {
 	
-	private static SimpleDateFormat compatibleFormat = new SimpleDateFormat("MM/dd/yyyy");
+	private static SimpleDateFormat compatibleFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 	
 	private EObject root;
 	private String metamodel;

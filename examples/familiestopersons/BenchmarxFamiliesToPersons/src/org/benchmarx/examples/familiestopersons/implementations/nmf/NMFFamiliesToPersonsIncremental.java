@@ -120,16 +120,20 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 		propagation += actual;
 		includingSerialization += (end - start);
 	}
-
+	
 	@Override
 	public void assertPostcondition(FamilyRegister fr, PersonRegister pr) {
+		this.assertPrecondition(fr, pr);
+	}
+	
+	@Override
+	public void terminateSynchronisationDialogue() {
 		try {
 			Files.append(String.format("%d;%d\n", this.includingSerialization, this.propagation), new File("nmfresults.csv"), Charsets.UTF_8);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.assertPrecondition(fr, pr);
 		try {
 			writer.write("exit\n");
 			writer.flush();
@@ -140,7 +144,7 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 	}
 	
 	private void normaliseAndCompare(String expected, String actual) {
-		//Assert.assertEquals(expected.replaceAll("\\s+",""), actual.replaceAll("\\s+",""));
+		Assert.assertEquals(expected.replaceAll("\\s+",""), actual.replaceAll("\\s+",""));
 	}
 
 	private void runNMF() {
