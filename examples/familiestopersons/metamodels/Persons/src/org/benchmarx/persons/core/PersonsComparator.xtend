@@ -48,7 +48,7 @@ public class PersonsComparator implements Comparator<PersonRegister>{
 	}
 
 	def toMyString(Date d) {
-		val sm = new SimpleDateFormat("YYYY-MM-dd")
+		val sm = new SimpleDateFormat("yyyy-MM-dd")
 		return sm.format(d)
 	}	
 }

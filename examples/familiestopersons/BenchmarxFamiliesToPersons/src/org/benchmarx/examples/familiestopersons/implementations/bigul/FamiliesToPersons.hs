@@ -12,14 +12,14 @@ import Generics.BiGUL.TH
 import Generics.BiGUL.Lib
 import Generics.BiGUL.Lib.List
 import Generics.BiGUL.Interpreter
--- import Generics.BiGUL.Interpreter.Unsafe
+--import Generics.BiGUL.Interpreter.Unsafe
 
 data Option = PREFER_CREATING_PARENT_TO_CHILD
             | PREFER_EXISTING_FAMILY_TO_NEW
   deriving (Show, Read, Eq)
 
 defaultDate :: String
-defaultDate = "0001-00-01"
+defaultDate = "0001-01-01"
 
 
 --------
