@@ -93,6 +93,7 @@ namespace TTC2017.FamiliesToPersons.NMF.Persons
         /// </summary>
         [XmlElementNameAttribute("birthday")]
         [XmlAttributeAttribute(true)]
+        [TypeConverter(typeof(IsoDateTimeConverter))]
         public Nullable<DateTime> Birthday
         {
             get
