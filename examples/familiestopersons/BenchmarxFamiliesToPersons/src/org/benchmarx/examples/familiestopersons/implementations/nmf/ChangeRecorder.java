@@ -48,6 +48,7 @@ class ChangeRecorder extends org.eclipse.emf.ecore.util.EContentAdapter {
     
     public String stopAndExport() {
     	this.writeEnd();
+    	unsetTarget(root);
     	return buffer.toString();
     }
     
@@ -96,6 +97,7 @@ class ChangeRecorder extends org.eclipse.emf.ecore.util.EContentAdapter {
             		}
         			this.WriteEndChange("CompositionChange");
         		} else {
+        			if (reference.isContainer()) return;
         			this.WriteStartChange("AssociationChange", feature);
             		if (n.getNewValue() != null) {
             			this.WriteElement((EObject)n.getNewValue(), "newValue");
