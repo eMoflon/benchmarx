@@ -32,32 +32,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NMF.Collections">
-      <HintPath>..\..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Collections.dll</HintPath>
+    <Reference Include="NMF.Collections, Version=1.0.81.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NMF-Repository.1.0.81\lib\net40\NMF.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Expressions">
-      <HintPath>..\..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Expressions.dll</HintPath>
+    <Reference Include="NMF.Expressions, Version=1.0.81.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NMF-Expressions.1.0.81\lib\net40\NMF.Expressions.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Expressions.Linq">
-      <HintPath>..\..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Expressions.Linq.dll</HintPath>
+    <Reference Include="NMF.Expressions.Linq, Version=1.0.81.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NMF-Expressions.1.0.81\lib\net40\NMF.Expressions.Linq.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Models">
-      <HintPath>..\..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Models.dll</HintPath>
+    <Reference Include="NMF.Models, Version=1.0.81.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NMF-Repository.1.0.81\lib\net40\NMF.Models.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Serialization">
-      <HintPath>..\..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Serialization.dll</HintPath>
+    <Reference Include="NMF.Serialization, Version=1.0.81.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NMF-Repository.1.0.81\lib\net40\NMF.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Synchronizations">
-      <HintPath>..\..\..\..\..\..\NMF\Synchronizations\Synchronizations\bin\Debug\NMF.Synchronizations.dll</HintPath>
+    <Reference Include="NMF.Synchronizations, Version=1.0.81.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NMF-Synchronizations.1.0.81\lib\net40\NMF.Synchronizations.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Transformations">
-      <HintPath>..\..\..\..\..\..\NMF\Synchronizations\Synchronizations\bin\Debug\NMF.Transformations.dll</HintPath>
+    <Reference Include="NMF.Transformations, Version=1.0.81.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NMF-Transformations.1.0.81\lib\net40\NMF.Transformations.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Transformations.Core">
-      <HintPath>..\..\..\..\..\..\NMF\Synchronizations\Synchronizations\bin\Debug\NMF.Transformations.Core.dll</HintPath>
+    <Reference Include="NMF.Transformations.Core, Version=1.0.81.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NMF-Transformations.1.0.81\lib\net40\NMF.Transformations.Core.dll</HintPath>
     </Reference>
-    <Reference Include="NMF.Utilities">
-      <HintPath>..\..\..\..\..\..\NMF\Models\Models\bin\Debug\NMF.Utilities.dll</HintPath>
+    <Reference Include="NMF.Utilities, Version=1.0.81.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NMF-Utilities.1.0.81\lib\net40\NMF.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -94,8 +94,8 @@
   <ItemGroup>
     <None Include="App.config" />
     <EmbeddedResource Include="Families.nmeta" />
-    <None Include="packages.config" />
     <EmbeddedResource Include="Persons.nmeta" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
