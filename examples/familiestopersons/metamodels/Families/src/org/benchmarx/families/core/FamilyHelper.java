@@ -171,13 +171,13 @@ public class FamilyHelper {
 	// helpers required for incremental behavior	
 	
 	public void deleteFirstSonBart(FamilyRegister register) {
-		/*
-		Family family = getSimpsonFamily(register);
-		assertTrue(family.getName().equals("Simpson"));
-		
-		EcoreUtil.delete(family.getSons().get(0), true);
-		*/
-		EcoreUtil.delete(firstBart, true);
+		if (firstBart != null)
+			EcoreUtil.delete(firstBart, true);
+		else {
+			Family family = getSimpsonFamily(register);
+			assertTrue(family.getName().equals("Simpson"));		
+			EcoreUtil.delete(family.getSons().get(0), true);
+		}
 	}
 	
 	public void renameEmptySimpsonToBouvier(FamilyRegister register) {
@@ -187,7 +187,7 @@ public class FamilyHelper {
 		fam.setName("Bouvier");
 	}
 	
-	public void renameSimpsonToBouvier(FamilyRegister register){
+	public void renameSimpsonToBouvier(FamilyRegister register) {
 		Family family = getSimpsonFamily(register);
 		assertTrue(family.getName().equals("Simpson"));
 		
