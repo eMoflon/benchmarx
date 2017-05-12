@@ -61,15 +61,15 @@ public abstract class FamiliesToPersonsTestCase {
 	@Parameters
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
 		return Arrays.asList(
-				new BiGULFamiliesToPersons()
+				new BiGULFamiliesToPersons()  // Currently 9 failures
 				,
-				new EMoflonFamiliesToPersons()
+				new EMoflonFamiliesToPersons()  // Currently 5 failures
 				,
-				new MediniQVTFamiliesToPersons()
+				new MediniQVTFamiliesToPersons() // Currently 19 failures
 				,
-				new MediniQVTFamiliesToPersonsConfig()
+				new MediniQVTFamiliesToPersonsConfig() // Currently 12 failures
 				,
-				new UbtXtendFamiliesToPersons()
+				new UbtXtendFamiliesToPersons()  // Currently 0 failures
 			);
 	}
 	
