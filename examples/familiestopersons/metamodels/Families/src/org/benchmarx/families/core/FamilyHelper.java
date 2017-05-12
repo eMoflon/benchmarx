@@ -170,13 +170,18 @@ public class FamilyHelper {
 	// helpers required for incremental behavior	
 	
 	public void deleteFirstSonBart(FamilyRegister register) {
-		if (firstBart != null)
+		if (firstBartCanBeIdentifiedInRegister(register))
 			EcoreUtil.delete(firstBart, true);
 		else {
+			// Unable to locate firstBart via object identity, so rely on position-based heuristics
 			Family family = getSimpsonFamily(register);
 			assertTrue(family.getName().equals("Simpson"));		
 			EcoreUtil.delete(family.getSons().get(0), true);
 		}
+	}
+
+	private boolean firstBartCanBeIdentifiedInRegister(FamilyRegister register) {
+		return firstBart != null && firstBart.getSonsInverse().getFamiliesInverse().equals(register);
 	}
 	
 	public void renameEmptySimpsonToBouvier(FamilyRegister register) {
