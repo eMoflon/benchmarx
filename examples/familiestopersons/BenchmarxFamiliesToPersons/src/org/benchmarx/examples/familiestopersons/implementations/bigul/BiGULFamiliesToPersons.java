@@ -8,7 +8,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -28,19 +27,26 @@ import Persons.PersonsFactory;
  * The trick applied by this testrunner is simply to set the source and target
  * models A and B, when
  * {@link #assertPrecondition(FamilyRegister, PersonRegister)} is invoked (BiGUL
- * does not require any internal state).<br/>
+ * is state-based and does not require any internal state). As idle updates are
+ * only used to establish the precondition, these can be simply ignored.
+ * 
  * Any subsequent invocations of
  * {@link #performAndPropagateSourceEdit(Consumer)} or
  * {@link #performAndPropagateTargetEdit(Consumer)} are then used to update the
- * models, e.g., to A' and B. This means that round trips are not directly
- * supported (only multiple source or multiple target updates are allowed, not a
- * mixture), and have to be split into separate tests! Finally, when
- * {@link #assertPostcondition(FamilyRegister, PersonRegister)} is invoked,
- * BiGUL is called with the current state of A' and B to produce B'.
+ * models, e.g., to A' and B.
  * 
- * @author Anthony Anjorin
+ * This means that round trips are not directly supported (only multiple source
+ * or multiple target updates are allowed, not a mixture), and have to be split
+ * into separate tests!
+ * 
+ * Finally, when {@link #assertPostcondition(FamilyRegister, PersonRegister)} is
+ * invoked, BiGUL is called with the current state of A' and B to produce B'.
+ * 
+ * @author anthony anjorin
  */
 public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegister, Decisions> {
+	private static final boolean debug = false;
+	
 	private static final String BIGUL_EXE = "src/org/benchmarx/examples/familiestopersons/implementations/bigul/FamiliesToPersons";
 	private FamilyRegister src;
 	private PersonRegister trg;
@@ -48,7 +54,8 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 	private String resultTrg;
 	private FamiliesComparator srcHelper = new FamiliesComparator();
 	private PersonsComparator trgHelper = new PersonsComparator();
-	private BiConsumer<String, String> propagation;
+	private Runnable propagation;
+	private Configurator<Decisions> configurator;
 	
 	@Override
 	public String getName() {
@@ -64,6 +71,9 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 		// Initial results
 		resultSrc = srcHelper.familyToString(src);
 		resultTrg = trgHelper.personsToString(trg);
+		
+		configurator = new Configurator<Decisions>();
+		propagation = () -> {};
 	}
 
 	@Override
@@ -76,7 +86,7 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 		performEdit(edit, src, this::runBigulFWD);
 	}
 	
-	private <M> void performEdit(Consumer<M> edit, M model, BiConsumer<String, String> p){
+	private <M> void performEdit(Consumer<M> edit, M model, Runnable p){
 		try {
 			edit.accept(model);
 			propagation =  p;
@@ -85,19 +95,19 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 		}
 	}
 
-	private void runBigulBWD(String familyToString, String personsToString) {
-		resultSrc = runBigul("bwd", familyToString, personsToString);
-		resultTrg = personsToString;
+	private void runBigulBWD() {
+		resultSrc = runBigul("bwd", resultSrc, trgHelper.personsToString(trg));
+		resultTrg = trgHelper.personsToString(trg);
 	}
 
-	private void runBigulFWD(String familyToString, String personsToString) {
-		resultTrg = runBigul("fwd", familyToString, personsToString);
-		resultSrc = familyToString;
+	private void runBigulFWD() {
+		resultTrg = runBigul("fwd", srcHelper.familyToString(src), resultTrg);
+		resultSrc = srcHelper.familyToString(src);
 	}
 
 	@Override
 	public void assertPostcondition(FamilyRegister fr, PersonRegister pr) {
-		propagation.accept(srcHelper.familyToString(src), trgHelper.personsToString(trg));
+		propagation.run();
 		
 		String expectedFamilyRegister = srcHelper.familyToString(fr);
 		String expectedPersonsRegister = trgHelper.personsToString(pr);
@@ -113,7 +123,7 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 	private String runBigul(String dir, String familyRegister, String personsRegister) {
 		try {
 			File pathToExecutable = new File(BIGUL_EXE);
-			String input = "(" + "\"" + dir + "\"" + ", " + familyRegister + "," + personsRegister + ")";
+			String input = "(" + "\"" + dir + "\"" + ", " + updatePolicy() + ", " + familyRegister + "," + personsRegister + ")";
 			ProcessBuilder processBuilder = new ProcessBuilder(pathToExecutable.getAbsoluteFile().toString());
 			processBuilder.redirectErrorStream(true);
 			Process process = processBuilder.start();
@@ -123,8 +133,9 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 			
 			InputStream stdout = process.getInputStream();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(stdout));
-			
-			//System.out.println(input);
+
+			if(debug)
+				System.out.println(input);
 			
 			writer.write(input);
 			writer.flush();
@@ -142,15 +153,36 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 				+ "Please_consult_the_\"/implementations/bigul/README-SETUP\"_file!";
 	}
 
+	private String updatePolicy() {
+		try {
+			boolean b = configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
+			boolean e = configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
+			
+			String policy = "[";
+			if(b)
+				policy += "PREFER_CREATING_PARENT_TO_CHILD";
+			if(b && e)
+				policy += ", ";
+			if(e)
+				policy += "PREFER_EXISTING_FAMILY_TO_NEW";
+			
+			return policy + "]";
+		} catch (Exception e) {
+			return "[]";
+		}
+	}
+
 	@Override
 	public void assertPrecondition(FamilyRegister source, PersonRegister target) {
 		src = source;
 		trg = target;
+		resultSrc = srcHelper.familyToString(src);
+		resultTrg = trgHelper.personsToString(trg);
 	}
 
 	@Override
 	public void setConfigurator(Configurator<Decisions> configurator) {
-		// No configuration
+		this.configurator = configurator;
 	}	
 	
 	public void saveModels(String name) {

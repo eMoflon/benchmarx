@@ -8,10 +8,7 @@ import org.junit.Test;
 import Families.FamilyRegister;
 import Persons.PersonRegister;
 
-/**
- * This class covers the Test Case (TC 1) as specified on github
- *
- */
+
 public class BatchForward extends FamiliesToPersonsTestCase {
 
 	public BatchForward(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
@@ -28,8 +25,6 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	{
 		// No precondition!
 		//------------
-		tool.initiateSynchronisationDialogue();
-		//------------
 		util.assertPostcondition("RootElementFamilies", "RootElementPersons");
 	}
 	
@@ -41,7 +36,6 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	@Test
 	public void testFamilyNameChangeOfEmpty()
 	{
-		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
 
 		util.assertPrecondition("Pre_NameChangeFamilyEmpty", "Pre_NameChangePersonEmpty");
@@ -61,7 +55,6 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	@Test
 	public void testCreateFamily()
 	{
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		//------------
 		tool.performAndPropagateSourceEdit(helperFamily::createSkinnerFamily);
@@ -79,7 +72,6 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	@Test
 	public void testCreateFamilyMember()
 	{
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		//------------
 		tool.performAndPropagateSourceEdit(util
@@ -96,7 +88,6 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test 
 	public void testNewFamilyWithMultiMembers(){
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		//------------
 		tool.performAndPropagateSourceEdit(util
@@ -115,7 +106,6 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testNewDuplicateFamilyNames() {
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		//------------
 		tool.performAndPropagateSourceEdit(util
@@ -133,7 +123,6 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testDuplicateFamilyMemberNames() {
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		//------------
 		tool.performAndPropagateSourceEdit(util
@@ -141,45 +130,5 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 				.andThen(helperFamily::createSonBart));
 		//------------
 		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
-	}
-	
-	/**
-	 * <b>Test</b> for stability of the transformation.<br/>
-	 * <b>Expect</b> re-running the transformation after an idle source delta does not change the target model.<br/>
-	 * <b>Features:</b>: fwd, fixed
-	 */
-	@Test
-	public void testStability() {
-		tool.initiateSynchronisationDialogue();
-		// No precondition!
-		//------------
-		tool.performAndPropagateSourceEdit(util
-				.execute(helperFamily::createNewFamilySimpsonWithMembers)
-				.andThen(helperFamily::createSonBart));
-		//------------
-		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
-		
-		tool.performAndPropagateSourceEdit(helperFamily::idleDelta);
-		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
-	}
-	
-	/**
-	 * <b>Test</b> for hippocraticness of the transformation.<br/>
-	 * <b>Expect</b> re-running the transformation after creating an empty family does not change the person register.<br/>
-	 * <b>Features:</b>: fwd, fixed
-	 */
-	@Test
-	public void testHippocraticness() {
-		tool.initiateSynchronisationDialogue();
-		// No precondition!
-		//------------
-		tool.performAndPropagateSourceEdit(util
-				.execute(helperFamily::createNewFamilySimpsonWithMembers)
-				.andThen(helperFamily::createSonBart));
-		//------------
-		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
-		
-		tool.performAndPropagateSourceEdit(helperFamily::hippocraticDelta);
-		util.assertPostcondition("FamilyWithDuplicateMember2", "PersonWithSameName");
 	}
 }

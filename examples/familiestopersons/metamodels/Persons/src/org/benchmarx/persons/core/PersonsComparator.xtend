@@ -1,15 +1,15 @@
 package org.benchmarx.persons.core
- 
+
 import Persons.Male
 import Persons.Person
 import Persons.PersonRegister
+import java.text.SimpleDateFormat
 import java.util.ArrayList
+import java.util.Date
 import java.util.List
-import org.benchmarx.Comparator
+import org.benchmarx.emf.Comparator
 
 import static org.junit.Assert.*
-import java.util.Date
-import java.text.SimpleDateFormat
 
 public class PersonsComparator implements Comparator<PersonRegister>{
 	PersonNormaliser comparator
@@ -18,12 +18,8 @@ public class PersonsComparator implements Comparator<PersonRegister>{
 		comparator = new PersonNormaliser();
 	}
 	
-	override compare(PersonRegister expected, PersonRegister actual) {
+	override assertEquals(PersonRegister expected, PersonRegister actual) {
 		assertTrue(personsToString(expected).startsWith("PersonRegister"))
-//		println("Expected:")
-//		println(personsToString(expected))
-//		println("Actual:")
-//		println(personsToString(actual))
 		assertEquals(personsToString(expected), personsToString(actual))
 	}
 	
@@ -52,7 +48,7 @@ public class PersonsComparator implements Comparator<PersonRegister>{
 	}
 
 	def toMyString(Date d) {
-		val sm = new SimpleDateFormat("yyyy-mm-dd")
+		val sm = new SimpleDateFormat("yyyy-MM-dd")
 		return sm.format(d)
 	}	
 }

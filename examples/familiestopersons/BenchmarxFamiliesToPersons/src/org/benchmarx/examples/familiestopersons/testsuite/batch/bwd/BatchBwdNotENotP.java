@@ -22,7 +22,6 @@ public class BatchBwdNotENotP extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testCreateMalePersonAsSon() {
-		tool.initiateSynchronisationDialogue();
 		// No precondition!
 		// ---------------------------------
 		util.configure()
@@ -36,12 +35,11 @@ public class BatchBwdNotENotP extends FamiliesToPersonsTestCase {
 	/**
 	 * <b>Test</b> for creation of family members in existing families.<br/>
 	 * <b>Expect</b> the creation of a family member in the families model with
-	 * the given first name, in a suitable family.  Creation of Children is preferred.<br/>
+	 * the given first name, in a suitable family.  Creation of children is preferred.<br/>
 	 * <b>Features</b>: bwd, runtime
 	 */
 	@Test
-	public void testCreateFamilyMembersInNewFamilyAsParents() {
-		tool.initiateSynchronisationDialogue();
+	public void testCreateFamilyMembersInNewFamilyAsChildren() {
 		// No precondition!
 		// ---------------------------------
 		util.configure()
@@ -59,8 +57,7 @@ public class BatchBwdNotENotP extends FamiliesToPersonsTestCase {
 	}
 	
 	@Test
-	public void testCreateDuplicateFamilyMembersInNewFamilyAsParents() {
-		tool.initiateSynchronisationDialogue();
+	public void testCreateDuplicateFamilyMembersInNewFamilyAsChildren() {
 		// No precondition!
 		// ---------------------------------
 		util.configure()
@@ -77,53 +74,5 @@ public class BatchBwdNotENotP extends FamiliesToPersonsTestCase {
 				.andThen(helperPerson::createMaggie));
 		// ---------------------------------
 		util.assertPostcondition("MultiFamiliesWithDuplicateNamesChildren", "PersonsDuplicateMulti"); 
-	}
-	
-	@Test
-	public void testStability() {
-		tool.initiateSynchronisationDialogue();
-		// No precondition!
-		// ---------------------------------
-		util.configure()
-			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
-		tool.performAndPropagateTargetEdit(util
-				.execute(helperPerson::createRod)
-				.andThen(helperPerson::createBart)
-				.andThen(helperPerson::createHomer)
-				.andThen(helperPerson::createBart)
-				.andThen(helperPerson::createBart)
-				.andThen(helperPerson::createMarge)
-				.andThen(helperPerson::createLisa)
-				.andThen(helperPerson::createMaggie));
-		// ---------------------------------
-		util.assertPostcondition("MultiFamiliesWithDuplicateNamesChildren", "PersonsDuplicateMulti"); 
-		
-		tool.performAndPropagateTargetEdit(helperPerson::idleDelta);
-		util.assertPostcondition("MultiFamiliesWithDuplicateNamesChildren", "PersonsDuplicateMulti");
-	}
-	
-	@Test
-	public void testHippocraticness() {
-		tool.initiateSynchronisationDialogue();
-		// No precondition!
-		// ---------------------------------
-		util.configure()
-			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
-		tool.performAndPropagateTargetEdit(util
-				.execute(helperPerson::createRod)
-				.andThen(helperPerson::createBart)
-				.andThen(helperPerson::createHomer)
-				.andThen(helperPerson::createBart)
-				.andThen(helperPerson::createBart)
-				.andThen(helperPerson::createMarge)
-				.andThen(helperPerson::createLisa)
-				.andThen(helperPerson::createMaggie));
-		// ---------------------------------
-		util.assertPostcondition("MultiFamiliesWithDuplicateNamesChildren", "PersonsDuplicateMulti"); 
-		
-		tool.performAndPropagateTargetEdit(helperPerson::hippocraticDelta);
-		util.assertPostcondition("MultiFamiliesWithDuplicateNamesChildren", "PersonsDuplicateMulti2");
 	}
 }

@@ -12,10 +12,8 @@ import java.util.Iterator;
 import java.util.function.Consumer;
 
 import org.apache.commons.io.output.NullOutputStream;
-import org.benchmarx.BXToolForEMF;
 import org.benchmarx.Configurator;
-import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersonsConfig.UUIDResourceFactoryImpl;
-import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersonsConfig.UUIDXMIResourceImpl;
+import org.benchmarx.emf.BXToolForEMF;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;
@@ -57,52 +55,6 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 	
 	private static final String RESULTPATH = "results/medini";
 	
-	/**
-	 * An extension of the standard XMIResourceFactory
-	 * that allows the creation of XMIResources using UUIDs
-	 * @author tbuchmann
-	 *
-	 */
-	class UUIDResourceFactoryImpl extends XMIResourceFactoryImpl {
-
-	    public UUIDResourceFactoryImpl() {
-	        super();
-	    }
-
-	    @Override
-	    public Resource createResource(URI uri) {
-	        return new UUIDXMIResourceImpl(uri);
-	    }
-	}
-
-	/**
-	 * A simple extension of the standard XMIResource
-	 * providing UUIDs.
-	 *
-	 * usage: Register UUIDResourceFactoryImpl
-	 * ResourceSet set = new ResourceSetImpl();
-	 * set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new UUIDResourceFactoryImpl());
-	 *
-	 * @author tbuchmann
-	 *
-	 */
-	class UUIDXMIResourceImpl extends XMIResourceImpl implements Resource {
-
-	    public UUIDXMIResourceImpl() {
-	        super();
-	    }
-
-	    public UUIDXMIResourceImpl(URI uri) {
-	        super(uri);
-	    }
-
-	    @Override
-	    protected boolean useUUIDs() {
-	        return true;
-	    }
-	} 
-
-
 	@Override
 	public String getName() {
 		return "MediniQVT";
@@ -126,13 +78,22 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 		tracesFile.delete();
 	}
 	
+	/**
+	 * Initiates a synchronization between a source and a target model. The medini QVT engine is initialized,
+	 * the required metamodels are registered and empty source and target models are created.
+	 * Finally a FamilyRegister is added to the source model and an initial forward transformation is issued
+	 * to create a corresponding PersonRegister.
+	 */
 	@Override
 	public void initiateSynchronisationDialogue() {
 		// delete content of traces folder
 		File tracesFolder = new File("./src/org/benchmarx/examples/familiestopersons/implementations/medini/base/traces");
 		final File[] files = tracesFolder.listFiles();
-		for (File f : files) {
-			f.delete();
+		if (files != null) {
+			for (File f : files) {
+				if (f != null)
+					f.delete();
+			}
 		}
 		
 		// Initialise resource set of models
@@ -179,12 +140,22 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 		launch(bwdDir);
 	}
 
+	/**
+	 * Perform an edit delta on the target model and propagate the change to the source model
+	 * 
+	 * @param edit : the source edit delta
+	 */
 	@Override
 	public void performAndPropagateTargetEdit(Consumer<PersonRegister> edit) {
 		edit.accept(getTargetModel());
 		launchBWD();
 	}
 
+	/**
+	 * Perform an edit delta on the source model and propagate the change to the target model
+	 * 
+	 * @param edit : the source edit delta
+	 */
 	@Override
 	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
 		edit.accept(getSourceModel());
@@ -200,10 +171,10 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 	public PersonRegister getTargetModel() {
 		return (PersonRegister) target.getContents().get(0);
 	}
-
+	
 	@Override
 	public void setConfigurator(Configurator<Decisions> configurator) {
-		// Medini QVT does not support interaction
+		// the version of the QVT-R script does not support configuration or interatcion
 	}
 
 	/**
@@ -248,6 +219,11 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 		processorImpl.evaluateQVT(qvtRuleSet, transformation, true, direction, new Object[0], null, this.logger);
 	}
 
+	/**
+	 * launch the transformation in the QVT execution engine
+	 * 
+	 * @param direction : the desired execution direction
+	 */
 	public void launch(String direction) {
 		PrintStream ps = System.out;
 		PrintStream ps_err = System.err;
@@ -282,6 +258,11 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 		metaPackages.add(FamiliesPackage.eINSTANCE);
 	}
 	
+	/**
+	 * Allows to save the current state of the source and target models
+	 * 
+	 * @param name : Filename 
+	 */
 	public void saveModels(String name) {
 		ResourceSet set = new ResourceSetImpl();
 		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
@@ -300,16 +281,25 @@ public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, Per
 			resSource.save(null);
 			resTarget.save(null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}			
 	}
 
+	/**
+	 * Perform an edit operation on the target model, without propagating the change to the source model
+	 * 
+	 * @param edit : the edit delta
+	 */
 	@Override
 	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
 		edit.accept(getTargetModel());
 	}
 
+	/**
+	 * Perform an edit operation on the source model, without propagating the change to the target model
+	 * 
+	 * @param edit : the edit delta
+	 */
 	@Override
 	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
 		edit.accept(getSourceModel());

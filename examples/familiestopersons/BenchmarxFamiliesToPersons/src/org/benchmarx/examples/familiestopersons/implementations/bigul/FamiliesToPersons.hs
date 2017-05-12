@@ -11,11 +11,15 @@ import Generics.BiGUL
 import Generics.BiGUL.TH
 import Generics.BiGUL.Lib
 import Generics.BiGUL.Lib.List
-import Generics.BiGUL.Interpreter.Unsafe
+import Generics.BiGUL.Interpreter
+--import Generics.BiGUL.Interpreter.Unsafe
 
+data Option = PREFER_CREATING_PARENT_TO_CHILD
+            | PREFER_EXISTING_FAMILY_TO_NEW
+  deriving (Show, Read, Eq)
 
 defaultDate :: String
-defaultDate = "Thu Jan 01 00:00:00 JST 1"
+defaultDate = "0001-01-01"
 
 
 --------
@@ -118,45 +122,50 @@ extract = Case
     ==> \(s, _) _ -> (s, [undefined])
   ]
 
-syncM :: BiGUL MediumL MediumR
-syncM = Case
+syncM :: Bool -> BiGUL MediumL MediumR
+syncM preferExistingFamily = Case
   [ $(normalSV [p| [] |] [p| [] |] [p| [] |])
     ==> $(update [p| _ |] [p| [] |] [d| |])
-  , $(normalSV [p| ((familyName, []):_) |] [p| _ |] [p| (_, []):_ |])
-    ==> $(update [p| _:rest |] [p| rest |] [d| rest = syncM |])
+  , $(normal
+        [| \((familyName, []):_) vs -> not preferExistingFamily || not (familyName `elem` map (fst . fst) vs) |]
+        [p| (_, []):_ |])
+    ==> $(update [p| _:rest |] [p| rest |] [d| rest = syncM preferExistingFamily |])
   , $(normal [| \((familyName, (firstName, gender):_):_) vs -> ((familyName, firstName), gender) `elem` vs |]
              [p| (_, _:_):_ |])
     ==> $(rearrS [| \((familyName, (firstName, gender):ns):ss) ->
                       (((familyName, firstName), gender), (familyName, ns):ss) |])$
-          (Replace `Prod` syncM) `Compose` extract
+          (Replace `Prod` syncM preferExistingFamily) `Compose` extract
   , $(adaptive [| \_ _ -> otherwise |])
-    ==> adapt
+    ==> ((.) . (.)) sort adapt
   ]
   where
     adapt :: MediumL -> MediumR -> MediumL
-    adapt [] vs = map ((fst . fst . head) &&& map (snd *** id)) (groupBy ((==) `on` (fst . fst)) vs)
+    adapt [] vs = if preferExistingFamily
+                  then map ((fst . fst . head) &&& map (snd *** id)) (groupBy ((==) `on` (fst . fst)) vs)
+                  else map (\((familyName, firstName), gender) -> (familyName, [(firstName, gender)])) vs
     adapt ((familyName, ns):ss) vs =
       let ns' :: [(String, Bool)]
           ns' = concat (map snd (filter ((== familyName) . fst) ss))
           vs' :: [(String, Bool)]
-          vs' = map (snd *** id) (filter ((== familyName) . fst . fst) vs) \\ (ns' \\ ns)
+          vs' = (if preferExistingFamily then (\\ (ns' \\ ns)) else intersect ns)
+                  (map (snd *** id) (filter ((== familyName) . fst . fst) vs))
       in  (familyName, vs') : adapt ss (vs \\ (map ((familyName,) *** id) vs'))
 
 
 ----------
 ---- synchronisation with families
 
-promoteParent :: BiGUL (Maybe FamilyMember, [String]) [String]
-promoteParent = Case
+promoteParent :: Bool -> BiGUL (Maybe FamilyMember, [String]) [String]
+promoteParent preferCreatingParent = Case
   [ $(normal [| \(Nothing, ns) vs -> null (vs \\ ns) |] [p| (Nothing, _) |])
     ==> $(update [p| (_, ns) |] [p| ns |] [d| ns = Replace |])
   , $(normal [| \(Just (FamilyMember parentName), _) vs -> parentName `elem` vs |] [p| (Just _, _) |])
     ==> $(rearrS [| \(Just (FamilyMember n), ns) -> (n, ns) |])$
           extract
   , $(adaptive [| \_ _ -> otherwise |])
-    ==> \(_, ns) vs -> case vs \\ ns of
-                         []  -> (Nothing, vs)
-                         n:_ -> (Just (FamilyMember n), delete n vs)
+    ==> \(_, ns) vs -> case (preferCreatingParent, vs \\ ns) of
+                         (True, n:_) -> (Just (FamilyMember n), delete n vs)
+                         _           -> (Nothing, vs)
   ]
 
 classifyByGender :: BiGUL ([String],[String]) [(String, Bool)]
@@ -167,17 +176,19 @@ classifyByGender = Case
     ==> \_ vs -> (map fst *** map fst) (partition snd vs)
   ]
 
-syncL :: BiGUL FamilyRegister MediumL
-syncL = $(rearrS [| \(FamilyRegister fs) -> fs |])$
-          align (const True)
-                (\(Family { familyName = x }) (y, _) -> x == y)
-                ($(rearrS [| \(Family familyName father mother sons daughters) ->
-                               (familyName, (father, sons), (mother, daughters)) |])$
-                   Replace `Prod`
-                   ((((Replace `Prod` familyMemberWrapper) `Compose` promoteParent) `Prod`
-                     ((Replace `Prod` familyMemberWrapper) `Compose` promoteParent)) `Compose` classifyByGender))
-                (\(familyName, _) -> Family familyName Nothing Nothing [] [])
-                (const Nothing)
+syncL :: Bool -> BiGUL FamilyRegister MediumL
+syncL preferCreatingParent =
+  $(rearrS [| \(FamilyRegister fs) -> fs |])$
+    align (const True)
+          (\(Family { familyName = x }) (y, _) -> x == y)
+          ($(rearrS [| \(Family familyName father mother sons daughters) ->
+                         (familyName, (father, sons), (mother, daughters)) |])$
+             Replace `Prod`
+             ((((Replace `Prod` familyMemberWrapper) `Compose` promoteParent preferCreatingParent) `Prod`
+               ((Replace `Prod` familyMemberWrapper) `Compose` promoteParent preferCreatingParent))
+               `Compose` classifyByGender))
+          (\(familyName, _) -> Family familyName Nothing Nothing [] [])
+          (const Nothing)
   where
     familyMemberWrapper :: BiGUL [FamilyMember] [String]
     familyMemberWrapper =
@@ -189,8 +200,14 @@ syncL = $(rearrS [| \(FamilyRegister fs) -> fs |])$
 
 main :: IO ()
 main = do
-  (dir, familyRegister, personRegister) <- fmap read getContents
+  (dir, options, familyRegister, personRegister) <- fmap read getContents
+  let preferCreatingParent = not (null (filter (== PREFER_CREATING_PARENT_TO_CHILD) options))
+      preferExistingFamily = not (null (filter (== PREFER_EXISTING_FAMILY_TO_NEW  ) options))
   case dir of
-    "fwd" -> print . PersonRegister . sort . persons  $ get (syncL `Compose` syncM) familyRegister & put syncR personRegister
-    "bwd" -> print . FamilyRegister . sort . families $ get syncR personRegister & put (syncL `Compose` syncM) familyRegister
+    "fwd" -> maybe exitFailure (print . PersonRegister . sort . persons)
+               (get (syncL preferCreatingParent `Compose` syncM preferExistingFamily) familyRegister
+                  >>= put syncR personRegister)
+    "bwd" -> maybe exitFailure (print . FamilyRegister . sort . families)
+               (get syncR personRegister
+                  >>= put (syncL preferCreatingParent `Compose` syncM preferExistingFamily) familyRegister)
     _     -> exitFailure

@@ -23,7 +23,6 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalInserts() {
-		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
@@ -50,14 +49,13 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * <b>Test</b> for deleting family members. After creating the person register,
-	 * set birthdates and make sure, that the sons with the name Bart can be 
+	 * set birthdays and make sure that the sons with the name Bart can be 
 	 * distinguished. Then delete the younger son Bart from the Family register.
 	 * <b>Expect</b>: Delete the correct Person in the Person Register
 	 * <b>Features</b>: fwd, del, corr-based, structural
 	 */
 	@Test
 	public void testIncrementalDeletions() {
-		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
@@ -81,13 +79,12 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * <b>Test</b> for renaming a family. After creating the person register,
-	 * set birthdates. Then rename the name of the complete Family Simpson to Bouvier
+	 * set birthdays. Then rename the complete Family Simpson to Bouvier.
 	 * <b>Expect</b>: Change the name of the affected Persons in the Person Register
 	 * <b>Features</b>: fwd, attribute, fixed, structural, corr-based
 	 */
 	@Test
 	public void testIncrementalRename() {
-		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
@@ -110,15 +107,14 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	}
 	
 	/**
-	 * <b>Test</b> for moving family members to different families and also changing their role. 
-	 * After creating the person register, set birthdates. Then move Lisa to Flanders as mother
+	 * <b>Test</b> for moving family members to different families and also changing their roles. 
+	 * After creating the person register, set birthdays. Then move Lisa to Flanders as mother
 	 * and Marge to Skinner as mother.
 	 * <b>Expect</b>: Change the name of the affected Persons in the Person Register
 	 * <b>Features</b>: fwd, del+add, fixed, structural
 	 */
 	@Test
 	public void testIncrementalMove() {
-		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
@@ -142,15 +138,14 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	}
 	
 	/**
-	 * <b>Test</b> for deleting an re-creating family members.
-	 * After creating the person register, set birthdates. Then delete and re-create Homer
-	 * <b>Expect</b>: Person register remains unchanged, except for "Simpson, Homer", which
-	 * should be re-created with default birthdate.
+	 * <b>Test</b> for deleting and re-creating family members.
+	 * After creating the person register, set birthdays. Then delete and re-create Homer
+	 * <b>Expect</b>: Person register remains unchanged, except for "Simpson, Homer", who
+	 * should be re-created with the default birthday.
 	 * <b>Features</b>: fwd, structural, add+del, fixed 
 	 */
 	@Test
 	public void testIncrementalMixed() {
-		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
@@ -175,15 +170,14 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	
 	/**
 	 * <b>Test</b> for moving a family member to a new family and changing her role from daughter to son.
-	 * After creating the person register, set birthdates. Then move daughter Maggie to the Flanders family
+	 * After creating the person register, set birthdays. Then move daughter Maggie to the Flanders family
 	 * as a son.
-	 * <b>Expect</b>: A new male person should be created in the PersonRegister, but the birthdate of Maggie
+	 * <b>Expect</b>: A new male person should be created in the PersonRegister, but the birthday of Maggie
 	 * should be retained.
 	 * <b>Features</b>: fwd, structural, add+del, fixed 
 	 */
 	@Test
 	public void testIncrementalMoveRoleChange() {
-		tool.initiateSynchronisationDialogue();
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperFamily::createSkinnerFamily)
 				.andThen(helperFamily::createFlandersFamily)
@@ -202,6 +196,44 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 		tool.performAndPropagateSourceEdit(helperFamily::moveMaggieAndChangeRole);
 		//------------
 		util.assertPostcondition("FamilyAfterMoveRoleChange", "PersonAfterMoveRoleChange");
+	}
+	
+	/**
+	 * <b>Test</b> for stability of the transformation.<br/>
+	 * <b>Expect</b> re-running the transformation after an idle source delta does not change the target model.<br/>
+	 * <b>Features:</b>: fwd, fixed
+	 */
+	@Test
+	public void testStability() {
+		// No precondition!
+		//------------
+		tool.performAndPropagateSourceEdit(util
+				.execute(helperFamily::createNewFamilySimpsonWithMembers)
+				.andThen(helperFamily::createSonBart));
+		//------------
+		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
+		
+		tool.performAndPropagateSourceEdit(helperFamily::idleDelta);
+		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
+	}
+	
+	/**
+	 * <b>Test</b> for hippocraticness of the transformation.<br/>
+	 * <b>Expect</b> re-running the transformation after creating an empty family does not change the person register.<br/>
+	 * <b>Features:</b>: fwd, fixed
+	 */
+	@Test
+	public void testHippocraticness() {
+		// No precondition!
+		//------------
+		tool.performAndPropagateSourceEdit(util
+				.execute(helperFamily::createNewFamilySimpsonWithMembers)
+				.andThen(helperFamily::createSonBart));
+		//------------
+		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
+		
+		tool.performAndPropagateSourceEdit(helperFamily::hippocraticDelta);
+		util.assertPostcondition("FamilyWithDuplicateMember2", "PersonWithSameName");
 	}
 
 }

@@ -4,8 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.benchmarx.BXTool;
-import org.benchmarx.BenchmarxUtil;
-import org.benchmarx.Comparator;
+import org.benchmarx.emf.Comparator;
 import org.benchmarx.examples.familiestopersons.implementations.bigul.BiGULFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
@@ -15,6 +14,8 @@ import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
 import org.benchmarx.persons.core.PersonsComparator;
+import org.benchmarx.util.BenchmarxUtil;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -47,18 +48,26 @@ public abstract class FamiliesToPersonsTestCase {
 		util = new BenchmarxUtil<>(tool);
 		helperFamily = new FamilyHelper();
 		helperPerson = new PersonHelper();
+		
+		// Initialise the bx tool
+		tool.initiateSynchronisationDialogue();
 	}
 
+	@After
+	public void terminate(){
+		tool.terminateSynchronisationDialogue();
+	}
+	
 	@Parameters
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
 		return Arrays.asList(
+				new BiGULFamiliesToPersons()
+				,
 				new EMoflonFamiliesToPersons()
 				,
 				new MediniQVTFamiliesToPersons()
 				,
 				new MediniQVTFamiliesToPersonsConfig()
-				,
-				new BiGULFamiliesToPersons()
 				,
 				new UbtXtendFamiliesToPersons()
 			);

@@ -4,8 +4,8 @@ import java.util.Collection;
 import java.util.function.Consumer;
 
 import org.apache.log4j.BasicConfigurator;
-import org.benchmarx.BXToolForEMF;
 import org.benchmarx.Configurator;
+import org.benchmarx.emf.BXToolForEMF;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;
@@ -25,9 +25,15 @@ import FamiliesToPersons.FamiliesToPersonsPackage;
 import Persons.PersonRegister;
 
 /**
- * This class implements the bx tool interface for the eMoflon tool.
+ * This class implements the bx tool interface for the eMoflon tool. eMoflon is
+ * structural-delta-based and corr-based.
  * 
- * @author aanjorin
+ * The test runner is implemented by delegating to an internal helper. The
+ * initial state is established by creating an empty family register and forward
+ * transforming it. Idle edits are handled and propagated exactly as normal
+ * edits.
+ * 
+ * @author anthony anjorin
  */
 public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonRegister, Decisions>   {
 	

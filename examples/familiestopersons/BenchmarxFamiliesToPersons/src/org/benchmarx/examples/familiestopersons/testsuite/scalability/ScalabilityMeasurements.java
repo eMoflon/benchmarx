@@ -1,12 +1,12 @@
 package org.benchmarx.examples.familiestopersons.testsuite.scalability;
 
 import org.benchmarx.BXTool;
-import org.benchmarx.BXToolTimer;
 import org.benchmarx.examples.familiestopersons.implementations.bigul.BiGULFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
+import org.benchmarx.util.BXToolTimer;
 
 import Families.FamiliesFactory;
 import Families.Family;
@@ -16,10 +16,10 @@ import Persons.Person;
 import Persons.PersonRegister;
 import Persons.PersonsFactory;
 
-public class BatchScalability {
-	//private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool1 = new BiGULFamiliesToPersons();
+public class ScalabilityMeasurements {
+	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool1 = new BiGULFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool2 = new EMoflonFamiliesToPersons();
-	//private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool3 = new MediniQVTFamiliesToPersons();
+	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool3 = new MediniQVTFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool4 = new UbtXtendFamiliesToPersons();
 	
 	private static final String DELIMITER = ",";
@@ -34,7 +34,7 @@ public class BatchScalability {
 	private BXToolTimer<FamilyRegister, PersonRegister, Decisions> timer3;
 	private BXToolTimer<FamilyRegister, PersonRegister, Decisions> timer4;
 	
-	public BatchScalability(int numberOfFamilies, int noOfChildren, int repeat) {
+	public ScalabilityMeasurements(int numberOfFamilies, int noOfChildren, int repeat) {
 		this.NO_OF_FAMILIES = numberOfFamilies;
 		this.NO_OF_CHILDREN = noOfChildren;
 		int allFamilyMembers = 2 /*parents*/ + NO_OF_CHILDREN; 
@@ -44,9 +44,9 @@ public class BatchScalability {
 							+ 1 /* person register */
 							+ NO_OF_FAMILIES * 2*allFamilyMembers; /* person and connection to register */
 		
-		//timer1 = new BXToolTimer<>(tool1, repeat);
+		timer1 = new BXToolTimer<>(tool1, repeat);
 		timer2 = new BXToolTimer<>(tool2, repeat);
-		//timer3 = new BXToolTimer<>(tool3, repeat);;
+		timer3 = new BXToolTimer<>(tool3, repeat);;
 		timer4 = new BXToolTimer<>(tool4, repeat);
 	}
 	
@@ -112,81 +112,82 @@ public class BatchScalability {
 	
 	private void runBatchFWDMeasurements(){
 		System.out.print(NO_OF_ELEMENTS + DELIMITER);
-		//System.out.print(timer1.timeSourceEditFromScratchInS(this::createFamiliesWithMembers) + UNIT + DELIMITER);
+		System.out.print(timer1.timeSourceEditFromScratchInS(this::createFamiliesWithMembers) + UNIT + DELIMITER);
 		System.out.print(timer2.timeSourceEditFromScratchInS(this::createFamiliesWithMembers) + UNIT + DELIMITER);
-		//System.out.print(timer3.timeSourceEditFromScratchInS(this::createFamiliesWithMembers) + UNIT + DELIMITER);
+		System.out.print(timer3.timeSourceEditFromScratchInS(this::createFamiliesWithMembers) + UNIT + DELIMITER);
 		System.out.print(timer4.timeSourceEditFromScratchInS(this::createFamiliesWithMembers) + UNIT);
 		System.out.println();
 	}
 	
 	private void runBatchBWDMeasurements(){
 		System.out.print(NO_OF_ELEMENTS + DELIMITER);
-		//System.out.print(timer1.timeTargetEditFromScratchInS(this::createPersons) + UNIT + DELIMITER);
+		System.out.print(timer1.timeTargetEditFromScratchInS(this::createPersons) + UNIT + DELIMITER);
 		System.out.print(timer2.timeTargetEditFromScratchInS(this::createPersons) + UNIT + DELIMITER);
-		//System.out.print(timer3.timeTargetEditFromScratchInS(this::createPersons) + UNIT + DELIMITER);
+		System.out.print(timer3.timeTargetEditFromScratchInS(this::createPersons) + UNIT + DELIMITER);
 		System.out.print(timer4.timeTargetEditFromScratchInS(this::createPersons) + UNIT + DELIMITER);
 		System.out.println();
 	}
 	
 	private void runIncrFWDMeasurements(){
 		System.out.print(NO_OF_ELEMENTS + DELIMITER);
-		//System.out.print(timer1.timeSourceEditAfterSetUpInS(this::createFamiliesWithMembers, this::createOneFamilyMember) + UNIT + DELIMITER);
+		System.out.print(timer1.timeSourceEditAfterSetUpInS(this::createFamiliesWithMembers, this::createOneFamilyMember) + UNIT + DELIMITER);
 		System.out.print(timer2.timeSourceEditAfterSetUpInS(this::createFamiliesWithMembers, this::createOneFamilyMember) + UNIT + DELIMITER);
-		//System.out.print(timer3.timeSourceEditAfterSetUpInS(this::createFamiliesWithMembers, this::createOneFamilyMember) + UNIT + DELIMITER);
+		System.out.print(timer3.timeSourceEditAfterSetUpInS(this::createFamiliesWithMembers, this::createOneFamilyMember) + UNIT + DELIMITER);
 		System.out.print(timer4.timeSourceEditAfterSetUpInS(this::createFamiliesWithMembers, this::createOneFamilyMember) + UNIT + DELIMITER);
 		System.out.println();
 	}
 	
 	private void runIncrBWDMeasurements(){
 		System.out.print(NO_OF_ELEMENTS + DELIMITER);
-		//System.out.print(timer1.timeTargetEditAfterSetUpInS(this::createPersons, this::createOnePerson) + UNIT + DELIMITER);
+		System.out.print(timer1.timeTargetEditAfterSetUpInS(this::createPersons, this::createOnePerson) + UNIT + DELIMITER);
 		System.out.print(timer2.timeTargetEditAfterSetUpInS(this::createPersons, this::createOnePerson) + UNIT + DELIMITER);
-		//System.out.print(timer3.timeTargetEditAfterSetUpInS(this::createPersons, this::createOnePerson) + UNIT);
+		System.out.print(timer3.timeTargetEditAfterSetUpInS(this::createPersons, this::createOnePerson) + UNIT);
 		System.out.print(timer4.timeTargetEditAfterSetUpInS(this::createPersons, this::createOnePerson) + UNIT + DELIMITER);
 		System.out.println();
 	}
 
 	private static void runBatchFWDMeasurements(int numOfFamilies, int numOfChildren, int repetitions) {
-		new BatchScalability(numOfFamilies, numOfChildren, repetitions).runBatchFWDMeasurements();
+		new ScalabilityMeasurements(numOfFamilies, numOfChildren, repetitions).runBatchFWDMeasurements();
 	}
 	
 	private static void runBatchBWDMeasurements(int numOfFamilies, int numOfChildren, int repetitions) {
-		new BatchScalability(numOfFamilies, numOfChildren, repetitions).runBatchBWDMeasurements();
+		new ScalabilityMeasurements(numOfFamilies, numOfChildren, repetitions).runBatchBWDMeasurements();
 	}
 	
 	private static void runIncrFWDMeasurements(int numOfFamilies, int numOfChildren, int repetitions) {
-		new BatchScalability(numOfFamilies, numOfChildren, repetitions).runIncrFWDMeasurements();
+		new ScalabilityMeasurements(numOfFamilies, numOfChildren, repetitions).runIncrFWDMeasurements();
 	}
 	
 	private static void runIncrBWDMeasurements(int numOfFamilies, int numOfChildren, int repetitions) {
-		new BatchScalability(numOfFamilies, numOfChildren, repetitions).runIncrBWDMeasurements();
+		new ScalabilityMeasurements(numOfFamilies, numOfChildren, repetitions).runIncrBWDMeasurements();
 	}
 	
 	private static void printHeader(String title) {
 		System.out.println("------------------");
 		System.out.println(title);
 		System.out.println("------------------");
-		System.out.println("model size (# of nodes and edges)" + /*DELIMITER +  tool1.getName() +*/ DELIMITER +  tool2.getName() + DELIMITER + /* tool3.getName()*/ tool4.getName());
+		System.out.println("model size (# of nodes and edges)" + DELIMITER +  tool1.getName() + DELIMITER +  tool2.getName() + DELIMITER +  tool3.getName() + DELIMITER + tool4.getName());
 	}
 	
 	public static void main(String[] args) {
-		printHeader("Batch BWD:");
-		for (int i = 50; i < 100000; i+=500) {			
-			runBatchBWDMeasurements(i, 3, 5);
-		}	
 		
 		printHeader("Batch FWD:");
-		for (int i = 50; i < 100000; i+=500) {			
+		for (int i = 50; i < 100000; i+=50) {			
 			runBatchFWDMeasurements(i, 3, 5);
 		}
 		
-//		printHeader("Incr. FWD:");
-//		for (int i = 50; i < 100000; i+=500) {			
-//			runIncrFWDMeasurements(i, 3, 5);
-//		}		
-//		
+		printHeader("Incr. FWD:");
+		for (int i = 50; i < 100000; i+=50) {			
+			runIncrFWDMeasurements(i, 3, 5);
+		}		
+		
+		printHeader("Batch BWD:");
+		for (int i = 50; i < 100000; i+=50) {			
+			runBatchBWDMeasurements(i, 3, 5);
+		}	
+		
 		printHeader("Incr. BWD:");
-		for (int i = 50; i < 100000; i+=500) {			
+		for (int i = 50; i < 100000; i+=50) {			
 			runIncrBWDMeasurements(i, 3, 5);
 		}
 	}

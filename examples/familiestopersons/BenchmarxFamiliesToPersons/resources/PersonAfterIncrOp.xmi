@@ -12,6 +12,14 @@
       name="Simpson, Marge"/>
   <persons xsi:type="Persons:Female"
       name="Simpson, Lisa"/>
+  <persons xsi:type="Persons:Male"
+      name="Simpson, Homer"/>
+  <persons xsi:type="Persons:Male"
+      name="Simpson, Bart"/>
+  <persons xsi:type="Persons:Female"
+      name="Simpson, Maggie"/>
+  <persons xsi:type="Persons:Female"
+      name="Simpson, Lisa"/>
   <persons xsi:type="Persons:Female"
       name="Simpson, Lisa"/>
 </Persons:PersonRegister>

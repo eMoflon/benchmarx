@@ -28,7 +28,6 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalInsertsFixedConfig() {
-		tool.initiateSynchronisationDialogue();
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
@@ -49,13 +48,12 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	/**
 	 * <b>Test</b> for inserting of a Persons in a PersonRegister after the initial
 	 * register has been transformed into a family model.<br/>
-	 * <b>Expect</b> : FamilyRegister and Person model are structured as specified int he corresponding
+	 * <b>Expect</b> : FamilyRegister and Person model are structured as specified in the corresponding
 	 * assertPostcondition statements.<br/>
 	 * <b>Features</b>: bwd, add, runtime
 	 */
 	@Test
 	public void testIncrementalInsertsDynamicConfig() {
-		tool.initiateSynchronisationDialogue();
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
@@ -111,7 +109,6 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testIncrementalDeletions() {
-		tool.initiateSynchronisationDialogue();
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
@@ -135,11 +132,10 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 * <b>Test</b> for renaming of a Person in a PersonRegister after the initial
 	 * register has been transformed into a family model.<br/>
 	 * <b>Expect</b> : Model states as described in the postcondition.<br/>
-	 * <b>Features</b>: bwd , attribute , structural , corr-based , runtime
+	 * <b>Features</b>: bwd, attribute, structural, corr-based, runtime
 	 */
 	@Test
-	public void testInrementalRenamingDynamic() {
-		tool.initiateSynchronisationDialogue();
+	public void testIncrementalRenamingDynamic() {
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
@@ -185,6 +181,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
 		tool.performAndPropagateTargetEdit(helperPerson::fullNameChangeOfMarge);
+		
 		util.assertPostcondition("FamilyAfterBwdIncrRenameDynamic", "PersonAfterBwdIncrRenameDynamic");
 		//----------------------
 	}
@@ -193,17 +190,15 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 * <b>Test</b> for deleting and recreating a Person in a PersonRegister after the initial
 	 * register has been transformed into a family model.<br/>
 	 * <b>Expect</b> : Model states as described in the postcondition.<br/>
-	 * <b>Features</b>: bwd , del+add , structural , , runtime
+	 * <b>Features</b>: bwd, del+add, structural, runtime
 	 */
 	@Test
 	public void testIncrementalMixedDynamic() {
-		tool.initiateSynchronisationDialogue();
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
-		tool.performAndPropagateTargetEdit(util
-					.execute(helperPerson::createHomer)
-					.andThen(helperPerson::createMaggie));	
+		tool.performAndPropagateTargetEdit(helperPerson::createMaggie);	
+		tool.performAndPropagateTargetEdit(helperPerson::createHomer);
 		tool.performIdleTargetEdit(helperPerson::setBirthdaysOfSimpson);
 		util.assertPrecondition("Pre_IncrBwdFamily", "Pre_IncrBwdPerson");
 
@@ -223,11 +218,10 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 * backward transformations, the order of inserting the persons affects
 	 * the target model. <br/>
 	 * <b>Expect</b> : Model states as described in the postcondition.<br/>
-	 * <b>Features</b>: bwd , add , operational, runtime
+	 * <b>Features</b>: bwd, add, operational, runtime
 	 */
 	@Test
 	public void testIncrementalOperational() {
-		tool.initiateSynchronisationDialogue();
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
@@ -241,12 +235,58 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
 		tool.performAndPropagateTargetEdit(util
 				.execute(helperPerson::createMarge)
+				.andThen(helperPerson::createLisa)				
+				.andThen(helperPerson::createHomer)
+				.andThen(helperPerson::createBart)
+				.andThen(helperPerson::createMaggie)
 				.andThen(helperPerson::createLisa));
 		util.configure()
 			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
 		tool.performAndPropagateTargetEdit(helperPerson::createLisa);					
 		util.assertPostcondition("FamilyAfterIncrOp", "PersonAfterIncrOp");
+	}
+	
+	/**
+	 * <b>Test</b> for stability of the transformation.<br/>
+	 * <b>Expect</b> Nothing should be changed after an idle target delta.<br/>
+	 * <b>Features</b>: bwd, runtime
+	 */
+	@Test
+	public void testStability() {
+		// No precondition!
+		// ---------------------------------
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.performAndPropagateTargetEdit(util
+				.execute(helperPerson::createRod)
+				.andThen(helperPerson::createHomer)				
+				.andThen(helperPerson::createMarge));
+		// ---------------------------------
+		util.assertPostcondition("FamilyWithParentsOnly", "PersonsMultiDeterministic"); 
+		
+		// issue the same transformation a second time
+		tool.performAndPropagateTargetEdit(helperPerson::idleDelta);
+		util.assertPostcondition("FamilyWithParentsOnly", "PersonsMultiDeterministic"); 
+	}
+	
+	@Test
+	public void testHippocraticness() {
+		// No precondition!
+		// ---------------------------------
+		util.configure()
+			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
+			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.performAndPropagateTargetEdit(util
+				.execute(helperPerson::createRod)
+				.andThen(helperPerson::createHomer)				
+				.andThen(helperPerson::createMarge));
+		// ---------------------------------
+		util.assertPostcondition("FamilyWithParentsOnly", "PersonsMultiDeterministic"); 
+		
+		tool.performAndPropagateTargetEdit(helperPerson::hippocraticDelta);
+		util.assertPostcondition("FamilyWithParentsOnly", "PersonsMultiDeterministic2"); 
 	}
 
 }
