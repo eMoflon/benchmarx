@@ -129,6 +129,7 @@ class ChangeRecorder extends org.eclipse.emf.ecore.util.EContentAdapter {
         				buffer.append("(Change type not supported)");
         			}
         		} else {
+        			if (reference.isContainer()) return;
         			if (n.getEventType() == Notification.ADD) {
         				this.WriteStartChange("AssociationListInsertion", feature);
         				this.WriteElement((EObject)n.getNewValue(), "addedElement");
