@@ -81,8 +81,6 @@ namespace TTC2017.FamiliesToPersons.NMF
             }
             return true;
         }
-        
-        private TimeSpan? timeOfLastPropagate;
 
         private TimeSpan? timeOfLastPropagate;
 
