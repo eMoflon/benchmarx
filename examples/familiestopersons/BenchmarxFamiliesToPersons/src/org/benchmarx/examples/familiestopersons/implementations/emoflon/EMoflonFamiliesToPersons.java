@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.moflon.core.utilities.eMoflonEMFUtil;
 import org.moflon.tgg.algorithm.configuration.RuleResult;
 import org.moflon.tgg.algorithm.synchronization.SynchronizationHelper;
 
@@ -53,9 +54,7 @@ public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, Perso
 	@Override
 	public void initiateSynchronisationDialogue() {
 		BasicConfigurator.configure();
-		helper = new SynchronizationHelper(FamiliesToPersonsPackage.eINSTANCE, "../implementationArtefacts/emoflon/FamiliesToPersons");
-		helper.loadRulesFromJarArchive("./lib/eMoflon/eMoflonFamilies2Persons.jar", "/model/FamiliesToPersons.sma.xmi");
-		
+		helper = new F2PSyncHelper();		
 		Resource r = helper.getResourceSet().createResource(URI.createURI("sourceModel"));
 		FamilyRegister familiesRoot = FamiliesFactory.eINSTANCE.createFamilyRegister();
 		r.getContents().add(familiesRoot);
@@ -165,5 +164,24 @@ public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, Perso
 	@Override
 	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
 		performAndPropagateSourceEdit(edit);
+	}
+	
+	class F2PSyncHelper extends SynchronizationHelper {
+		public F2PSyncHelper() {
+			this.set = eMoflonEMFUtil.createDefaultResourceSet();
+
+			projectName = FamiliesToPersonsPackage.eINSTANCE.getName();
+
+			corrPackageResource = FamiliesToPersonsPackage.eINSTANCE.eResource();
+
+			loadRulesFromJarArchive("./lib/eMoflon/eMoflonFamilies2Persons.jar", "/model/FamiliesToPersons.sma.xmi");
+
+			configurator = new org.moflon.tgg.algorithm.configuration.Configurator() {
+			};
+			changeSrc = (root -> {
+			});
+			changeTrg = (root -> {
+			});
+		}
 	}
 }
