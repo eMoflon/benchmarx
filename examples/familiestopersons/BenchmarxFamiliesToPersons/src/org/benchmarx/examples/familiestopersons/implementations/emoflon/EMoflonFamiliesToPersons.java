@@ -54,6 +54,8 @@ public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, Perso
 	public void initiateSynchronisationDialogue() {
 		BasicConfigurator.configure();
 		helper = new SynchronizationHelper(FamiliesToPersonsPackage.eINSTANCE, "../implementationArtefacts/emoflon/FamiliesToPersons");
+		helper.loadRulesFromJarArchive("./lib/eMoflon/eMoflonFamilies2Persons.jar", "/model/FamiliesToPersons.sma.xmi");
+		
 		Resource r = helper.getResourceSet().createResource(URI.createURI("sourceModel"));
 		FamilyRegister familiesRoot = FamiliesFactory.eINSTANCE.createFamilyRegister();
 		r.getContents().add(familiesRoot);

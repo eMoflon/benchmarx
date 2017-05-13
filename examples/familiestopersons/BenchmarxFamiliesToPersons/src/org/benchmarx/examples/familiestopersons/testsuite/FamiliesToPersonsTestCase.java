@@ -63,7 +63,7 @@ public abstract class FamiliesToPersonsTestCase {
 		return Arrays.asList(
 				new BiGULFamiliesToPersons()  // Currently 9 failures
 				,
-				new EMoflonFamiliesToPersons()  // Currently 5 failures
+				new EMoflonFamiliesToPersons()  // Currently 6 failures
 				,
 				new MediniQVTFamiliesToPersons() // Currently 19 failures
 				,
