@@ -9,7 +9,7 @@ We have a plug and play (via remote desktop) Share virtual machine available fro
 
 1.  Clone this repo:  `git clone https://github.com/eMoflon/benchmarx.git benchmarx` 
 2.  Download the latest version of the **Eclipse Modeling Tools**  for your platform.  Currently tested for: http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/neon3
-3.  Start Eclipse in a workspace of your choice and import the Eclipse project **BenchmarxFamiliesToPersons** (benchmarx/examples/familiestopersons/BenchmarxFamiliesToPersons) from the working tree of the benchmarx git repository you just cloned.   
+3.  Start Eclipse in a workspace of your choice and import the Eclipse project **BenchmarxFamiliesToPersons** (`benchmarx/examples/familiestopersons/BenchmarxFamiliesToPersons`) from the working tree of the benchmarx git repository you just cloned.   
 4.  Choose the tools you want to execute by appropriately manipulating `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/testsuite/FamiliesToPersonsTestCase.java/tools()`.
 5.  (Optional) If you want to setup the bx tool BiGUL, then you'll have to work through `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/implementations/bigul/README-SETUP` to do this.
 6.  Choose the project **BenchmarxFamiliesToPersons** and select "Run As/JUnit Test" to execute the benchmarx "Families to Persons" for all tools chosen in Step 5.
