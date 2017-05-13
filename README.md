@@ -1,18 +1,20 @@
 # benchmarx
 Infrastructure for implementing benchmarx: benchmarks for bidirectional transformation (bx) tools.   Also contains a collection of example benchmarx and test runners for various and diverse bx tools.
 
+## Running the benchmarx without getting your fingers dirty
+
+We have a plug and play (via remote desktop) Share virtual machine available from:  http://is.ieis.tue.nl/staff/pvgorp/share/?page=ConfigureNewSession&vdi=Ubuntu12LTS_BenchmarX.vdi
 
 ## How to setup and execute the benchmarx
 
 1.  Clone this repo:  `git clone https://github.com/eMoflon/benchmarx.git benchmarx` 
-2.  Download the latest version of the **Eclipse Modeling Tools**  for your platform.  Currently this is: http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/neon1a
-3.  Install the latest version of the Xtend (https://eclipse.org/xtend/) Eclipse plugin.  Currently this is: http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/
-4.  Install the latest version of the eMoflon (www.emoflon.org) Eclipse plugin.  Currently this is:  https://emoflon.github.io/eclipse-plugin/beta/updatesite/
-5.  Start Eclipse in a workspace of your choice and import all Eclipse projects from the working tree of the benchmarx git repository you just cloned.  You should have 6 projects in your workspace with no compilation errors.  Note that some Xtend code is used in the projects so ensure that the encoding for your Eclipse workspace is UTF-8.   
-6.  Choose the tools you want to execute by appropriately manipulating `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/testsuite/FamiliesToPersonsTestCase.java/tools()`.
-7.  (Optional) If you want to setup the bx tool BiGUL, then work through `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/implementations/bigul/README-SETUP` to do this.
-8.  Choose the project **BenchmarxFamiliesToPersons** and select "Run As/JUnit Test" to execute the benchmarx "Families to Persons" for all tools chosen in Step 5.
-9.  You can compare your results with `/BenchmarxFamiliesToPersons/results/TestResults.xlsx`.
+2.  Download the latest version of the **Eclipse Modeling Tools**  for your platform.  Currently tested for: http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/neon3
+3.  Start Eclipse in a workspace of your choice and import the Eclipse project **BenchmarxFamiliesToPersons** from the working tree of the benchmarx git repository you just cloned.   
+4.  Choose the tools you want to execute by appropriately manipulating `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/testsuite/FamiliesToPersonsTestCase.java/tools()`.
+5.  (Optional) If you want to setup the bx tool BiGUL, then you'll have to work through `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/implementations/bigul/README-SETUP` to do this.
+6.  Choose the project **BenchmarxFamiliesToPersons** and select "Run As/JUnit Test" to execute the benchmarx "Families to Persons" for all tools chosen in Step 5.
+7.  You can compare your results with `/BenchmarxFamiliesToPersons/results/TestResults.xlsx`.
+
 
 ## How to extend the benchmarx by adding a new implementation (and/or new test cases!)
 
@@ -32,4 +34,3 @@ To add an implementation of an existing benchmarx example, e.g., `FamiliesToPers
 1.  Copy the existing structure for `/examples/familiestopersons`.  This consists of a folder `metamodels` for the source and target metamodels in an EMF representation, a folder `BenchmarxFamiliesToPersons` for the actual testsuite, and a folder `implementationArtefacts` for any further implementation artefacts.
 2.  The folder `BenchmarxFamiliesToPersons` is an Eclipse project that can be run as a JUnit test suite and contains all test cases as JUnit tests, all resources (input and expected models), any implementations of the benchmarx example, and auxiliary classes for both metamodels used to simplify the comparison of output and expected models (or model representations).
 3.  Please remember to create and send us a pull request from your fork so we can update the benchmarx!
-
