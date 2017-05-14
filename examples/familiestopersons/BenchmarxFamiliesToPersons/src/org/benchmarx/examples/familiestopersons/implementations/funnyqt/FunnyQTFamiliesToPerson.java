@@ -55,12 +55,6 @@ public class FunnyQTFamiliesToPerson
         V = Clojure.var("funnyqt.visualization", "print-model");
     }
 
-    public static void main(String[] args) {
-        System.out.println("T = " + T);
-        System.out.println("LEFT = " + LEFT);
-        System.out.println("RIGHT = " + RIGHT);
-    }
-
     public FunnyQTFamiliesToPerson() {
         this(new FamiliesComparator(), new PersonsComparator());
     }
@@ -71,6 +65,11 @@ public class FunnyQTFamiliesToPerson
     }
 
     private void transform(Keyword direction) {
+        System.out.println("Transforming in direction " + direction
+                + "\n  with PREFER_CREATING_PARENT_TO_CHILD = "
+                + configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD)
+                + "\n  and PREFER_EXISTING_FAMILY_TO_NEW = "
+                + configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW));
         T.invoke(srcModel, trgModel, direction,
                 configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD),
                 configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW));
