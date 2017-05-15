@@ -2,6 +2,11 @@ package org.benchmarx.examples.familiestopersons.implementations.funnyqt;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.TimeZone;
 import java.util.function.Consumer;
 
 import org.benchmarx.Configurator;
@@ -18,6 +23,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.junit.ComparisonFailure;
 
 import Families.FamiliesFactory;
 import Families.FamilyRegister;
@@ -135,30 +141,82 @@ public class FunnyQTFamiliesToPerson
 
     @Override
     public void saveModels(String name) {
+        saveModels(name, getSourceModel(), getTargetModel());
+    }
+
+    private void saveModels(String name, FamilyRegister fr, PersonRegister pr) {
+        saveModel(name, fr, false);
+        saveModel(name, pr, false);
+    }
+
+    private void saveModel(String name, EObject model, boolean onlyViz) {
         ResourceSet set = new ResourceSetImpl();
         set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
                 Resource.Factory.Registry.DEFAULT_EXTENSION,
                 new XMIResourceFactoryImpl());
-        final String srcPath = RESULTPATH + File.separator + name + "Family";
-        final String trgPath = RESULTPATH + File.separator + name + "Person";
-        final URI srcURI = URI.createFileURI(srcPath + ".xmi");
-        final URI trgURI = URI.createFileURI(trgPath + ".xmi");
-        final Resource resSource = set.createResource(srcURI);
-        final Resource resTarget = set.createResource(trgURI);
+        final String path = RESULTPATH + File.separator + name + "-"
+                + model.eClass().getName();
+        final URI uri = URI.createFileURI(path + ".xmi");
+        final Resource res = set.createResource(uri);
+        final EObject copy = EcoreUtil.copy(model);
 
-        final EObject colSource = EcoreUtil.copy(getSourceModel());
-        final EObject colTarget = EcoreUtil.copy(getTargetModel());
-
-        resSource.getContents().add(colSource);
-        resTarget.getContents().add(colTarget);
+        res.getContents().add(copy);
 
         try {
-            resSource.save(null);
-            V.invoke(resSource, srcPath + ".pdf");
-            resTarget.save(null);
-            V.invoke(resTarget, trgPath + ".pdf");
+            if (!onlyViz) {
+                res.save(null);
+            }
+            V.invoke(res, path + ".pdf");
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void assertPostcondition(FamilyRegister source,
+            PersonRegister target) {
+        try {
+            super.assertPostcondition(source, target);
+        } catch (AssertionError e) {
+            dumpModels(e, source, target, "assertPostcondition");
+            throw e;
+        }
+    }
+
+    @Override
+    public void assertPrecondition(FamilyRegister source,
+            PersonRegister target) {
+        try {
+            super.assertPrecondition(source, target);
+        } catch (AssertionError e) {
+            dumpModels(e, source, target, "assertPrecondition");
+            throw e;
+        }
+    }
+
+    private void dumpModels(AssertionError e, FamilyRegister source,
+            PersonRegister target, String where) {
+        TimeZone tz = TimeZone.getTimeZone("UTC");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        df.setTimeZone(tz);
+        String nowAsISO = df.format(new Date());
+
+        boolean onlySource = false;
+        if (e instanceof ComparisonFailure) {
+            ComparisonFailure cf = (ComparisonFailure) e;
+            if (cf.getExpected().contains("Family")
+                    || cf.getExpected().contains(" families =")
+                    || cf.getExpected().contains(" father =")
+                    || cf.getExpected().contains(" mother =")
+                    || cf.getExpected().contains(" daughters =")
+                    || cf.getExpected().contains(" sons =")) {
+                onlySource = true;
+            }
+        }
+
+        saveModel(nowAsISO + "-" + where + "-expected",
+                onlySource ? source : target, true);
+        saveModel(nowAsISO + "-" + where + "-actual",
+                onlySource ? getSourceModel() : getTargetModel(), true);
     }
 }
