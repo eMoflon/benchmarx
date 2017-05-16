@@ -8,6 +8,8 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.function.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.benchmarx.Configurator;
 import org.benchmarx.emf.BXToolForEMF;
@@ -194,13 +196,11 @@ public class FunnyQTFamiliesToPerson
         }
     }
 
+    private static Pattern TESTCASE_PATTERN = Pattern.compile(
+            "^org\\.benchmarx\\.examples\\.familiestopersons\\.testsuite\\.(.*)");
+
     private void dumpModels(AssertionError e, FamilyRegister source,
             PersonRegister target, String where) {
-        TimeZone tz = TimeZone.getTimeZone("UTC");
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-        df.setTimeZone(tz);
-        String nowAsISO = df.format(new Date());
-
         boolean onlySource = false;
         if (e instanceof ComparisonFailure) {
             ComparisonFailure cf = (ComparisonFailure) e;
@@ -214,9 +214,27 @@ public class FunnyQTFamiliesToPerson
             }
         }
 
-        saveModel(nowAsISO + "-" + where + "-expected",
-                onlySource ? source : target, true);
-        saveModel(nowAsISO + "-" + where + "-actual",
+        String testCase = "unknown_testcase";
+        try {
+            throw new Exception();
+        } catch (Exception ex) {
+            for (StackTraceElement ste : ex.getStackTrace()) {
+                final String cn = ste.getClassName();
+                final Matcher m = TESTCASE_PATTERN.matcher(cn);
+                if (m.matches()) {
+                    testCase = m.group(1) + "-" + ste.getMethodName();
+                    break;
+                }
+            }
+        }
+
+        final String n = testCase + "-" + where + "-"
+                + configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD)
+                + "-"
+                + configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
+
+        saveModel(n + "-expected", onlySource ? source : target, true);
+        saveModel(n + "-actual",
                 onlySource ? getSourceModel() : getTargetModel(), true);
     }
 }
