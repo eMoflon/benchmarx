@@ -2,11 +2,6 @@ package org.benchmarx.examples.familiestopersons.implementations.funnyqt;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.TimeZone;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,6 +29,14 @@ import clojure.java.api.Clojure;
 import clojure.lang.IFn;
 import clojure.lang.Keyword;
 
+/**
+ * Driver for the FunnyQT solution.
+ * 
+ * @see <a href"https://github.com/tsdh/ttc17-families2persons-bx">The soution's
+ *      source code</a>
+ *
+ * @author Dr. Tassilo Horn &lt;tsdh@gnu.org&gt;
+ */
 public class FunnyQTFamiliesToPerson
         extends BXToolForEMF<FamilyRegister, PersonRegister, Decisions> {
 
