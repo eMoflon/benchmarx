@@ -20,5 +20,6 @@
 	<classpathentry kind="lib" path="lib/eMoflon/trove-3.1a1.jar"/>
 	<classpathentry kind="lib" path="lib/mediniQVT/mediniQVT.jar"/>
 	<classpathentry kind="lib" path="lib/mediniQVT/qvtemf.jar"/>
+	<classpathentry kind="lib" path="lib/FunnyQT/ttc17-families2persons-bx-0.1.0-SNAPSHOT-standalone.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

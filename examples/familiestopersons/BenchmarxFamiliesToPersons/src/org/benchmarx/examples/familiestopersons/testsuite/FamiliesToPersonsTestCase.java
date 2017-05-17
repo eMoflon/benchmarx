@@ -8,6 +8,7 @@ import org.benchmarx.emf.Comparator;
 import org.benchmarx.examples.familiestopersons.implementations.bigul.BiGULFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.implementations.funnyqt.FunnyQTFamiliesToPerson;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersonsConfig;
 import org.benchmarx.families.core.FamiliesComparator;
@@ -70,6 +71,8 @@ public abstract class FamiliesToPersonsTestCase {
 				new MediniQVTFamiliesToPersonsConfig() // Currently 12 failures
 				,
 				new UbtXtendFamiliesToPersons()  // Currently 0 failures
+				,
+				new FunnyQTFamiliesToPerson()
 			);
 	}
 	
