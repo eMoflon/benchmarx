@@ -80,6 +80,8 @@ public class ModelCompare
          familyDetails.add(familyString);
       }
       
+      familyDetails.sort(String::compareTo);
+      
       
       String rootTemplate = "" + 
          "FamilyRegister {\n" + 

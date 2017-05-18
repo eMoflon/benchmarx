@@ -110,4 +110,36 @@ public class IndiHelper
       }
    }
 
+   public void createFatherBart(Object obj) 
+   {
+      if (obj instanceof Families.FamilyRegister)
+      {
+         Families.FamilyRegister register = (Families.FamilyRegister) obj;
+         emfFamilyHelper.createFatherBart(register);
+      }
+      else
+      {
+         FamilyRegister register = (FamilyRegister) obj;
+         
+         Family newSimpsons = register.getFamilies().createNameCondition("Simpson").filterFather(null).first();
+         newSimpsons.createFather().withName("Bart");
+      }
+   }
+
+   public void createSonBart(Object obj) 
+   {
+      if (obj instanceof Families.FamilyRegister)
+      {
+         Families.FamilyRegister register = (Families.FamilyRegister) obj;
+         emfFamilyHelper.createSonBart(register);
+      }
+      else
+      {
+         FamilyRegister register = (FamilyRegister) obj;
+         
+         Family newSimpsons = register.getFamilies().createNameCondition("Simpson").first();
+         newSimpsons.createSons().withName("Bart");
+      }
+   }
+
 }
