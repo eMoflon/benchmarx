@@ -7,6 +7,8 @@ import org.benchmarx.Configurator;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Family;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.FamilyMember;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.FamilyRegister;
+import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Female;
+import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Male;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Person;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.PersonRegister;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyMemberPO;
@@ -65,22 +67,57 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
       familyRegisterPO.getPattern().setDebugMode(Kanban.TRACE_ON);
       PersonRegisterPO personRegisterPO = familyRegisterPO.createPersonRegisterPO().withPatternObjectName("pr");
       FamilyMemberPO memberPO = familyRegisterPO.createCPO().withPatternObjectName("fm");
+      
+      // there is an old corresponding person
+      memberPO.startSubPattern();
+      PersonPO oldPersonPO = memberPO.createCpPO().withName("oldP");
+      oldPersonPO.createCondition(p -> ensureNameAndGender(p));
+      memberPO.endSubPattern();
+      
+      // no corresponding person
       memberPO.startNAC();
-      memberPO.createCpPO().withPatternObjectName("oldP");
+      memberPO.createCpPO().withPatternObjectName("noOldP");
       memberPO.endNAC();
       PersonPO personPO = memberPO.createCpPO(Pattern.CREATE).withPatternObjectName("newP");
       personPO.createRegisterLink(personRegisterPO, Pattern.CREATE);
-      personPO.createCondition(p -> derivePersonName(p));
+      personPO.createCondition(p -> ensureNameAndGender(p));
       familyRegisterPO.createCLink(memberPO, Pattern.DESTROY);
       
       familyRegisterPO.rebind(familyRegister);
       familyRegisterPO.doAllMatches();
    }
 
-   private boolean derivePersonName(Person p)
+   private boolean ensureNameAndGender(Person p) 
    {
       FamilyMember fm = p.getCfm();
       Family f = fm.getFamily();
+      
+      Class gender = Male.class;
+      if (fm.getMotherOf() != null || fm.getDaughterOf() != null)
+      {
+         gender = Female.class;
+      }
+      
+      if (p.getClass() != gender)
+      {
+         try
+         {
+            Person newP = ((Person) gender.newInstance())
+                  .withRegister(p.getRegister())
+                  .withBirthday(p.getBirthday())
+                  .withCfm(p.getCfm())
+                  .withName(p.getName());
+            
+            p.removeYou();
+            p = newP;
+         }
+         catch (InstantiationException | IllegalAccessException e)
+         {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+         }
+      }
+      
       String fullName = String.format("%s, %s", f.getName(), fm.getName());
       p.withName(fullName);
       
@@ -139,9 +176,21 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
       
       System.out.println(expectedFamilyString + actualFamilyString + expectedPersonsString + actualPersonString);
       
-      Assert.assertEquals("model strings should be equal", 
-         (expectedFamilyString + expectedPersonsString).replaceAll("\\s+", ""), 
-         (actualFamilyString + actualPersonString).replaceAll("\\s+", ""));
+      String expected = (expectedFamilyString + expectedPersonsString).replaceAll("\\s+", "");
+      String actual = (actualFamilyString + actualPersonString).replaceAll("\\s+", "");
+      
+      for (int i = 0; i < expected.length(); i++)
+      {
+         if (expected.charAt(i) != actual.charAt(i))
+         {
+            System.out.println("===>" + expected.substring(i));
+            System.out.println("===>" + actual.substring(i));
+            break;
+         }
+      }
+      
+      
+      Assert.assertEquals("model strings should be equal", expected, actual);
    }
    
    @Override
