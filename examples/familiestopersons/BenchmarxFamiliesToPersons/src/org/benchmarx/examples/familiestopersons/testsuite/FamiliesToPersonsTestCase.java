@@ -10,6 +10,7 @@ import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendF
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersonsConfig;
+import org.benchmarx.examples.familiestopersons.implementations.sdmlib.SDMLibFamiliesToPersons;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
@@ -29,11 +30,11 @@ import Persons.PersonsPackage;
 @RunWith(Parameterized.class)
 public abstract class FamiliesToPersonsTestCase {
 
-	protected BXTool<FamilyRegister, PersonRegister, Decisions> tool;
+	protected BXTool<Object, Object, Decisions> tool;
 	protected Comparator<FamilyRegister> familiesComparator;
 	protected Comparator<PersonRegister> personsComparator;
-	protected BenchmarxUtil<FamilyRegister, PersonRegister, Decisions> util;
-	protected FamilyHelper helperFamily;
+	protected BenchmarxUtil<Object, Object, Decisions> util;
+	protected IndiHelper helperFamily;
 	protected PersonHelper helperPerson;
 
 	@Before
@@ -46,7 +47,7 @@ public abstract class FamiliesToPersonsTestCase {
 		familiesComparator = new FamiliesComparator();
 		personsComparator = new PersonsComparator();
 		util = new BenchmarxUtil<>(tool);
-		helperFamily = new FamilyHelper();
+		helperFamily = new IndiHelper();
 		helperPerson = new PersonHelper();
 		
 		// Initialise the bx tool
@@ -59,10 +60,11 @@ public abstract class FamiliesToPersonsTestCase {
 	}
 	
 	@Parameters
-	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
+	public static Collection<BXTool<? extends Object, ? extends Object, Decisions>> tools() {
 		return Arrays.asList(
-				new BiGULFamiliesToPersons()  // Currently 9 failures
-				,
+		      new SDMLibFamiliesToPersons(),
+				// new BiGULFamiliesToPersons()  // Currently 9 failures
+				// ,
 				new EMoflonFamiliesToPersons()  // Currently 6 failures
 				,
 				new MediniQVTFamiliesToPersons() // Currently 19 failures
@@ -73,7 +75,7 @@ public abstract class FamiliesToPersonsTestCase {
 			);
 	}
 	
-	protected FamiliesToPersonsTestCase(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
+	protected FamiliesToPersonsTestCase(BXTool<Object, Object, Decisions> tool) {
 		this.tool = tool; 
 	}
 }

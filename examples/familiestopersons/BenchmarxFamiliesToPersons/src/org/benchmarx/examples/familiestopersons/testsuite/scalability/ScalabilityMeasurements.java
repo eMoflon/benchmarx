@@ -5,6 +5,7 @@ import org.benchmarx.examples.familiestopersons.implementations.bigul.BiGULFamil
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.implementations.sdmlib.SDMLibFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.util.BXToolTimer;
 
@@ -17,7 +18,7 @@ import Persons.PersonRegister;
 import Persons.PersonsFactory;
 
 public class ScalabilityMeasurements {
-	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool1 = new BiGULFamiliesToPersons();
+	private static final BXTool<Object, Object, Decisions> tool1 = new SDMLibFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool2 = new EMoflonFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool3 = new MediniQVTFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool4 = new UbtXtendFamiliesToPersons();
@@ -29,7 +30,7 @@ public class ScalabilityMeasurements {
 	private final int NO_OF_CHILDREN;
 	private final int NO_OF_ELEMENTS;
 	
-	private BXToolTimer<FamilyRegister, PersonRegister, Decisions> timer1;
+	private BXToolTimer<Object, Object, Decisions> timer1;
 	private BXToolTimer<FamilyRegister, PersonRegister, Decisions> timer2;
 	private BXToolTimer<FamilyRegister, PersonRegister, Decisions> timer3;
 	private BXToolTimer<FamilyRegister, PersonRegister, Decisions> timer4;
@@ -50,7 +51,8 @@ public class ScalabilityMeasurements {
 		timer4 = new BXToolTimer<>(tool4, repeat);
 	}
 	
-	public void createPersons(PersonRegister register){
+	public void createPersons(Object obj){
+	   PersonRegister register = (PersonRegister) obj;
 		for(int i = 0; i < NO_OF_FAMILIES; i++){
 			Person mother = PersonsFactory.eINSTANCE.createFemale();
 			mother.setName("Doe_" + i + ", Jane");
@@ -67,7 +69,8 @@ public class ScalabilityMeasurements {
 		}		
 	}
 	
-	public void createFamiliesWithMembers(FamilyRegister register){
+	public void createFamiliesWithMembers(Object obj){
+	   FamilyRegister register = (FamilyRegister) obj;
 		for (int i = 0; i < NO_OF_FAMILIES; i++) {
 			Family family = FamiliesFactory.eINSTANCE.createFamily();
 			family.setName("Doe_" + i);
@@ -97,13 +100,15 @@ public class ScalabilityMeasurements {
 		}		
 	}
 	
-	public void createOnePerson(PersonRegister register){
+	public void createOnePerson(Object obj){
+	   PersonRegister register = (PersonRegister) obj;
 		Person person = PersonsFactory.eINSTANCE.createFemale();
 		person.setName("Doe_" + register.getPersons().size() + ", Jane");
 		register.getPersons().add(person);
 	}
 	
-	public void createOneFamilyMember(FamilyRegister register){
+	public void createOneFamilyMember(Object obj){
+	   FamilyRegister register = (FamilyRegister) obj;
 		Family f = register.getFamilies().get(0);
 		FamilyMember familyMember = FamiliesFactory.eINSTANCE.createFamilyMember();
 		familyMember.setName("Johanna");
