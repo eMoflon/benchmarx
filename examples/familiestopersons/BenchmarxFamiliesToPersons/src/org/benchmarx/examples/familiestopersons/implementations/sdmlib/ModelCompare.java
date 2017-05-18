@@ -1,5 +1,7 @@
 package org.benchmarx.examples.familiestopersons.implementations.sdmlib;
 
+import java.util.Arrays;
+
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Family;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.FamilyMember;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.FamilyRegister;
@@ -19,31 +21,61 @@ public class ModelCompare
       
       for (Family family : register.getFamilies())
       {
-         StringList kidsList = new StringList();
+         String father = "Nothing";
+         if (family.getFather() != null)
+         {
+            father = "Just (FamilyMember { firstName = \"Homer\" })";
+            father = CGUtil.replaceAll(father, "Homer", family.getFather().getName());
+         }
          
-         String oneKid = "" +
+         String mother = "Nothing";
+         if (family.getMother() != null)
+         {
+            mother = "Just (FamilyMember { firstName = \"Homer\" })";
+            mother = CGUtil.replaceAll(mother, "Homer", family.getMother().getName());
+         }
+         
+         
+         StringList sonsList = new StringList();
+         
+         String oneSon = "" +
                "FamilyMember { firstName = \"Rod\" }";
          
          for (FamilyMember m : family.getSons())
          {
-            String tmp = CGUtil.replaceAll(oneKid, "Rod", m.getName());
-            kidsList.add(tmp);
+            String tmp = CGUtil.replaceAll(oneSon, "Rod", m.getName());
+            sonsList.add(tmp);
+         }
+         
+         StringList daughtersList = new StringList();
+         
+         String oneDaughter = "" +
+               "FamilyMember { firstName = \"Rod\" }";
+         
+         for (FamilyMember m : family.getDaughters())
+         {
+            String tmp = CGUtil.replaceAll(oneDaughter, "Rod", m.getName());
+            daughtersList.add(tmp);
          }
          
          
          String familyString = "" +
                "  Family {\n" + 
                "        familyName = \"Simpson\"\n" + 
-               "       ,father     = Nothing\n" + 
-               "       ,mother     = Nothing\n" + 
+               "       ,father     = NoFather\n" + 
+               "       ,mother     = NoMother\n" + 
                "       ,sons       = [listOfSons]\n" + 
-               "       ,daughters  = []\n" + 
+               "       ,daughters  = [listOfDaughters]\n" + 
                "   }\n" + 
                "";
          
          familyString = CGUtil.replaceAll(familyString, 
             "Simpson", family.getName(), 
-            "listOfSons", kidsList.concat(",\n"));
+            "NoFather", father,
+            "NoMother", mother,
+            "listOfSons", sonsList.concat(", "),
+            "listOfDaughters", daughtersList.concat(", ")
+            );
          
          familyDetails.add(familyString);
       }
@@ -70,8 +102,11 @@ public class ModelCompare
             "               fullName = \"Flanders, Rod\"\n" + 
             "             , birthday = \"0001-01-01\"\n" + 
             "      }";
+      
+      Person[] personArray = personRegister.getPersons().toArray(new Person[personRegister.getPersons().size()]);
+      Arrays.sort(personArray, (t,o) -> t.getName().compareTo(o.getName()));
 
-      for (Person p : personRegister.getPersons())
+      for (Person p : personArray)
       {
          String gender = "Male";
          if (p instanceof Female)
