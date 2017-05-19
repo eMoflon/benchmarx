@@ -72,7 +72,7 @@ public abstract class FamiliesToPersonsTestCase {
 				,
 				new UbtXtendFamiliesToPersons()  // Currently 0 failures
 				,
-				new FunnyQTFamiliesToPerson()
+				new FunnyQTFamiliesToPerson() // Currently 10 failures
 			);
 	}
 	

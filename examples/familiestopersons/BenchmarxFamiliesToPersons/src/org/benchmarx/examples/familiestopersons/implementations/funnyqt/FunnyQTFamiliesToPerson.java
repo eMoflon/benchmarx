@@ -2,6 +2,8 @@ package org.benchmarx.examples.familiestopersons.implementations.funnyqt;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.annotation.Target;
+import java.util.Date;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,6 +22,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.junit.ComparisonFailure;
 
 import Families.FamiliesFactory;
@@ -47,23 +50,25 @@ public class FunnyQTFamiliesToPerson
 
     private Configurator<Decisions> configurator;
 
-    private final static IFn T;
-    private final static IFn V;
-    private final static Keyword LEFT;
-    private final static Keyword RIGHT;
+    private final static IFn T; // Transform
+    private final static IFn V; // Visualize
+    private final static IFn S; // Save
+    private final static Keyword LEFT = (Keyword) Clojure.read(":left");
+    private final static Keyword RIGHT = (Keyword) Clojure.read(":right");
 
     static {
-        LEFT = (Keyword) Clojure.read(":left");
-        RIGHT = (Keyword) Clojure.read(":right");
-
-        final String nsName = "ttc17-families2persons-bx.core";
-        final String transName = "families2persons";
+        final String transformationNamespace = "ttc17-families2persons-bx.core";
+        final String emfNamespace = "funnyqt.emf";
+        final String visualizationNamespace = "funnyqt.visualization";
 
         final IFn require = Clojure.var("clojure.core", "require");
-        require.invoke(Clojure.read(nsName));
+        require.invoke(Clojure.read(emfNamespace));
+        require.invoke(Clojure.read(visualizationNamespace));
+        require.invoke(Clojure.read(transformationNamespace));
 
-        T = Clojure.var(nsName, transName);
-        V = Clojure.var("funnyqt.visualization", "print-model");
+        T = Clojure.var(transformationNamespace, "families2persons");
+        V = Clojure.var(visualizationNamespace, "print-model");
+        S = Clojure.var(emfNamespace, "save-resource");
     }
 
     public FunnyQTFamiliesToPerson() {
@@ -76,11 +81,6 @@ public class FunnyQTFamiliesToPerson
     }
 
     private void transform(Keyword direction) {
-        System.out.println("Transforming in direction " + direction
-                + "\n  with PREFER_CREATING_PARENT_TO_CHILD = "
-                + configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD)
-                + "\n  and PREFER_EXISTING_FAMILY_TO_NEW = "
-                + configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW));
         T.invoke(srcModel, trgModel, direction,
                 configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD),
                 configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW));
@@ -93,8 +93,8 @@ public class FunnyQTFamiliesToPerson
 
     @Override
     public void initiateSynchronisationDialogue() {
-        srcModel = new ResourceImpl();
-        trgModel = new ResourceImpl();
+        srcModel = new XMIResourceImpl();
+        trgModel = new XMIResourceImpl();
 
         FamilyRegister familiesRoot = FamiliesFactory.eINSTANCE
                 .createFamilyRegister();
@@ -146,98 +146,9 @@ public class FunnyQTFamiliesToPerson
 
     @Override
     public void saveModels(String name) {
-        saveModels(name, getSourceModel(), getTargetModel());
-    }
-
-    private void saveModels(String name, FamilyRegister fr, PersonRegister pr) {
-        saveModel(name, fr, false);
-        saveModel(name, pr, false);
-    }
-
-    private void saveModel(String name, EObject model, boolean onlyViz) {
-        ResourceSet set = new ResourceSetImpl();
-        set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
-                Resource.Factory.Registry.DEFAULT_EXTENSION,
-                new XMIResourceFactoryImpl());
-        final String path = RESULTPATH + File.separator + name + "-"
-                + model.eClass().getName();
-        final URI uri = URI.createFileURI(path + ".xmi");
-        final Resource res = set.createResource(uri);
-        final EObject copy = EcoreUtil.copy(model);
-
-        res.getContents().add(copy);
-
-        try {
-            if (!onlyViz) {
-                res.save(null);
-            }
-            V.invoke(res, path + ".pdf");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void assertPostcondition(FamilyRegister source,
-            PersonRegister target) {
-        try {
-            super.assertPostcondition(source, target);
-        } catch (AssertionError e) {
-            dumpModels(e, source, target, "assertPostcondition");
-            throw e;
-        }
-    }
-
-    @Override
-    public void assertPrecondition(FamilyRegister source,
-            PersonRegister target) {
-        try {
-            super.assertPrecondition(source, target);
-        } catch (AssertionError e) {
-            dumpModels(e, source, target, "assertPrecondition");
-            throw e;
-        }
-    }
-
-    private static Pattern TESTCASE_PATTERN = Pattern.compile(
-            "^org\\.benchmarx\\.examples\\.familiestopersons\\.testsuite\\.(.*)");
-
-    private void dumpModels(AssertionError e, FamilyRegister source,
-            PersonRegister target, String where) {
-        boolean onlySource = false;
-        if (e instanceof ComparisonFailure) {
-            ComparisonFailure cf = (ComparisonFailure) e;
-            if (cf.getExpected().contains("Family")
-                    || cf.getExpected().contains(" families =")
-                    || cf.getExpected().contains(" father =")
-                    || cf.getExpected().contains(" mother =")
-                    || cf.getExpected().contains(" daughters =")
-                    || cf.getExpected().contains(" sons =")) {
-                onlySource = true;
-            }
-        }
-
-        String testCase = "unknown_testcase";
-        try {
-            throw new Exception();
-        } catch (Exception ex) {
-            for (StackTraceElement ste : ex.getStackTrace()) {
-                final String cn = ste.getClassName();
-                final Matcher m = TESTCASE_PATTERN.matcher(cn);
-                if (m.matches()) {
-                    testCase = m.group(1) + "-" + ste.getMethodName();
-                    break;
-                }
-            }
-        }
-
-        final String n = testCase + "-" + where + "-"
-                + configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD)
-                + "-"
-                + configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
-
-        saveModel(n + "-expected", onlySource ? source : target, true);
-        saveModel(n + "-actual",
-                onlySource ? getSourceModel() : getTargetModel(), true);
+        V.invoke(srcModel, RESULTPATH + File.separator + name + "-source.pdf");
+        V.invoke(trgModel, RESULTPATH + File.separator + name + "-target.pdf");
+        S.invoke(srcModel, RESULTPATH + File.separator + name + "-source.xmi");
+        S.invoke(trgModel, RESULTPATH + File.separator + name + "-target.xmi");
     }
 }
