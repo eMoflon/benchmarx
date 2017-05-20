@@ -86,7 +86,7 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Fam
    
    public void removeYou()
    {
-      setCp(null);
+      if (getCp() != null) getCp().removeYou();
       setDaughterOf(null);
       setFatherOf(null);
       setMotherOf(null);

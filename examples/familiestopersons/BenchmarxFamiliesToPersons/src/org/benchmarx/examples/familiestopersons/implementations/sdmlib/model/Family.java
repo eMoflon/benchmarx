@@ -119,8 +119,8 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Fam
          
          this.getRegister().withC(this.getMother());
          this.getRegister().withC(this.getFather());
-         this.getRegister().withC(this.getSons().toArray(FAMILY_MEMBERS_ARRAY));
-         this.getRegister().withC(this.getDaughters().toArray(FAMILY_MEMBERS_ARRAY));
+         this.getRegister().withC(this.getSons().toArray(new FamilyMember[this.getSons().size()]));
+         this.getRegister().withC(this.getDaughters().toArray(new FamilyMember[this.getDaughters().size()]));
       }
    }
    
@@ -184,6 +184,7 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Fam
             {
                item.withDaughterOf(this);
                firePropertyChange(PROPERTY_DAUGHTERS, null, item);
+               this.getRegister().withC(item);
             }
          }
       }
@@ -309,6 +310,7 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Fam
          if (value != null)
          {
             value.withFatherOf(this);
+            this.getRegister().withC(value);
          }
          
          firePropertyChange(PROPERTY_FATHER, oldValue, value);
@@ -368,6 +370,8 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Fam
          if (value != null)
          {
             value.withMotherOf(this);
+            
+            this.getRegister().withC(value);
          }
          
          firePropertyChange(PROPERTY_MOTHER, oldValue, value);
@@ -433,6 +437,7 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Fam
             {
                item.withSonOf(this);
                firePropertyChange(PROPERTY_SONS, null, item);
+               this.getRegister().withC(item);
             }
          }
       }
