@@ -26,6 +26,7 @@ import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
 import de.uniks.networkparser.EntityUtil;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Person;
+import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilySet;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Family;
    /**
     * 
@@ -86,7 +87,12 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Fam
    
    public void removeYou()
    {
-      if (getCp() != null) getCp().removeYou();
+      Person oldCp = getCp();
+      setCp(null);
+      if (oldCp != null) 
+      {
+         oldCp.removeYou();
+      }
       setDaughterOf(null);
       setFatherOf(null);
       setMotherOf(null);
@@ -129,6 +135,12 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Fam
       if (f == null) f = this.getSonOf();
       if (f == null) f = this.getDaughterOf();
       return f;
+   }
+   
+   public FamilySet getFamilySet()
+   {
+      Family f = this.getFamily();
+      return new FamilySet(f);
    }
    
    public FamilyMember withName(String value)

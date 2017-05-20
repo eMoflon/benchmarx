@@ -21,14 +21,14 @@ public class ModelCompare
       
       for (Family family : register.getFamilies())
       {
-         String father = "Nothing";
+         String father = " Nothing";
          if (family.getFather() != null)
          {
             father = "Just (FamilyMember { firstName = \"Homer\" })";
             father = CGUtil.replaceAll(father, "Homer", family.getFather().getName());
          }
          
-         String mother = "Nothing";
+         String mother = " Nothing";
          if (family.getMother() != null)
          {
             mother = "Just (FamilyMember { firstName = \"Homer\" })";
@@ -47,6 +47,8 @@ public class ModelCompare
             sonsList.add(tmp);
          }
          
+         sonsList.sort(String::compareTo);
+         
          StringList daughtersList = new StringList();
          
          String oneDaughter = "" +
@@ -57,6 +59,8 @@ public class ModelCompare
             String tmp = CGUtil.replaceAll(oneDaughter, "Rod", m.getName());
             daughtersList.add(tmp);
          }
+         
+         daughtersList.sort(String::compareTo);
          
          
          String familyString = "" +
@@ -76,6 +80,9 @@ public class ModelCompare
             "listOfSons", sonsList.concat(", "),
             "listOfDaughters", daughtersList.concat(", ")
             );
+         
+         familyString = CGUtil.replaceAll(familyString, 
+            "= []", "=  []");
          
          familyDetails.add(familyString);
       }
@@ -106,11 +113,11 @@ public class ModelCompare
             "      }";
       
       Person[] personArray = personRegister.getPersons().toArray(new Person[personRegister.getPersons().size()]);
-      Arrays.sort(personArray, (t,o) -> t.getName().compareTo(o.getName()));
+      Arrays.sort(personArray, (t,o) -> t.compareTo(o));
 
       for (Person p : personArray)
       {
-         String gender = "Male";
+         String gender = " Male";
          if (p instanceof Female)
          {
             gender = "Female";
@@ -122,7 +129,6 @@ public class ModelCompare
             "0001-01-01", p.getBirthday());
          personList.add(tmp);
       }
-      
       
       String template = "" + 
             "PersonRegister {\n" + 

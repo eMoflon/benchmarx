@@ -306,5 +306,33 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Per
       PersonRegister value = new PersonRegister();
       withPersonRegister(value);
       return value;
+   }
+
+   public Family getOrCreateFamily(String familyName)
+   {
+      Family perfectF = null;
+      
+      for (Family f : this.getFamilies())
+      {
+         if (familyName.equals(f.getName()))
+         {
+            if (perfectF == null)
+            {
+               perfectF = f;
+            }
+            else if (perfectF.getFather() != null && f.getFather() == null)
+            {
+               perfectF = f;
+               break;
+            }
+               
+         }
+      }
+      
+      if (perfectF == null)
+      {
+         perfectF = this.createFamilies().withName(familyName);
+      }
+      return perfectF;
    } 
 }

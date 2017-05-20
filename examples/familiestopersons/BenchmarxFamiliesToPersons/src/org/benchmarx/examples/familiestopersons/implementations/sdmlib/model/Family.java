@@ -25,6 +25,8 @@ import de.uniks.networkparser.interfaces.SendableEntity;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
 import de.uniks.networkparser.EntityUtil;
+
+import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyMemberPO;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyMemberSet;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.FamilyMember;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.FamilyRegister;
@@ -465,5 +467,36 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Fam
       FamilyMember value = new FamilyMember();
       withSons(value);
       return value;
+   }
+
+   public boolean addToFit(FamilyMemberPO familyMemberPO)
+   {
+      FamilyMember familyMember = familyMemberPO.getCurrentMatch();
+      Person person = familyMember.getCp();
+      
+      if (person instanceof Male)
+      {
+         if (this.getFather() == null && person.getRegister().preferParentToKid)
+         {
+            this.withFather(familyMember);
+         }
+         else
+         {
+            this.withSons(familyMember);
+         }
+      }
+      else
+      {
+         if (this.getMother() == null && person.getRegister().preferParentToKid)
+         {
+            this.withMother(familyMember);
+         }
+         else
+         {
+            this.withDaughters(familyMember);
+         }
+      }
+      
+      return true;
    } 
 }

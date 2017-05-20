@@ -171,7 +171,7 @@ public class PersonPO extends PatternObject<PersonPO, Person>
    {
       FamilyMemberPO result = new FamilyMemberPO(new FamilyMember[]{});
       
-      result.setModifier(this.getPattern().getModifier());
+      result.setModifier(this.getOnDutyPattern().getModifier());
       super.hasLink(Person.PROPERTY_CFM, result);
       
       return result;
@@ -241,6 +241,16 @@ public class PersonPO extends PatternObject<PersonPO, Person>
       if (this.getPattern().getHasMatch())
       {
          return ((Person) this.getCurrentMatch()).getRegister();
+      }
+      return null;
+   }
+
+
+   public String getFamilyName()
+   {
+      if (this.getPattern().getHasMatch())
+      {
+         return ((Person) this.getCurrentMatch()).getFamilyName();
       }
       return null;
    }

@@ -12,7 +12,9 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Mal
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Person;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.PersonRegister;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyMemberPO;
+import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyPO;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyRegisterPO;
+import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilySet;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.PersonPO;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.PersonRegisterPO;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
@@ -36,6 +38,7 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
    private PersonRegister personRegister;
    private Families.FamilyRegister emfFamilyRegister;
    private FamilyRegisterPO familyRegisterPO;
+   private Configurator<Decisions> configurator;
 
    @Override
    public void initiateSynchronisationDialogue()
@@ -56,9 +59,75 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
       edit.accept(familyRegister);
       
       transformForward();
+   }
+   
+   
+   private void transformBackward()
+   {
+      PersonRegisterPO registerPO = new PersonRegisterPO(personRegister).withPatternObjectName("pr");
+      registerPO.getPattern().setDebugMode(2);
       
-      System.out.println("performAndPropagateSourceEdit done");
+      FamilyRegisterPO familyRegisterPO = registerPO.createFamilyRegisterPO().withPatternObjectName("fr");
       
+      PersonPO personPO = registerPO.createCPO().withPatternObjectName("p");
+      
+      // old member in wrong family, delete
+      personPO.startSubPattern();
+      FamilyMemberPO oldFamilyMemberPO = personPO.createCfmPO().withPatternObjectName("cfm");
+      oldFamilyMemberPO.createCondition(fm -> assignGivenName(fm), "name := p.getGivenName()");
+      FamilyPO oldFamilyPO = new FamilyPO();
+      oldFamilyMemberPO.createPath(fm -> ((FamilyMember)fm).getFamilySet(), oldFamilyPO);
+      oldFamilyPO.createCondition(f -> ! f.getName().equals(personPO.getFamilyName()), "f.name != p.getFamilyName()");
+      oldFamilyMemberPO.destroy();
+      personPO.endSubPattern();
+      
+      personPO.startSubPattern();
+      personPO.startNAC();
+      personPO.createCfmPO();
+      personPO.endNAC();
+      
+      FamilyMemberPO familyMemberPO = personPO.createCfmPO(Pattern.CREATE).withPatternObjectName("fm");
+      familyMemberPO.createCondition(fm -> assignGivenName(fm), "name := p.getGivenName()");
+      
+      FamilyPO familyPO = new FamilyPO().withPatternObjectName("f");
+      familyRegisterPO.createPath(fr -> getOrCreateFamily((FamilyRegister) fr, personPO), familyPO);
+      
+      familyPO.createCondition(f -> f.addToFit(familyMemberPO), "f.addToFit(fm)");
+      personPO.endSubPattern();
+      
+      registerPO.createCLink(personPO, Pattern.DESTROY);
+      
+      registerPO.doAllMatches();
+   }
+   
+   public FamilySet getOrCreateFamily(FamilyRegister fr, PersonPO p)
+   {
+      FamilySet result = new FamilySet();
+      
+      String familyName = p.getFamilyName();
+      
+      Family f;
+      
+      if (fr.getPersonRegister().preferExistingFamily)
+      {
+         f = fr.getOrCreateFamily(familyName);
+      }
+      else
+      {
+         f = fr.createFamilies().withName(familyName);
+      }
+      
+      result.add(f);
+      
+      return result;
+   }
+
+   public boolean assignGivenName(FamilyMember fm)
+   {
+      String givenName = fm.getCp().getGivenName();
+      fm.withName(givenName);
+      
+      return true;
    }
 
    private void transformForward()
@@ -127,28 +196,31 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
    @Override
    public void performAndPropagateTargetEdit(Consumer<Object> edit)
    {
-      System.out.println("performAndPropagateSourceEdit done");
+      edit.accept(personRegister);
       
+      personRegister.preferExistingFamily = configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
+      personRegister.preferParentToKid = configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
+      
+      transformBackward();
    }
 
    @Override
    public void performIdleSourceEdit(Consumer<Object> edit)
    {
       edit.accept(familyRegister);
-      System.out.println("performIdleSourceEdit done");
    }
 
    @Override
    public void performIdleTargetEdit(Consumer<Object> edit)
    {
       edit.accept(personRegister);
-      System.out.println("performIdleTargetEdit done");
    }
 
    @Override
    public void setConfigurator(Configurator<Decisions> configurator)
    {
-      System.out.println("setConfigurator done");
+      this.configurator = configurator;
+      
    }
    
    private FamiliesComparator familyComp = new FamiliesComparator();

@@ -16,6 +16,47 @@ public class IndiHelper
    FamilyHelper emfFamilyHelper = new FamilyHelper();
    PersonHelper emfPersonHelper = new PersonHelper();
    
+   public void idleDelta(Object obj) 
+   {
+      if (obj instanceof Families.FamilyRegister)
+      {
+         Families.FamilyRegister register = (Families.FamilyRegister) obj;
+         emfFamilyHelper.idleDelta(register);
+      }
+      else
+      {
+         // do nothing
+      }
+   }  
+   
+   
+   public void hippocraticDelta(Object obj) 
+   {
+      if (obj instanceof Families.FamilyRegister)
+      {
+         Families.FamilyRegister register = (Families.FamilyRegister) obj;
+         emfFamilyHelper.hippocraticDelta(register);
+      }
+      else if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.hippocraticDelta(register);
+      }
+      else if (obj instanceof PersonRegister)
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         register.getPersons().withBirthday("2013-03-09");
+      }
+      else 
+      {
+         FamilyRegister register = (FamilyRegister) obj;
+         
+         register.createFamilies().withName("Van Houten");
+      }
+   }  
+   
+   
    public void createSimpsonFamily(Object obj) 
    {
       if (obj instanceof Families.FamilyRegister)
@@ -115,7 +156,7 @@ public class IndiHelper
       {
          FamilyRegister register = (FamilyRegister) obj;
          
-         Family skinner = register.getFamilies().createNameCondition("Skinner").first();
+         Family skinner = register.getFamilies().createNameCondition("Flanders").first();
          FamilyMember maggie = register.getFamilies().getDaughters().createNameCondition("Maggie").first();
          
          maggie.withDaughterOf(null);
@@ -349,6 +390,22 @@ public class IndiHelper
       }
    }
 
+   public void setBirthdayOfMaggie(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.setBirthdayOfMaggie(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         Person p = register.getPersons().createNameCondition("Simpson, Maggie").first();
+         p.withBirthday("2013-03-07");
+      }
+   }
+
    public void changeAllBirthdays(Object obj) 
    {
       if (obj instanceof Persons.PersonRegister)
@@ -378,14 +435,11 @@ public class IndiHelper
          
          Person p = register.getPersons().createNameCondition("Simpson, Homer").first();
          p.withBirthday("2013-01-09");
-         p = register.getPersons().createNameCondition("Simpson, Marge").first();
-         p.withBirthday("2013-02-09");
+         register.getPersons().createNameCondition("Simpson, Marge").withBirthday("2013-02-09");
          p = register.getPersons().createNameCondition("Simpson, Bart").createBirthdayCondition("0001-01-01").first();
-         p.withBirthday("2013-03-10");
-         p = register.getPersons().createNameCondition("Simpson, Lisa").first();
-         p.withBirthday("2013-03-08");
-         p = register.getPersons().createNameCondition("Simpson, Maggie").first();
-         p.withBirthday("2013-03-07");
+         if (p != null) p.withBirthday("2013-03-10");
+         register.getPersons().createNameCondition("Simpson, Lisa").withBirthday("2013-03-08");
+         register.getPersons().createNameCondition("Simpson, Maggie").withBirthday("2013-03-07");
          }
    }
 
@@ -406,5 +460,241 @@ public class IndiHelper
    }
 
 
+   public void createRod(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.createRod(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         register.createPersonsMale().withName("Flanders, Rod");
+      }
+   }
+
+
+   public void createHomer(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.createHomer(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         register.createPersonsMale().withName("Simpson, Homer");
+      }
+   }
+
+   public void createMarge(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.createMarge(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         register.createPersonsFemale().withName("Simpson, Marge");
+      }
+   }
+
+   public void createBart(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.createBart(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         register.createPersonsMale().withName("Simpson, Bart");
+      }
+   }
+
+   public void createLisa(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.createLisa(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         register.createPersonsFemale().withName("Simpson, Lisa");
+      }
+   }
+
+   public void createMaggie(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.createMaggie(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         register.createPersonsFemale().withName("Simpson, Maggie");
+      }
+   }
+
+   public void createSeymour(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.createSeymour(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         register.createPersonsMale().withName("Skinner, Seymour");
+      }
+   }
+
+   public void deleteHomer(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.deleteHomer(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         Person person = register.getPersons().createNameCondition("Simpson, Homer").first();
+         person.removeYou();
+      }
+   }
+
+   public void deleteMaggie(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.deleteMaggie(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         Person person = register.getPersons().createNameCondition("Simpson, Maggie").first();
+         person.removeYou();
+      }
+   }
+
+
+   public void firstNameChangeOfBart(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.firstNameChangeOfBart(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         Person person = register.getPersons()
+               .createNameCondition("Simpson, Bart")
+               .createBirthdayCondition("2013-03-10")
+               .first();
+         person.withName("Simpson, Bartholomew");
+      }
+   }
+
+   public void fullNameChangeOfOtherBart(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.fullNameChangeOfOtherBart(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         Person person = register.getPersons()
+               .createNameCondition("Simpson, Bart")
+               .createBirthdayCondition("2013-03-11")
+               .first();
+         person.withName("Skinner, Seymour");
+      }
+   }
+
+   public void fullNameChangeOfFatherBart(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.fullNameChangeOfFatherBart(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         Person person = register.getPersons()
+               .createNameCondition("Simpson, Bart")
+               .createBirthdayCondition("2013-03-09")
+               .first();
+         person.withName("Flanders, Todd");
+      }
+   }
+
+   public void familyNameChangeOfLisa(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.familyNameChangeOfLisa(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         Person person = register.getPersons()
+               .createNameCondition("Simpson, Lisa")
+               .first();
+         person.withName("Flanders, Lisa");
+      }
+   }
+
+   public void fullNameChangeOfMarge(Object obj) 
+   {
+      if (obj instanceof Persons.PersonRegister)
+      {
+         Persons.PersonRegister register = (Persons.PersonRegister) obj;
+         emfPersonHelper.fullNameChangeOfMarge(register);
+      }
+      else
+      {
+         PersonRegister register = (PersonRegister) obj;
+         
+         Person person = register.getPersons()
+               .createNameCondition("Simpson, Marge")
+               .first();
+         person.withName("Flanders, Maude");
+      }
+   }
+
+
+
+
+   
 
 }
