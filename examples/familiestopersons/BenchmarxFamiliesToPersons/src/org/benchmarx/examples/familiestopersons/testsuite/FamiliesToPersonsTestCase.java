@@ -35,7 +35,7 @@ public abstract class FamiliesToPersonsTestCase {
 	protected Comparator<PersonRegister> personsComparator;
 	protected BenchmarxUtil<Object, Object, Decisions> util;
 	protected IndiHelper helperFamily;
-	protected PersonHelper helperPerson;
+	protected IndiHelper helperPerson;
 
 	@Before
 	public void initialise() {
@@ -48,7 +48,7 @@ public abstract class FamiliesToPersonsTestCase {
 		personsComparator = new PersonsComparator();
 		util = new BenchmarxUtil<>(tool);
 		helperFamily = new IndiHelper();
-		helperPerson = new PersonHelper();
+		helperPerson = new IndiHelper();
 		
 		// Initialise the bx tool
 		tool.initiateSynchronisationDialogue();

@@ -118,7 +118,8 @@ public class ModelCompare
          
          String tmp = CGUtil.replaceAll(personText, 
             "Male", gender,
-            "Flanders, Rod", p.getName());
+            "Flanders, Rod", p.getName(), 
+            "0001-01-01", p.getBirthday());
          personList.add(tmp);
       }
       

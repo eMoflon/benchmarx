@@ -134,22 +134,21 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
    @Override
    public void performIdleSourceEdit(Consumer<Object> edit)
    {
+      edit.accept(familyRegister);
       System.out.println("performIdleSourceEdit done");
-      
    }
 
    @Override
    public void performIdleTargetEdit(Consumer<Object> edit)
    {
+      edit.accept(personRegister);
       System.out.println("performIdleTargetEdit done");
-      
    }
 
    @Override
    public void setConfigurator(Configurator<Decisions> configurator)
    {
       System.out.println("setConfigurator done");
-      
    }
    
    private FamiliesComparator familyComp = new FamiliesComparator();
