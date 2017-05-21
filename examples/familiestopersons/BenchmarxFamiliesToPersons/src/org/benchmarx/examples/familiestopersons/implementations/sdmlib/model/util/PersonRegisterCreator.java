@@ -23,11 +23,13 @@ package org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.ut
 
 import de.uniks.networkparser.interfaces.SendableEntityCreator;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.PersonRegister;
+import org.sdmlib.serialization.EntityFactory;
+
 import de.uniks.networkparser.IdMap;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Person;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.FamilyRegister;
 
-public class PersonRegisterCreator implements SendableEntityCreator
+public class PersonRegisterCreator extends EntityFactory implements SendableEntityCreator
 {
    private final String[] properties = new String[]
    {

@@ -27,8 +27,9 @@ import de.uniks.networkparser.IdMap;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.FamilyMember;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Family;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.PersonRegister;
+import org.sdmlib.serialization.EntityFactory;
 
-public class FamilyRegisterCreator implements SendableEntityCreator
+public class FamilyRegisterCreator extends EntityFactory implements SendableEntityCreator
 {
    private final String[] properties = new String[]
    {

@@ -78,6 +78,7 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
       FamilyPO oldFamilyPO = new FamilyPO();
       oldFamilyMemberPO.createPath(fm -> ((FamilyMember)fm).getFamilySet(), oldFamilyPO);
       oldFamilyPO.createCondition(f -> ! f.getName().equals(personPO.getFamilyName()), "f.name != p.getFamilyName()");
+      oldFamilyMemberPO.createCpLink(personPO, Pattern.DESTROY);
       oldFamilyMemberPO.destroy();
       personPO.endSubPattern();
       
