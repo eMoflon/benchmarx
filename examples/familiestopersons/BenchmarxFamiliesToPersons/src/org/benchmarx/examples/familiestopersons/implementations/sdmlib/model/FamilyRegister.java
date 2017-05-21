@@ -306,6 +306,7 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Per
       PersonRegister value = new PersonRegister();
       withPersonRegister(value);
       return value;
+<<<<<<< HEAD
    }
 
    public Family getOrCreateFamily(String familyName)
@@ -334,5 +335,7 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Per
          perfectF = this.createFamilies().withName(familyName);
       }
       return perfectF;
+=======
+>>>>>>> github_fujaba/master
    } 
 }

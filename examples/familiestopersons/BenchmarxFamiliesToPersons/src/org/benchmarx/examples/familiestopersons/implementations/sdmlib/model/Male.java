@@ -37,6 +37,7 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Per
    @Override
    public void removeYou()
    {
+<<<<<<< HEAD
       FamilyMember oldCfm = getCfm();
       setCfm(null);
       if (oldCfm != null)
@@ -47,6 +48,9 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Per
       {
          getRegister().withoutC(this);
       }
+=======
+      setCfm(null);
+>>>>>>> github_fujaba/master
       setRegister(null);
       firePropertyChange("REMOVE_YOU", this, null);
    }
