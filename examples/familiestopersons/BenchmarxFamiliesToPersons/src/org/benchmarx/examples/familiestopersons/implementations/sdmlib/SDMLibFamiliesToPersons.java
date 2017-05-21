@@ -12,13 +12,9 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Mal
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Person;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.PersonRegister;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyMemberPO;
-<<<<<<< HEAD
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyPO;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyRegisterPO;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilySet;
-=======
-import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyRegisterPO;
->>>>>>> github_fujaba/master
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.PersonPO;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.PersonRegisterPO;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
@@ -42,10 +38,7 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
    private PersonRegister personRegister;
    private Families.FamilyRegister emfFamilyRegister;
    private FamilyRegisterPO familyRegisterPO;
-<<<<<<< HEAD
    private Configurator<Decisions> configurator;
-=======
->>>>>>> github_fujaba/master
 
    @Override
    public void initiateSynchronisationDialogue()
@@ -66,7 +59,6 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
       edit.accept(familyRegister);
       
       transformForward();
-<<<<<<< HEAD
    }
    
    
@@ -137,11 +129,6 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
       fm.withName(givenName);
       
       return true;
-=======
-      
-      System.out.println("performAndPropagateSourceEdit done");
-      
->>>>>>> github_fujaba/master
    }
 
    private void transformForward()
@@ -210,48 +197,31 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
    @Override
    public void performAndPropagateTargetEdit(Consumer<Object> edit)
    {
-<<<<<<< HEAD
       edit.accept(personRegister);
       
       personRegister.preferExistingFamily = configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
       personRegister.preferParentToKid = configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
       
       transformBackward();
-=======
-      System.out.println("performAndPropagateSourceEdit done");
-      
->>>>>>> github_fujaba/master
    }
 
    @Override
    public void performIdleSourceEdit(Consumer<Object> edit)
    {
       edit.accept(familyRegister);
-<<<<<<< HEAD
-=======
-      System.out.println("performIdleSourceEdit done");
->>>>>>> github_fujaba/master
    }
 
    @Override
    public void performIdleTargetEdit(Consumer<Object> edit)
    {
       edit.accept(personRegister);
-<<<<<<< HEAD
-=======
-      System.out.println("performIdleTargetEdit done");
->>>>>>> github_fujaba/master
    }
 
    @Override
    public void setConfigurator(Configurator<Decisions> configurator)
    {
-<<<<<<< HEAD
       this.configurator = configurator;
       
-=======
-      System.out.println("setConfigurator done");
->>>>>>> github_fujaba/master
    }
    
    private FamiliesComparator familyComp = new FamiliesComparator();

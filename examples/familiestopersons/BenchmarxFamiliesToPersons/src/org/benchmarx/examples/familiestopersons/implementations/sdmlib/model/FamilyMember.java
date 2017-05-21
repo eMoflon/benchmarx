@@ -26,10 +26,7 @@ import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
 import de.uniks.networkparser.EntityUtil;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Person;
-<<<<<<< HEAD
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilySet;
-=======
->>>>>>> github_fujaba/master
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Family;
    /**
     * 
@@ -90,16 +87,12 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Fam
    
    public void removeYou()
    {
-<<<<<<< HEAD
       Person oldCp = getCp();
       setCp(null);
       if (oldCp != null) 
       {
          oldCp.removeYou();
       }
-=======
-      if (getCp() != null) getCp().removeYou();
->>>>>>> github_fujaba/master
       setDaughterOf(null);
       setFatherOf(null);
       setMotherOf(null);
@@ -144,15 +137,12 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Fam
       return f;
    }
    
-<<<<<<< HEAD
    public FamilySet getFamilySet()
    {
       Family f = this.getFamily();
       return new FamilySet(f);
    }
    
-=======
->>>>>>> github_fujaba/master
    public FamilyMember withName(String value)
    {
       setName(value);

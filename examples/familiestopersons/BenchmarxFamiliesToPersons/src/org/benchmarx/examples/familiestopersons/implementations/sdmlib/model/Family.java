@@ -25,11 +25,7 @@ import de.uniks.networkparser.interfaces.SendableEntity;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
 import de.uniks.networkparser.EntityUtil;
-<<<<<<< HEAD
-
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyMemberPO;
-=======
->>>>>>> github_fujaba/master
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyMemberSet;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.FamilyMember;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.FamilyRegister;
@@ -470,7 +466,6 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Fam
       FamilyMember value = new FamilyMember();
       withSons(value);
       return value;
-<<<<<<< HEAD
    }
 
    public boolean addToFit(FamilyMemberPO familyMemberPO)
@@ -502,7 +497,5 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Fam
       }
       
       return true;
-=======
->>>>>>> github_fujaba/master
    } 
 }

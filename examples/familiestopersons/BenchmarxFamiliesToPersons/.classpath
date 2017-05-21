@@ -21,10 +21,7 @@
 	<classpathentry kind="lib" path="lib/eMoflon/trove-3.1a1.jar"/>
 	<classpathentry kind="lib" path="lib/mediniQVT/mediniQVT.jar"/>
 	<classpathentry kind="lib" path="lib/mediniQVT/qvtemf.jar"/>
-<<<<<<< HEAD
 	<classpathentry kind="lib" path="lib/FunnyQT/ttc17-families2persons-bx-1.0.0-standalone.jar"/>
-=======
->>>>>>> github_fujaba/master
 	<classpathentry combineaccessrules="false" kind="src" path="/SDMLib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

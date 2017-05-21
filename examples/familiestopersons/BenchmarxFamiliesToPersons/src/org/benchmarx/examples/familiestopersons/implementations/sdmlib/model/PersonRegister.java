@@ -29,7 +29,6 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Fem
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.PersonSet;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Person;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.FamilyRegister;
-<<<<<<< HEAD
 
 /**
  * 
@@ -40,16 +39,6 @@ public  class PersonRegister implements SendableEntity
    public boolean preferExistingFamily = true;
    public boolean preferParentToKid = true;
 
-=======
-   /**
-    * 
-    * @see <a href='../../../../../../../../src/org/benchmarx/examples/familiestopersons/implementations/sdmlib/ModelGen.java'>ModelGen.java</a>
- */
-   public  class PersonRegister implements SendableEntity
-{
-
-   
->>>>>>> github_fujaba/master
    //==========================================================================
    
    protected PropertyChangeSupport listeners = null;

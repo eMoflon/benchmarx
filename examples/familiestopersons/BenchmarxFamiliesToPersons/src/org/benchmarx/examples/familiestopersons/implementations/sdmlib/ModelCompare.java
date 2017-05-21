@@ -21,22 +21,14 @@ public class ModelCompare
       
       for (Family family : register.getFamilies())
       {
-<<<<<<< HEAD
-         String father = " Nothing";
-=======
          String father = "Nothing";
->>>>>>> github_fujaba/master
          if (family.getFather() != null)
          {
             father = "Just (FamilyMember { firstName = \"Homer\" })";
             father = CGUtil.replaceAll(father, "Homer", family.getFather().getName());
          }
          
-<<<<<<< HEAD
-         String mother = " Nothing";
-=======
          String mother = "Nothing";
->>>>>>> github_fujaba/master
          if (family.getMother() != null)
          {
             mother = "Just (FamilyMember { firstName = \"Homer\" })";
@@ -55,11 +47,8 @@ public class ModelCompare
             sonsList.add(tmp);
          }
          
-<<<<<<< HEAD
          sonsList.sort(String::compareTo);
          
-=======
->>>>>>> github_fujaba/master
          StringList daughtersList = new StringList();
          
          String oneDaughter = "" +
@@ -71,11 +60,8 @@ public class ModelCompare
             daughtersList.add(tmp);
          }
          
-<<<<<<< HEAD
          daughtersList.sort(String::compareTo);
          
-=======
->>>>>>> github_fujaba/master
          
          String familyString = "" +
                "  Family {\n" + 
@@ -95,12 +81,9 @@ public class ModelCompare
             "listOfDaughters", daughtersList.concat(", ")
             );
          
-<<<<<<< HEAD
-         familyString = CGUtil.replaceAll(familyString, 
-            "= []", "=  []");
+//         familyString = CGUtil.replaceAll(familyString, 
+//            "= []", "=  []");
          
-=======
->>>>>>> github_fujaba/master
          familyDetails.add(familyString);
       }
       
@@ -130,19 +113,11 @@ public class ModelCompare
             "      }";
       
       Person[] personArray = personRegister.getPersons().toArray(new Person[personRegister.getPersons().size()]);
-<<<<<<< HEAD
       Arrays.sort(personArray, (t,o) -> t.compareTo(o));
 
       for (Person p : personArray)
       {
          String gender = " Male";
-=======
-      Arrays.sort(personArray, (t,o) -> t.getName().compareTo(o.getName()));
-
-      for (Person p : personArray)
-      {
-         String gender = "Male";
->>>>>>> github_fujaba/master
          if (p instanceof Female)
          {
             gender = "Female";
@@ -155,10 +130,6 @@ public class ModelCompare
          personList.add(tmp);
       }
       
-<<<<<<< HEAD
-=======
-      
->>>>>>> github_fujaba/master
       String template = "" + 
             "PersonRegister {\n" + 
             "   persons = [personList\n" + 

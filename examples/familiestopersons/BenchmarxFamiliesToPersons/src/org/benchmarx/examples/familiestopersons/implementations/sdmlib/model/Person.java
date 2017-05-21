@@ -86,7 +86,6 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Per
    
    public void removeYou()
    {
-<<<<<<< HEAD
       FamilyMember oldCfm = getCfm();
       setCfm(null);
       if (oldCfm != null)
@@ -97,9 +96,6 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Per
       {
          getRegister().withoutC(this);
       }
-=======
-      setCfm(null);
->>>>>>> github_fujaba/master
       setRegister(null);
       firePropertyChange("REMOVE_YOU", this, null);
    }
@@ -163,11 +159,8 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Per
          String oldValue = this.name;
          this.name = value;
          this.firePropertyChange(PROPERTY_NAME, oldValue, value);
-<<<<<<< HEAD
          
          this.getRegister().withC(this);
-=======
->>>>>>> github_fujaba/master
       }
    }
    
@@ -293,7 +286,6 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Per
       PersonRegister value = new PersonRegister();
       withRegister(value);
       return value;
-<<<<<<< HEAD
    }
 
    public String getGivenName()
@@ -317,7 +309,5 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Per
       if (result == 0) return this.getBirthday().compareTo(o.getBirthday());
       
       return result;
-=======
->>>>>>> github_fujaba/master
    } 
 }

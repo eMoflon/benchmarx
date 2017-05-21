@@ -16,7 +16,6 @@ public class IndiHelper
    FamilyHelper emfFamilyHelper = new FamilyHelper();
    PersonHelper emfPersonHelper = new PersonHelper();
    
-<<<<<<< HEAD
    public void idleDelta(Object obj) 
    {
       if (obj instanceof Families.FamilyRegister)
@@ -58,8 +57,6 @@ public class IndiHelper
    }  
    
    
-=======
->>>>>>> github_fujaba/master
    public void createSimpsonFamily(Object obj) 
    {
       if (obj instanceof Families.FamilyRegister)
@@ -159,11 +156,7 @@ public class IndiHelper
       {
          FamilyRegister register = (FamilyRegister) obj;
          
-<<<<<<< HEAD
          Family skinner = register.getFamilies().createNameCondition("Flanders").first();
-=======
-         Family skinner = register.getFamilies().createNameCondition("Skinner").first();
->>>>>>> github_fujaba/master
          FamilyMember maggie = register.getFamilies().getDaughters().createNameCondition("Maggie").first();
          
          maggie.withDaughterOf(null);
@@ -397,7 +390,6 @@ public class IndiHelper
       }
    }
 
-<<<<<<< HEAD
    public void setBirthdayOfMaggie(Object obj) 
    {
       if (obj instanceof Persons.PersonRegister)
@@ -414,8 +406,6 @@ public class IndiHelper
       }
    }
 
-=======
->>>>>>> github_fujaba/master
    public void changeAllBirthdays(Object obj) 
    {
       if (obj instanceof Persons.PersonRegister)
@@ -445,22 +435,11 @@ public class IndiHelper
          
          Person p = register.getPersons().createNameCondition("Simpson, Homer").first();
          p.withBirthday("2013-01-09");
-<<<<<<< HEAD
          register.getPersons().createNameCondition("Simpson, Marge").withBirthday("2013-02-09");
          p = register.getPersons().createNameCondition("Simpson, Bart").createBirthdayCondition("0001-01-01").first();
          if (p != null) p.withBirthday("2013-03-10");
          register.getPersons().createNameCondition("Simpson, Lisa").withBirthday("2013-03-08");
          register.getPersons().createNameCondition("Simpson, Maggie").withBirthday("2013-03-07");
-=======
-         p = register.getPersons().createNameCondition("Simpson, Marge").first();
-         p.withBirthday("2013-02-09");
-         p = register.getPersons().createNameCondition("Simpson, Bart").createBirthdayCondition("0001-01-01").first();
-         p.withBirthday("2013-03-10");
-         p = register.getPersons().createNameCondition("Simpson, Lisa").first();
-         p.withBirthday("2013-03-08");
-         p = register.getPersons().createNameCondition("Simpson, Maggie").first();
-         p.withBirthday("2013-03-07");
->>>>>>> github_fujaba/master
          }
    }
 
@@ -481,7 +460,6 @@ public class IndiHelper
    }
 
 
-<<<<<<< HEAD
    public void createRod(Object obj) 
    {
       if (obj instanceof Persons.PersonRegister)
@@ -713,12 +691,5 @@ public class IndiHelper
          person.withName("Flanders, Maude");
       }
    }
-
-
-
-
-   
-=======
->>>>>>> github_fujaba/master
 
 }

@@ -171,11 +171,7 @@ public class PersonPO extends PatternObject<PersonPO, Person>
    {
       FamilyMemberPO result = new FamilyMemberPO(new FamilyMember[]{});
       
-<<<<<<< HEAD
       result.setModifier(this.getOnDutyPattern().getModifier());
-=======
-      result.setModifier(this.getPattern().getModifier());
->>>>>>> github_fujaba/master
       super.hasLink(Person.PROPERTY_CFM, result);
       
       return result;
@@ -249,7 +245,6 @@ public class PersonPO extends PatternObject<PersonPO, Person>
       return null;
    }
 
-<<<<<<< HEAD
 
    public String getFamilyName()
    {
@@ -260,6 +255,4 @@ public class PersonPO extends PatternObject<PersonPO, Person>
       return null;
    }
 
-=======
->>>>>>> github_fujaba/master
 }
