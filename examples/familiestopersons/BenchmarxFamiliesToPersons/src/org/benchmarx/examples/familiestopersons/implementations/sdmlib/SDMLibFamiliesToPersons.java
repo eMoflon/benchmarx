@@ -21,10 +21,12 @@ import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;
 import org.junit.Assert;
+import org.junit.Test;
 import org.sdmlib.models.pattern.Pattern;
 import org.sdmlib.models.pattern.PatternElement;
 import org.sdmlib.models.pattern.PatternObject;
 import org.sdmlib.storyboards.Kanban;
+import org.sdmlib.storyboards.Storyboard;
 
 import Families.FamiliesFactory;
 
@@ -39,6 +41,13 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
    private Families.FamilyRegister emfFamilyRegister;
    private FamilyRegisterPO familyRegisterPO;
    private Configurator<Decisions> configurator;
+   
+   @Override
+   public String getName()
+   {
+      // TODO Auto-generated method stub
+      return "SDMLib";
+   }
 
    @Override
    public void initiateSynchronisationDialogue()
@@ -50,7 +59,7 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
       personRegister = familyRegister.createPersonRegister();
       
       
-      System.out.println("initiateSynchronisationDialogue done");
+      // System.out.println("initiateSynchronisationDialogue done");
    }
 
    @Override
@@ -65,7 +74,7 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
    private void transformBackward()
    {
       PersonRegisterPO registerPO = new PersonRegisterPO(personRegister).withPatternObjectName("pr");
-      registerPO.getPattern().setDebugMode(2);
+      // registerPO.getPattern().setDebugMode(2);
       
       FamilyRegisterPO familyRegisterPO = registerPO.createFamilyRegisterPO().withPatternObjectName("fr");
       
@@ -130,11 +139,27 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
       
       return true;
    }
+   
+     /**
+    * 
+    * @see <a href='../../../../../../../doc/dumpRules.html'>dumpRules.html</a>
+ */
+   @Test
+   public void dumpRules() {
+      
+      transformForward();
+      
+      Storyboard story = new Storyboard();
+      
+      story.addPattern(familyRegisterPO, false);
+      
+      story.dumpHTML();
+   }
 
    private void transformForward()
    {
       familyRegisterPO = new FamilyRegisterPO().withPatternObjectName("fr");
-      familyRegisterPO.getPattern().setDebugMode(Kanban.TRACE_ON);
+      // familyRegisterPO.getPattern().setDebugMode(Kanban.TRACE_ON);
       PersonRegisterPO personRegisterPO = familyRegisterPO.createPersonRegisterPO().withPatternObjectName("pr");
       FamilyMemberPO memberPO = familyRegisterPO.createCPO().withPatternObjectName("fm");
       
@@ -197,10 +222,21 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
    @Override
    public void performAndPropagateTargetEdit(Consumer<Object> edit)
    {
-      edit.accept(personRegister);
-      
-      personRegister.preferExistingFamily = configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
-      personRegister.preferParentToKid = configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
+      try
+      {
+         edit.accept(personRegister);
+      }
+      catch (Exception e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
+
+      if (configurator != null)
+      {
+         personRegister.preferExistingFamily = configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
+         personRegister.preferParentToKid = configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
+      }
       
       transformBackward();
    }
@@ -246,7 +282,7 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
       
       String actualPersonString = modelComp.personsToString(personRegister);
       
-      System.out.println(expectedFamilyString + actualFamilyString + expectedPersonsString + actualPersonString);
+      // System.out.println(expectedFamilyString + actualFamilyString + expectedPersonsString + actualPersonString);
       
       String expected = (expectedFamilyString + expectedPersonsString).replaceAll("\\s+", "");
       String actual = (actualFamilyString + actualPersonString).replaceAll("\\s+", "");

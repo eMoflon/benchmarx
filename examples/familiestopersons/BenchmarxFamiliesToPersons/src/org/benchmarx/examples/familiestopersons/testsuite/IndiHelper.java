@@ -3,11 +3,16 @@ package org.benchmarx.examples.familiestopersons.testsuite;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Family;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.FamilyMember;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.FamilyRegister;
+import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Female;
+import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Male;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Person;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.PersonRegister;
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.families.core.FamilyRegisterBuilder;
 import org.benchmarx.persons.core.PersonHelper;
+
+import Families.FamiliesFactory;
+import Persons.PersonsFactory;
 
 
 
@@ -690,6 +695,73 @@ public class IndiHelper
                .first();
          person.withName("Flanders, Maude");
       }
+   }
+
+
+   public void createFamiliesWithMembers(Object obj, int NO_OF_FAMILIES, int NO_OF_CHILDREN)
+   {
+      FamilyRegister register = (FamilyRegister) obj;
+      for (int i = 0; i < NO_OF_FAMILIES; i++)
+      {
+         Family family = register.createFamilies();
+         family.setName("Doe_" + i);
+         {
+            FamilyMember familyMother = family.createMother();
+            familyMother.setName("Jane");
+         }
+
+         {
+            FamilyMember familyFather = family.createFather();
+            familyFather.setName("John");
+         }
+
+         for (int j = 0; j < NO_OF_CHILDREN; j++)
+         {
+            FamilyMember child = new FamilyMember();
+            child.setName("Child_" + j);
+
+            if (Math.random() < 0.5)
+               family.withDaughters(child);
+            else
+               family.withSons(child);
+         }
+      } 
+   }
+
+
+   public void createOneFamilyMember(Object obj)
+   {
+      FamilyRegister register = (FamilyRegister) obj;
+      Family f = register.getFamilies().get(0);
+      FamilyMember familyMember = new FamilyMember();
+      familyMember.setName("Johanna");
+      f.withDaughters(familyMember);
+   }
+
+
+   public void createPersons(Object obj, int NO_OF_FAMILIES, int NO_OF_CHILDREN)
+   {
+      PersonRegister register = (PersonRegister) obj;
+      for(int i = 0; i < NO_OF_FAMILIES; i++){
+         Person mother = register.createPersonsFemale();
+         mother.setName("Doe_" + i + ", Jane");
+         Person father =  register.createPersonsMale();
+         father.setName("Doe_" + i + ", John");
+
+         for (int j = 0; j < NO_OF_CHILDREN; j++) {
+            Person person = Math.random() < 0.5 ? register.createPersonsFemale() : register.createPersonsMale();
+            person.setName("Doe_" + i + ", Child_" + j);
+         }
+      }  
+
+   }
+
+
+   public void createOnePerson(Object obj)
+   {
+      PersonRegister register = (PersonRegister) obj;
+      Person person = register.createPersonsFemale();
+      person.setName("Doe_" + register.getPersons().size() + ", Jane");
    }
 
 }
