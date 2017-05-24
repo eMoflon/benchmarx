@@ -73,12 +73,11 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
    
    private void transformBackward()
    {
-      PersonRegisterPO registerPO = new PersonRegisterPO(personRegister).withPatternObjectName("pr");
-      // registerPO.getPattern().setDebugMode(2);
+      personRegisterPO = new PersonRegisterPO(personRegister).withPatternObjectName("pr");
       
-      FamilyRegisterPO familyRegisterPO = registerPO.createFamilyRegisterPO().withPatternObjectName("fr");
+      FamilyRegisterPO familyRegisterPO = personRegisterPO.createFamilyRegisterPO().withPatternObjectName("fr");
       
-      PersonPO personPO = registerPO.createCPO().withPatternObjectName("p");
+      PersonPO personPO = personRegisterPO.createCPO().withPatternObjectName("p");
       
       // old member in wrong family, delete
       personPO.startSubPattern();
@@ -105,9 +104,9 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
       familyPO.createCondition(f -> f.addToFit(familyMemberPO), "f.addToFit(fm)");
       personPO.endSubPattern();
       
-      registerPO.createCLink(personPO, Pattern.DESTROY);
+      personRegisterPO.createCLink(personPO, Pattern.DESTROY);
       
-      registerPO.doAllMatches();
+      personRegisterPO.doAllMatches();
    }
    
    public FamilySet getOrCreateFamily(FamilyRegister fr, PersonPO p)
@@ -153,6 +152,10 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
       
       story.addPattern(familyRegisterPO, false);
       
+      transformBackward();
+      
+      story.addPattern(personRegisterPO, false);
+      
       story.dumpHTML();
    }
 
@@ -182,7 +185,7 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
       familyRegisterPO.doAllMatches();
    }
 
-   private boolean ensureNameAndGender(Person p) 
+   public boolean ensureNameAndGender(Person p) 
    {
       FamilyMember fm = p.getCfm();
       Family f = fm.getFamily();
@@ -263,6 +266,7 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
    private FamiliesComparator familyComp = new FamiliesComparator();
    private PersonsComparator personComp = new PersonsComparator();
    private ModelCompare modelComp = new ModelCompare();
+   private PersonRegisterPO personRegisterPO;
 
    
    @Override

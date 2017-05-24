@@ -22,7 +22,7 @@ import Persons.PersonsFactory;
 public class ScalabilityMeasurements {
 	private static final BXTool<Object, Object, Decisions> tool1 = new SDMLibFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool2 = new EMoflonFamiliesToPersons();
-	// private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool3 = new MediniQVTFamiliesToPersons();
+	//private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool3 = new MediniQVTFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool3 = new UbtXtendFamiliesToPersons();
    private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool4 = new UbtXtendFamiliesToPersons();
 	
@@ -210,7 +210,7 @@ public class ScalabilityMeasurements {
 	}
 	
 	public static void main(String[] args) {
-		int max = 400;
+		int max = 2000;
 		printHeader("Batch FWD:");
 		for (int i = 50; i < max/*0*/; i+=50) {			
 			runBatchFWDMeasurements(i, 3, 5);
