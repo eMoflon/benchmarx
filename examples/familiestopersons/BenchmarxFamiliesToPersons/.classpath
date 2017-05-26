@@ -22,6 +22,6 @@
 	<classpathentry kind="lib" path="lib/mediniQVT/mediniQVT.jar"/>
 	<classpathentry kind="lib" path="lib/mediniQVT/qvtemf.jar"/>
 	<classpathentry kind="lib" path="lib/FunnyQT/ttc17-families2persons-bx-1.0.0-standalone.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/SDMLib"/>
+	<classpathentry kind="lib" path="lib/SDMLib.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
