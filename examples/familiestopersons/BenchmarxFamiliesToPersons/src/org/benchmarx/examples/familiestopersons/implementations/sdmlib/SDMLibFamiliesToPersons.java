@@ -15,6 +15,7 @@ import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.uti
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyPO;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyRegisterPO;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilySet;
+import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.MalePO;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.PersonPO;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.PersonRegisterPO;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
@@ -176,7 +177,7 @@ public class SDMLibFamiliesToPersons implements BXTool<Object, Object, Decisions
       memberPO.startNAC();
       memberPO.createCpPO().withPatternObjectName("noOldP");
       memberPO.endNAC();
-      PersonPO personPO = memberPO.createCpPO(Pattern.CREATE).withPatternObjectName("newP");
+      MalePO personPO = memberPO.createCpMalePO(Pattern.CREATE).withPatternObjectName("newP");
       personPO.createRegisterLink(personRegisterPO, Pattern.CREATE);
       personPO.createCondition(p -> ensureNameAndGender(p));
       familyRegisterPO.createCLink(memberPO, Pattern.DESTROY);

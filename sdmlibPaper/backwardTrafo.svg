@@ -39,16 +39,16 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="1057"
+     inkscape:window-width="1280"
+     inkscape:window-height="777"
      id="namedview177"
      showgrid="false"
      inkscape:zoom="1.0301062"
      inkscape:cx="369.84813"
      inkscape:cy="283.99126"
-     inkscape:window-x="1272"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
+     inkscape:window-x="-30720"
+     inkscape:window-y="-32000"
+     inkscape:window-maximized="0"
      inkscape:current-layer="svg2" />
   <defs
      id="defs4">
@@ -104,7 +104,7 @@
     </linearGradient>
   </defs>
   <g
-     id="g4681"
+     id="g4834"
      inkscape:export-xdpi="90"
      inkscape:export-ydpi="90">
     <g
@@ -558,5 +558,12 @@
        id="f2 : FamilyRegisterPO-6"
        y="14.311134"
        x="11.04794">public void transformBackward(PersonRegister pr)</text>
+    <text
+       style="fill:#000000"
+       transform="matrix(0.99999101,0.00423963,-0.00423963,0.99999101,0,0)"
+       class="draggable"
+       id="f2 : FamilyRegisterPO-68"
+       y="293.84229"
+       x="252.81174">{fm.name := p.getGivenName()}</text>
   </g>
 </svg>

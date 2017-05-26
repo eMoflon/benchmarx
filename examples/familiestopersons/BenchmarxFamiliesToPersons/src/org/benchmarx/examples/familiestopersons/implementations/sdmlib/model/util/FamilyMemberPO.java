@@ -2,8 +2,10 @@ package org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.ut
 
 import org.sdmlib.models.pattern.PatternObject;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.FamilyMember;
+import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Male;
 import org.sdmlib.models.pattern.AttributeConstraint;
 import org.sdmlib.models.pattern.Pattern;
+import org.sdmlib.models.pattern.PatternElement;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.PersonPO;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.Person;
 import org.benchmarx.examples.familiestopersons.implementations.sdmlib.model.util.FamilyMemberPO;
@@ -125,6 +127,18 @@ public class FamilyMemberPO extends PatternObject<FamilyMemberPO, FamilyMember>
       
       return result;
    }
+   
+   public MalePO createCpMalePO(String modifier)
+   {
+      MalePO result = new MalePO(new Male[]{});
+      
+      result.setModifier(modifier);
+      super.hasLink(FamilyMember.PROPERTY_CP, result);
+      
+      return result;
+   }
+   
+   
 
    public FamilyMemberPO createCpLink(PersonPO tgt)
    {
@@ -300,5 +314,8 @@ public class FamilyMemberPO extends PatternObject<FamilyMemberPO, FamilyMember>
       }
       return null;
    }
+
+
+
 
 }

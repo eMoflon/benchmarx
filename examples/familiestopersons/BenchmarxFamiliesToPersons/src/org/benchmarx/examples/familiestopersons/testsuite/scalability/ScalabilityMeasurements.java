@@ -25,8 +25,8 @@ public class ScalabilityMeasurements {
 	//private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool3 = new MediniQVTFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool3 = new UbtXtendFamiliesToPersons();
    private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool4 = new UbtXtendFamiliesToPersons();
-====private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool5 = new FunnyQTFamiliesToPerson();
->>>>>>> origin/master
+   private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool5 = new UbtXtendFamiliesToPersons();
+   // private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool5 = new FunnyQTFamiliesToPerson();
 	
 	private static final String DELIMITER = ",";
 	private static final String UNIT = "";
@@ -235,12 +235,12 @@ public class ScalabilityMeasurements {
 		}		
 		
 		printHeader("Batch BWD:");
-		for (int i = 50; i < max; i+=50) {			
+		for (int i = 50; i < max/2; i+=50) {			
 			runBatchBWDMeasurements(i, 3, 5);
 		}	
 		
 		printHeader("Incr. BWD:");
-		for (int i = 50; i < max; i+=50) {			
+		for (int i = 50; i < max/2; i+=50) {			
 			runIncrBWDMeasurements(i, 3, 5);
 		}
 	}
