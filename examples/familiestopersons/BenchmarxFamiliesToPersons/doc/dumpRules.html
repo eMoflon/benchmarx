@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href="includes/diagramstyle.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.bundle.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="includes/dagre.min.js"></script>
+<script src="includes/drawer.js"></script>
+<script src="includes/graph.js"></script>
+<style>
+    canvas{
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+</style>
+</head>
+<body>
+<p>Storyboard <a href='.././src/org/benchmarx/examples/familiestopersons/implementations/sdmlib/SDMLibFamiliesToPersons.java' type='text/x-java'>dumpRules</a></p>
+<script>
+   var json = {
+   "type":"object",
+   "nodes":[
+      {
+         "type":"patternObject",
+         "id":"f1 : FamilyRegisterPO",
+         "attributes":[
+            "<< bound>>"
+         ]
+      },
+      {
+         "type":"patternObject",
+         "id":"p2 : PersonRegisterPO",
+         "attributes":[]
+      },
+      {
+         "type":"patternObject",
+         "id":"f3 : FamilyMemberPO",
+         "attributes":[]
+      },
+      {
+         "type":"objectdiagram",
+         "style":"nac",
+         "info":"OptionalSubPattern",
+         "nodes":[
+            {
+               "type":"patternObject",
+               "id":"p4 : PersonPO",
+               "attributes":[]
+            }
+         ]
+      },
+      {
+         "type":"objectdiagram",
+         "style":"nac",
+         "info":"NegativeApplicationCondition",
+         "nodes":[
+            {
+               "type":"patternObject",
+               "id":"p5 : PersonPO",
+               "attributes":[]
+            }
+         ]
+      },
+      {
+         "type":"patternObject",
+         "style":"create",
+         "id":"p6 : PersonPO",
+         "attributes":[
+            "<< create>>"
+         ]
+      }
+   ],
+   "edges":[
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"f1 : FamilyRegisterPO"
+         },
+         "target":{
+            "property":"personRegister",
+            "id":"p2 : PersonRegisterPO"
+         }
+      },
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"f1 : FamilyRegisterPO"
+         },
+         "target":{
+            "property":"c",
+            "id":"f3 : FamilyMemberPO"
+         }
+      },
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"f3 : FamilyMemberPO"
+         },
+         "target":{
+            "property":"cp",
+            "id":"p4 : PersonPO"
+         }
+      },
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"f3 : FamilyMemberPO"
+         },
+         "target":{
+            "property":"cp",
+            "id":"p5 : PersonPO"
+         }
+      },
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"f3 : FamilyMemberPO"
+         },
+         "target":{
+            "property":"cp",
+            "id":"p6 : PersonPO"
+         },
+         "style":"create"
+      },
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"p6 : PersonPO"
+         },
+         "target":{
+            "property":"register",
+            "id":"p2 : PersonRegisterPO"
+         },
+         "style":"create"
+      },
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"f1 : FamilyRegisterPO"
+         },
+         "target":{
+            "property":"c",
+            "id":"f3 : FamilyMemberPO"
+         },
+         "style":"destroy"
+      }
+   ]
+}   ;
+   json["options"]={"canvasid":"canvasdumpRulesPatternDiagram0", "display":"html", "fontsize":10,"bar":true};   var g = new Graph(json);
+   g.layout(100,100);
+</script>
+<script>
+   var json = {
+   "type":"object",
+   "nodes":[
+      {
+         "type":"patternObject",
+         "id":"p1 : PersonRegisterPO",
+         "attributes":[
+            "<< bound>>"
+         ]
+      },
+      {
+         "type":"patternObject",
+         "id":"f2 : FamilyRegisterPO",
+         "attributes":[]
+      },
+      {
+         "type":"patternObject",
+         "id":"p3 : PersonPO",
+         "attributes":[]
+      },
+      {
+         "type":"objectdiagram",
+         "style":"nac",
+         "info":"OptionalSubPattern",
+         "nodes":[
+            {
+               "type":"patternObject",
+               "id":"f4 : FamilyMemberPO",
+               "attributes":[]
+            },
+            {
+               "type":"patternObject",
+               "id":"f5 : FamilyPO",
+               "attributes":[]
+            }
+         ]
+      },
+      {
+         "type":"objectdiagram",
+         "style":"nac",
+         "info":"OptionalSubPattern",
+         "nodes":[
+            {
+               "type":"objectdiagram",
+               "style":"nac",
+               "info":"NegativeApplicationCondition",
+               "nodes":[
+                  {
+                     "type":"patternObject",
+                     "id":"f6 : FamilyMemberPO",
+                     "attributes":[]
+                  }
+               ]
+            },
+            {
+               "type":"patternObject",
+               "style":"create",
+               "id":"f7 : FamilyMemberPO",
+               "attributes":[
+                  "<< create>>"
+               ]
+            },
+            {
+               "type":"patternObject",
+               "id":"f8 : FamilyPO",
+               "attributes":[]
+            }
+         ]
+      }
+   ],
+   "edges":[
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"p1 : PersonRegisterPO"
+         },
+         "target":{
+            "property":"familyRegister",
+            "id":"f2 : FamilyRegisterPO"
+         }
+      },
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"p1 : PersonRegisterPO"
+         },
+         "target":{
+            "property":"c",
+            "id":"p3 : PersonPO"
+         }
+      },
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"p3 : PersonPO"
+         },
+         "target":{
+            "property":"cfm",
+            "id":"f4 : FamilyMemberPO"
+         }
+      },
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"f4 : FamilyMemberPO"
+         },
+         "target":{
+            "property":null,
+            "id":"f5 : FamilyPO"
+         }
+      },
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"f4 : FamilyMemberPO"
+         },
+         "target":{
+            "property":"cp",
+            "id":"p3 : PersonPO"
+         },
+         "style":"destroy"
+      },
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"p3 : PersonPO"
+         },
+         "target":{
+            "property":"cfm",
+            "id":"f6 : FamilyMemberPO"
+         }
+      },
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"p3 : PersonPO"
+         },
+         "target":{
+            "property":"cfm",
+            "id":"f7 : FamilyMemberPO"
+         },
+         "style":"create"
+      },
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"f2 : FamilyRegisterPO"
+         },
+         "target":{
+            "property":null,
+            "id":"f8 : FamilyPO"
+         }
+      },
+      {
+         "typ":"EDGE",
+         "source":{
+            "property":" ",
+            "id":"p1 : PersonRegisterPO"
+         },
+         "target":{
+            "property":"c",
+            "id":"p3 : PersonPO"
+         },
+         "style":"destroy"
+      }
+   ]
+}   ;
+   json["options"]={"canvasid":"canvasdumpRulesPatternDiagram1", "display":"html", "fontsize":10,"bar":true};   var g = new Graph(json);
+   g.layout(100,100);
+</script>
+
+</body>
+</html>

@@ -10,7 +10,7 @@ import Persons.PersonRegister;
 
 public class IncrementalBackward extends FamiliesToPersonsTestCase {
 
-	public IncrementalBackward(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
+	public IncrementalBackward(BXTool<Object, Object, Decisions> tool) {
 		super(tool);
 	}
 	

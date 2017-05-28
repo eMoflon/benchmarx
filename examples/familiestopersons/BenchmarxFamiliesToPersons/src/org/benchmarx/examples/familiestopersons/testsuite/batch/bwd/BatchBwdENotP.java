@@ -10,7 +10,7 @@ import Persons.PersonRegister;
 
 public class BatchBwdENotP extends FamiliesToPersonsTestCase {
 
-	public BatchBwdENotP(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
+	public BatchBwdENotP(BXTool<Object, Object, Decisions> tool) {
 		super(tool);
 	}
 	

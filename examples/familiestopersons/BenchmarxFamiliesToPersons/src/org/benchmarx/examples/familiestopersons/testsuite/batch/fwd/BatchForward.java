@@ -3,6 +3,7 @@ package org.benchmarx.examples.familiestopersons.testsuite.batch.fwd;
 import org.benchmarx.BXTool;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.examples.familiestopersons.testsuite.FamiliesToPersonsTestCase;
+import org.benchmarx.examples.familiestopersons.testsuite.IndiHelper;
 import org.junit.Test;
 
 import Families.FamilyRegister;
@@ -11,7 +12,7 @@ import Persons.PersonRegister;
 
 public class BatchForward extends FamiliesToPersonsTestCase {
 
-	public BatchForward(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
+	public BatchForward(BXTool<Object, Object, Decisions> tool) {
 		super(tool);
 	}
 	

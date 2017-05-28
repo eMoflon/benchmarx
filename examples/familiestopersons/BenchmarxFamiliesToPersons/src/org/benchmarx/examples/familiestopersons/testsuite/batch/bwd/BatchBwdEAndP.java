@@ -17,7 +17,7 @@ import Persons.PersonRegister;
  */
 public class BatchBwdEAndP extends FamiliesToPersonsTestCase {
 
-	public BatchBwdEAndP(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
+	public BatchBwdEAndP(BXTool<Object, Object, Decisions> tool) {
 		super(tool);
 	}
 	

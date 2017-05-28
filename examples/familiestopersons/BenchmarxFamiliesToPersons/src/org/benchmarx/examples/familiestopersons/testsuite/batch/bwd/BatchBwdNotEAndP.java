@@ -10,7 +10,7 @@ import Persons.PersonRegister;
 
 public class BatchBwdNotEAndP extends FamiliesToPersonsTestCase {
 
-	public BatchBwdNotEAndP(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
+	public BatchBwdNotEAndP(BXTool<Object, Object, Decisions> tool) {
 		super(tool);
 	}
 	
