@@ -9,6 +9,7 @@ import org.benchmarx.examples.familiestopersons.implementations.nmf.NMFFamiliesT
 import org.benchmarx.examples.familiestopersons.implementations.bigul.BiGULFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.implementations.funnyqt.FunnyQTFamiliesToPerson;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersonsConfig;
 import org.benchmarx.families.core.FamiliesComparator;
@@ -62,6 +63,7 @@ public abstract class FamiliesToPersonsTestCase {
 	@Parameters
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
 		return Arrays.asList(
+<<<<<<< HEAD
 				new NMFFamiliesToPersonsIncremental()
 				//new BiGULFamiliesToPersons()  // Currently 9 failures
 				//,
@@ -72,6 +74,19 @@ public abstract class FamiliesToPersonsTestCase {
 				//new MediniQVTFamiliesToPersonsConfig() // Currently 12 failures
 				//,
 				//new UbtXtendFamiliesToPersons()  // Currently 0 failures
+=======
+				new BiGULFamiliesToPersons()  // Currently 9 failures
+				,
+				new EMoflonFamiliesToPersons()  // Currently 6 failures
+				,
+				new MediniQVTFamiliesToPersons() // Currently 19 failures
+				,
+				new MediniQVTFamiliesToPersonsConfig() // Currently 12 failures
+				,
+				new UbtXtendFamiliesToPersons()  // Currently 0 failures
+				,
+				new FunnyQTFamiliesToPerson() // Currently 10 failures
+>>>>>>> b2636822c1d645c92ae6a0e5834d7ce5fde475d9
 			);
 	}
 	

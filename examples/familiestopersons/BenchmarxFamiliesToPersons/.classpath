@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="xtend-gen"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="src/org/benchmarx/examples/familiestopersons/implementations/medini/lib/qvtemf.jar"/>
 	<classpathentry kind="lib" path="lib/UBTBxTendFamilies2Persons.jar"/>
+	<classpathentry kind="lib" path="lib/families.jar"/>
+	<classpathentry kind="lib" path="lib/persons.jar"/>
+	<classpathentry kind="lib" path="lib/benchmarx.jar"/>
+	<classpathentry kind="lib" path="lib/eMoflon/commons-io-2.5.jar"/>
+	<classpathentry kind="lib" path="lib/eMoflon/eMoflonFamilies2Persons.jar"/>
+	<classpathentry kind="lib" path="lib/eMoflon/MocaTree_2.0.0.201611230913.jar"/>
+	<classpathentry kind="lib" path="lib/eMoflon/org.apache.commons.lang3_3.1.0.v201403281430.jar"/>
+	<classpathentry kind="lib" path="lib/eMoflon/org.eclipse.xtext.xbase.lib_2.10.0.v201605250459.jar"/>
+	<classpathentry kind="lib" path="lib/eMoflon/org.moflon.core.utilities_1.2.1.201611230913.jar"/>
+	<classpathentry kind="lib" path="lib/eMoflon/org.moflon.tgg.language_2.1.0.201611230913.jar"/>
+	<classpathentry kind="lib" path="lib/eMoflon/org.moflon.tgg.runtime_2.0.0.201611230913.jar"/>
+	<classpathentry kind="lib" path="lib/eMoflon/SDMLanguage_2.0.0.201611230913.jar"/>
+	<classpathentry kind="lib" path="lib/eMoflon/trove-3.1a1.jar"/>
+	<classpathentry kind="lib" path="lib/mediniQVT/mediniQVT.jar"/>
+	<classpathentry kind="lib" path="lib/mediniQVT/qvtemf.jar"/>
+	<classpathentry kind="lib" path="lib/FunnyQT/ttc17-families2persons-bx-1.0.0-standalone.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
