@@ -63,18 +63,6 @@ public abstract class FamiliesToPersonsTestCase {
 	@Parameters
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
 		return Arrays.asList(
-<<<<<<< HEAD
-				new NMFFamiliesToPersonsIncremental()
-				//new BiGULFamiliesToPersons()  // Currently 9 failures
-				//,
-				//new EMoflonFamiliesToPersons()  // Currently 5 failures
-				//,
-				//new MediniQVTFamiliesToPersons() // Currently 19 failures
-				//,
-				//new MediniQVTFamiliesToPersonsConfig() // Currently 12 failures
-				//,
-				//new UbtXtendFamiliesToPersons()  // Currently 0 failures
-=======
 				new BiGULFamiliesToPersons()  // Currently 9 failures
 				,
 				new EMoflonFamiliesToPersons()  // Currently 6 failures
@@ -86,7 +74,8 @@ public abstract class FamiliesToPersonsTestCase {
 				new UbtXtendFamiliesToPersons()  // Currently 0 failures
 				,
 				new FunnyQTFamiliesToPerson() // Currently 10 failures
->>>>>>> b2636822c1d645c92ae6a0e5834d7ce5fde475d9
+				,
+				new NMFFamiliesToPersonsIncremental() // Currently 6 failures
 			);
 	}
 	
