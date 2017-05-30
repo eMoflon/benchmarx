@@ -1,0 +1,6 @@
+System requirements:
+
+# .NET Framework 4.5.2 (requires at least Windows Vista)
+
+To recompile: If you have MSBuild on your Path, you can just go to the implementation directory (examples\familiestopersons\implementationArtefacts\NMF) and run msbuild NMF.csproj
+Otherwise, you may easily open the project in Visual Studio 2013 or above and compile. 
