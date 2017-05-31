@@ -5,7 +5,8 @@ Export-Package: FamiliesToPersons,
  FamiliesToPersons.Rules.impl,
  FamiliesToPersons.Rules.util,
  FamiliesToPersons.impl,
- FamiliesToPersons.util
+ FamiliesToPersons.util,
+ org.moflon.tie
 Bundle-Name: FamiliesToPersons
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.emf.ecore,
