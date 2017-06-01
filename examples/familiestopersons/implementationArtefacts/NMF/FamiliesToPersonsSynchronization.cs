@@ -4,7 +4,6 @@ using NMF.Expressions.Linq;
 using NMF.Models;
 using NMF.Models.Meta;
 using NMF.Synchronizations;
-using NMF.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using TTC2017.FamiliesToPersons.NMF.Families;
@@ -141,14 +140,14 @@ namespace TTC2017.FamiliesToPersons.NMF
                 {
                     if (isMale)
                     {
-                        candidateFamilies = candidateFamilies.Where(fam => fam.Father == null);
+                        family = candidateFamilies.Where(fam => fam.Father == null).FirstOrDefault();
                     }
                     else
                     {
-                        candidateFamilies = candidateFamilies.Where(fam => fam.Mother == null);
+                        family = candidateFamilies.Where(fam => fam.Mother == null).FirstOrDefault();
                     }
                 }
-                family = candidateFamilies.FirstOrDefault();
+                family = family ?? candidateFamilies.FirstOrDefault();
             }
             if (family == null)
             {
