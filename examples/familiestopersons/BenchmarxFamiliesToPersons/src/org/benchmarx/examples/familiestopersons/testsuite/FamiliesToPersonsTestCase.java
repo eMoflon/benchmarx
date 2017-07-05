@@ -75,7 +75,7 @@ public abstract class FamiliesToPersonsTestCase {
 				,
 				new FunnyQTFamiliesToPerson() // Currently 10 failures
 				,
-				new NMFFamiliesToPersonsIncremental() // Currently 6 failures
+				new NMFFamiliesToPersonsIncremental() // Currently 3 failures
 			);
 	}
 	

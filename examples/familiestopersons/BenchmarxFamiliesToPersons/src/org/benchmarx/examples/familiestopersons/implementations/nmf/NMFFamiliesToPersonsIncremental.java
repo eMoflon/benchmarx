@@ -55,7 +55,7 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 	
 	@Override
 	public String getName() {
-		return "NMF (incremental)";
+		return "NMF";
 	}
 	
 	@Override
@@ -84,6 +84,10 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 		
 		propagation += actual;
 		includingSerialization += (end - start);
+	}
+	
+	public long getRunningTimeInNanoSeconds() {
+		return propagation;
 	}
 
 	private long propagate(ChangeRecorder recorder) {

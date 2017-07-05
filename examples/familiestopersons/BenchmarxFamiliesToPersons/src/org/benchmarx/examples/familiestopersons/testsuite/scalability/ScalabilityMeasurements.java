@@ -7,6 +7,7 @@ import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonF
 import org.benchmarx.examples.familiestopersons.implementations.funnyqt.FunnyQTFamiliesToPerson;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.nmf.NMFFamiliesToPersonsIncremental;
+import org.benchmarx.examples.familiestopersons.implementations.nmf.NMFFamiliesToPersonsTimer;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.util.BXToolTimer;
 
@@ -24,7 +25,7 @@ public class ScalabilityMeasurements {
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool3 = new MediniQVTFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool4 = new UbtXtendFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool5 = new FunnyQTFamiliesToPerson();
-	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool6 = new NMFFamiliesToPersonsIncremental();
+	private static final NMFFamiliesToPersonsIncremental tool6 = new NMFFamiliesToPersonsIncremental();
 	
 	private static final String DELIMITER = ",";
 	private static final String UNIT = "";
@@ -55,7 +56,7 @@ public class ScalabilityMeasurements {
 		timer3 = new BXToolTimer<>(tool3, repeat);;
 		timer4 = new BXToolTimer<>(tool4, repeat);
 		timer5 = new BXToolTimer<>(tool5, repeat);
-		timer6 = new BXToolTimer<>(tool6, repeat);
+		timer6 = new NMFFamiliesToPersonsTimer(tool6, repeat);
 	}
 	
 	public void createPersons(PersonRegister register){
