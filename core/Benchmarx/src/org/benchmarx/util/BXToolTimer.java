@@ -20,8 +20,8 @@ import org.benchmarx.BXTool;
  */
 public class BXToolTimer<S, T, D> {
 	
-	private BXTool<S,T,D> tool;
-	private final int REPEAT;
+	protected final BXTool<S,T,D> tool;
+	protected final int REPEAT;
 	
 	/**
 	 * @param tool
@@ -49,7 +49,7 @@ public class BXToolTimer<S, T, D> {
 		return measurements.get(REPEAT/2);
 	}
 
-	private long timeAction(Runnable action) {
+	protected long timeAction(Runnable action) {
 		long tic = System.currentTimeMillis();
 		try {
 			action.run();
