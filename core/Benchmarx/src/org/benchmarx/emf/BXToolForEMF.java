@@ -70,4 +70,9 @@ public abstract class BXToolForEMF<S, T, D> implements BXTool<S, T, D> {
 	public void assertPrecondition(S source, T target){
 		assertModels(source, target);
 	}
+	
+	@Override
+	public String toString() {
+		return getName();
+	}
 }
