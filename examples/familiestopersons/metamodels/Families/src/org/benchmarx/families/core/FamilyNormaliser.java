@@ -1,5 +1,6 @@
 package org.benchmarx.families.core;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -75,8 +76,9 @@ public class FamilyNormaliser implements Comparator<Family>{
 	private String createStringFromMembers(List<FamilyMember> members)
 	{
 		Comparator<FamilyMember> comparator = new FamilyMemberNormaliser();
-		Collections.sort(members, comparator);
-		return members.stream().map(FamilyMember::getName).collect(Collectors.joining("-"));
+		ArrayList<FamilyMember> membersToBeSorted = new ArrayList<>(members);
+		Collections.sort(membersToBeSorted, comparator);
+		return membersToBeSorted.stream().map(FamilyMember::getName).collect(Collectors.joining("-"));
 	}
 	
 }
