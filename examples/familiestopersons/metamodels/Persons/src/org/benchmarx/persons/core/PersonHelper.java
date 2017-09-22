@@ -22,19 +22,6 @@ public class PersonHelper {
 				.filter(p -> p.getName().equals(name))
 				.findAny();
 				
-		//assertTrue(person.isPresent());
-		if (person.isPresent())
-			return person.get();
-		else 
-			return null;
-	}
-	
-	private Person getFromRegister(String name, Date birthdate, PersonRegister register) {
-		Optional<Person> person = register.getPersons().stream()
-				.filter(p -> (p.getName().equals(name) && p.getBirthday().equals(birthdate)))
-				.findAny();
-				
-		//assertTrue(person.isPresent());
 		if (person.isPresent())
 			return person.get();
 		else 
@@ -177,7 +164,7 @@ public class PersonHelper {
 		}
 		
 		List<Person> barts = getAllFromRegister("Simpson, Bart", register);
-		int i = 10;
+		
 		Date defaultDate = (Date) EcoreFactory.eINSTANCE.createFromString(EcorePackage.eINSTANCE.getEDate(), "0000-1-1");
 		for (Person p : barts) {
 			if (p.getBirthday().equals(defaultDate)) {
@@ -223,6 +210,7 @@ public class PersonHelper {
 		person.setName("Simpson, HomerX");
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void firstNameChangeOfBart(PersonRegister register) {		
 		Calendar cal = Calendar.getInstance();
 		cal.set(2013, Calendar.MARCH, 10, 10, 11, 12); 
@@ -235,6 +223,7 @@ public class PersonHelper {
 		}					
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void fullNameChangeOfOtherBart(PersonRegister register) {
 		Calendar cal = Calendar.getInstance();
 		cal.set(2013, Calendar.MARCH, 11, 10, 11, 12); 
@@ -247,6 +236,7 @@ public class PersonHelper {
 		}	
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void fullNameChangeOfFatherBart(PersonRegister register) {
 		Calendar cal = Calendar.getInstance();
 		cal.set(2013, Calendar.MARCH, 9, 10, 11, 12); 

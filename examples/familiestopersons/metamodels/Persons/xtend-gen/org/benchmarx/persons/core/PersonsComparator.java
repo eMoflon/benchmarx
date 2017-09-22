@@ -24,12 +24,8 @@ public class PersonsComparator implements Comparator<PersonRegister> {
   
   @Override
   public void assertEquals(final PersonRegister expected, final PersonRegister actual) {
-    String _personsToString = this.personsToString(expected);
-    boolean _startsWith = _personsToString.startsWith("PersonRegister");
-    Assert.assertTrue(_startsWith);
-    String _personsToString_1 = this.personsToString(expected);
-    String _personsToString_2 = this.personsToString(actual);
-    Assert.assertEquals(_personsToString_1, _personsToString_2);
+    Assert.assertTrue(this.personsToString(expected).startsWith("PersonRegister"));
+    Assert.assertEquals(this.personsToString(expected), this.personsToString(actual));
   }
   
   public String personsToString(final PersonRegister persons) {
@@ -69,8 +65,7 @@ public class PersonsComparator implements Comparator<PersonRegister> {
             _builder.append("\t\t");
             _builder.append("       ");
             _builder.append(", birthday = \"");
-            Date _birthday = ((Male)p).getBirthday();
-            String _myString = this.toMyString(_birthday);
+            String _myString = this.toMyString(((Male)p).getBirthday());
             _builder.append(_myString, "\t\t       ");
             _builder.append("\"");
             _builder.newLineIfNotEmpty();
@@ -91,8 +86,7 @@ public class PersonsComparator implements Comparator<PersonRegister> {
             _builder.append("\t\t");
             _builder.append("       ");
             _builder.append(", birthday = \"");
-            Date _birthday_1 = p.getBirthday();
-            String _myString_1 = this.toMyString(_birthday_1);
+            String _myString_1 = this.toMyString(p.getBirthday());
             _builder.append(_myString_1, "\t\t       ");
             _builder.append("\"");
             _builder.newLineIfNotEmpty();

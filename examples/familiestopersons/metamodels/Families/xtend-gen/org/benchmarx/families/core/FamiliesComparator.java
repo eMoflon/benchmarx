@@ -3,7 +3,6 @@ package org.benchmarx.families.core;
 import Families.Family;
 import Families.FamilyMember;
 import Families.FamilyRegister;
-import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
 import org.benchmarx.emf.Comparator;
@@ -28,12 +27,8 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
   
   @Override
   public void assertEquals(final FamilyRegister expected, final FamilyRegister actual) {
-    String _familyToString = this.familyToString(expected);
-    boolean _startsWith = _familyToString.startsWith("FamilyRegister");
-    Assert.assertTrue(_startsWith);
-    String _familyToString_1 = this.familyToString(expected);
-    String _familyToString_2 = this.familyToString(actual);
-    Assert.assertEquals(_familyToString_1, _familyToString_2);
+    Assert.assertTrue(this.familyToString(expected).startsWith("FamilyRegister"));
+    Assert.assertEquals(this.familyToString(expected), this.familyToString(actual));
   }
   
   public String familyToString(final FamilyRegister families) {
@@ -56,34 +51,38 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
         if (!_hasElements) {
           _hasElements = true;
         } else {
-          _builder.appendImmediate(", ", "");
+          _builder.appendImmediate(", ", "\t");
         }
         _builder.append("\t");
         _builder.append("Family {");
         _builder.newLine();
+        _builder.append("\t");
         _builder.append("\t     ");
         _builder.append("familyName = \"");
         String _name = f.getName();
-        _builder.append(_name, "\t     ");
+        _builder.append(_name, "\t\t     ");
         _builder.append("\"");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t");
         _builder.append("\t    ");
         _builder.append(",father     = ");
-        FamilyMember _father = f.getFather();
-        String _maybeFamilyMember = this.maybeFamilyMember(_father);
-        _builder.append(_maybeFamilyMember, "\t    ");
+        String _maybeFamilyMember = this.maybeFamilyMember(f.getFather());
+        _builder.append(_maybeFamilyMember, "\t\t    ");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t");
         _builder.append("\t    ");
         _builder.append(",mother     = ");
-        FamilyMember _mother = f.getMother();
-        String _maybeFamilyMember_1 = this.maybeFamilyMember(_mother);
-        _builder.append(_maybeFamilyMember_1, "\t    ");
+        String _maybeFamilyMember_1 = this.maybeFamilyMember(f.getMother());
+        _builder.append(_maybeFamilyMember_1, "\t\t    ");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t");
         EList<FamilyMember> _sons = f.getSons();
         final List<FamilyMember> sortedListOfSon = new ArrayList<FamilyMember>(_sons);
         _builder.newLineIfNotEmpty();
+        _builder.append("\t");
         this.familyMemberComparator.normalize(sortedListOfSon);
         _builder.newLineIfNotEmpty();
+        _builder.append("\t");
         _builder.append("\t    ");
         _builder.append(",sons       = [");
         {
@@ -92,19 +91,22 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
             if (!_hasElements_1) {
               _hasElements_1 = true;
             } else {
-              _builder.appendImmediate(", ", "\t    ");
+              _builder.appendImmediate(", ", "\t\t    ");
             }
             String _familyMember = this.familyMember(son);
-            _builder.append(_familyMember, "\t    ");
+            _builder.append(_familyMember, "\t\t    ");
           }
         }
         _builder.append("]");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t");
         EList<FamilyMember> _daughters = f.getDaughters();
         final List<FamilyMember> sortedListOfDaughter = new ArrayList<FamilyMember>(_daughters);
         _builder.newLineIfNotEmpty();
+        _builder.append("\t");
         this.familyMemberComparator.normalize(sortedListOfDaughter);
         _builder.newLineIfNotEmpty();
+        _builder.append("\t");
         _builder.append("\t    ");
         _builder.append(",daughters  = [");
         {
@@ -113,14 +115,15 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
             if (!_hasElements_2) {
               _hasElements_2 = true;
             } else {
-              _builder.appendImmediate(", ", "\t    ");
+              _builder.appendImmediate(", ", "\t\t    ");
             }
             String _familyMember_1 = this.familyMember(daughter);
-            _builder.append(_familyMember_1, "\t    ");
+            _builder.append(_familyMember_1, "\t\t    ");
           }
         }
         _builder.append("]");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t");
         _builder.append("\t");
         _builder.append("}");
         _builder.newLine();
@@ -137,11 +140,10 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
   public String maybeFamilyMember(final FamilyMember fm) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      boolean _notEquals = (!Objects.equal(fm, null));
-      if (_notEquals) {
+      if ((fm != null)) {
         _builder.append("Just (");
         String _familyMember = this.familyMember(fm);
-        _builder.append(_familyMember, "");
+        _builder.append(_familyMember);
         _builder.append(")");
       } else {
         _builder.append("Nothing");
@@ -154,7 +156,7 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("FamilyMember { firstName = \"");
     String _name = fm.getName();
-    _builder.append(_name, "");
+    _builder.append(_name);
     _builder.append("\" }");
     return _builder.toString();
   }
