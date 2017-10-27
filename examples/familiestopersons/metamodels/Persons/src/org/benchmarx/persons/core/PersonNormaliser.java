@@ -11,13 +11,13 @@ import Persons.Person;
 public class PersonNormaliser implements Comparator<Person>{
 	@Override
 	public int compare(Person person1, Person person2) {
-		if(person1.getName() != null && person1.getName() != null && !(person1.getName().equals(person2.getName())))
+		if(!(person1.getName().equals(person2.getName())))
 		{
 			return person1.getName().compareTo(person2.getName());
 		}
 		else
 		{
-			if(person1.getBirthday() != null && person1.getBirthday() != null && !(person1.getBirthday().equals(person2.getBirthday())))
+			if(!(person1.getBirthday().equals(person2.getBirthday())))
 			{
 				return person1.getBirthday().compareTo(person2.getBirthday());
 			}

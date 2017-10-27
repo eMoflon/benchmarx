@@ -8,7 +8,7 @@ import Persons.Female;
 import Persons.Male;
 import Persons.Person;
 
-public class PersonNormaliser2 implements Comparator<Person>{
+public class PersonStructuralNormaliser implements Comparator<Person>{
 	@Override
 	public int compare(Person person1, Person person2) {
 		if(person1 instanceof Female && person2 instanceof Male)
@@ -28,7 +28,7 @@ public class PersonNormaliser2 implements Comparator<Person>{
 	}
 
 	public void normalize(List<Person> persons){
-		Comparator<Person> comparator = new PersonNormaliser2();
+		Comparator<Person> comparator = new PersonStructuralNormaliser();
 		Collections.sort(persons, comparator);
 	}
 }

@@ -13,18 +13,18 @@ import static org.junit.Assert.*
 
 public class PersonsComparator implements Comparator<PersonRegister>{
 	PersonNormaliser comparator
-	PersonNormaliser2 comparator2
+	PersonStructuralNormaliser structuralComparator
 	boolean checkAttributeValues
 	
 	new (){
 		comparator = new PersonNormaliser();
-		comparator2 = new PersonNormaliser2();
+		structuralComparator = new PersonStructuralNormaliser();
 		checkAttributeValues = true
 	}
 	
 	new (boolean checkAttributeValues){
 		comparator = new PersonNormaliser();
-		comparator2 = new PersonNormaliser2();
+		structuralComparator = new PersonStructuralNormaliser();
 		this.checkAttributeValues = checkAttributeValues
 	}
 	
@@ -40,7 +40,7 @@ public class PersonsComparator implements Comparator<PersonRegister>{
 				«val List<Person> sortedList = new ArrayList<Person>(persons.persons)»
 				«IF checkAttributeValues»
 				«comparator.normalize(sortedList)»
-				«ELSE»«comparator2.normalize(sortedList)»«ENDIF»
+				«ELSE»«structuralComparator.normalize(sortedList)»«ENDIF»
 				«FOR p: sortedList SEPARATOR ","»
 				«IF p instanceof Male»
 				 Male«IF checkAttributeValues» {

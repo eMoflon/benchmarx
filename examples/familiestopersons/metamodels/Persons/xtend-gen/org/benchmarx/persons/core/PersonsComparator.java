@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 import org.benchmarx.emf.Comparator;
 import org.benchmarx.persons.core.PersonNormaliser;
-import org.benchmarx.persons.core.PersonNormaliser2;
+import org.benchmarx.persons.core.PersonStructuralNormaliser;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.junit.Assert;
@@ -18,23 +18,23 @@ import org.junit.Assert;
 public class PersonsComparator implements Comparator<PersonRegister> {
   private PersonNormaliser comparator;
   
-  private PersonNormaliser2 comparator2;
+  private PersonStructuralNormaliser structuralComparator;
   
   private boolean checkAttributeValues;
   
   public PersonsComparator() {
     PersonNormaliser _personNormaliser = new PersonNormaliser();
     this.comparator = _personNormaliser;
-    PersonNormaliser2 _personNormaliser2 = new PersonNormaliser2();
-    this.comparator2 = _personNormaliser2;
+    PersonStructuralNormaliser _personStructuralNormaliser = new PersonStructuralNormaliser();
+    this.structuralComparator = _personStructuralNormaliser;
     this.checkAttributeValues = true;
   }
   
   public PersonsComparator(final boolean checkAttributeValues) {
     PersonNormaliser _personNormaliser = new PersonNormaliser();
     this.comparator = _personNormaliser;
-    PersonNormaliser2 _personNormaliser2 = new PersonNormaliser2();
-    this.comparator2 = _personNormaliser2;
+    PersonStructuralNormaliser _personStructuralNormaliser = new PersonStructuralNormaliser();
+    this.structuralComparator = _personStructuralNormaliser;
     this.checkAttributeValues = checkAttributeValues;
   }
   
@@ -62,7 +62,7 @@ public class PersonsComparator implements Comparator<PersonRegister> {
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
       } else {
-        this.comparator2.normalize(sortedList);
+        this.structuralComparator.normalize(sortedList);
       }
     }
     _builder.newLineIfNotEmpty();
