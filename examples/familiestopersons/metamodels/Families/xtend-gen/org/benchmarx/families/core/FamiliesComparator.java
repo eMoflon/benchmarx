@@ -18,11 +18,22 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
   
   private FamilyMemberNormaliser familyMemberComparator;
   
+  private boolean checkAttributeValues;
+  
   public FamiliesComparator() {
     FamilyNormaliser _familyNormaliser = new FamilyNormaliser();
     this.comparator = _familyNormaliser;
     FamilyMemberNormaliser _familyMemberNormaliser = new FamilyMemberNormaliser();
     this.familyMemberComparator = _familyMemberNormaliser;
+    this.checkAttributeValues = true;
+  }
+  
+  public FamiliesComparator(final boolean checkAttributeValues) {
+    FamilyNormaliser _familyNormaliser = new FamilyNormaliser();
+    this.comparator = _familyNormaliser;
+    FamilyMemberNormaliser _familyMemberNormaliser = new FamilyMemberNormaliser();
+    this.familyMemberComparator = _familyMemberNormaliser;
+    this.checkAttributeValues = checkAttributeValues;
   }
   
   @Override
@@ -66,21 +77,36 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
         _builder.append("\t");
         _builder.append("\t    ");
         _builder.append(",father     = ");
-        String _maybeFamilyMember = this.maybeFamilyMember(f.getFather());
-        _builder.append(_maybeFamilyMember, "\t\t    ");
+        {
+          if (this.checkAttributeValues) {
+            String _maybeFamilyMember = this.maybeFamilyMember(f.getFather());
+            _builder.append(_maybeFamilyMember, "\t\t    ");
+          } else {
+          }
+        }
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t    ");
         _builder.append(",mother     = ");
-        String _maybeFamilyMember_1 = this.maybeFamilyMember(f.getMother());
-        _builder.append(_maybeFamilyMember_1, "\t\t    ");
+        {
+          if (this.checkAttributeValues) {
+            String _maybeFamilyMember_1 = this.maybeFamilyMember(f.getMother());
+            _builder.append(_maybeFamilyMember_1, "\t\t    ");
+          } else {
+          }
+        }
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         EList<FamilyMember> _sons = f.getSons();
         final List<FamilyMember> sortedListOfSon = new ArrayList<FamilyMember>(_sons);
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
-        this.familyMemberComparator.normalize(sortedListOfSon);
+        {
+          if (this.checkAttributeValues) {
+            this.familyMemberComparator.normalize(sortedListOfSon);
+          } else {
+          }
+        }
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t    ");
@@ -93,8 +119,14 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
             } else {
               _builder.appendImmediate(", ", "\t\t    ");
             }
-            String _familyMember = this.familyMember(son);
-            _builder.append(_familyMember, "\t\t    ");
+            {
+              if (this.checkAttributeValues) {
+                String _familyMember = this.familyMember(son);
+                _builder.append(_familyMember, "\t\t    ");
+              } else {
+                _builder.append("son");
+              }
+            }
           }
         }
         _builder.append("]");
@@ -104,7 +136,12 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
         final List<FamilyMember> sortedListOfDaughter = new ArrayList<FamilyMember>(_daughters);
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
-        this.familyMemberComparator.normalize(sortedListOfDaughter);
+        {
+          if (this.checkAttributeValues) {
+            this.familyMemberComparator.normalize(sortedListOfDaughter);
+          } else {
+          }
+        }
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t    ");
@@ -117,8 +154,14 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
             } else {
               _builder.appendImmediate(", ", "\t\t    ");
             }
-            String _familyMember_1 = this.familyMember(daughter);
-            _builder.append(_familyMember_1, "\t\t    ");
+            {
+              if (this.checkAttributeValues) {
+                String _familyMember_1 = this.familyMember(daughter);
+                _builder.append(_familyMember_1, "\t\t    ");
+              } else {
+                _builder.append("daughter");
+              }
+            }
           }
         }
         _builder.append("]");

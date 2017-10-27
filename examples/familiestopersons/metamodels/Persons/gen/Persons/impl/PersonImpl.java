@@ -29,12 +29,12 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link Persons.impl.PersonImpl#getName <em>Name</em>}</li>
  *   <li>{@link Persons.impl.PersonImpl#getBirthday <em>Birthday</em>}</li>
  *   <li>{@link Persons.impl.PersonImpl#getPersonsInverse <em>Persons Inverse</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -150,7 +150,7 @@ public abstract class PersonImpl extends EObjectImpl implements Person {
 	public PersonRegister getPersonsInverse() {
 		if (eContainerFeatureID() != PersonsPackage.PERSON__PERSONS_INVERSE)
 			return null;
-		return (PersonRegister) eContainer();
+		return (PersonRegister) eInternalContainer();
 	}
 
 	/**

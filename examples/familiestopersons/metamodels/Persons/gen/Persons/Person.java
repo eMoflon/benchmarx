@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link Persons.Person#getName <em>Name</em>}</li>
  *   <li>{@link Persons.Person#getBirthday <em>Birthday</em>}</li>
  *   <li>{@link Persons.Person#getPersonsInverse <em>Persons Inverse</em>}</li>
  * </ul>
- * </p>
  *
  * @see Persons.PersonsPackage#getPerson()
  * @model abstract="true"

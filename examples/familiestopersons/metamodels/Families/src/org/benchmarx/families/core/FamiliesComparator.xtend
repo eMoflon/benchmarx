@@ -12,10 +12,18 @@ import static org.junit.Assert.*
 public class FamiliesComparator implements Comparator<FamilyRegister> {
 	FamilyNormaliser comparator
 	FamilyMemberNormaliser familyMemberComparator
+	boolean checkAttributeValues
 	
 	new (){
 		comparator = new FamilyNormaliser();
 		familyMemberComparator = new FamilyMemberNormaliser();
+		checkAttributeValues = true
+	}
+	
+	new (boolean checkAttributeValues){
+		comparator = new FamilyNormaliser();
+		familyMemberComparator = new FamilyMemberNormaliser();
+		this.checkAttributeValues = checkAttributeValues
 	}
 	
 	override assertEquals(FamilyRegister expected, FamilyRegister actual) {	
@@ -32,14 +40,14 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
 			«FOR f : sortedList SEPARATOR ", "»
 			Family {
 				     familyName = "«f.name»"
-				    ,father     = «maybeFamilyMember(f.father)»
-				    ,mother     = «maybeFamilyMember(f.mother)»
+				    ,father     = «IF checkAttributeValues»«maybeFamilyMember(f.father)»«ELSE»«ENDIF»
+				    ,mother     = «IF checkAttributeValues»«maybeFamilyMember(f.mother)»«ELSE»«ENDIF»
 			«val List<FamilyMember> sortedListOfSon = new ArrayList<FamilyMember>(f.sons)»
-			«familyMemberComparator.normalize(sortedListOfSon)»
-				    ,sons       = [«FOR son : sortedListOfSon SEPARATOR ", "»«familyMember(son)»«ENDFOR»]
+			«IF checkAttributeValues»«familyMemberComparator.normalize(sortedListOfSon)»«ELSE»«ENDIF»
+				    ,sons       = [«FOR son : sortedListOfSon SEPARATOR ", "»«IF checkAttributeValues»«familyMember(son)»«ELSE»son«ENDIF»«ENDFOR»]
 			«val List<FamilyMember> sortedListOfDaughter = new ArrayList<FamilyMember>(f.daughters)»
-			«familyMemberComparator.normalize(sortedListOfDaughter)»
-				    ,daughters  = [«FOR daughter : sortedListOfDaughter SEPARATOR ", "»«familyMember(daughter)»«ENDFOR»]
+			«IF checkAttributeValues»«familyMemberComparator.normalize(sortedListOfDaughter)»«ELSE»«ENDIF»
+				    ,daughters  = [«FOR daughter : sortedListOfDaughter SEPARATOR ", "»«IF checkAttributeValues»«familyMember(daughter)»«ELSE»daughter«ENDIF»«ENDFOR»]
 				}
 			«ENDFOR»
 			]

@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import org.benchmarx.emf.Comparator;
 import org.benchmarx.persons.core.PersonNormaliser;
+import org.benchmarx.persons.core.PersonNormaliser2;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.junit.Assert;
@@ -17,9 +18,24 @@ import org.junit.Assert;
 public class PersonsComparator implements Comparator<PersonRegister> {
   private PersonNormaliser comparator;
   
+  private PersonNormaliser2 comparator2;
+  
+  private boolean checkAttributeValues;
+  
   public PersonsComparator() {
     PersonNormaliser _personNormaliser = new PersonNormaliser();
     this.comparator = _personNormaliser;
+    PersonNormaliser2 _personNormaliser2 = new PersonNormaliser2();
+    this.comparator2 = _personNormaliser2;
+    this.checkAttributeValues = true;
+  }
+  
+  public PersonsComparator(final boolean checkAttributeValues) {
+    PersonNormaliser _personNormaliser = new PersonNormaliser();
+    this.comparator = _personNormaliser;
+    PersonNormaliser2 _personNormaliser2 = new PersonNormaliser2();
+    this.comparator2 = _personNormaliser2;
+    this.checkAttributeValues = checkAttributeValues;
   }
   
   @Override
@@ -39,8 +55,16 @@ public class PersonsComparator implements Comparator<PersonRegister> {
     EList<Person> _persons = persons.getPersons();
     final List<Person> sortedList = new ArrayList<Person>(_persons);
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    this.comparator.normalize(sortedList);
+    {
+      if (this.checkAttributeValues) {
+        _builder.append("\t\t");
+        this.comparator.normalize(sortedList);
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+      } else {
+        this.comparator2.normalize(sortedList);
+      }
+    }
     _builder.newLineIfNotEmpty();
     {
       boolean _hasElements = false;
@@ -53,46 +77,58 @@ public class PersonsComparator implements Comparator<PersonRegister> {
         {
           if ((p instanceof Male)) {
             _builder.append("\t\t");
-            _builder.append("Male  {   ");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("         ");
-            _builder.append("fullName = \"");
-            String _name = ((Male)p).getName();
-            _builder.append(_name, "\t\t         ");
-            _builder.append("\"");
+            _builder.append("Male");
+            {
+              if (this.checkAttributeValues) {
+                _builder.append(" {");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t\t");
+                _builder.append("         ");
+                _builder.append("fullName = \"");
+                String _name = ((Male)p).getName();
+                _builder.append(_name, "\t\t         ");
+                _builder.append("\"");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t\t");
+                _builder.append("         ");
+                _builder.append(", birthday = \"");
+                String _myString = this.toMyString(((Male)p).getBirthday());
+                _builder.append(_myString, "\t\t         ");
+                _builder.append("\"");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t\t");
+                _builder.append("}");
+              } else {
+              }
+            }
             _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("       ");
-            _builder.append(", birthday = \"");
-            String _myString = this.toMyString(((Male)p).getBirthday());
-            _builder.append(_myString, "\t\t       ");
-            _builder.append("\"");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("}");
-            _builder.newLine();
           } else {
             _builder.append("\t\t");
-            _builder.append("Female  {   ");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("         ");
-            _builder.append("fullName = \"");
-            String _name_1 = p.getName();
-            _builder.append(_name_1, "\t\t         ");
-            _builder.append("\"");
+            _builder.append("Female");
+            {
+              if (this.checkAttributeValues) {
+                _builder.append(" {   ");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t\t");
+                _builder.append("         ");
+                _builder.append("fullName = \"");
+                String _name_1 = p.getName();
+                _builder.append(_name_1, "\t\t         ");
+                _builder.append("\"");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t\t");
+                _builder.append("       ");
+                _builder.append(", birthday = \"");
+                String _myString_1 = this.toMyString(p.getBirthday());
+                _builder.append(_myString_1, "\t\t       ");
+                _builder.append("\"");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t\t");
+                _builder.append("}");
+              } else {
+              }
+            }
             _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("       ");
-            _builder.append(", birthday = \"");
-            String _myString_1 = this.toMyString(p.getBirthday());
-            _builder.append(_myString_1, "\t\t       ");
-            _builder.append("\"");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("}");
-            _builder.newLine();
           }
         }
       }

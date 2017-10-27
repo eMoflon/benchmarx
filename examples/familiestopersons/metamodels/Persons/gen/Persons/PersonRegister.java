@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link Persons.PersonRegister#getPersons <em>Persons</em>}</li>
  * </ul>
- * </p>
  *
  * @see Persons.PersonsPackage#getPersonRegister()
  * @model

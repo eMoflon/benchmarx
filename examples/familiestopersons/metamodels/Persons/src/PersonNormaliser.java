@@ -1,4 +1,4 @@
-package org.benchmarx.persons.core;
+
 
 import java.util.Collections;
 import java.util.Comparator;
