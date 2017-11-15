@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:set2oset="urn:set2oset.ecore">
+  <set2oset:Set2OrderedSet>
+    <set href="source.xmi#/"/>
+    <orderedSet href="target.xmi#/"/>
+  </set2oset:Set2OrderedSet>
+  <set2oset:Element2Element>
+    <setElement href="source.xmi#//@elements.0"/>
+    <set href="source.xmi#/"/>
+    <orderedSet href="target.xmi#/"/>
+  </set2oset:Element2Element>
+  <set2oset:Element2Element>
+    <setElement href="source.xmi#//@elements.1"/>
+    <set href="source.xmi#/"/>
+    <orderedSet href="target.xmi#/"/>
+  </set2oset:Element2Element>
+  <set2oset:Element2Element>
+    <setElement href="source.xmi#//@elements.2"/>
+    <orderedSetElement href="target.xmi#//@elements.0"/>
+    <set href="source.xmi#/"/>
+    <orderedSet href="target.xmi#/"/>
+  </set2oset:Element2Element>
+  <set2oset:PreviousNextElement2PreviousNextElement>
+    <set href="source.xmi#/"/>
+    <orderedSet href="target.xmi#/"/>
+    <previousSetElement href="source.xmi#//@elements.1"/>
+    <nextSetElement href="source.xmi#//@elements.2"/>
+    <nextOrderedSetElement href="target.xmi#//@elements.0"/>
+  </set2oset:PreviousNextElement2PreviousNextElement>
+</xmi:XMI>

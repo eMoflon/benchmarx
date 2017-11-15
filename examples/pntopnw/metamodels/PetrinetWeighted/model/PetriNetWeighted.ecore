@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pnw" nsURI="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore" nsPrefix="de.ubt.ai1.m2m">
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Net" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//NetElement" containment="true" eOpposite="#//NetElement/net"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="incrementalID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NetElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="net" lowerBound="1" eType="#//Net"
+        eOpposite="#//Net/elements"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//NetElement #//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outTPEdges" upperBound="-1"
+        eType="#//TPEdge" eOpposite="#//TPEdge/fromTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inPTEdges" upperBound="-1"
+        eType="#//PTEdge" eOpposite="#//PTEdge/toTransition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="#//NetElement #//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noOfTokens" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outPTEdges" upperBound="-1"
+        eType="#//PTEdge" eOpposite="#//PTEdge/fromPlace"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inTPEdges" upperBound="-1"
+        eType="#//TPEdge" eOpposite="#//TPEdge/toPlace"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Edge" abstract="true" eSuperTypes="#//NetElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TPEdge" eSuperTypes="#//Edge">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromTransition" lowerBound="1"
+        eType="#//Transition" eOpposite="#//Transition/outTPEdges"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toPlace" lowerBound="1"
+        eType="#//Place" eOpposite="#//Place/inTPEdges"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PTEdge" eSuperTypes="#//Edge">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromPlace" lowerBound="1"
+        eType="#//Place" eOpposite="#//Place/outPTEdges"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toTransition" lowerBound="1"
+        eType="#//Transition" eOpposite="#//Transition/inPTEdges"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Bags1 -->
+      <package
+            uri="http://de.ubt.ai1.bw.qvt.examples.bags1.ecore"
+            class="bags1.Bags1Package"
+            genModel="model/Bags1.genmodel"/>
+   </extension>
+
+</plugin>

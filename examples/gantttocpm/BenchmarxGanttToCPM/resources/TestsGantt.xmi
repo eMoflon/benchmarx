@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<de.ubt.ai1.m2m:GanttDiagram
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:de.ubt.ai1.m2m="http://de.ubt.ai1.bw.qvt.examples.gantt.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.gantt.ecore ../../de.ubt.ai1.m2m.gantt/model/Gantt.ecore"
+    name="Gantt2CPM"
+    incrementalID="changed">
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      name="Gantt2CPMTestCases"
+      duration="5"/>
+</de.ubt.ai1.m2m:GanttDiagram>

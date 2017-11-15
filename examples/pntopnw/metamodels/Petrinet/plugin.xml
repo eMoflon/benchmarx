@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated PetriNet -->
+      <package
+            uri="http://de.ubt.ai1.bw.qvt.examples.pn.ecore"
+            class="pn.PnPackage"
+            genModel="model/PetriNet.genmodel"/>
+   </extension>
+
+</plugin>

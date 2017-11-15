@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pdb1:Database
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:pdb1="http://de.ubt.ai1.bw.qvt.examples.pdb1.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.pdb1.ecore ../../de.ubt.ai1.m2m.pdb1/model/PersonsDB1.ecore"
+    name="Bundeskanzler">
+  <persons firstName="Konrad Hermann Joseph"
+      lastName="Adenauer"
+      birthday="05.01.1876"
+      placeOfBirth="Koeln"
+      id="KA"/>
+  <persons firstName="Ludwig Wilhelm"
+      lastName="Erhard"
+      birthday="04.02.1897"
+      placeOfBirth="Fuerth"
+      id="LE"/>
+  <persons firstName="Kurt Georg"
+      lastName="Kiesinger"
+      birthday="06.04.1904"
+      placeOfBirth="Ebingen"
+      id="KK"/>
+  <persons firstName="Willy"
+      lastName="Brandt"
+      birthday="18.12.1913"
+      placeOfBirth="Luebeck"
+      id="WB"/>
+  <persons firstName="Helmut"
+      lastName="Heinrich Waldemar Schmidt"
+      birthday="23.12.1918"
+      placeOfBirth="Hamburg"
+      id="HS"/>
+  <persons firstName="Helmut"
+      lastName="Josef Michael Kohl"
+      birthday="03.04.1930"
+      placeOfBirth="Ludwigshafen am Rhein"
+      id="HK"/>
+  <persons firstName="Gerhard Fritz Kurt"
+      lastName="Schroeder"
+      birthday="07.04.1944"
+      placeOfBirth="Mossenberg-Woehren"
+      id="GS"/>
+</pdb1:Database>

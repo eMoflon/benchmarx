@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="set2oset" nsURI="urn:set2oset.ecore" nsPrefix="set2oset">
+  <eClassifiers xsi:type="ecore:EClass" name="Set2OrderedSet">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="set">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.sets.ecore#//MySet"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderedSet">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.osets.ecore#//MyOrderedSet"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Element2Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="setElement">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.sets.ecore#//Element"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderedSetElement">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.osets.ecore#//Element"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="set">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.sets.ecore#//MySet"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderedSet">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.osets.ecore#//MyOrderedSet"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PreviousNextElement2PreviousNextElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="set">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.sets.ecore#//MySet"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderedSet">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.osets.ecore#//MyOrderedSet"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="previousSetElement">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.sets.ecore#//Element"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nextSetElement">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.sets.ecore#//Element"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="previousOrderedSetElement">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.osets.ecore#//Element"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nextOrderedSetElement">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.osets.ecore#//Element"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

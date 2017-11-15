@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<de.ubt.ai1.m2m:Net
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:de.ubt.ai1.m2m="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore ../../de.ubt.ai1.m2m.petrinetweighted/model/PetriNetWeighted.ecore"
+    name="LettersAndDigits">
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Place"
+      name="D"
+      noOfTokens="5"
+      outPTEdges="//@elements.6"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Place"
+      name="E"
+      noOfTokens="6"
+      inTPEdges="//@elements.7"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Place"
+      name="C"
+      noOfTokens="7"
+      outPTEdges="//@elements.9 //@elements.8"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Place"
+      name="A"
+      noOfTokens="8"
+      outPTEdges="//@elements.10"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Transition"
+      name="2"
+      outTPEdges="//@elements.7"
+      inPTEdges="//@elements.6 //@elements.8"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Transition"
+      name="1"
+      inPTEdges="//@elements.10 //@elements.9"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:PTEdge"
+      weight="4"
+      fromPlace="//@elements.0"
+      toTransition="//@elements.4"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:TPEdge"
+      weight="2"
+      fromTransition="//@elements.4"
+      toPlace="//@elements.1"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:PTEdge"
+      fromPlace="//@elements.2"
+      toTransition="//@elements.4"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:PTEdge"
+      fromPlace="//@elements.2"
+      toTransition="//@elements.5"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:PTEdge"
+      fromPlace="//@elements.3"
+      toTransition="//@elements.5"/>
+</de.ubt.ai1.m2m:Net>

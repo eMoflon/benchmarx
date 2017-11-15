@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<de.ubt.ai1.m2m:Model
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:de.ubt.ai1.m2m="http://de.ubt.ai1.bw.qvt.examples.ast.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.ast.ecore ../../de.ubt.ai1.m2m.expressionAST/model/ExpressionAST.ecore">
+  <expr xsi:type="de.ubt.ai1.m2m:Operator"
+      incrementalID="incrTestValue"
+      op="Subtract">
+    <left xsi:type="de.ubt.ai1.m2m:Operator"
+        incrementalID="incrTestValue"
+        op="Multiply">
+      <left
+          xsi:type="de.ubt.ai1.m2m:Number"
+          incrementalID="incrTestValue"
+          value="7"/>
+      <right
+          xsi:type="de.ubt.ai1.m2m:Variable"
+          incrementalID="incrTestValue"
+          name="sieben"/>
+    </left>
+    <right xsi:type="de.ubt.ai1.m2m:Number"
+        incrementalID="incrTestValue"
+        value="7"/>
+  </expr>
+</de.ubt.ai1.m2m:Model>

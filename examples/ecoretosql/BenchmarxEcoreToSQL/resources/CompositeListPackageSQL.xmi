@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<de.ubt.ai1.m2m:Schema
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:de.ubt.ai1.m2m="http://de.ubt.ai1.bw.qvt.examples.sql.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.sql.ecore ../../de.ubt.ai1.m2m.sql/model/SQL.ecore"
+    name="CompositeList">
+  <ownedAnnotations
+      annotation="package"/>
+  <ownedTables
+      name="EObject">
+    <ownedColumns
+        name="id"
+        type="int"
+        keys="//@ownedTables.0/@ownedPrimaryKey">
+      <properties>AutoIncrement</properties>
+      <properties>NotNull</properties>
+    </ownedColumns>
+    <ownedPrimaryKey
+        column="//@ownedTables.0/@ownedColumns.0"/>
+  </ownedTables>
+</de.ubt.ai1.m2m:Schema>

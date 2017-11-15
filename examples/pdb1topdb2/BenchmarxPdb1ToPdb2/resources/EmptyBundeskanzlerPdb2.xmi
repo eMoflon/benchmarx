@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pdb2:Database
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:pdb2="http://de.ubt.ai1.bw.qvt.examples.pdb2.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.pdb2.ecore ../../de.ubt.ai1.m2m.pdb2/model/PersonsDB2.ecore"
+    name="Bundeskanzler"/>

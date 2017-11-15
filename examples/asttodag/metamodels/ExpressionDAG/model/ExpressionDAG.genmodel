@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.ubt.ai1.m2m.expressionDAG/src" modelPluginID="de.ubt.ai1.m2m.expressionDAG"
+    modelName="ExpressionDAG" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>ExpressionDAG.ecore</foreignModel>
+  <genPackages prefix="Dag" disposableProviderFactory="true" ecorePackage="ExpressionDAG.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ExpressionDAG.ecore#//ArithmeticOperator">
+      <genEnumLiterals ecoreEnumLiteral="ExpressionDAG.ecore#//ArithmeticOperator/Add"/>
+      <genEnumLiterals ecoreEnumLiteral="ExpressionDAG.ecore#//ArithmeticOperator/Subtract"/>
+      <genEnumLiterals ecoreEnumLiteral="ExpressionDAG.ecore#//ArithmeticOperator/Multiply"/>
+      <genEnumLiterals ecoreEnumLiteral="ExpressionDAG.ecore#//ArithmeticOperator/Divide"/>
+    </genEnums>
+    <genClasses ecoreClass="ExpressionDAG.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ExpressionDAG.ecore#//Model/exprs"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ExpressionDAG.ecore#//Expression">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ExpressionDAG.ecore#//Expression/model"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ExpressionDAG.ecore#//Expression/leftInverse"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ExpressionDAG.ecore#//Expression/rightInverse"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExpressionDAG.ecore#//Expression/incrementalID"/>
+    </genClasses>
+    <genClasses ecoreClass="ExpressionDAG.ecore#//Operator">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ExpressionDAG.ecore#//Operator/left"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ExpressionDAG.ecore#//Operator/right"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExpressionDAG.ecore#//Operator/op"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ExpressionDAG.ecore#//Operand"/>
+    <genClasses ecoreClass="ExpressionDAG.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExpressionDAG.ecore#//Variable/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ExpressionDAG.ecore#//Number">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExpressionDAG.ecore#//Number/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

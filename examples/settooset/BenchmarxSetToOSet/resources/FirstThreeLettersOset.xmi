@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osets:MyOrderedSet
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:osets="http://de.ubt.ai1.bw.qvt.examples.osets.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.osets.ecore ../../de.ubt.ai1.m2m.oset/model/OrderedSets.ecore"
+    name="Alphabet">
+  <elements
+      value="A"
+      next="//@elements.1"/>
+  <elements
+      value="B"
+      next="//@elements.2"
+      previous="//@elements.0"/>
+  <elements
+      value="C"
+      previous="//@elements.1"/>
+</osets:MyOrderedSet>

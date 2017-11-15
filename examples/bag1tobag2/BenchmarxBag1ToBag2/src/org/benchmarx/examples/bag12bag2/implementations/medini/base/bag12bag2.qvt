@@ -1,0 +1,42 @@
+transformation bag12bag2 (bagModel1 : bags1, bagModel2 : bags2) {
+
+	-- Forward transformation, works both in checking and enforcing mode
+	-- Backward transformation would work in checking, but not in enforcing mode
+	
+	key bags2::Element {bag, value}; 
+	-- Necessary for medini QVT, which does not support check-before-enforce
+	
+	query multiplicity(bag : bags1::MyBag, value : String) : Integer {
+		bag.elements->select(e | e.value = value)->size()
+	}	
+	
+	top relation Bag2Bag {
+		checkonly domain bagModel1 bag1 : bags1::MyBag {};
+		
+		enforce domain bagModel2 bag2 : bags2::MyBag {};
+	}
+	
+	top relation Element2Element {
+		value : String;
+		multiplicity : Integer;
+		
+		checkonly domain bagModel1 element1 : bags1::Element {
+			bag = bag1 : bags1::MyBag {},
+			value = value
+		};
+		
+		enforce domain bagModel2 element2 : bags2::Element {
+			bag = bag2 : bags2::MyBag {},
+			value = value,
+			multiplicity = multiplicity
+		};
+		
+		when {
+			Bag2Bag(bag1, bag2);
+		}
+		
+		where {
+			multiplicity = multiplicity(bag1, value);
+		}
+	}	
+}

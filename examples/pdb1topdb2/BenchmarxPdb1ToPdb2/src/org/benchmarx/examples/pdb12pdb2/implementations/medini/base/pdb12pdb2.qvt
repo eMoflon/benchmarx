@@ -1,0 +1,56 @@
+transformation pdb12pdb2(db1 : pdb1, db2 : pdb2) {
+	/* Biddirectional transformation between different versions of person databases.
+	 * In the forward direction, a first name and a last name are composed into a single
+	 * name, separated by a space. The backward transformation works for names encoded 
+	 * in this way.
+	 */
+    key pdb1::Person {id, database}; key pdb2::Person {id, database};
+	
+	top relation Database2Database {
+		name : String;
+		enforce domain db1 database1 : pdb1::Database {
+			name = name
+		};
+		enforce domain db2 database2 : pdb2::Database {
+			name = name
+		};		 
+	}
+	
+	-- For indexOf: Actual value = expected value - 1 
+	
+	query firstName(name : String) : String {
+		name.substring(1, name.indexOf(' '))
+	}
+	
+	query lastName(name : String) : String {
+		name.substring(name.indexOf(' ') + 2, name.size())
+	}
+	
+	top relation Person2Person {
+		firstName, lastName, name, birthday, placeOfBirth, id : String;
+		enforce domain db1 person1 : pdb1::Person {
+			id = id,
+			birthday = birthday,
+			placeOfBirth = placeOfBirth,
+			firstName = firstName,
+			lastName = lastName,
+			database = database1 : pdb1::Database {}
+		};
+		enforce domain db2 person2 : pdb2::Person {
+			id = id,
+			birthday = birthday,
+			placeOfBirth = placeOfBirth,
+			name = name,
+			database = database2 :pdb2::Database {}
+		};
+		when {
+			Database2Database(database1, database2);
+		}
+		where {
+			name = firstName + ' ' + lastName; -- Forward transformation
+			firstName = firstName(name); -- Backward transformation
+			lastName = lastName(name); -- Backward transformation		
+		}
+	}
+	
+}

@@ -1,0 +1,816 @@
+transformation ecore2sql3 (ecoreModel :ecore, sqlModel : sql, ecoreMetaModel : ecore) {
+	/* Bi-directional transformation.
+	 * This version was developed from 'ecore2sql2' by using called relations only
+	 * (except for one top-level relation).
+	 * NOTE: The transformation does not work. In general, instantiation of the target domain
+	 * and execution of the where clause may be intertwined. Thus, when the where clause is executed,
+	 * you do not know to what extent the target domain has been instantiated. Furthermore, the
+	 * separator ";" does not imply sequential execution in where clauses.
+	 * It seems that the expressions in the where clause and the target domain are ordered by data flow
+	 * dependencies. For example, a call Class2Table(emf_package, sql_schema) may be executed only after
+	 * sql_schema has been instantiated in the target domain. But the call may be executed before further
+	 * objects in the target domain have been instantiated (e.g., the object table). This means that the
+	 * call is issued in an intermediate state where some data are available and some data are still missing.
+	 * It seems that the programmed transformation fails exactly for this reason.  
+	 * In general, eliminating annotations may result in information loss and overlapping
+	 * patterns in backward transformations. Both effects apply here.
+	 * The backward transformation does not work properly on the standard example:
+	 * 1. The multiplicity '1..*' of the reference 'Teacher.lectures' is not reconstructed
+	 *    (upper bound '1'). Reason: The rule 'BidirectionalCrossReference2Table' does not
+	 *    deal with multiplicities.
+	 * 2. The multiplicity of the reference 'OrganizationUnit.containedEntities' is not restored correctly.
+	 * 3. In class 'Lecture', the multiplicities of references 'requiredLectures' and 
+	 *    'requiredByLectures' are not restored.
+	 * 4. In class 'Semester', the multiplicity of the reference 'containedExaminations' is not restored.
+     * Note: The Ecore metamodel has been included as an additional model parameter. In this way, it
+     * can be avoided that the backward transformation generates instances of EDatatype which should be
+     * reused from the Ecore metamodel. The query datatype() retrieves all instances of EDatatype and
+     * then selects the searched instance by name. The OCL query allInstances seems to refer to all
+     * loaded Ecore models, including the Ecore metamodel. Thus, it is not necessary to add a third
+     * domain to rules dealing with data types (which should work, as well).
+	 * Altogether, two errors are present in the transformations:
+	 * 1. The rules for references are not capable of restoring multiplicities.
+	 * 2. Applying the transformation generates an error: model save failed. It seems that the QVT engine
+	 *    tries to save the Ecore metamodel. However, the target models are generated correctly in each
+	 *    transformation direction.
+     * Fixing the first error requires annotations in the SQL model.
+	 * Restrictions on Ecore models:
+	 * 1. Only one package
+	 * 2. Property 'interface' is ignored
+	 * 3. Only data types which can be mapped 1:1 to SQL (See query 'ecoreTypes')
+	 * 4. Property 'lowerBound' = 0, property 'upperBound' = +1, -1
+	 * 5. Multi-valued features are assumed to be unordered
+	 * 6. Volatile, transient, and derived features are ignored
+	 * 7. Single inheritance
+	 * Mapping rules:
+	 * 1. Each package is mapped to a schema. In the schema, an object table
+	 *    is created which manages unique identifiers (integers). 
+	 * 2. Each class is mapped to a table with a primary key.
+	 * 3. Inheritance is mapped as follows:
+	 *    - A root class maintains a foreign key into the object table.
+	 *    - A subclass maintains a foreign key into the superclass table.
+	 * 4. A single-valued attribute is mapped to a column.
+	 * 5. A containment reference is mapped to a column and a foreign key
+	 *    in the opposite table.
+	 * 6. A single-valued uni-directional cross reference is mapped to a column and a foreign key.
+	 * 7. In all other cases, a cross reference is mapped to a table. Only a single table is
+	 *    generated in the case of a bi-directional reference. Note that a 1:1 bi-directional
+	 *    reference is mapped to a table rather than two columns (and foreign keys). In this way,
+	 *    referential integrity of forward and backward references comes for free. 
+	 * 8. Since an object may be spread over multiple tuples in multiple relations, cascading
+	 *    deletions are used to get rid of all tuples representing an object. To this end,
+	 *    the object table maintains a column and a foreign key for each class table. When an object
+	 *    is created, the object table and all involved class tables need to be populated with one
+	 *    tuple each. Since these tuples are connected by cyclic references, deletion of any tuple
+	 *    implies the deletion of all other tuples (including also tuples for transitively contained objects).
+	 * Notes:
+	 * 1. In Ecore, opposites of containment references are read-only.
+	 *    Therefore, a domain must comprise the container of a new component
+	 *    (top-down approach to programming the transformation). This methodology
+	 *    is applied also to SQL models, although all container references are writable.
+	 * 2. No derived data must be used in the transformation (e.g., Ecore property 'many').
+	 */
+
+	key sql::Schema { name };
+	key sql::Table { name, owningSchema };
+	key sql::Column { name, owningTable };
+	
+	query idName() : String { 'id' }
+	
+	query sourceName() : String { 'source' }
+	query targetName() : String { 'target' }
+	
+	query rootTableName() : String { 'EObject' }
+	
+	query idType() : String { 'int' }
+	
+	query inverse() : String { 'inverse' }
+	
+	query sql_tableByName (sql_schema : sql::Schema, name : String) : sql::Table {
+    	sql_schema.ownedTables->select(table | table.name = name)->first()
+    }
+    
+    query sql_columnByName (sql_table : sql::Table, name : String) : sql::Column {
+    	sql_table.ownedColumns->select(column | column.name = name)->first()
+    }
+    
+    top relation Package2Schema {
+		name : String;
+		sql_properties : OrderedSet(sql::Property);		
+		enforce domain ecoreModel emf_package : ecore::EPackage {name = name};		
+		enforce domain sqlModel sql_schema : sql::Schema {
+			name = name,
+			ownedTables = sql_rootTable : sql::Table {
+				name = rootTableName(),
+				ownedColumns = sql_idColumn : sql::Column {
+					name = idName(),
+					type = idType(),
+					properties = sql_properties
+				},
+				ownedPrimaryKey = sql_primaryKey : sql::PrimaryKey {
+					column = sql_idColumn
+				}
+			}
+		};		
+		when {
+			sql_properties = OrderedSet {sql::Property::NotNull, sql::Property::AutoIncrement};										
+		}		
+		where {
+			Class2Table(emf_package, sql_schema);
+			Feature2SchemaElements(emf_package, sql_schema);
+		}
+	}
+	/* Due to a bug in medini QVT, the expression for the properties 'properties' 
+	 * cannot be included into the target domain pattern (the backward transformation
+	 * fails because the comparison of ordered sets seems to check for identity rather than equality).
+	 * However, the checks work in when and where clauses.  
+	 */
+	 
+	relation Class2Table {
+		name : String;
+		sql_properties, sql_refProperties : OrderedSet(sql::Property);
+		
+		enforce domain ecoreModel emf_package : ecore::EPackage {
+			eClassifiers = emf_class : ecore::EClass  {
+				name = name
+			}
+		};
+		
+		enforce domain sqlModel sql_schema :sql::Schema {
+			ownedTables = sql_table : sql::Table {
+				name = name,
+				ownedColumns = sql_idColumn : sql::Column {
+					name = idName(),
+					type = idType(),
+					properties = sql_properties
+				},
+				ownedPrimaryKey = sql_primaryKey : sql::PrimaryKey {
+					column = sql_idColumn
+				}
+			},
+			ownedTables = sql_rootTable : sql::Table {
+				name = rootTableName(),
+				ownedColumns = sql_refIdColumn : sql::Column {
+					name = name,
+					type = idType(),
+					properties = sql_refProperties
+				},
+				ownedForeignKeys = sql_foreignKey : sql::ForeignKey {
+					column = sql_refIdColumn,
+					ownedEvents = sql_event : sql::Event {
+						condition = sql::Condition::Delete,
+						action = sql::Action::Cascade
+					},
+					referencedTable = sql_table
+				}
+			}
+		};
+		
+		when {
+			not (name = rootTableName());
+			sql_properties = OrderedSet {sql::Property::NotNull};
+			sql_refProperties = OrderedSet {sql::Property::Unique};
+		}
+		
+		where {
+			AuxClass2Table(emf_class, sql_table);
+		}		
+	}
+	/* Note: The properties 'interface' and 'abstract' are not considered.
+	 * Since container references are read-only in Ecore, a relation for a component
+	 * has to be defined on its container. Generally, this results in the following
+	 * disadvantage: The root domain objects of the relation have to be containers of
+	 * the source and target objects of the transformation. Thus, the relation has to be defined
+	 * on container objects rather than the objects themselves. This has a negative impact on
+     * traceability, which may require the creation of auxiliary relations (see below).
+	 * For each class of the Ecore model, a column and a foreign key are created in the
+	 * 'EObject' table. A transaction has to ensure that when an object of some class is created,
+	 * the respective column for the class is not null and identical to the id of the object.
+	 * Furthermore, all tuples of all relations for the class and its superclasses have to be created,
+	 * as well. 
+	 * The reference from the 'EObject' table to the class ensure that all tuples are deleted
+	 * by cascading propagations if one of them is deleted in any of the involved class relations.
+	 */
+	 
+	relation AuxClass2Table {
+		enforce domain ecoreModel emf_class : ecore::EClass {};
+		enforce domain sqlModel sql_table : sql::Table{};
+	}
+	/* Auxiliary relation to ensure traceability between
+	 * classes and tables (required in when clauses)
+	 */
+	 
+	relation Feature2SchemaElements {
+		enforce domain ecoreModel emf_package : ecore::EPackage {
+			eClassifiers = emf_class : ecore::EClass  {}
+		};
+		
+		enforce domain sqlModel sql_schema :sql::Schema {
+			ownedTables = sql_table : sql::Table {}
+		};
+		
+		when {
+			AuxClass2Table(emf_class, sql_table);
+		}
+		
+		where {
+			RootClass2ForeignKey(emf_class, sql_table);
+			SubClass2ForeignKey(emf_class, sql_table);
+			SingleValuedAttribute2Column(emf_class, sql_table);
+			MultiValuedAttribute2Table(emf_class, sql_schema);
+			SingleValuedUnidirectionalCrossReference2Column(emf_class, sql_table);
+			UnidirectionalContainmentReference2Column(emf_class, sql_table);
+			BidirectionalContainmentReference2Column(emf_class, sql_table);
+			MultiValuedUnidirectionalCrossReference2Table(emf_class, sql_schema);
+			BidirectionalCrossReference2Table(emf_class, sql_schema);		
+		}
+		
+	}
+			
+	  
+	relation RootClass2ForeignKey {
+		emf_superTypes : OrderedSet(ecore::EClass);
+
+		enforce domain ecoreModel emf_class : ecore::EClass  {
+			eSuperTypes = emf_superTypes
+		};
+
+		
+		enforce domain sqlModel sql_table : sql::Table {
+			owningSchema = sql_schema : sql::Schema {
+				ownedTables = sql_rootTable : sql::Table {
+					name = rootTableName()
+				}
+			},
+			ownedColumns = sql_idColumn : sql::Column {
+				name = idName()
+			},
+			ownedForeignKeys = sql_foreignKey : sql::ForeignKey {
+				column = sql_idColumn,
+				ownedEvents = sql_event : sql::Event {
+					condition = sql::Condition::Delete,
+					action = sql::Action::Cascade
+				},
+				referencedTable = sql_rootTable
+			} 
+		};
+		
+		when {
+			emf_superTypes = OrderedSet {};				
+		}
+	}
+	/* In case of a root class, a foreign key is generated which references the 'EObject'
+	 * table. In this way, unique object ids may be maintained in the 'EObject' table.
+	 * Note that QVT keys are used here to prevent repeated creation of the root object
+	 * table and the id column.
+	 */
+
+	relation SubClass2ForeignKey {
+		
+		enforce domain ecoreModel emf_class : ecore::EClass {
+			eSuperTypes = emf_superClass : ecore::EClass {}
+		};
+		
+		enforce domain sqlModel sql_table : sql::Table {
+			ownedColumns = sql_idColumn : sql::Column {
+				name = idName()
+			},
+			ownedForeignKeys = sql_foreignKey : sql::ForeignKey {
+				column = sql_idColumn,
+				ownedEvents = sql_event : sql::Event {
+					condition = sql::Condition::Delete,
+					action = sql::Action::Cascade
+				},
+				referencedTable = sql_referencedTable : sql::Table {}
+			} 
+		};
+		
+		when {
+			AuxClass2Table(emf_superClass, sql_referencedTable);
+		}
+	}
+    
+	relation SingleValuedAttribute2Column {
+		name, emf_type, sql_type : String;
+		sql_properties : OrderedSet(sql::Property);
+						
+		enforce domain ecoreModel emf_class : ecore::EClass {
+			eStructuralFeatures = emf_attribute : ecore::EAttribute {
+				name = name,
+				eType = emf_dataType : ecore::EDataType {
+					name = emf_type
+				},
+				upperBound = 1,
+				volatile = false,
+				transient = false,
+				derived = false
+			}
+		};
+		
+		
+		enforce domain sqlModel sql_table : sql::Table {
+			ownedColumns = sql_column : sql::Column {
+				name = name,
+				type = sql_type,
+				properties = sql_properties
+			}
+		};
+		
+		when {
+			AuxClass2Table(emf_class, sql_table);
+			if emf_attribute.oclIsUndefined() then
+				sql_column.keys->isEmpty()
+			else
+				true
+			endif;  -- Backward 
+			not (name = idName());
+			sql_properties = OrderedSet {};
+			legalEcoreType(emf_type); -- Forward
+			sql_type = sqlType(emf_type); -- Forward			
+			legalSqlType(sql_type);	 -- Backward
+			emf_type = ecoreType(sql_type); -- Backward
+			emf_dataType = dataType(emf_type); -- Backward	
+		}
+	}
+	-- This relation works properly in the forward direction. In the backward direction, a
+	-- new data type is created (rather than reusing the pre-defined data type)
+	-- Unfortunately, data types such as ecore::EInt are recognized, but they are given
+	-- the wrong type (TypeType(Integer)). Each data type should be an instance of
+	-- EDataType. This is not the case in medini QVT.
+	
+	query maxlength() : String {'30'}
+    
+    query ecoreTypes() : OrderedSet(String) {
+    	OrderedSet {'EString', 'EBoolean', 'EChar', 'EByte', 'EShort', 'EInt', 'ELong', 'EFloat', 'EDouble',  'EDate'}
+    }
+        
+    query dataType(name : String) : ecore::EDataType {
+    	ecore::EDataType.allInstances()->any(t | t.name = name)
+    }
+    -- Unfortunately, this query returns the data types in the current EMF model and not the
+    -- pre-defined Ecore data types. Maybe this could be achieved by passing the Ecore
+    -- metamodel as an additional parameter to the transformation.
+        
+    query sqlType(emf_type : String) : String {
+    	sqlTypes()->at(ecoreTypes()->indexOf(emf_type))
+    }
+    
+    query legalEcoreType(type : String) : Boolean {ecoreTypes()->includes(type)}
+    
+    query sqlTypes() : OrderedSet(String) {
+    	OrderedSet {'varchar('+maxlength()+')', 'boolean', 'char(1)', 'tinyint', 'smallint', 'int', 'bigint', 'float', 'double',  'date'}
+    }
+    
+    query ecoreType(sql_type : String) : String {
+    	ecoreTypes()->at(sqlTypes()->indexOf(sql_type))
+    }
+    
+    query legalSqlType(type : String) : Boolean {sqlTypes()->includes(type)}
+    
+    relation MultiValuedAttribute2Table {
+		emf_className, emf_attributeName, sql_attributeTableName, emf_type, sql_type : String;
+		sql_propertiesId, sql_propertiesValue : OrderedSet(sql::Property);
+		sql_table : sql::Table;
+		
+		enforce domain ecoreModel emf_class : ecore::EClass {
+				ePackage = emf_package : ecore::EPackage {},
+				name = emf_className,
+				eStructuralFeatures = emf_attribute : ecore::EAttribute {
+					name = emf_attributeName,
+					eType = emf_dataType : ecore::EDataType {
+						name = emf_type
+					},
+					upperBound = -1,
+					volatile = false,
+					transient = false,
+					derived = false
+				}
+		};
+		
+		enforce domain sqlModel sql_schema : sql::Schema {
+			ownedTables = sql_attributeTable : sql::Table {
+				name = sql_attributeTableName,
+				ownedColumns = sql_idColumn : sql::Column {
+					name = idName(),
+					type = idType(),
+					properties = sql_propertiesId
+				},
+				ownedColumns = sql_valueColumn : sql::Column {
+					name = valueName(),
+					type = sql_type,
+					properties = sql_propertiesValue
+				},
+				ownedForeignKeys = sql_foreignKey : sql::ForeignKey {
+					column = sql_idColumn,
+					ownedEvents = sql_event : sql::Event {
+						condition = sql::Condition::Delete,
+						action = sql::Action::Cascade
+					},
+					referencedTable = sql_table
+				}				
+			}
+		};
+		
+		when {
+			Package2Schema(emf_package, sql_schema);
+			AuxClass2Table(emf_class, sql_table);
+			not (emf_attributeName = idName()); -- Forward
+			sql_attributeTableName = compose(Sequence{emf_className, emf_attributeName});
+			emf_className = decompose(sql_attributeTableName, 1);
+			emf_attributeName = decompose(sql_attributeTableName, 2);
+			sql_propertiesId = OrderedSet { sql::Property::NotNull };
+			sql_propertiesValue = OrderedSet { sql::Property::NotNull };
+			legalEcoreType(emf_type); -- Forward
+			sql_type = sqlType(emf_type); -- Forward			
+			legalSqlType(sql_type);	 -- Backward
+			emf_type = ecoreType(sql_type); -- Backward
+			emf_dataType = dataType(emf_type); -- Backward					
+		}
+	}
+	
+	query valueName() : String { 'value' }
+	query referenceName() : String {'reference' }
+	
+	query separator() : String { '_' }
+	
+	query compose(strings : Sequence (String)) : String {
+		if strings->isEmpty() then 
+			''
+		else
+			if strings->size() = 1 then
+				strings->first()
+			else
+				strings->first() + separator() + compose(strings->subSequence(2, strings->size()))
+			endif
+		endif
+	}
+	-- Composes an ordered sets of strings into a single string with separators
+		
+	query position(string : String, substring : String) : Integer {
+		string.indexOf(substring) + 1
+	}
+	/* The function 'indexOf' should return the start index of the first occurrence of some substring.
+	 *    In fact, it returns the start index - 1.
+	*/
+	
+	query decompose(string : String, number : Integer) : String {
+		if number = 1 then
+			if position(string, separator()) <= 0 then
+				string -- Return the whole string, which consists of only one component
+			else
+				string.substring(1, position(string, separator()) - 1)
+				-- Return the first component, excluding the separator
+			endif
+		else -- number > 1
+			decompose(string.substring(position(string, separator()) + 1, string.size()), number - 1)
+			-- Recursive call on the tail of the substring
+		endif
+	}
+	/* 'string' is composed of substrings separated by the separator returned by 'separator()'.
+	 * 'number' is a number between 1 and the number of components of 'string'.
+	 * The query returns the component indexed by 'number'.
+	 * Note: The body could be simplified by a let expression, which, however, is not parsed correctly.
+	*/ 
+	
+	relation SingleValuedUnidirectionalCrossReference2Column {
+		name : String;
+		sql_properties : OrderedSet(sql::Property);
+	
+		enforce domain ecoreModel emf_sourceClass : ecore::EClass {
+			eStructuralFeatures = emf_reference : ecore::EReference {
+				name = name,
+				containment = false,
+				upperBound = 1,
+				eType = emf_targetClass :ecore::EClass {},
+				volatile = false,
+				transient = false,
+				derived = false				
+			}
+		};
+		
+		enforce domain sqlModel sql_sourceTable : sql::Table {
+			ownedColumns = sql_column : sql::Column {
+				name = name,
+				type = idType(),
+				properties = sql_properties
+			},
+			ownedForeignKeys = sql_foreignKey : sql::ForeignKey {
+				column = sql_column,
+				referencedTable = sql_targetTable : sql::Table {},
+				ownedEvents = sql_event : sql::Event {
+					condition = sql::Condition::Delete,
+					action = sql::Action::SetNull					
+				}
+			}
+		};
+		
+		when {
+			emf_reference.eOpposite.oclIsUndefined();
+			AuxClass2Table(emf_sourceClass, sql_sourceTable);
+			AuxClass2Table(emf_targetClass, sql_targetTable);
+			not (name = idName());
+			sql_properties = OrderedSet{};
+		}
+	}
+	/* A single-valued uni-directional cross reference may be transformed in a similar way as a single-valued attribute.
+	 * In addition to a column, a foreign key is created which references the table for the target class.
+	 */
+	
+	relation UnidirectionalContainmentReference2Column {
+		name, columnName : String;
+		sql_properties : OrderedSet(sql::Property);
+		
+		enforce domain ecoreModel emf_parentClass : ecore::EClass {
+			eStructuralFeatures = emf_reference : ecore::EReference {
+				name = name,
+				containment = true,
+				eType = emf_childClass : ecore::EClass {},
+				volatile = false,
+				transient = false,
+				derived = false
+			}
+		};
+		
+		enforce domain sqlModel sql_parentTable : sql::Table {
+			owningSchema = sql_schema : sql::Schema {
+				ownedTables =  sql_childTable : sql::Table {
+					ownedColumns = sql_column : sql::Column {
+						name = columnName,
+						type = idType(),
+						properties = sql_properties
+					},
+					ownedForeignKeys = sql_foreignKey : sql::ForeignKey {
+						column = sql_column,
+						referencedTable = sql_parentTable : sql::Table {},
+						ownedEvents = sql_event : sql::Event {
+							condition = sql::Condition::Delete,
+							action = sql::Action::Cascade
+						}
+					}
+				}
+			}
+		};
+		
+		when {
+			emf_reference.eOpposite.oclIsUndefined();
+			columnName = compose(Sequence {name, inverse()});
+			name = decompose(columnName, 1);
+			AuxClass2Table(emf_parentClass, sql_parentTable);
+			AuxClass2Table(emf_childClass, sql_childTable);
+			sql_properties = OrderedSet{};	
+		}
+	
+	}
+	/* A uni-directional containment reference is transformed to a column and a foreign key of the opposite table.
+	 */
+	 
+	
+	relation BidirectionalContainmentReference2Column {
+		containmentName, containerName, columnName : String;
+		sql_properties : OrderedSet(sql::Property);
+		
+		enforce domain ecoreModel emf_parentClass : ecore::EClass {
+			eStructuralFeatures = emf_containmentReference : ecore::EReference {
+				name = containmentName,
+				containment = true,
+				eType = emf_childClass : ecore::EClass {
+					eStructuralFeatures = emf_containerReference : ecore::EReference {
+						name = containerName,
+						eType = emf_parentClass,
+						eOpposite = emf_containmentReference,
+						volatile = false,
+						transient = false,
+						derived = false							
+					}
+				},
+				eOpposite = emf_containerReference,
+				volatile = false,
+				transient = false,
+				derived = false				
+			}
+		};
+		
+		enforce domain sqlModel sql_parentTable : sql::Table {
+			owningSchema = sql_schema : sql::Schema {
+				ownedTables =  sql_childTable : sql::Table {
+					ownedColumns = sql_column : sql::Column {
+						name = columnName,
+						type = idType(),
+						properties = sql_properties
+					},
+					ownedForeignKeys = sql_foreignKey : sql::ForeignKey {
+						column = sql_column,
+						referencedTable = sql_parentTable : sql::Table {},
+						ownedEvents = sql_event : sql::Event {
+							condition = sql::Condition::Delete,
+							action = sql::Action::Cascade
+						}
+					}
+				}
+			}
+		};
+
+		
+		when {
+			columnName = compose(Sequence {containerName, inverse(), containmentName});
+			containerName = decompose(columnName, 1);
+			containmentName = decompose(columnName, 3);
+			AuxClass2Table(emf_parentClass, sql_parentTable);
+			AuxClass2Table(emf_childClass, sql_childTable);
+			sql_properties = OrderedSet{};	
+		}
+	
+	}
+	
+	relation MultiValuedUnidirectionalCrossReference2Table {
+		emf_sourceClassName, emf_referenceName, sql_referenceTableName : String;
+		sql_propertiesId, sql_propertiesReference : OrderedSet(sql::Property);
+	
+		enforce domain ecoreModel emf_sourceClass : ecore::EClass {
+			ePackage = emf_package : ecore::EPackage {},
+			name = emf_sourceClassName,
+			eStructuralFeatures = emf_reference : ecore::EReference {
+				name = emf_referenceName,
+				containment = false,
+				upperBound = -1,
+				eType = emf_targetClass :ecore::EClass {},
+				volatile = false,
+				transient = false,
+				derived = false
+			}
+		};
+		
+		enforce domain sqlModel sql_schema : sql::Schema {
+			ownedTables = sql_referenceTable : sql::Table {
+				name = sql_referenceTableName,
+				ownedColumns = sql_idColumn : sql::Column {
+					name = idName(),
+					type = idType(),
+					properties = sql_propertiesId
+				},
+				ownedColumns = sql_referenceColumn : sql::Column {
+					name = referenceName(),
+					type = idType(),
+					properties = sql_propertiesReference
+				},
+				ownedForeignKeys = sql_foreignIdKey : sql::ForeignKey {
+					column = sql_idColumn,
+					ownedEvents = sql_eventIdKey : sql::Event {
+						condition = sql::Condition::Delete,
+						action = sql::Action::Cascade
+					},
+					referencedTable = sql_sourceTable : sql::Table {}
+				},
+				ownedForeignKeys = sql_foreignReferenceKey : sql::ForeignKey {
+					column = sql_referenceColumn,
+					ownedEvents = sql_eventForeignKey : sql::Event {
+						condition = sql::Condition::Delete,
+						action = sql::Action::Cascade
+					},
+					referencedTable = sql_targetTable : sql::Table {}					
+				}				
+			}
+		};
+		
+		when {
+			Package2Schema(emf_package, sql_schema);
+			AuxClass2Table(emf_sourceClass, sql_sourceTable);
+			AuxClass2Table(emf_targetClass, sql_targetTable);
+			sql_propertiesId = OrderedSet {sql::Property::NotNull};
+			sql_propertiesReference = OrderedSet {sql::Property::NotNull};
+			emf_reference.eOpposite.oclIsUndefined();			
+			sql_referenceTableName = compose(Sequence {emf_sourceClassName, emf_referenceName});
+			emf_sourceClassName = decompose(sql_referenceTableName, 1);
+			emf_referenceName = decompose(sql_referenceTableName, 2);
+		}
+			
+	}
+	
+	relation BidirectionalCrossReference2Table {
+		emf_sourceClassName, emf_targetClassName,
+		emf_forwardReferenceName, emf_backwardReferenceName, sql_referenceTableName : String;
+		sql_sourceProperties, sql_targetProperties : OrderedSet(sql::Property);
+	
+		enforce domain ecoreModel emf_sourceClass : ecore::EClass {
+			ePackage = emf_package : ecore::EPackage {},
+			name = emf_sourceClassName,
+			eStructuralFeatures = emf_forwardReference : ecore::EReference {
+				name = emf_forwardReferenceName,
+				containment = false,
+				eType =  emf_targetClass : ecore::EClass {
+					name = emf_targetClassName,
+					eStructuralFeatures = emf_backwardReference : ecore::EReference {
+						name = emf_backwardReferenceName,
+						containment = false,
+						eOpposite = emf_forwardReference,
+						eType = emf_sourceClass,
+						volatile = false,
+						transient = false,
+						derived = false							
+					}
+				},
+				eOpposite = emf_backwardReference,
+				volatile = false,
+				transient = false,
+				derived = false					
+			}
+		};
+		
+		enforce domain sqlModel sql_schema : sql::Schema {
+			ownedTables = sql_referenceTable : sql::Table {
+				name = sql_referenceTableName,
+				ownedColumns = sql_sourceColumn : sql::Column {
+					name = sourceName(),
+					type = idType(),
+					properties = sql_sourceProperties
+				},
+				ownedColumns = sql_targetColumn : sql::Column {
+					name = targetName(),
+					type = idType(),
+					properties = sql_targetProperties
+				},
+				ownedForeignKeys = sql_sourceForeignKey : sql::ForeignKey {
+					column = sql_sourceColumn,
+					referencedTable = sql_sourceTable : sql::Table {},
+					ownedEvents = sql_sourceEvent : sql::Event {
+						condition = sql::Condition::Delete,
+						action = sql::Action::Cascade
+					}
+				},
+				ownedForeignKeys = sql_targetForeignKey : sql::ForeignKey {
+					column = sql_targetColumn,
+					referencedTable = sql_targetTable : sql::Table {},
+					ownedEvents = sql_targetEvent : sql::Event {
+						condition = sql::Condition::Delete,
+						action = sql::Action::Cascade
+					}
+				}
+			}
+		};
+		
+		when {
+			Package2Schema(emf_package, sql_schema);
+			AuxClass2Table(emf_sourceClass, sql_sourceTable);
+			AuxClass2Table(emf_targetClass, sql_targetTable);
+			sql_sourceProperties = OrderedSet {sql::Property::NotNull};
+			sql_targetProperties = OrderedSet {sql::Property::NotNull};
+			sql_referenceTableName = 
+				compose(Sequence 
+					{emf_sourceClassName, emf_forwardReferenceName, inverse(), emf_targetClassName, emf_backwardReferenceName});
+			emf_sourceClassName = decompose(sql_referenceTableName, 1);
+			emf_forwardReferenceName = decompose(sql_referenceTableName, 2);
+			emf_targetClassName = decompose(sql_referenceTableName, 4);
+			emf_backwardReferenceName = decompose(sql_referenceTableName, 5);
+			less(emf_sourceClassName + emf_forwardReferenceName, emf_targetClassName + emf_backwardReferenceName);
+			-- Prevents double transformation in forward direction
+		}
+	
+	}
+	
+
+	
+	/* The following queries are required for implementing a lexicographical comparison of identifiers.
+	 * We assume that only Latin letters (upper and lower case), digits, and the character '_' are used
+	 * in identifiers. 
+	 */
+	
+	query less(s1 : String, s2 : String) : Boolean {
+		if s1.size() = 0  then
+			s2.size() > 0
+		else 
+			if s2.size() = 0 then
+				false
+			else
+				if precedes(s1.substring(1,1), s2.substring(1,1)) then
+					true
+				else
+					if precedes(s2.substring(1,1), s1.substring(1,1)) then
+						false
+					else
+						less(s1.substring(2, s1.size()), s2.substring(2, s2.size()))
+					endif
+				endif
+			endif
+		endif
+	}
+	
+	
+	query characters() : OrderedSet(String) {
+		OrderedSet {
+			'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+			'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+			'_',
+			'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+		}
+	}
+	
+	query precedes(c1 : String, c2 : String) : Boolean {
+		characters().indexOf(c1) < characters().indexOf(c2)
+	}
+	-- Returns whether the character c1 precedes the character c2 in the lexicographical order defined by characters()
+	
+	
+}
+    
+    
+    

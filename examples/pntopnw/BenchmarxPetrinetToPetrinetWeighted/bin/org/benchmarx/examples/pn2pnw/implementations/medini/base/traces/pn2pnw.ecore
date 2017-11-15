@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pn2pnw" nsURI="urn:pn2pnw.ecore" nsPrefix="pn2pnw">
+  <eClassifiers xsi:type="ecore:EClass" name="Net2Net">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pn_net">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pn.ecore#//Net"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pnw_net">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore#//Net"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Place2Place">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pn_place">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pn.ecore#//Place"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pnw_place">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore#//Place"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noOfTokens">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pn_net">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pn.ecore#//Net"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pnw_net">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore#//Net"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition2Transition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pn_transition">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pn.ecore#//Transition"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pnw_transition">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore#//Transition"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pn_net">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pn.ecore#//Net"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pnw_net">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore#//Net"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PTReference2PTEdge">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pn_place">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pn.ecore#//Place"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pnw_place">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore#//Place"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pn_net">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pn.ecore#//Net"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pn_transition">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pn.ecore#//Transition"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pnw_net">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore#//Net"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pnw_pTEdge">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore#//PTEdge"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pnw_transition">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore#//Transition"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TPReference2TPEdge">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pn_transition">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pn.ecore#//Transition"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pnw_transition">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore#//Transition"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pn_net">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pn.ecore#//Net"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pn_place">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pn.ecore#//Place"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pnw_net">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore#//Net"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pnw_tPEdge">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore#//TPEdge"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pnw_place">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore#//Place"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

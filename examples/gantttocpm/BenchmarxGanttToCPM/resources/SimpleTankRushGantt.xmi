@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<de.ubt.ai1.m2m:GanttDiagram
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:de.ubt.ai1.m2m="http://de.ubt.ai1.bw.qvt.examples.gantt.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.gantt.ecore ../../de.ubt.ai1.m2m.gantt/model/Gantt.ecore"
+    name="ItalyTankRush">
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      name="spam tanks"
+      duration="8"
+      outgoingDependencies="//@elements.2"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      name="win game"
+      duration="1"
+      incomingDependencies="//@elements.2"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Dependency"
+      predecessor="//@elements.0"
+      successor="//@elements.1"
+      dependencyType="EndStart"
+      offset="180"/>
+</de.ubt.ai1.m2m:GanttDiagram>

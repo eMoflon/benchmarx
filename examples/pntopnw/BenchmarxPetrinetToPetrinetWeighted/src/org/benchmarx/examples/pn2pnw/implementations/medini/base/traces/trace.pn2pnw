@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pn2pnw:Net2Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pn2pnw="urn:pn2pnw.ecore">
+  <pn_net href="source.xmi#/"/>
+  <pnw_net href="target.xmi#/"/>
+</pn2pnw:Net2Net>

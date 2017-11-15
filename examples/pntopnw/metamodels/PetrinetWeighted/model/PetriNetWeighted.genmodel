@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.ubt.ai1.m2m.petrinetweighted/src" modelPluginID="de.ubt.ai1.m2m.petrinetweighted"
+    modelName="PetriNetWeighted" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>PetriNetWeighted.ecore</foreignModel>
+  <genPackages prefix="Pnw" disposableProviderFactory="true" ecorePackage="PetriNetWeighted.ecore#/">
+    <genClasses image="false" ecoreClass="PetriNetWeighted.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PetriNetWeighted.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="PetriNetWeighted.ecore#//Net">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PetriNetWeighted.ecore#//Net/elements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PetriNetWeighted.ecore#//Net/incrementalID"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PetriNetWeighted.ecore#//NetElement">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference PetriNetWeighted.ecore#//NetElement/net"/>
+    </genClasses>
+    <genClasses ecoreClass="PetriNetWeighted.ecore#//Transition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PetriNetWeighted.ecore#//Transition/outTPEdges"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PetriNetWeighted.ecore#//Transition/inPTEdges"/>
+    </genClasses>
+    <genClasses ecoreClass="PetriNetWeighted.ecore#//Place">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PetriNetWeighted.ecore#//Place/noOfTokens"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PetriNetWeighted.ecore#//Place/outPTEdges"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PetriNetWeighted.ecore#//Place/inTPEdges"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PetriNetWeighted.ecore#//Edge">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PetriNetWeighted.ecore#//Edge/weight"/>
+    </genClasses>
+    <genClasses ecoreClass="PetriNetWeighted.ecore#//TPEdge">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PetriNetWeighted.ecore#//TPEdge/fromTransition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PetriNetWeighted.ecore#//TPEdge/toPlace"/>
+    </genClasses>
+    <genClasses ecoreClass="PetriNetWeighted.ecore#//PTEdge">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PetriNetWeighted.ecore#//PTEdge/fromPlace"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PetriNetWeighted.ecore#//PTEdge/toTransition"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

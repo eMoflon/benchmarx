@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dag" nsURI="http://de.ubt.ai1.bw.qvt.examples.dag.ecore" nsPrefix="de.ubt.ai1.m2m">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exprs" upperBound="-1"
+        eType="#//Expression" containment="true" eOpposite="#//Expression/model"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//Model"
+        eOpposite="#//Model/exprs"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftInverse" upperBound="-1"
+        eType="#//Operator" eOpposite="#//Operator/left"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightInverse" upperBound="-1"
+        eType="#//Operator" eOpposite="#//Operator/right"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="incrementalID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operator" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
+        eOpposite="#//Expression/leftInverse"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
+        eOpposite="#//Expression/rightInverse"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" eType="#//ArithmeticOperator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operand" abstract="true" eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//Operand">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Number" eSuperTypes="#//Operand">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ArithmeticOperator">
+    <eLiterals name="Add" literal="Add"/>
+    <eLiterals name="Subtract" value="1" literal="Subtract"/>
+    <eLiterals name="Multiply" value="2" literal="Multiply"/>
+    <eLiterals name="Divide" value="3" literal="Divide"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,220 @@
+transformation dag2ast(dagModel : dag, astModel : ast) {
+	-- A dag is unfolded into a tree. Unfolding is achieved with nested relations.
+	-- Since the relations include the parent of the element to be transformed,
+	-- the check-before-enforce semantics does not apply (different contexts result
+	-- in different patterns)
+	
+	top relation RootVariable2Variable {
+		name : String; 
+		
+		checkonly domain dagModel dag : dag::Model {
+			exprs = dag_variable : dag::Variable {
+				name = name
+			}
+		};
+		
+		enforce domain astModel ast : ast::Model {
+			expr = ast_variable : ast::Variable {
+				name = name
+			}
+		};
+		
+		when {
+			dag_variable.leftInverse->isEmpty();
+			dag_variable.rightInverse->isEmpty();
+		} -- Should be a domain condition, not supported in medini QVT
+	}
+	
+	relation LeftVariable2Variable {
+		name : String;
+		
+		checkonly domain dagModel dag_operator : dag::Operator {
+			left = dag_variable : dag::Variable {
+				name = name
+			}
+		};
+		
+		enforce domain astModel ast_operator : ast::Operator {
+			left = ast_variable : ast::Variable {
+				name = name
+			}
+		};
+	}
+
+	
+	relation RightVariable2Variable {
+		name : String;
+		
+		checkonly domain dagModel dag_operator : dag::Operator {
+			right = dag_variable : dag::Variable {
+				name = name
+			}
+		};
+		
+		enforce domain astModel ast_operator : ast::Operator {
+			right = ast_variable : ast::Variable {
+				name = name
+			}
+		};
+	}
+	
+	top relation RootNumber2Number {
+		value : Integer; 
+		
+		checkonly domain dagModel dag : dag::Model {
+			exprs = dag_number : dag::Number {
+				value = value
+			}
+		};
+		
+		enforce domain astModel ast : ast::Model {
+			expr = ast_number : ast::Number {
+				value = value
+			}
+		};
+		
+		when {
+			dag_number.leftInverse->isEmpty();
+			dag_number.rightInverse->isEmpty();
+		} -- Should be a domain condition, not supported in medini QVT
+	}
+
+	relation LeftNumber2Number {
+		value : Integer;
+		
+		checkonly domain dagModel dag_operator : dag::Operator {
+			left = dag_number : dag::Number {
+				value = value
+			}
+		};
+		
+		enforce domain astModel ast_operator : ast::Operator {
+			left = ast_number : ast::Number {
+				value = value
+			}
+		};
+	}
+
+	relation RightNumber2Number {
+		value : Integer;
+		
+		checkonly domain dagModel dag_operator : dag::Operator {
+			right = dag_number : dag::Number {
+				value = value
+			}
+		};
+		
+		enforce domain astModel ast_operator : ast::Operator {
+			right = ast_number : ast::Number {
+				value = value
+			}
+		};
+	}
+	
+	top relation RootOperator2Operator {
+		dag_op : dag::ArithmeticOperator;
+		ast_op : ast::ArithmeticOperator;
+		
+		checkonly domain dagModel dag : dag::Model {
+			exprs = dag_operator : dag::Operator {
+				op = dag_op
+			}
+		};
+		
+		enforce domain astModel ast : ast::Model {
+			expr = ast_operator : ast::Operator {
+				op = ast_op
+			}
+		};
+			
+				
+		when {
+			dag_operator.leftInverse->isEmpty();
+			dag_operator.rightInverse->isEmpty();
+		} -- Should be a domain condition, not supported in medini QVT
+		
+		where {
+			ast_op = correspondingAstOperator(dag_op);
+			LeftVariable2Variable(dag_operator, ast_operator);
+			LeftNumber2Number(dag_operator, ast_operator);
+			LeftOperator2Operator(dag_operator, ast_operator);
+			RightVariable2Variable(dag_operator, ast_operator);
+			RightNumber2Number(dag_operator, ast_operator);
+			RightOperator2Operator(dag_operator, ast_operator);
+		}
+	}
+	
+	relation LeftOperator2Operator {
+		dag_op : dag::ArithmeticOperator;
+		ast_op : ast::ArithmeticOperator;
+		
+		checkonly domain dagModel dag_operator : dag::Operator {
+			left = dag_leftOperator : dag::Operator {
+				op = dag_op
+			}
+		};
+		
+		enforce domain astModel ast_operator : ast::Operator {
+			left = ast_leftOperator : ast::Operator {
+				op = ast_op
+			}
+		};
+		
+		where {
+			ast_op = correspondingAstOperator(dag_op);
+			LeftVariable2Variable(dag_leftOperator, ast_leftOperator);
+			LeftNumber2Number(dag_leftOperator, ast_leftOperator);
+			LeftOperator2Operator(dag_leftOperator, ast_leftOperator);
+			RightVariable2Variable(dag_leftOperator, ast_leftOperator);
+			RightNumber2Number(dag_leftOperator, ast_leftOperator);
+			RightOperator2Operator(dag_leftOperator, ast_leftOperator);
+		}
+	}
+			
+	relation RightOperator2Operator {
+		dag_op : dag::ArithmeticOperator;
+		ast_op : ast::ArithmeticOperator;
+		
+		checkonly domain dagModel dag_operator : dag::Operator {
+			right = dag_rightOperator : dag::Operator {
+				op = dag_op
+			}
+		};
+		
+		enforce domain astModel ast_operator : ast::Operator {
+			right = ast_rightOperator : ast::Operator {
+				op = ast_op
+			}
+		};
+		
+		where {
+			ast_op = correspondingAstOperator(dag_op);
+			LeftVariable2Variable(dag_rightOperator, ast_rightOperator);
+			LeftNumber2Number(dag_rightOperator, ast_rightOperator);
+			LeftOperator2Operator(dag_rightOperator, ast_rightOperator);
+			RightVariable2Variable(dag_rightOperator, ast_rightOperator);
+			RightNumber2Number(dag_rightOperator, ast_rightOperator);
+			RightOperator2Operator(dag_rightOperator, ast_rightOperator);
+		}
+	}
+		
+	
+	query correspondingAstOperator(dag_arithmeticOperator : dag::ArithmeticOperator) : ast::ArithmeticOperator {
+		if dag_arithmeticOperator = dag::ArithmeticOperator::Add then
+			ast::ArithmeticOperator::Add
+		else
+			if dag_arithmeticOperator = dag::ArithmeticOperator::Subtract then
+				ast::ArithmeticOperator::Subtract
+			else
+				if dag_arithmeticOperator = dag::ArithmeticOperator::Multiply then
+					ast::ArithmeticOperator::Multiply
+				else
+					ast::ArithmeticOperator::Divide
+				endif
+			endif
+		endif
+	}
+	
+	
+
+}

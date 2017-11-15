@@ -1,0 +1,85 @@
+transformation bag22bag1 (bagModel2 : bags2, bagModel1 : bags1) {
+	-- Backward transformation for both enforcing and checking mode
+	-- Additional copies are created by a non-top-lvel relation.
+	-- The relation is supplied with the multiplicity of the element
+	-- and the set of elements created so far. The set is extended
+	-- on each recursive call until it has the required multiplicity.
+	-- The where clause enforces the creation of a new copy by
+	-- requiring that the new element is not contained in the set
+	-- passed as parameter. Without this check, an already existing
+	-- element would be reused to satisfy the relation (check-before-enforce).
+	-- In checking mode, the transformation checks bag inclusion.
+	-- For a given element, the target model contains at least as many
+	-- copies as its multiplicity.
+	-- Unfortunately, the transformation is not executable in medini QVT.
+	-- It seems that passing of sets as parameters to non-top-level
+	-- relations does not work.
+
+	key bags2::Element {bag, value}; -- For documentation purposes only 
+	
+	top relation Bag2Bag {
+		checkonly domain bagModel2 bag2 : bags2::MyBag {};
+
+		enforce domain bagModel1 bag1 : bags1::MyBag {};		
+	}
+	
+	top relation Element2Element {
+		value : String;
+		multiplicity : Integer;
+		bag2 : bags2::MyBag;
+		bag1 : bags1::MyBag;
+
+		checkonly domain bagModel2 element2 : bags2::Element {
+			bag = bag2,
+			value = value,
+			multiplicity = multiplicity
+		};
+		
+		enforce domain bagModel1 element1 : bags1::Element {
+			bag = bag1,
+			value = value
+		};
+		
+		when {
+			Bag2Bag(bag2, bag1);
+		}
+		
+		where {
+			if multiplicity > 1  then
+				Element2Copy(element2, bag1, Set{element1}, multiplicity)
+			else 
+				true
+			endif;
+		} -- Note that the call implies a data flow dependency which
+		  -- enforces that element1 must be instantiated before the call.
+
+	}
+	
+	relation Element2Copy {
+		value : String; 
+		
+		checkonly domain bagModel2 element2 : bags2::Element {
+			value = value
+		};
+				
+		enforce domain bagModel1 bag1 : bags1::MyBag {
+			elements = element1 : bags1::Element {
+				value = value
+			}
+		};
+		
+		primitive domain elementCopies : Set(bags1::Element);
+		
+		primitive domain multiplicity : Integer;
+				
+		where {
+			elementCopies->excludes(element1);
+			if elementCopies->including(element1)->size() < multiplicity then
+				Element2Copy(element2, bag1, elementCopies->including(element1), multiplicity)
+			else
+				true
+			endif;
+		}
+	}
+			
+}

@@ -1,0 +1,7 @@
+Bemerkungen zur PN2PNW Transformation:
+======================================
+
+- Struktur des Korrespondenzmodells: In diesem Fall könnte es notwendig sein, dass zu einem 
+  Quellmodellelement (Transition) mehere Zielmodellelemente (Transition, PTEdge, TPEdge) gespeichert werden müssen,
+  da die PTEdge und TPEdge Klassen die Gewichte beinhalten. Dies ist noch zu Testen!!
+  

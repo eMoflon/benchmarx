@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bags2:MyBag
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:bags2="http://de.ubt.ai1.bw.qvt.examples.bags2.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.bags2.ecore ../../de.ubt.ai1.m2m.bag2/model/Bags2.ecore">
+  <elements
+      value="Beer"
+      multiplicity="5"
+      incrementalID="incrTestValue"/>
+  <elements
+      value="Beer Glass"
+      multiplicity="1"/>
+</bags2:MyBag>

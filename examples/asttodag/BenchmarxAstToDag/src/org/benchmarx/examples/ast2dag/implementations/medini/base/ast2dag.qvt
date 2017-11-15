@@ -1,0 +1,157 @@
+transformation ast2dag(astModel : ast, dagModel : dag) {
+	-- An ast is folded into a dag. The transformation relies on the definition of
+    -- keys which enforce reuse of subexpressions. The transformation works bottom-up:
+    -- When a node is transformed, its properties must be known such that the key
+    -- is determined. Otherwise, it cannot be checked whether or not a previously
+    -- created node may be reused.
+    -- Notice that keys are redundant in the case of check-before-enforce semantics,
+    -- which is not implemented in medini QVT
+
+	key dag::Variable {name};
+	key dag::Number {value};
+	key dag::Operator {op, left, right};
+
+
+	top relation Model2Model {
+		checkonly domain astModel ast : ast::Model {};
+		
+		enforce domain dagModel dag : dag::Model {};		
+	}
+	
+	relation Expression2Expression {
+		checkonly domain astModel ast_expression : ast::Expression {};
+		
+		enforce domain dagModel dag_expression : dag::Expression {};
+	} -- Auxiliary relation to simplify Operator2Operator
+	
+	
+	top relation Variable2Variable {
+		name : String;
+		ast : ast::Model;
+		dag : dag::Model;
+		
+		checkonly domain astModel ast_variable : ast::Variable {
+			name = name
+		};
+		
+		enforce domain dagModel dag_variable : dag::Variable {
+			model = dag,
+			name = name
+		};
+		
+		when {
+			ast = root(ast_variable).model; -- Should be a domain condition
+			Model2Model(ast, dag);
+		}
+		
+		where {
+			if dag_variable.oclIsUndefined() then
+				false
+			else
+				Expression2Expression(ast_variable, dag_variable)
+			endif; -- The condition is only needed in medini QVT
+			       -- to enforce the binding of the target domain
+			       -- object before the relation is called
+			       -- In Section 7.5, 2.2 the standard seems to demand
+			       -- relations must be called with bound expressions
+			       -- (i.e., there are no output parameters)
+		}
+	}
+	
+	top relation Number2Number {
+		value : Integer;
+		ast : ast::Model;
+		dag : dag::Model;
+		
+		checkonly domain astModel ast_number : ast::Number {
+			value = value
+		};
+		
+		enforce domain dagModel dag_number : dag::Number {
+			model = dag,
+			value = value
+		};
+		
+		when {
+			ast = root(ast_number).model; -- Should be a domain condition
+			Model2Model(ast, dag);
+		}
+		
+		where {
+			if dag_number.oclIsUndefined() then
+				false
+			else
+				Expression2Expression(ast_number, dag_number)
+			endif;
+		}		
+	}
+	
+	
+	top relation Operator2Operator {
+		ast_op : ast::ArithmeticOperator;
+		ast : ast::Model;
+		dag : dag::Model;		
+		
+		checkonly domain astModel ast_operator : ast::Operator {
+			op = ast_op,
+			left = ast_left : ast::Expression {},
+			right = ast_right : ast::Expression {}
+		};
+		
+		enforce domain dagModel dag_operator : dag::Operator {
+			model = dag,
+			op = correspondingDagOperator(ast_op),
+			left = dag_left : dag::Expression{},
+			right = dag_right : dag::Expression{}
+		};
+		
+		when {
+			ast = root(ast_operator).model; -- Should be a domain condition
+			Model2Model(ast, dag);	
+			Expression2Expression(ast_left, dag_left);
+			Expression2Expression(ast_right, dag_right);					
+		}
+		where {
+			if dag_operator.oclIsUndefined() then
+				false
+			else
+				Expression2Expression(ast_operator, dag_operator)
+			endif;			
+		}
+		
+	}
+	
+	query root(ast_expression : ast::Expression) : ast::Expression {
+		if parent(ast_expression).oclIsUndefined() then
+			ast_expression
+		else
+			root(parent(ast_expression))
+		endif
+	}
+	
+	query parent(ast_expression : ast::Expression) : ast::Operator {
+		if ast_expression.leftInverse.oclIsUndefined() then
+			ast_expression.rightInverse
+		else
+			ast_expression.leftInverse
+		endif
+	}
+	
+	
+	query correspondingDagOperator(ast_arithmeticOperator : ast::ArithmeticOperator) : dag::ArithmeticOperator {
+		if ast_arithmeticOperator = ast::ArithmeticOperator::Add then
+			dag::ArithmeticOperator::Add
+		else
+			if ast_arithmeticOperator = ast::ArithmeticOperator::Subtract then
+				dag::ArithmeticOperator::Subtract
+			else
+				if ast_arithmeticOperator = ast::ArithmeticOperator::Multiply then
+					dag::ArithmeticOperator::Multiply
+				else
+					dag::ArithmeticOperator::Divide
+				endif
+			endif
+		endif
+	}
+
+}

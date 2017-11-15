@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<de.ubt.ai1.m2m:CPMNetwork
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:de.ubt.ai1.m2m="http://de.ubt.ai1.bw.qvt.examples.cpm.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.cpm.ecore ../../de.ubt.ai1.m2m.cpm/model/CPM.ecore"
+    name="ItalyTankRush">
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Event"
+      outgoingActivities="//@elements.8 //@elements.12"
+      number="1"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Event"
+      incomingActivities="//@elements.8"
+      number="2"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Event"
+      outgoingActivities="//@elements.9 //@elements.13"
+      incomingActivities="//@elements.12"
+      number="3"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Event"
+      incomingActivities="//@elements.9"
+      number="4"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Event"
+      outgoingActivities="//@elements.10"
+      number="5"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Event"
+      outgoingActivities="//@elements.14 //@elements.15"
+      incomingActivities="//@elements.10 //@elements.13"
+      number="6"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Event"
+      outgoingActivities="//@elements.11"
+      incomingActivities="//@elements.14"
+      number="7"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Event"
+      incomingActivities="//@elements.11 //@elements.15"
+      number="8"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      sourceEvent="//@elements.0"
+      targetEvent="//@elements.1"
+      name="build tankbase"
+      duration="5"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      sourceEvent="//@elements.2"
+      targetEvent="//@elements.3"
+      name="research m15"
+      duration="75"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      sourceEvent="//@elements.4"
+      targetEvent="//@elements.5"
+      name="spam tanks"
+      duration="8"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      sourceEvent="//@elements.6"
+      targetEvent="//@elements.7"
+      name="win game"
+      duration="1"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      sourceEvent="//@elements.0"
+      targetEvent="//@elements.2"
+      name="build tankbase->research m15"
+      duration="6"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      sourceEvent="//@elements.2"
+      targetEvent="//@elements.5"
+      name="research m15->spam tanks"
+      duration="84"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      sourceEvent="//@elements.5"
+      targetEvent="//@elements.6"
+      name="spam tanks->win game"
+      duration="180"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      sourceEvent="//@elements.5"
+      targetEvent="//@elements.7"
+      name="spam tanks->win game"
+      duration="181"/>
+</de.ubt.ai1.m2m:CPMNetwork>
