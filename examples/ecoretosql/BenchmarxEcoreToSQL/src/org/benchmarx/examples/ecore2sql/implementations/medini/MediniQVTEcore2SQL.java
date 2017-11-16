@@ -1,4 +1,4 @@
-package org.benchmarx.examples.pdb12pdb2.implementations.medini;
+package org.benchmarx.examples.ecore2sql.implementations.medini;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,11 +13,15 @@ import java.util.function.Consumer;
 
 import org.apache.commons.io.output.NullOutputStream;
 import org.benchmarx.Configurator;
+import org.benchmarx.ecore.core.EcoreComparator;
 import org.benchmarx.emf.BXToolForEMF;
-import org.benchmarx.examples.pdb12pdb2.testsuite.Decisions;
+import org.benchmarx.examples.ecore2sql.testsuite.Decisions;
+import org.benchmarx.sql.core.SQLComparator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -25,18 +29,17 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
+
 import de.ikv.emf.qvt.EMFQvtProcessorImpl;
 import de.ikv.medini.qvt.QVTProcessorConsts;
-import org.benchmarx.pdb1.core.Pdb1Comparator;
-import org.benchmarx.pdb2.core.Pdb2Comparator;
-import pdb1.Pdb1Factory;
+
+import sql.Schema;
+import sql.SqlPackage;
 import uk.ac.kent.cs.kmf.util.ILog;
 import uk.ac.kent.cs.kmf.util.OutputStreamLog;
 
-public class MediniQVTPdb12Pdb2 extends BXToolForEMF<pdb1.Database, pdb2.Database, Decisions> {
-	private static final String RULESET = "pdb12pdb2.qvt";
-	// Version as presented in the BX 2017 paper
-	// Switch to families2persons.qvt for the version with top level relations only
+public class MediniQVTEcore2SQL extends BXToolForEMF<EPackage, Schema, Decisions> {
+	private static final String RULESET = "ecore2sql1.qvt";
 
 	private ILog logger;
 	private EMFQvtProcessorImpl processorImpl;
@@ -46,8 +49,8 @@ public class MediniQVTPdb12Pdb2 extends BXToolForEMF<pdb1.Database, pdb2.Databas
 	private String basePath;
 	private String transformation;
 	private FileReader qvtRuleSet;
-	private static final String fwdDir = "db2";
-	private static final String bwdDir = "db1";
+	private static final String fwdDir = "sqlModel";
+	private static final String bwdDir = "ecoreModel";
 	
 	private static final String RESULTPATH = "results/medini";
 	
@@ -56,18 +59,18 @@ public class MediniQVTPdb12Pdb2 extends BXToolForEMF<pdb1.Database, pdb2.Databas
 		return "MediniQVT";
 	}
 	
-	public MediniQVTPdb12Pdb2() {
-		super(new Pdb1Comparator(), new Pdb2Comparator());
+	public MediniQVTEcore2SQL() {
+		super(new EcoreComparator(), new SQLComparator());
 		
 		logger = new OutputStreamLog(new PrintStream(new NullOutputStream())); 
 		// logger = new OutputStreamLog(System.err); 
 		
 		processorImpl = new EMFQvtProcessorImpl(this.logger);
 		processorImpl.setProperty(QVTProcessorConsts.PROP_DEBUG, "true");
-		basePath = "./src/org/benchmarx/examples/pdb12pdb2/implementations/medini/base/";
+		basePath = "./src/org/benchmarx/examples/ecore2sql/implementations/medini/base/";
 		
 		// Tell the QVT engine, which transformation to execute
-		transformation = "pdb12pdb2";
+		transformation = "ecore2sql1";
 
 		// Tell the QVT engine a directory to work in - e.g. to store the trace (meta)models
 		File tracesFile = new File(basePath + "traces/trace.trafo");
@@ -83,7 +86,7 @@ public class MediniQVTPdb12Pdb2 extends BXToolForEMF<pdb1.Database, pdb2.Databas
 	@Override
 	public void initiateSynchronisationDialogue() {
 		// delete content of traces folder
-		File tracesFolder = new File("./src/org/benchmarx/examples/pdb12pdb2/implementations/medini/base/traces/");
+		File tracesFolder = new File("./src/org/benchmarx/examples/ecore2sql/implementations/medini/base/traces/");
 		final File[] files = tracesFolder.listFiles();
 		if (files != null) {
 			for (File f : files) {
@@ -124,7 +127,7 @@ public class MediniQVTPdb12Pdb2 extends BXToolForEMF<pdb1.Database, pdb2.Databas
 		URI directory = URI.createFileURI(basePath + "traces");
 		this.preExecution(modelResources, directory);
 		
-		source.getContents().add(Pdb1Factory.eINSTANCE.createDatabase());
+		source.getContents().add(EcoreFactory.eINSTANCE.createEPackage());
 		launchFWD();
 	}
 
@@ -142,7 +145,7 @@ public class MediniQVTPdb12Pdb2 extends BXToolForEMF<pdb1.Database, pdb2.Databas
 	 * @param edit : the source edit delta
 	 */
 	@Override
-	public void performAndPropagateTargetEdit(Consumer<pdb2.Database> edit) {
+	public void performAndPropagateTargetEdit(Consumer<Schema> edit) {
 		edit.accept(getTargetModel());
 		launchBWD();
 	}
@@ -153,19 +156,19 @@ public class MediniQVTPdb12Pdb2 extends BXToolForEMF<pdb1.Database, pdb2.Databas
 	 * @param edit : the source edit delta
 	 */
 	@Override
-	public void performAndPropagateSourceEdit(Consumer<pdb1.Database> edit) {
+	public void performAndPropagateSourceEdit(Consumer<EPackage> edit) {
 		edit.accept(getSourceModel());
 		launchFWD();
 	}
 
 	@Override
-	public pdb1.Database getSourceModel() {
-		return (pdb1.Database) source.getContents().get(0);
+	public EPackage getSourceModel() {
+		return (EPackage) source.getContents().get(0);
 	}
 
 	@Override
-	public pdb2.Database getTargetModel() {
-		return (pdb2.Database) target.getContents().get(0);
+	public Schema getTargetModel() {
+		return (Schema) target.getContents().get(0);
 	}
 	
 	@Override
@@ -250,8 +253,8 @@ public class MediniQVTPdb12Pdb2 extends BXToolForEMF<pdb1.Database, pdb2.Databas
 	 * @return
 	 */
 	protected void collectMetaModels(Collection<EPackage> metaPackages) {
-		metaPackages.add(pdb1.Pdb1Package.eINSTANCE);
-		metaPackages.add(pdb2.Pdb2Package.eINSTANCE);
+		metaPackages.add(EcorePackage.eINSTANCE);
+		metaPackages.add(SqlPackage.eINSTANCE);
 	}
 	
 	/**
@@ -287,7 +290,7 @@ public class MediniQVTPdb12Pdb2 extends BXToolForEMF<pdb1.Database, pdb2.Databas
 	 * @param edit : the edit delta
 	 */
 	@Override
-	public void performIdleTargetEdit(Consumer<pdb2.Database> edit) {
+	public void performIdleTargetEdit(Consumer<Schema> edit) {
 		edit.accept(getTargetModel());
 	}
 
@@ -297,7 +300,7 @@ public class MediniQVTPdb12Pdb2 extends BXToolForEMF<pdb1.Database, pdb2.Databas
 	 * @param edit : the edit delta
 	 */
 	@Override
-	public void performIdleSourceEdit(Consumer<pdb1.Database> edit) {
+	public void performIdleSourceEdit(Consumer<EPackage> edit) {
 		edit.accept(getSourceModel());
 	}
 }

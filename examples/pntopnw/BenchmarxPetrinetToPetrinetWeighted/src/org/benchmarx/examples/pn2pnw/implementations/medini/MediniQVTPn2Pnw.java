@@ -63,8 +63,7 @@ public class MediniQVTPn2Pnw extends BXToolForEMF<pn.Net, pnw.Net, Decisions> {
 		
 		processorImpl = new EMFQvtProcessorImpl(this.logger);
 		processorImpl.setProperty(QVTProcessorConsts.PROP_DEBUG, "true");
-		//basePath = "./src/org/benchmarx/examples/set2oset/implementations/medini/base/";
-		basePath = "./src/de/ubt/ai1/m2m/pn2pnw/implementations/medini/base/";
+		basePath = "./src/org/benchmarx/examples/pn2pnw/implementations/medini/base/";
 		
 		// Tell the QVT engine, which transformation to execute
 		transformation = "pn2pnw";
@@ -83,7 +82,7 @@ public class MediniQVTPn2Pnw extends BXToolForEMF<pn.Net, pnw.Net, Decisions> {
 	@Override
 	public void initiateSynchronisationDialogue() {
 		// delete content of traces folder
-		File tracesFolder = new File("./src/de/ubt/ai1/m2m/pn2pnw/implementations/medini/base/traces/");
+		File tracesFolder = new File("./src/org/benchmarx/examples/pn2pnw/implementations/medini/base/traces/");
 		final File[] files = tracesFolder.listFiles();
 		if (files != null) {
 			for (File f : files) {

@@ -64,8 +64,7 @@ public class MediniQVTGantt2CPM extends BXToolForEMF<GanttDiagram, CPMNetwork, D
 		
 		processorImpl = new EMFQvtProcessorImpl(this.logger);
 		processorImpl.setProperty(QVTProcessorConsts.PROP_DEBUG, "true");
-		//basePath = "./src/org/benchmarx/examples/set2oset/implementations/medini/base/";
-		basePath = "./src/de/ubt/ai1/m2m/gantt2cpm/implementations/medini/base/";
+		basePath = "./src/org/benchmarx/examples/gantt2cpm/implementations/medini/base/";
 		
 		// Tell the QVT engine, which transformation to execute
 		transformation = "gantt2cpm";
@@ -84,7 +83,7 @@ public class MediniQVTGantt2CPM extends BXToolForEMF<GanttDiagram, CPMNetwork, D
 	@Override
 	public void initiateSynchronisationDialogue() {
 		// delete content of traces folder
-		File tracesFolder = new File("./src/de/ubt/ai1/m2m/gantt2cpm/implementations/medini/base/traces/");
+		File tracesFolder = new File("./src/org/benchmarx/examples/gantt2cpm/implementations/medini/base/traces/");
 		final File[] files = tracesFolder.listFiles();
 		if (files != null) {
 			for (File f : files) {

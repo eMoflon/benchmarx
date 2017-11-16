@@ -63,8 +63,7 @@ public class MediniQVTBag12Bag2 extends BXToolForEMF<bags1.MyBag, bags2.MyBag, D
 		
 		processorImpl = new EMFQvtProcessorImpl(this.logger);
 		processorImpl.setProperty(QVTProcessorConsts.PROP_DEBUG, "true");
-		//basePath = "./src/org/benchmarx/examples/set2oset/implementations/medini/base/";
-		basePath = "./src/de/ubt/ai1/m2m/bag12bag2/implementations/medini/base/";
+		basePath = "./src/org/benchmarx/examples/bag12bag2/implementations/medini/base/";
 		
 //		// Tell the QVT engine, which transformation to execute
 //		transformation = "set2oset";
@@ -83,7 +82,7 @@ public class MediniQVTBag12Bag2 extends BXToolForEMF<bags1.MyBag, bags2.MyBag, D
 	@Override
 	public void initiateSynchronisationDialogue() {
 		// delete content of traces folder
-		File tracesFolder = new File("./src/de/ubt/ai1/m2m/bag12bag2/implementations/medini/base/traces/");
+		File tracesFolder = new File("./src/org/benchmarx/examples/bag12bag2/implementations/medini/base/traces/");
 		final File[] files = tracesFolder.listFiles();
 		if (files != null) {
 			for (File f : files) {
