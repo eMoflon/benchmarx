@@ -69,10 +69,16 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t     ");
-        _builder.append("familyName = \"");
-        String _name = f.getName();
-        _builder.append(_name, "\t\t     ");
-        _builder.append("\"");
+        _builder.append("familyName = ");
+        {
+          if (this.checkAttributeValues) {
+            _builder.append("\"");
+            String _name = f.getName();
+            _builder.append(_name, "\t\t     ");
+            _builder.append("\"");
+          } else {
+          }
+        }
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t    ");
