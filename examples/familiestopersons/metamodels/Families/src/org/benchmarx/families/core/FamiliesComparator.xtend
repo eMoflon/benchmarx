@@ -39,7 +39,7 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
 		    «comparator.normalize(sortedList)»
 			«FOR f : sortedList SEPARATOR ", "»
 			Family {
-				     familyName = "«f.name»"
+				     familyName = «IF checkAttributeValues»"«f.name»"«ELSE»«ENDIF»
 				    ,father     = «IF checkAttributeValues»«maybeFamilyMember(f.father)»«ELSE»«ENDIF»
 				    ,mother     = «IF checkAttributeValues»«maybeFamilyMember(f.mother)»«ELSE»«ENDIF»
 			«val List<FamilyMember> sortedListOfSon = new ArrayList<FamilyMember>(f.sons)»
