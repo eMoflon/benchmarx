@@ -31,6 +31,8 @@ public class EMFUtil {
 		return (M)loadExpectedResource(path, resourceSet).getContents().get(0);
 	}
 	
+	/** Please supply a configured resource set and use {@link #loadExpectedModel(String, ResourceSet)} instead */
+	@Deprecated
 	public static <M> M loadExpectedModel(String path){
 		ResourceSet resourceSet = new ResourceSetImpl();
 		return loadExpectedModel(path, resourceSet);
