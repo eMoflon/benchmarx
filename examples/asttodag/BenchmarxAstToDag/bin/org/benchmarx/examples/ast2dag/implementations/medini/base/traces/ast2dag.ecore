@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ast2dag" nsURI="urn:ast2dag.ecore" nsPrefix="ast2dag">
+  <eClassifiers xsi:type="ecore:EClass" name="Model2Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Model"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Model"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression2Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_expression">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Expression"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_expression">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Expression"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable2Variable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_variable">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Variable"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_variable">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Variable"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Model"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Model"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Number2Number">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_number">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Number"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_number">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Number"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Model"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Model"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operator2Operator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ast_op">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EEnumerator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Model"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Model"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_left">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Expression"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_right">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Expression"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_left">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Expression"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_right">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Expression"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

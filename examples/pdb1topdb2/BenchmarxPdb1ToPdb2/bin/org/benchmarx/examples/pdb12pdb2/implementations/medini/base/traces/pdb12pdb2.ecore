@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pdb12pdb2" nsURI="urn:pdb12pdb2.ecore" nsPrefix="pdb12pdb2">
+  <eClassifiers xsi:type="ecore:EClass" name="Database2Database">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="database1">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pdb1.ecore#//Database"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="database2">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pdb2.ecore#//Database"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Person2Person">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="person1">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pdb1.ecore#//Person"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="person2">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pdb2.ecore#//Person"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="firstName">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastName">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="birthday">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="placeOfBirth">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="database1">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pdb1.ecore#//Database"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="database2">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.pdb2.ecore#//Database"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

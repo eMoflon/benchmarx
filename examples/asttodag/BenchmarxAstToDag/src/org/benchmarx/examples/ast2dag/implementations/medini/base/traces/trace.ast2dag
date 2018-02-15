@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ast2dag:Model2Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ast2dag="urn:ast2dag.ecore">
+  <ast href="source.xmi#/"/>
+  <dag href="target.xmi#/"/>
+</ast2dag:Model2Model>

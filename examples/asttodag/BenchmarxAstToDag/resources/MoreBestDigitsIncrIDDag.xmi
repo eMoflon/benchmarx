@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<de.ubt.ai1.m2m:Model
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:de.ubt.ai1.m2m="http://de.ubt.ai1.bw.qvt.examples.dag.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.dag.ecore ../../de.ubt.ai1.m2m.expressionDAG/model/ExpressionDAG.ecore">
+  <exprs xsi:type="de.ubt.ai1.m2m:Operator"
+      leftInverse="//@exprs.1 //@exprs.4"
+      incrementalID="incrTestValue"
+      left="//@exprs.3"
+      right="//@exprs.2"
+      op="Multiply"/>
+  <exprs xsi:type="de.ubt.ai1.m2m:Operator"
+      incrementalID="incrTestValue"
+      left="//@exprs.0"
+      right="//@exprs.4"
+      op="Subtract"/>
+  <exprs xsi:type="de.ubt.ai1.m2m:Variable"
+      rightInverse="//@exprs.0"
+      incrementalID="incrTestValue"
+      name="sieben"/>
+  <exprs xsi:type="de.ubt.ai1.m2m:Number"
+      leftInverse="//@exprs.0"
+      incrementalID="incrTestValue"
+      value="7"/>
+  <exprs xsi:type="de.ubt.ai1.m2m:Operator"
+      rightInverse="//@exprs.1"
+      left="//@exprs.0"
+      right="//@exprs.5"
+      op="Subtract"/>
+  <exprs xsi:type="de.ubt.ai1.m2m:Variable"
+      rightInverse="//@exprs.4"
+      name="zweiundvierzig"/>
+</de.ubt.ai1.m2m:Model>

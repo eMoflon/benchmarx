@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated PersonsDB2 -->
+      <package
+            uri="http://de.ubt.ai1.bw.qvt.examples.pdb2.ecore"
+            class="pdb2.Pdb2Package"
+            genModel="model/PersonsDB2.genmodel"/>
+   </extension>
+
+</plugin>

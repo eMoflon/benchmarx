@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:bag12bag2="urn:bag12bag2.ecore">
+  <bag12bag2:Bag2Bag>
+    <bag1 href="source.xmi#/2"/>
+    <bag2 href="target.xmi#/2"/>
+  </bag12bag2:Bag2Bag>
+  <bag12bag2:Bag2Bag>
+    <bag1 href="source.xmi#/1"/>
+    <bag2 href="target.xmi#/1"/>
+  </bag12bag2:Bag2Bag>
+  <bag12bag2:Bag2Bag>
+    <bag1 href="source.xmi#/0"/>
+    <bag2 href="target.xmi#/0"/>
+  </bag12bag2:Bag2Bag>
+  <bag12bag2:Element2Element>
+    <element1 href="source.xmi#/0/@elements.0"/>
+    <element2 href="target.xmi#/0/@elements.0"/>
+    <bag1 href="source.xmi#/0"/>
+    <bag2 href="target.xmi#/0"/>
+  </bag12bag2:Element2Element>
+  <bag12bag2:Element2Element>
+    <element1 href="source.xmi#/0/@elements.1"/>
+    <element2 href="target.xmi#/0/@elements.0"/>
+    <bag1 href="source.xmi#/0"/>
+    <bag2 href="target.xmi#/0"/>
+  </bag12bag2:Element2Element>
+  <bag12bag2:Element2Element>
+    <element1 href="source.xmi#/0/@elements.2"/>
+    <element2 href="target.xmi#/0/@elements.0"/>
+    <bag1 href="source.xmi#/0"/>
+    <bag2 href="target.xmi#/0"/>
+  </bag12bag2:Element2Element>
+  <bag12bag2:Element2Element>
+    <element1 href="source.xmi#/0/@elements.3"/>
+    <element2 href="target.xmi#/0/@elements.0"/>
+    <bag1 href="source.xmi#/0"/>
+    <bag2 href="target.xmi#/0"/>
+  </bag12bag2:Element2Element>
+  <bag12bag2:Element2Element>
+    <element1 href="source.xmi#/0/@elements.4"/>
+    <element2 href="target.xmi#/0/@elements.0"/>
+    <bag1 href="source.xmi#/0"/>
+    <bag2 href="target.xmi#/0"/>
+  </bag12bag2:Element2Element>
+  <bag12bag2:Element2Element>
+    <element1 href="source.xmi#/0/@elements.5"/>
+    <element2 href="target.xmi#/0/@elements.0"/>
+    <bag1 href="source.xmi#/0"/>
+    <bag2 href="target.xmi#/0"/>
+  </bag12bag2:Element2Element>
+  <bag12bag2:Element2Element>
+    <element1 href="source.xmi#/0/@elements.6"/>
+    <element2 href="target.xmi#/0/@elements.1"/>
+    <bag1 href="source.xmi#/0"/>
+    <bag2 href="target.xmi#/0"/>
+  </bag12bag2:Element2Element>
+  <bag12bag2:Element2Element>
+    <element1 href="source.xmi#/0/@elements.7"/>
+    <element2 href="target.xmi#/0/@elements.1"/>
+    <bag1 href="source.xmi#/0"/>
+    <bag2 href="target.xmi#/0"/>
+  </bag12bag2:Element2Element>
+</xmi:XMI>

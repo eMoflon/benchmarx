@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ExpressionAST -->
+      <package
+            uri="http://de.ubt.ai1.bw.qvt.examples.ast.ecore"
+            class="ast.AstPackage"
+            genModel="model/ExpressionAST.genmodel"/>
+   </extension>
+
+</plugin>

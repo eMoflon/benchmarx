@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test
+Bundle-SymbolicName: BenchmarxBag1ToBag2
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="2.12.0",
+ org.apache.log4j;bundle-version="1.2.15",
+ org.eclipse.emf.compare;bundle-version="3.3.1",
+ Benchmarx;bundle-version="1.0.0"
+Import-Package: org.apache.commons.io.output

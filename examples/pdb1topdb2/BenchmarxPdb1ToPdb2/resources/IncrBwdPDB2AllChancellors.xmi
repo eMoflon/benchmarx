@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pdb2:Database
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:pdb2="http://de.ubt.ai1.bw.qvt.examples.pdb2.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.pdb2.ecore ../../de.ubt.ai1.m2m.pdb2/model/PersonsDB2.ecore"
+    name="Bundeskanzler">
+  <persons name="Konrad Hermann Joseph Adenauer"
+      birthday="05.01.1876"
+      placeOfBirth="Koeln"
+      id="KA"/>
+  <persons name="Ludwig Wilhelm Erhard"
+      birthday="04.02.1897"
+      placeOfBirth="Fuerth"
+      id="LE"/>
+  <persons name="Kurt Georg Kiesinger"
+      birthday="06.04.1904"
+      placeOfBirth="Ebingen"
+      id="KK"/>
+  <persons name="Willy Brandt"
+      birthday="18.12.1913"
+      placeOfBirth="Luebeck"
+      id="WB"/>
+  <persons name="Helmut Heinrich Waldemar Schmidt"
+      birthday="23.12.1918"
+      placeOfBirth="Hamburg"
+      id="HS"/>
+  <persons name="Helmut Josef Michael Kohl"
+      birthday="03.04.1930"
+      placeOfBirth="Ludwigshafen am Rhein"
+      id="HK"/>
+  <persons name="Gerhard Fritz Kurt Schroeder"
+      birthday="07.04.1944"
+      placeOfBirth="Mossenberg-Woehren"
+      id="GS"/>
+  <persons name="Angela Dorothea Merkel"
+      birthday="17.07.1954"
+      placeOfBirth="Hamburg"
+      id="AM"/>
+</pdb2:Database>

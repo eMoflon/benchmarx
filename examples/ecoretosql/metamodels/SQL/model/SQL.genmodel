@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.ubt.ai1.m2m.sql/src" modelPluginID="de.ubt.ai1.m2m.sql"
+    modelName="SQL" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>SQL.ecore</foreignModel>
+  <genPackages prefix="Sql" basePackage="de.ubt.ai1.m2m" disposableProviderFactory="true"
+      ecorePackage="SQL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SQL.ecore#//Condition">
+      <genEnumLiterals ecoreEnumLiteral="SQL.ecore#//Condition/Delete"/>
+      <genEnumLiterals ecoreEnumLiteral="SQL.ecore#//Condition/Update"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SQL.ecore#//Action">
+      <genEnumLiterals ecoreEnumLiteral="SQL.ecore#//Action/Cascade"/>
+      <genEnumLiterals ecoreEnumLiteral="SQL.ecore#//Action/SetNull"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SQL.ecore#//Property">
+      <genEnumLiterals ecoreEnumLiteral="SQL.ecore#//Property/NotNull"/>
+      <genEnumLiterals ecoreEnumLiteral="SQL.ecore#//Property/AutoIncrement"/>
+      <genEnumLiterals ecoreEnumLiteral="SQL.ecore#//Property/Unique"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="SQL.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SQL.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="SQL.ecore#//Table">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SQL.ecore#//Table/ownedColumns"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SQL.ecore#//Table/ownedPrimaryKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SQL.ecore#//Table/ownedForeignKeys"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SQL.ecore#//Table/referencingForeignKeys"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference SQL.ecore#//Table/owningSchema"/>
+    </genClasses>
+    <genClasses ecoreClass="SQL.ecore#//Column">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference SQL.ecore#//Column/owningTable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SQL.ecore#//Column/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SQL.ecore#//Column/keys"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SQL.ecore#//Column/properties"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="SQL.ecore#//Key">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SQL.ecore#//Key/column"/>
+    </genClasses>
+    <genClasses ecoreClass="SQL.ecore#//PrimaryKey">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference SQL.ecore#//PrimaryKey/owningTable"/>
+    </genClasses>
+    <genClasses ecoreClass="SQL.ecore#//ForeignKey">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SQL.ecore#//ForeignKey/referencedTable"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference SQL.ecore#//ForeignKey/owningTable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SQL.ecore#//ForeignKey/ownedEvents"/>
+    </genClasses>
+    <genClasses ecoreClass="SQL.ecore#//Event">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SQL.ecore#//Event/condition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SQL.ecore#//Event/action"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference SQL.ecore#//Event/owningForeignKey"/>
+    </genClasses>
+    <genClasses ecoreClass="SQL.ecore#//Schema">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SQL.ecore#//Schema/ownedTables"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="SQL.ecore#//ModelElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SQL.ecore#//ModelElement/ownedAnnotations"/>
+    </genClasses>
+    <genClasses ecoreClass="SQL.ecore#//Annotation">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference SQL.ecore#//Annotation/owningModelElement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SQL.ecore#//Annotation/annotation"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

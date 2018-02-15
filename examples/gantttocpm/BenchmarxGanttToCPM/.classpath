@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.xtend.XTEND_CONTAINER"/>
+	<classpathentry excluding="de/ubt/ai1/m2m/gantt2cpm/test/" kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CPM"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Gantt"/>
+	<classpathentry kind="lib" path="lib/PlainJavaUbtGantt2Cpm.jar"/>
+	<classpathentry kind="lib" path="lib/PlainJavaUbtUtil.jar"/>
+	<classpathentry kind="lib" path="lib/mediniQVT/mediniQVT.jar"/>
+	<classpathentry kind="lib" path="lib/mediniQVT/qvtemf.jar"/>
+	<classpathentry kind="lib" path="lib/BXtend-Gantt2CPM.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

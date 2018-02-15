@@ -1,0 +1,103 @@
+transformation pn2pnw (petriNet : pn, weightedPetriNet : pnw) {
+	/* Bidirectional transformation between unweighted and weighted Petri nets.
+	 * Each link from/to a place/transition is mapped to an edge object with
+	 * weight 1. The backward transformation ignores weights.
+	 */
+
+	key pn::Place {name, net}; key pn::Transition {name, net};
+	key pnw::Place {name, net}; key pnw::Transition {name, net};
+
+	top relation Net2Net {
+		name : String;
+		
+		enforce domain petriNet pn_net : pn::Net {
+			name = name
+		};
+		
+		enforce domain weightedPetriNet pnw_net : pnw::Net {
+			name = name
+		};
+	}
+	
+	top relation Place2Place {
+		name : String;
+		noOfTokens : Integer;
+		
+		enforce domain petriNet pn_place : pn::Place {
+			name = name,
+			noOfTokens = noOfTokens,
+			net = pn_net : pn::Net {}
+		};
+		
+		enforce domain weightedPetriNet pnw_place : pnw::Place {
+			name = name,
+			noOfTokens = noOfTokens,
+			net = pnw_net : pnw::Net{}
+		};
+		
+		when {
+			Net2Net(pn_net, pnw_net);
+		}
+	}
+	
+	top relation Transition2Transition {
+		name : String;
+		
+		enforce domain petriNet pn_transition : pn::Transition {
+			name = name,
+			net = pn_net : pn::Net {}
+		};
+		
+		enforce domain weightedPetriNet pnw_transition :pnw::Transition {
+			name = name,
+			net = pnw_net : pnw::Net {}
+		};
+		
+		when {
+			Net2Net(pn_net, pnw_net);
+		}
+	}
+	
+	top relation PTReference2PTEdge {
+		enforce domain petriNet pn_place : pn::Place {
+			net = pn_net : pn::Net {},
+			trgP2T = pn_transition : pn::Transition {}
+		};
+		
+		enforce domain weightedPetriNet pnw_place : pnw::Place {
+			net = pnw_net : pnw::Net {},
+			outPTEdges = pnw_pTEdge : pnw::PTEdge {
+				net = pnw_net,
+				toTransition = pnw_transition : pnw::Transition {}
+			}
+		};
+		
+		when {
+			Net2Net(pn_net, pnw_net);
+			Place2Place(pn_place, pnw_place);
+			Transition2Transition(pn_transition, pnw_transition);
+		}
+	}
+	
+	top relation TPReference2TPEdge {
+		enforce domain petriNet pn_transition : pn::Transition {
+			net = pn_net :pn::Net {},
+			trgT2P = pn_place : pn::Place {}
+		};
+		
+		enforce domain weightedPetriNet pnw_transition : pnw::Transition {
+			net = pnw_net : pnw::Net {},
+			outTPEdges = pnw_tPEdge : pnw::TPEdge {
+				net = pnw_net,
+				toPlace = pnw_place : pnw::Place {}
+			}
+		};
+
+		when {
+			Net2Net(pn_net, pnw_net);
+			Place2Place(pn_place, pnw_place);
+			Transition2Transition(pn_transition, pnw_transition);
+		}
+	}		
+				
+}

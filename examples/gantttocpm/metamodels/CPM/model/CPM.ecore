@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cpm" nsURI="http://de.ubt.ai1.bw.qvt.examples.cpm.ecore" nsPrefix="de.ubt.ai1.m2m">
+  <eClassifiers xsi:type="ecore:EClass" name="CPMNetwork">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//Element" containment="true" eOpposite="#//Element/network"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="incrementalID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Element" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="network" lowerBound="1"
+        eType="#//CPMNetwork" eOpposite="#//CPMNetwork/elements"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingActivities" upperBound="-1"
+        eType="#//Activity" eOpposite="#//Activity/sourceEvent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingActivities" upperBound="-1"
+        eType="#//Activity" eOpposite="#//Activity/targetEvent"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Activity" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceEvent" lowerBound="1"
+        eType="#//Event" eOpposite="#//Event/outgoingActivities"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetEvent" lowerBound="1"
+        eType="#//Event" eOpposite="#//Event/incomingActivities"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+</ecore:EPackage>

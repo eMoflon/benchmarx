@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<osets:MyOrderedSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:osets="http://de.ubt.ai1.bw.qvt.examples.osets.ecore" name="Alphabet">
+  <elements value="A" previous="//@elements.1"/>
+  <elements value="B" next="//@elements.0" previous="//@elements.2"/>
+  <elements value="C" next="//@elements.1" previous="//@elements.3"/>
+  <elements value="D" next="//@elements.2"/>
+</osets:MyOrderedSet>

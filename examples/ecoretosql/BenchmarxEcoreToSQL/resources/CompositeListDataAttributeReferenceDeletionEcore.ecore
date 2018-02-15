@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="CompositeList" nsURI="CompositeList" nsPrefix="CompositeList">
+  <eClassifiers xsi:type="ecore:EClass" name="List">
+    <eOperations name="add" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="newElement" eType="#//DataElement"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//Node"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true">
+    <eOperations name="addLast" eType="#//Node">
+      <eParameters name="newNode" eType="#//DataNode"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataNode" eSuperTypes="#//Node">
+    <eOperations name="addLast" eType="#//Node">
+      <eParameters name="newNode" eType="#//DataNode"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="follower" eType="#//Node"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Leaf" eSuperTypes="#//Node">
+    <eOperations name="addLast" eType="#//Node">
+      <eParameters name="newNode" eType="#//DataNode"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataElement" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Pair" eSuperTypes="#//DataElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Key"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Value"/>
+</ecore:EPackage>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<de.ubt.ai1.m2m:GanttDiagram
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:de.ubt.ai1.m2m="http://de.ubt.ai1.bw.qvt.examples.gantt.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.gantt.ecore ../../de.ubt.ai1.m2m.gantt/model/Gantt.ecore"
+    name="ItalyTankRush">
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      name="build tankbase"
+      duration="5"
+      outgoingDependencies="//@elements.4"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      name="research m15"
+      duration="75"
+      outgoingDependencies="//@elements.5"
+      incomingDependencies="//@elements.4"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      name="spam tanks"
+      duration="8"
+      outgoingDependencies="//@elements.6 //@elements.7"
+      incomingDependencies="//@elements.5"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      name="win game"
+      duration="1"
+      incomingDependencies="//@elements.6 //@elements.7"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Dependency"
+      predecessor="//@elements.0"
+      successor="//@elements.1"
+      offset="6"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Dependency"
+      predecessor="//@elements.1"
+      successor="//@elements.2"
+      dependencyType="StartEnd"
+      offset="84"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Dependency"
+      predecessor="//@elements.2"
+      successor="//@elements.3"
+      dependencyType="EndStart"
+      offset="180"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Dependency"
+      predecessor="//@elements.2"
+      successor="//@elements.3"
+      dependencyType="EndEnd"
+      offset="181"/>
+</de.ubt.ai1.m2m:GanttDiagram>

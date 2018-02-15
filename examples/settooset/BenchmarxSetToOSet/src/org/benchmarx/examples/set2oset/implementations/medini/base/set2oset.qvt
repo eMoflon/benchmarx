@@ -1,0 +1,89 @@
+transformation set2oset(setModel : sets, orderedSetModel : osets) {
+
+	/* Bidirectional transformation from a set to an ordered set.
+	 * Forward and backward transformation are mutually inverse.
+	 * Conceptually, the forward transformation is non-deterministic.
+	 */
+
+	key sets::Element {value, set}; key osets::Element {value, orderedSet};
+	
+	top relation Set2OrderedSet {
+		name : String;
+	
+		enforce domain setModel set : sets::MySet {
+			name = name
+		};
+		
+		enforce domain orderedSetModel orderedSet : osets::MyOrderedSet {
+			name = name
+		};
+	}
+	
+	top relation Element2Element {
+		value : String;
+		
+		enforce domain setModel setElement : sets::Element {
+			set = set : sets::MySet {},
+			value = value
+		};
+		
+		enforce domain orderedSetModel orderedSetElement : osets::Element {
+			orderedSet = orderedSet : osets::MyOrderedSet {},
+			value = value
+		};
+		
+		when {
+			Set2OrderedSet(set, orderedSet);
+		}
+	}
+	
+	top relation PreviousNextElement2PreviousNextElement {
+	
+		enforce domain setModel set : sets::MySet {
+			elements = previousSetElement : sets::Element {},
+			elements = nextSetElement : sets::Element {}
+		};
+		
+		enforce domain orderedSetModel orderedSet : osets::MyOrderedSet {
+			elements = previousOrderedSetElement : osets::Element {},
+			elements = nextOrderedSetElement : osets::Element {
+				previous = previousOrderedSetElement
+			}
+		};
+		
+		when {
+			Set2OrderedSet(set, orderedSet);
+			Element2Element(previousSetElement, previousOrderedSetElement);
+			Element2Element(nextSetElement, nextOrderedSetElement);
+			previousSetElement <> nextSetElement;
+			previousOrderedSetElement <> nextOrderedSetElement;
+			previousOrderedSetElement.next.oclIsUndefined();
+			nextOrderedSetElement.previous.oclIsUndefined();
+			predecessors(previousOrderedSetElement)->excludes(nextOrderedSetElement);
+		}	
+	}
+	/* This relation is needed only for forward enforce transformations. It builds the chain
+	 * of elements as follows: For a set with n elements, there are n trivial chains in
+	 * the initial state (before the first application of the relation). Each application
+	 * concatenates two chains, reducing the number of chains by 1. Cycles are excluded
+	 * by checking whether the next element is a transitive predecessor of the previous
+	 * element. If there is only one chain left, the relation is no longer applicable.
+	 * In all remaining kinds of transformation execution, the relation is not applicable:
+	 * - In the backward direction, the when clause requires that the previous element
+	 *   has no successor and the next element has no predecessor. This is a contradiction
+	 *   to the domain pattern, which requires a link from the previous to the next element.
+	 * - In a forward checking transformation, the when clause is not satisfiable: Since the
+	 *   chain of elements is already present in the target model, the previous and the next
+	 *   element will match only the last and the first element, respectively. However, these
+	 *   elements belong to the same chain and thus violate the cycle exclusion constraint.
+	 */
+	
+	query predecessors(orderedSetElement : osets::Element) : Set(osets::Element) {
+		if orderedSetElement.previous.oclIsUndefined() then
+			Set {}
+		else
+			predecessors(orderedSetElement.previous)->including(orderedSetElement.previous)
+		endif	
+	}
+	
+}

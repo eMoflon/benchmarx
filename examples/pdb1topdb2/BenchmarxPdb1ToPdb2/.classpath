@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/PDB1"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/PDB2"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="lib/PlainJavaUbtPdb12Pdb2.jar"/>
+	<classpathentry kind="lib" path="lib/PlainJavaUbtUtil.jar"/>
+	<classpathentry kind="lib" path="lib/mediniQVT/mediniQVT.jar"/>
+	<classpathentry kind="lib" path="lib/mediniQVT/qvtemf.jar"/>
+	<classpathentry kind="lib" path="lib/BXtend-PDB12PDB2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

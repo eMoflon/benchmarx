@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<de.ubt.ai1.m2m:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:de.ubt.ai1.m2m="http://de.ubt.ai1.bw.qvt.examples.ast.ecore">
+  <expr xsi:type="de.ubt.ai1.m2m:Operator">
+    <left xsi:type="de.ubt.ai1.m2m:Operator">
+      <left xsi:type="de.ubt.ai1.m2m:Variable" name="Answer to the Ultimate Question of Life, The Universe, and Everything"/>
+      <right xsi:type="de.ubt.ai1.m2m:Variable" name="Deep Thought"/>
+    </left>
+    <right xsi:type="de.ubt.ai1.m2m:Variable" name="7.5 million years"/>
+  </expr>
+</de.ubt.ai1.m2m:Model>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.ubt.ai1.m2m.bag2/src" modelPluginID="de.ubt.ai1.m2m.bag2"
+    modelName="Bags2" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>Bags2.ecore</foreignModel>
+  <genPackages prefix="Bags2" disposableProviderFactory="true" ecorePackage="Bags2.ecore#/">
+    <genClasses ecoreClass="Bags2.ecore#//MyBag">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Bags2.ecore#//MyBag/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="Bags2.ecore#//Element">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Bags2.ecore#//Element/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Bags2.ecore#//Element/multiplicity"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Bags2.ecore#//Element/bag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Bags2.ecore#//Element/incrementalID"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

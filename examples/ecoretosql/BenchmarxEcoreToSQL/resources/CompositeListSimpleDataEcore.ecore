@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="CompositeList" nsURI="CompositeList" nsPrefix="CompositeList">
+  <eClassifiers xsi:type="ecore:EClass" name="List">
+    <eOperations name="add" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="newElement" eType="#//DataElement"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true">
+    <eOperations name="addLast" eType="#//Node">
+      <eParameters name="newNode" eType="#//DataNode"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataNode" eSuperTypes="#//Node">
+    <eOperations name="addLast" eType="#//Node">
+      <eParameters name="newNode" eType="#//DataNode"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="follower" eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="data" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Leaf" eSuperTypes="#//Node">
+    <eOperations name="addLast" eType="#//Node">
+      <eParameters name="newNode" eType="#//DataNode"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataElement" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Pair" eSuperTypes="#//DataElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
+        eType="#//Value" containment="true" eOpposite="#//Value/pair"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="#//Key" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Key"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Value">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pair" eType="#//Pair" eOpposite="#//Pair/values"/>
+  </eClassifiers>
+</ecore:EPackage>

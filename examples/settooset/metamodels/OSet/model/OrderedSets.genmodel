@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.ubt.ai1.m2m.oset/src" modelPluginID="de.ubt.ai1.m2m.oset"
+    modelName="OrderedSets" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>OrderedSets.ecore</foreignModel>
+  <genPackages prefix="Osets" disposableProviderFactory="true" ecorePackage="OrderedSets.ecore#/">
+    <genClasses ecoreClass="OrderedSets.ecore#//MyOrderedSet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OrderedSets.ecore#//MyOrderedSet/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OrderedSets.ecore#//MyOrderedSet/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="OrderedSets.ecore#//Element">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OrderedSets.ecore#//Element/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OrderedSets.ecore#//Element/next"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OrderedSets.ecore#//Element/previous"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference OrderedSets.ecore#//Element/orderedSet"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

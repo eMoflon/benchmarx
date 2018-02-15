@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pn" nsURI="http://de.ubt.ai1.bw.qvt.examples.pn.ecore" nsPrefix="pn">
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Net" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//NetElement" containment="true" eOpposite="#//NetElement/net"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="incrementalID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NetElement" abstract="true" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="net" lowerBound="1" eType="#//Net"
+        eOpposite="#//Net/elements"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//NetElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trgT2P" upperBound="-1"
+        eType="#//Place" eOpposite="#//Place/srcT2P"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="srcP2T" upperBound="-1"
+        eType="#//Place" eOpposite="#//Place/trgP2T"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="#//NetElement #//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trgP2T" upperBound="-1"
+        eType="#//Transition" eOpposite="#//Transition/srcP2T"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="srcT2P" upperBound="-1"
+        eType="#//Transition" eOpposite="#//Transition/trgT2P"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noOfTokens" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
+  </eClassifiers>
+</ecore:EPackage>

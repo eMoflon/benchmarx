@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<de.ubt.ai1.m2m:Net
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:de.ubt.ai1.m2m="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.pnw.ecore ../../de.ubt.ai1.m2m.petrinetweighted/model/PetriNetWeighted.ecore"
+    name="LettersAndDigits">
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Place"
+      name="A"
+      outPTEdges="//@elements.3"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Place"
+      name="B"
+      noOfTokens="0"
+      inTPEdges="//@elements.4"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Transition"
+      name="1"
+      outTPEdges="//@elements.4"
+      inPTEdges="//@elements.3"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:PTEdge"
+      weight="4"
+      fromPlace="//@elements.0"
+      toTransition="//@elements.2"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:TPEdge"
+      weight="2"
+      fromTransition="//@elements.2"
+      toPlace="//@elements.1"/>
+</de.ubt.ai1.m2m:Net>

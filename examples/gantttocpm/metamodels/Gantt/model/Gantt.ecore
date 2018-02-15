@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gantt" nsURI="http://de.ubt.ai1.bw.qvt.examples.gantt.ecore"
+    nsPrefix="de.ubt.ai1.m2m">
+  <eClassifiers xsi:type="ecore:EClass" name="GanttDiagram">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//Element" containment="true" eOpposite="#//Element/diagram"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="incrementalID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Element" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="diagram" lowerBound="1"
+        eType="#//GanttDiagram" eOpposite="#//GanttDiagram/elements"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Activity" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingDependencies" upperBound="-1"
+        eType="#//Dependency" eOpposite="#//Dependency/predecessor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingDependencies" upperBound="-1"
+        eType="#//Dependency" eOpposite="#//Dependency/successor"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DependencyType">
+    <eLiterals name="StartStart"/>
+    <eLiterals name="StartEnd" value="1"/>
+    <eLiterals name="EndStart" value="2"/>
+    <eLiterals name="EndEnd" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Dependency" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" lowerBound="1"
+        eType="#//Activity" eOpposite="#//Activity/outgoingDependencies"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="successor" lowerBound="1"
+        eType="#//Activity" eOpposite="#//Activity/incomingDependencies"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dependencyType" lowerBound="1"
+        eType="#//DependencyType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="offset" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+</ecore:EPackage>

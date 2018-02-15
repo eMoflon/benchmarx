@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<de.ubt.ai1.m2m:MyBag
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:de.ubt.ai1.m2m="http://de.ubt.ai1.bw.qvt.examples.bags1.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.bags1.ecore ../../de.ubt.ai1.m2m.bag1/model/Bags1.ecore">
+  <elements
+      value="Beer"/>
+  <elements
+      value="Beer Glass"/>
+  <elements
+      value="Beer"/>
+  <elements
+      value="Beer"/>
+  <elements
+      value="Beer"/>
+  <elements
+      value="Beer"/>
+  <elements
+      value="Beer"/>
+  <elements
+      value="Beer Glass"/>
+</de.ubt.ai1.m2m:MyBag>

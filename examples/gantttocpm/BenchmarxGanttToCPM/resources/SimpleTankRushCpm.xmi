@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<de.ubt.ai1.m2m:CPMNetwork
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:de.ubt.ai1.m2m="http://de.ubt.ai1.bw.qvt.examples.cpm.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.cpm.ecore ../../de.ubt.ai1.m2m.cpm/model/CPM.ecore"
+    name="ItalyTankRush">
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Event"
+      outgoingActivities="//@elements.4"
+      number="1"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Event"
+      outgoingActivities="//@elements.6"
+      incomingActivities="//@elements.4"
+      number="2"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Event"
+      outgoingActivities="//@elements.5"
+      incomingActivities="//@elements.6"
+      number="3"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Event"
+      incomingActivities="//@elements.5"
+      number="4"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      sourceEvent="//@elements.0"
+      targetEvent="//@elements.1"
+      name="spam tanks"
+      duration="8"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      sourceEvent="//@elements.2"
+      targetEvent="//@elements.3"
+      name="win game"
+      duration="1"/>
+  <elements
+      xsi:type="de.ubt.ai1.m2m:Activity"
+      sourceEvent="//@elements.1"
+      targetEvent="//@elements.2"
+      name="spam tanks->win game"
+      duration="180"/>
+</de.ubt.ai1.m2m:CPMNetwork>

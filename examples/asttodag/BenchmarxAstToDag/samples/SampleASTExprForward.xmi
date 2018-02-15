@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ast:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ast="http://de.ubt.ai1.bw.qvt.examples.ast.ecore" xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.ast.ecore ExpressionAST.ecore">
+  <expr xsi:type="ast:Operator" op="Multiply">
+    <left xsi:type="ast:Operator">
+      <left xsi:type="ast:Operator" op="Divide">
+        <left xsi:type="ast:Variable" name="a"/>
+        <right xsi:type="ast:Number" value="10"/>
+      </left>
+      <right xsi:type="ast:Operator" op="Subtract">
+        <left xsi:type="ast:Variable" name="b"/>
+        <right xsi:type="ast:Number" value="10"/>
+      </right>
+    </left>
+    <right xsi:type="ast:Operator">
+      <left xsi:type="ast:Operator" op="Divide">
+        <left xsi:type="ast:Variable" name="a"/>
+        <right xsi:type="ast:Number" value="10"/>
+      </left>
+      <right xsi:type="ast:Operator" op="Subtract">
+        <left xsi:type="ast:Variable" name="b"/>
+        <right xsi:type="ast:Number" value="10"/>
+      </right>
+    </right>
+  </expr>
+</ast:Model>

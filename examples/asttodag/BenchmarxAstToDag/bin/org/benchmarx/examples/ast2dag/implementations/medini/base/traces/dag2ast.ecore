@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dag2ast" nsURI="urn:dag2ast.ecore" nsPrefix="dag2ast">
+  <eClassifiers xsi:type="ecore:EClass" name="RootVariable2Variable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Model"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Model"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_variable">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Variable"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_variable">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Variable"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LeftVariable2Variable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_variable">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Variable"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_variable">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Variable"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RightVariable2Variable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_variable">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Variable"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_variable">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Variable"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RootNumber2Number">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Model"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Model"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_number">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Number"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_number">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Number"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LeftNumber2Number">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_number">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Number"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_number">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Number"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RightNumber2Number">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_number">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Number"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_number">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Number"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RootOperator2Operator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Model"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Model"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dag_op">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EEnumerator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ast_op">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EEnumerator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Operator"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LeftOperator2Operator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dag_op">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EEnumerator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ast_op">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EEnumerator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_leftOperator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_leftOperator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Operator"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RightOperator2Operator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_operator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dag_op">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EEnumerator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ast_op">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EEnumerator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dag_rightOperator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.dag.ecore#//Operator"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ast_rightOperator">
+      <eType xsi:type="ecore:EClass" href="http://de.ubt.ai1.bw.qvt.examples.ast.ecore#//Operator"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

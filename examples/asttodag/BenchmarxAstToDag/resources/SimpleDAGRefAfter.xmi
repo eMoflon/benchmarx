@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<de.ubt.ai1.m2m:Model
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:de.ubt.ai1.m2m="http://de.ubt.ai1.bw.qvt.examples.dag.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.dag.ecore ../../de.ubt.ai1.m2m.expressionDAG/model/ExpressionDAG.ecore">
+  <exprs xsi:type="de.ubt.ai1.m2m:Operator"
+      incrementalID="incrTestValue"
+      left="//@exprs.1"
+      right="//@exprs.1"
+      op="Multiply"/>
+  <exprs xsi:type="de.ubt.ai1.m2m:Operator"
+      leftInverse="//@exprs.0"
+      rightInverse="//@exprs.0"
+      incrementalID="incrTestValue"
+      left="//@exprs.2"
+      right="//@exprs.3"/>
+  <exprs xsi:type="de.ubt.ai1.m2m:Variable"
+      leftInverse="//@exprs.1"
+      incrementalID="incrTestValue"
+      name="a"/>
+  <exprs xsi:type="de.ubt.ai1.m2m:Number"
+      rightInverse="//@exprs.1"
+      incrementalID="incrTestValue"
+      value="5"/>
+</de.ubt.ai1.m2m:Model>

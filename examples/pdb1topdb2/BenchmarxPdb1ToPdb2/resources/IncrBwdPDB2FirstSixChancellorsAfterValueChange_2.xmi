@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pdb2:Database
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:pdb2="http://de.ubt.ai1.bw.qvt.examples.pdb2.ecore"
+    xsi:schemaLocation="http://de.ubt.ai1.bw.qvt.examples.pdb2.ecore ../../de.ubt.ai1.m2m.pdb2/model/PersonsDB2.ecore"
+    name="Bundeskanzler">
+  <persons name="Heinz Jochen Adenauer"
+      birthday="05.01.1876"
+      placeOfBirth="Koeln"
+      id="KA"/>
+  <persons name="Ludwig Wilhelm Meyer"
+      birthday="04.02.1897"
+      placeOfBirth="Fuerth"
+      id="LE"/>
+  <persons name="Kurt Georg Kiesinger"
+      birthday="01.01.1990"
+      placeOfBirth="Ebingen"
+      id="KK"/>
+  <persons name="Willy Brandt"
+      birthday="18.12.1913"
+      placeOfBirth="Germany"
+      id="WB"/>
+  <persons name="Helmut Heinrich Waldemar Schmidt"
+      birthday="23.12.1918"
+      placeOfBirth="Hamburg"
+      id="Helmut"/>
+  <persons name="Heinz Meyer"
+      birthday="01.01.1990"
+      placeOfBirth="Germany"
+      id="Helmut2"/>
+</pdb2:Database>
