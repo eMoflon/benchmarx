@@ -1,1 +1,4 @@
 /bin/
+/gen/
+/model/*.genmodel
+/xtend-gen/
