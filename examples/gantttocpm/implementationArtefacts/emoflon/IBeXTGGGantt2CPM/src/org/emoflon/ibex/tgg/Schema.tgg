@@ -1,0 +1,42 @@
+// Add imports here
+#import "platform:/resource/CPM/model/CPM.ecore"
+#import "platform:/resource/Gantt/model/Gantt.ecore"
+
+#schema IBeXTGGGantt2CPM
+	
+#source {
+	gantt	
+}
+
+#target { 
+	cpm	
+} 
+
+#correspondence {
+	DiagramToNetwork {
+		#src->GanttDiagram
+		#trg->CPMNetwork
+	}
+	
+	ActivityToActivity {
+		#src->gantt.Activity
+		#trg->cpm.Activity
+	}
+	
+	DependencyToActivity {
+		#src->Dependency
+		#trg->cpm.Activity
+	}
+}
+
+#attributeConditions {
+	#userDefined notADependencyViaNamingConvention(name:EString){
+		#sync: [B]
+		#gen:  [B]
+	}
+	
+	#userDefined setCounter(number:EInt){
+		#sync: [B], [F]
+		#gen: [B], [F]		
+	}
+}

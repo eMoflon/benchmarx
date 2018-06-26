@@ -1,0 +1,65 @@
+#using IBeXTGGGantt2CPM.*
+#using AttrCondDefLibrary.*
+
+#abstract #rule DepToActRule #with IBeXTGGGantt2CPM
+
+#source { 
+	diag:GanttDiagram
+	pred:gantt.Activity
+	succ:gantt.Activity
+	
+	++dep:Dependency {
+		++ -predecessor->pred
+		++ -successor->succ
+		++ -diagram->diag
+	}
+}
+
+#target {
+	network:CPMNetwork
+	
+	cpmPred:cpm.Activity 
+	cpmSucc:cpm.Activity 
+	
+	src:Event {
+		-network->network
+	}
+	
+	trg:Event {
+		-network->network
+	}
+	
+	++ act:cpm.Activity {
+		++ -sourceEvent->src
+		++ -targetEvent->trg
+		
+		++ -network->network
+	}
+}
+
+#correspondence {
+	d2n:DiagramToNetwork {
+		#src->diag
+		#trg->network
+	}
+	
+	s2s:ActivityToActivity {
+		#src->succ
+		#trg->cpmSucc
+	}
+	
+	p2p:ActivityToActivity {
+		#src->pred
+		#trg->cpmPred
+	}
+	
+	++ a2d:DependencyToActivity {
+		#src->dep
+		#trg->act
+	}
+}
+
+#attributeConditions {
+	eq_int(dep.offset, act.duration)
+	concat("->", pred.name, succ.name, act.name)
+}

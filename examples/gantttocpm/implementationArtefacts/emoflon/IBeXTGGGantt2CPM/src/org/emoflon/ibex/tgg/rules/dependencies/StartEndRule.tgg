@@ -1,0 +1,22 @@
+#using IBeXTGGGantt2CPM.*
+#using AttrCondDefLibrary.*
+
+#rule StartEndRule #extends DepToActRule #with IBeXTGGGantt2CPM
+
+#source { 
+	++dep:Dependency {
+		dependencyType := enum::DependencyType::StartEnd
+	}
+}
+
+#target {
+	cpmPred:cpm.Activity {
+		-sourceEvent->src
+	}
+	cpmSucc:cpm.Activity {
+		-targetEvent->trg
+	}
+	
+	src:Event
+	trg:Event	
+}

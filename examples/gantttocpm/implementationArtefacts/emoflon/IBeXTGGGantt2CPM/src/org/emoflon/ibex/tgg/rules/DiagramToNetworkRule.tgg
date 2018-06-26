@@ -1,0 +1,23 @@
+#using IBeXTGGGantt2CPM.*
+#using AttrCondDefLibrary.*
+
+#rule DiagramToNetworkRule #with IBeXTGGGantt2CPM
+
+#source { 
+	++ diagram : GanttDiagram
+}
+
+#target {
+	++ network : CPMNetwork
+}
+
+#correspondence {
+	++ d2n : DiagramToNetwork {
+		#src->diagram
+		#trg->network
+	}
+}
+
+#attributeConditions {
+	eq_string(diagram.name, network.name)
+}

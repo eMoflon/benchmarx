@@ -1,0 +1,50 @@
+#using IBeXTGGGantt2CPM.*
+#using AttrCondDefLibrary.*
+
+#rule ActivityToActivityRule #with IBeXTGGGantt2CPM
+
+#source { 
+	diagram:GanttDiagram	
+	
+	++ ganttAct:gantt.Activity {
+		++-diagram->diagram
+	}
+}
+
+#target {
+	network:CPMNetwork
+	
+	++ cpmAct:cpm.Activity {
+		++ -network->network
+		++ -sourceEvent->srcEvent
+		++ -targetEvent->trgEvent
+	}
+	
+	++ srcEvent:Event {
+		++ -network->network	
+	}
+	
+	++ trgEvent:Event {
+		++ -network->network
+	}
+}
+
+#correspondence {
+	d2n:DiagramToNetwork {
+		#src->diagram
+		#trg->network
+	}
+	
+	++ a2a:ActivityToActivity {
+		#src->ganttAct
+		#trg->cpmAct
+	}
+}
+
+#attributeConditions {
+	eq_int(cpmAct.duration, ganttAct.duration)
+	eq_string(cpmAct.name, ganttAct.name)
+	notADependencyViaNamingConvention(cpmAct.name)
+	setCounter(srcEvent.number)
+	setCounter(trgEvent.number)
+}
