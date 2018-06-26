@@ -74,10 +74,10 @@ public class GanttBuilder {
 		Activity a1 = findActivityByName(act1);
 		Activity a2 = findActivityByName(act2);
 		Dependency dep = f.createDependency();
+		diag.getElements().add(dep);
 		dep.setOffset(offset);
 		dep.setPredecessor(a1);
 		dep.setSuccessor(a2);
-		diag.getElements().add(dep);
 		return dep;
 	}
 	

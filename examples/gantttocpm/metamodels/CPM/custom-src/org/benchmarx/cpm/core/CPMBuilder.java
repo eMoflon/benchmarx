@@ -56,11 +56,11 @@ public class CPMBuilder {
 		Event s = findEventByNumber(e1);
 		Event t = findEventByNumber(e2);
 		Activity a = f.createActivity();
+		net.getElements().add(a);		
 		a.setName(name);
 		a.setDuration(duration);
 		a.setSourceEvent(s);
 		a.setTargetEvent(t);
-		net.getElements().add(a);		
 		return this;
 	}
 	
