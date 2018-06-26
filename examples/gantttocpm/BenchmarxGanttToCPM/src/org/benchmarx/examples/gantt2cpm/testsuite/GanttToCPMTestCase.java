@@ -8,6 +8,7 @@ import org.benchmarx.cpm.core.CPMBuilder;
 import org.benchmarx.cpm.core.CPMHelper;
 import org.benchmarx.emf.Comparator;
 import org.benchmarx.examples.gantt2cpm.implementations.bxtend.BXtendGantt2CPM;
+import org.benchmarx.examples.gantt2cpm.implementations.ibextgg.IBeXTGGGantt2CPM;
 import org.benchmarx.examples.gantt2cpm.implementations.medini.MediniQVTGantt2CPM;
 import org.benchmarx.examples.gantt2cpm.implementations.plainjavaubt.PlainJavaUbtGantt2Cpm;
 import org.benchmarx.gantt.core.GanttHelper;
@@ -63,7 +64,8 @@ public abstract class GanttToCPMTestCase {
 		return Arrays.asList(
 				new BXtendGantt2CPM(),  // Currently 0 failures
 				new PlainJavaUbtGantt2Cpm(),
-				new MediniQVTGantt2CPM()
+				new MediniQVTGantt2CPM(),
+				new IBeXTGGGantt2CPM()
 			);
 	}
 	
