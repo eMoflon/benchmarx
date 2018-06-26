@@ -13,7 +13,7 @@ class GanttComparator implements Comparator<GanttDiagram> {
 	def static modelToString(GanttDiagram diagram) {
 		val ArrayList<Element> sortedElements = new ArrayList<Element>(diagram.elements)
 		GanttNormalizer.normalize(sortedElements)
-		val name = if (diagram.name == null) "" else diagram.name
+		val name = if (diagram.name === null) "" else diagram.name
 		return "GanttDiagram " + name + " " + diagram.incrementalID
 				+ " {" + sortedElements.map[e | e.elementToString].join(", ") + "}"
 	}

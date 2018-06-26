@@ -2,11 +2,10 @@ package org.emoflon.ibex.tgg.run.ibextgggantt2cpm;
 
 import java.io.IOException;
 
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.apache.log4j.BasicConfigurator;
-import org.emoflon.ibex.tgg.compiler.patterns.PatternSuffixes;
 import org.emoflon.ibex.tgg.operational.defaults.IbexOptions;
 import org.emoflon.ibex.tgg.operational.strategies.sync.SYNC;
 import org.emoflon.ibex.tgg.runtime.engine.DemoclesTGGEngine;

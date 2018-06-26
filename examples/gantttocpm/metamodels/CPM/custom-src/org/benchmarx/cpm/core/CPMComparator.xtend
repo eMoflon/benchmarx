@@ -24,7 +24,7 @@ class CPMComparator implements Comparator<CPMNetwork> {
 				normalizedEventNumbers.put(element.number, i++)
 			}
 		}
-		val name = if (network.name == null) "" else network.name
+		val name = if (network.name === null) "" else network.name
 		return "CPMNetwork " + name + " "+ network.incrementalID
 				+ " {" + sortedElements.map[e | e.elementToString(normalizedEventNumbers)].join(", ") + "}"
 	}
