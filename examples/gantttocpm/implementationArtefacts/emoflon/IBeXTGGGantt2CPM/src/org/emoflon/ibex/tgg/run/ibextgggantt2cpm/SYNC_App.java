@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.emoflon.ibex.tgg.operational.defaults.IbexOptions;
 import org.emoflon.ibex.tgg.operational.strategies.sync.SYNC;
@@ -47,9 +48,18 @@ public class SYNC_App extends SYNC {
 		_RegistrationHelper.registerMetamodels(rs, this);
 
 		// Register correspondence metamodel last
-		loadAndRegisterMetamodel(options.projectPath() + "/model/" + options.projectName() + ".ecore");
+		loadAndRegisterMetamodel("BenchmarxGanttToCPM/lib/emoflon/" + options.projectName() + ".ecore");
 	}
 
+	protected Resource loadFlattenedTGGResource() throws IOException {
+		return loadResource("BenchmarxGanttToCPM/lib/emoflon/" + options.projectName() + "_flattened.tgg.xmi");
+	}
+
+	protected Resource loadTGGResource() throws IOException {
+		return loadResource("BenchmarxGanttToCPM/lib/emoflon/" + options.projectName() + ".tgg.xmi");
+	}
+
+	
 	private static IbexOptions createIbexOptions() {
 		return _RegistrationHelper.createIbexOptions();
 	}
