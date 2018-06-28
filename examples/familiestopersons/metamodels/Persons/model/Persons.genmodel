@@ -4,16 +4,16 @@
     updateClasspath="false" codeFormatting="true" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="8.0" copyrightFields="false" operationReflection="true">
   <foreignModel>Persons.ecore</foreignModel>
-  <genPackages prefix="Persons" disposableProviderFactory="true" ecorePackage="platform:/plugin/Persons/model/Persons.ecore#/">
-    <genClasses ecoreClass="platform:/plugin/Persons/model/Persons.ecore#//PersonRegister">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/Persons/model/Persons.ecore#//PersonRegister/persons"/>
+  <genPackages prefix="Persons" disposableProviderFactory="true" ecorePackage="Persons.ecore#/">
+    <genClasses ecoreClass="Persons.ecore#//PersonRegister">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Persons.ecore#//PersonRegister/persons"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="platform:/plugin/Persons/model/Persons.ecore#//Person">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/Persons/model/Persons.ecore#//Person/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/Persons/model/Persons.ecore#//Person/birthday"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference platform:/plugin/Persons/model/Persons.ecore#//Person/personsInverse"/>
+    <genClasses image="false" ecoreClass="Persons.ecore#//Person">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Persons.ecore#//Person/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Persons.ecore#//Person/birthday"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Persons.ecore#//Person/personsInverse"/>
     </genClasses>
-    <genClasses ecoreClass="platform:/plugin/Persons/model/Persons.ecore#//Male"/>
-    <genClasses ecoreClass="platform:/plugin/Persons/model/Persons.ecore#//Female"/>
+    <genClasses ecoreClass="Persons.ecore#//Male"/>
+    <genClasses ecoreClass="Persons.ecore#//Female"/>
   </genPackages>
 </genmodel:GenModel>
