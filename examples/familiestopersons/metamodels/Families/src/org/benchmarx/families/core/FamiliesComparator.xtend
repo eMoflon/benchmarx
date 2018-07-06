@@ -9,7 +9,7 @@ import org.benchmarx.emf.Comparator
 
 import static org.junit.Assert.*
 
-public class FamiliesComparator implements Comparator<FamilyRegister> {
+class FamiliesComparator implements Comparator<FamilyRegister> {
 	FamilyNormaliser comparator
 	FamilyMemberNormaliser familyMemberComparator
 	boolean checkAttributeValues
