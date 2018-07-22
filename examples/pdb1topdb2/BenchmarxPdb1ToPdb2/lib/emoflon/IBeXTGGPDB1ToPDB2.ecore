@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="IBeXTGGPDB1ToPDB2" nsURI="platform:/resource/IBeXTGGPDB1ToPDB2/model/IBeXTGGPDB1ToPDB2.ecore"
+    nsPrefix="IBeXTGGPDB1ToPDB2">
+  <eClassifiers xsi:type="ecore:EClass" name="DB2DB">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="ecore:EClass platform:/resource/PDB1/model/PersonsDB1.ecore#//Database"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="ecore:EClass platform:/resource/PDB2/model/PersonsDB2.ecore#//Database"/>
+  </eClassifiers>
+</ecore:EPackage>

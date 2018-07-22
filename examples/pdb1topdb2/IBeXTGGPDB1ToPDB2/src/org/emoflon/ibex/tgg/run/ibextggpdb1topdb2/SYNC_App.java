@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.apache.log4j.BasicConfigurator;
 
@@ -44,12 +45,19 @@ public class SYNC_App extends SYNC {
 		EcoreUtil.resolveAll(rs);
 	}
 	
-	@Override
 	protected void registerUserMetamodels() throws IOException {
 		_RegistrationHelper.registerMetamodels(rs, this);
-			
+
 		// Register correspondence metamodel last
-		loadAndRegisterMetamodel(options.projectPath() + "/model/" + options.projectName() + ".ecore");
+		loadAndRegisterMetamodel("BenchmarxPdb1ToPdb2/lib/emoflon/" + options.projectName() + ".ecore");
+	}
+
+	protected Resource loadFlattenedTGGResource() throws IOException {
+		return loadResource("BenchmarxPdb1ToPdb2/lib/emoflon/" + options.projectName() + "_flattened.tgg.xmi");
+	}
+
+	protected Resource loadTGGResource() throws IOException {
+		return loadResource("BenchmarxPdb1ToPdb2/lib/emoflon/" + options.projectName() + ".tgg.xmi");
 	}
 	
 	private static IbexOptions createIbexOptions() {
