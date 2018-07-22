@@ -24,12 +24,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
-
 import de.ikv.emf.qvt.EMFQvtProcessorImpl;
 import de.ikv.medini.qvt.QVTProcessorConsts;
 import org.benchmarx.petrinet.core.PNComparator;
-import de.ubt.ai1.m2m.pn2pnw.correspondence.pn2pnw.Pn2pnwFactory;
 import pn.PnFactory;
 import uk.ac.kent.cs.kmf.util.ILog;
 import uk.ac.kent.cs.kmf.util.OutputStreamLog;

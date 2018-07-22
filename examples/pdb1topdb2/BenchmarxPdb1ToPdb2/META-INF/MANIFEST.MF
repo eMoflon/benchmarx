@@ -14,3 +14,4 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="2.12.0",
  Benchmarx;bundle-version="1.0.0",
  IBeXTGGPDB1ToPDB2;bundle-version="0.0.1"
 Import-Package: org.apache.commons.io.output
+Automatic-Module-Name: BenchmarxPdb1ToPdb2

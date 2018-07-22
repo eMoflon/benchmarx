@@ -1,12 +1,7 @@
 package org.benchmarx.examples.familiestopersons.implementations.funnyqt;
 
 import java.io.File;
-import java.io.IOException;
-import java.lang.annotation.Target;
-import java.util.Date;
 import java.util.function.Consumer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.benchmarx.Configurator;
 import org.benchmarx.emf.BXToolForEMF;
@@ -14,16 +9,8 @@ import org.benchmarx.emf.Comparator;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
-import org.junit.ComparisonFailure;
 
 import Families.FamiliesFactory;
 import Families.FamilyRegister;

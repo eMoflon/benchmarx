@@ -15,4 +15,5 @@ Require-Bundle: com.google.guava,
  org.apache.log4j;bundle-version="1.2.15",
  org.eclipse.emf.compare;bundle-version="3.3.1"
 Import-Package: org.apache.commons.io.output
+Automatic-Module-Name: BenchmarxEcoreToSQL
 

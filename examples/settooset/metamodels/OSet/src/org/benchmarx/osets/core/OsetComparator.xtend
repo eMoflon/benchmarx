@@ -36,14 +36,14 @@ class OsetComparator implements Comparator<MyOrderedSet> {
 		
 		val Element start = set.getElements().get(0);
 		var Element first = start;
-		while (first.getPrevious() != null) {
+		while (first.getPrevious() !== null) {
 			first = first.getPrevious();
 			if (first == start) {
 				return true;
 			}
 		}
 		var int connectedElements = 1;
-		while (first.getNext() != null) {
+		while (first.getNext() !== null) {
 			connectedElements++;
 			first = first.getNext();
 		}
@@ -60,7 +60,7 @@ class OsetComparator implements Comparator<MyOrderedSet> {
 		
 		val Element first = set.getElements().get(0);
 		var Element next = first;
-		while (next.getNext() != null) {
+		while (next.getNext() !== null) {
 			next = next.getNext();
 			if (first == next) {
 				return true;

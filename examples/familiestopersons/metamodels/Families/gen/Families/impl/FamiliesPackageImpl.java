@@ -71,7 +71,7 @@ public class FamiliesPackageImpl extends EPackageImpl implements FamiliesPackage
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link FamiliesPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -86,9 +86,10 @@ public class FamiliesPackageImpl extends EPackageImpl implements FamiliesPackage
 			return (FamiliesPackage) EPackage.Registry.INSTANCE.getEPackage(FamiliesPackage.eNS_URI);
 
 		// Obtain or create and register package
-		FamiliesPackageImpl theFamiliesPackage = (FamiliesPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof FamiliesPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-						: new FamiliesPackageImpl());
+		Object registeredFamiliesPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		FamiliesPackageImpl theFamiliesPackage = registeredFamiliesPackage instanceof FamiliesPackageImpl
+				? (FamiliesPackageImpl) registeredFamiliesPackage
+				: new FamiliesPackageImpl();
 
 		isInited = true;
 

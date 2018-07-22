@@ -21,7 +21,7 @@ class DagComparator implements Comparator<Model> {
 			}
 		}
 		
-		if (root == null) {
+		if (root === null) {
 			//return "invalid DagModel: no root!"
 			return "DagModel { }"
 		}
@@ -42,8 +42,8 @@ class DagComparator implements Comparator<Model> {
 		assertEquals(modelToString(expected), modelToString(actual))
 	}
 	
-	var private static int nextPreorderId;
-	var private static LinkedHashMap<Expression, Integer> expressionPreoderIds;
+	var static int nextPreorderId;
+	var static LinkedHashMap<Expression, Integer> expressionPreoderIds;
 	
 	def private static String expressionToString(Expression expression) {
 		nextPreorderId = 0
@@ -52,7 +52,7 @@ class DagComparator implements Comparator<Model> {
 	}
 	
 	def private static String expressionToStringHelper(Expression expression) {
-		if (expressionPreoderIds.get(expression) != null) {
+		if (expressionPreoderIds.get(expression) !== null) {
 			return "{@" + expressionPreoderIds.get(expression) + "}"
 		}
 		val int id = nextPreorderId++;

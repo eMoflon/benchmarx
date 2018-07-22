@@ -21,7 +21,7 @@ class AstComparator implements Comparator<Model> {
 	}
 	
 	def private static String expressionToString(Expression expression) {
-		if(expression == null) {
+		if(expression === null) {
 			return "{ }"
 		}
 		if (expression instanceof Variable) {

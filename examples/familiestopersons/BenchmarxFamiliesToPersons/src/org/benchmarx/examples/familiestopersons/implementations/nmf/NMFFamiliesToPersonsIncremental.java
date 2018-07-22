@@ -8,11 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
-
-import org.apache.commons.io.FileUtils;
 import org.benchmarx.BXTool;
 import org.benchmarx.Configurator;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;

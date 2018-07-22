@@ -9,3 +9,4 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.11.2",
  org.eclipse.emf.common.source;bundle-version="2.11.1",
  org.apache.log4j;bundle-version="1.2.15",
  org.eclipse.core.runtime;bundle-version="3.12.0"
+Automatic-Module-Name: BenchmarxFamiliesToPersons

@@ -28,7 +28,7 @@ class SQLComparator implements Comparator<Schema>{
 				«SQLTableNormaliser.normalize(sortedList)»
 				«FOR t: sortedList SEPARATOR ","»
 				«t.name» {
-					«IF t.ownedPrimaryKey != null»
+					«IF t.ownedPrimaryKey !== null»
 					  primaryKey = (
 					  	  columnName = «t.ownedPrimaryKey.column.name»
 					  	, annotations = «t.ownedPrimaryKey.ownedAnnotations.annotations»

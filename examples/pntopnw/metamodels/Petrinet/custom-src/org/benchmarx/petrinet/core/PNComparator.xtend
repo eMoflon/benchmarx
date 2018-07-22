@@ -14,7 +14,7 @@ class PNComparator implements Comparator<Net> {
 	def static netToString(Net net) {
 		val ArrayList<NetElement> sortedElements = new ArrayList<NetElement>(net.elements)
 		PNNormalizer.normalize(sortedElements)
-		val name = if (net.name == null) "" else net.name
+		val name = if (net.name === null) "" else net.name
 		return "PetriNet " + name + " " + net.incrementalID
 				+ " {" + sortedElements.map[e | e.elementToString].join(", ") + "}"
 	}

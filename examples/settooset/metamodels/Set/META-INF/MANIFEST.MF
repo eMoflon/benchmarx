@@ -19,4 +19,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.apache.log4j;bundle-version="1.2.15",
  org.eclipse.emf.compare;bundle-version="3.3.1"
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: Set
 

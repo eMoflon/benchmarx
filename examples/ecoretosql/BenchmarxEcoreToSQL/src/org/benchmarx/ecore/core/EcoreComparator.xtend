@@ -66,7 +66,7 @@ class EcoreComparator implements Comparator<EPackage>{
 							, unique=«er.isUnique»
 							, unsettable=«er.isUnsettable»
 							, volatile=«er.isVolatile»
-							«IF er.EOpposite != null»
+							«IF er.EOpposite !== null»
 							, opposite=«(er.EOpposite.eContainer as EClassifier).name»::«er.EOpposite.name»
 							«ENDIF»
 						)

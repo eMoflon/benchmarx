@@ -35,3 +35,4 @@ Require-Bundle: org.apache.log4j,
 Export-Package: org.emoflon.ibex.tgg.operational.csp.constraints.custom.ibextggpdb1topdb2,
  org.emoflon.ibex.tgg.operational.csp.constraints.factories.ibextggpdb1topdb2,
  org.emoflon.ibex.tgg.run.ibextggpdb1topdb2
+Automatic-Module-Name: IBeXTGGPDB1ToPDB2
