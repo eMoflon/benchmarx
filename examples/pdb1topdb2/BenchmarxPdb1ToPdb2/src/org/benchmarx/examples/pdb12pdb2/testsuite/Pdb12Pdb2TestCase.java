@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.benchmarx.BXTool;
 import org.benchmarx.emf.Comparator;
 import org.benchmarx.examples.pdb12pdb2.implementations.bxtend.BXtendPdb12Pdb2;
+import org.benchmarx.examples.pdb12pdb2.implementations.ibextgg.IBeXTGGPDB1ToPDB2;
 import org.benchmarx.examples.pdb12pdb2.implementations.medini.MediniQVTPdb12Pdb2;
 import org.benchmarx.examples.pdb12pdb2.implementations.plainjavaubt.PlainJavaUbtPdb12Pdb2;
 import org.benchmarx.pdb1.core.Pdb1Helper;
@@ -57,7 +58,8 @@ public abstract class Pdb12Pdb2TestCase {
 		return Arrays.asList(
 				new BXtendPdb12Pdb2(),
 				new PlainJavaUbtPdb12Pdb2(),
-				new MediniQVTPdb12Pdb2()
+				new MediniQVTPdb12Pdb2(),
+				new IBeXTGGPDB1ToPDB2()
 			);
 	}
 	

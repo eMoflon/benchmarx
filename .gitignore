@@ -1,2 +1,10 @@
 .DS_Store
 examples/familiestopersons/BenchmarxFamiliesToPersons/results/funnyqt/
+examples/pdb1topdb2/IBeXTGGPDB1ToPDB2/src/org/emoflon/ibex/tgg/run/ibextggpdb1topdb2/MODELGEN_App.java
+examples/pdb1topdb2/IBeXTGGPDB1ToPDB2/src/org/emoflon/ibex/tgg/run/ibextggpdb1topdb2/INITIAL_FWD_App.java
+examples/pdb1topdb2/IBeXTGGPDB1ToPDB2/src/org/emoflon/ibex/tgg/run/ibextggpdb1topdb2/INITIAL_BWD_App.java
+examples/pdb1topdb2/IBeXTGGPDB1ToPDB2/src/org/emoflon/ibex/tgg/run/ibextggpdb1topdb2/FWD_OPT_App.java
+examples/pdb1topdb2/IBeXTGGPDB1ToPDB2/src/org/emoflon/ibex/tgg/run/ibextggpdb1topdb2/CO_App.java
+examples/pdb1topdb2/IBeXTGGPDB1ToPDB2/src/org/emoflon/ibex/tgg/run/ibextggpdb1topdb2/CC_App.java
+examples/pdb1topdb2/IBeXTGGPDB1ToPDB2/src/org/emoflon/ibex/tgg/run/ibextggpdb1topdb2/BWD_OPT_App.java
+examples/pdb1topdb2/IBeXTGGPDB1ToPDB2/src/org/emoflon/ibex/tgg/run/ibextggpdb1topdb2/_SchemaBasedAutoRegistration.java
