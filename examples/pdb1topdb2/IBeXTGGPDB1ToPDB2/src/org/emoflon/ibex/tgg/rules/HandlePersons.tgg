@@ -1,0 +1,34 @@
+#using IBeXTGGPDB1ToPDB2.*
+#using AttrCondDefLibrary.*
+
+#rule HandlePersons #with IBeXTGGPDB1ToPDB2
+
+#source { 
+	db1:pdb1.Database {
+		++-persons->p1
+	}
+	
+	++ p1:pdb1.Person
+}
+
+#target {
+	db2:pdb2.Database {
+		++ -persons->p2
+	}
+	
+	++ p2:pdb2.Person
+}
+
+#correspondence {
+	db1Todb2:DB2DB {
+		#src->db1
+		#trg->db2
+	}
+}
+
+#attributeConditions {
+	eq_string(p1.placeOfBirth, p2.placeOfBirth)
+	config_concat(" ", p1.firstName, p1.lastName, p2.name)
+	eq_string(p1.id, p2.id)
+	eq_string(p1.birthday, p2.birthday)
+}
