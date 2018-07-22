@@ -8,3 +8,7 @@ examples/pdb1topdb2/IBeXTGGPDB1ToPDB2/src/org/emoflon/ibex/tgg/run/ibextggpdb1to
 examples/pdb1topdb2/IBeXTGGPDB1ToPDB2/src/org/emoflon/ibex/tgg/run/ibextggpdb1topdb2/CC_App.java
 examples/pdb1topdb2/IBeXTGGPDB1ToPDB2/src/org/emoflon/ibex/tgg/run/ibextggpdb1topdb2/BWD_OPT_App.java
 examples/pdb1topdb2/IBeXTGGPDB1ToPDB2/src/org/emoflon/ibex/tgg/run/ibextggpdb1topdb2/_SchemaBasedAutoRegistration.java
+examples/pdb1topdb2/BenchmarxPdb1ToPdb2/src/de/ubt/ai1/m2m/pdb12pdb2/implementations/plainjavaubt/target.xmi
+examples/pdb1topdb2/BenchmarxPdb1ToPdb2/src/de/ubt/ai1/m2m/pdb12pdb2/implementations/plainjavaubt/source.xmi
+*.xtendbin
+examples/bag1tobag2/metamodels/Bag1/xtend-gen/org/benchmarx/bags1/core/Bag1Comparator.java
