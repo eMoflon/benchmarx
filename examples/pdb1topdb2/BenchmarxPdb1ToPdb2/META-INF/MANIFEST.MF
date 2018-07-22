@@ -3,9 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Test
 Bundle-SymbolicName: BenchmarxPdb1ToPdb2
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: test.jar,
- lib/benchmarx.jar,
- eclipse_Projekt/eclipse/plugins/org.eclipse.emf.ecore_2.12.0.v20160420-0247.jar
 Export-Package: org.benchmarx.examples.pdb12pdb2.implementations.bxtend,
  org.benchmarx.examples.pdb12pdb2.testsuite
 Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="2.12.0",
