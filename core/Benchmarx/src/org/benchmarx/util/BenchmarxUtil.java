@@ -27,14 +27,12 @@ public class BenchmarxUtil<S,T, D> {
 	}
 	
 	
-	/** Use {@link #assertPrecondition(ResourceSet, String, String) instead. */
-	@Deprecated
+	/** Consider using {@link #assertPrecondition(ResourceSet, String, String) instead. */
 	public void assertPrecondition(String srcPath, String trgPath){
 		tool.assertPrecondition(loadExpectedModel(srcPath), loadExpectedModel(trgPath));
 	}
 	
-	/** Use {@link #assertPostcondition(ResourceSet, String, String) instead. */
-	@Deprecated
+	/** Consider using {@link #assertPostcondition(ResourceSet, String, String) instead. */
 	public void assertPostcondition(String srcPath, String trgPath){
 		tool.assertPostcondition(loadExpectedModel(srcPath), loadExpectedModel(trgPath));
 	}
