@@ -38,8 +38,6 @@ public class IBeXTGGFamiliesToPersons
 	public void initiateSynchronisationDialogue() {
 		try {
 			sync = new SYNC_App();
-			BasicConfigurator.configure();
-			Logger.getRootLogger().setLevel(Level.DEBUG);
 
 			// Create initial src and trg models
 			FamilyRegister o = FamiliesFactory.eINSTANCE.createFamilyRegister();
