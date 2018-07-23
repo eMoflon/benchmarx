@@ -1,0 +1,23 @@
+#using IBeXTGGFamiliesToPersons.*
+#using AttrCondDefLibrary.*
+
+#rule Families2Persons #with IBeXTGGFamiliesToPersons
+
+#source { 
+	++ familyReg : FamilyRegister
+}
+
+#target {
+	++ personReg : PersonRegister
+}
+
+#correspondence {
+	++ families2persons :FamiliesReg2PersonsRegCorr {
+		#src->familyReg
+		#trg->personReg
+	}
+}
+
+#attributeConditions {
+	
+}

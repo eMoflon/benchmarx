@@ -1,0 +1,28 @@
+#using IBeXTGGFamiliesToPersons.*
+#using AttrCondDefLibrary.*
+
+#rule CreateFamily #with IBeXTGGFamiliesToPersons
+
+#source { 
+	familyReg : FamilyRegister{
+		++-families -> family
+	}
+	
+	++ family : Family
+}
+
+#target { 
+	
+	personReg : PersonRegister
+}
+
+#correspondence {
+	 familyReg2personReg : FamiliesReg2PersonsRegCorr {
+	 	#src->familyReg
+	 	#trg->personReg
+	 }
+}
+
+#attributeConditions {
+	setRandomString(family.name)
+}

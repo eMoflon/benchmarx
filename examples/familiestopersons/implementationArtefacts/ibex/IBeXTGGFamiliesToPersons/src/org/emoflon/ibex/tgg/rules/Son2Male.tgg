@@ -1,0 +1,31 @@
+#using IBeXTGGFamiliesToPersons.*
+#using AttrCondDefLibrary.*
+
+#complement Son2Male #for CreateFamily
+
+#source { 
+	
+	family : Family {
+		++ -sons->son
+	}
+	
+	++ son : FamilyMember
+}
+
+#target {
+	personReg : PersonRegister{
+		++ -persons-> malePerson
+	}
+	++ malePerson : Male
+}
+
+#correspondence {
+	++ son2malePerson : FamilyMember2Person{
+		#src->son
+		#trg->malePerson
+	}
+}
+
+#attributeConditions {
+	concat(", ", family.name, son.name, malePerson.name)
+}
