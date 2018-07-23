@@ -150,8 +150,9 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
 		tool.performAndPropagateTargetEdit(util
 				.execute(helperPerson::createMarge)
-				.andThen(helperPerson::createBart)
-				.andThen(helperPerson::createLisa)
+				.andThen(helperPerson::createBart));
+		tool.performAndPropagateTargetEdit(util		
+				.execute(helperPerson::createLisa)
 				.andThen(helperPerson::createMaggie));
 		tool.performIdleTargetEdit(helperPerson::changeAllBirthdays);
 		tool.performAndPropagateTargetEdit(helperPerson::createBart);
