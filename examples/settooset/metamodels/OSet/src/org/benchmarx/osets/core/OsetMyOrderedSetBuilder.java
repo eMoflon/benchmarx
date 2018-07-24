@@ -23,10 +23,13 @@ public class OsetMyOrderedSetBuilder {
 		if(!set.getElements().isEmpty()) {
 			if(last == null)
 				last = set.getElements().get(set.getElements().size()-1);
+			temp.setOrderedSet(set);
 			last.setNext(temp);
+		} else {
+			temp.setOrderedSet(set);
 		}
+		
 		last = temp;
-		last.setOrderedSet(set);
 		return this;
 	}
 	
@@ -45,9 +48,9 @@ public class OsetMyOrderedSetBuilder {
 		}
 		if(find != null) {
 			last = f.createElement();
+			last.setOrderedSet(set);
 			last.setPrevious(find.getPrevious());
 			last.setNext(find);
-			last.setOrderedSet(set);
 		}
 		return this;
 	}
@@ -62,9 +65,9 @@ public class OsetMyOrderedSetBuilder {
 		}
 		if(find != null) {
 			last = f.createElement();
+			last.setOrderedSet(set);
 			last.setNext(find.getNext());
 			last.setPrevious(find);
-			last.setOrderedSet(set);
 		}
 		return this;
 	}
