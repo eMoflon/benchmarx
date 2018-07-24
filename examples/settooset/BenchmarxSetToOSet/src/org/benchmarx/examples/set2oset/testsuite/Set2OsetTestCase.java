@@ -1,11 +1,13 @@
 package org.benchmarx.examples.set2oset.testsuite;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 
 import org.benchmarx.BXTool;
 import org.benchmarx.emf.Comparator;
 import org.benchmarx.examples.set2oset.implementations.bxtend.BXtendSet2Oset;
+import org.benchmarx.examples.set2oset.implementations.ibextgg.IBeXTGGSetToOSet;
 import org.benchmarx.examples.set2oset.implementations.medini.MediniQVTSetToOSet;
 import org.benchmarx.examples.set2oset.implementations.plainjavaubt.PlainJavaUbtSet2Oset;
 import org.benchmarx.osets.core.OsetHelper;
@@ -52,11 +54,12 @@ public abstract class Set2OsetTestCase {
 	}
 	
 	@Parameters(name = "{0}")
-	public static Collection<BXTool<sets.MySet, osets.MyOrderedSet, Decisions>> tools() {
+	public static Collection<BXTool<sets.MySet, osets.MyOrderedSet, Decisions>> tools() throws IOException {
 		return Arrays.asList(
 				new BXtendSet2Oset(),
 				new PlainJavaUbtSet2Oset(),
-				new MediniQVTSetToOSet()
+				new MediniQVTSetToOSet(),
+				new IBeXTGGSetToOSet()
 			);
 	}
 	
