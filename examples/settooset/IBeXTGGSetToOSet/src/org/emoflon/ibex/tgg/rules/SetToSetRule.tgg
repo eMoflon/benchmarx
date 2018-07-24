@@ -1,0 +1,23 @@
+#using IBeXTGGSetToOSet.*
+#using AttrCondDefLibrary.*
+
+#rule SetToSetRule #with IBeXTGGSetToOSet
+
+#source { 
+	++ set:MySet	
+}
+
+#target {
+	++ oset:MyOrderedSet
+}
+
+#correspondence {
+	++ set2oset:SetToSet {
+		#src->set
+		#trg->oset
+	}
+}
+
+#attributeConditions {
+	eq_string(set.name, oset.name)
+}

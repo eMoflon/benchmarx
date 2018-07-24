@@ -1,0 +1,47 @@
+#using IBeXTGGSetToOSet.*
+#using AttrCondDefLibrary.*
+
+#rule FirstElementRule #with IBeXTGGSetToOSet
+
+#source { 
+	set:MySet {
+		++ -elements->elt
+	}
+	
+	++ elt:sets.Element
+}
+
+#target {
+	oset:MyOrderedSet {
+		++ -elements->oelt
+	}
+	
+	++ oelt:osets.Element
+}
+
+#correspondence {
+	set2oset:SetToSet {
+		#src->set
+		#trg->oset
+	}
+	
+	++ elt2elt:EltToElt {
+		#src->elt
+		#trg->oelt
+	}
+}
+
+#attributeConditions {
+	eq_string(elt.value, oelt.value)	
+}
+
+#nac NoOtherElt #for FirstElementRule
+
+#target {
+	oset:MyOrderedSet {
+		-elements->other
+	}
+	
+	other:Element
+}
+ 

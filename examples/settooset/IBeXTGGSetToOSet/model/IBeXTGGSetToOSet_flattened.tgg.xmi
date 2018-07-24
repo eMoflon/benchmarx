@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org.emoflon.ibex.tgg.core.language:TGG xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.emoflon.ibex.tgg.core.language="platform:/resource/org.emoflon.ibex.tgg.core.language/model/Language.ecore" xmlns:org.emoflon.ibex.tgg.core.language.misc.expressions="platform:/resource/org.emoflon.ibex.tgg.core.language/model/Language.ecore#//basic/expressions" name="IBeXTGGSetToOSet">
+  <src href="platform:/resource/Set/model/Sets.ecore#/"/>
+  <trg href="platform:/resource/OSet/model/OrderedSets.ecore#/"/>
+  <corr href="platform:/resource/IBeXTGGSetToOSet/model/IBeXTGGSetToOSet.ecore#/"/>
+  <rules name="FirstElementRule">
+    <nacs name="NoOtherElt">
+      <nodes name="oset" domainType="TRG" outgoingEdges="//@rules.0/@nacs.0/@edges.0">
+        <type href="platform:/resource/OSet/model/OrderedSets.ecore#//MyOrderedSet"/>
+      </nodes>
+      <nodes name="other" domainType="TRG" incomingEdges="//@rules.0/@nacs.0/@edges.0">
+        <type href="platform:/resource/OSet/model/OrderedSets.ecore#//Element"/>
+      </nodes>
+      <edges name="oset__elements__other_eMoflonEdge" domainType="TRG" srcNode="//@rules.0/@nacs.0/@nodes.0" trgNode="//@rules.0/@nacs.0/@nodes.1">
+        <type href="platform:/resource/OSet/model/OrderedSets.ecore#//MyOrderedSet/elements"/>
+      </edges>
+      <attributeConditionLibrary/>
+    </nacs>
+    <nodes name="elt" bindingType="CREATE" incomingEdges="//@rules.0/@edges.0" outgoingEdges="//@rules.0/@edges.2" incomingCorrsSource="//@rules.0/@nodes.4">
+      <type href="platform:/resource/Set/model/Sets.ecore#//Element"/>
+    </nodes>
+    <nodes name="set" incomingEdges="//@rules.0/@edges.2" outgoingEdges="//@rules.0/@edges.0" incomingCorrsSource="//@rules.0/@nodes.5">
+      <type href="platform:/resource/Set/model/Sets.ecore#//MySet"/>
+    </nodes>
+    <nodes name="oelt" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.0/@edges.1" outgoingEdges="//@rules.0/@edges.3" incomingCorrsTarget="//@rules.0/@nodes.4">
+      <type href="platform:/resource/OSet/model/OrderedSets.ecore#//Element"/>
+    </nodes>
+    <nodes name="oset" domainType="TRG" incomingEdges="//@rules.0/@edges.3" outgoingEdges="//@rules.0/@edges.1" incomingCorrsTarget="//@rules.0/@nodes.5">
+      <type href="platform:/resource/OSet/model/OrderedSets.ecore#//MyOrderedSet"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="elt2elt" domainType="CORR" bindingType="CREATE" source="//@rules.0/@nodes.0" target="//@rules.0/@nodes.2">
+      <type href="platform:/resource/IBeXTGGSetToOSet/model/IBeXTGGSetToOSet.ecore#//EltToElt"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="set2oset" domainType="CORR" source="//@rules.0/@nodes.1" target="//@rules.0/@nodes.3">
+      <type href="platform:/resource/IBeXTGGSetToOSet/model/IBeXTGGSetToOSet.ecore#//SetToSet"/>
+    </nodes>
+    <edges name="set__elements__elt_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.0/@nodes.1" trgNode="//@rules.0/@nodes.0">
+      <type href="platform:/resource/Set/model/Sets.ecore#//MySet/elements"/>
+    </edges>
+    <edges name="oset__elements__oelt_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.0/@nodes.3" trgNode="//@rules.0/@nodes.2">
+      <type href="platform:/resource/OSet/model/OrderedSets.ecore#//MyOrderedSet/elements"/>
+    </edges>
+    <edges name="elt__set__set_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.0/@nodes.0" trgNode="//@rules.0/@nodes.1">
+      <type href="platform:/resource/Set/model/Sets.ecore#//Element/set"/>
+    </edges>
+    <edges name="oelt__orderedSet__oset_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.0/@nodes.2" trgNode="//@rules.0/@nodes.3">
+      <type href="platform:/resource/OSet/model/OrderedSets.ecore#//Element/orderedSet"/>
+    </edges>
+    <attributeConditionLibrary>
+      <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0" parameters="//@rules.0/@attributeConditionLibrary/@parameterValues.0 //@rules.0/@attributeConditionLibrary/@parameterValues.1"/>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0/@parameterDefinitions.0" objectVar="//@rules.0/@nodes.0">
+        <attribute href="platform:/resource/Set/model/Sets.ecore#//Element/value"/>
+      </parameterValues>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0/@parameterDefinitions.1" objectVar="//@rules.0/@nodes.2">
+        <attribute href="platform:/resource/OSet/model/OrderedSets.ecore#//Element/value"/>
+      </parameterValues>
+    </attributeConditionLibrary>
+  </rules>
+  <rules name="OtherElementsRule">
+    <nacs name="NoNext">
+      <nodes name="previousOElt" domainType="TRG" outgoingEdges="//@rules.1/@nacs.0/@edges.0">
+        <type href="platform:/resource/OSet/model/OrderedSets.ecore#//Element"/>
+      </nodes>
+      <nodes name="next" domainType="TRG" incomingEdges="//@rules.1/@nacs.0/@edges.0">
+        <type href="platform:/resource/OSet/model/OrderedSets.ecore#//Element"/>
+      </nodes>
+      <edges name="previousOElt__next__next_eMoflonEdge" domainType="TRG" srcNode="//@rules.1/@nacs.0/@nodes.0" trgNode="//@rules.1/@nacs.0/@nodes.1">
+        <type href="platform:/resource/OSet/model/OrderedSets.ecore#//Element/next"/>
+      </edges>
+      <attributeConditionLibrary/>
+    </nacs>
+    <nodes name="elt" bindingType="CREATE" incomingEdges="//@rules.1/@edges.1" outgoingEdges="//@rules.1/@edges.6" incomingCorrsSource="//@rules.1/@nodes.6">
+      <type href="platform:/resource/Set/model/Sets.ecore#//Element"/>
+    </nodes>
+    <nodes name="previousElt" incomingEdges="//@rules.1/@edges.0" outgoingEdges="//@rules.1/@edges.5" incomingCorrsSource="//@rules.1/@nodes.7">
+      <type href="platform:/resource/Set/model/Sets.ecore#//Element"/>
+    </nodes>
+    <nodes name="set" incomingEdges="//@rules.1/@edges.5 //@rules.1/@edges.6" outgoingEdges="//@rules.1/@edges.0 //@rules.1/@edges.1" incomingCorrsSource="//@rules.1/@nodes.8">
+      <type href="platform:/resource/Set/model/Sets.ecore#//MySet"/>
+    </nodes>
+    <nodes name="oelt" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.1/@edges.3 //@rules.1/@edges.4" outgoingEdges="//@rules.1/@edges.8 //@rules.1/@edges.9" incomingCorrsTarget="//@rules.1/@nodes.6">
+      <type href="platform:/resource/OSet/model/OrderedSets.ecore#//Element"/>
+    </nodes>
+    <nodes name="oset" domainType="TRG" incomingEdges="//@rules.1/@edges.7 //@rules.1/@edges.8" outgoingEdges="//@rules.1/@edges.2 //@rules.1/@edges.3" incomingCorrsTarget="//@rules.1/@nodes.8">
+      <type href="platform:/resource/OSet/model/OrderedSets.ecore#//MyOrderedSet"/>
+    </nodes>
+    <nodes name="previousOElt" domainType="TRG" incomingEdges="//@rules.1/@edges.2 //@rules.1/@edges.9" outgoingEdges="//@rules.1/@edges.4 //@rules.1/@edges.7" incomingCorrsTarget="//@rules.1/@nodes.7">
+      <type href="platform:/resource/OSet/model/OrderedSets.ecore#//Element"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="elt2elt" domainType="CORR" bindingType="CREATE" source="//@rules.1/@nodes.0" target="//@rules.1/@nodes.3">
+      <type href="platform:/resource/IBeXTGGSetToOSet/model/IBeXTGGSetToOSet.ecore#//EltToElt"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="prev2prev" domainType="CORR" source="//@rules.1/@nodes.1" target="//@rules.1/@nodes.5">
+      <type href="platform:/resource/IBeXTGGSetToOSet/model/IBeXTGGSetToOSet.ecore#//EltToElt"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="set2oset" domainType="CORR" source="//@rules.1/@nodes.2" target="//@rules.1/@nodes.4">
+      <type href="platform:/resource/IBeXTGGSetToOSet/model/IBeXTGGSetToOSet.ecore#//SetToSet"/>
+    </nodes>
+    <edges name="set__elements__previousElt_eMoflonEdge" srcNode="//@rules.1/@nodes.2" trgNode="//@rules.1/@nodes.1">
+      <type href="platform:/resource/Set/model/Sets.ecore#//MySet/elements"/>
+    </edges>
+    <edges name="set__elements__elt_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.1/@nodes.2" trgNode="//@rules.1/@nodes.0">
+      <type href="platform:/resource/Set/model/Sets.ecore#//MySet/elements"/>
+    </edges>
+    <edges name="oset__elements__previousOElt_eMoflonEdge" domainType="TRG" srcNode="//@rules.1/@nodes.4" trgNode="//@rules.1/@nodes.5">
+      <type href="platform:/resource/OSet/model/OrderedSets.ecore#//MyOrderedSet/elements"/>
+    </edges>
+    <edges name="oset__elements__oelt_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.1/@nodes.4" trgNode="//@rules.1/@nodes.3">
+      <type href="platform:/resource/OSet/model/OrderedSets.ecore#//MyOrderedSet/elements"/>
+    </edges>
+    <edges name="previousOElt__next__oelt_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.1/@nodes.5" trgNode="//@rules.1/@nodes.3">
+      <type href="platform:/resource/OSet/model/OrderedSets.ecore#//Element/next"/>
+    </edges>
+    <edges name="previousElt__set__set_eMoflonEdge" srcNode="//@rules.1/@nodes.1" trgNode="//@rules.1/@nodes.2">
+      <type href="platform:/resource/Set/model/Sets.ecore#//Element/set"/>
+    </edges>
+    <edges name="elt__set__set_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.1/@nodes.0" trgNode="//@rules.1/@nodes.2">
+      <type href="platform:/resource/Set/model/Sets.ecore#//Element/set"/>
+    </edges>
+    <edges name="previousOElt__orderedSet__oset_eMoflonEdge" domainType="TRG" srcNode="//@rules.1/@nodes.5" trgNode="//@rules.1/@nodes.4">
+      <type href="platform:/resource/OSet/model/OrderedSets.ecore#//Element/orderedSet"/>
+    </edges>
+    <edges name="oelt__orderedSet__oset_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.1/@nodes.3" trgNode="//@rules.1/@nodes.4">
+      <type href="platform:/resource/OSet/model/OrderedSets.ecore#//Element/orderedSet"/>
+    </edges>
+    <edges name="oelt__previous__previousOElt_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.1/@nodes.3" trgNode="//@rules.1/@nodes.5">
+      <type href="platform:/resource/OSet/model/OrderedSets.ecore#//Element/previous"/>
+    </edges>
+    <attributeConditionLibrary>
+      <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0" parameters="//@rules.1/@attributeConditionLibrary/@parameterValues.0 //@rules.1/@attributeConditionLibrary/@parameterValues.1"/>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0/@parameterDefinitions.0" objectVar="//@rules.1/@nodes.0">
+        <attribute href="platform:/resource/Set/model/Sets.ecore#//Element/value"/>
+      </parameterValues>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0/@parameterDefinitions.1" objectVar="//@rules.1/@nodes.3">
+        <attribute href="platform:/resource/OSet/model/OrderedSets.ecore#//Element/value"/>
+      </parameterValues>
+    </attributeConditionLibrary>
+  </rules>
+  <rules name="SetToSetRule">
+    <nodes name="set" bindingType="CREATE" incomingCorrsSource="//@rules.2/@nodes.2">
+      <type href="platform:/resource/Set/model/Sets.ecore#//MySet"/>
+    </nodes>
+    <nodes name="oset" domainType="TRG" bindingType="CREATE" incomingCorrsTarget="//@rules.2/@nodes.2">
+      <type href="platform:/resource/OSet/model/OrderedSets.ecore#//MyOrderedSet"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="set2oset" domainType="CORR" bindingType="CREATE" source="//@rules.2/@nodes.0" target="//@rules.2/@nodes.1">
+      <type href="platform:/resource/IBeXTGGSetToOSet/model/IBeXTGGSetToOSet.ecore#//SetToSet"/>
+    </nodes>
+    <attributeConditionLibrary>
+      <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0" parameters="//@rules.2/@attributeConditionLibrary/@parameterValues.0 //@rules.2/@attributeConditionLibrary/@parameterValues.1"/>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0/@parameterDefinitions.0" objectVar="//@rules.2/@nodes.0">
+        <attribute href="platform:/resource/Set/model/Sets.ecore#//MySet/name"/>
+      </parameterValues>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0/@parameterDefinitions.1" objectVar="//@rules.2/@nodes.1">
+        <attribute href="platform:/resource/OSet/model/OrderedSets.ecore#//MyOrderedSet/name"/>
+      </parameterValues>
+    </attributeConditionLibrary>
+  </rules>
+  <attributeConstraintDefinitionLibrary>
+    <tggAttributeConstraintDefinitions name="eq_string" userDefined="false">
+      <parameterDefinitions name="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </parameterDefinitions>
+      <parameterDefinitions name="b">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </parameterDefinitions>
+      <syncAdornments>
+        <value>B</value>
+        <value>B</value>
+      </syncAdornments>
+      <syncAdornments>
+        <value>B</value>
+        <value>F</value>
+      </syncAdornments>
+      <syncAdornments>
+        <value>F</value>
+        <value>B</value>
+      </syncAdornments>
+      <genAdornments>
+        <value>B</value>
+        <value>B</value>
+      </genAdornments>
+      <genAdornments>
+        <value>B</value>
+        <value>F</value>
+      </genAdornments>
+      <genAdornments>
+        <value>F</value>
+        <value>B</value>
+      </genAdornments>
+      <genAdornments>
+        <value>F</value>
+        <value>F</value>
+      </genAdornments>
+    </tggAttributeConstraintDefinitions>
+  </attributeConstraintDefinitionLibrary>
+</org.emoflon.ibex.tgg.core.language:TGG>

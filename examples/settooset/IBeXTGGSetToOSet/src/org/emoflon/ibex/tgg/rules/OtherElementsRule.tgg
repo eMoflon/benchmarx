@@ -1,0 +1,59 @@
+#using IBeXTGGSetToOSet.*
+#using AttrCondDefLibrary.*
+
+#rule OtherElementsRule #with IBeXTGGSetToOSet
+
+#source { 
+	set:MySet {
+		-elements->previousElt
+		++ -elements->elt
+	}
+	
+	previousElt:sets.Element
+	
+	++ elt:sets.Element
+}
+
+#target {
+	oset:MyOrderedSet {
+		-elements->previousOElt
+		++ -elements->oelt
+	}
+	
+	previousOElt:osets.Element {
+		++ -next->oelt
+	}
+	
+	++ oelt:osets.Element
+}
+
+#correspondence {
+	set2oset:SetToSet {
+		#src->set
+		#trg->oset
+	}
+	
+	prev2prev:EltToElt {
+		#src->previousElt
+		#trg->previousOElt
+	}
+	
+	++ elt2elt:EltToElt {
+		#src->elt
+		#trg->oelt
+	}
+}
+
+#attributeConditions {
+	eq_string(elt.value, oelt.value)	
+}
+
+
+#nac NoNext #for OtherElementsRule
+#target {
+	previousOElt:Element {
+		-next->next
+	}
+	
+	next:Element
+}

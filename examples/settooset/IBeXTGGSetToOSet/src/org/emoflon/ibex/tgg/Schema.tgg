@@ -1,0 +1,28 @@
+#import "platform:/resource/OSet/model/OrderedSets.ecore"
+#import "platform:/resource/Set/model/Sets.ecore"
+
+#schema IBeXTGGSetToOSet
+	
+#source {
+	sets
+}
+
+#target { 
+	osets
+} 
+
+#correspondence {
+	SetToSet {
+		#src->MySet
+		#trg->MyOrderedSet
+	}
+	
+	EltToElt {
+		#src->sets.Element
+		#trg->osets.Element
+	}
+}
+
+#attributeConditions {
+	
+}
