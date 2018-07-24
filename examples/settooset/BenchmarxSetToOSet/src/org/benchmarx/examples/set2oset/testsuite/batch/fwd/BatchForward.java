@@ -62,7 +62,7 @@ public class BatchForward extends Set2OsetTestCase {
 	/**
 	 * Analogous to @link {@link #testCreateElement()}, but now for
 	 * multiple Elements (first three letters).<br/>
-	 * <b>Features:</b>: fwd, fixed
+	 * <b>Features:</b>: fwd, fixed, operational
 	 */
 	@Test 
 	public void testCreateMultipleElements(){
