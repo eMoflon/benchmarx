@@ -130,9 +130,9 @@ public class IncrementalForward extends Set2OsetTestCase {
 	public void testStability() {		
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperSet::setSetName)
-				.andThen(helperSet::createA)
-				.andThen(helperSet::createB)
-				.andThen(helperSet::createC));
+				.andThen(helperSet::createA));
+		tool.performAndPropagateSourceEdit(helperSet::createB);
+		tool.performAndPropagateSourceEdit(helperSet::createC);
 		tool.performIdleTargetEdit(helperOset::changeIncrementalID);
 		
 		util.assertPrecondition("FirstThreeLettersSet", "FirstThreeLettersChangedOset");
@@ -151,9 +151,9 @@ public class IncrementalForward extends Set2OsetTestCase {
 	public void testHippocraticness() {
 		tool.performAndPropagateSourceEdit(util
 				.execute(helperSet::setSetName)
-				.andThen(helperSet::createA)
-				.andThen(helperSet::createB)
-				.andThen(helperSet::createC));
+				.andThen(helperSet::createA));
+		tool.performAndPropagateSourceEdit(helperSet::createB);
+		tool.performAndPropagateSourceEdit(helperSet::createC);
 		tool.performIdleTargetEdit(helperOset::changeIncrementalID);
 		
 		util.assertPrecondition("FirstThreeLettersSet", "FirstThreeLettersChangedOset");
