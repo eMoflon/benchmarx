@@ -32,3 +32,4 @@ Require-Bundle: org.apache.log4j,
  Set,
  OSet
 Export-Package: org.emoflon.ibex.tgg.run.ibextggsettooset
+Automatic-Module-Name: IBeXTGGSetToOSet

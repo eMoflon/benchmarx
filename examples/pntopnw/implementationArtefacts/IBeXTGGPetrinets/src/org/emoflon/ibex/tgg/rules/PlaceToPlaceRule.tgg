@@ -1,0 +1,37 @@
+#using IBeXTGGPetrinets.*
+#using AttrCondDefLibrary.*
+
+#rule PlaceToPlaceRule #with IBeXTGGPetrinets
+
+#source { 
+	snet:pn.Net {
+		++ -elements->sp
+	}
+	
+	++ sp:pn.Place
+}
+
+#target {
+	tnet:pnw.Net {
+		++ -elements->tp
+	}
+	
+	++ tp:pnw.Place
+}
+
+#correspondence {
+	n2n:NetToNet {
+		#src->snet
+		#trg->tnet
+	}
+	
+	++ p2p:PlaceToPlace {
+		#src->sp
+		#trg->tp
+	}
+}
+
+#attributeConditions {
+	eq_string(sp.name, tp.name)
+	eq_int(sp.noOfTokens, tp.noOfTokens)
+}

@@ -13,42 +13,9 @@
       <source href="platform:/resource/Set/model/Sets.ecore#//Element"/>
       <target href="platform:/resource/OSet/model/OrderedSets.ecore#//Element"/>
     </correspondenceTypes>
-    <attributeCondDefs name="eq_string">
-      <params paramName="a">
-        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </params>
-      <params paramName="b">
-        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </params>
-      <allowedSyncAdornments>
-        <value>B</value>
-        <value>B</value>
-      </allowedSyncAdornments>
-      <allowedSyncAdornments>
-        <value>B</value>
-        <value>F</value>
-      </allowedSyncAdornments>
-      <allowedSyncAdornments>
-        <value>F</value>
-        <value>B</value>
-      </allowedSyncAdornments>
-      <allowedGenAdornments>
-        <value>B</value>
-        <value>B</value>
-      </allowedGenAdornments>
-      <allowedGenAdornments>
-        <value>B</value>
-        <value>F</value>
-      </allowedGenAdornments>
-      <allowedGenAdornments>
-        <value>F</value>
-        <value>B</value>
-      </allowedGenAdornments>
-      <allowedGenAdornments>
-        <value>F</value>
-        <value>F</value>
-      </allowedGenAdornments>
-    </attributeCondDefs>
+    <attributeCondDefs href="platform:/resource/IBeXTGGSetToOSet/src/org/emoflon/ibex/tgg/rules/FirstElementRule.tgg#|15"/>
+    <attributeCondDefs href="platform:/resource/IBeXTGGSetToOSet/src/org/emoflon/ibex/tgg/rules/OtherElementsRule.tgg#|26"/>
+    <attributeCondDefs href="platform:/resource/IBeXTGGSetToOSet/src/org/emoflon/ibex/tgg/rules/SetToSetRule.tgg#|6"/>
   </schema>
   <rules name="FirstElementRule" schema="//@schema">
     <sourcePatterns name="elt">
@@ -73,11 +40,15 @@
         <type href="platform:/resource/OSet/model/OrderedSets.ecore#//MyOrderedSet/elements"/>
       </linkVariablePatterns>
     </targetPatterns>
-    <correspondencePatterns name="elt2elt" type="//@schema/@correspondenceTypes.1" source="//@rules.0/@sourcePatterns.0" target="//@rules.0/@targetPatterns.0">
+    <correspondencePatterns name="elt2elt">
       <op value="++"/>
+      <type href="platform:/resource/IBeXTGGSetToOSet/src/org/emoflon/ibex/tgg/rules/FirstElementRule.tgg#|12"/>
     </correspondencePatterns>
-    <correspondencePatterns name="set2oset" type="//@schema/@correspondenceTypes.0" source="//@rules.0/@sourcePatterns.1" target="//@rules.0/@targetPatterns.1"/>
-    <attrConditions name="//@schema/@attributeCondDefs.0">
+    <correspondencePatterns name="set2oset">
+      <type href="platform:/resource/IBeXTGGSetToOSet/src/org/emoflon/ibex/tgg/rules/FirstElementRule.tgg#|9"/>
+    </correspondencePatterns>
+    <attrConditions>
+      <name href="platform:/resource/IBeXTGGSetToOSet/src/org/emoflon/ibex/tgg/rules/FirstElementRule.tgg#|15"/>
       <values xsi:type="tgg:AttributeExpression" objectVar="//@rules.0/@sourcePatterns.0">
         <attribute href="platform:/resource/Set/model/Sets.ecore#//Element/value"/>
       </values>
@@ -125,12 +96,18 @@
         <type href="platform:/resource/OSet/model/OrderedSets.ecore#//Element/next"/>
       </linkVariablePatterns>
     </targetPatterns>
-    <correspondencePatterns name="elt2elt" type="//@schema/@correspondenceTypes.1" source="//@rules.1/@sourcePatterns.0" target="//@rules.1/@targetPatterns.0">
+    <correspondencePatterns name="elt2elt">
       <op value="++"/>
+      <type href="platform:/resource/IBeXTGGSetToOSet/src/org/emoflon/ibex/tgg/rules/OtherElementsRule.tgg#|23"/>
     </correspondencePatterns>
-    <correspondencePatterns name="prev2prev" type="//@schema/@correspondenceTypes.1" source="//@rules.1/@sourcePatterns.1" target="//@rules.1/@targetPatterns.2"/>
-    <correspondencePatterns name="set2oset" type="//@schema/@correspondenceTypes.0" source="//@rules.1/@sourcePatterns.2" target="//@rules.1/@targetPatterns.1"/>
-    <attrConditions name="//@schema/@attributeCondDefs.0">
+    <correspondencePatterns name="prev2prev">
+      <type href="platform:/resource/IBeXTGGSetToOSet/src/org/emoflon/ibex/tgg/rules/OtherElementsRule.tgg#|20"/>
+    </correspondencePatterns>
+    <correspondencePatterns name="set2oset">
+      <type href="platform:/resource/IBeXTGGSetToOSet/src/org/emoflon/ibex/tgg/rules/OtherElementsRule.tgg#|17"/>
+    </correspondencePatterns>
+    <attrConditions>
+      <name href="platform:/resource/IBeXTGGSetToOSet/src/org/emoflon/ibex/tgg/rules/OtherElementsRule.tgg#|26"/>
       <values xsi:type="tgg:AttributeExpression" objectVar="//@rules.1/@sourcePatterns.0">
         <attribute href="platform:/resource/Set/model/Sets.ecore#//Element/value"/>
       </values>
@@ -148,10 +125,12 @@
       <op value="++"/>
       <type href="platform:/resource/OSet/model/OrderedSets.ecore#//MyOrderedSet"/>
     </targetPatterns>
-    <correspondencePatterns name="set2oset" type="//@schema/@correspondenceTypes.0" source="//@rules.2/@sourcePatterns.0" target="//@rules.2/@targetPatterns.0">
+    <correspondencePatterns name="set2oset">
       <op value="++"/>
+      <type href="platform:/resource/IBeXTGGSetToOSet/src/org/emoflon/ibex/tgg/rules/SetToSetRule.tgg#|3"/>
     </correspondencePatterns>
-    <attrConditions name="//@schema/@attributeCondDefs.0">
+    <attrConditions>
+      <name href="platform:/resource/IBeXTGGSetToOSet/src/org/emoflon/ibex/tgg/rules/SetToSetRule.tgg#|6"/>
       <values xsi:type="tgg:AttributeExpression" objectVar="//@rules.2/@sourcePatterns.0">
         <attribute href="platform:/resource/Set/model/Sets.ecore#//MySet/name"/>
       </values>

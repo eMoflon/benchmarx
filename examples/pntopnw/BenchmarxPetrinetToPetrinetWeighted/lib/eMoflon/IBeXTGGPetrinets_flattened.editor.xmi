@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="ASCII"?>
+<tgg:TripleGraphGrammarFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tgg="http://www.moflon.org/ide/tgg/mosl/TGG">
+  <imports name="platform:/resource/Petrinet/model/PetriNet.ecore"/>
+  <imports name="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore"/>
+  <schema name="IBeXTGGPetrinets">
+    <sourceTypes href="platform:/resource/Petrinet/model/PetriNet.ecore#/"/>
+    <targetTypes href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#/"/>
+    <correspondenceTypes name="NetToNet">
+      <source href="platform:/resource/Petrinet/model/PetriNet.ecore#//Net"/>
+      <target href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net"/>
+    </correspondenceTypes>
+    <correspondenceTypes name="TransToTrans">
+      <source href="platform:/resource/Petrinet/model/PetriNet.ecore#//Transition"/>
+      <target href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Transition"/>
+    </correspondenceTypes>
+    <correspondenceTypes name="PlaceToPlace">
+      <source href="platform:/resource/Petrinet/model/PetriNet.ecore#//Place"/>
+      <target href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Place"/>
+    </correspondenceTypes>
+    <attributeCondDefs name="setDefaultNumber">
+      <params paramName="variableNumber">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <params paramName="defaultNumber">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <allowedSyncAdornments>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncAdornments>
+      <allowedSyncAdornments>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncAdornments>
+      <allowedGenAdornments>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenAdornments>
+      <allowedGenAdornments>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenAdornments>
+      <allowedGenAdornments>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenAdornments>
+    </attributeCondDefs>
+    <attributeCondDefs name="eq_string">
+      <params paramName="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <params paramName="b">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <allowedSyncAdornments>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncAdornments>
+      <allowedSyncAdornments>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncAdornments>
+      <allowedSyncAdornments>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncAdornments>
+      <allowedGenAdornments>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenAdornments>
+      <allowedGenAdornments>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenAdornments>
+      <allowedGenAdornments>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenAdornments>
+      <allowedGenAdornments>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenAdornments>
+    </attributeCondDefs>
+    <attributeCondDefs name="eq_int">
+      <params paramName="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </params>
+      <params paramName="b">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </params>
+      <allowedSyncAdornments>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncAdornments>
+      <allowedSyncAdornments>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncAdornments>
+      <allowedSyncAdornments>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncAdornments>
+      <allowedGenAdornments>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenAdornments>
+      <allowedGenAdornments>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenAdornments>
+      <allowedGenAdornments>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenAdornments>
+      <allowedGenAdornments>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenAdornments>
+    </attributeCondDefs>
+  </schema>
+  <rules name="ConnectTransitionRule" abstractRule="true" schema="//@schema">
+    <sourcePatterns name="sp">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Place"/>
+    </sourcePatterns>
+    <sourcePatterns name="st">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Transition"/>
+    </sourcePatterns>
+    <targetPatterns name="edge">
+      <op value="++"/>
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Edge"/>
+    </targetPatterns>
+    <targetPatterns name="net">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net"/>
+      <linkVariablePatterns target="//@rules.0/@targetPatterns.3">
+        <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+      </linkVariablePatterns>
+      <linkVariablePatterns target="//@rules.0/@targetPatterns.0">
+        <op value="++"/>
+        <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+      </linkVariablePatterns>
+    </targetPatterns>
+    <targetPatterns name="tp">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Place"/>
+    </targetPatterns>
+    <targetPatterns name="tt">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Transition"/>
+    </targetPatterns>
+    <correspondencePatterns name="p2p" type="//@schema/@correspondenceTypes.2" source="//@rules.0/@sourcePatterns.0" target="//@rules.0/@targetPatterns.2"/>
+    <correspondencePatterns name="t2t" type="//@schema/@correspondenceTypes.1" source="//@rules.0/@sourcePatterns.1" target="//@rules.0/@targetPatterns.3"/>
+    <attrConditions name="//@schema/@attributeCondDefs.0">
+      <values xsi:type="tgg:AttributeExpression" objectVar="//@rules.0/@targetPatterns.0">
+        <attribute href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Edge/weight"/>
+      </values>
+      <values xsi:type="tgg:LiteralExpression" value="1"/>
+    </attrConditions>
+  </rules>
+  <rules name="NetToNetRule" schema="//@schema">
+    <sourcePatterns name="snet">
+      <op value="++"/>
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Net"/>
+    </sourcePatterns>
+    <targetPatterns name="tnet">
+      <op value="++"/>
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net"/>
+    </targetPatterns>
+    <correspondencePatterns name="n2n" type="//@schema/@correspondenceTypes.0" source="//@rules.1/@sourcePatterns.0" target="//@rules.1/@targetPatterns.0">
+      <op value="++"/>
+    </correspondencePatterns>
+    <attrConditions name="//@schema/@attributeCondDefs.1">
+      <values xsi:type="tgg:AttributeExpression" objectVar="//@rules.1/@sourcePatterns.0">
+        <attribute href="platform:/resource/Petrinet/model/PetriNet.ecore#//NamedElement/name"/>
+      </values>
+      <values xsi:type="tgg:AttributeExpression" objectVar="//@rules.1/@targetPatterns.0">
+        <attribute href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//NamedElement/name"/>
+      </values>
+    </attrConditions>
+  </rules>
+  <rules name="PlaceToPlaceRule" schema="//@schema">
+    <sourcePatterns name="snet">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Net"/>
+      <linkVariablePatterns target="//@rules.2/@sourcePatterns.1">
+        <op value="++"/>
+        <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Net/elements"/>
+      </linkVariablePatterns>
+    </sourcePatterns>
+    <sourcePatterns name="sp">
+      <op value="++"/>
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Place"/>
+    </sourcePatterns>
+    <targetPatterns name="tnet">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net"/>
+      <linkVariablePatterns target="//@rules.2/@targetPatterns.1">
+        <op value="++"/>
+        <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+      </linkVariablePatterns>
+    </targetPatterns>
+    <targetPatterns name="tp">
+      <op value="++"/>
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Place"/>
+    </targetPatterns>
+    <correspondencePatterns name="n2n" type="//@schema/@correspondenceTypes.0" source="//@rules.2/@sourcePatterns.0" target="//@rules.2/@targetPatterns.0"/>
+    <correspondencePatterns name="p2p" type="//@schema/@correspondenceTypes.2" source="//@rules.2/@sourcePatterns.1" target="//@rules.2/@targetPatterns.1">
+      <op value="++"/>
+    </correspondencePatterns>
+    <attrConditions name="//@schema/@attributeCondDefs.2">
+      <values xsi:type="tgg:AttributeExpression" objectVar="//@rules.2/@sourcePatterns.1">
+        <attribute href="platform:/resource/Petrinet/model/PetriNet.ecore#//Place/noOfTokens"/>
+      </values>
+      <values xsi:type="tgg:AttributeExpression" objectVar="//@rules.2/@targetPatterns.1">
+        <attribute href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Place/noOfTokens"/>
+      </values>
+    </attrConditions>
+    <attrConditions name="//@schema/@attributeCondDefs.1">
+      <values xsi:type="tgg:AttributeExpression" objectVar="//@rules.2/@sourcePatterns.1">
+        <attribute href="platform:/resource/Petrinet/model/PetriNet.ecore#//NamedElement/name"/>
+      </values>
+      <values xsi:type="tgg:AttributeExpression" objectVar="//@rules.2/@targetPatterns.1">
+        <attribute href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//NamedElement/name"/>
+      </values>
+    </attrConditions>
+  </rules>
+  <rules name="TransitionToTransitionRule" schema="//@schema">
+    <sourcePatterns name="snet">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Net"/>
+      <linkVariablePatterns target="//@rules.3/@sourcePatterns.1">
+        <op value="++"/>
+        <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Net/elements"/>
+      </linkVariablePatterns>
+    </sourcePatterns>
+    <sourcePatterns name="st">
+      <op value="++"/>
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Transition"/>
+    </sourcePatterns>
+    <targetPatterns name="tnet">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net"/>
+      <linkVariablePatterns target="//@rules.3/@targetPatterns.1">
+        <op value="++"/>
+        <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+      </linkVariablePatterns>
+    </targetPatterns>
+    <targetPatterns name="tt">
+      <op value="++"/>
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Transition"/>
+    </targetPatterns>
+    <correspondencePatterns name="n2n" type="//@schema/@correspondenceTypes.0" source="//@rules.3/@sourcePatterns.0" target="//@rules.3/@targetPatterns.0"/>
+    <correspondencePatterns name="t2t" type="//@schema/@correspondenceTypes.1" source="//@rules.3/@sourcePatterns.1" target="//@rules.3/@targetPatterns.1">
+      <op value="++"/>
+    </correspondencePatterns>
+    <attrConditions name="//@schema/@attributeCondDefs.1">
+      <values xsi:type="tgg:AttributeExpression" objectVar="//@rules.3/@sourcePatterns.1">
+        <attribute href="platform:/resource/Petrinet/model/PetriNet.ecore#//NamedElement/name"/>
+      </values>
+      <values xsi:type="tgg:AttributeExpression" objectVar="//@rules.3/@targetPatterns.1">
+        <attribute href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//NamedElement/name"/>
+      </values>
+    </attrConditions>
+  </rules>
+  <rules name="connectTransitionSrcRule" schema="//@schema">
+    <sourcePatterns name="sp">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Place"/>
+    </sourcePatterns>
+    <sourcePatterns name="st">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Transition"/>
+      <linkVariablePatterns target="//@rules.4/@sourcePatterns.0">
+        <op value="++"/>
+        <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Transition/srcP2T"/>
+      </linkVariablePatterns>
+    </sourcePatterns>
+    <targetPatterns name="edge">
+      <op value="++"/>
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//PTEdge"/>
+      <linkVariablePatterns target="//@rules.4/@targetPatterns.2">
+        <op value="++"/>
+        <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//PTEdge/fromPlace"/>
+      </linkVariablePatterns>
+      <linkVariablePatterns target="//@rules.4/@targetPatterns.3">
+        <op value="++"/>
+        <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//PTEdge/toTransition"/>
+      </linkVariablePatterns>
+    </targetPatterns>
+    <targetPatterns name="net">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net"/>
+      <linkVariablePatterns target="//@rules.4/@targetPatterns.3">
+        <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+      </linkVariablePatterns>
+      <linkVariablePatterns target="//@rules.4/@targetPatterns.0">
+        <op value="++"/>
+        <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+      </linkVariablePatterns>
+    </targetPatterns>
+    <targetPatterns name="tp">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Place"/>
+    </targetPatterns>
+    <targetPatterns name="tt">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Transition"/>
+    </targetPatterns>
+    <correspondencePatterns name="p2p" type="//@schema/@correspondenceTypes.2" source="//@rules.4/@sourcePatterns.0" target="//@rules.4/@targetPatterns.2"/>
+    <correspondencePatterns name="t2t" type="//@schema/@correspondenceTypes.1" source="//@rules.4/@sourcePatterns.1" target="//@rules.4/@targetPatterns.3"/>
+    <attrConditions name="//@schema/@attributeCondDefs.0">
+      <values xsi:type="tgg:AttributeExpression" objectVar="//@rules.4/@targetPatterns.0">
+        <attribute href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Edge/weight"/>
+      </values>
+      <values xsi:type="tgg:LiteralExpression" value="1"/>
+    </attrConditions>
+  </rules>
+  <rules name="connectTransitionTrgRule" schema="//@schema">
+    <sourcePatterns name="sp">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Place"/>
+    </sourcePatterns>
+    <sourcePatterns name="st">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Transition"/>
+      <linkVariablePatterns target="//@rules.5/@sourcePatterns.0">
+        <op value="++"/>
+        <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Transition/trgT2P"/>
+      </linkVariablePatterns>
+    </sourcePatterns>
+    <targetPatterns name="edge">
+      <op value="++"/>
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//TPEdge"/>
+      <linkVariablePatterns target="//@rules.5/@targetPatterns.3">
+        <op value="++"/>
+        <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//TPEdge/fromTransition"/>
+      </linkVariablePatterns>
+      <linkVariablePatterns target="//@rules.5/@targetPatterns.2">
+        <op value="++"/>
+        <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//TPEdge/toPlace"/>
+      </linkVariablePatterns>
+    </targetPatterns>
+    <targetPatterns name="net">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net"/>
+      <linkVariablePatterns target="//@rules.5/@targetPatterns.3">
+        <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+      </linkVariablePatterns>
+      <linkVariablePatterns target="//@rules.5/@targetPatterns.0">
+        <op value="++"/>
+        <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+      </linkVariablePatterns>
+    </targetPatterns>
+    <targetPatterns name="tp">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Place"/>
+    </targetPatterns>
+    <targetPatterns name="tt">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Transition"/>
+    </targetPatterns>
+    <correspondencePatterns name="p2p" type="//@schema/@correspondenceTypes.2" source="//@rules.5/@sourcePatterns.0" target="//@rules.5/@targetPatterns.2"/>
+    <correspondencePatterns name="t2t" type="//@schema/@correspondenceTypes.1" source="//@rules.5/@sourcePatterns.1" target="//@rules.5/@targetPatterns.3"/>
+    <attrConditions name="//@schema/@attributeCondDefs.0">
+      <values xsi:type="tgg:AttributeExpression" objectVar="//@rules.5/@targetPatterns.0">
+        <attribute href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Edge/weight"/>
+      </values>
+      <values xsi:type="tgg:LiteralExpression" value="1"/>
+    </attrConditions>
+  </rules>
+</tgg:TripleGraphGrammarFile>

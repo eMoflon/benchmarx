@@ -33,9 +33,9 @@ public class PNWBuilder {
 	
 	public PNWBuilder place(String name, int numberOfTokens) {
 		Place p = f.createPlace();
+		net.getElements().add(p);
 		p.setName(name);
 		p.setNoOfTokens(numberOfTokens);
-		net.getElements().add(p);
 		return this;
 	}
 	
@@ -204,10 +204,10 @@ public class PNWBuilder {
 				.findAny().orElse(null);
 		if (add && edge == null) {
 			PTEdge pte = f.createPTEdge();
+			pte.setNet(net);
 			pte.setWeight(weight);
 			pte.setFromPlace(s);
 			pte.setToTransition(lastTransition);
-			pte.setNet(net);
 		} else if (!add && edge != null) {
 			EcoreUtil.delete(edge);
 		}
@@ -228,10 +228,10 @@ public class PNWBuilder {
 				.findAny().orElse(null);
 		if (add && edge == null) {
 			TPEdge tpe = f.createTPEdge();
+			tpe.setNet(net);
 			tpe.setWeight(weight);
 			tpe.setToPlace(t);
 			tpe.setFromTransition(lastTransition);
-			tpe.setNet(net);
 		} else if (!add && edge != null) {
 			EcoreUtil.delete(edge);
 		}

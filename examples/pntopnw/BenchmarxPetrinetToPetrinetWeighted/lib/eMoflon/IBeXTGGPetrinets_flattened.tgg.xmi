@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org.emoflon.ibex.tgg.core.language:TGG xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.emoflon.ibex.tgg.core.language="platform:/resource/org.emoflon.ibex.tgg.core.language/model/Language.ecore" xmlns:org.emoflon.ibex.tgg.core.language.misc.expressions="platform:/resource/org.emoflon.ibex.tgg.core.language/model/Language.ecore#//basic/expressions" name="IBeXTGGPetrinets">
+  <src href="platform:/resource/Petrinet/model/PetriNet.ecore#/"/>
+  <trg href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#/"/>
+  <corr href="platform:/resource/IBeXTGGPetrinets/model/IBeXTGGPetrinets.ecore#/"/>
+  <rules name="ConnectTransitionRule" abstract="true">
+    <nodes name="sp" incomingCorrsSource="//@rules.0/@nodes.6">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Place"/>
+    </nodes>
+    <nodes name="st" incomingCorrsSource="//@rules.0/@nodes.7">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Transition"/>
+    </nodes>
+    <nodes name="edge" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.0/@edges.1" outgoingEdges="//@rules.0/@edges.3">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Edge"/>
+    </nodes>
+    <nodes name="net" domainType="TRG" incomingEdges="//@rules.0/@edges.2 //@rules.0/@edges.3" outgoingEdges="//@rules.0/@edges.0 //@rules.0/@edges.1">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net"/>
+    </nodes>
+    <nodes name="tp" domainType="TRG" incomingCorrsTarget="//@rules.0/@nodes.6">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Place"/>
+    </nodes>
+    <nodes name="tt" domainType="TRG" incomingEdges="//@rules.0/@edges.0" outgoingEdges="//@rules.0/@edges.2" incomingCorrsTarget="//@rules.0/@nodes.7">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Transition"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="p2p" domainType="CORR" source="//@rules.0/@nodes.0" target="//@rules.0/@nodes.4">
+      <type href="platform:/resource/IBeXTGGPetrinets/model/IBeXTGGPetrinets.ecore#//PlaceToPlace"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="t2t" domainType="CORR" source="//@rules.0/@nodes.1" target="//@rules.0/@nodes.5">
+      <type href="platform:/resource/IBeXTGGPetrinets/model/IBeXTGGPetrinets.ecore#//TransToTrans"/>
+    </nodes>
+    <edges name="net__elements__tt_eMoflonEdge" domainType="TRG" srcNode="//@rules.0/@nodes.3" trgNode="//@rules.0/@nodes.5">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+    </edges>
+    <edges name="net__elements__edge_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.0/@nodes.3" trgNode="//@rules.0/@nodes.2">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+    </edges>
+    <edges name="tt__net__net_eMoflonEdge" domainType="TRG" srcNode="//@rules.0/@nodes.5" trgNode="//@rules.0/@nodes.3">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//NetElement/net"/>
+    </edges>
+    <edges name="edge__net__net_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.0/@nodes.2" trgNode="//@rules.0/@nodes.3">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//NetElement/net"/>
+    </edges>
+    <attributeConditionLibrary>
+      <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0" parameters="//@rules.0/@attributeConditionLibrary/@parameterValues.0 //@rules.0/@attributeConditionLibrary/@parameterValues.1"/>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0/@parameterDefinitions.0" objectVar="//@rules.0/@nodes.2">
+        <attribute href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Edge/weight"/>
+      </parameterValues>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0/@parameterDefinitions.1" value="1"/>
+    </attributeConditionLibrary>
+  </rules>
+  <rules name="NetToNetRule">
+    <nodes name="snet" bindingType="CREATE" incomingCorrsSource="//@rules.1/@nodes.2">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Net"/>
+    </nodes>
+    <nodes name="tnet" domainType="TRG" bindingType="CREATE" incomingCorrsTarget="//@rules.1/@nodes.2">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="n2n" domainType="CORR" bindingType="CREATE" source="//@rules.1/@nodes.0" target="//@rules.1/@nodes.1">
+      <type href="platform:/resource/IBeXTGGPetrinets/model/IBeXTGGPetrinets.ecore#//NetToNet"/>
+    </nodes>
+    <attributeConditionLibrary>
+      <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1" parameters="//@rules.1/@attributeConditionLibrary/@parameterValues.0 //@rules.1/@attributeConditionLibrary/@parameterValues.1"/>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.1/@nodes.0">
+        <attribute href="platform:/resource/Petrinet/model/PetriNet.ecore#//NamedElement/name"/>
+      </parameterValues>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.1/@nodes.1">
+        <attribute href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//NamedElement/name"/>
+      </parameterValues>
+    </attributeConditionLibrary>
+  </rules>
+  <rules name="PlaceToPlaceRule">
+    <nodes name="snet" incomingEdges="//@rules.2/@edges.2" outgoingEdges="//@rules.2/@edges.0" incomingCorrsSource="//@rules.2/@nodes.4">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Net"/>
+    </nodes>
+    <nodes name="sp" bindingType="CREATE" incomingEdges="//@rules.2/@edges.0" outgoingEdges="//@rules.2/@edges.2" incomingCorrsSource="//@rules.2/@nodes.5">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Place"/>
+    </nodes>
+    <nodes name="tnet" domainType="TRG" incomingEdges="//@rules.2/@edges.3" outgoingEdges="//@rules.2/@edges.1" incomingCorrsTarget="//@rules.2/@nodes.4">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net"/>
+    </nodes>
+    <nodes name="tp" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.2/@edges.1" outgoingEdges="//@rules.2/@edges.3" incomingCorrsTarget="//@rules.2/@nodes.5">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Place"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="n2n" domainType="CORR" source="//@rules.2/@nodes.0" target="//@rules.2/@nodes.2">
+      <type href="platform:/resource/IBeXTGGPetrinets/model/IBeXTGGPetrinets.ecore#//NetToNet"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="p2p" domainType="CORR" bindingType="CREATE" source="//@rules.2/@nodes.1" target="//@rules.2/@nodes.3">
+      <type href="platform:/resource/IBeXTGGPetrinets/model/IBeXTGGPetrinets.ecore#//PlaceToPlace"/>
+    </nodes>
+    <edges name="snet__elements__sp_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.2/@nodes.0" trgNode="//@rules.2/@nodes.1">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Net/elements"/>
+    </edges>
+    <edges name="tnet__elements__tp_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.2/@nodes.2" trgNode="//@rules.2/@nodes.3">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+    </edges>
+    <edges name="sp__net__snet_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.2/@nodes.1" trgNode="//@rules.2/@nodes.0">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//NetElement/net"/>
+    </edges>
+    <edges name="tp__net__tnet_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.2/@nodes.3" trgNode="//@rules.2/@nodes.2">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//NetElement/net"/>
+    </edges>
+    <attributeConditionLibrary>
+      <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2" parameters="//@rules.2/@attributeConditionLibrary/@parameterValues.0 //@rules.2/@attributeConditionLibrary/@parameterValues.1"/>
+      <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1" parameters="//@rules.2/@attributeConditionLibrary/@parameterValues.2 //@rules.2/@attributeConditionLibrary/@parameterValues.3"/>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.0" objectVar="//@rules.2/@nodes.1">
+        <attribute href="platform:/resource/Petrinet/model/PetriNet.ecore#//Place/noOfTokens"/>
+      </parameterValues>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.1" objectVar="//@rules.2/@nodes.3">
+        <attribute href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Place/noOfTokens"/>
+      </parameterValues>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.2/@nodes.1">
+        <attribute href="platform:/resource/Petrinet/model/PetriNet.ecore#//NamedElement/name"/>
+      </parameterValues>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.2/@nodes.3">
+        <attribute href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//NamedElement/name"/>
+      </parameterValues>
+    </attributeConditionLibrary>
+  </rules>
+  <rules name="TransitionToTransitionRule">
+    <nodes name="snet" incomingEdges="//@rules.3/@edges.2" outgoingEdges="//@rules.3/@edges.0" incomingCorrsSource="//@rules.3/@nodes.4">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Net"/>
+    </nodes>
+    <nodes name="st" bindingType="CREATE" incomingEdges="//@rules.3/@edges.0" outgoingEdges="//@rules.3/@edges.2" incomingCorrsSource="//@rules.3/@nodes.5">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Transition"/>
+    </nodes>
+    <nodes name="tnet" domainType="TRG" incomingEdges="//@rules.3/@edges.3" outgoingEdges="//@rules.3/@edges.1" incomingCorrsTarget="//@rules.3/@nodes.4">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net"/>
+    </nodes>
+    <nodes name="tt" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.3/@edges.1" outgoingEdges="//@rules.3/@edges.3" incomingCorrsTarget="//@rules.3/@nodes.5">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Transition"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="n2n" domainType="CORR" source="//@rules.3/@nodes.0" target="//@rules.3/@nodes.2">
+      <type href="platform:/resource/IBeXTGGPetrinets/model/IBeXTGGPetrinets.ecore#//NetToNet"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="t2t" domainType="CORR" bindingType="CREATE" source="//@rules.3/@nodes.1" target="//@rules.3/@nodes.3">
+      <type href="platform:/resource/IBeXTGGPetrinets/model/IBeXTGGPetrinets.ecore#//TransToTrans"/>
+    </nodes>
+    <edges name="snet__elements__st_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.3/@nodes.0" trgNode="//@rules.3/@nodes.1">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Net/elements"/>
+    </edges>
+    <edges name="tnet__elements__tt_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.3/@nodes.2" trgNode="//@rules.3/@nodes.3">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+    </edges>
+    <edges name="st__net__snet_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.3/@nodes.1" trgNode="//@rules.3/@nodes.0">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//NetElement/net"/>
+    </edges>
+    <edges name="tt__net__tnet_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.3/@nodes.3" trgNode="//@rules.3/@nodes.2">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//NetElement/net"/>
+    </edges>
+    <attributeConditionLibrary>
+      <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1" parameters="//@rules.3/@attributeConditionLibrary/@parameterValues.0 //@rules.3/@attributeConditionLibrary/@parameterValues.1"/>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.3/@nodes.1">
+        <attribute href="platform:/resource/Petrinet/model/PetriNet.ecore#//NamedElement/name"/>
+      </parameterValues>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.3/@nodes.3">
+        <attribute href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//NamedElement/name"/>
+      </parameterValues>
+    </attributeConditionLibrary>
+  </rules>
+  <rules name="connectTransitionSrcRule">
+    <nodes name="sp" incomingEdges="//@rules.4/@edges.0" outgoingEdges="//@rules.4/@edges.5" incomingCorrsSource="//@rules.4/@nodes.6">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Place"/>
+    </nodes>
+    <nodes name="st" incomingEdges="//@rules.4/@edges.5" outgoingEdges="//@rules.4/@edges.0" incomingCorrsSource="//@rules.4/@nodes.7">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Transition"/>
+    </nodes>
+    <nodes name="edge" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.4/@edges.4 //@rules.4/@edges.6 //@rules.4/@edges.7" outgoingEdges="//@rules.4/@edges.1 //@rules.4/@edges.2 //@rules.4/@edges.9">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//PTEdge"/>
+    </nodes>
+    <nodes name="net" domainType="TRG" incomingEdges="//@rules.4/@edges.8 //@rules.4/@edges.9" outgoingEdges="//@rules.4/@edges.3 //@rules.4/@edges.4">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net"/>
+    </nodes>
+    <nodes name="tp" domainType="TRG" incomingEdges="//@rules.4/@edges.1" outgoingEdges="//@rules.4/@edges.6" incomingCorrsTarget="//@rules.4/@nodes.6">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Place"/>
+    </nodes>
+    <nodes name="tt" domainType="TRG" incomingEdges="//@rules.4/@edges.2 //@rules.4/@edges.3" outgoingEdges="//@rules.4/@edges.7 //@rules.4/@edges.8" incomingCorrsTarget="//@rules.4/@nodes.7">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Transition"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="p2p" domainType="CORR" source="//@rules.4/@nodes.0" target="//@rules.4/@nodes.4">
+      <type href="platform:/resource/IBeXTGGPetrinets/model/IBeXTGGPetrinets.ecore#//PlaceToPlace"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="t2t" domainType="CORR" source="//@rules.4/@nodes.1" target="//@rules.4/@nodes.5">
+      <type href="platform:/resource/IBeXTGGPetrinets/model/IBeXTGGPetrinets.ecore#//TransToTrans"/>
+    </nodes>
+    <edges name="st__srcP2T__sp_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.4/@nodes.1" trgNode="//@rules.4/@nodes.0">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Transition/srcP2T"/>
+    </edges>
+    <edges name="edge__fromPlace__tp_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.4/@nodes.2" trgNode="//@rules.4/@nodes.4">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//PTEdge/fromPlace"/>
+    </edges>
+    <edges name="edge__toTransition__tt_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.4/@nodes.2" trgNode="//@rules.4/@nodes.5">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//PTEdge/toTransition"/>
+    </edges>
+    <edges name="net__elements__tt_eMoflonEdge" domainType="TRG" srcNode="//@rules.4/@nodes.3" trgNode="//@rules.4/@nodes.5">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+    </edges>
+    <edges name="net__elements__edge_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.4/@nodes.3" trgNode="//@rules.4/@nodes.2">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+    </edges>
+    <edges name="sp__trgP2T__st_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.4/@nodes.0" trgNode="//@rules.4/@nodes.1">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Place/trgP2T"/>
+    </edges>
+    <edges name="tp__outPTEdges__edge_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.4/@nodes.4" trgNode="//@rules.4/@nodes.2">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Place/outPTEdges"/>
+    </edges>
+    <edges name="tt__inPTEdges__edge_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.4/@nodes.5" trgNode="//@rules.4/@nodes.2">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Transition/inPTEdges"/>
+    </edges>
+    <edges name="tt__net__net_eMoflonEdge" domainType="TRG" srcNode="//@rules.4/@nodes.5" trgNode="//@rules.4/@nodes.3">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//NetElement/net"/>
+    </edges>
+    <edges name="edge__net__net_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.4/@nodes.2" trgNode="//@rules.4/@nodes.3">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//NetElement/net"/>
+    </edges>
+    <attributeConditionLibrary>
+      <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0" parameters="//@rules.4/@attributeConditionLibrary/@parameterValues.0 //@rules.4/@attributeConditionLibrary/@parameterValues.1"/>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0/@parameterDefinitions.0" objectVar="//@rules.4/@nodes.2">
+        <attribute href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Edge/weight"/>
+      </parameterValues>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0/@parameterDefinitions.1" value="1"/>
+    </attributeConditionLibrary>
+  </rules>
+  <rules name="connectTransitionTrgRule">
+    <nodes name="sp" incomingEdges="//@rules.5/@edges.0" outgoingEdges="//@rules.5/@edges.5" incomingCorrsSource="//@rules.5/@nodes.6">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Place"/>
+    </nodes>
+    <nodes name="st" incomingEdges="//@rules.5/@edges.5" outgoingEdges="//@rules.5/@edges.0" incomingCorrsSource="//@rules.5/@nodes.7">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Transition"/>
+    </nodes>
+    <nodes name="edge" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.5/@edges.4 //@rules.5/@edges.6 //@rules.5/@edges.7" outgoingEdges="//@rules.5/@edges.1 //@rules.5/@edges.2 //@rules.5/@edges.9">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//TPEdge"/>
+    </nodes>
+    <nodes name="net" domainType="TRG" incomingEdges="//@rules.5/@edges.8 //@rules.5/@edges.9" outgoingEdges="//@rules.5/@edges.3 //@rules.5/@edges.4">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net"/>
+    </nodes>
+    <nodes name="tp" domainType="TRG" incomingEdges="//@rules.5/@edges.2" outgoingEdges="//@rules.5/@edges.7" incomingCorrsTarget="//@rules.5/@nodes.6">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Place"/>
+    </nodes>
+    <nodes name="tt" domainType="TRG" incomingEdges="//@rules.5/@edges.1 //@rules.5/@edges.3" outgoingEdges="//@rules.5/@edges.6 //@rules.5/@edges.8" incomingCorrsTarget="//@rules.5/@nodes.7">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Transition"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="p2p" domainType="CORR" source="//@rules.5/@nodes.0" target="//@rules.5/@nodes.4">
+      <type href="platform:/resource/IBeXTGGPetrinets/model/IBeXTGGPetrinets.ecore#//PlaceToPlace"/>
+    </nodes>
+    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="t2t" domainType="CORR" source="//@rules.5/@nodes.1" target="//@rules.5/@nodes.5">
+      <type href="platform:/resource/IBeXTGGPetrinets/model/IBeXTGGPetrinets.ecore#//TransToTrans"/>
+    </nodes>
+    <edges name="st__trgT2P__sp_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.5/@nodes.1" trgNode="//@rules.5/@nodes.0">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Transition/trgT2P"/>
+    </edges>
+    <edges name="edge__fromTransition__tt_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.5/@nodes.2" trgNode="//@rules.5/@nodes.5">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//TPEdge/fromTransition"/>
+    </edges>
+    <edges name="edge__toPlace__tp_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.5/@nodes.2" trgNode="//@rules.5/@nodes.4">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//TPEdge/toPlace"/>
+    </edges>
+    <edges name="net__elements__tt_eMoflonEdge" domainType="TRG" srcNode="//@rules.5/@nodes.3" trgNode="//@rules.5/@nodes.5">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+    </edges>
+    <edges name="net__elements__edge_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.5/@nodes.3" trgNode="//@rules.5/@nodes.2">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Net/elements"/>
+    </edges>
+    <edges name="sp__srcT2P__st_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.5/@nodes.0" trgNode="//@rules.5/@nodes.1">
+      <type href="platform:/resource/Petrinet/model/PetriNet.ecore#//Place/srcT2P"/>
+    </edges>
+    <edges name="tt__outTPEdges__edge_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.5/@nodes.5" trgNode="//@rules.5/@nodes.2">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Transition/outTPEdges"/>
+    </edges>
+    <edges name="tp__inTPEdges__edge_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.5/@nodes.4" trgNode="//@rules.5/@nodes.2">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Place/inTPEdges"/>
+    </edges>
+    <edges name="tt__net__net_eMoflonEdge" domainType="TRG" srcNode="//@rules.5/@nodes.5" trgNode="//@rules.5/@nodes.3">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//NetElement/net"/>
+    </edges>
+    <edges name="edge__net__net_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.5/@nodes.2" trgNode="//@rules.5/@nodes.3">
+      <type href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//NetElement/net"/>
+    </edges>
+    <attributeConditionLibrary>
+      <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0" parameters="//@rules.5/@attributeConditionLibrary/@parameterValues.0 //@rules.5/@attributeConditionLibrary/@parameterValues.1"/>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0/@parameterDefinitions.0" objectVar="//@rules.5/@nodes.2">
+        <attribute href="platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore#//Edge/weight"/>
+      </parameterValues>
+      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0/@parameterDefinitions.1" value="1"/>
+    </attributeConditionLibrary>
+  </rules>
+  <attributeConstraintDefinitionLibrary>
+    <tggAttributeConstraintDefinitions name="setDefaultNumber" userDefined="false">
+      <parameterDefinitions name="variableNumber">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </parameterDefinitions>
+      <parameterDefinitions name="defaultNumber">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </parameterDefinitions>
+      <syncAdornments>
+        <value>B</value>
+        <value>B</value>
+      </syncAdornments>
+      <syncAdornments>
+        <value>F</value>
+        <value>B</value>
+      </syncAdornments>
+      <genAdornments>
+        <value>B</value>
+        <value>B</value>
+      </genAdornments>
+      <genAdornments>
+        <value>F</value>
+        <value>B</value>
+      </genAdornments>
+      <genAdornments>
+        <value>F</value>
+        <value>F</value>
+      </genAdornments>
+    </tggAttributeConstraintDefinitions>
+    <tggAttributeConstraintDefinitions name="eq_string" userDefined="false">
+      <parameterDefinitions name="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </parameterDefinitions>
+      <parameterDefinitions name="b">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </parameterDefinitions>
+      <syncAdornments>
+        <value>B</value>
+        <value>B</value>
+      </syncAdornments>
+      <syncAdornments>
+        <value>B</value>
+        <value>F</value>
+      </syncAdornments>
+      <syncAdornments>
+        <value>F</value>
+        <value>B</value>
+      </syncAdornments>
+      <genAdornments>
+        <value>B</value>
+        <value>B</value>
+      </genAdornments>
+      <genAdornments>
+        <value>B</value>
+        <value>F</value>
+      </genAdornments>
+      <genAdornments>
+        <value>F</value>
+        <value>B</value>
+      </genAdornments>
+      <genAdornments>
+        <value>F</value>
+        <value>F</value>
+      </genAdornments>
+    </tggAttributeConstraintDefinitions>
+    <tggAttributeConstraintDefinitions name="eq_int" userDefined="false">
+      <parameterDefinitions name="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </parameterDefinitions>
+      <parameterDefinitions name="b">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </parameterDefinitions>
+      <syncAdornments>
+        <value>B</value>
+        <value>B</value>
+      </syncAdornments>
+      <syncAdornments>
+        <value>B</value>
+        <value>F</value>
+      </syncAdornments>
+      <syncAdornments>
+        <value>F</value>
+        <value>B</value>
+      </syncAdornments>
+      <genAdornments>
+        <value>B</value>
+        <value>B</value>
+      </genAdornments>
+      <genAdornments>
+        <value>B</value>
+        <value>F</value>
+      </genAdornments>
+      <genAdornments>
+        <value>F</value>
+        <value>B</value>
+      </genAdornments>
+      <genAdornments>
+        <value>F</value>
+        <value>F</value>
+      </genAdornments>
+    </tggAttributeConstraintDefinitions>
+  </attributeConstraintDefinitionLibrary>
+</org.emoflon.ibex.tgg.core.language:TGG>

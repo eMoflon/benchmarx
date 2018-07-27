@@ -1,0 +1,32 @@
+#import "platform:/resource/Petrinet/model/PetriNet.ecore"
+#import "platform:/resource/PetrinetWeighted/model/PetriNetWeighted.ecore"
+
+#schema IBeXTGGPetrinets
+	
+#source {
+	pn
+}
+
+#target { 
+	pnw
+} 
+
+#correspondence {
+	NetToNet {
+		#src->pn.Net
+		#trg->pnw.Net
+	}
+	
+	TransToTrans {
+		#src->pn.Transition
+		#trg->pnw.Transition	
+	}
+	
+	PlaceToPlace {
+		#src->pn.Place
+		#trg->pnw.Place
+	}
+}
+
+#attributeConditions {
+}

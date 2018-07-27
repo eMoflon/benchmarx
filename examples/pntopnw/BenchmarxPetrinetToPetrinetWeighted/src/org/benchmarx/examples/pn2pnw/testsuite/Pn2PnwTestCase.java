@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.benchmarx.BXTool;
 import org.benchmarx.emf.Comparator;
 import org.benchmarx.examples.pn2pnw.implementations.bxtend.BXtendPn2Pnw;
+import org.benchmarx.examples.pn2pnw.implementations.ibextgg.IBeXTGGPetrinets;
 import org.benchmarx.examples.pn2pnw.implementations.medini.MediniQVTPn2Pnw;
 import org.benchmarx.examples.pn2pnw.implementations.plainjavaubt.PlainJavaUbtPn2Pnw;
 import org.benchmarx.petrinet.core.PNHelper;
@@ -56,7 +57,8 @@ public abstract class Pn2PnwTestCase {
 		return Arrays.asList(
 				new BXtendPn2Pnw(),
 				new PlainJavaUbtPn2Pnw(),
-				new MediniQVTPn2Pnw()
+				new MediniQVTPn2Pnw(),
+				new IBeXTGGPetrinets()
 			);
 	}
 	

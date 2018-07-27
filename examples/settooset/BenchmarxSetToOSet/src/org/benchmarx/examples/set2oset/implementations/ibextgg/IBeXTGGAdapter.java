@@ -2,7 +2,6 @@ package org.benchmarx.examples.set2oset.implementations.ibextgg;
 
 import java.io.IOException;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
@@ -51,6 +50,7 @@ public abstract class IBeXTGGAdapter<S extends EObject, T extends EObject, D, X 
 	@Override
 	public void performAndPropagateSourceEdit(Consumer<S> edit) {
 		// Adapt source model
+		@SuppressWarnings("unchecked")
 		S o = (S) sync.getSourceResource().getContents().get(0);
 		edit.accept(o);
 
@@ -65,6 +65,7 @@ public abstract class IBeXTGGAdapter<S extends EObject, T extends EObject, D, X 
 	@Override
 	public void performAndPropagateTargetEdit(Consumer<T> edit) {
 		// Adapt target model
+		@SuppressWarnings("unchecked")
 		T o = (T) sync.getTargetResource().getContents().get(0);
 		edit.accept(o);
 
@@ -91,11 +92,13 @@ public abstract class IBeXTGGAdapter<S extends EObject, T extends EObject, D, X 
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public S getSourceModel() {
 		return (S) sync.getSourceResource().getContents().get(0);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T getTargetModel() {
 		return (T) sync.getTargetResource().getContents().get(0);

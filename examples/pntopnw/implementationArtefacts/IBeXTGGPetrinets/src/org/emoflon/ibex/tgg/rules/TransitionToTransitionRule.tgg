@@ -1,0 +1,36 @@
+#using IBeXTGGPetrinets.*
+#using AttrCondDefLibrary.*
+
+#rule TransitionToTransitionRule #with IBeXTGGPetrinets
+
+#source { 
+	snet:pn.Net {
+		++ -elements->st
+	}
+	
+	++ st:pn.Transition
+}
+
+#target {
+	tnet:pnw.Net {
+		++ -elements->tt
+	}
+	
+	++ tt:pnw.Transition
+}
+
+#correspondence {
+	n2n:NetToNet {
+		#src->snet
+		#trg->tnet
+	}
+	
+	++ t2t:TransToTrans {
+		#src->st
+		#trg->tt
+	}
+}
+
+#attributeConditions {
+	eq_string(st.name, tt.name)
+}

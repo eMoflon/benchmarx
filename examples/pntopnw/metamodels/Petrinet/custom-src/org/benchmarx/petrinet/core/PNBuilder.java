@@ -54,8 +54,8 @@ public class PNBuilder {
 		Transition trans = findTransitionByName(name); 
 		if (trans == null) {
 			trans = f.createTransition();
-			trans.setName(name);
 			net.getElements().add(trans);
+			trans.setName(name);
 		}
 		lastTransition = trans;
 		if (source != null) {
