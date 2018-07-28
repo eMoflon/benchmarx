@@ -1,0 +1,52 @@
+#using IBeXTGGEcoreToSQL.*
+#using AttrCondDefLibrary.*
+
+#rule HandleMultiValAttr #with IBeXTGGEcoreToSQL
+
+#source { 
+	from:EClass 
+	
+	++ attr:EAttribute {
+		upperBound := -1		
+		++-eContainingClass->from
+	}
+}
+
+#target {
+	s:Schema {
+		-ownedTables->table
+		++-ownedTables->attrTable
+	}
+	
+	table:Table
+	
+	++ attrTable:Table {
+		++-ownedColumns->id
+		++-ownedColumns->value
+	}
+	
+	++ fk:ForeignKey {
+		++-column->id
+		++-referencedTable->table
+		++-owningTable->attrTable
+	}
+	
+	++ id:Column {
+		name := "id"
+	}
+	
+	++ value:Column {
+		name := "value"
+	}
+}
+
+#correspondence {
+	f2t:ClassToTable {
+		#src->from
+		#trg->table
+	}
+}
+
+#attributeConditions {
+	concat("_", from.name, attr.name, attrTable.name)
+}

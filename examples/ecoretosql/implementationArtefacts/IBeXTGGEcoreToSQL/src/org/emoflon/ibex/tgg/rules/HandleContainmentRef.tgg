@@ -1,0 +1,53 @@
+#using IBeXTGGEcoreToSQL.*
+#using AttrCondDefLibrary.*
+
+#rule HandleContainmentRef #with IBeXTGGEcoreToSQL
+
+#source { 
+	from:EClass
+	
+	++ ref:EReference {
+		containment := true
+		++-eContainingClass->from
+		++-eType->to
+	}
+	
+	to:EClass
+}
+
+#target {
+	fromT:Table
+	
+	++ fk:ForeignKey {
+		++-column->col
+		++-referencedTable->fromT
+		++-owningTable->toT
+	}
+	
+	++ col:Column {
+		++ -owningTable->toT
+	}
+	
+	toT:Table
+}
+
+#correspondence {
+	from2fromT:ClassToTable {
+		#src->from
+		#trg->fromT
+	}
+	
+	to2ToT:ClassToTable {
+		#src->to
+		#trg->toT
+	}
+	
+	++ r2k:RefToFKey {
+		#src->ref
+		#trg->fk
+	}
+}
+
+#attributeConditions {
+	addSuffix(ref.name, "_inverse", col.name)
+}

@@ -1,0 +1,24 @@
+#using IBeXTGGEcoreToSQL.*
+#using AttrCondDefLibrary.*
+
+#rule ClassToTableRule #extends HandleClassRule #with IBeXTGGEcoreToSQL
+
+#source { 
+	
+}
+
+#target {
+	otable:Table 
+	
+	++ fk:ForeignKey {
+		++ -referencedTable->otable
+	}
+}
+
+#correspondence {
+
+}
+
+#attributeConditions {
+
+}

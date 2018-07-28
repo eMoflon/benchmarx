@@ -1,0 +1,37 @@
+#using IBeXTGGEcoreToSQL.*
+#using AttrCondDefLibrary.*
+
+#rule AttributeToColumnRule #with IBeXTGGEcoreToSQL
+
+#source { 
+	c:EClass 
+	
+	++ attr : EAttribute {
+		upperBound := 1
+		++-eContainingClass->c
+	}
+}
+
+#target {
+	t:Table {
+		++ -ownedColumns->col
+	}
+	
+	++ col : Column
+}
+
+#correspondence {
+	++ a2c:AttrToCol {
+		#src->attr
+		#trg->col
+	}
+	
+	c2t:ClassToTable {
+		#src->c
+		#trg->t
+	}
+}
+
+#attributeConditions {
+	eq_string(attr.name, col.name)
+}

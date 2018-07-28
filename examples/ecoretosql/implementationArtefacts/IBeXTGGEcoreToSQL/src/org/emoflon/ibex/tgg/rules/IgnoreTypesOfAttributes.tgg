@@ -1,0 +1,12 @@
+#using IBeXTGGEcoreToSQL.*
+#using AttrCondDefLibrary.*
+
+#rule IgnoreTypesOfAttributes #with IBeXTGGEcoreToSQL
+
+#source { 
+	attr:EAttribute {
+		++ -eType->dt
+	}
+	
+	dt:EDataType 	
+}
