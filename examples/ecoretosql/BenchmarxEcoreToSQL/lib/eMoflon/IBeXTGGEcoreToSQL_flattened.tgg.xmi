@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<org.emoflon.ibex.tgg.core.language:TGG xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.emoflon.ibex.tgg.core.language="platform:/resource/org.emoflon.ibex.tgg.core.language/model/Language.ecore" xmlns:org.emoflon.ibex.tgg.core.language.csp="platform:/resource/org.emoflon.ibex.tgg.core.language/model/Language.ecore#//csp" xmlns:org.emoflon.ibex.tgg.core.language.misc.expressions="platform:/resource/org.emoflon.ibex.tgg.core.language/model/Language.ecore#//basic/expressions" name="IBeXTGGEcoreToSQL">
+<language:TGG xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:language="platform:/plugin/org.emoflon.ibex.tgg.core.language/model/Language.ecore" name="IBeXTGGEcoreToSQL">
   <src href="http://www.eclipse.org/emf/2002/Ecore#/"/>
   <trg href="platform:/resource/SQL/model/SQL.ecore#/"/>
   <corr href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#/"/>
@@ -8,7 +8,7 @@
       <type href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
       <attrExpr>
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/upperBound"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="1"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="1"/>
       </attrExpr>
     </nodes>
     <nodes name="c" incomingEdges="//@rules.0/@edges.0" outgoingEdges="//@rules.0/@edges.2" incomingCorrsSource="//@rules.0/@nodes.5">
@@ -20,10 +20,10 @@
     <nodes name="t" domainType="TRG" incomingEdges="//@rules.0/@edges.3" outgoingEdges="//@rules.0/@edges.1" incomingCorrsTarget="//@rules.0/@nodes.5">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Table"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="a2c" domainType="CORR" bindingType="CREATE" source="//@rules.0/@nodes.0" target="//@rules.0/@nodes.2">
+    <nodes xsi:type="language:TGGRuleCorr" name="a2c" domainType="CORR" bindingType="CREATE" source="//@rules.0/@nodes.0" target="//@rules.0/@nodes.2">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//AttrToCol"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="c2t" domainType="CORR" source="//@rules.0/@nodes.1" target="//@rules.0/@nodes.3">
+    <nodes xsi:type="language:TGGRuleCorr" name="c2t" domainType="CORR" source="//@rules.0/@nodes.1" target="//@rules.0/@nodes.3">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//ClassToTable"/>
     </nodes>
     <edges name="attr__eContainingClass__c_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.0/@nodes.0" trgNode="//@rules.0/@nodes.1">
@@ -40,10 +40,10 @@
     </edges>
     <attributeConditionLibrary>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1" parameters="//@rules.0/@attributeConditionLibrary/@parameterValues.0 //@rules.0/@attributeConditionLibrary/@parameterValues.1"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.0/@nodes.0">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.0/@nodes.0">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.0/@nodes.2">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.0/@nodes.2">
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
       </parameterValues>
     </attributeConditionLibrary>
@@ -68,11 +68,11 @@
       <type href="platform:/resource/SQL/model/SQL.ecore#//Column"/>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;id&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;id&quot;"/>
       </attrExpr>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//Column/type"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;int&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;int&quot;"/>
       </attrExpr>
     </nodes>
     <nodes name="otable" domainType="TRG" incomingEdges="//@rules.1/@edges.3 //@rules.1/@edges.18 //@rules.1/@edges.19 //@rules.1/@edges.20" outgoingEdges="//@rules.1/@edges.5 //@rules.1/@edges.6 //@rules.1/@edges.7 //@rules.1/@edges.16" incomingCorrsTarget="//@rules.1/@nodes.11">
@@ -87,13 +87,13 @@
     <nodes name="table" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.1/@edges.2 //@rules.1/@edges.22 //@rules.1/@edges.23 //@rules.1/@edges.24 //@rules.1/@edges.25" outgoingEdges="//@rules.1/@edges.9 //@rules.1/@edges.10 //@rules.1/@edges.11 //@rules.1/@edges.12 //@rules.1/@edges.15" incomingCorrsTarget="//@rules.1/@nodes.10">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Table"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="c2t" domainType="CORR" bindingType="CREATE" source="//@rules.1/@nodes.0" target="//@rules.1/@nodes.9">
+    <nodes xsi:type="language:TGGRuleCorr" name="c2t" domainType="CORR" bindingType="CREATE" source="//@rules.1/@nodes.0" target="//@rules.1/@nodes.9">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//ClassToTable"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="p2ot" domainType="CORR" source="//@rules.1/@nodes.1" target="//@rules.1/@nodes.6">
+    <nodes xsi:type="language:TGGRuleCorr" name="p2ot" domainType="CORR" source="//@rules.1/@nodes.1" target="//@rules.1/@nodes.6">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//PackageToTable"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="p2s" domainType="CORR" source="//@rules.1/@nodes.1" target="//@rules.1/@nodes.8">
+    <nodes xsi:type="language:TGGRuleCorr" name="p2s" domainType="CORR" source="//@rules.1/@nodes.1" target="//@rules.1/@nodes.8">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//PackageToSchema"/>
     </nodes>
     <edges name="p__eClassifiers__c_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.1/@nodes.1" trgNode="//@rules.1/@nodes.0">
@@ -177,13 +177,13 @@
     <attributeConditionLibrary>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1" parameters="//@rules.1/@attributeConditionLibrary/@parameterValues.0 //@rules.1/@attributeConditionLibrary/@parameterValues.1"/>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1" parameters="//@rules.1/@attributeConditionLibrary/@parameterValues.0 //@rules.1/@attributeConditionLibrary/@parameterValues.2"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.1/@nodes.9">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.1/@nodes.9">
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.1/@nodes.0">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.1/@nodes.0">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.1/@nodes.2">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.1/@nodes.2">
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
       </parameterValues>
     </attributeConditionLibrary>
@@ -196,14 +196,14 @@
       <type href="http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
       <attrExpr>
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/containment"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="false"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="false"/>
       </attrExpr>
     </nodes>
     <nodes name="ref_f" bindingType="CREATE" incomingEdges="//@rules.2/@edges.2 //@rules.2/@edges.18" outgoingEdges="//@rules.2/@edges.3 //@rules.2/@edges.4 //@rules.2/@edges.5">
       <type href="http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
       <attrExpr>
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/containment"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="false"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="false"/>
       </attrExpr>
     </nodes>
     <nodes name="to" incomingEdges="//@rules.2/@edges.0 //@rules.2/@edges.4" outgoingEdges="//@rules.2/@edges.17" incomingCorrsSource="//@rules.2/@nodes.13">
@@ -228,23 +228,23 @@
       <type href="platform:/resource/SQL/model/SQL.ecore#//Column"/>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;source&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;source&quot;"/>
       </attrExpr>
     </nodes>
     <nodes name="target" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.2/@edges.8 //@rules.2/@edges.11" outgoingEdges="//@rules.2/@edges.21 //@rules.2/@edges.24">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Column"/>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;target&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;target&quot;"/>
       </attrExpr>
     </nodes>
     <nodes name="toT" domainType="TRG" incomingEdges="//@rules.2/@edges.15" outgoingEdges="//@rules.2/@edges.28" incomingCorrsTarget="//@rules.2/@nodes.13">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Table"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="f2f" domainType="CORR" source="//@rules.2/@nodes.0" target="//@rules.2/@nodes.6">
+    <nodes xsi:type="language:TGGRuleCorr" name="f2f" domainType="CORR" source="//@rules.2/@nodes.0" target="//@rules.2/@nodes.6">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//ClassToTable"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="t2t" domainType="CORR" source="//@rules.2/@nodes.3" target="//@rules.2/@nodes.11">
+    <nodes xsi:type="language:TGGRuleCorr" name="t2t" domainType="CORR" source="//@rules.2/@nodes.3" target="//@rules.2/@nodes.11">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//ClassToTable"/>
     </nodes>
     <edges name="ref_b__eContainingClass__to_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.2/@nodes.1" trgNode="//@rules.2/@nodes.3">
@@ -341,23 +341,23 @@
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2" parameters="//@rules.2/@attributeConditionLibrary/@parameterValues.0 //@rules.2/@attributeConditionLibrary/@parameterValues.1 //@rules.2/@attributeConditionLibrary/@parameterValues.2 //@rules.2/@attributeConditionLibrary/@parameterValues.3"/>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2" parameters="//@rules.2/@attributeConditionLibrary/@parameterValues.4 //@rules.2/@attributeConditionLibrary/@parameterValues.5 //@rules.2/@attributeConditionLibrary/@parameterValues.6 //@rules.2/@attributeConditionLibrary/@parameterValues.1"/>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2" parameters="//@rules.2/@attributeConditionLibrary/@parameterValues.4 //@rules.2/@attributeConditionLibrary/@parameterValues.7 //@rules.2/@attributeConditionLibrary/@parameterValues.8 //@rules.2/@attributeConditionLibrary/@parameterValues.2"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.0" value="&quot;_inverse_&quot;"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.csp:TGGAttributeVariable" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.1" name="f"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.csp:TGGAttributeVariable" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.2" name="b"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.3" objectVar="//@rules.2/@nodes.7">
+      <parameterValues xsi:type="language:TGGLiteralExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.0" value="&quot;_inverse_&quot;"/>
+      <parameterValues xsi:type="language:TGGAttributeVariable" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.1" name="f"/>
+      <parameterValues xsi:type="language:TGGAttributeVariable" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.2" name="b"/>
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.3" objectVar="//@rules.2/@nodes.7">
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.0" value="&quot;_&quot;"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.1" objectVar="//@rules.2/@nodes.0">
+      <parameterValues xsi:type="language:TGGLiteralExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.0" value="&quot;_&quot;"/>
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.1" objectVar="//@rules.2/@nodes.0">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.2" objectVar="//@rules.2/@nodes.2">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.2" objectVar="//@rules.2/@nodes.2">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.1" objectVar="//@rules.2/@nodes.3">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.1" objectVar="//@rules.2/@nodes.3">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.2" objectVar="//@rules.2/@nodes.1">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.2" objectVar="//@rules.2/@nodes.1">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
     </attributeConditionLibrary>
@@ -382,11 +382,11 @@
       <type href="platform:/resource/SQL/model/SQL.ecore#//Column"/>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;id&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;id&quot;"/>
       </attrExpr>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//Column/type"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;int&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;int&quot;"/>
       </attrExpr>
     </nodes>
     <nodes name="otable" domainType="TRG" incomingEdges="//@rules.3/@edges.16 //@rules.3/@edges.17 //@rules.3/@edges.18" outgoingEdges="//@rules.3/@edges.4 //@rules.3/@edges.5 //@rules.3/@edges.6" incomingCorrsTarget="//@rules.3/@nodes.11">
@@ -401,13 +401,13 @@
     <nodes name="table" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.3/@edges.2 //@rules.3/@edges.20 //@rules.3/@edges.21 //@rules.3/@edges.22 //@rules.3/@edges.23" outgoingEdges="//@rules.3/@edges.8 //@rules.3/@edges.9 //@rules.3/@edges.10 //@rules.3/@edges.11 //@rules.3/@edges.14" incomingCorrsTarget="//@rules.3/@nodes.10">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Table"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="c2t" domainType="CORR" bindingType="CREATE" source="//@rules.3/@nodes.0" target="//@rules.3/@nodes.9">
+    <nodes xsi:type="language:TGGRuleCorr" name="c2t" domainType="CORR" bindingType="CREATE" source="//@rules.3/@nodes.0" target="//@rules.3/@nodes.9">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//ClassToTable"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="p2ot" domainType="CORR" source="//@rules.3/@nodes.1" target="//@rules.3/@nodes.6">
+    <nodes xsi:type="language:TGGRuleCorr" name="p2ot" domainType="CORR" source="//@rules.3/@nodes.1" target="//@rules.3/@nodes.6">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//PackageToTable"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="p2s" domainType="CORR" source="//@rules.3/@nodes.1" target="//@rules.3/@nodes.8">
+    <nodes xsi:type="language:TGGRuleCorr" name="p2s" domainType="CORR" source="//@rules.3/@nodes.1" target="//@rules.3/@nodes.8">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//PackageToSchema"/>
     </nodes>
     <edges name="p__eClassifiers__c_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.3/@nodes.1" trgNode="//@rules.3/@nodes.0">
@@ -485,13 +485,13 @@
     <attributeConditionLibrary>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1" parameters="//@rules.3/@attributeConditionLibrary/@parameterValues.0 //@rules.3/@attributeConditionLibrary/@parameterValues.1"/>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1" parameters="//@rules.3/@attributeConditionLibrary/@parameterValues.0 //@rules.3/@attributeConditionLibrary/@parameterValues.2"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.3/@nodes.9">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.3/@nodes.9">
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.3/@nodes.0">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.3/@nodes.0">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.3/@nodes.2">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.3/@nodes.2">
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
       </parameterValues>
     </attributeConditionLibrary>
@@ -504,7 +504,7 @@
       <type href="http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
       <attrExpr>
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/containment"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="true"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="true"/>
       </attrExpr>
     </nodes>
     <nodes name="to" incomingEdges="//@rules.4/@edges.1" incomingCorrsSource="//@rules.4/@nodes.9">
@@ -522,13 +522,13 @@
     <nodes name="toT" domainType="TRG" incomingEdges="//@rules.4/@edges.2 //@rules.4/@edges.5" outgoingEdges="//@rules.4/@edges.7 //@rules.4/@edges.10" incomingCorrsTarget="//@rules.4/@nodes.9">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Table"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="from2fromT" domainType="CORR" source="//@rules.4/@nodes.0" target="//@rules.4/@nodes.5">
+    <nodes xsi:type="language:TGGRuleCorr" name="from2fromT" domainType="CORR" source="//@rules.4/@nodes.0" target="//@rules.4/@nodes.5">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//ClassToTable"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="r2k" domainType="CORR" bindingType="CREATE" source="//@rules.4/@nodes.1" target="//@rules.4/@nodes.4">
+    <nodes xsi:type="language:TGGRuleCorr" name="r2k" domainType="CORR" bindingType="CREATE" source="//@rules.4/@nodes.1" target="//@rules.4/@nodes.4">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//RefToFKey"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="to2ToT" domainType="CORR" source="//@rules.4/@nodes.2" target="//@rules.4/@nodes.6">
+    <nodes xsi:type="language:TGGRuleCorr" name="to2ToT" domainType="CORR" source="//@rules.4/@nodes.2" target="//@rules.4/@nodes.6">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//ClassToTable"/>
     </nodes>
     <edges name="ref__eContainingClass__from_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.4/@nodes.1" trgNode="//@rules.4/@nodes.0">
@@ -566,11 +566,11 @@
     </edges>
     <attributeConditionLibrary>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.3" parameters="//@rules.4/@attributeConditionLibrary/@parameterValues.0 //@rules.4/@attributeConditionLibrary/@parameterValues.1 //@rules.4/@attributeConditionLibrary/@parameterValues.2"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.3/@parameterDefinitions.0" objectVar="//@rules.4/@nodes.1">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.3/@parameterDefinitions.0" objectVar="//@rules.4/@nodes.1">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.3/@parameterDefinitions.1" value="&quot;_inverse&quot;"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.3/@parameterDefinitions.2" objectVar="//@rules.4/@nodes.3">
+      <parameterValues xsi:type="language:TGGLiteralExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.3/@parameterDefinitions.1" value="&quot;_inverse&quot;"/>
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.3/@parameterDefinitions.2" objectVar="//@rules.4/@nodes.3">
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
       </parameterValues>
     </attributeConditionLibrary>
@@ -580,7 +580,7 @@
       <type href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
       <attrExpr>
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/upperBound"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="-1"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="-1"/>
       </attrExpr>
     </nodes>
     <nodes name="from" incomingEdges="//@rules.5/@edges.0" outgoingEdges="//@rules.5/@edges.8" incomingCorrsSource="//@rules.5/@nodes.8">
@@ -596,7 +596,7 @@
       <type href="platform:/resource/SQL/model/SQL.ecore#//Column"/>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;id&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;id&quot;"/>
       </attrExpr>
     </nodes>
     <nodes name="s" domainType="TRG" incomingEdges="//@rules.5/@edges.14 //@rules.5/@edges.15" outgoingEdges="//@rules.5/@edges.6 //@rules.5/@edges.7">
@@ -609,10 +609,10 @@
       <type href="platform:/resource/SQL/model/SQL.ecore#//Column"/>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;value&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;value&quot;"/>
       </attrExpr>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="f2t" domainType="CORR" source="//@rules.5/@nodes.1" target="//@rules.5/@nodes.6">
+    <nodes xsi:type="language:TGGRuleCorr" name="f2t" domainType="CORR" source="//@rules.5/@nodes.1" target="//@rules.5/@nodes.6">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//ClassToTable"/>
     </nodes>
     <edges name="attr__eContainingClass__from_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.5/@nodes.0" trgNode="//@rules.5/@nodes.1">
@@ -665,14 +665,14 @@
     </edges>
     <attributeConditionLibrary>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2" parameters="//@rules.5/@attributeConditionLibrary/@parameterValues.0 //@rules.5/@attributeConditionLibrary/@parameterValues.1 //@rules.5/@attributeConditionLibrary/@parameterValues.2 //@rules.5/@attributeConditionLibrary/@parameterValues.3"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.0" value="&quot;_&quot;"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.1" objectVar="//@rules.5/@nodes.1">
+      <parameterValues xsi:type="language:TGGLiteralExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.0" value="&quot;_&quot;"/>
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.1" objectVar="//@rules.5/@nodes.1">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.2" objectVar="//@rules.5/@nodes.0">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.2" objectVar="//@rules.5/@nodes.0">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.3" objectVar="//@rules.5/@nodes.2">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.3" objectVar="//@rules.5/@nodes.2">
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
       </parameterValues>
     </attributeConditionLibrary>
@@ -685,11 +685,11 @@
       <type href="http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
       <attrExpr>
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/upperBound"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="-1"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="-1"/>
       </attrExpr>
       <attrExpr>
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/containment"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="false"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="false"/>
       </attrExpr>
     </nodes>
     <nodes name="to" incomingEdges="//@rules.6/@edges.1" incomingCorrsSource="//@rules.6/@nodes.12">
@@ -699,14 +699,14 @@
       <type href="platform:/resource/SQL/model/SQL.ecore#//Column"/>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;id&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;id&quot;"/>
       </attrExpr>
     </nodes>
     <nodes name="col_ref" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.6/@edges.4 //@rules.6/@edges.7" outgoingEdges="//@rules.6/@edges.16 //@rules.6/@edges.19">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Column"/>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;ref&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;ref&quot;"/>
       </attrExpr>
     </nodes>
     <nodes name="fk_id" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.6/@edges.8 //@rules.6/@edges.14 //@rules.6/@edges.15" outgoingEdges="//@rules.6/@edges.2 //@rules.6/@edges.3 //@rules.6/@edges.20">
@@ -727,10 +727,10 @@
     <nodes name="toT" domainType="TRG" incomingEdges="//@rules.6/@edges.11" outgoingEdges="//@rules.6/@edges.23" incomingCorrsTarget="//@rules.6/@nodes.12">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Table"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="f2f" domainType="CORR" source="//@rules.6/@nodes.0" target="//@rules.6/@nodes.7">
+    <nodes xsi:type="language:TGGRuleCorr" name="f2f" domainType="CORR" source="//@rules.6/@nodes.0" target="//@rules.6/@nodes.7">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//ClassToTable"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="t2t" domainType="CORR" source="//@rules.6/@nodes.2" target="//@rules.6/@nodes.10">
+    <nodes xsi:type="language:TGGRuleCorr" name="t2t" domainType="CORR" source="//@rules.6/@nodes.2" target="//@rules.6/@nodes.10">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//ClassToTable"/>
     </nodes>
     <edges name="ref__eContainingClass__from_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.6/@nodes.1" trgNode="//@rules.6/@nodes.0">
@@ -810,14 +810,14 @@
     </edges>
     <attributeConditionLibrary>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2" parameters="//@rules.6/@attributeConditionLibrary/@parameterValues.0 //@rules.6/@attributeConditionLibrary/@parameterValues.1 //@rules.6/@attributeConditionLibrary/@parameterValues.2 //@rules.6/@attributeConditionLibrary/@parameterValues.3"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.0" value="&quot;_&quot;"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.1" objectVar="//@rules.6/@nodes.0">
+      <parameterValues xsi:type="language:TGGLiteralExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.0" value="&quot;_&quot;"/>
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.1" objectVar="//@rules.6/@nodes.0">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.2" objectVar="//@rules.6/@nodes.1">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.2" objectVar="//@rules.6/@nodes.1">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.3" objectVar="//@rules.6/@nodes.8">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.2/@parameterDefinitions.3" objectVar="//@rules.6/@nodes.8">
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
       </parameterValues>
     </attributeConditionLibrary>
@@ -830,11 +830,11 @@
       <type href="http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
       <attrExpr>
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/containment"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="false"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="false"/>
       </attrExpr>
       <attrExpr>
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/upperBound"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="1"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="1"/>
       </attrExpr>
     </nodes>
     <nodes name="to" incomingEdges="//@rules.7/@edges.1" incomingCorrsSource="//@rules.7/@nodes.9">
@@ -852,13 +852,13 @@
     <nodes name="toT" domainType="TRG" incomingEdges="//@rules.7/@edges.5" outgoingEdges="//@rules.7/@edges.10" incomingCorrsTarget="//@rules.7/@nodes.9">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Table"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="f2f" domainType="CORR" source="//@rules.7/@nodes.0" target="//@rules.7/@nodes.5">
+    <nodes xsi:type="language:TGGRuleCorr" name="f2f" domainType="CORR" source="//@rules.7/@nodes.0" target="//@rules.7/@nodes.5">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//ClassToTable"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="r2k" domainType="CORR" bindingType="CREATE" source="//@rules.7/@nodes.1" target="//@rules.7/@nodes.4">
+    <nodes xsi:type="language:TGGRuleCorr" name="r2k" domainType="CORR" bindingType="CREATE" source="//@rules.7/@nodes.1" target="//@rules.7/@nodes.4">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//RefToFKey"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="t2t" domainType="CORR" source="//@rules.7/@nodes.2" target="//@rules.7/@nodes.6">
+    <nodes xsi:type="language:TGGRuleCorr" name="t2t" domainType="CORR" source="//@rules.7/@nodes.2" target="//@rules.7/@nodes.6">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//ClassToTable"/>
     </nodes>
     <edges name="ref__eContainingClass__from_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.7/@nodes.1" trgNode="//@rules.7/@nodes.0">
@@ -896,10 +896,10 @@
     </edges>
     <attributeConditionLibrary>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1" parameters="//@rules.7/@attributeConditionLibrary/@parameterValues.0 //@rules.7/@attributeConditionLibrary/@parameterValues.1"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.7/@nodes.3">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.7/@nodes.3">
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.7/@nodes.1">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.7/@nodes.1">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
     </attributeConditionLibrary>
@@ -924,25 +924,25 @@
       <type href="platform:/resource/SQL/model/SQL.ecore#//Annotation"/>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//Annotation/annotation"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;package&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;package&quot;"/>
       </attrExpr>
     </nodes>
     <nodes name="idCol" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.9/@edges.2 //@rules.9/@edges.3" outgoingEdges="//@rules.9/@edges.7 //@rules.9/@edges.8">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Column"/>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;id&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;id&quot;"/>
       </attrExpr>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//Column/type"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;int&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;int&quot;"/>
       </attrExpr>
     </nodes>
     <nodes name="objectTable" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.9/@edges.5 //@rules.9/@edges.6 //@rules.9/@edges.7" outgoingEdges="//@rules.9/@edges.0 //@rules.9/@edges.1 //@rules.9/@edges.2" incomingCorrsTarget="//@rules.9/@nodes.6">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Table"/>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;EObject&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;EObject&quot;"/>
       </attrExpr>
     </nodes>
     <nodes name="pk" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.9/@edges.1 //@rules.9/@edges.8" outgoingEdges="//@rules.9/@edges.3 //@rules.9/@edges.6">
@@ -951,10 +951,10 @@
     <nodes name="schema" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.9/@edges.0 //@rules.9/@edges.9" outgoingEdges="//@rules.9/@edges.4 //@rules.9/@edges.5" incomingCorrsTarget="//@rules.9/@nodes.7">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Schema"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="p2o" domainType="CORR" bindingType="CREATE" source="//@rules.9/@nodes.0" target="//@rules.9/@nodes.3">
+    <nodes xsi:type="language:TGGRuleCorr" name="p2o" domainType="CORR" bindingType="CREATE" source="//@rules.9/@nodes.0" target="//@rules.9/@nodes.3">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//PackageToTable"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="p2s" domainType="CORR" bindingType="CREATE" source="//@rules.9/@nodes.0" target="//@rules.9/@nodes.5">
+    <nodes xsi:type="language:TGGRuleCorr" name="p2s" domainType="CORR" bindingType="CREATE" source="//@rules.9/@nodes.0" target="//@rules.9/@nodes.5">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//PackageToSchema"/>
     </nodes>
     <edges name="objectTable__owningSchema__schema_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.9/@nodes.3" trgNode="//@rules.9/@nodes.5">
@@ -992,19 +992,19 @@
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1" parameters="//@rules.9/@attributeConditionLibrary/@parameterValues.2 //@rules.9/@attributeConditionLibrary/@parameterValues.1"/>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1" parameters="//@rules.9/@attributeConditionLibrary/@parameterValues.3 //@rules.9/@attributeConditionLibrary/@parameterValues.1"/>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0" parameters="//@rules.9/@attributeConditionLibrary/@parameterValues.4"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.9/@nodes.0">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.9/@nodes.0">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.9/@nodes.5">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.9/@nodes.5">
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.9/@nodes.0">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.9/@nodes.0">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/nsPrefix"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.9/@nodes.0">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.9/@nodes.0">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/nsURI"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0/@parameterDefinitions.0" objectVar="//@rules.9/@nodes.2">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.0/@parameterDefinitions.0" objectVar="//@rules.9/@nodes.2">
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//Column/properties"/>
       </parameterValues>
     </attributeConditionLibrary>
@@ -1028,15 +1028,15 @@
     <nodes name="fk" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.10/@edges.13 //@rules.10/@edges.17 //@rules.10/@edges.18" outgoingEdges="//@rules.10/@edges.4 //@rules.10/@edges.5 //@rules.10/@edges.26">
       <type href="platform:/resource/SQL/model/SQL.ecore#//ForeignKey"/>
     </nodes>
-    <nodes name="idCol" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.10/@edges.4 //@rules.10/@edges.9 //@rules.10/@edges.12" outgoingEdges="//@rules.10/@edges.17 //@rules.10/@edges.22 //@rules.10/@edges.25">
+    <nodes name="idCol" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.10/@edges.5 //@rules.10/@edges.9 //@rules.10/@edges.12" outgoingEdges="//@rules.10/@edges.18 //@rules.10/@edges.22 //@rules.10/@edges.25">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Column"/>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;id&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;id&quot;"/>
       </attrExpr>
       <attrExpr>
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//Column/type"/>
-        <valueExpr xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGLiteralExpression" value="&quot;int&quot;"/>
+        <valueExpr xsi:type="language:TGGLiteralExpression" value="&quot;int&quot;"/>
       </attrExpr>
     </nodes>
     <nodes name="otable" domainType="TRG" incomingEdges="//@rules.10/@edges.19 //@rules.10/@edges.20 //@rules.10/@edges.21" outgoingEdges="//@rules.10/@edges.6 //@rules.10/@edges.7 //@rules.10/@edges.8" incomingCorrsTarget="//@rules.10/@nodes.13">
@@ -1048,22 +1048,22 @@
     <nodes name="s" domainType="TRG" incomingEdges="//@rules.10/@edges.6 //@rules.10/@edges.10" outgoingEdges="//@rules.10/@edges.19 //@rules.10/@edges.23" incomingCorrsTarget="//@rules.10/@nodes.14">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Schema"/>
     </nodes>
-    <nodes name="st" domainType="TRG" incomingEdges="//@rules.10/@edges.5" outgoingEdges="//@rules.10/@edges.18" incomingCorrsTarget="//@rules.10/@nodes.15">
+    <nodes name="st" domainType="TRG" incomingEdges="//@rules.10/@edges.4" outgoingEdges="//@rules.10/@edges.17" incomingCorrsTarget="//@rules.10/@nodes.15">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Table"/>
     </nodes>
     <nodes name="table" domainType="TRG" bindingType="CREATE" incomingEdges="//@rules.10/@edges.3 //@rules.10/@edges.23 //@rules.10/@edges.24 //@rules.10/@edges.25 //@rules.10/@edges.26" outgoingEdges="//@rules.10/@edges.10 //@rules.10/@edges.11 //@rules.10/@edges.12 //@rules.10/@edges.13 //@rules.10/@edges.16" incomingCorrsTarget="//@rules.10/@nodes.12">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Table"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="c2t" domainType="CORR" bindingType="CREATE" source="//@rules.10/@nodes.0" target="//@rules.10/@nodes.11">
+    <nodes xsi:type="language:TGGRuleCorr" name="c2t" domainType="CORR" bindingType="CREATE" source="//@rules.10/@nodes.0" target="//@rules.10/@nodes.11">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//ClassToTable"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="p2ot" domainType="CORR" source="//@rules.10/@nodes.1" target="//@rules.10/@nodes.7">
+    <nodes xsi:type="language:TGGRuleCorr" name="p2ot" domainType="CORR" source="//@rules.10/@nodes.1" target="//@rules.10/@nodes.7">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//PackageToTable"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="p2s" domainType="CORR" source="//@rules.10/@nodes.1" target="//@rules.10/@nodes.9">
+    <nodes xsi:type="language:TGGRuleCorr" name="p2s" domainType="CORR" source="//@rules.10/@nodes.1" target="//@rules.10/@nodes.9">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//PackageToSchema"/>
     </nodes>
-    <nodes xsi:type="org.emoflon.ibex.tgg.core.language:TGGRuleCorr" name="sc2st" domainType="CORR" source="//@rules.10/@nodes.2" target="//@rules.10/@nodes.10">
+    <nodes xsi:type="language:TGGRuleCorr" name="sc2st" domainType="CORR" source="//@rules.10/@nodes.2" target="//@rules.10/@nodes.10">
       <type href="platform:/resource/IBeXTGGEcoreToSQL/model/IBeXTGGEcoreToSQL.ecore#//ClassToTable"/>
     </nodes>
     <edges name="c__eSuperTypes__sc_eMoflonEdge" bindingType="CREATE" srcNode="//@rules.10/@nodes.0" trgNode="//@rules.10/@nodes.2">
@@ -1078,11 +1078,11 @@
     <edges name="cfk__referencedTable__table_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.10/@nodes.4" trgNode="//@rules.10/@nodes.11">
       <type href="platform:/resource/SQL/model/SQL.ecore#//ForeignKey/referencedTable"/>
     </edges>
-    <edges name="fk__column__idCol_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.10/@nodes.5" trgNode="//@rules.10/@nodes.6">
-      <type href="platform:/resource/SQL/model/SQL.ecore#//Key/column"/>
-    </edges>
     <edges name="fk__referencedTable__st_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.10/@nodes.5" trgNode="//@rules.10/@nodes.10">
       <type href="platform:/resource/SQL/model/SQL.ecore#//ForeignKey/referencedTable"/>
+    </edges>
+    <edges name="fk__column__idCol_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.10/@nodes.5" trgNode="//@rules.10/@nodes.6">
+      <type href="platform:/resource/SQL/model/SQL.ecore#//Key/column"/>
     </edges>
     <edges name="otable__owningSchema__s_eMoflonEdge" domainType="TRG" srcNode="//@rules.10/@nodes.7" trgNode="//@rules.10/@nodes.9">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Table/owningSchema"/>
@@ -1117,11 +1117,11 @@
     <edges name="table__referencingForeignKeys__cfk_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.10/@nodes.11" trgNode="//@rules.10/@nodes.4">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Table/referencingForeignKeys"/>
     </edges>
-    <edges name="idCol__keys__fk_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.10/@nodes.6" trgNode="//@rules.10/@nodes.5">
-      <type href="platform:/resource/SQL/model/SQL.ecore#//Column/keys"/>
-    </edges>
     <edges name="st__referencingForeignKeys__fk_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.10/@nodes.10" trgNode="//@rules.10/@nodes.5">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Table/referencingForeignKeys"/>
+    </edges>
+    <edges name="idCol__keys__fk_eMoflonEdge" domainType="TRG" bindingType="CREATE" srcNode="//@rules.10/@nodes.6" trgNode="//@rules.10/@nodes.5">
+      <type href="platform:/resource/SQL/model/SQL.ecore#//Column/keys"/>
     </edges>
     <edges name="s__ownedTables__otable_eMoflonEdge" domainType="TRG" srcNode="//@rules.10/@nodes.9" trgNode="//@rules.10/@nodes.7">
       <type href="platform:/resource/SQL/model/SQL.ecore#//Schema/ownedTables"/>
@@ -1150,13 +1150,13 @@
     <attributeConditionLibrary>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1" parameters="//@rules.10/@attributeConditionLibrary/@parameterValues.0 //@rules.10/@attributeConditionLibrary/@parameterValues.1"/>
       <tggAttributeConstraints definition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1" parameters="//@rules.10/@attributeConditionLibrary/@parameterValues.0 //@rules.10/@attributeConditionLibrary/@parameterValues.2"/>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.10/@nodes.11">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.0" objectVar="//@rules.10/@nodes.11">
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.10/@nodes.0">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.10/@nodes.0">
         <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </parameterValues>
-      <parameterValues xsi:type="org.emoflon.ibex.tgg.core.language.misc.expressions:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.10/@nodes.3">
+      <parameterValues xsi:type="language:TGGAttributeExpression" parameterDefinition="//@attributeConstraintDefinitionLibrary/@tggAttributeConstraintDefinitions.1/@parameterDefinitions.1" objectVar="//@rules.10/@nodes.3">
         <attribute href="platform:/resource/SQL/model/SQL.ecore#//NamedElement/name"/>
       </parameterValues>
     </attributeConditionLibrary>
@@ -1368,4 +1368,4 @@
       </genAdornments>
     </tggAttributeConstraintDefinitions>
   </attributeConstraintDefinitionLibrary>
-</org.emoflon.ibex.tgg.core.language:TGG>
+</language:TGG>

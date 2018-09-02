@@ -1156,13 +1156,13 @@
     <targetPatterns name="fk">
       <op value="++"/>
       <type href="platform:/resource/SQL/model/SQL.ecore#//ForeignKey"/>
-      <linkVariablePatterns target="//@rules.10/@targetPatterns.3">
-        <op value="++"/>
-        <type href="platform:/resource/SQL/model/SQL.ecore#//Key/column"/>
-      </linkVariablePatterns>
       <linkVariablePatterns target="//@rules.10/@targetPatterns.7">
         <op value="++"/>
         <type href="platform:/resource/SQL/model/SQL.ecore#//ForeignKey/referencedTable"/>
+      </linkVariablePatterns>
+      <linkVariablePatterns target="//@rules.10/@targetPatterns.3">
+        <op value="++"/>
+        <type href="platform:/resource/SQL/model/SQL.ecore#//Key/column"/>
       </linkVariablePatterns>
     </targetPatterns>
     <targetPatterns name="idCol">
