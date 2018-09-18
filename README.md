@@ -8,11 +8,11 @@ We have a plug and play (via remote desktop) Share virtual machine available fro
 ## How to setup and execute the benchmarx
 
 1.  Clone this repo:  `git clone https://github.com/eMoflon/benchmarx.git benchmarx` 
-2.  Download the latest version of the **Eclipse Modeling Tools**  for your platform.  Currently tested for: http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/neon3
-3.  Start Eclipse in a workspace of your choice and import the Eclipse project **BenchmarxFamiliesToPersons** (`benchmarx/examples/familiestopersons/BenchmarxFamiliesToPersons`) from the working tree of the benchmarx git repository you just cloned.   
-4.  Choose the tools you want to execute by appropriately manipulating `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/testsuite/FamiliesToPersonsTestCase.java/tools()`.
-5.  (Optional) If you want to setup the bx tool BiGUL, then you'll have to work through `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/implementations/bigul/README-SETUP` to do this.
-6.  Choose the project **BenchmarxFamiliesToPersons** and select "Run As/JUnit Test" to execute the benchmarx "Families to Persons" for all tools chosen in Step 5.
+2.  Download the latest version of the **Eclipse Modeling Tools**  for your platform.
+3.  Start Eclipse in a workspace of your choice and import the PSF file (`Import/Team/Team Project Set`) in the benchmark example folder you're interested in.  As an example, for **BenchmarxFamiliesToPersons** this would be (`benchmarx/examples/familiestopersons/projectSet.psf`).  If your workspace does not compile then please create an issue for us.
+4.  Choose the tools you want to execute by appropriately manipulating (replace with your benchmark example) `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/testsuite/FamiliesToPersonsTestCase.java/tools()`.
+5.  (Optional) If you want to setup the bx tool BiGUL, then you'll have to work through (replace with your benchmark example and tool of interest) `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/implementations/bigul/README-SETUP` to do this.
+6.  Choose the project **BenchmarxFamiliesToPersons** and select "Run As/JUnit Test" to execute the benchmarx "Families to Persons" for all tools chosen in Step 5 (replace with your benchmark example).
 7.  You can compare your results with `/BenchmarxFamiliesToPersons/results/TestResults.xlsx`.
 
 
