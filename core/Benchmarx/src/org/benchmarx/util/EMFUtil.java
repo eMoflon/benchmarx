@@ -28,7 +28,10 @@ public class EMFUtil {
 	
 	@SuppressWarnings("unchecked")
 	public static <M> M loadExpectedModel(String path, ResourceSet resourceSet) {
-		return (M)loadExpectedResource(path, resourceSet).getContents().get(0);
+		Resource r = loadExpectedResource(path, resourceSet);
+		M model = (M) r.getContents().get(0);
+		resourceSet.getResources().remove(r);
+		return model;
 	}
 	
 	/** Consider supplying a configured resource set and use {@link #loadExpectedModel(String, ResourceSet)} instead */
