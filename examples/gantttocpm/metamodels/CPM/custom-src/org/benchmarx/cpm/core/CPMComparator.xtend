@@ -25,8 +25,12 @@ class CPMComparator implements Comparator<CPMNetwork> {
 			}
 		}
 		val name = if (network.name === null) "" else network.name
-		return "CPMNetwork " + name + " "+ network.incrementalID
-				+ " {" + sortedElements.map[e | e.elementToString(normalizedEventNumbers)].join(", ") + "}"
+		return 
+		'''
+		CPMNetwork name: «name» id: «network.incrementalID» {
+  		«sortedElements.map[e | e.elementToString(normalizedEventNumbers)]»
+		}
+		'''
 	}
 	
 	override assertEquals(CPMNetwork expected, CPMNetwork actual) {
@@ -39,7 +43,13 @@ class CPMComparator implements Comparator<CPMNetwork> {
 		if (!normalizedEventNumbers.containsKey(event.number)) {
 			throw new IllegalArgumentException("The referenced event " + event.number + " doesn't exist.")
 		}
-		return "{" + normalizedEventNumbers.get(event.number) + "}"
+		return 
+		'''
+		{ 
+			«normalizedEventNumbers.get(event.number)»
+		}
+		'''
+		
 	}
 	
 	def dispatch private static String elementToString(
@@ -52,8 +62,14 @@ class CPMComparator implements Comparator<CPMNetwork> {
 			throw new IllegalArgumentException(
 					"The referenced event " + activity.targetEvent.number + " doesn't exist.")
 		}	
-		return "{" + normalizedEventNumbers.get(activity.sourceEvent.number) + ", "
-				+ normalizedEventNumbers.get(activity.targetEvent.number) + ", "
-				+ activity.name + ", " + activity.duration + "}"
+		return 
+		'''
+		{ 
+			SourceEvent:       «normalizedEventNumbers.get(activity.sourceEvent.number)»
+			TargetEvent: 	   «normalizedEventNumbers.get(activity.targetEvent.number)»
+			Activity_Name: 	   «activity.name»
+			Activity_Duration: «activity.duration» 
+		}
+		'''
 	}
 }
