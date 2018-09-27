@@ -14,8 +14,12 @@ class GanttComparator implements Comparator<GanttDiagram> {
 		val ArrayList<Element> sortedElements = new ArrayList<Element>(diagram.elements)
 		GanttNormalizer.normalize(sortedElements)
 		val name = if (diagram.name === null) "" else diagram.name
-		return "GanttDiagram " + name + " " + diagram.incrementalID
-				+ " {" + sortedElements.map[e | e.elementToString].join(", ") + "}"
+		return 
+		'''
+		GanttDiagram «name» «diagram.incrementalID»	{ 
+		«sortedElements.map[e | e.elementToString]»
+		}
+		'''
 	}
 	
 	override assertEquals(GanttDiagram expected, GanttDiagram actual) {
@@ -24,11 +28,24 @@ class GanttComparator implements Comparator<GanttDiagram> {
 	}
 	
 	def dispatch private static String elementToString(Activity activity) {
-		return "{" + activity.name + ", " + activity.duration + "}"
+		return 
+		'''
+		{ 
+			Activity-Name: 		«activity.name»
+			Activity-Duration: 	«activity.duration»
+		}
+		'''
 	}
 	
 	def dispatch private static String elementToString(Dependency dependency) {		
-		return "{" + dependency.predecessor.name + ", " + dependency.successor.name + ", "
-				+ dependency.dependencyType + ", " + dependency.offset + "}"
+		return 
+		'''
+		{ 
+			Dependency-Predecessor: «dependency.predecessor.name»
+			Dependency-Successor: 	«dependency.successor.name»
+			Dependency-Type: 		«dependency.dependencyType»
+			Dependency-Offset: 		«dependency.offset»
+		}
+		'''
 	}
 }
