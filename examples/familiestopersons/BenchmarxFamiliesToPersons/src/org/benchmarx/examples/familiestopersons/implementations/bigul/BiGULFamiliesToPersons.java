@@ -63,6 +63,11 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 	}
 	
 	@Override
+	public String toString() {
+		return getName();
+	}
+	
+	@Override
 	public void initiateSynchronisationDialogue() {
 		// BiGUL does not require any internal state
 		src = FamiliesFactory.eINSTANCE.createFamilyRegister();
