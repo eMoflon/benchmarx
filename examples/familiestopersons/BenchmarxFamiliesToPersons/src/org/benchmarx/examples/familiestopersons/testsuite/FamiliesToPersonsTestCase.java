@@ -10,6 +10,7 @@ import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendF
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.funnyqt.FunnyQTFamiliesToPerson;
 import org.benchmarx.examples.familiestopersons.implementations.ibextgg.IBeXTGGFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.implementations.jtl.JTLFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersonsConfig;
 import org.benchmarx.examples.familiestopersons.implementations.nmf.NMFFamiliesToPersonsIncremental;
@@ -44,14 +45,14 @@ public abstract class FamiliesToPersonsTestCase {
 		// Make sure packages are registered
 		FamiliesPackage.eINSTANCE.getName();
 		PersonsPackage.eINSTANCE.getName();
-		
+
 		// Initialise all helpers
 		familiesComparator = new FamiliesComparator();
 		personsComparator = new PersonsComparator();
 		util = new BenchmarxUtil<>(tool);
 		helperFamily = new FamilyHelper();
 		helperPerson = new PersonHelper();
-		
+
 		// Initialise the bx tool
 		tool.initiateSynchronisationDialogue();
 	}
@@ -60,7 +61,7 @@ public abstract class FamiliesToPersonsTestCase {
 	public void terminate(){
 		tool.terminateSynchronisationDialogue();
 	}
-	
+
 	// Solutions requiring additional setup are commented out.
 	@Parameters(name = "{0}")
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
@@ -80,10 +81,12 @@ public abstract class FamiliesToPersonsTestCase {
 //				new NMFFamiliesToPersonsIncremental() // Currently 3 failures
 //				,
 				new IBeXTGGFamiliesToPersons() // Currently 5 failures
+				,
+				new JTLFamiliesToPersons() // Currently 11 failures
 			);
 	}
-	
+
 	protected FamiliesToPersonsTestCase(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
-		this.tool = tool; 
+		this.tool = tool;
 	}
 }

@@ -1,0 +1,169 @@
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+--	This is a bidirectional model-to-model transformation between Families and Persons
+--
+--	Contributors: Romina Eramo
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------					
+
+transformation Families2Persons(family:Families, person:Persons) {
+	
+		
+	--------------------------------------------------------------------------------------------------------------
+	-- Transform FamilyRegister to PersonRegister
+	--------------------------------------------------------------------------------------------------------------
+	top relation FamilyRegister2PersonRegister {
+		
+		enforce domain family fr:Families::FamilyRegister {
+	  	};
+	  	
+	  	enforce domain person pr:Persons::PersonRegister{
+	    };
+	    
+	    where {
+	    	Father2Male(fr,pr);
+	    	Mother2Female(fr,pr);
+	    	Son2Male(fr,pr);
+	    	Daughter2Female(fr,pr);
+	    }
+	}
+	
+	--------------------------------------------------------------------------------------------------------------
+	-- Transform FamilyMember2Male
+	--------------------------------------------------------------------------------------------------------------
+	relation FamilyMember2Male {
+		n: String;
+		enforce domain family m:Families::FamilyMember{
+			name = n
+	  	};
+	  	
+	  	enforce domain person m:Persons::Male {
+	  		name = n
+	    };
+	}
+	
+	
+	
+	--------------------------------------------------------------------------------------------------------------
+	-- Transform FamilyMember2Female
+	--------------------------------------------------------------------------------------------------------------
+	relation FamilyMember2Female {
+		n: String;
+		enforce domain family m:Families::FamilyMember{
+			name = n
+	  	};
+	  	
+	  	enforce domain person m:Persons::Female {
+	  		name = n
+	    };
+	}
+	
+	--------------------------------------------------------------------------------------------------------------
+	-- Transform Fathers to Males
+	--------------------------------------------------------------------------------------------------------------
+	relation Father2Male {
+		n: String;
+		sn: String;
+		enforce domain family fr:Families::FamilyRegister {
+			families = f:Families::Family {
+				name = sn,
+				father = m:Families::FamilyMember {
+					name = n
+				}
+			}
+	  	};
+	  	
+	  	enforce domain person pr:Persons::PersonRegister {
+	  		persons = m:Persons::Male {
+	  			name = n,
+	  			surname = sn
+	  		}
+	    };
+	    
+	    where {
+	    	FamilyMember2Male(m,m);
+	    }
+	}
+	
+	
+	--------------------------------------------------------------------------------------------------------------
+	-- Transform Mothers to Females
+	--------------------------------------------------------------------------------------------------------------
+	relation Mother2Female {
+		n: String; 
+		sn: String;
+		enforce domain family fr:Families::FamilyRegister {
+			families = f:Families::Family {
+				name = sn,
+				mother = m:Families::FamilyMember {
+					name = n
+				}
+			}
+	  	};
+	  	
+	  	enforce domain person pr:Persons::PersonRegister {
+	  		persons = m:Persons::Female {
+	  			name = n,
+	  			surname = sn
+	  		}
+	    };
+	    
+	    where {
+	    	FamilyMember2Female(m,m);
+	    }
+	}
+	
+	--------------------------------------------------------------------------------------------------------------
+	-- Transform Sons to Males
+	--------------------------------------------------------------------------------------------------------------
+	relation Son2Male {
+		n: String; 
+		sn: String;
+		enforce domain family fr:Families::FamilyRegister {
+			families = f:Families::Family {
+				name = sn,
+				sons = m:Families::FamilyMember{
+					name = n
+				}
+			}
+	  	};
+	  	
+	  	enforce domain person pr:Persons::PersonRegister {
+	  		persons = m:Persons::Male {
+	  			name = n,
+	  			surname = sn
+	  		}
+	    };
+	    
+	    where {
+	    	FamilyMember2Male(m,m);
+	    }
+	}
+	
+	--------------------------------------------------------------------------------------------------------------
+	-- Transform Daughters to Females
+	--------------------------------------------------------------------------------------------------------------
+	relation Daughter2Female {
+		n: String; 
+		sn: String;
+		enforce domain family fr:Families::FamilyRegister {
+			families = f:Families::Family {
+				name = sn,
+				daughters = m:Families::FamilyMember {
+					name = n
+				}
+			}
+	  	};
+	  	
+	  	enforce domain person pr:Persons::PersonRegister{
+	  		persons = m:Persons::Female {
+	  			name = n,
+	  			surname = sn
+	  		}
+	    };
+	    
+	    where {
+	    	FamilyMember2Female(m,m);
+	    }
+	}
+}

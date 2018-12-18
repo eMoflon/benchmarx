@@ -1,0 +1,20 @@
+
+:- node(x_Persons, IDt, IDtx, x_Male), not trace_node(x_Families, IDt, IDtx, x_FamilyMember),
+nodex(x_Families, IDt+111, IDtx, x_Family), edgex(x_Families, IDe, IDex, x_sons, IDt+111, IDtx, IDt, IDtx),
+nodex(x_Families, IDt, IDtx, x_FamilyMember). 
+
+:- node(x_Persons, IDt, IDtx, x_Female), not trace_node(x_Families, IDt, IDtx, x_FamilyMember),
+nodex(x_Families, IDt+111, IDtx, x_Family), edgex(x_Families, IDe, IDex, x_daughters, IDt+111, IDtx, IDt, IDtx),
+nodex(x_Families, IDt, IDtx, x_FamilyMember). 
+
+:- node(x_Persons, IDt, IDtx, x_Male), not trace_node(x_Families, IDt, IDtx, x_FamilyMember),
+nodex(x_Families, IDft, IDftx, x_Family), edgex(x_Families, IDe, IDex, x_sons, IDft, IDftx, IDt, IDtx),
+nodex(x_Families, IDt, IDtx, x_FamilyMember),
+not there_is_a_father_in_family(IDft,IDftx).
+there_is_a_father_in_family(IDf,IDfx) :- edgex(x_Families, IDe2, IDe2x, x_father, IDf, IDfx, ID, IDx), nodex(x_Families, ID, IDx, x_FamilyMember).
+
+:- node(x_Persons, IDt, IDtx, x_Female), not trace_node(x_Families, IDt, IDtx, x_FamilyMember),
+nodex(x_Families, IDft, IDftx, x_Family), edgex(x_Families, IDe, IDex, x_daughters, IDft, IDftx, IDt, IDtx),
+nodex(x_Families, IDt, IDtx, x_FamilyMember),
+not there_is_a_mother_in_family(IDft,IDftx).
+there_is_a_mother_in_family(IDf,IDfx) :- edgex(x_Families, IDe2, IDe2x, x_mother, IDf, IDfx, ID, IDx), nodex(x_Families, ID, IDx, x_FamilyMember).

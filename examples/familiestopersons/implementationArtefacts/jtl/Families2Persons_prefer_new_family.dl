@@ -1,0 +1,10 @@
+
+:- node(x_Persons, IDt, IDtx, x_Male), not trace_node(x_Families, IDt, IDtx,x_FamilyMember),
+prop(x_Persons, IDpt, IDptx, IDt, IDtx, x_name, x_list([SN,N])),
+not nodex(x_Families, IDt+111, IDtx, x_Family), not propx(x_Families, IDpt, IDptx, IDt+111, IDtx, x_name, SN),
+nodex(x_Families, IDt, IDtx, x_FamilyMember). 
+
+:- node(x_Persons, IDt, IDtx, x_Female), not trace_node(x_Families, IDt, IDtx,x_FamilyMember),
+prop(x_Persons, IDpt, IDptx, IDt, IDtx, x_name, x_list([SN,N])),
+not nodex(x_Families, IDt+111, IDtx, x_Family), not propx(x_Families, IDpt, IDptx, IDt+111, IDtx, x_name, SN),
+nodex(x_Families, IDt, IDtx, x_FamilyMember).
