@@ -8,6 +8,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/jtl/JTL-0.2.1-standalone.jar"/>
 	<classpathentry kind="lib" path="lib/UBTBxTendFamilies2Persons.jar"/>
 	<classpathentry kind="lib" path="lib/eMoflon/commons-io-2.5.jar"/>
 	<classpathentry kind="lib" path="lib/eMoflon/eMoflonFamilies2Persons.jar"/>
