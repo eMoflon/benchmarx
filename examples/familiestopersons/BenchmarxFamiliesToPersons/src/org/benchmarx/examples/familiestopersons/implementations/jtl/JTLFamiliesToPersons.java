@@ -2,6 +2,8 @@ package org.benchmarx.examples.familiestopersons.implementations.jtl;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -197,7 +199,19 @@ public class JTLFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonReg
 	}
 
 	private void launch(final List<String> args) {
+		
+		// Temporarily suppress System.out
+		final PrintStream tmp = System.out;
+		System.setOut(new PrintStream(new OutputStream() {
+			public void write(int a) { }
+		}));
+		
+		// Launch JTL
 		Launcher.main(args.toArray(new String[0]));
+		
+		// Restore System.out
+		System.setOut(tmp);
+		
 		restoreGlobalPackageRegistry();
 	}
 
