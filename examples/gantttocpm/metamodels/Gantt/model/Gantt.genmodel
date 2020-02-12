@@ -15,7 +15,7 @@
     <genClasses ecoreClass="Gantt.ecore#//GanttDiagram">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Gantt.ecore#//GanttDiagram/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Gantt.ecore#//GanttDiagram/elements"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Gantt.ecore#//GanttDiagram/IncrementalID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Gantt.ecore#//GanttDiagram/incrementalID"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Gantt.ecore#//Element">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Gantt.ecore#//Element/diagram"/>
