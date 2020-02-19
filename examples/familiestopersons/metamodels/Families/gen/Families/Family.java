@@ -5,8 +5,6 @@ package Families;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
-// <-- [user defined imports]
-// [user defined imports] -->
 
 /**
  * <!-- begin-user-doc -->
@@ -15,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link Families.Family#getFather <em>Father</em>}</li>
  *   <li>{@link Families.Family#getMother <em>Mother</em>}</li>
@@ -23,7 +22,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link Families.Family#getName <em>Name</em>}</li>
  *   <li>{@link Families.Family#getFamiliesInverse <em>Families Inverse</em>}</li>
  * </ul>
- * </p>
  *
  * @see Families.FamiliesPackage#getFamily()
  * @model
@@ -34,10 +32,6 @@ public interface Family extends EObject {
 	 * Returns the value of the '<em><b>Father</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link Families.FamilyMember#getFatherInverse <em>Father Inverse</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Father</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Father</em>' containment reference.
 	 * @see #setFather(FamilyMember)
@@ -62,10 +56,6 @@ public interface Family extends EObject {
 	 * Returns the value of the '<em><b>Mother</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link Families.FamilyMember#getMotherInverse <em>Mother Inverse</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Mother</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mother</em>' containment reference.
 	 * @see #setMother(FamilyMember)
@@ -91,10 +81,6 @@ public interface Family extends EObject {
 	 * The list contents are of type {@link Families.FamilyMember}.
 	 * It is bidirectional and its opposite is '{@link Families.FamilyMember#getSonsInverse <em>Sons Inverse</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sons</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sons</em>' containment reference list.
 	 * @see Families.FamiliesPackage#getFamily_Sons()
@@ -109,10 +95,6 @@ public interface Family extends EObject {
 	 * The list contents are of type {@link Families.FamilyMember}.
 	 * It is bidirectional and its opposite is '{@link Families.FamilyMember#getDaughtersInverse <em>Daughters Inverse</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Daughters</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Daughters</em>' containment reference list.
 	 * @see Families.FamiliesPackage#getFamily_Daughters()
@@ -125,10 +107,6 @@ public interface Family extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
@@ -152,10 +130,6 @@ public interface Family extends EObject {
 	 * Returns the value of the '<em><b>Families Inverse</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link Families.FamilyRegister#getFamilies <em>Families</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Families Inverse</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Families Inverse</em>' container reference.
 	 * @see #setFamiliesInverse(FamilyRegister)
@@ -175,7 +149,5 @@ public interface Family extends EObject {
 	 * @generated
 	 */
 	void setFamiliesInverse(FamilyRegister value);
-	// <-- [user code injected with eMoflon]
 
-	// [user code injected with eMoflon] -->
 } // Family

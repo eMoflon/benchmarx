@@ -23,8 +23,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
-// <-- [user defined imports]
-// [user defined imports] -->
 
 /**
  * <!-- begin-user-doc -->
@@ -32,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link Families.impl.FamilyImpl#getFather <em>Father</em>}</li>
  *   <li>{@link Families.impl.FamilyImpl#getMother <em>Mother</em>}</li>
@@ -40,7 +39,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link Families.impl.FamilyImpl#getName <em>Name</em>}</li>
  *   <li>{@link Families.impl.FamilyImpl#getFamiliesInverse <em>Families Inverse</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -129,6 +127,7 @@ public class FamilyImpl extends EObjectImpl implements Family {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FamilyMember getFather() {
 		return father;
 	}
@@ -157,6 +156,7 @@ public class FamilyImpl extends EObjectImpl implements Family {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFather(FamilyMember newFather) {
 		if (newFather != father) {
 			NotificationChain msgs = null;
@@ -179,6 +179,7 @@ public class FamilyImpl extends EObjectImpl implements Family {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FamilyMember getMother() {
 		return mother;
 	}
@@ -207,6 +208,7 @@ public class FamilyImpl extends EObjectImpl implements Family {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMother(FamilyMember newMother) {
 		if (newMother != mother) {
 			NotificationChain msgs = null;
@@ -229,6 +231,7 @@ public class FamilyImpl extends EObjectImpl implements Family {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<FamilyMember> getSons() {
 		if (sons == null) {
 			sons = new EObjectContainmentWithInverseEList<FamilyMember>(FamilyMember.class, this,
@@ -242,6 +245,7 @@ public class FamilyImpl extends EObjectImpl implements Family {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<FamilyMember> getDaughters() {
 		if (daughters == null) {
 			daughters = new EObjectContainmentWithInverseEList<FamilyMember>(FamilyMember.class, this,
@@ -255,6 +259,7 @@ public class FamilyImpl extends EObjectImpl implements Family {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -264,6 +269,7 @@ public class FamilyImpl extends EObjectImpl implements Family {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -276,10 +282,11 @@ public class FamilyImpl extends EObjectImpl implements Family {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FamilyRegister getFamiliesInverse() {
 		if (eContainerFeatureID() != FamiliesPackage.FAMILY__FAMILIES_INVERSE)
 			return null;
-		return (FamilyRegister) eContainer();
+		return (FamilyRegister) eInternalContainer();
 	}
 
 	/**
@@ -297,6 +304,7 @@ public class FamilyImpl extends EObjectImpl implements Family {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFamiliesInverse(FamilyRegister newFamiliesInverse) {
 		if (newFamiliesInverse != eInternalContainer()
 				|| (eContainerFeatureID() != FamiliesPackage.FAMILY__FAMILIES_INVERSE && newFamiliesInverse != null)) {
@@ -505,13 +513,11 @@ public class FamilyImpl extends EObjectImpl implements Family {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(')');
 		return result.toString();
 	}
-	// <-- [user code injected with eMoflon]
 
-	// [user code injected with eMoflon] -->
 } //FamilyImpl

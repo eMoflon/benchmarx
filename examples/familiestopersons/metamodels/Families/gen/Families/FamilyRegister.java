@@ -5,8 +5,6 @@ package Families;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
-// <-- [user defined imports]
-// [user defined imports] -->
 
 /**
  * <!-- begin-user-doc -->
@@ -15,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link Families.FamilyRegister#getFamilies <em>Families</em>}</li>
  * </ul>
- * </p>
  *
  * @see Families.FamiliesPackage#getFamilyRegister()
  * @model
@@ -30,10 +28,6 @@ public interface FamilyRegister extends EObject {
 	 * The list contents are of type {@link Families.Family}.
 	 * It is bidirectional and its opposite is '{@link Families.Family#getFamiliesInverse <em>Families Inverse</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Families</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Families</em>' containment reference list.
 	 * @see Families.FamiliesPackage#getFamilyRegister_Families()
@@ -42,7 +36,5 @@ public interface FamilyRegister extends EObject {
 	 * @generated
 	 */
 	EList<Family> getFamilies();
-	// <-- [user code injected with eMoflon]
 
-	// [user code injected with eMoflon] -->
 } // FamilyRegister

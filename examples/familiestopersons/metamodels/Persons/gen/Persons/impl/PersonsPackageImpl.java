@@ -120,6 +120,7 @@ public class PersonsPackageImpl extends EPackageImpl implements PersonsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPersonRegister() {
 		return personRegisterEClass;
 	}
@@ -129,6 +130,7 @@ public class PersonsPackageImpl extends EPackageImpl implements PersonsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPersonRegister_Persons() {
 		return (EReference) personRegisterEClass.getEStructuralFeatures().get(0);
 	}
@@ -138,6 +140,7 @@ public class PersonsPackageImpl extends EPackageImpl implements PersonsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPerson() {
 		return personEClass;
 	}
@@ -147,6 +150,7 @@ public class PersonsPackageImpl extends EPackageImpl implements PersonsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPerson_Name() {
 		return (EAttribute) personEClass.getEStructuralFeatures().get(0);
 	}
@@ -156,6 +160,7 @@ public class PersonsPackageImpl extends EPackageImpl implements PersonsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPerson_Birthday() {
 		return (EAttribute) personEClass.getEStructuralFeatures().get(1);
 	}
@@ -165,6 +170,7 @@ public class PersonsPackageImpl extends EPackageImpl implements PersonsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPerson_PersonsInverse() {
 		return (EReference) personEClass.getEStructuralFeatures().get(2);
 	}
@@ -174,6 +180,7 @@ public class PersonsPackageImpl extends EPackageImpl implements PersonsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMale() {
 		return maleEClass;
 	}
@@ -183,6 +190,7 @@ public class PersonsPackageImpl extends EPackageImpl implements PersonsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFemale() {
 		return femaleEClass;
 	}
@@ -192,6 +200,7 @@ public class PersonsPackageImpl extends EPackageImpl implements PersonsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PersonsFactory getPersonsFactory() {
 		return (PersonsFactory) getEFactoryInstance();
 	}

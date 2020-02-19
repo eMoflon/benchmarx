@@ -2,9 +2,6 @@
  */
 package Persons;
 
-// <-- [user defined imports]
-// [user defined imports] -->
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Female</b></em>'.
@@ -15,7 +12,5 @@ package Persons;
  * @model
  * @generated
  */
-public interface Female extends Person { // <-- [user code injected with eMoflon]
-
-	// [user code injected with eMoflon] -->
+public interface Female extends Person {
 } // Female

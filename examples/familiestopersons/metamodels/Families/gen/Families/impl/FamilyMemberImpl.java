@@ -16,8 +16,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
-// <-- [user defined imports]
-// [user defined imports] -->
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +23,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link Families.impl.FamilyMemberImpl#getName <em>Name</em>}</li>
  *   <li>{@link Families.impl.FamilyMemberImpl#getFatherInverse <em>Father Inverse</em>}</li>
@@ -32,7 +31,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *   <li>{@link Families.impl.FamilyMemberImpl#getSonsInverse <em>Sons Inverse</em>}</li>
  *   <li>{@link Families.impl.FamilyMemberImpl#getDaughtersInverse <em>Daughters Inverse</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -81,6 +79,7 @@ public class FamilyMemberImpl extends EObjectImpl implements FamilyMember {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -90,6 +89,7 @@ public class FamilyMemberImpl extends EObjectImpl implements FamilyMember {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -102,10 +102,11 @@ public class FamilyMemberImpl extends EObjectImpl implements FamilyMember {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Family getFatherInverse() {
 		if (eContainerFeatureID() != FamiliesPackage.FAMILY_MEMBER__FATHER_INVERSE)
 			return null;
-		return (Family) eContainer();
+		return (Family) eInternalContainer();
 	}
 
 	/**
@@ -124,6 +125,7 @@ public class FamilyMemberImpl extends EObjectImpl implements FamilyMember {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFatherInverse(Family newFatherInverse) {
 		if (newFatherInverse != eInternalContainer()
 				|| (eContainerFeatureID() != FamiliesPackage.FAMILY_MEMBER__FATHER_INVERSE
@@ -149,10 +151,11 @@ public class FamilyMemberImpl extends EObjectImpl implements FamilyMember {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Family getMotherInverse() {
 		if (eContainerFeatureID() != FamiliesPackage.FAMILY_MEMBER__MOTHER_INVERSE)
 			return null;
-		return (Family) eContainer();
+		return (Family) eInternalContainer();
 	}
 
 	/**
@@ -171,6 +174,7 @@ public class FamilyMemberImpl extends EObjectImpl implements FamilyMember {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMotherInverse(Family newMotherInverse) {
 		if (newMotherInverse != eInternalContainer()
 				|| (eContainerFeatureID() != FamiliesPackage.FAMILY_MEMBER__MOTHER_INVERSE
@@ -196,10 +200,11 @@ public class FamilyMemberImpl extends EObjectImpl implements FamilyMember {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Family getSonsInverse() {
 		if (eContainerFeatureID() != FamiliesPackage.FAMILY_MEMBER__SONS_INVERSE)
 			return null;
-		return (Family) eContainer();
+		return (Family) eInternalContainer();
 	}
 
 	/**
@@ -217,6 +222,7 @@ public class FamilyMemberImpl extends EObjectImpl implements FamilyMember {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSonsInverse(Family newSonsInverse) {
 		if (newSonsInverse != eInternalContainer()
 				|| (eContainerFeatureID() != FamiliesPackage.FAMILY_MEMBER__SONS_INVERSE && newSonsInverse != null)) {
@@ -241,10 +247,11 @@ public class FamilyMemberImpl extends EObjectImpl implements FamilyMember {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Family getDaughtersInverse() {
 		if (eContainerFeatureID() != FamiliesPackage.FAMILY_MEMBER__DAUGHTERS_INVERSE)
 			return null;
-		return (Family) eContainer();
+		return (Family) eInternalContainer();
 	}
 
 	/**
@@ -263,6 +270,7 @@ public class FamilyMemberImpl extends EObjectImpl implements FamilyMember {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDaughtersInverse(Family newDaughtersInverse) {
 		if (newDaughtersInverse != eInternalContainer()
 				|| (eContainerFeatureID() != FamiliesPackage.FAMILY_MEMBER__DAUGHTERS_INVERSE
@@ -459,13 +467,11 @@ public class FamilyMemberImpl extends EObjectImpl implements FamilyMember {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(')');
 		return result.toString();
 	}
-	// <-- [user code injected with eMoflon]
 
-	// [user code injected with eMoflon] -->
 } //FamilyMemberImpl

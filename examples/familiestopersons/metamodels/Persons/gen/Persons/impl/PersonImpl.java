@@ -20,8 +20,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
-// <-- [user defined imports]
-// [user defined imports] -->
 
 /**
  * <!-- begin-user-doc -->
@@ -29,12 +27,12 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link Persons.impl.PersonImpl#getName <em>Name</em>}</li>
  *   <li>{@link Persons.impl.PersonImpl#getBirthday <em>Birthday</em>}</li>
  *   <li>{@link Persons.impl.PersonImpl#getPersonsInverse <em>Persons Inverse</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -104,6 +102,7 @@ public abstract class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -113,6 +112,7 @@ public abstract class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -125,6 +125,7 @@ public abstract class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Date getBirthday() {
 		return birthday;
 	}
@@ -134,6 +135,7 @@ public abstract class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBirthday(Date newBirthday) {
 		Date oldBirthday = birthday;
 		birthday = newBirthday;
@@ -147,10 +149,11 @@ public abstract class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PersonRegister getPersonsInverse() {
 		if (eContainerFeatureID() != PersonsPackage.PERSON__PERSONS_INVERSE)
 			return null;
-		return (PersonRegister) eContainer();
+		return (PersonRegister) eInternalContainer();
 	}
 
 	/**
@@ -168,6 +171,7 @@ public abstract class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPersonsInverse(PersonRegister newPersonsInverse) {
 		if (newPersonsInverse != eInternalContainer()
 				|| (eContainerFeatureID() != PersonsPackage.PERSON__PERSONS_INVERSE && newPersonsInverse != null)) {
@@ -320,7 +324,7 @@ public abstract class PersonImpl extends EObjectImpl implements Person {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", birthday: ");
@@ -328,7 +332,5 @@ public abstract class PersonImpl extends EObjectImpl implements Person {
 		result.append(')');
 		return result.toString();
 	}
-	// <-- [user code injected with eMoflon]
 
-	// [user code injected with eMoflon] -->
 } //PersonImpl

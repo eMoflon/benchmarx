@@ -19,8 +19,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-// <-- [user defined imports]
-// [user defined imports] -->
 
 /**
  * <!-- begin-user-doc -->
@@ -28,10 +26,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link Persons.impl.PersonRegisterImpl#getPersons <em>Persons</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -70,6 +68,7 @@ public class PersonRegisterImpl extends EObjectImpl implements PersonRegister {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Person> getPersons() {
 		if (persons == null) {
 			persons = new EObjectContainmentWithInverseEList<Person>(Person.class, this,
@@ -166,7 +165,5 @@ public class PersonRegisterImpl extends EObjectImpl implements PersonRegister {
 		}
 		return super.eIsSet(featureID);
 	}
-	// <-- [user code injected with eMoflon]
 
-	// [user code injected with eMoflon] -->
 } //PersonRegisterImpl

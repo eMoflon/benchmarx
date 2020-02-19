@@ -3,8 +3,6 @@
 package Families;
 
 import org.eclipse.emf.ecore.EObject;
-// <-- [user defined imports]
-// [user defined imports] -->
 
 /**
  * <!-- begin-user-doc -->
@@ -13,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link Families.FamilyMember#getName <em>Name</em>}</li>
  *   <li>{@link Families.FamilyMember#getFatherInverse <em>Father Inverse</em>}</li>
@@ -20,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link Families.FamilyMember#getSonsInverse <em>Sons Inverse</em>}</li>
  *   <li>{@link Families.FamilyMember#getDaughtersInverse <em>Daughters Inverse</em>}</li>
  * </ul>
- * </p>
  *
  * @see Families.FamiliesPackage#getFamilyMember()
  * @model
@@ -30,10 +28,6 @@ public interface FamilyMember extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
@@ -57,10 +51,6 @@ public interface FamilyMember extends EObject {
 	 * Returns the value of the '<em><b>Father Inverse</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link Families.Family#getFather <em>Father</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Father Inverse</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Father Inverse</em>' container reference.
 	 * @see #setFatherInverse(Family)
@@ -85,10 +75,6 @@ public interface FamilyMember extends EObject {
 	 * Returns the value of the '<em><b>Mother Inverse</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link Families.Family#getMother <em>Mother</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Mother Inverse</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mother Inverse</em>' container reference.
 	 * @see #setMotherInverse(Family)
@@ -113,10 +99,6 @@ public interface FamilyMember extends EObject {
 	 * Returns the value of the '<em><b>Sons Inverse</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link Families.Family#getSons <em>Sons</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sons Inverse</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sons Inverse</em>' container reference.
 	 * @see #setSonsInverse(Family)
@@ -141,10 +123,6 @@ public interface FamilyMember extends EObject {
 	 * Returns the value of the '<em><b>Daughters Inverse</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link Families.Family#getDaughters <em>Daughters</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Daughters Inverse</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Daughters Inverse</em>' container reference.
 	 * @see #setDaughtersInverse(Family)
@@ -164,7 +142,5 @@ public interface FamilyMember extends EObject {
 	 * @generated
 	 */
 	void setDaughtersInverse(Family value);
-	// <-- [user code injected with eMoflon]
 
-	// [user code injected with eMoflon] -->
 } // FamilyMember

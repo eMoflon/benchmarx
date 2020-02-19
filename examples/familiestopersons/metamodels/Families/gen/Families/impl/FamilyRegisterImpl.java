@@ -19,8 +19,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-// <-- [user defined imports]
-// [user defined imports] -->
 
 /**
  * <!-- begin-user-doc -->
@@ -28,10 +26,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link Families.impl.FamilyRegisterImpl#getFamilies <em>Families</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -70,6 +68,7 @@ public class FamilyRegisterImpl extends EObjectImpl implements FamilyRegister {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Family> getFamilies() {
 		if (families == null) {
 			families = new EObjectContainmentWithInverseEList<Family>(Family.class, this,
@@ -166,7 +165,5 @@ public class FamilyRegisterImpl extends EObjectImpl implements FamilyRegister {
 		}
 		return super.eIsSet(featureID);
 	}
-	// <-- [user code injected with eMoflon]
 
-	// [user code injected with eMoflon] -->
 } //FamilyRegisterImpl

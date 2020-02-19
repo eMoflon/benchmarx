@@ -5,8 +5,6 @@ package Persons;
 import java.util.Date;
 
 import org.eclipse.emf.ecore.EObject;
-// <-- [user defined imports]
-// [user defined imports] -->
 
 /**
  * <!-- begin-user-doc -->
@@ -15,12 +13,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link Persons.Person#getName <em>Name</em>}</li>
  *   <li>{@link Persons.Person#getBirthday <em>Birthday</em>}</li>
  *   <li>{@link Persons.Person#getPersonsInverse <em>Persons Inverse</em>}</li>
  * </ul>
- * </p>
  *
  * @see Persons.PersonsPackage#getPerson()
  * @model abstract="true"
@@ -30,10 +28,6 @@ public interface Person extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
@@ -57,10 +51,6 @@ public interface Person extends EObject {
 	 * Returns the value of the '<em><b>Birthday</b></em>' attribute.
 	 * The default value is <code>"0000-1-1"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Birthday</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Birthday</em>' attribute.
 	 * @see #setBirthday(Date)
@@ -84,10 +74,6 @@ public interface Person extends EObject {
 	 * Returns the value of the '<em><b>Persons Inverse</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link Persons.PersonRegister#getPersons <em>Persons</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Persons Inverse</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Persons Inverse</em>' container reference.
 	 * @see #setPersonsInverse(PersonRegister)
@@ -107,7 +93,5 @@ public interface Person extends EObject {
 	 * @generated
 	 */
 	void setPersonsInverse(PersonRegister value);
-	// <-- [user code injected with eMoflon]
 
-	// [user code injected with eMoflon] -->
 } // Person
