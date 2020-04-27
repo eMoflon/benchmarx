@@ -38,6 +38,7 @@ public class PersonsComparator implements Comparator<PersonRegister> {
     this.checkAttributeValues = checkAttributeValues;
   }
   
+  @Override
   public void assertEquals(final PersonRegister expected, final PersonRegister actual) {
     Assert.assertTrue(this.personsToString(expected).startsWith("PersonRegister"));
     Assert.assertEquals(this.personsToString(expected), this.personsToString(actual));

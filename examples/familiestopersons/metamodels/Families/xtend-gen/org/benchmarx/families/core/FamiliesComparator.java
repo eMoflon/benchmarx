@@ -36,6 +36,7 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
     this.checkAttributeValues = checkAttributeValues;
   }
   
+  @Override
   public void assertEquals(final FamilyRegister expected, final FamilyRegister actual) {
     Assert.assertTrue(this.familyToString(expected).startsWith("FamilyRegister"));
     Assert.assertEquals(this.familyToString(expected), this.familyToString(actual));
