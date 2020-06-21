@@ -8,7 +8,6 @@ import java.util.Optional;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import org.benchmarx.osets.core.OsetComparator;
 import osets.Element;
 import osets.MyOrderedSet;
 
