@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<psf version="2.0">
+<provider id="org.eclipse.egit.core.GitProvider">
+<project reference="1.0,https://github.com/eMoflon/benchmarx.git,master,examples/bag1tobag2/metamodels/Bag1"/>
+<project reference="1.0,https://github.com/eMoflon/benchmarx.git,master,examples/bag1tobag2/metamodels/Bag2"/>
+<project reference="1.0,https://github.com/eMoflon/benchmarx.git,master,core/Benchmarx"/>
+<project reference="1.0,https://github.com/eMoflon/benchmarx.git,master,examples/bag1tobag2/BenchmarxBag1ToBag2"/>
+</provider>
+</psf>
