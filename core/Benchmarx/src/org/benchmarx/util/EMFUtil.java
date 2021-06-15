@@ -9,12 +9,14 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.moflon.smartemf.persistence.SmartEMFResourceFactoryImpl;
 
 public class EMFUtil {
 	
 	public static Resource loadExpectedResource(String path, ResourceSet resourceSet){
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
-	      
+//		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()	.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new SmartEMFResourceFactoryImpl());
+
 		Path relativePath = FileSystems.getDefault().getPath("resources", path + ".xmi");
 		Path absolutePath = relativePath.normalize();
 		Resource resource = resourceSet.createResource(URI.createFileURI(absolutePath.toString()));
