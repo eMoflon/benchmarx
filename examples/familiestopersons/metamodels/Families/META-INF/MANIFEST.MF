@@ -2,20 +2,23 @@ Manifest-Version: 1.0
 Bundle-SymbolicName: Families;singleton:=true
 Export-Package: Families,
  Families.impl,
- Families.util,
  org.benchmarx.families.core
-Bundle-Name: FamiliesModel
+Bundle-Name: %pluginName
 Bundle-Version: 1.0.0.qualifier
-Require-Bundle: org.eclipse.emf.ecore,
+Bundle-ClassPath: .
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi,
  com.google.guava,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
  org.junit,
- Benchmarx;bundle-version="1.0.0"
+ Benchmarx;bundle-version="1.0.0",
+ emfcodegenerator
 Bundle-ManifestVersion: 2
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-Vendor: TU Darmstadt
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
 Automatic-Module-Name: Families

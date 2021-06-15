@@ -1,17 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
-
-<!--
--->
-
-<plugin>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated CPM -->
-      <package
-            uri="http://de.ubt.ai1.bw.qvt.examples.cpm.ecore"
-            class="cpm.CpmPackage"
-            genModel="model/CPM.genmodel"/>
-   </extension>
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.0"?><!--
+--><plugin>
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package class="cpm.CpmPackage" genModel="model/CPM.genmodel" uri="http://de.ubt.ai1.bw.qvt.examples.cpm.ecore"/>
+  </extension>
 </plugin>
