@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.moflon.smartemf.runtime.util.SmartEMFUtil;
 
 import Persons.Person;
 import Persons.PersonRegister;
@@ -261,17 +261,20 @@ public class PersonHelper {
 	
 	public void deleteMarge(PersonRegister register) {
 		Person person = getFromRegister("Simpson, Marge", register);
-		EcoreUtil.delete(person);
+//		EcoreUtil.delete(person);
+		SmartEMFUtil.deleteNode(person, true);
 	}
 	
 	public void deleteHomer(PersonRegister register) {
 		Person person = getFromRegister("Simpson, Homer", register);
-		EcoreUtil.delete(person);
+//		EcoreUtil.delete(person);
+		SmartEMFUtil.deleteNode(person, true);
 	}
 	
 	public void deleteMaggie(PersonRegister register) {
 		Person person = getFromRegister("Simpson, Maggie", register);
-		EcoreUtil.delete(person);
+//		EcoreUtil.delete(person);
+		SmartEMFUtil.deleteNode(person, true);
 	}
 	
 	public void idleDelta(PersonRegister register) {
