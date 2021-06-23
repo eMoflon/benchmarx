@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.moflon.smartemf.runtime.util.SmartEMFUtil;
 
 import gantt.Activity;
 import gantt.Dependency;
@@ -83,7 +83,8 @@ public class GanttHelper {
 		s.addAll(cpmModel.getOutgoingDependencies());
 		for(Dependency e : s) {
 			if(e.getSuccessor().getName().equals("CPMComparator") || e.getSuccessor().getName().equals("GanttComparator"))
-				EcoreUtil.delete(e,true);
+				SmartEMFUtil.deleteNode(e, true);
+//				EcoreUtil.delete(e,true);
 		}
 	}
 	
@@ -97,7 +98,8 @@ public class GanttHelper {
 		s.addAll(b.getOutgoingDependencies());
 		s.add(a); s.add(b);
 		for(Element e : s) {
-			EcoreUtil.delete(e,true);
+			SmartEMFUtil.deleteNode(e, true);
+//			EcoreUtil.delete(e,true);
 		}
 	}
 	
