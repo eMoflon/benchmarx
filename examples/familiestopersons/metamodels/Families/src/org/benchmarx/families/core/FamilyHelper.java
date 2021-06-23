@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Optional;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.moflon.smartemf.runtime.util.SmartEMFUtil;
 
 import Families.Family;
 import Families.FamilyMember;
@@ -171,12 +171,14 @@ public class FamilyHelper {
 	
 	public void deleteFirstSonBart(FamilyRegister register) {
 		if (firstBartCanBeIdentifiedInRegister(register))
-			EcoreUtil.delete(firstBart, true);
+			SmartEMFUtil.deleteNode(firstBart, true);
+//			EcoreUtil.delete(firstBart, true);
 		else {
 			// Unable to locate firstBart via object identity, so rely on position-based heuristics
 			Family family = getSimpsonFamily(register);
-			assertTrue(family.getName().equals("Simpson"));		
-			EcoreUtil.delete(family.getSons().get(0), true);
+			assertTrue(family.getName().equals("Simpson"));	
+			SmartEMFUtil.deleteNode(family.getSons().get(0), true);
+//			EcoreUtil.delete(family.getSons().get(0), true);
 		}
 	}
 
@@ -219,8 +221,8 @@ public class FamilyHelper {
 	public void deleteFatherHomer(FamilyRegister register) {
 		Family simpson = getSimpsonFamily(register);
 		FamilyMember homer = simpson.getFather();
-		
-		EcoreUtil.delete(homer, true);
+		SmartEMFUtil.deleteNode(homer, true);
+//		EcoreUtil.delete(homer, true);
 	}
 	
 	public void idleDelta(FamilyRegister register) {
