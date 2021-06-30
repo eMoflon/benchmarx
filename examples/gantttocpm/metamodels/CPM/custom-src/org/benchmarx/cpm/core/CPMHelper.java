@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.moflon.smartemf.runtime.util.SmartEMFUtil;
+import org.emoflon.ibex.common.emf.EMFManipulationUtils;
 
 import cpm.Activity;
 import cpm.CPMNetwork;
@@ -86,21 +86,21 @@ public class CPMHelper {
 	}
 	
 	public void deleteCPM2GanttModelsToComparatorDependencies(CPMNetwork net) {
-		SmartEMFUtil.deleteNode(findActivityByName("GanttModel->GanttComparator", net), true);
-		SmartEMFUtil.deleteNode(findActivityByName("CPMModel->CPMComparator", net), true);
+		EMFManipulationUtils.delete(findActivityByName("GanttModel->GanttComparator", net), true);
+		EMFManipulationUtils.delete(findActivityByName("CPMModel->CPMComparator", net), true);
 //		EcoreUtil.delete(findActivityByName("GanttModel->GanttComparator", net));
 //		EcoreUtil.delete(findActivityByName("CPMModel->CPMComparator", net));
 	}
 	
 	public void deleteCPM2GanttHelpers(CPMNetwork net) {
-		SmartEMFUtil.deleteNode(findActivityByName("GanttHelper", net), true);
-		SmartEMFUtil.deleteNode(findActivityByName("CPMHelper", net), true);
-		SmartEMFUtil.deleteNode(findActivityByName("Gantt2CPMTestCases->CPMHelper", net), true);
-		SmartEMFUtil.deleteNode(findActivityByName("Gantt2CPMTestCases->GanttHelper", net), true);
-		SmartEMFUtil.deleteNode(findEventByNumber(3, net), true);
-		SmartEMFUtil.deleteNode(findEventByNumber(4, net), true);
-		SmartEMFUtil.deleteNode(findEventByNumber(5, net), true);
-		SmartEMFUtil.deleteNode(findEventByNumber(6, net), true);
+		EMFManipulationUtils.delete(findActivityByName("GanttHelper", net), true);
+		EMFManipulationUtils.delete(findActivityByName("CPMHelper", net), true);
+		EMFManipulationUtils.delete(findActivityByName("Gantt2CPMTestCases->CPMHelper", net), true);
+		EMFManipulationUtils.delete(findActivityByName("Gantt2CPMTestCases->GanttHelper", net), true);
+		EMFManipulationUtils.delete(findEventByNumber(3, net), true);
+		EMFManipulationUtils.delete(findEventByNumber(4, net), true);
+		EMFManipulationUtils.delete(findEventByNumber(5, net), true);
+		EMFManipulationUtils.delete(findEventByNumber(6, net), true);
 		
 //		EcoreUtil.delete(findActivityByName("GanttHelper", net));
 //		EcoreUtil.delete(findActivityByName("CPMHelper", net));

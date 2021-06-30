@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Optional;
 
-import org.moflon.smartemf.runtime.util.SmartEMFUtil;
+import org.emoflon.ibex.common.emf.EMFManipulationUtils;
 
 import Families.Family;
 import Families.FamilyMember;
@@ -171,13 +171,13 @@ public class FamilyHelper {
 	
 	public void deleteFirstSonBart(FamilyRegister register) {
 		if (firstBartCanBeIdentifiedInRegister(register))
-			SmartEMFUtil.deleteNode(firstBart, true);
+			EMFManipulationUtils.delete(firstBart, true);
 //			EcoreUtil.delete(firstBart, true);
 		else {
 			// Unable to locate firstBart via object identity, so rely on position-based heuristics
 			Family family = getSimpsonFamily(register);
 			assertTrue(family.getName().equals("Simpson"));	
-			SmartEMFUtil.deleteNode(family.getSons().get(0), true);
+			EMFManipulationUtils.delete(family.getSons().get(0), true);
 //			EcoreUtil.delete(family.getSons().get(0), true);
 		}
 	}
@@ -221,7 +221,7 @@ public class FamilyHelper {
 	public void deleteFatherHomer(FamilyRegister register) {
 		Family simpson = getSimpsonFamily(register);
 		FamilyMember homer = simpson.getFather();
-		SmartEMFUtil.deleteNode(homer, true);
+		EMFManipulationUtils.delete(homer, true);
 //		EcoreUtil.delete(homer, true);
 	}
 	
