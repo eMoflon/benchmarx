@@ -15,7 +15,7 @@ public class EMFUtil {
 	
 	public static Resource loadExpectedResource(String path, ResourceSet resourceSet){
 //		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()	.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new SmartEMFResourceFactoryImpl());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new SmartEMFResourceFactoryImpl("./../../../../../../../emoflon-ibex-tests/"));
 
 		Path relativePath = FileSystems.getDefault().getPath("resources", path + ".xmi");
 		Path absolutePath = relativePath.normalize();
