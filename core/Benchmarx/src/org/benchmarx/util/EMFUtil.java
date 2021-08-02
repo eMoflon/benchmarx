@@ -32,7 +32,7 @@ public class EMFUtil {
 	public static <M> M loadExpectedModel(String path, ResourceSet resourceSet) {
 		Resource r = loadExpectedResource(path, resourceSet);
 		M model = (M) r.getContents().get(0);
-		resourceSet.getResources().remove(r);
+//		resourceSet.getResources().remove(r);
 		return model;
 	}
 	
