@@ -6,8 +6,6 @@ import Families.FamilyRegister;
 import java.util.ArrayList;
 import java.util.List;
 import org.benchmarx.emf.Comparator;
-import org.benchmarx.families.core.FamilyMemberNormaliser;
-import org.benchmarx.families.core.FamilyNormaliser;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.junit.Assert;
@@ -36,7 +34,6 @@ public class FamiliesComparator implements Comparator<FamilyRegister> {
     this.checkAttributeValues = checkAttributeValues;
   }
   
-  @Override
   public void assertEquals(final FamilyRegister expected, final FamilyRegister actual) {
     Assert.assertTrue(this.familyToString(expected).startsWith("FamilyRegister"));
     Assert.assertEquals(this.familyToString(expected), this.familyToString(actual));
