@@ -16,6 +16,6 @@ Require-Bundle: org.eclipse.emf.ecore,
  Benchmarx;bundle-version="1.0.0"
 Bundle-ManifestVersion: 2
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-15
+Bundle-RequiredExecutionEnvironment: JavaSE-16
 Bundle-Vendor: TU Darmstadt
 Automatic-Module-Name: Families
