@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.emoflon.ibex.common.emf.EMFManipulationUtils;
 
 import cpm.Activity;
 import cpm.CPMNetwork;
@@ -86,19 +86,30 @@ public class CPMHelper {
 	}
 	
 	public void deleteCPM2GanttModelsToComparatorDependencies(CPMNetwork net) {
-		EcoreUtil.delete(findActivityByName("GanttModel->GanttComparator", net));
-		EcoreUtil.delete(findActivityByName("CPMModel->CPMComparator", net));
+		EMFManipulationUtils.delete(findActivityByName("GanttModel->GanttComparator", net), true);
+		EMFManipulationUtils.delete(findActivityByName("CPMModel->CPMComparator", net), true);
+//		EcoreUtil.delete(findActivityByName("GanttModel->GanttComparator", net));
+//		EcoreUtil.delete(findActivityByName("CPMModel->CPMComparator", net));
 	}
 	
 	public void deleteCPM2GanttHelpers(CPMNetwork net) {
-		EcoreUtil.delete(findActivityByName("GanttHelper", net));
-		EcoreUtil.delete(findActivityByName("CPMHelper", net));
-		EcoreUtil.delete(findActivityByName("Gantt2CPMTestCases->CPMHelper", net));
-		EcoreUtil.delete(findActivityByName("Gantt2CPMTestCases->GanttHelper", net));
-		EcoreUtil.delete(findEventByNumber(3, net));
-		EcoreUtil.delete(findEventByNumber(4, net));
-		EcoreUtil.delete(findEventByNumber(5, net));
-		EcoreUtil.delete(findEventByNumber(6, net));
+		EMFManipulationUtils.delete(findActivityByName("GanttHelper", net), true);
+		EMFManipulationUtils.delete(findActivityByName("CPMHelper", net), true);
+		EMFManipulationUtils.delete(findActivityByName("Gantt2CPMTestCases->CPMHelper", net), true);
+		EMFManipulationUtils.delete(findActivityByName("Gantt2CPMTestCases->GanttHelper", net), true);
+		EMFManipulationUtils.delete(findEventByNumber(3, net), true);
+		EMFManipulationUtils.delete(findEventByNumber(4, net), true);
+		EMFManipulationUtils.delete(findEventByNumber(5, net), true);
+		EMFManipulationUtils.delete(findEventByNumber(6, net), true);
+		
+//		EcoreUtil.delete(findActivityByName("GanttHelper", net));
+//		EcoreUtil.delete(findActivityByName("CPMHelper", net));
+//		EcoreUtil.delete(findActivityByName("Gantt2CPMTestCases->CPMHelper", net));
+//		EcoreUtil.delete(findActivityByName("Gantt2CPMTestCases->GanttHelper", net));
+//		EcoreUtil.delete(findEventByNumber(3, net));
+//		EcoreUtil.delete(findEventByNumber(4, net));
+//		EcoreUtil.delete(findEventByNumber(5, net));
+//		EcoreUtil.delete(findEventByNumber(6, net));
 	}
 	
 	public void changeCPM2GanttHelperToBuilder(CPMNetwork net) {

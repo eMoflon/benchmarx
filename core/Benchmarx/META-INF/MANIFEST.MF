@@ -8,6 +8,7 @@ Export-Package: org.benchmarx,
  org.benchmarx.util
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.11.2",
  org.eclipse.emf.ecore.xmi;bundle-version="2.11.1",
- org.junit
+ org.junit,
+ org.emoflon.smartemf;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: Benchmarx
