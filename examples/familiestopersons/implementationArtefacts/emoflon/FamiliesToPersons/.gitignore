@@ -1,7 +1,0 @@
-/bin/
-/gen/*
-plugin.xml
-moflon.properties.xmi
-META-INF/MANIFEST.MF
-src/FamiliesToPersons/org/moflon/tie/*
-src/FamiliesToPersons/org/moflon/tgg/mosl/csp/lib/AttrCondDefLibrary.tgg

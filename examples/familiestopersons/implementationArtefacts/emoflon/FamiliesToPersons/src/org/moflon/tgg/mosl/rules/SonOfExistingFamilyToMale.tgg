@@ -1,4 +1,0 @@
-#using FamiliesToPersons.*
-#using AttrCondDefLibrary.*
-
-#rule SonOfExistingFamilyToMale #extends ExistingFamily2Person, SonToMale #with FamiliesToPersons
