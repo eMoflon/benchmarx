@@ -7,7 +7,7 @@ import java.util.ArrayList
 import java.util.List
 import org.benchmarx.emf.Comparator
 
-import static org.junit.Assert.*
+import static org.junit.jupiter.api.Assertions.*
 
 class FamiliesComparator implements Comparator<FamilyRegister> {
 	FamilyNormaliser comparator

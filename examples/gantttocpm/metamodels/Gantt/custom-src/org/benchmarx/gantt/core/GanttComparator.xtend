@@ -1,6 +1,6 @@
 package org.benchmarx.gantt.core
 
-import static org.junit.Assert.*
+import static org.junit.jupiter.api.Assertions.*
 
 import org.benchmarx.emf.Comparator
 import gantt.GanttDiagram

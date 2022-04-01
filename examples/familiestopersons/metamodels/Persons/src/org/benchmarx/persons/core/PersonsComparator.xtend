@@ -9,7 +9,7 @@ import java.util.Date
 import java.util.List
 import org.benchmarx.emf.Comparator
 
-import static org.junit.Assert.*
+import static org.junit.jupiter.api.Assertions.*
 
 class PersonsComparator implements Comparator<PersonRegister>{
 	PersonNormaliser comparator
