@@ -1,13 +1,12 @@
 package org.benchmarx.gantt.core
 
-import static org.junit.jupiter.api.Assertions.*
-
-import org.benchmarx.emf.Comparator
-import gantt.GanttDiagram
 import gantt.Activity
 import gantt.Dependency
-import java.util.ArrayList
 import gantt.Element
+import gantt.GanttDiagram
+import java.util.ArrayList
+import org.benchmarx.emf.Comparator
+import org.junit.jupiter.api.Assertions
 
 class GanttComparator implements Comparator<GanttDiagram> {
 	def static modelToString(GanttDiagram diagram) {
@@ -23,8 +22,8 @@ class GanttComparator implements Comparator<GanttDiagram> {
 	}
 	
 	override assertEquals(GanttDiagram expected, GanttDiagram actual) {
-		assertTrue(modelToString(expected).startsWith("GanttDiagram "))
-		assertEquals(modelToString(expected), modelToString(actual))
+		Assertions.assertTrue(modelToString(expected).startsWith("GanttDiagram "))
+		Assertions.assertEquals(modelToString(expected), modelToString(actual))
 	}
 	
 	def dispatch private static String elementToString(Activity activity) {

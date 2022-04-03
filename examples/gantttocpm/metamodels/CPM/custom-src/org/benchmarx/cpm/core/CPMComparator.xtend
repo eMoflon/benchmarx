@@ -1,14 +1,13 @@
 package org.benchmarx.cpm.core
 
-import static org.junit.jupiter.api.Assertions.*
-
-import org.benchmarx.emf.Comparator
+import cpm.Activity
 import cpm.CPMNetwork
-import java.util.ArrayList
 import cpm.Element
 import cpm.Event
-import cpm.Activity
+import java.util.ArrayList
 import java.util.HashMap
+import org.benchmarx.emf.Comparator
+import org.junit.jupiter.api.Assertions
 
 class CPMComparator implements Comparator<CPMNetwork> {
 	def static networkToString(CPMNetwork network) {
@@ -34,8 +33,8 @@ class CPMComparator implements Comparator<CPMNetwork> {
 	}
 	
 	override assertEquals(CPMNetwork expected, CPMNetwork actual) {
-		assertTrue(networkToString(expected).startsWith("CPMNetwork "))
-		assertEquals(networkToString(expected), networkToString(actual))
+		Assertions.assertTrue(networkToString(expected).startsWith("CPMNetwork "))
+		Assertions.assertEquals(networkToString(expected), networkToString(actual))
 	}
 	
 	def dispatch private static String elementToString(
