@@ -8,7 +8,7 @@ We have a plug and play (via remote desktop) Share virtual machine available fro
 ## How to setup and execute the benchmarx
 
 1.  Clone this repo:  `git clone https://github.com/eMoflon/benchmarx.git benchmarx` 
-2.  Download the latest version of the **Eclipse Modeling Tools**  for your platform.
+2.  Download the latest version of the **Eclipse Modeling Tools**  for your platform. You need at least Eclipse 2022-09.
 3.  Start Eclipse in a workspace of your choice and install Xtend (e.g., using `Help/Eclipse market place`). Restart and import the PSF file (`Import/Team/Team Project Set`) in the benchmark example folder you're interested in.  As an example, for **BenchmarxFamiliesToPersons** this would be (`benchmarx/examples/familiestopersons/projectSet.psf`).  If your workspace does not compile then please create an issue for us.
 For all examples, make sure you switch to `UTF 8` as encoding for your Eclipse workspace (`Window/Preferences/General/Workspace/Text file encoding`).
 4.  Choose the tools you want to execute by appropriately manipulating (replace with your benchmark example) `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/testsuite/FamiliesToPersonsTestCase.java/tools()`.
