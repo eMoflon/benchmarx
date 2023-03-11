@@ -1,8 +1,8 @@
-%%% Generated on: 2018-12-18T18:07:40.911
+%%% Generated on: 2023-03-11T12:08:23.233408
 % ../metamodels/Persons/model/Persons.ecore : f93a7b2581311d96e9aad294a7f901a9
 % ../metamodels/Families/model/Families.ecore : d95e6279b4f112e085dc6e6dd346b5bb
-% results/jtl/persons34.xmi : 8f8999d72e90089ff5db7463ea21c9f3
-% ../implementationArtefacts/jtl/Families2Persons.dl : 59c131d2731cd5e2983cdd2973a2b6ac
+% results/jtl/persons34.xmi : ee60213f9901b3cd67592fdb4008fd41
+% ../implementationArtefacts/jtl/Families2Persons.dl : a62f54e3c7e97b48463775a8f402c1c6
 %%%-
 
 %%% SOURCE METAMODEL %%%
@@ -48,31 +48,37 @@ metaedge(x_Families,association,x_daughtersInverse,x_FamilyMember,x_Family).
 model("x_m1",x_Persons).
 node(x_Persons,1,"x_/",x_PersonRegister).
 node(x_Persons,2,"x_//@persons.0",x_Male).
-node(x_Persons,3,"x_//@persons.1",x_Female).
-prop(x_Persons,208,"x_//@persons.0207",2,"x_//@persons.0",x_name, x_list(["x_Simpson","x_Homer"]) ).
-prop(x_Persons,2010,"x_//@persons.0209",2,"x_//@persons.0",x_birthday,"x_Wed Jan 09 10:11:12 CET 2013").
-prop(x_Persons,3014,"x_//@persons.13013",3,"x_//@persons.1",x_name, x_list(["x_Simpson","x_Maggie"]) ).
-prop(x_Persons,3016,"x_//@persons.13015",3,"x_//@persons.1",x_birthday,"x_Thu Mar 07 10:11:12 CET 2013").
+node(x_Persons,3,"x_//@persons.1",x_Male).
+node(x_Persons,4,"x_//@persons.2",x_Female).
+prop(x_Persons,2010,"x_//@persons.0209",2,"x_//@persons.0",x_name, x_list(["x_Flanders","x_Rod"]) ).
+prop(x_Persons,3014,"x_//@persons.13013",3,"x_//@persons.1",x_name, x_list(["x_Simpson","x_Homer"]) ).
+prop(x_Persons,4018,"x_//@persons.24017",4,"x_//@persons.2",x_name, x_list(["x_Simpson","x_Marge"]) ).
 edge(x_Persons,102,"x_/101",x_persons,1,"x_/",2,"x_//@persons.0").
 edge(x_Persons,104,"x_/103",x_persons,1,"x_/",3,"x_//@persons.1").
-edge(x_Persons,206,"x_//@persons.0205",x_personsInverse,2,"x_//@persons.0",1,"x_/").
+edge(x_Persons,106,"x_/105",x_persons,1,"x_/",4,"x_//@persons.2").
+edge(x_Persons,208,"x_//@persons.0207",x_personsInverse,2,"x_//@persons.0",1,"x_/").
 edge(x_Persons,3012,"x_//@persons.13011",x_personsInverse,3,"x_//@persons.1",1,"x_/").
+edge(x_Persons,4016,"x_//@persons.24015",x_personsInverse,4,"x_//@persons.2",1,"x_/").
 
 :- node(x_Persons, IDt, IDtx, x_Male), not trace_node(x_Families, IDt, IDtx, x_FamilyMember),
-nodex(x_Families, IDt+111, IDtx, x_Family), edgex(x_Families, IDe, IDex, x_father,  IDt+111, IDtx, IDt, IDtx),
+nodex(x_Families, IDt+111, IDtx, x_Family), edgex(x_Families, IDe, IDex, x_sons, IDt+111, IDtx, IDt, IDtx),
 nodex(x_Families, IDt, IDtx, x_FamilyMember). 
 
 :- node(x_Persons, IDt, IDtx, x_Female), not trace_node(x_Families, IDt, IDtx, x_FamilyMember),
-nodex(x_Families, IDt+111, IDtx, x_Family), edgex(x_Families, IDe, IDex, x_mother,  IDt+111, IDtx, IDt, IDtx),
+nodex(x_Families, IDt+111, IDtx, x_Family), edgex(x_Families, IDe, IDex, x_daughters, IDt+111, IDtx, IDt, IDtx),
 nodex(x_Families, IDt, IDtx, x_FamilyMember). 
 
 :- node(x_Persons, IDt, IDtx, x_Male), not trace_node(x_Families, IDt, IDtx, x_FamilyMember),
-nodex(x_Families, IDft, IDftx, x_Family), edgex(x_Families, IDe, IDex, x_father, IDft, IDftx, IDt, IDtx),
-nodex(x_Families, IDt, IDtx, x_FamilyMember).
+nodex(x_Families, IDft, IDftx, x_Family), edgex(x_Families, IDe, IDex, x_sons, IDft, IDftx, IDt, IDtx),
+nodex(x_Families, IDt, IDtx, x_FamilyMember),
+not there_is_a_father_in_family(IDft,IDftx).
+there_is_a_father_in_family(IDf,IDfx) :- edgex(x_Families, IDe2, IDe2x, x_father, IDf, IDfx, ID, IDx), nodex(x_Families, ID, IDx, x_FamilyMember).
 
 :- node(x_Persons, IDt, IDtx, x_Female), not trace_node(x_Families, IDt, IDtx, x_FamilyMember),
-nodex(x_Families, IDft, IDftx, x_Family), edgex(x_Families, IDe, IDex, x_mother, IDft, IDftx, IDt, IDtx),
-nodex(x_Families, IDt, IDtx, x_FamilyMember).
+nodex(x_Families, IDft, IDftx, x_Family), edgex(x_Families, IDe, IDex, x_daughters, IDft, IDftx, IDt, IDtx),
+nodex(x_Families, IDt, IDtx, x_FamilyMember),
+not there_is_a_mother_in_family(IDft,IDftx).
+there_is_a_mother_in_family(IDf,IDfx) :- edgex(x_Families, IDe2, IDe2x, x_mother, IDf, IDfx, ID, IDx), nodex(x_Families, ID, IDx, x_FamilyMember).
 
 :- node(x_Persons, IDt, IDtx, x_Male), not trace_node(x_Families, IDt, IDtx, x_FamilyMember),
 prop(x_Persons, IDpt, IDptx, IDt, IDtx, x_name, x_list([SN,N])),
