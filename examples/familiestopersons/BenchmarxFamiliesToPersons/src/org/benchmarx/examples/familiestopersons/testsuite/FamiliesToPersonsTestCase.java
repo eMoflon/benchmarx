@@ -5,15 +5,12 @@ import java.util.Collection;
 
 import org.benchmarx.BXTool;
 import org.benchmarx.emf.Comparator;
-import org.benchmarx.examples.familiestopersons.implementations.bigul.BiGULFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
-import org.benchmarx.examples.familiestopersons.implementations.funnyqt.FunnyQTFamiliesToPerson;
 import org.benchmarx.examples.familiestopersons.implementations.ibextgg.IBeXTGGFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.jtl.JTLFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersonsConfig;
-import org.benchmarx.examples.familiestopersons.implementations.nmf.NMFFamiliesToPersonsIncremental;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
@@ -58,7 +55,7 @@ public abstract class FamiliesToPersonsTestCase {
 	}
 
 	@After
-	public void terminate(){
+	public void terminate() {
 		tool.terminateSynchronisationDialogue();
 	}
 
@@ -66,24 +63,29 @@ public abstract class FamiliesToPersonsTestCase {
 	@Parameters(name = "{0}")
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
 		return Arrays.asList(
-//				new BiGULFamiliesToPersons()  // Currently 9 failures
-//				,
-				new EMoflonFamiliesToPersons()  // Currently 6 failures
+				/*
+				 * See setup instructions: /implementations/bigul/README-SETUP
+				 */
+				// new BiGULFamiliesToPersons() // Currently 9 failures
+				// ,
+				new EMoflonFamiliesToPersons() // Currently 6 failures
+				, new MediniQVTFamiliesToPersons() // Currently 19 failures
+				, new MediniQVTFamiliesToPersonsConfig() // Currently 12 failures
+				, new UbtXtendFamiliesToPersons() // Currently 0 failures
 				,
-				new MediniQVTFamiliesToPersons() // Currently 19 failures
-				,
-				new MediniQVTFamiliesToPersonsConfig() // Currently 12 failures
-				,
-				new UbtXtendFamiliesToPersons()  // Currently 0 failures
-				,
-				new FunnyQTFamiliesToPerson() // Currently 10 failures
-				,
-//				new NMFFamiliesToPersonsIncremental() // Currently 3 failures
-//				,
+				/*
+				 * Excluded due to problems with Closure
+				 */
+				// new FunnyQTFamiliesToPerson() // Currently 10 failures
+				// ,
+				/*
+				 * See setup instructions: /implementations/nmf/README-SETUP
+				 */
+				// new NMFFamiliesToPersonsIncremental() // Currently 3 failures
+				// ,
 				new IBeXTGGFamiliesToPersons() // Currently 5 failures
-				,
-				new JTLFamiliesToPersons() // Currently 11 failures
-			);
+				, new JTLFamiliesToPersons() // Currently 11 failures
+		);
 	}
 
 	protected FamiliesToPersonsTestCase(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {

@@ -86,6 +86,7 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 		return propagation;
 	}
 
+	@SuppressWarnings("deprecation")
 	private long propagate(ChangeRecorder recorder) {
 		String changes = recorder.stopAndExport();
 		try {
@@ -126,12 +127,12 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 		this.assertPrecondition(fr, pr);
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public void terminateSynchronisationDialogue() {
 		try {
 			Files.append(String.format("%d;%d\n", this.includingSerialization, this.propagation), new File("nmfresults.csv"), Charsets.UTF_8);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
