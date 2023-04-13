@@ -4,6 +4,8 @@ Bundle-Name: Benchmarx
 Bundle-SymbolicName: Benchmarx
 Bundle-Version: 1.0.0.qualifier
 Export-Package: org.benchmarx,
+ org.benchmarx.config,
+ org.benchmarx.edit,
  org.benchmarx.emf,
  org.benchmarx.util
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.11.2",

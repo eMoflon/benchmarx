@@ -5,7 +5,7 @@ import static org.benchmarx.util.EMFUtil.loadExpectedModel;
 import java.util.function.Consumer;
 
 import org.benchmarx.BXTool;
-import org.benchmarx.Configurator;
+import org.benchmarx.config.Configurator;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**

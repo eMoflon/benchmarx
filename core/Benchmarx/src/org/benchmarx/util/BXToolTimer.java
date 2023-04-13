@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.benchmarx.BXTool;
+import org.benchmarx.edit.Edit;
 
 /**
  * Helper class used for running runtime measurements for a {@link BXTool}. See
@@ -75,28 +76,28 @@ public class BXToolTimer<S, T, D> {
 	 *            The source edit to be propagated and timed.
 	 * @return The median of propagating edit REPEAT times
 	 */
-	public long timeSourceEditFromScratchInMS(Consumer<S> edit){
+	public long timeSourceEditFromScratchInMS(Edit<S> edit){
 		return median(() -> timeFromScratch(() -> tool.performAndPropagateSourceEdit(edit)));
 	}
 	
 	/**
 	 * See {@link #timeSourceEditFromScratchInMS(Consumer)}
 	 */
-	public double timeSourceEditFromScratchInS(Consumer<S> edit){
+	public double timeSourceEditFromScratchInS(Edit<S> edit){
 		return timeSourceEditFromScratchInMS(edit)/1000.0;
 	}
 	
 	/**
 	 * See {@link #timeSourceEditFromScratchInMS(Consumer)}
 	 */
-	public long timeTargetEditFromScratchInMS(Consumer<T> edit){
+	public long timeTargetEditFromScratchInMS(Edit<T> edit){
 		return median(() -> timeFromScratch(() -> tool.performAndPropagateTargetEdit(edit)));
 	}
 	
 	/**
 	 * See {@link #timeSourceEditFromScratchInMS(Consumer)}
 	 */
-	public double timeTargetEditFromScratchInS(Consumer<T> edit){
+	public double timeTargetEditFromScratchInS(Edit<T> edit){
 		return timeTargetEditFromScratchInMS(edit)/1000.0;
 	}
 	
@@ -112,7 +113,7 @@ public class BXToolTimer<S, T, D> {
 	 * @return The median of propagating edit REPEAT times (each time executed
 	 *         after a fresh setup).
 	 */
-	public long timeSourceEditAfterSetUpInMS(Consumer<S> setup, Consumer<S> edit){
+	public long timeSourceEditAfterSetUpInMS(Edit<S> setup, Edit<S> edit){
 		return median(() -> timeAfterSetup(() -> tool.performAndPropagateSourceEdit(setup), 
 							  			   () -> tool.performAndPropagateSourceEdit(edit)));
 	}
@@ -120,7 +121,7 @@ public class BXToolTimer<S, T, D> {
 	/**
 	 * See {@link #timeSourceEditAfterSetUpInMS(Consumer, Consumer)}
 	 */
-	public long timeTargetEditAfterSetUpInMS(Consumer<T> setup, Consumer<T> edit){
+	public long timeTargetEditAfterSetUpInMS(Edit<T> setup, Edit<T> edit){
 		return median(() -> timeAfterSetup(() -> tool.performAndPropagateTargetEdit(setup), 
 							  			   () -> tool.performAndPropagateTargetEdit(edit)));
 	}
@@ -128,14 +129,14 @@ public class BXToolTimer<S, T, D> {
 	/**
 	 * See {@link #timeSourceEditAfterSetUpInMS(Consumer, Consumer)}
 	 */
-	public double timeTargetEditAfterSetUpInS(Consumer<T> setup, Consumer<T> edit){
+	public double timeTargetEditAfterSetUpInS(Edit<T> setup, Edit<T> edit){
 		return timeTargetEditAfterSetUpInMS(setup, edit)/1000.0;
 	}
 	
 	/**
 	 * See {@link #timeSourceEditAfterSetUpInMS(Consumer, Consumer)}
 	 */
-	public double timeSourceEditAfterSetUpInS(Consumer<S> setup, Consumer<S> edit){
+	public double timeSourceEditAfterSetUpInS(Edit<S> setup, Edit<S> edit){
 		return timeSourceEditAfterSetUpInMS(setup, edit)/1000.0;
 	}
 
