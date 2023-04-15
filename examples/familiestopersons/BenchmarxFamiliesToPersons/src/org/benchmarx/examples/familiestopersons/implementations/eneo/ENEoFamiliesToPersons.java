@@ -2,6 +2,7 @@ package org.benchmarx.examples.familiestopersons.implementations.eneo;
 
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.function.Supplier;
 
 import org.benchmarx.BXTool;
 import org.benchmarx.config.Configurator;
@@ -150,11 +151,11 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 	}
 
 	@Override
-	public void performAndPropagateEdit(IEdit<FamilyRegister> sourceEdit, IEdit<PersonRegister> targetEdit) {
+	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEdit, Supplier<IEdit<PersonRegister>> targetEdit) {		
 		try (var builder = API_Common.createBuilder()) {
 			var familyAPI = new API_Families(builder);
 
-			for (var s : sourceEdit.getSteps()) {
+			for (var s : sourceEdit.get().getSteps()) {
 				if (s instanceof CreateNode) {
 					var cn = (CreateNode<FamilyRegister>) s;
 					if (cn.getNode() instanceof Family) {
@@ -261,12 +262,12 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 	}
 
 	@Override
-	public void performIdleSourceEdit(IEdit<FamilyRegister> edit) {
+	public void performIdleSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
 		performAndPropagateSourceEdit(edit);
 	}
 
 	@Override
-	public void performIdleTargetEdit(IEdit<PersonRegister> edit) {
+	public void performIdleTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
 		performAndPropagateTargetEdit(edit);
 	}
 

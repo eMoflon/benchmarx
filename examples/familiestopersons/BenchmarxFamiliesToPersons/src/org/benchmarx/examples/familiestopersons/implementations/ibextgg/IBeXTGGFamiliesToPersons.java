@@ -1,12 +1,13 @@
 package org.benchmarx.examples.familiestopersons.implementations.ibextgg;
 
 import java.io.IOException;
-import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.benchmarx.config.Configurator;
+import org.benchmarx.edit.IEdit;
 import org.benchmarx.emf.BXToolForEMF;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
@@ -17,8 +18,8 @@ import Families.FamiliesFactory;
 import Families.FamilyRegister;
 import Persons.PersonRegister;
 
-public class IBeXTGGFamiliesToPersons
-		extends BXToolForEMF<FamilyRegister, PersonRegister, org.benchmarx.examples.familiestopersons.testsuite.Decisions> {
+public class IBeXTGGFamiliesToPersons extends
+		BXToolForEMF<FamilyRegister, PersonRegister, org.benchmarx.examples.familiestopersons.testsuite.Decisions> {
 
 	private SYNC_App sync;
 
@@ -50,10 +51,9 @@ public class IBeXTGGFamiliesToPersons
 	}
 
 	@Override
-	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
+	public void performAndPropagateSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
 		// Adapt source model
-		FamilyRegister o = (FamilyRegister) sync.getSourceResource().getContents().get(0);
-		edit.accept(o);
+		edit.get();
 
 		// Invoke sync
 		try {
@@ -64,10 +64,9 @@ public class IBeXTGGFamiliesToPersons
 	}
 
 	@Override
-	public void performAndPropagateTargetEdit(Consumer<PersonRegister> edit) {
+	public void performAndPropagateTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
 		// Adapt target model
-		PersonRegister o = (PersonRegister) sync.getTargetResource().getContents().get(0);
-		edit.accept(o);
+		edit.get();
 
 		// Invoke sync
 		try {
@@ -78,12 +77,12 @@ public class IBeXTGGFamiliesToPersons
 	}
 
 	@Override
-	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
+	public void performIdleSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
 		performAndPropagateSourceEdit(edit);
 	}
 
 	@Override
-	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
+	public void performIdleTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
 		performAndPropagateTargetEdit(edit);
 	}
 
@@ -109,6 +108,12 @@ public class IBeXTGGFamiliesToPersons
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEdit,
+			Supplier<IEdit<PersonRegister>> targetEdit) {
+		throw new UnsupportedOperationException("Concurrent edits not supported.");
 	}
 
 }

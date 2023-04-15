@@ -9,10 +9,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import org.benchmarx.BXTool;
 import org.benchmarx.config.Configurator;
+import org.benchmarx.edit.IEdit;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;
@@ -82,18 +84,18 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 	}
 
 	@Override
-	public void performAndPropagateTargetEdit(Consumer<PersonRegister> edit) {
+	public void performAndPropagateTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
 		performEdit(edit, trg, this::runBigulBWD);
 	}
 
 	@Override
-	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
+	public void performAndPropagateSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
 		performEdit(edit, src, this::runBigulFWD);
 	}
 	
-	private <M> void performEdit(Consumer<M> edit, M model, Runnable p){
+	private <M> void performEdit(Supplier<IEdit<M>> edit, M model, Runnable p){
 		try {
-			edit.accept(model);
+			edit.get();
 			propagation =  p;
 		} catch (Error e) {
 			// We are not interested in any problems that might occur while constructing deltas
@@ -195,13 +197,29 @@ public class BiGULFamiliesToPersons implements BXTool<FamilyRegister, PersonRegi
 	}
 	
 	@Override
-	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
+	public void performIdleTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
 
 	}
 
 	@Override
-	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
+	public void performIdleSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
 	
+	}
+
+	@Override
+	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEdit,
+			Supplier<IEdit<PersonRegister>> targetEdit) {
+		throw new UnsupportedOperationException("Concurrent edits not supported.");		
+	}
+
+	@Override
+	public FamilyRegister getSourceModel() {
+		return src;
+	}
+
+	@Override
+	public PersonRegister getTargetModel() {
+		return trg;
 	}
 }
 

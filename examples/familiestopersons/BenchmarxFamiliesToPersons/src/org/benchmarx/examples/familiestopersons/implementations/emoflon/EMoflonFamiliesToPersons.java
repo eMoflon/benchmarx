@@ -1,10 +1,11 @@
 package org.benchmarx.examples.familiestopersons.implementations.emoflon;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import org.apache.log4j.BasicConfigurator;
 import org.benchmarx.config.Configurator;
+import org.benchmarx.edit.IEdit;
 import org.benchmarx.emf.BXToolForEMF;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
@@ -72,14 +73,14 @@ public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, Perso
 	}
 
 	@Override
-	public void performAndPropagateTargetEdit(Consumer<PersonRegister> edit) {
-		helper.setChangeTrg((EObject root) ->  edit.accept((PersonRegister) root));
+	public void performAndPropagateTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
+		helper.setChangeTrg((EObject root) ->  edit.get());
 		helper.integrateBackward();
 	}
 
 	@Override
-	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
-		helper.setChangeSrc((EObject root) ->  edit.accept((FamilyRegister) root));
+	public void performAndPropagateSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
+		helper.setChangeSrc((EObject root) ->  edit.get());
 		helper.integrateForward();
 	}
 
@@ -156,16 +157,6 @@ public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, Perso
 		
 	}
 	
-	@Override
-	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
-		performAndPropagateTargetEdit(edit);
-	}
-
-	@Override
-	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
-		performAndPropagateSourceEdit(edit);
-	}
-	
 	class F2PSyncHelper extends SynchronizationHelper {
 		public F2PSyncHelper() {
 			this.set = eMoflonEMFUtil.createDefaultResourceSet();
@@ -183,5 +174,11 @@ public class EMoflonFamiliesToPersons extends BXToolForEMF<FamilyRegister, Perso
 			changeTrg = (root -> {
 			});
 		}
+	}
+
+	@Override
+	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEditOp,
+			Supplier<IEdit<PersonRegister>> targetEditOp) {
+		throw new UnsupportedOperationException("Concurrent edits not supported.");
 	}
 }

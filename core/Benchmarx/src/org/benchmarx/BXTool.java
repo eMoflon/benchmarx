@@ -1,6 +1,7 @@
 package org.benchmarx;
 
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import org.benchmarx.config.Configurator;
 import org.benchmarx.edit.IEdit;
@@ -41,14 +42,14 @@ public interface BXTool<S, T, D> {
 	 */
 	default public void terminateSynchronisationDialogue() {}
 	
-	public void performAndPropagateEdit(IEdit<S> sourceEdit, IEdit<T> targetEdit);
+	public void performAndPropagateEdit(Supplier<IEdit<S>> sourceEdit, Supplier<IEdit<T>> targetEdit);
 	
-	default void performAndPropagateSourceEdit(IEdit<S> edit) {
-		performAndPropagateEdit(edit, IEdit.idleEdit());
+	default void performAndPropagateSourceEdit(Supplier<IEdit<S>> edit) {
+		performAndPropagateEdit(edit, IEdit::idleEdit);
 	}
 
-	default void performAndPropagateTargetEdit(IEdit<T> edit) {
-		performAndPropagateEdit(IEdit.idleEdit(), edit);
+	default void performAndPropagateTargetEdit(Supplier<IEdit<T>> edit) {
+		performAndPropagateEdit(IEdit::idleEdit, edit);
 	}
 	
 	/**
@@ -63,14 +64,14 @@ public interface BXTool<S, T, D> {
 	 * @param edit
 	 *            See {@link #performAndPropagateSourceEdit(Consumer)}
 	 */
-	public void performIdleSourceEdit(IEdit<S> edit);
+	public void performIdleSourceEdit(Supplier<IEdit<S>> edit);
 
 	/**
 	 * See {@link #performIdleSourceEdit(Consumer)}
 	 * 
 	 * @param edit
 	 */
-	public void performIdleTargetEdit(IEdit<T> edit);
+	public void performIdleTargetEdit(Supplier<IEdit<T>> edit);
 
 	/**
 	 * Used to set the update policy to use for testing. This takes over

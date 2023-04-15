@@ -1,5 +1,7 @@
 package org.benchmarx.emf;
 
+import java.util.function.Supplier;
+
 import org.benchmarx.BXTool;
 import org.benchmarx.edit.IEdit;
 
@@ -66,12 +68,12 @@ public abstract class BXToolForEMF<S, T, D> implements BXTool<S, T, D> {
 	}
 
 	@Override
-	public void performIdleSourceEdit(IEdit<S> edit) {
-		
+	public void performIdleSourceEdit(Supplier<IEdit<S>> edit) {
+		edit.get();
 	}
 
 	@Override
-	public void performIdleTargetEdit(IEdit<T> edit) {
-		
+	public void performIdleTargetEdit(Supplier<IEdit<T>> edit) {
+		edit.get();
 	}
 }
