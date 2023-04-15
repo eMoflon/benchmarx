@@ -11,5 +11,5 @@ Export-Package: org.benchmarx,
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.11.2",
  org.eclipse.emf.ecore.xmi;bundle-version="2.11.1",
  org.junit
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-10
 Automatic-Module-Name: Benchmarx

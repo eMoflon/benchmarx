@@ -3,7 +3,7 @@ package org.benchmarx.examples.familiestopersons.implementations.funnyqt;
 import java.io.File;
 import java.util.function.Consumer;
 
-import org.benchmarx.Configurator;
+import org.benchmarx.config.Configurator;
 import org.benchmarx.emf.BXToolForEMF;
 import org.benchmarx.emf.Comparator;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;

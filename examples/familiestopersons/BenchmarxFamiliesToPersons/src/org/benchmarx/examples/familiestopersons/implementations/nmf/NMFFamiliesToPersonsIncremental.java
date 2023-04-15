@@ -10,7 +10,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.function.Consumer;
 import org.benchmarx.BXTool;
-import org.benchmarx.Configurator;
+import org.benchmarx.config.Configurator;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;

@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.function.Consumer;
 
 import org.apache.commons.io.output.NullOutputStream;
-import org.benchmarx.Configurator;
+import org.benchmarx.config.Configurator;
 import org.benchmarx.emf.BXToolForEMF;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;

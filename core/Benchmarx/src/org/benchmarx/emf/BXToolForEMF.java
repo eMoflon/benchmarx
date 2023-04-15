@@ -1,6 +1,7 @@
 package org.benchmarx.emf;
 
 import org.benchmarx.BXTool;
+import org.benchmarx.edit.IEdit;
 
 /**
  * A super class for EMF-based BX tools. Provides support for asserting pre- and
@@ -35,18 +36,6 @@ public abstract class BXToolForEMF<S, T, D> implements BXTool<S, T, D> {
 	}
 	
 	/**
-	 * Return the internally stored source model of the {@link BXTool}
-	 * 
-	 * @return An EMF-based source model
-	 */
-	public abstract S getSourceModel();
-	
-	/**
-	 * See {@link #getSourceModel()}
-	 */
-	public abstract T getTargetModel();
-	
-	/**
 	 * Prompt the tool to save the current state of all its models for debugging
 	 * purposes. The tool decides what to save and where to save it.
 	 * 
@@ -74,5 +63,15 @@ public abstract class BXToolForEMF<S, T, D> implements BXTool<S, T, D> {
 	@Override
 	public String toString() {
 		return getName();
+	}
+
+	@Override
+	public void performIdleSourceEdit(IEdit<S> edit) {
+		
+	}
+
+	@Override
+	public void performIdleTargetEdit(IEdit<T> edit) {
+		
 	}
 }

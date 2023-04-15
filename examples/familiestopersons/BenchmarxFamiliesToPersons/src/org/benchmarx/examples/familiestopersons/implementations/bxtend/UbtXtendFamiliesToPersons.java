@@ -1,9 +1,10 @@
 package org.benchmarx.examples.familiestopersons.implementations.bxtend;
 
 import java.io.IOException;
-import java.util.function.Consumer;
 
-import org.benchmarx.Configurator;
+import org.benchmarx.config.Configurator;
+import org.benchmarx.edit.IEdit;
+import org.benchmarx.edit.IdleEdit;
 import org.benchmarx.emf.BXToolForEMF;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
@@ -15,14 +16,14 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+
 import Families.FamiliesFactory;
 import Families.FamilyRegister;
 import Persons.PersonRegister;
-import bitrafo.eval.familyperson.rules.decisions.ConfigurableTargetToSourceDecision;
 import bitrafo.eval.familyperson.rules.Family2PersonTransformation;
+import bitrafo.eval.familyperson.rules.decisions.ConfigurableTargetToSourceDecision;
 
 public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonRegister, Decisions> {
-	
 	private ResourceSet set = new ResourceSetImpl();
 	private Resource source;
 	private Resource target;
@@ -79,9 +80,7 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 	 * 
 	 * @param edit : the source edit delta
 	 */
-	@Override
-	public void performAndPropagateTargetEdit(Consumer<PersonRegister> edit) {
-		edit.accept(getTargetModel());
+	private void performAndPropagateTargetEdit() {
 		f2pt.configure(new ConfigurableTargetToSourceDecision(!conf.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW), conf.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD), false, false));
 		f2pt.Person2Family();
 	}
@@ -91,9 +90,7 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 	 * 
 	 * @param edit : the source edit delta
 	 */
-	@Override
-	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
-		edit.accept(getSourceModel());
+	private void performAndPropagateSourceEdit() {
 		f2pt.configure(new ConfigurableTargetToSourceDecision(!conf.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW), conf.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD), false, false));
 		f2pt.Family2Person();
 	}
@@ -142,25 +139,15 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 			e.printStackTrace();
 		}			
 	}
-	
-	/**
-	 * Perform an edit operation on the target model, without propagating the change to the source model
-	 * 
-	 * @param edit : the edit delta
-	 */
-	@Override
-	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
-		edit.accept(getTargetModel());
-	}
 
-	/**
-	 * Perform an edit operation on the source model, without propagating the change to the target model
-	 * 
-	 * @param edit : the edit delta
-	 */
 	@Override
-	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
-		edit.accept(getSourceModel());
+	public void performAndPropagateEdit(IEdit<FamilyRegister> sourceEdit, IEdit<PersonRegister> targetEdit) {
+		if(sourceEdit instanceof IdleEdit && !(targetEdit instanceof IdleEdit)) {
+			performAndPropagateTargetEdit();
+		} else if(targetEdit instanceof IdleEdit && !(sourceEdit instanceof IdleEdit)) {
+			performAndPropagateSourceEdit();
+		} else {
+			throw new UnsupportedOperationException("Concurrent edits not supported.");
+		}
 	}
-
 }

@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.function.Consumer;
 
 import org.apache.log4j.BasicConfigurator;
-import org.benchmarx.Configurator;
+import org.benchmarx.config.Configurator;
 import org.benchmarx.emf.BXToolForEMF;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;

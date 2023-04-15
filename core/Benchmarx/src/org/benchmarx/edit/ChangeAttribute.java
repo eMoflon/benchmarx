@@ -9,7 +9,7 @@ public class ChangeAttribute<M> implements AtomicEdit<M> {
 	private Object oldValue;
 	private Object newValue;
 
-	public ChangeAttribute(EObject node, EAttribute attribute, Object oldValue, Object newValue) {
+	public ChangeAttribute(EAttribute attribute, EObject node, Object oldValue, Object newValue) {
 		this.node = node;
 		this.attribute = attribute;
 		this.oldValue = oldValue;

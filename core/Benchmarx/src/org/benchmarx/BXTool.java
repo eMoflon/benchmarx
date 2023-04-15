@@ -52,7 +52,6 @@ public interface BXTool<S, T, D> {
 	}
 	
 	/**
-	 * TODO: update
 	 * Some testing tasks require performing idle updates on one model, i.e.,
 	 * updates that are not relevant for the other model, but enable testing
 	 * certain properties. The bx tool is thus free to simply perform this idle
@@ -121,4 +120,8 @@ public interface BXTool<S, T, D> {
 	 * @return
 	 */
 	default public String getName() { return "Please set the name of your bx tool!"; }
+	
+	public abstract S getSourceModel();
+	
+	public abstract T getTargetModel();
 }
