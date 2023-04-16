@@ -1,0 +1,18 @@
+#!/bin/bash
+
+files_with_words() {
+  find src -type f | (while read f; do 
+    filename=$(basename "$f");
+    echo "${filename%.*} ${filename##*.} $(cpp "$f" | wc -w)";
+  done) | sort -k2
+}
+
+files_with_words | awk '
+  { types[$2] += $3; total += $3; }
+  END {
+    for (type in types) {
+      printf "%s\t%s\n", type, types[type];
+    }
+    printf "total\t%s\n", total;
+  }
+'

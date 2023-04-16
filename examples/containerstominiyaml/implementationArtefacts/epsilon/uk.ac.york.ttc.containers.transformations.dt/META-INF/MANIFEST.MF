@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Developer Tools for Reference Transformations
+Bundle-SymbolicName: uk.ac.york.ttc.containers.transformations.dt;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.ui;bundle-version="3.0.0",
+ org.eclipse.core.resources;bundle-version="3.0.0",
+ org.eclipse.core.runtime;bundle-version="3.0.0",
+ uk.ac.york.ttc.containers.transformations;bundle-version="1.0.0",
+ org.eclipse.core.expressions;bundle-version="3.0.0"
+Bundle-Vendor: University of York
+Automatic-Module-Name: uk.ac.york.ttc.containers.transformations.dt
+Bundle-RequiredExecutionEnvironment: JavaSE-11

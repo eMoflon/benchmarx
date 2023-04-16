@@ -1,0 +1,23 @@
+@namespace(uri="http://york.ac.uk/ttc/miniyaml/1.0.0", prefix="c")
+package miniyaml;
+
+abstract class Value {
+	
+}
+
+class Map extends Value {
+	!ordered val MapEntry[*] entries;
+}
+
+class MapEntry {
+	attr String key;
+	val Value value;
+}
+
+class List extends Value {
+	val Value[*] values;
+}
+
+class Scalar extends Value {
+	attr String value;
+}

@@ -1,0 +1,74 @@
+import 'mergeMiniyaml.etl';
+import 'mergeUtils.eol';
+
+// For 'priority' maps (services and volumes), prioritise the left model
+// (don't let in anything that is only on the right model)
+rule MergePriorityMap
+  merge l: Left!`Map`
+  with  r: Right!`Map`
+  into  t: Target!`Map`
+{
+  guard: l.path() = 'services' or l.path() = 'volumes'
+
+  t.entries ::= l.entries;
+}
+
+// For any other map, combine all entries
+rule MergeNonPriorityMap
+  merge l: Left!`Map`
+  with  r: Right!`Map`
+  into  t: Target!`Map`
+{
+  guard: l.path() != 'services' and l.path() != 'volumes'
+
+  var allEntries : OrderedSet;
+  allEntries.addAll(l.entries.equivalent());
+  allEntries.addAll(r.entries.equivalent());
+
+  t.entries.addAll(allEntries);
+}
+
+// For map entries, combine values
+rule MergeMapEntry
+  merge l: Left!MapEntry
+  with r: Right!MapEntry
+  into t: Target!MapEntry
+{
+  t.key = l.key;
+  t.value ::= l.value;
+}
+
+// For priority lists (volume mounts and cross-container dependencies), left side trumps right
+rule MergePriorityList
+  merge l: Left!`List`
+  with r: Right!`List`
+  into t: Target!`List`
+{
+  guard: l.path().matches('services[.][^.]+[.](volumes|depends_on)')
+
+  t.values ::= l.values;
+}
+
+// For any other list, combine the values
+rule MergeNonPriorityList
+  merge l: Left!`List`
+  with r: Right!`List`
+  into t: Target!`List`
+{
+  guard: not l.path().matches('services[.][^.]+[.](volumes|depends_on)')
+
+  t.values ::= l.values;
+  for (r in r.values.equivalent()) {
+    if (not t.values.contains(r)) {
+      t.values.add(r);
+    }
+  }
+}
+
+rule MergeScalars
+  merge l: Left!Scalar
+  with r: Right!Scalar
+  into t: Target!Scalar
+{
+  t.value = l.value;
+}

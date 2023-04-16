@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<c:Composition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://york.ac.uk/ttc/containers/1.0.0">
+  <nodes xsi:type="c:Container" name="mariadb" image="//@nodes.10">
+    <volumeMounts volume="mariadb_data" path="/bitnami/mariadb"/>
+  </nodes>
+  <nodes xsi:type="c:Container" name="redis" image="//@nodes.11">
+    <volumeMounts volume="redis_data" path="/bitnami/redis/data"/>
+  </nodes>
+  <nodes xsi:type="c:Container" name="nginx" image="//@nodes.12"/>
+  <nodes xsi:type="c:Container" name="app" image="//@nodes.13" dependsOn="mariadb redis"/>
+  <nodes xsi:type="c:Container" name="java-worker" replicas="2" image="//@nodes.14" dependsOn="app">
+    <volumeMounts volume="m2_data" path="/home/www-data/.m2"/>
+  </nodes>
+  <nodes xsi:type="c:Container" name="default-worker" replicas="2" image="//@nodes.14" dependsOn="app"/>
+  <nodes xsi:type="c:Container" name="echo" image="//@nodes.15" dependsOn="redis"/>
+  <nodes xsi:type="c:Volume" name="mariadb_data"/>
+  <nodes xsi:type="c:Volume" name="redis_data"/>
+  <nodes xsi:type="c:Volume" name="m2_data"/>
+  <nodes xsi:type="c:Image" image="docker.io/bitnami/mariadb:10.5-debian-10"/>
+  <nodes xsi:type="c:Image" image="docker.io/bitnami/redis:6.0-debian-10"/>
+  <nodes xsi:type="c:Image" image="autofeedback/nginx:production"/>
+  <nodes xsi:type="c:Image" image="autofeedback/app:production"/>
+  <nodes xsi:type="c:Image" image="autofeedback/worker:production"/>
+  <nodes xsi:type="c:Image" image="autofeedback/echo:production"/>
+</c:Composition>

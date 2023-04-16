@@ -1,0 +1,56 @@
+x-laravel-base: {restart: unless-stopped, tty: 'true'}
+volumes:
+  redis_data: {driver: local}
+  mariadb_data: {driver: local}
+  m2_data: {driver: local}
+services:
+  mariadb:
+    image: docker.io/bitnami/mariadb:10.5-debian-10
+    tmpfs: [/tmp]
+    restart: unless-stopped
+    volumes: ['mariadb_data:/bitnami/mariadb']
+  app:
+    image: autofeedback/app:production
+    tmpfs: [/tmp]
+    depends_on: [mariadb, redis]
+    restart: unless-stopped
+    tty: 'true'
+  nginx:
+    image: autofeedback/nginx:production
+    tmpfs: [/tmp, /opt/bitnami/nginx/tmp, /var/cache, /opt/bitnami/nginx/conf/server_blocks]
+    depends_on: [app]
+    restart: unless-stopped
+    read_only: 'true'
+  java-worker:
+    image: autofeedback/worker:production
+    mem_limit: 512M
+    tmpfs: ['/tmp:size=100M']
+    depends_on: [app]
+    restart: unless-stopped
+    security_opt: [no-new-privileges]
+    tty: 'true'
+    volumes: ['m2_data:/home/www-data/.m2']
+    scale: '2'
+    command: php artisan queue:work --max-jobs=1 --queue=javaHigh,java,javaLow redis
+    deploy: {replicas: '2'}
+  echo:
+    image: autofeedback/echo:production
+    tmpfs: ['/home/node:uid=1000,gid=1000']
+    depends_on: [redis]
+    read_only: 'true'
+  default-worker:
+    image: autofeedback/worker:production
+    mem_limit: 512M
+    tmpfs: [/tmp]
+    depends_on: [app]
+    restart: unless-stopped
+    tty: 'true'
+    scale: '2'
+    command: php artisan queue:work --queue=defaultHigh,default,defaultLow redis
+    deploy: {replicas: '2'}
+  redis:
+    image: docker.io/bitnami/redis:6.0-debian-10
+    tmpfs: [/tmp]
+    restart: unless-stopped
+    volumes: ['redis_data:/bitnami/redis/data']
+version: '2.4'

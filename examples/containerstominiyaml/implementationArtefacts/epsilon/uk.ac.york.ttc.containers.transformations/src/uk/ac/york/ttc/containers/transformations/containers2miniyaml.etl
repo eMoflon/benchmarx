@@ -1,0 +1,77 @@
+rule Composition2MainMap
+  transform c: Containers!Composition
+  to m: Compose!`Map`
+{
+  m.entries = Sequence {
+    mapEntry('version', scalar('2.4')),
+    mapEntry('services', map(c.nodes.select(n|n.isKindOf(Container)).equivalent())),
+    mapEntry('volumes', map(c.nodes.select(n|n.isKindOf(Volume)).equivalent()))
+  };
+}
+
+rule Container2MapEntry
+  transform c: Containers!Container
+  to meContainer: Compose!MapEntry {
+
+  meContainer.key = c.name;
+  meContainer.value = new Compose!`Map`;
+  meContainer.value.entries = Sequence {
+    mapEntry('image', scalar(c.image.image))
+  };
+
+  if (c.replicas != 1) {
+    meContainer.value.entries.add(mapEntry('replicas', scalar(c.replicas.asString())));
+  }
+
+  if (not c.volumeMounts.isEmpty) {
+    meContainer.value.entries.add(
+      mapEntry('volumes', list(c.volumeMounts.equivalent()))
+    );
+  }
+
+  if (not c.dependsOn.isEmpty) {
+    meContainer.value.entries.add(
+      mapEntry('depends_on', list(c.dependsOn.collect(d|scalar(d.name))))
+    );
+  }
+}
+
+rule VolumeMount2Scalar
+  transform vm: Containers!VolumeMount
+  to s: Compose!Scalar
+{
+  s.value = vm.volume.name + ':' + vm.path;
+}
+
+rule Volume2MapEntry
+  transform v: Containers!Volume
+  to m: Compose!MapEntry
+{
+  m.key = v.name;
+  // leave value empty
+}
+
+operation scalar(text: String): Compose!Scalar {
+  var sc = new Compose!Scalar;
+  sc.value = text;
+  return sc;
+}
+
+operation map(entries: Sequence): Compose!`Map`{
+  var m = new Compose!`Map`;
+  m.entries = entries;
+  return m;
+}
+
+operation mapEntry(key: String, value): Compose!MapEntry {
+  var me = new Compose!MapEntry;
+  me.key = key;
+  me.value = value;
+  return me;
+}
+
+operation list(values: Sequence): Compose!`List` {
+  var l = new Compose!`List`;
+  l.values = values;
+  return l;
+}

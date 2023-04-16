@@ -1,0 +1,23 @@
+@cached
+operation Left!Value path() {
+  if (self.eContainer.isDefined()) {
+    if (self.eContainer.isKindOf(Left!MapEntry)) {
+      return self.eContainer.path();
+    } else if (self.eContainer.isKindOf(Left!`List`)) {
+      return self.eContainer.path() + '.' + self.eContainer.values.indexOf(self);
+    }
+  } else {
+    return '';
+  }
+}
+
+@cached
+operation Left!MapEntry path() {
+  var parentPath = self.eContainer.path();
+  
+  if (parentPath.length() > 0) { 
+    return parentPath + '.' + self.key;
+  } else {
+    return self.key;
+  }
+}

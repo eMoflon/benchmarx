@@ -1,0 +1,88 @@
+rule MainMap2Composition
+  transform m: Compose!`Map`
+  to c: Containers!Composition
+{
+  guard: not m.eContainer.isDefined()
+
+  c.nodes ::= m.entries.select(e|e.key = 'services' or e.key = 'volumes').value.entries.flatten;
+}
+
+@lazy
+rule MapEntry2Container
+  transform m: Compose!MapEntry
+  to c: Containers!Container
+{
+  guard: m.eContainer.eContainer.key = 'services'
+
+  c.name     = m.key;
+
+  var image = m.value?.entries?.selectOne(e|e.key = 'image')?.value?.value;
+  if (image.isDefined()) {
+    c.image = image.intern().equivalent();
+  }
+
+  var replicas = m.value?.entries?.selectOne(e|e.key = 'replicas')?.value?.value;
+  if (replicas.isDefined()) {
+    c.replicas = replicas.asInteger();
+  }
+
+  var volumes = m.value?.entries?.selectOne(e|e.key = 'volumes')?.value?.values;
+  if (volumes.isDefined()) {
+    c.volumeMounts = volumes.equivalent();
+  }
+
+  var dependsOnItems = m.value?.entries?.selectOne(e|e.key = 'depends_on')?.value?.values?.value;
+  c.~delayedDependsOn = Sequence {};
+  if (dependsOnItems.isDefined()) {
+    c.~delayedDependsOn.addAll(dependsOnItems.flatten());
+  }
+}
+
+// This rule is needed in case we have multiple references to the same image
+@lazy
+rule String2Image
+  transform s: String
+  to im: Containers!Image
+{
+  im.image = s;
+}
+
+@lazy
+rule Scalar2VolumeMount
+  transform s: Compose!Scalar
+  to vm: Containers!VolumeMount
+{
+  var parts = s.value.split(':');
+
+  // Likewise, can't use equivalent() as we only have a name
+  vm.~delayedVolume = parts.at(0);
+  vm.path = parts.at(1);
+}
+
+@lazy
+rule MapEntry2Volume
+  transform m: Compose!MapEntry
+  to v: Containers!Volume
+{
+  guard: m.eContainer.eContainer.key = 'volumes'
+
+  v.name = m.key;
+} 
+
+post AssignVolumes {
+  for (vm in Containers!VolumeMount.all) {
+    vm.volume = Containers!Volume.all.selectOne(v|v.name = vm.~delayedVolume);
+  } 
+}
+
+post AssignDependsOn {
+   for (c in Containers!Container.all) {
+     c.dependsOn = c.~delayedDependsOn
+       .collect(depName | Containers!Container.all.selectOne(c|c.name = depName))
+       .reject(e|not e.isDefined());
+   }
+}
+
+post AssignImages {
+  Containers!Composition.all.first.nodes.addAll(Containers!Image.all);  
+}

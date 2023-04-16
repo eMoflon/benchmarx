@@ -1,0 +1,13 @@
+acmart-primary/
+*.aux
+*.out
+*.toc
+*.vrb
+*.fdb*
+*.fls
+*.log
+*.nav
+*.snm
+*.bbl
+*.blg
+ttc-diagram2compose.pdf
