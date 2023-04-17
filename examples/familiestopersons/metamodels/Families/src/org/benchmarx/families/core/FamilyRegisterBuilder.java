@@ -20,7 +20,10 @@ public class FamilyRegisterBuilder {
 	private Consumer<EObject> createNode;
 	private BiConsumer<EReference, List<EObject>> createEdge;
 	
-	public FamilyRegisterBuilder(FamilyRegister reg, Consumer<EObject> cn, BiConsumer<EReference, List<EObject>> ce) {
+	public FamilyRegisterBuilder(
+			FamilyRegister reg, 
+			Consumer<EObject> cn, 
+			BiConsumer<EReference, List<EObject>> ce) {
 		register = reg;
 		createNode = cn;
 		createEdge = ce;

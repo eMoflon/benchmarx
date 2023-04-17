@@ -2,7 +2,9 @@ package org.benchmarx.eneo.f2p;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import org.emoflon.neo.api.eneofamiliestopersons.API_Common;
 import org.emoflon.neo.api.eneofamiliestopersons.org.benchmarx.eneo.f2p.API_FamiliesToPersons;
@@ -29,9 +31,11 @@ import org.emoflon.neo.engine.modules.valueGenerators.LoremIpsumStringValueGener
 import org.emoflon.neo.engine.modules.valueGenerators.ModelNameValueGenerator;
 
 public class F2P_MI extends F2P_MI_Run {
+	private Optional<Boolean> preferParents;
 
-	public F2P_MI() {
+	public F2P_MI(Optional<Boolean> preferParents) {
 		super(F2P_GEN_Run.SRC_MODEL_NAME, F2P_GEN_Run.TRG_MODEL_NAME);
+		this.preferParents = preferParents;
 	}
 
 	@Override
@@ -57,6 +61,25 @@ public class F2P_MI extends F2P_MI_Run {
 		var opRules = miAPI.getAllRulesForF2P_MI();
 		var analyser = new TripleRuleAnalyser(new API_FamiliesToPersons(builder).getTripleRulesOfF2P());
 
+		preferParents.ifPresent((pp) -> {
+			var blacklist = pp ? List.of(
+					API_FamiliesToPersons.F2P__SonToMaleRule,
+					API_FamiliesToPersons.F2P__SonWithFamilyToMaleRule, 
+					API_FamiliesToPersons.F2P__DaughterToFemaleRule,
+					API_FamiliesToPersons.F2P__DaughterWithFamilyToFemaleRule
+				) : List.of(
+						API_FamiliesToPersons.F2P__FatherToMaleRule,
+						API_FamiliesToPersons.F2P__FatherWithFamilyToMaleRule,
+						API_FamiliesToPersons.F2P__MotherToFemaleRule,
+						API_FamiliesToPersons.F2P__MotherWithFamilyToFemaleRule
+					);
+
+			blacklist.forEach(rn -> {
+				var remove = opRules.stream().filter(r -> r.getName().startsWith(rn)).collect(Collectors.toList());
+				opRules.removeAll(remove);
+			});
+		});
+		
 		modelIntegration = new ModelIntegrationOperationalStrategy(//
 				solver, //
 				builder, //
@@ -93,7 +116,8 @@ class NoMoreMatchesOrTimeout extends NoMoreMatchesTerminationCondition {
 
 	@Override
 	public boolean isReached(MatchContainer<NeoMatch, NeoCoMatch> matchContainer) {
-		return super.isReached(matchContainer) || timout.isReached(matchContainer) || maxRuleApps.isReached(matchContainer);
+		return super.isReached(matchContainer) || timout.isReached(matchContainer)
+				|| maxRuleApps.isReached(matchContainer);
 	}
 
 }

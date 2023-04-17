@@ -6,10 +6,9 @@ metamodel Persons {
 	}
 	
 	Person {
+		.id : EInt
 		.name : EString
-		.birthday : EDate
-		
-		-personsInverse(0..1)->PersonRegister
+		.birthday : EDate		
 	}
 	
 	Male : Person
@@ -30,4 +29,34 @@ pattern MalePattern -> PersonPattern {
 
 pattern FemalePattern -> PersonPattern {
 	person:Female
+}
+
+abstract rule createPerson {
+	++ p: Person {
+		.enamespace := <namespace>
+		.name := <name>
+		.id := <id>
+		.birthday := <bday>
+		._cr_ := true
+	}
+}
+
+rule createFemale -> createPerson {
+	++ p: Female
+}
+
+rule createMale -> createPerson {
+	++ p: Male
+}
+
+rule createRegisterPersonEdge {
+	r: PersonRegister {
+		++ -persons->p {
+			~_cr_ := true
+		}
+	}
+	
+	p: Person {
+		.id : <id>
+	}
 }

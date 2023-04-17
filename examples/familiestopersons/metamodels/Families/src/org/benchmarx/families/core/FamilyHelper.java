@@ -20,21 +20,26 @@ import Families.FamilyMember;
 import Families.FamilyRegister;
 
 public class FamilyHelper {
-	private FamilyMember firstBart;
 	private FamilyRegisterBuilder builder;
+	private FamilyRegister register;
+	private FamilyMember firstBart;
 	private Runnable startNewEdit;
 	private Supplier<IEdit<FamilyRegister>> getEdit;
-	private FamilyRegister register;
 	private BiConsumer<EAttribute, List<?>> changeAttribute;
 
-	public FamilyHelper(Runnable startNewEdit, Supplier<IEdit<FamilyRegister>> getEdit, FamilyRegister register,
-			Consumer<EObject> createNode, BiConsumer<EReference, List<EObject>> createEdge,
-			BiConsumer<EAttribute, List<?>> changeAttribute) {
+	public FamilyHelper(
+			FamilyRegister register,
+			Runnable startNewEdit, 
+			Supplier<IEdit<FamilyRegister>> getEdit, 
+			Consumer<EObject> createNode, 
+			BiConsumer<EReference, List<EObject>> createEdge,
+			BiConsumer<EAttribute, List<?>> changeAttribute
+		) {
 		firstBart = null;
 		builder = new FamilyRegisterBuilder(register, createNode, createEdge);
+		this.register = register;
 		this.startNewEdit = startNewEdit;
 		this.getEdit = getEdit;
-		this.register = register;
 		this.changeAttribute = changeAttribute;
 	}
 

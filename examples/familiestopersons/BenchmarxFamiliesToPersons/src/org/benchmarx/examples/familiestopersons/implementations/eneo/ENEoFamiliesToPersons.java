@@ -1,7 +1,11 @@
 package org.benchmarx.examples.familiestopersons.implementations.eneo;
 
-import java.time.ZoneId;
-import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 import org.benchmarx.BXTool;
@@ -25,10 +29,14 @@ import Families.FamiliesPackage;
 import Families.Family;
 import Families.FamilyMember;
 import Families.FamilyRegister;
+import Persons.Female;
+import Persons.Male;
 import Persons.PersonRegister;
 import Persons.PersonsFactory;
+import Persons.PersonsPackage;
 
 public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegister, Decisions> {
+	private Configurator<Decisions> configurator;
 
 	@Override
 	public String getName() {
@@ -58,9 +66,12 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 
 		try (var builder = API_Common.createBuilder()) {
 			var familiesAPI = new API_Families(builder);
-			var allFamiliesMatches = familiesAPI.getPattern_FamilyPattern().pattern().determineMatches();
-			var allFamiliesData = familiesAPI.getPattern_FamilyPattern().data(allFamiliesMatches);
-			allFamiliesData.forEach(f -> {
+			var allFamiliesPattern = familiesAPI.getPattern_FamilyPattern();
+			var allFamiliesMatches = allFamiliesPattern.pattern().determineMatches();
+
+			allFamiliesMatches.forEach(fm -> {
+				var f = allFamiliesPattern.data(List.of(fm)).findAny().get();
+
 				var fc = FamiliesFactory.eINSTANCE.createFamily();
 				fc.setName(f._family._name);
 				actualSource.getFamilies().add(fc);
@@ -68,7 +79,7 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 				{
 					var pattern = familiesAPI.getPattern_MotherPattern();
 					var mask = pattern.mask();
-					mask.setFamilyId(f._family._id);
+					mask.setFamily(fm.getElement(allFamiliesPattern._family));
 					var allMothersMatches = pattern.determineMatches(mask);
 					var allMothersData = pattern.data(allMothersMatches);
 					allMothersData.forEach(m -> {
@@ -81,7 +92,7 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 				{
 					var pattern = familiesAPI.getPattern_FatherPattern();
 					var mask = pattern.mask();
-					mask.setFamilyId(f._family._id);
+					mask.setFamily(fm.getElement(allFamiliesPattern._family));
 					var allFathersMatches = pattern.determineMatches(mask);
 					var allFathersData = pattern.data(allFathersMatches);
 					allFathersData.forEach(fa -> {
@@ -94,7 +105,7 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 				{
 					var pattern = familiesAPI.getPattern_DaughterPattern();
 					var mask = pattern.mask();
-					mask.setFamilyId(f._family._id);
+					mask.setFamily(fm.getElement(allFamiliesPattern._family));
 					var allDaughtersMatches = pattern.determineMatches(mask);
 					var allDaughtersData = familiesAPI.getPattern_DaughterPattern().data(allDaughtersMatches);
 					allDaughtersData.forEach(d -> {
@@ -107,7 +118,7 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 				{
 					var pattern = familiesAPI.getPattern_SonPattern();
 					var mask = pattern.mask();
-					mask.setFamilyId(f._family._id);
+					mask.setFamily(fm.getElement(allFamiliesPattern._family));
 					var allSonsMatches = pattern.determineMatches(mask);
 					var allSonsData = familiesAPI.getPattern_SonPattern().data(allSonsMatches);
 					allSonsData.forEach(s -> {
@@ -118,13 +129,19 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 				}
 			});
 
+			var formatter = new SimpleDateFormat("yyyy-MM-dd");
+			var dateTimeFormatter = DateTimeFormatter.ISO_DATE;
 			var personsAPI = new API_Persons(builder);
 			var allFemalesMatches = personsAPI.getPattern_FemalePattern().pattern().determineMatches();
 			var allFemalesData = personsAPI.getPattern_FemalePattern().data(allFemalesMatches);
 			allFemalesData.forEach(fp -> {
 				var fpc = PersonsFactory.eINSTANCE.createFemale();
 				if (fp._person._birthday != null)
-					fpc.setBirthday(Date.from(fp._person._birthday.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+					try {
+						fpc.setBirthday(formatter.parse(fp._person._birthday.format(dateTimeFormatter)));
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
 				fpc.setName(fp._person._name);
 				actualTarget.getPersons().add(fpc);
 			});
@@ -133,7 +150,11 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 			allMalesData.forEach(mp -> {
 				var mpc = PersonsFactory.eINSTANCE.createMale();
 				if (mp._person._birthday != null)
-					mpc.setBirthday(Date.from(mp._person._birthday.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+					try {
+						mpc.setBirthday(formatter.parse(mp._person._birthday.format(dateTimeFormatter)));
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
 				mpc.setName(mp._person._name);
 				actualTarget.getPersons().add(mpc);
 			});
@@ -151,9 +172,11 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 	}
 
 	@Override
-	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEdit, Supplier<IEdit<PersonRegister>> targetEdit) {		
+	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEdit,
+			Supplier<IEdit<PersonRegister>> targetEdit) {
 		try (var builder = API_Common.createBuilder()) {
 			var familyAPI = new API_Families(builder);
+			var personsAPI = new API_Persons(builder);
 
 			for (var s : sourceEdit.get().getSteps()) {
 				if (s instanceof CreateNode) {
@@ -239,14 +262,60 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 						throw new IllegalArgumentException("Unable to handle created edge: " + ce.getType());
 					}
 				} else if (s instanceof ChangeAttribute) {
-					var ca = (ChangeAttribute<FamilyRegister>)s;
-					var rule = familyAPI.getRule_ChangeNameOfFamily();
-					var mask = rule.mask();
-					mask.addParameter(rule._param__name, ca.getNewValue());
-					mask.addParameter(rule._param__id, ca.getNode().hashCode());
-					rule.apply(mask, mask);
+					var ca = (ChangeAttribute<FamilyRegister>) s;
+					if (ca.getAttribute() == FamiliesPackage.Literals.FAMILY__NAME) {
+						var rule = familyAPI.getRule_ChangeNameOfFamily();
+						var mask = rule.mask();
+						mask.addParameter(rule._param__name, ca.getNewValue());
+						mask.addParameter(rule._param__id, ca.getNode().hashCode());
+						rule.apply(mask, mask);
+					} else {
+						throw new IllegalArgumentException("Unable to handle change attribute: " + ca.getAttribute());
+					}
 				} else {
 					throw new IllegalArgumentException("Unable to handle atomic edit: " + s);
+				}
+			}
+			for (var t : targetEdit.get().getSteps()) {
+				if (t instanceof CreateNode) {
+					var cn = (CreateNode<PersonRegister>) t;
+
+					if (cn.getNode() instanceof Male) {
+						var p = (Male) cn.getNode();
+						var rule = personsAPI.getRule_CreateMale();
+						var mask = rule.mask();
+						mask.addParameter(rule._param__name, p.getName());
+						mask.addParameter(rule._param__id, p.hashCode());
+						mask.addParameter(rule._param__bday,
+								LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(p.getBirthday())));
+						mask.addParameter(rule._param__namespace, F2P_GEN_Run.TRG_MODEL_NAME);
+						rule.apply(mask, mask);
+					} else if (cn.getNode() instanceof Female) {
+						var p = (Female) cn.getNode();
+						var rule = personsAPI.getRule_CreateFemale();
+						var mask = rule.mask();
+						mask.addParameter(rule._param__name, p.getName());
+						mask.addParameter(rule._param__id, p.hashCode());
+						mask.addParameter(rule._param__bday,
+								LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(p.getBirthday())));
+						mask.addParameter(rule._param__namespace, F2P_GEN_Run.TRG_MODEL_NAME);
+						rule.apply(mask, mask);
+					} else {
+						throw new IllegalArgumentException("Unable to handle created node: " + cn.getNode());
+					}
+				} else if (t instanceof CreateEdge) {
+					var ce = (CreateEdge<PersonRegister>) t;
+					if (ce.getType().equals(PersonsPackage.Literals.PERSON_REGISTER__PERSONS)) {
+						var rule = personsAPI.getRule_CreateRegisterPersonEdge();
+						var mask = rule.mask();
+						mask.addParameter(rule._param__id, ce.getTarget().hashCode());
+						rule.apply(mask, mask);
+					}
+				} else if (t instanceof ChangeAttribute) {
+					// FIXME
+					// Change attribute: birthday, name
+				} else {
+					throw new IllegalArgumentException("Unable to handle atomic edit: " + t);
 				}
 			}
 		} catch (Exception e) {
@@ -254,8 +323,13 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 		}
 
 		try {
-			var mi = new F2P_MI();
-			mi.runModelIntegration();
+			if (configurator != null) {
+				var mi = new F2P_MI(Optional.of(configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD)));
+				mi.runModelIntegration();
+			} else {
+				var mi = new F2P_MI(Optional.empty());
+				mi.runModelIntegration();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -273,7 +347,7 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 
 	@Override
 	public void setConfigurator(Configurator<Decisions> configurator) {
-		// Not sure how to handle configuration for the moment.
+		this.configurator = configurator;
 	}
 
 	@Override
