@@ -324,10 +324,11 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 
 		try {
 			if (configurator != null) {
-				var mi = new F2P_MI(Optional.of(configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD)));
+				var mi = new F2P_MI(Optional.of(configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD)),
+						Optional.of(configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW)));
 				mi.runModelIntegration();
 			} else {
-				var mi = new F2P_MI(Optional.empty());
+				var mi = new F2P_MI(Optional.empty(), Optional.empty());
 				mi.runModelIntegration();
 			}
 		} catch (Exception e) {

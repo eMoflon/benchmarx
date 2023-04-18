@@ -1,6 +1,6 @@
+import "platform:/plugin/org.emoflon.neo.neocore/model/AttributeConstraintsLibrary.msl"
 import "platform:/resource/EneoFamiliesToPersons/src/org/benchmarx/eneo/f2p/Families.msl"
 import "platform:/resource/EneoFamiliesToPersons/src/org/benchmarx/eneo/f2p/Persons.msl"
-import "platform:/plugin/org.emoflon.neo.neocore/model/AttributeConstraintsLibrary.msl"
 
 
 tripleGrammar F2P {

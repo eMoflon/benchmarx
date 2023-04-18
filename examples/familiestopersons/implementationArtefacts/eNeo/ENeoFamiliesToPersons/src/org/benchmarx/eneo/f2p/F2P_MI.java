@@ -16,6 +16,7 @@ import org.emoflon.neo.cypher.models.NeoCoreBuilder;
 import org.emoflon.neo.cypher.patterns.NeoMatch;
 import org.emoflon.neo.cypher.rules.NeoCoMatch;
 import org.emoflon.neo.cypher.rules.NeoRule;
+import org.emoflon.neo.emsl.util.FlattenerException;
 import org.emoflon.neo.engine.generator.MatchContainer;
 import org.emoflon.neo.engine.modules.NeoGenerator;
 import org.emoflon.neo.engine.modules.analysis.TripleRuleAnalyser;
@@ -32,18 +33,17 @@ import org.emoflon.neo.engine.modules.valueGenerators.ModelNameValueGenerator;
 
 public class F2P_MI extends F2P_MI_Run {
 	private Optional<Boolean> preferParents;
+	private Optional<Boolean> preferExistingFamilies;
 
-	public F2P_MI(Optional<Boolean> preferParents) {
+	public F2P_MI(Optional<Boolean> preferParents, Optional<Boolean> preferExistingFamilies) {
 		super(F2P_GEN_Run.SRC_MODEL_NAME, F2P_GEN_Run.TRG_MODEL_NAME);
 		this.preferParents = preferParents;
+		this.preferExistingFamilies = preferExistingFamilies;
 	}
 
 	@Override
 	public void run() throws Exception {
 		try (var builder = API_Common.createBuilder()) {
-			new API_FamiliesToPersons(builder, "../", API_Common.PLATFORM_PLUGIN_URI, API_Common.NEOCORE_URI_INSTALLED)
-					.exportMetamodelsForF2P();
-
 			var generator = createGenerator(builder);
 
 			logger.info("Running generator...");
@@ -55,31 +55,52 @@ public class F2P_MI extends F2P_MI_Run {
 	@Override
 	public NeoGenerator createGenerator(NeoCoreBuilder builder) {
 		var api = new API_FamiliesToPersons(builder);
+		try {
+			api.exportMetamodelsForF2P();
+		} catch (FlattenerException e) {
+			e.printStackTrace();
+		}
 		var genAPI = new API_F2P_GEN(builder);
 		var miAPI = new API_F2P_MI(builder);
 		var genRules = genAPI.getAllRulesForF2P_GEN();
 		var opRules = miAPI.getAllRulesForF2P_MI();
-		var analyser = new TripleRuleAnalyser(new API_FamiliesToPersons(builder).getTripleRulesOfF2P());
+		var analyser = new TripleRuleAnalyser(api.getTripleRulesOfF2P());
 
 		preferParents.ifPresent((pp) -> {
-			var blacklist = pp ? List.of(
-					API_FamiliesToPersons.F2P__SonToMaleRule,
-					API_FamiliesToPersons.F2P__SonWithFamilyToMaleRule, 
-					API_FamiliesToPersons.F2P__DaughterToFemaleRule,
-					API_FamiliesToPersons.F2P__DaughterWithFamilyToFemaleRule
-				) : List.of(
-						API_FamiliesToPersons.F2P__FatherToMaleRule,
-						API_FamiliesToPersons.F2P__FatherWithFamilyToMaleRule,
-						API_FamiliesToPersons.F2P__MotherToFemaleRule,
-						API_FamiliesToPersons.F2P__MotherWithFamilyToFemaleRule
-					);
+			var blacklist = pp ? //
+					List.of(//
+							API_FamiliesToPersons.F2P__SonToMaleRule, //
+							API_FamiliesToPersons.F2P__SonWithFamilyToMaleRule, //
+							API_FamiliesToPersons.F2P__DaughterToFemaleRule, //
+							API_FamiliesToPersons.F2P__DaughterWithFamilyToFemaleRule)//
+					: //
+					List.of(//
+							API_FamiliesToPersons.F2P__FatherToMaleRule, //
+							API_FamiliesToPersons.F2P__FatherWithFamilyToMaleRule, //
+							API_FamiliesToPersons.F2P__MotherToFemaleRule, //
+							API_FamiliesToPersons.F2P__MotherWithFamilyToFemaleRule);
 
 			blacklist.forEach(rn -> {
 				var remove = opRules.stream().filter(r -> r.getName().startsWith(rn)).collect(Collectors.toList());
 				opRules.removeAll(remove);
 			});
 		});
-		
+
+		preferExistingFamilies.ifPresent((pe) -> {
+			List<String> blacklist = !pe ? //
+					List.of(//
+							API_FamiliesToPersons.F2P__FatherToMaleRule, //
+							API_FamiliesToPersons.F2P__MotherToFemaleRule, //
+							API_FamiliesToPersons.F2P__SonToMaleRule, //
+							API_FamiliesToPersons.F2P__DaughterToFemaleRule)
+					: List.of();
+
+			blacklist.forEach(rn -> {
+				var remove = opRules.stream().filter(r -> r.getName().startsWith(rn)).collect(Collectors.toList());
+				opRules.removeAll(remove);
+			});
+		});
+
 		modelIntegration = new ModelIntegrationOperationalStrategy(//
 				solver, //
 				builder, //
