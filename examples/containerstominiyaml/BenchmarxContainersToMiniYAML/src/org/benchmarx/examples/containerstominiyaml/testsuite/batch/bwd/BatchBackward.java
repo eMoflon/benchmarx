@@ -2,7 +2,7 @@ package org.benchmarx.examples.containerstominiyaml.testsuite.batch.bwd;
 
 import org.benchmarx.BXTool;
 import org.benchmarx.examples.containerstominiyaml.testsuite.Decisions;
-import org.benchmarx.examples.containerstominiyaml.testsuite.FamiliesToPersonsTestCase;
+import org.benchmarx.examples.containerstominiyaml.testsuite.ContainersToMiniYAMLTestCase;
 import org.junit.Test;
 
 import Families.FamilyRegister;
@@ -15,7 +15,7 @@ import Persons.PersonRegister;
  * configuration, which allows to deterministically execute the backward
  * transformation. (c.f., Test Case 2d on GitHub).
  */
-public class BatchBackward extends FamiliesToPersonsTestCase {
+public class BatchBackward extends ContainersToMiniYAMLTestCase {
 
 	public BatchBackward(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
 		super(tool);

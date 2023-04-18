@@ -20,12 +20,14 @@ import containers.ContainersPackage;
 import miniyaml.MiniyamlPackage;
 
 @RunWith(Parameterized.class)
-public abstract class FamiliesToPersonsTestCase {
+public abstract class ContainersToMiniYAMLTestCase {
 
 	protected BXTool<Composition, miniyaml.Map, Decisions> tool;
 	protected Comparator<Composition> compositionComparator;
 	protected Comparator<miniyaml.Map> miniyamlComparator;
+
 	protected BenchmarxUtil<Composition, miniyaml.Map, Decisions> util;
+	protected CompositionsHelper compositionsHelper = new CompositionsHelper();
 
 	@Before
 	public void initialise() {
@@ -55,7 +57,7 @@ public abstract class FamiliesToPersonsTestCase {
 		);
 	}
 
-	protected FamiliesToPersonsTestCase(BXTool<Composition, miniyaml.Map, Decisions> tool) {
+	protected ContainersToMiniYAMLTestCase(BXTool<Composition, miniyaml.Map, Decisions> tool) {
 		this.tool = tool;
 	}
 }

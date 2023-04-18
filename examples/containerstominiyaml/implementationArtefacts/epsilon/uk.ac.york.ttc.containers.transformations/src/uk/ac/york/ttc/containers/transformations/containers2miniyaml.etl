@@ -4,8 +4,8 @@ rule Composition2MainMap
 {
   m.entries = Sequence {
     mapEntry('version', scalar('2.4')),
-    mapEntry('services', map(c.nodes.select(n|n.isKindOf(Container)).equivalent())),
-    mapEntry('volumes', map(c.nodes.select(n|n.isKindOf(Volume)).equivalent()))
+    mapEntry('services', map(c.nodes.select(n|n.isKindOf(Containers!Container)).equivalent())),
+    mapEntry('volumes', map(c.nodes.select(n|n.isKindOf(Containers!Volume)).equivalent()))
   };
 }
 

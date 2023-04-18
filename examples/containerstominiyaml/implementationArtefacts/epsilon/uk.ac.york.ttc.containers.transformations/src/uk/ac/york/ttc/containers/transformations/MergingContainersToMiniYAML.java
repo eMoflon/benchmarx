@@ -7,6 +7,7 @@ import java.nio.file.StandardCopyOption;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.ecl.EclModule;
+import org.eclipse.epsilon.ecl.trace.MatchTrace;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eml.EmlModule;
 import org.eclipse.epsilon.eol.models.IModel;
@@ -33,30 +34,22 @@ public class MergingContainersToMiniYAML implements ITransformation {
 		new ContainersToMiniYAML().run(source, unmergedModel);
 
 		EmfModel leftModel = new EmfModel();
-		leftModel.setName("Left");
-		leftModel.getAliases().add("Source");
 		leftModel.setModelFile(unmergedModel.getPath());
 		leftModel.setMetamodelUri(MiniyamlPackage.eNS_URI);
 		leftModel.setReadOnLoad(true);
-		leftModel.setStoredOnDisposal(false);
 		leftModel.load();
 
 		EmfModel rightModel = new EmfModel();
-		rightModel.setName("Right");
-		rightModel.getAliases().add("Source");
 		rightModel.setModelFile(target.getCanonicalPath());
 		rightModel.setMetamodelUri(MiniyamlPackage.eNS_URI);
 		rightModel.setReadOnLoad(true);
-		rightModel.setStoredOnDisposal(false);
 		rightModel.load();
 
 		final File mergedModel = File.createTempFile("merged", ".xmi");
 		EmfModel targetModel = new EmfModel();
-		targetModel.setName("Target");
 		targetModel.setModelFile(mergedModel.getPath());
 		targetModel.setMetamodelUri(MiniyamlPackage.eNS_URI);
 		targetModel.setReadOnLoad(false);
-		targetModel.setStoredOnDisposal(true);
 		targetModel.load();
 
 		run(leftModel, rightModel, targetModel);
@@ -74,13 +67,27 @@ public class MergingContainersToMiniYAML implements ITransformation {
 		EmlModule emlModule = new EmlModule();
 
 		try {
+			leftModel.setName("Left");
+			leftModel.getAliases().clear();
+			leftModel.getAliases().add("Source");
+			leftModel.setStoredOnDisposal(false);
+
+			rightModel.setName("Right");
+			rightModel.getAliases().clear();
+			rightModel.getAliases().add("Source");
+			rightModel.setStoredOnDisposal(false);
+
+			targetModel.setName("Target");
+			targetModel.setStoredOnDisposal(true);
+
 			eclModule.parse(getClass().getResource("compareMiniyaml.ecl"));
 			eclModule.getContext().getModelRepository().addModels(leftModel, rightModel);
 			eclModule.execute();
+			final MatchTrace reducedMatchTrace = eclModule.getContext().getMatchTrace().getReduced();
 
 			emlModule.parse(getClass().getResource("mergeMiniyaml.eml"));
 			emlModule.getContext().getModelRepository().addModels(leftModel, rightModel, targetModel);
-			emlModule.getContext().setMatchTrace(eclModule.getContext().getMatchTrace().getReduced());
+			emlModule.getContext().setMatchTrace(reducedMatchTrace);
 			emlModule.execute();
 		} finally {
 			eclModule.getContext().dispose();

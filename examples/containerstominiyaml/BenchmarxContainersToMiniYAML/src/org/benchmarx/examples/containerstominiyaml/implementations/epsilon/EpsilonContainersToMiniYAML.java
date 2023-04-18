@@ -1,5 +1,6 @@
 package org.benchmarx.examples.containerstominiyaml.implementations.epsilon;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.function.Consumer;
 
@@ -12,7 +13,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
@@ -26,7 +26,6 @@ import uk.ac.york.ttc.containers.transformations.MiniYAMLToContainers;
 
 public class EpsilonContainersToMiniYAML extends BXToolForEMF<Composition, miniyaml.Map, Decisions> {
 	
-	private ResourceSet set = new ResourceSetImpl();
 	private Resource source;
 	private Resource target;
 
@@ -43,7 +42,16 @@ public class EpsilonContainersToMiniYAML extends BXToolForEMF<Composition, miniy
 	public String getName() {
 		return "Epsilon";
 	}
-	
+
+	private static final ResourceSet createResourceSet() {
+		ResourceSet rs = new ResourceSetImpl();
+		rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
+			Resource.Factory.Registry.DEFAULT_EXTENSION,
+			new XMIResourceFactoryImpl()
+		);
+		return rs;
+	}
+
 	/**
 	 * Initiates a synchronisation between a source and a target model. The Epsilon Transformation is
 	 * initialised and empty source and target models are created.
@@ -55,22 +63,23 @@ public class EpsilonContainersToMiniYAML extends BXToolForEMF<Composition, miniy
 		// Fix default preferences (which can be overwritten)
 		setConfigurator(new Configurator<Decisions>());			
 
-		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
-			Resource.Factory.Registry.DEFAULT_EXTENSION,
-			new XMIResourceFactoryImpl());
-
-		source = set.createResource(URI.createURI("sourceModel.containers"));
-		target = set.createResource(URI.createURI("targetModel.miniyaml"));
-
-		Composition compositionRoot = ContainersFactory.eINSTANCE.createComposition();
-		source.getContents().add(compositionRoot);
-
-		// Fix default preferences (which can be overwritten)
-		setConfigurator(new Configurator<Decisions>());
-		
-		// perform batch to establish consistent starting state
 		try {
-			new ContainersToMiniYAML().run(new InMemoryEmfModel(source), new InMemoryEmfModel(target));
+			source = createResourceSet().createResource(URI.createURI("sourceModel.containers"));
+
+			File fTempTarget = File.createTempFile("targetModel", ".miniyaml");
+			fTempTarget.deleteOnExit();
+			target = createResourceSet().createResource(URI.createFileURI(fTempTarget.getPath()));
+
+			Composition compositionRoot = ContainersFactory.eINSTANCE.createComposition();
+			source.getContents().add(compositionRoot);
+
+			// Fix default preferences (which can be overwritten)
+			setConfigurator(new Configurator<Decisions>());
+
+			// perform batch to establish consistent starting state
+			InMemoryEmfModel inputModel = new InMemoryEmfModel(source);
+			InMemoryEmfModel outputModel = new InMemoryEmfModel(target);
+			new ContainersToMiniYAML().run(inputModel, outputModel);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -87,7 +96,9 @@ public class EpsilonContainersToMiniYAML extends BXToolForEMF<Composition, miniy
 
 		try {
 			source.getContents().clear();
-			new MiniYAMLToContainers().run(new InMemoryEmfModel(target), new InMemoryEmfModel(source));
+			InMemoryEmfModel inputModel = new InMemoryEmfModel(target);
+			InMemoryEmfModel outputModel = new InMemoryEmfModel(source);
+			new MiniYAMLToContainers().run(inputModel, outputModel);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -102,12 +113,27 @@ public class EpsilonContainersToMiniYAML extends BXToolForEMF<Composition, miniy
 	public void performAndPropagateSourceEdit(Consumer<Composition> edit) {
 		edit.accept(getSourceModel());
 
-		Resource rInterim = new ResourceImpl();
-		Resource rTempMerged = new ResourceImpl();
-		
+		Resource rInterim = null;
+		Resource rTempMerged = null;
 		try {
-			new ContainersToMiniYAML().run(new InMemoryEmfModel(source), new InMemoryEmfModel(rInterim));
-			new MergingContainersToMiniYAML().run(new InMemoryEmfModel(rInterim), new InMemoryEmfModel(target), new InMemoryEmfModel(rTempMerged));
+			File fInterim = File.createTempFile("interim", ".miniyaml");
+			fInterim.deleteOnExit();
+			File fTempMerged = File.createTempFile("temp_merged", ".miniyaml");
+			fTempMerged.deleteOnExit();
+			
+			rInterim = createResourceSet().createResource(URI.createFileURI(fInterim.getPath()));
+			rTempMerged = createResourceSet().createResource(URI.createFileURI(fTempMerged.getPath()));
+			{
+				InMemoryEmfModel inputModel = new InMemoryEmfModel(source);
+				InMemoryEmfModel interimModel = new InMemoryEmfModel(rInterim);
+				new ContainersToMiniYAML().run(inputModel, interimModel);
+			}
+			{
+				InMemoryEmfModel interimModel = new InMemoryEmfModel(rInterim);
+				InMemoryEmfModel targetModel = new InMemoryEmfModel(target);
+				InMemoryEmfModel tempMerged = new InMemoryEmfModel(rTempMerged);
+				new MergingContainersToMiniYAML().run(interimModel, targetModel, tempMerged);
+			}
 
 			target.getContents().clear();
 			target.getContents().addAll(rTempMerged.getContents());

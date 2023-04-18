@@ -20,25 +20,26 @@ public class MiniYAMLToContainers implements ITransformation {
 	@Override
 	public void run(File fSource, File fTarget) throws Exception {
 		EmfModel inputModel = new EmfModel();
-		inputModel.setName("Compose");
 		inputModel.setModelFile(fSource.getCanonicalPath());
 		inputModel.setMetamodelUri(MiniyamlPackage.eINSTANCE.getNsURI());
 		inputModel.setReadOnLoad(true);
-		inputModel.setStoredOnDisposal(false);
 		inputModel.load();
 
 		EmfModel outputModel = new EmfModel();
-		outputModel.setName("Containers");
 		outputModel.setModelFile(fTarget.getCanonicalPath());
 		outputModel.setMetamodelUri(ContainersPackage.eINSTANCE.getNsURI());
 		outputModel.setReadOnLoad(false);
-		outputModel.setStoredOnDisposal(true);
 		outputModel.load();
 
 		run(inputModel, outputModel);
 	}
 
 	public void run(EmfModel inputModel, EmfModel outputModel) throws Exception, EolRuntimeException {
+		inputModel.setName("Compose");
+		inputModel.setStoredOnDisposal(false);
+		outputModel.setName("Containers");
+		outputModel.setStoredOnDisposal(true);
+		
 		EtlModule module = new EtlModule();
 		try {
 			module.parse(getClass().getResource("miniyaml2containers.etl"));

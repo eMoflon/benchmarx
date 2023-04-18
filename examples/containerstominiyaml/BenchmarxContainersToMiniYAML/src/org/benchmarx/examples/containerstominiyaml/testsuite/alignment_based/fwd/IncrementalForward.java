@@ -2,13 +2,13 @@ package org.benchmarx.examples.containerstominiyaml.testsuite.alignment_based.fw
 
 import org.benchmarx.BXTool;
 import org.benchmarx.examples.containerstominiyaml.testsuite.Decisions;
-import org.benchmarx.examples.containerstominiyaml.testsuite.FamiliesToPersonsTestCase;
+import org.benchmarx.examples.containerstominiyaml.testsuite.ContainersToMiniYAMLTestCase;
 import org.junit.Test;
 
 import Families.FamilyRegister;
 import Persons.PersonRegister;
 
-public class IncrementalForward extends FamiliesToPersonsTestCase {
+public class IncrementalForward extends ContainersToMiniYAMLTestCase {
 	
 	public IncrementalForward(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
 		super(tool);
