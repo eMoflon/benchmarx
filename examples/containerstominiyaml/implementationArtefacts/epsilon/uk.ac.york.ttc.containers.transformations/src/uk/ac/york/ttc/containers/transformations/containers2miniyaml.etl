@@ -15,9 +15,12 @@ rule Container2MapEntry
 
   meContainer.key = c.name;
   meContainer.value = new Compose!`Map`;
-  meContainer.value.entries = Sequence {
-    mapEntry('image', scalar(c.image.image))
-  };
+
+  if (c.image.isDefined()) {
+    meContainer.value.entries.add(
+      mapEntry('image', scalar(c.image.image))
+    );
+  }
 
   if (c.replicas != 1) {
     meContainer.value.entries.add(mapEntry('replicas', scalar(c.replicas.asString())));

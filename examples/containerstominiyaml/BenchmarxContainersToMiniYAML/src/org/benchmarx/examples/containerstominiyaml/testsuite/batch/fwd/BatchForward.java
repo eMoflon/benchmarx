@@ -40,4 +40,18 @@ public class BatchForward extends ContainersToMiniYAMLTestCase {
 		tool.performAndPropagateSourceEdit((c) -> compositionsHelper.addVolume(c, "storage"));
 		util.assertPostcondition("Post_AddVolumeContainers", "Post_AddVolumeMiniYAML");
 	}
+
+	@Test
+	public void addContainerOneReplica() {
+		util.assertPrecondition("RootElementContainers", "RootElementMiniYAML");
+		tool.performAndPropagateSourceEdit((c) -> compositionsHelper.addContainer(c, "myservice", 1));
+		util.assertPostcondition("Post_AddContainerOneReplicaContainers", "Post_AddContainerOneReplicaMiniYAML");
+	}
+
+	@Test
+	public void addContainerTwoReplicas() {
+		util.assertPrecondition("RootElementContainers", "RootElementMiniYAML");
+		tool.performAndPropagateSourceEdit((c) -> compositionsHelper.addContainer(c, "myservice", 2));
+		util.assertPostcondition("Post_AddContainerTwoReplicasContainers", "Post_AddContainerTwoReplicasMiniYAML");
+	}
 }
