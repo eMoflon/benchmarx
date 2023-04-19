@@ -6,6 +6,8 @@ import org.benchmarx.examples.containerstominiyaml.testsuite.Decisions;
 import org.junit.Test;
 
 import containers.Composition;
+import containers.Container;
+import containers.Image;
 
 
 public class BatchForward extends ContainersToMiniYAMLTestCase {
@@ -54,4 +56,16 @@ public class BatchForward extends ContainersToMiniYAMLTestCase {
 		tool.performAndPropagateSourceEdit((c) -> compositionsHelper.addContainer(c, "myservice", 2));
 		util.assertPostcondition("Post_AddContainerTwoReplicasContainers", "Post_AddContainerTwoReplicasMiniYAML");
 	}
+
+	@Test
+	public void addContainerWithImage() {
+		util.assertPrecondition("RootElementContainers", "RootElementMiniYAML");
+		tool.performAndPropagateSourceEdit((c) -> {
+			Image image = compositionsHelper.addImage(c, "my/image");
+			Container container = compositionsHelper.addContainer(c, "webserver", 1);
+			container.setImage(image);
+		});
+		util.assertPostcondition("Post_AddContainerWithImageContainers", "Post_AddContainerWithImageMiniYAML");
+	}
+
 }
