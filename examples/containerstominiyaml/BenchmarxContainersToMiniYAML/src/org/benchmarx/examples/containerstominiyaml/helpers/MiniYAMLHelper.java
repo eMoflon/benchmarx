@@ -59,6 +59,21 @@ public class MiniYAMLHelper {
 		return l;
 	}
 
+	public List addTmpFS(Map containerMap) {
+		List l = getOrCreateMapEntry(containerMap, "tmpfs", MiniyamlFactory.eINSTANCE::createList);
+		l.getValues().add(scalar("/tmp"));
+		return l;
+	}
+
+	public void addWebserverMongoExtras(Map yamlMap) {
+		Map servicesMap = getOrCreateMapEntry(yamlMap, "services", MiniyamlFactory.eINSTANCE::createMap);
+		Map webServerMap = getOrCreateMapEntry(servicesMap, "webserver", MiniyamlFactory.eINSTANCE::createMap);
+		putMapEntry(webServerMap, "restart", scalar("always"));
+
+		Map dbMap = getOrCreateMapEntry(servicesMap, "database", MiniyamlFactory.eINSTANCE::createMap);
+		addTmpFS(dbMap);
+	}
+
 	@SuppressWarnings("unchecked")
 	public static <T extends Value> T getOrCreateMapEntry(miniyaml.Map map, String key, Supplier<T> defaultValue) {
 		for (MapEntry entry : map.getEntries()) {
