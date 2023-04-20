@@ -9,11 +9,7 @@ import containers.Composition;
 import miniyaml.Map;
 
 /**
- * Test cases for backward transformations with parameters E and P set to true
- * Please note, that in general this leads to a non-deterministic behavior, 
- * which is hard to test. Thus, we restricted ourselves to a PersonRegister
- * configuration, which allows to deterministically execute the backward
- * transformation. (c.f., Test Case 2d on GitHub).
+ * Test cases for backward transformations.
  */
 public class BatchBackward extends ContainersToMiniYAMLTestCase {
 
