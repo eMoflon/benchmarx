@@ -1,12 +1,11 @@
 package org.benchmarx.examples.containerstominiyaml.testsuite.batch.bwd;
 
 import org.benchmarx.BXTool;
-import org.benchmarx.examples.containerstominiyaml.testsuite.Decisions;
 import org.benchmarx.examples.containerstominiyaml.testsuite.ContainersToMiniYAMLTestCase;
+import org.benchmarx.examples.containerstominiyaml.testsuite.Decisions;
 import org.junit.Test;
 
-import Families.FamilyRegister;
-import Persons.PersonRegister;
+import containers.Composition;
 
 /**
  * Test cases for backward transformations with parameters E and P set to true
@@ -17,46 +16,35 @@ import Persons.PersonRegister;
  */
 public class BatchBackward extends ContainersToMiniYAMLTestCase {
 
-	public BatchBackward(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
+	public BatchBackward(BXTool<Composition, miniyaml.Map, Decisions> tool) {
 		super(tool);
 	}
-	
+
 	/**
-	 * <b>Test</b> for creation of a single male person (Flanders, Rod).<br/>
-	 * <b>Expect</b> the creation of a family member in the families model with
-	 * the given first name, in a suitable family.  Creation of parents is preferred.<br/>
-	 * <b>Features</b>: bwd, runtime
+	 * <b>Test</b> for agreed upon starting state.<br/>
+	 * <b>Expect</b> root elements of both source and target models.<br/>
+	 * <b>Features</b>: bwd, fixed
 	 */
 	@Test
-	public void testCreateMalePersonAsSon() {
+	public void testInitialiseSynchronisation()
+	{
 		// No precondition!
-		// ---------------------------------
-		util.configure()
-			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
-		tool.performAndPropagateTargetEdit(helperPerson::createRod);
-		// ---------------------------------
-		util.assertPostcondition("OneFamilyWithOneFamilyMember", "PersonOneMaleMember"); 
+		//------------
+		util.assertPostcondition("RootElementContainers", "RootElementMiniYAML");
 	}
-	
-	/**
-	 * <b>Test</b> for creation of family members in existing families.<br/>
-	 * <b>Expect</b> the creation of a family member in the families model with
-	 * the given first name, in a suitable family.  Creation of Children is preferred.<br/>
-	 * <b>Features</b>: bwd, runtime
-	 */
+
 	@Test
-	public void testCreateFamilyMembersInExistingFamilyAsParents() {
-		// No precondition!
-		// ---------------------------------
-		util.configure()
-			.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
-			.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
-		tool.performAndPropagateTargetEdit(util
-				.execute(helperPerson::createRod)
-				.andThen(helperPerson::createHomer)				
-				.andThen(helperPerson::createMarge));
-		// ---------------------------------
-		util.assertPostcondition("FamilyWithParentsOnly", "PersonsMultiDeterministic"); 
+	public void addVolume() {
+		util.assertPrecondition("RootElementContainers", "RootElementMiniYAML");
+		tool.performAndPropagateTargetEdit((yamlMap) -> miniYAMLHelper.addVolume(yamlMap, "storage"));
+		util.assertPostcondition("Post_AddVolumeContainers", "Post_AddVolumeMiniYAML");
 	}
+
+	@Test
+	public void addContainerOneReplica() {
+		util.assertPrecondition("RootElementContainers", "RootElementMiniYAML");
+		tool.performAndPropagateTargetEdit((yamlMap) -> miniYAMLHelper.addContainer(yamlMap, "myservice", 1));
+		util.assertPostcondition("Post_AddContainerOneReplicaContainers", "Post_AddContainerOneReplicaMiniYAML");
+	}
+
 }

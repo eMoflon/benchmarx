@@ -84,5 +84,6 @@ post AssignDependsOn {
 }
 
 post AssignImages {
-  Containers!Composition.all.first.nodes.addAll(Containers!Image.all);  
+  var composition = Containers!Composition.all.first;
+  composition.nodes.addAll(Containers!Image.all);
 }

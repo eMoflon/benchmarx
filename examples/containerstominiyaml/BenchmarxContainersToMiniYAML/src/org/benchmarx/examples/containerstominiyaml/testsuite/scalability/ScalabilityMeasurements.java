@@ -1,9 +1,11 @@
 package org.benchmarx.examples.containerstominiyaml.testsuite.scalability;
 
+import static org.benchmarx.examples.containerstominiyaml.helpers.MiniYAMLHelper.getOrCreateMapEntry;
+import static org.benchmarx.examples.containerstominiyaml.helpers.MiniYAMLHelper.scalar;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.function.Supplier;
 
 import org.benchmarx.BXTool;
 import org.benchmarx.examples.containerstominiyaml.implementations.epsilon.EpsilonContainersToMiniYAML;
@@ -20,8 +22,6 @@ import containers.VolumeMount;
 import miniyaml.Map;
 import miniyaml.MapEntry;
 import miniyaml.MiniyamlFactory;
-import miniyaml.Scalar;
-import miniyaml.Value;
 
 public class ScalabilityMeasurements {
 
@@ -203,22 +203,6 @@ public class ScalabilityMeasurements {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	private <T extends Value> T getOrCreateMapEntry(miniyaml.Map map, String key, Supplier<T> defaultValue) {
-		for (MapEntry entry : map.getEntries()) {
-			if (key.equals(entry.getKey())) {
-				return (T) entry.getValue();
-			}
-		}
-
-		MapEntry newEntry = MiniyamlFactory.eINSTANCE.createMapEntry();
-		T newValue = defaultValue.get();
-		newEntry.setKey(key);
-		newEntry.setValue(defaultValue.get());
-		map.getEntries().add(newEntry);
-		return newValue;
-	}
-
 	private miniyaml.Map map() {
 		return MiniyamlFactory.eINSTANCE.createMap();
 	}
@@ -230,12 +214,6 @@ public class ScalabilityMeasurements {
 		return me;
 	}
 
-	private miniyaml.Scalar scalar(String value) {
-		Scalar scalar = MiniyamlFactory.eINSTANCE.createScalar();
-		scalar.setValue(value);
-		return scalar;
-	}
-	
 	private void runBatchFWDMeasurements(){
 		System.out.print(NO_OF_CONTAINERS + DELIMITER + NO_OF_VOLUMES + DELIMITER + NO_OF_IMAGES + DELIMITER);
 		System.out.print(timer1.timeSourceEditFromScratchInS(this::createInitialComposition) + UNIT);

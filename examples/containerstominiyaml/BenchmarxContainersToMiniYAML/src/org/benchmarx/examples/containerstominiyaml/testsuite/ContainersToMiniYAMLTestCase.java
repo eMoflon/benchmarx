@@ -7,6 +7,8 @@ import org.benchmarx.BXTool;
 import org.benchmarx.emf.Comparator;
 import org.benchmarx.examples.containerstominiyaml.comparators.CompositionComparator;
 import org.benchmarx.examples.containerstominiyaml.comparators.MiniYAMLComparator;
+import org.benchmarx.examples.containerstominiyaml.helpers.CompositionsHelper;
+import org.benchmarx.examples.containerstominiyaml.helpers.MiniYAMLHelper;
 import org.benchmarx.examples.containerstominiyaml.implementations.epsilon.EpsilonContainersToMiniYAML;
 import org.benchmarx.util.BenchmarxUtil;
 import org.junit.After;
@@ -28,6 +30,7 @@ public abstract class ContainersToMiniYAMLTestCase {
 
 	protected BenchmarxUtil<Composition, miniyaml.Map, Decisions> util;
 	protected CompositionsHelper compositionsHelper = new CompositionsHelper();
+	protected MiniYAMLHelper miniYAMLHelper = new MiniYAMLHelper();
 
 	@Before
 	public void initialise() {

@@ -9,6 +9,7 @@ import org.benchmarx.emf.BXToolForEMF;
 import org.benchmarx.examples.containerstominiyaml.comparators.CompositionComparator;
 import org.benchmarx.examples.containerstominiyaml.comparators.MiniYAMLComparator;
 import org.benchmarx.examples.containerstominiyaml.testsuite.Decisions;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -64,7 +65,9 @@ public class EpsilonContainersToMiniYAML extends BXToolForEMF<Composition, miniy
 		setConfigurator(new Configurator<Decisions>());			
 
 		try {
-			source = createResourceSet().createResource(URI.createURI("sourceModel.containers"));
+			File fTempSource = File.createTempFile("sourceModel", ".containers");
+			fTempSource.deleteOnExit();
+			source = createResourceSet().createResource(URI.createFileURI(fTempSource.getPath()));
 
 			File fTempTarget = File.createTempFile("targetModel", ".miniyaml");
 			fTempTarget.deleteOnExit();
@@ -80,8 +83,17 @@ public class EpsilonContainersToMiniYAML extends BXToolForEMF<Composition, miniy
 			InMemoryEmfModel inputModel = new InMemoryEmfModel(source);
 			InMemoryEmfModel outputModel = new InMemoryEmfModel(target);
 			new ContainersToMiniYAML().run(inputModel, outputModel);
+			clearAdapters(source);
+			clearAdapters(target);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	private void clearAdapters(Resource r) {
+		r.eAdapters().clear();
+		for (TreeIterator<EObject> it = r.getAllContents(); it.hasNext(); ) {
+			it.next().eAdapters().clear();
 		}
 	}
 
@@ -99,6 +111,8 @@ public class EpsilonContainersToMiniYAML extends BXToolForEMF<Composition, miniy
 			InMemoryEmfModel inputModel = new InMemoryEmfModel(target);
 			InMemoryEmfModel outputModel = new InMemoryEmfModel(source);
 			new MiniYAMLToContainers().run(inputModel, outputModel);
+			clearAdapters(source);
+			clearAdapters(target);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -127,12 +141,17 @@ public class EpsilonContainersToMiniYAML extends BXToolForEMF<Composition, miniy
 				InMemoryEmfModel inputModel = new InMemoryEmfModel(source);
 				InMemoryEmfModel interimModel = new InMemoryEmfModel(rInterim);
 				new ContainersToMiniYAML().run(inputModel, interimModel);
+				clearAdapters(source);
+				clearAdapters(rInterim);
 			}
 			{
 				InMemoryEmfModel interimModel = new InMemoryEmfModel(rInterim);
 				InMemoryEmfModel targetModel = new InMemoryEmfModel(target);
 				InMemoryEmfModel tempMerged = new InMemoryEmfModel(rTempMerged);
 				new MergingContainersToMiniYAML().run(interimModel, targetModel, tempMerged);
+				clearAdapters(rInterim);
+				clearAdapters(target);
+				clearAdapters(rTempMerged);
 			}
 
 			target.getContents().clear();

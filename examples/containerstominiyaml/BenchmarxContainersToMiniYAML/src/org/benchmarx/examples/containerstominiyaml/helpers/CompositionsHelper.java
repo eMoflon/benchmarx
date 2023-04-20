@@ -1,4 +1,4 @@
-package org.benchmarx.examples.containerstominiyaml.testsuite;
+package org.benchmarx.examples.containerstominiyaml.helpers;
 
 import containers.Composition;
 import containers.Container;
