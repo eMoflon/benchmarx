@@ -6,8 +6,6 @@ import org.benchmarx.examples.containerstominiyaml.testsuite.Decisions;
 import org.junit.Test;
 
 import containers.Composition;
-import containers.Container;
-import containers.Volume;
 import miniyaml.Map;
 
 /**
