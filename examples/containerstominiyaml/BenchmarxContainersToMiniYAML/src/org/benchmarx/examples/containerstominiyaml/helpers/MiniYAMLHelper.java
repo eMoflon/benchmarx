@@ -2,6 +2,7 @@ package org.benchmarx.examples.containerstominiyaml.helpers;
 
 import java.util.function.Supplier;
 
+import miniyaml.List;
 import miniyaml.Map;
 import miniyaml.MapEntry;
 import miniyaml.MiniyamlFactory;
@@ -42,6 +43,22 @@ public class MiniYAMLHelper {
 		return addMapEntry(map, key, () -> value);
 	}
 
+	public MapEntry setImage(Map serverMap, String imageName) {
+		return putMapEntry(serverMap, "image", scalar(imageName));
+	}
+
+	public List addDependsOn(Map webServer, String dbContainerName) {
+		List l = getOrCreateMapEntry(webServer, "depends_on", MiniyamlFactory.eINSTANCE::createList);
+		l.getValues().add(scalar(dbContainerName));
+		return l;
+	}
+
+	public List mountVolume(Map container, String volume, String path) {
+		List l = getOrCreateMapEntry(container, "volumes", MiniyamlFactory.eINSTANCE::createList);
+		l.getValues().add(scalar(volume + ":" + path));
+		return l;
+	}
+
 	@SuppressWarnings("unchecked")
 	public static <T extends Value> T getOrCreateMapEntry(miniyaml.Map map, String key, Supplier<T> defaultValue) {
 		for (MapEntry entry : map.getEntries()) {
@@ -59,5 +76,4 @@ public class MiniYAMLHelper {
 		map.getEntries().add(newEntry);
 		return newEntry;
 	}
-
 }
