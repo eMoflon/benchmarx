@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<c:Composition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://york.ac.uk/ttc/containers/1.0.0">
+  <nodes xsi:type="c:Container" name="webserver" replicas="2" image="//@nodes.3" dependsOn="database"/>
+  <nodes xsi:type="c:Container" name="database" image="//@nodes.4">
+    <volumeMounts volume="db_storage" path="/db/storage"/>
+  </nodes>
+  <nodes xsi:type="c:Volume" name="db_storage"/>
+  <nodes xsi:type="c:Image" image="nginx:latest"/>
+  <nodes xsi:type="c:Image" image="mariadb:latest"/>
+</c:Composition>

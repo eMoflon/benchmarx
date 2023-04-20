@@ -8,6 +8,7 @@ import org.junit.Test;
 import containers.Composition;
 import containers.Container;
 import containers.Image;
+import containers.Volume;
 
 
 public class BatchForward extends ContainersToMiniYAMLTestCase {
@@ -68,4 +69,42 @@ public class BatchForward extends ContainersToMiniYAMLTestCase {
 		util.assertPostcondition("Post_AddContainerWithImageContainers", "Post_AddContainerWithImageMiniYAML");
 	}
 
+	@Test
+	public void addContainerDependsOn() {
+		util.assertPrecondition("RootElementContainers", "RootElementMiniYAML");
+		tool.performAndPropagateSourceEdit((c) -> {
+			Container cWebServer = compositionsHelper.addContainer(c, "webserver", 1);
+			Container cDatabase = compositionsHelper.addContainer(c, "database", 1);
+			cWebServer.getDependsOn().add(cDatabase);
+		});
+		util.assertPostcondition("Post_AddContainerDependsOnContainers", "Post_AddContainerDependsOnMiniYAML");
+	}
+
+	@Test
+	public void addContainerVolumeMount() {
+		util.assertPrecondition("RootElementContainers", "RootElementMiniYAML");
+		tool.performAndPropagateSourceEdit((c) -> {
+			Container container = compositionsHelper.addContainer(c, "database", 1);
+			Volume volume = compositionsHelper.addVolume(c, "db_storage");
+			compositionsHelper.mountVolume(container, volume, "/db/storage");
+		});
+		util.assertPostcondition("Post_AddContainerVolumeMountContainers", "Post_AddContainerVolumeMountMiniYAML");
+	}
+
+	@Test
+	public void completeModel() {
+		util.assertPrecondition("RootElementContainers", "RootElementMiniYAML");
+		tool.performAndPropagateSourceEdit((c) -> {
+			Container cWebServer = compositionsHelper.addContainer(c, "webserver", 2);
+			cWebServer.setImage(compositionsHelper.addImage(c, "nginx:latest"));
+
+			Container cDatabase = compositionsHelper.addContainer(c, "database", 1);
+			cDatabase.setImage(compositionsHelper.addImage(c, "mariadb:latest"));
+			cWebServer.getDependsOn().add(cDatabase);
+
+			Volume volume = compositionsHelper.addVolume(c, "db_storage");
+			compositionsHelper.mountVolume(cDatabase, volume, "/db/storage");
+		});
+		util.assertPostcondition("Post_CompleteModelContainers", "Post_CompleteModelMiniYAML");
+	}
 }

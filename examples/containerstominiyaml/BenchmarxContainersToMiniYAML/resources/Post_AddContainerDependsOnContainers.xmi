@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<c:Composition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://york.ac.uk/ttc/containers/1.0.0">
+  <nodes xsi:type="c:Container" name="webserver" dependsOn="database"/>
+  <nodes xsi:type="c:Container" name="database"/>
+</c:Composition>

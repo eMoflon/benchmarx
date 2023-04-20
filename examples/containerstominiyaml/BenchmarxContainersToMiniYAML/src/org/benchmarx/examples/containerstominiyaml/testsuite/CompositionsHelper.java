@@ -5,6 +5,7 @@ import containers.Container;
 import containers.ContainersFactory;
 import containers.Image;
 import containers.Volume;
+import containers.VolumeMount;
 
 public class CompositionsHelper {
 
@@ -28,5 +29,13 @@ public class CompositionsHelper {
 		container.setReplicas(nReplicas);
 		c.getNodes().add(container);
 		return container;
+	}
+
+	public VolumeMount mountVolume(Container container, Volume volume, String path) {
+		VolumeMount mount = ContainersFactory.eINSTANCE.createVolumeMount();
+		mount.setVolume(volume);
+		mount.setPath(path);
+		container.getVolumeMounts().add(mount);
+		return mount;
 	}
 }
