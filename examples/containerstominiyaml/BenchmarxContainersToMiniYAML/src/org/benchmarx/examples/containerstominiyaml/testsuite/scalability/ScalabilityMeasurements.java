@@ -16,6 +16,7 @@ import org.benchmarx.util.BXToolTimer;
 import containers.Composition;
 import containers.Container;
 import containers.ContainersFactory;
+import containers.ContainersPackage;
 import containers.Image;
 import containers.Node;
 import containers.Volume;
@@ -23,6 +24,7 @@ import containers.VolumeMount;
 import miniyaml.Map;
 import miniyaml.MapEntry;
 import miniyaml.MiniyamlFactory;
+import miniyaml.MiniyamlPackage;
 
 public class ScalabilityMeasurements {
 
@@ -259,28 +261,30 @@ public class ScalabilityMeasurements {
         System.out.println("------------------");
         System.out.println(title);
         System.out.println("------------------");
-        System.out.println("model size (# of nodes and edges)" + DELIMITER
-                + tool1.getName());
+        System.out.println("n_containers" + DELIMITER + "n_volumes" + DELIMITER + "n_images" + DELIMITER + tool1.getName());
     }
 
 	public static void main(String[] args) {
+		ContainersPackage.eINSTANCE.getName();
+		MiniyamlPackage.eINSTANCE.getName();
+		
 		printHeader("Batch FWD:");
-		for (int i = 50; i < 100000; i+=50) {			
+		for (int i = 50; i < 1000; i+=50) {			
 			runBatchFWDMeasurements(i, 3, 4, 5);
 		}
 		
 		printHeader("Incr. FWD:");
-		for (int i = 50; i < 100000; i+=50) {			
+		for (int i = 50; i < 1000; i+=50) {			
 			runIncrFWDMeasurements(i, 3, 4, 5);
 		}		
 		
 		printHeader("Batch BWD:");
-		for (int i = 50; i < 100000; i+=50) {			
+		for (int i = 50; i < 1000; i+=50) {			
 			runBatchBWDMeasurements(i, 3, 4, 5);
 		}	
 		
 		printHeader("Incr. BWD:");
-		for (int i = 50; i < 100000; i+=50) {			
+		for (int i = 50; i < 1000; i+=50) {			
 			runIncrBWDMeasurements(i, 3, 4, 5);
 		}
 	}
