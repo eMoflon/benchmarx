@@ -4,9 +4,8 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.benchmarx.BXTool;
-import org.benchmarx.emf.Comparator;
-import org.benchmarx.examples.containerstominiyaml.comparators.CompositionComparator;
 import org.benchmarx.examples.containerstominiyaml.comparators.MiniYAMLComparator;
+import org.benchmarx.examples.containerstominiyaml.comparators.MiniYAMLExactComparator;
 import org.benchmarx.examples.containerstominiyaml.helpers.CompositionsHelper;
 import org.benchmarx.examples.containerstominiyaml.helpers.MiniYAMLHelper;
 import org.benchmarx.examples.containerstominiyaml.implementations.epsilon.EpsilonContainersToMiniYAML;
@@ -25,8 +24,6 @@ import miniyaml.MiniyamlPackage;
 public abstract class ContainersToMiniYAMLTestCase {
 
 	protected BXTool<Composition, miniyaml.Map, Decisions> tool;
-	protected Comparator<Composition> compositionComparator;
-	protected Comparator<miniyaml.Map> miniyamlComparator;
 
 	protected BenchmarxUtil<Composition, miniyaml.Map, Decisions> util;
 	protected CompositionsHelper compositionsHelper = new CompositionsHelper();
@@ -39,8 +36,6 @@ public abstract class ContainersToMiniYAMLTestCase {
 		MiniyamlPackage.eINSTANCE.getName();
 
 		// Initialise all helpers
-		compositionComparator = new CompositionComparator();
-		miniyamlComparator = new MiniYAMLComparator();
 		util = new BenchmarxUtil<>(tool);
 
 		// Initialise the bx tool
