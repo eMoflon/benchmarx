@@ -3,11 +3,27 @@
 <provider id="org.eclipse.egit.core.GitProvider">
 <project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,core/Benchmarx"/>
 <project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/BenchmarxContainersToMiniYAML"/>
+<project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/implementationArtefacts/epsilon/uk.ac.york.ttc.containers.epsilon.tx"/>
+<project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/implementationArtefacts/epsilon/uk.ac.york.ttc.containers.epsilon.tx.dt"/>
 <project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/metamodels/Containers"/>
 <project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/implementationArtefacts/epsilon/uk.ac.york.ttc.containers.model"/>
-<project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/implementationArtefacts/epsilon/uk.ac.york.ttc.containers.transformations"/>
-<project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/implementationArtefacts/epsilon/uk.ac.york.ttc.containers.transformations.dt"/>
 <project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/metamodels/MiniYAML"/>
 <project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/implementationArtefacts/epsilon/uk.ac.york.ttc.miniyaml.model2yaml"/>
 </provider>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1682066815317_8" label="Benchmarx Core" name="Benchmarx Core">
+<item elementID="=Benchmarx" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1682066707779_4" label="Containers2MiniYAML - Epsilon Solution" name="Containers2MiniYAML - Epsilon Solution">
+<item elementID="=uk.ac.york.ttc.containers.epsilon.tx.dt" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=uk.ac.york.ttc.containers.epsilon.tx" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1682066801797_7" label="Containers2MiniYAML - Benchmark" name="Containers2MiniYAML - Benchmark">
+<item elementID="=BenchmarxContainersToMiniYAML" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1682066777944_6" label="Containers2MiniYAML - Metamodels and Support Code" name="Containers2MiniYAML - Metamodels and Support Code">
+<item elementID="=uk.ac.york.ttc.miniyaml.metamodel" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=uk.ac.york.ttc.containers.metamodel" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=uk.ac.york.ttc.miniyaml.model2yaml" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/uk.ac.york.ttc.containers.model" type="4"/>
+</workingSets>
 </psf>
