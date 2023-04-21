@@ -1,12 +1,10 @@
 package org.benchmarx.examples.containerstominiyaml.helpers;
 
-import java.util.Objects;
-import java.util.Optional;
-
 import containers.Composition;
 import containers.Container;
 import containers.ContainersFactory;
 import containers.Image;
+import containers.NamedElement;
 import containers.Node;
 import containers.Volume;
 import containers.VolumeMount;
@@ -43,18 +41,6 @@ public class CompositionsHelper {
 		return mount;
 	}
 
-	public Optional<Container> getContainer(Composition c, String name) {
-		for (Node n : c.getNodes()) {
-			if (n instanceof Container) {
-				Container container = (Container) n;
-				if (Objects.equals(name, container.getName())) {
-					return Optional.of(container);
-				}
-			}
-		}
-		return Optional.empty();
-	}
-
 	public void createWebserverMongoComposition(Composition c) {
 		Container cWebServer = addContainer(c, "webserver", 1);
 		Image nginx = addImage(c, "nginx:latest");
@@ -67,5 +53,18 @@ public class CompositionsHelper {
 
 		Volume volMongo = addVolume(c, "mongo_storage");
 		mountVolume(cDatabase, volMongo, "/mongo/storage");
+	}
+
+	@SuppressWarnings("unchecked")
+	public <T extends NamedElement> T getNodeByName(Composition c, String name, Class<T> class1) {
+		for (Node n : c.getNodes()) {
+			if (class1.isInstance(n)) {
+				T e = (T) n;
+				if (name.equals(e.getName())) {
+					return e;
+				}
+			}
+		}
+		return null;
 	}
 }
