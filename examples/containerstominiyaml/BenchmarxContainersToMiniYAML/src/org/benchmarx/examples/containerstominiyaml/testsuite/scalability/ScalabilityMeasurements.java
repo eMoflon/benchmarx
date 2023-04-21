@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.benchmarx.BXTool;
+import org.benchmarx.examples.containerstominiyaml.comparators.MiniYAMLComparator;
 import org.benchmarx.examples.containerstominiyaml.implementations.epsilon.EpsilonContainersToMiniYAML;
 import org.benchmarx.examples.containerstominiyaml.testsuite.Decisions;
 import org.benchmarx.util.BXToolTimer;
@@ -30,7 +31,7 @@ public class ScalabilityMeasurements {
 	private static final double PROBABILITY_DEPENDS_ON = 0.2;
 	private static final double PROBABILITY_VOLUME_MOUNT = 0.2;
 
-	private static final BXTool<Composition, miniyaml.Map, Decisions> tool1 = new EpsilonContainersToMiniYAML();
+	private static final BXTool<Composition, miniyaml.Map, Decisions> tool1 = new EpsilonContainersToMiniYAML("Epsilon", new MiniYAMLComparator());
 	
 	private static final String DELIMITER = ",";
 	private static final String UNIT = "";

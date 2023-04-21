@@ -51,7 +51,8 @@ public abstract class ContainersToMiniYAMLTestCase {
 	@Parameters(name = "{0}")
 	public static Collection<BXTool<Composition, miniyaml.Map, Decisions>> tools() {
 		return Arrays.asList(
-				new EpsilonContainersToMiniYAML()
+				new EpsilonContainersToMiniYAML("Epsilon (ignore order)", new MiniYAMLComparator()), // known to fail IncrementalForward::renameContainer
+				new EpsilonContainersToMiniYAML("Epsilon (exact order)", new MiniYAMLExactComparator())
 		);
 	}
 

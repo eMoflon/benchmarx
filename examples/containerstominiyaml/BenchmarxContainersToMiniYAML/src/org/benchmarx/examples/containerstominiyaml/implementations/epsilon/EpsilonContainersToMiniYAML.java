@@ -6,8 +6,8 @@ import java.util.function.Consumer;
 
 import org.benchmarx.Configurator;
 import org.benchmarx.emf.BXToolForEMF;
+import org.benchmarx.emf.Comparator;
 import org.benchmarx.examples.containerstominiyaml.comparators.CompositionComparator;
-import org.benchmarx.examples.containerstominiyaml.comparators.MiniYAMLComparator;
 import org.benchmarx.examples.containerstominiyaml.testsuite.Decisions;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -27,6 +27,7 @@ import uk.ac.york.ttc.containers.transformations.MiniYAMLToContainers;
 
 public class EpsilonContainersToMiniYAML extends BXToolForEMF<Composition, miniyaml.Map, Decisions> {
 	
+	private final String name;
 	private Resource source;
 	private Resource target;
 
@@ -35,13 +36,14 @@ public class EpsilonContainersToMiniYAML extends BXToolForEMF<Composition, miniy
 	
 	private static final String RESULTPATH = "results/epsilon";
 	
-	public EpsilonContainersToMiniYAML() {
-		super(new CompositionComparator(), new MiniYAMLComparator());
+	public EpsilonContainersToMiniYAML(String name, Comparator<miniyaml.Map> yamlComparator) {
+		super(new CompositionComparator(), yamlComparator);
+		this.name = name;
 	}
 	
 	@Override
 	public String getName() {
-		return "Epsilon";
+		return name;
 	}
 
 	private static final ResourceSet createResourceSet() {
