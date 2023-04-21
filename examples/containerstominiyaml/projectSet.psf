@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <psf version="2.0">
 <provider id="org.eclipse.egit.core.GitProvider">
-<project reference="1.0,https://github.com/agarciadom/benchmarx.git,main,core/Benchmarx"/>
-<project reference="1.0,https://github.com/agarciadom/benchmarx.git,main,examples/containerstominiyaml/BenchmarxContainersToMiniYAML"/>
-<project reference="1.0,https://github.com/agarciadom/benchmarx.git,main,examples/containerstominiyaml/metamodels/Containers"/>
-<project reference="1.0,https://github.com/agarciadom/benchmarx.git,main,examples/containerstominiyaml/metamodels/MiniYAML"/>
+<project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,core/Benchmarx"/>
+<project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/BenchmarxContainersToMiniYAML"/>
+<project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/metamodels/Containers"/>
+<project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/implementationArtefacts/epsilon/uk.ac.york.ttc.containers.model"/>
+<project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/implementationArtefacts/epsilon/uk.ac.york.ttc.containers.transformations"/>
+<project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/implementationArtefacts/epsilon/uk.ac.york.ttc.containers.transformations.dt"/>
+<project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/metamodels/MiniYAML"/>
+<project reference="1.0,git@github.com:agarciadom/benchmarx.git,main,examples/containerstominiyaml/implementationArtefacts/epsilon/uk.ac.york.ttc.miniyaml.model2yaml"/>
 </provider>
 </psf>
