@@ -397,7 +397,7 @@ the model, which would cause unnecessary changes in the Sirius diagrams).
 
 \newcommand*{\file}[1]{\texttt{#1}}
 
-Besides the above high-level description, the case materials include EMF-based
+Besides the above high-level description, the case materials\footnote{\url{https://github.com/agarciadom/benchmarx/tree/main/examples/containerstominiyaml}} include EMF-based
 implementations of the Containers and MiniYAML metamodels, and a reference
 implementation of the transformation using a combination of languages from the
 Eclipse Epsilon open-source project:
@@ -467,10 +467,9 @@ case is intended to answer these questions:
 
   The reference implementation can handle well the case where elements are added
   and removed, but it cannot handle renames well: renaming a container in the
-  Containers model would most likely result in losing the additional content in
-  the YAML file. A bx tool that can operate with operational deltas
-  (``o-deltas'') would most likely be able to handle this case in a more robust
-  manner.
+  Containers model will result in losing the additional content in the YAML
+  file. A bx tool that can operate with operational deltas (``o-deltas'') would
+  most likely be able to handle this case in a more robust manner.
 
 \item How would such a bx scale to larger models, with more containers, more
   volumes, and more custom YAML elements outside of the transformation's
@@ -482,7 +481,6 @@ case is intended to answer these questions:
   $O(n^2)$ path comparisons per type. Is such a cost unavoidable, or are there
   more efficient ways to establish and maintain the relationships between the
   Containers and MiniYAML models?
-
 \end{enumerate}
 
 In practice, it is unlikely that the YAML documents will grow particularly
@@ -490,8 +488,9 @@ large\footnote{The average size of the \file{composer.yaml} files in the
 \file{docker/awesome-compose} Github project is 609B:
 \url{https://github.com/docker/awesome-compose.}}. Performance would likely not
 be an issue for this bidirectional transformation. Instead, maintainability and
-keeping to the principles of ``least change'' and ``least surprise'' would be
-the most important aspects to tackle.
+keeping to the principle of ``least change'' would be the most important aspects
+to tackle. Still, the case materials include an experiment for evaluating the
+scalability of the solutions to larger models.
 
 \section{Evaluation criteria}
 
@@ -528,11 +527,16 @@ Solutions will be evaluated across the following criteria:
   they should also preserve the locations of the various nodes, avoiding
   disturbing existing Sirius diagrams whenever possible.
 
-  This will be measured by checking in each test case the number of differences
-  between the actual output and the expected output that do not impact
-  consistency (e.g. YAML keys in a different relative position, or missing YAML
-  keys that are unrelated to the transformation). Ideally, no such differences
-  should be produced.
+  To measure this, the test suite has been designed to be run in two modes: 1)
+  requiring that if the YAML model already exists, the relative order of map
+  entries and list items is preserved, and 2) waiving this requirement. Mode 1
+  is intended for evaluating ``least change'', whereas Mode 2 is for evaluating
+  general correctness of the transformation.
+
+\item \emph{Scalability}: the transformations should be able to scale to models
+  with increasing numbers of containers, volumes, and images. The case materials
+  include a \javaclass{ScalabilityMeasurements} class to measure this in the
+  forward and backward directions, both in batch and in incremental situations.
 
 \end{enumerate}
 
@@ -540,12 +544,15 @@ Solutions will be evaluated across the following criteria:
 
 \section{Target prizes}
 
-The prizes will be basted on a combination of the three criteria above. The
+The prizes will be based on a combination of the three criteria above. The
 ``Most Complete'' prize will go to the solution that passes the most tests
 (resolving ties using the ``Least Change'' criterion). The ``Most Concise''
-prize will go to the solution that requires the last words, while still passing
+prize will go to the solution that requires the least words, while still passing
 the correctness tests for adding and deleting elements (the tests for renaming
-elements will not be considered).
+elements will not be considered). The ``Most Scalable'' prize will go to the
+solution with the lowest execution times, which is still correct in the batch
+scenarios and in the incremental addition and removal of containers, volumes,
+volume mounts, and images.
 
 If there are enough solutions, an overall ranking can be devised by adding their
 rankings in each category, and sorting in ascending order. Ties will be resolved
@@ -556,11 +563,12 @@ resolved by the case author and TTC organizers.
 \section{Journal-quality solution criteria}
 
 To be eligible for a follow-up journal publication, a solution must be correct
+in the ``batch'' context in both directions, and in the ``incremental'' context
 in regard to addition and removal of containers, volumes, volume mounts, and
-images. Conciseness and ``least change'' are desirable properties, but not
-required for such a publication. Ideally, declarative solutions that support
-maintainability by not requiring the specification of both transformation
-directions would be preferred.
+images. Conciseness, ``least change'', and scalability are desirable properties,
+but not required for such a publication. Ideally, declarative solutions that
+support maintainability by not requiring the specification of both
+transformation directions would be preferred.
 
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{bibliography}
