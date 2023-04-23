@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: FamiliesToPersons
 Bundle-SymbolicName: EneoFamiliesToPersons
 Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-13
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: FamiliesToPersons
 Export-Package: org.benchmarx.eneo.f2p,
  org.emoflon.neo.api.eneofamiliestopersons,

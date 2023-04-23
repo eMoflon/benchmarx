@@ -28,7 +28,7 @@ public class BatchBwdNotEAndP extends FamiliesToPersonsTestCase {
 		util.configure()//
 				.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)//
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
-		tool.performAndPropagateTargetEdit(helperPerson::createRod);
+		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createRod));
 		// ---------------------------------
 		util.assertPostcondition("OneFamilyWithOneFamilyMember", "PersonOneMaleMember");
 	}
@@ -47,13 +47,13 @@ public class BatchBwdNotEAndP extends FamiliesToPersonsTestCase {
 		util.configure()//
 				.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)//
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
-		tool.performAndPropagateTargetEdit(//
-				() -> helperPerson.createRod()//
-						.andThen(helperPerson.createHomer())//
-						.andThen(helperPerson.createBart())//
-						.andThen(helperPerson.createMarge())//
-						.andThen(helperPerson.createLisa())//
-						.andThen(helperPerson.createMaggie()));
+		tool.performAndPropagateTargetEdit(trgEdit(//
+				helperPerson::createRod, //
+				helperPerson::createHomer, //
+				helperPerson::createBart, //
+				helperPerson::createMarge, //
+				helperPerson::createLisa, //
+				helperPerson::createMaggie));
 		// ---------------------------------
 
 		util.assertPostcondition("MultiFamiliesParents", "PersonsMulti");
@@ -65,15 +65,15 @@ public class BatchBwdNotEAndP extends FamiliesToPersonsTestCase {
 		// ---------------------------------
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
-		tool.performAndPropagateTargetEdit(//
-				() -> helperPerson.createRod()//
-						.andThen(helperPerson.createBart())//
-						.andThen(helperPerson.createHomer())//
-						.andThen(helperPerson.createBart())//
-						.andThen(helperPerson.createBart())//
-						.andThen(helperPerson.createMarge())//
-						.andThen(helperPerson.createLisa())//
-						.andThen(helperPerson.createMaggie()));
+		tool.performAndPropagateTargetEdit(trgEdit(//
+				helperPerson::createRod, //
+				helperPerson::createBart, //
+				helperPerson::createHomer, //
+				helperPerson::createBart, //
+				helperPerson::createBart, //
+				helperPerson::createMarge, //
+				helperPerson::createLisa, //
+				helperPerson::createMaggie));
 		// ---------------------------------
 		util.assertPostcondition("MultiFamiliesWithDuplicateNamesParents", "PersonsDuplicateMulti");
 	}

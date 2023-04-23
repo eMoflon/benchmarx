@@ -1,5 +1,6 @@
 package org.benchmarx.emf;
 
+import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
 import org.benchmarx.BXTool;
@@ -20,8 +21,8 @@ import org.benchmarx.edit.IEdit;
  */
 public abstract class BXToolForEMF<S, T, D> implements BXTool<S, T, D> {
 	
-	private Comparator<S> src;
-	private Comparator<T> trg;
+	private BiConsumer<S, S> src;
+	private BiConsumer<T, T> trg;
 	
 	/**
 	 * Requires a {@link Comparator} for each metamodel, which is used for
@@ -32,7 +33,7 @@ public abstract class BXToolForEMF<S, T, D> implements BXTool<S, T, D> {
 	 * @param trg
 	 *            A {@link Comparator} for target models
 	 */
-	public BXToolForEMF(Comparator<S> src, Comparator<T> trg){
+	public BXToolForEMF(BiConsumer<S, S> src, BiConsumer<T, T> trg){
 		this.src = src;
 		this.trg = trg;
 	}
@@ -48,8 +49,8 @@ public abstract class BXToolForEMF<S, T, D> implements BXTool<S, T, D> {
 	public abstract void saveModels(String name);
 	
 	private void assertModels(S source, T target) {
-		src.assertEquals(source, getSourceModel());
-		trg.assertEquals(target, getTargetModel());		
+		src.accept(source, getSourceModel());
+		trg.accept(target, getTargetModel());		
 	}
 	
 	@Override

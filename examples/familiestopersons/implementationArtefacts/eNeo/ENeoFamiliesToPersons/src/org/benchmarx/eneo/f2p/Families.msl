@@ -68,12 +68,26 @@ rule createFamily {
 	}
 }
 
+rule deleteFamily {
+	family: Family {
+		.id : <id>
+		._de_ := true
+	}
+}
+
 rule createFamilyMember {
 	++fm: FamilyMember {
 		.id := <id>
 		.enamespace := <namespace>
 		.name := <name>
 		._cr_ := true
+	}
+}
+
+rule deleteFamilyMember {
+	fm: FamilyMember {
+		.id : <id>
+		._de_ := true
 	}
 }
 
@@ -91,7 +105,19 @@ rule createRegisterFamilyEdge {
 	}
 }
 
-abstract rule createFamilyMemberEdge {
+rule deleteRegisterFamilyEdge {
+	register: FamilyRegister {
+		-families->family {
+			~_de_ := true
+		}
+	}
+	
+	family: Family {
+		.id : <id>
+	}
+}
+
+abstract rule matchFamilyMemberEdge {
 	family: Family {
 		.id : <fid>
 		.enamespace : <namespace>
@@ -105,7 +131,15 @@ abstract rule createFamilyMemberEdge {
 	}
 }
 
-rule createFamilySonEdge -> createFamilyMemberEdge {
+abstract rule matchFamilyMemberEdgeForDeletion {
+	family: Family
+	
+	member: FamilyMember {
+		.id : <id>
+	}
+}
+
+rule createFamilySonEdge -> matchFamilyMemberEdge {
 	family: Family {
 		++ -sons->$member {
 			~_cr_ := true
@@ -113,14 +147,31 @@ rule createFamilySonEdge -> createFamilyMemberEdge {
 	}
 }
 
-rule createFamilyDaughterEdge -> createFamilyMemberEdge {
+rule deleteFamilySonEdge -> matchFamilyMemberEdgeForDeletion {
+	family: Family {
+		-sons->$member {
+			~_de_ := true
+		}
+	}
+}
+
+rule createFamilyDaughterEdge -> matchFamilyMemberEdge {
 	family: Family {
 		++ -daughters->$member {
 			~_cr_ := true
 		}
 	}
 }
-rule createFamilyMotherEdge -> createFamilyMemberEdge {
+
+rule deleteFamilyDaughterEdge -> matchFamilyMemberEdgeForDeletion {
+	family: Family {
+		-daughters->$member {
+			~_de_ := true
+		}
+	}
+}
+
+rule createFamilyMotherEdge -> matchFamilyMemberEdge {
 	family: Family {
 		++ -mother->$member {
 			~_cr_ := true
@@ -128,10 +179,26 @@ rule createFamilyMotherEdge -> createFamilyMemberEdge {
 	}
 }
 
-rule createFamilyFatherEdge -> createFamilyMemberEdge {
+rule deleteFamilyMotherEdge -> matchFamilyMemberEdgeForDeletion {
+	family: Family {
+		-mother->$member {
+			~_de_ := true
+		}
+	}
+}
+
+rule createFamilyFatherEdge -> matchFamilyMemberEdge {
 	family: Family {
 		++ -father->$member {
 			~_cr_ := true
+		}
+	}
+}
+
+rule deleteFamilyFatherEdge -> matchFamilyMemberEdgeForDeletion {
+	family: Family {
+		-father->$member {
+			~_de_ := true
 		}
 	}
 }

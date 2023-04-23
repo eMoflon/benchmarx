@@ -17,6 +17,7 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.11.2",
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
- org.emoflon.neo.engine.modules
+ org.emoflon.neo.engine.modules,
+ org.emoflon.neo.emf
 Automatic-Module-Name: BenchmarxFamiliesToPersons
 Export-Package: org.benchmarx.examples.familiestopersons.testsuite

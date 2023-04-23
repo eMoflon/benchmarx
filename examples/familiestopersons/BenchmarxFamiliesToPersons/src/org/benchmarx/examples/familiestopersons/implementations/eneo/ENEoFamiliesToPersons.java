@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import org.benchmarx.BXTool;
@@ -13,6 +14,9 @@ import org.benchmarx.config.Configurator;
 import org.benchmarx.edit.ChangeAttribute;
 import org.benchmarx.edit.CreateEdge;
 import org.benchmarx.edit.CreateNode;
+import org.benchmarx.edit.DeleteEdge;
+import org.benchmarx.edit.DeleteNode;
+import org.benchmarx.edit.Edit;
 import org.benchmarx.edit.IEdit;
 import org.benchmarx.eneo.f2p.F2P_GEN_InitiateSyncDialogue;
 import org.benchmarx.eneo.f2p.F2P_MI;
@@ -22,7 +26,11 @@ import org.benchmarx.persons.core.PersonsComparator;
 import org.emoflon.neo.api.eneofamiliestopersons.API_Common;
 import org.emoflon.neo.api.eneofamiliestopersons.org.benchmarx.eneo.f2p.API_Families;
 import org.emoflon.neo.api.eneofamiliestopersons.org.benchmarx.eneo.f2p.API_Persons;
+import org.emoflon.neo.api.eneofamiliestopersons.org.benchmarx.eneo.f2p.run.F2P_CC_Run;
 import org.emoflon.neo.api.eneofamiliestopersons.org.benchmarx.eneo.f2p.run.F2P_GEN_Run;
+import org.emoflon.neo.cypher.models.NeoCoreBuilder;
+import org.emoflon.neo.cypher.models.templates.CypherBuilder;
+import org.emoflon.neo.neocore.util.NeoCoreConstants;
 
 import Families.FamiliesFactory;
 import Families.FamiliesPackage;
@@ -37,6 +45,8 @@ import Persons.PersonsPackage;
 
 public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegister, Decisions> {
 	private Configurator<Decisions> configurator;
+	private FamilyRegister sourceRegister = FamiliesFactory.eINSTANCE.createFamilyRegister();
+	private PersonRegister targetRegister = PersonsFactory.eINSTANCE.createPersonRegister();
 
 	@Override
 	public String getName() {
@@ -162,19 +172,97 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 			System.err.println(e.getMessage());
 		}
 
-		new FamiliesComparator().assertEquals(source, actualSource);
-		new PersonsComparator().assertEquals(target, actualTarget);
+		new FamiliesComparator().accept(source, actualSource);
+		new PersonsComparator().accept(target, actualTarget);
 	}
 
 	@Override
 	public void assertPrecondition(FamilyRegister source, PersonRegister target) {
+		// Create models in database
+		IEdit<FamilyRegister> sourceEdit = new Edit<>();
+		source.getFamilies().forEach(f -> {
+			sourceEdit.getSteps().add(new CreateNode<>(f));
+			sourceEdit.getSteps().add(new CreateEdge<>(FamiliesPackage.Literals.FAMILY_REGISTER__FAMILIES, source, f));
+
+			if (f.getFather() != null) {
+				sourceEdit.getSteps().add(new CreateNode<>(f.getFather()));
+				sourceEdit.getSteps().add(new CreateEdge<>(FamiliesPackage.Literals.FAMILY__FATHER, f, f.getFather()));
+			}
+
+			if (f.getMother() != null) {
+				sourceEdit.getSteps().add(new CreateNode<>(f.getMother()));
+				sourceEdit.getSteps().add(new CreateEdge<>(FamiliesPackage.Literals.FAMILY__MOTHER, f, f.getMother()));
+			}
+
+			f.getDaughters().forEach(d -> {
+				sourceEdit.getSteps().add(new CreateNode<>(d));
+				sourceEdit.getSteps().add(new CreateEdge<>(FamiliesPackage.Literals.FAMILY__DAUGHTERS, f, d));
+			});
+
+			f.getSons().forEach(s -> {
+				sourceEdit.getSteps().add(new CreateNode<>(s));
+				sourceEdit.getSteps().add(new CreateEdge<>(FamiliesPackage.Literals.FAMILY__SONS, f, s));
+			});
+		});
+
+		IEdit<PersonRegister> targetEdit = new Edit<>();
+		target.getPersons().forEach(p -> {
+			targetEdit.getSteps().add(new CreateNode<>(p));
+			targetEdit.getSteps().add(new CreateEdge<>(PersonsPackage.Literals.PERSON_REGISTER__PERSONS, target, p));
+		});
+
+		createDeltasInDatabase(() -> sourceEdit, () -> targetEdit, //
+				(builder) -> initiateSynchronisationDialogue(), //
+				(builder) -> {
+					builder.deleteAllCorrs();
+					builder.executeQueryForSideEffect(CypherBuilder
+							.removeDeltaAttributeForNodes(F2P_GEN_Run.SRC_MODEL_NAME, NeoCoreConstants._CR_PROP));
+					builder.executeQueryForSideEffect(CypherBuilder
+							.removeDeltaAttributeForEdges(F2P_GEN_Run.SRC_MODEL_NAME, NeoCoreConstants._CR_PROP));
+					builder.executeQueryForSideEffect(CypherBuilder
+							.removeDeltaAttributeForNodes(F2P_GEN_Run.TRG_MODEL_NAME, NeoCoreConstants._CR_PROP));
+					builder.executeQueryForSideEffect(CypherBuilder
+							.removeDeltaAttributeForEdges(F2P_GEN_Run.TRG_MODEL_NAME, NeoCoreConstants._CR_PROP));
+				});
+
+		// Perform CC
+		F2P_CC_Run cc = new F2P_CC_Run(F2P_GEN_Run.SRC_MODEL_NAME, F2P_GEN_Run.TRG_MODEL_NAME);
+		try {
+			cc.run();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		assertPostcondition(source, target);
+
+		sourceRegister = source;
+		targetRegister = target;
 	}
 
 	@Override
 	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEdit,
 			Supplier<IEdit<PersonRegister>> targetEdit) {
+		createDeltasInDatabase(sourceEdit, targetEdit, (builder) -> {}, (builder) -> {});
+
+		try {
+			if (configurator != null) {
+				var mi = new F2P_MI(Optional.of(configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD)),
+						Optional.of(configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW)));
+				mi.runModelIntegration();
+			} else {
+				var mi = new F2P_MI(Optional.empty(), Optional.empty());
+				mi.runModelIntegration();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void createDeltasInDatabase(Supplier<IEdit<FamilyRegister>> sourceEdit,
+			Supplier<IEdit<PersonRegister>> targetEdit, Consumer<NeoCoreBuilder> pre, Consumer<NeoCoreBuilder> post) {
 		try (var builder = API_Common.createBuilder()) {
+			pre.accept(builder);
+
 			var familyAPI = new API_Families(builder);
 			var personsAPI = new API_Persons(builder);
 
@@ -272,7 +360,54 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 					} else {
 						throw new IllegalArgumentException("Unable to handle change attribute: " + ca.getAttribute());
 					}
-				} else {
+				} else if (s instanceof DeleteNode) {
+					var dn = (DeleteNode<FamilyRegister>) s;
+					if (dn.getNode() instanceof Family) {
+						var rule = familyAPI.getRule_DeleteFamily();
+						var mask = rule.mask();
+						mask.addParameter(rule._param__id, dn.getNode().hashCode());
+						rule.apply(mask, mask);
+					} else if (dn.getNode() instanceof FamilyMember) {
+						var rule = familyAPI.getRule_DeleteFamilyMember();
+						var mask = rule.mask();
+						mask.addParameter(rule._param__id, dn.getNode().hashCode());
+						rule.apply(mask, mask);
+					} else {
+						throw new IllegalArgumentException("Unable to delete node: " + dn.getNode());
+					}
+				} else if (s instanceof DeleteEdge) {
+					var de = (DeleteEdge<FamilyRegister>) s;
+					if (de.getType() == FamiliesPackage.Literals.FAMILY_REGISTER__FAMILIES) {
+						var rule = familyAPI.getRule_DeleteRegisterFamilyEdge();
+						var mask = rule.mask();
+						mask.addParameter(rule._param__id, de.getTarget().hashCode());
+						rule.apply(mask, mask);
+					} else if (de.getType() == FamiliesPackage.Literals.FAMILY__FATHER) {
+						var rule = familyAPI.getRule_DeleteFamilyFatherEdge();
+						var mask = rule.mask();
+						mask.addParameter(rule._param__id, de.getTarget().hashCode());
+						rule.apply(mask, mask);
+					} else if (de.getType() == FamiliesPackage.Literals.FAMILY__MOTHER) {
+						var rule = familyAPI.getRule_DeleteFamilyMotherEdge();
+						var mask = rule.mask();
+						mask.addParameter(rule._param__id, de.getTarget().hashCode());
+						rule.apply(mask, mask);
+					} else if (de.getType() == FamiliesPackage.Literals.FAMILY__SONS) {
+						var rule = familyAPI.getRule_DeleteFamilySonEdge();
+						var mask = rule.mask();
+						mask.addParameter(rule._param__id, de.getTarget().hashCode());
+						rule.apply(mask, mask);
+					} else if (de.getType() == FamiliesPackage.Literals.FAMILY__DAUGHTERS) {
+						var rule = familyAPI.getRule_DeleteFamilyDaughterEdge();
+						var mask = rule.mask();
+						mask.addParameter(rule._param__id, de.getTarget().hashCode());
+						rule.apply(mask, mask);
+					} else {
+						throw new IllegalArgumentException("Unable to delete edge: " + de.getType());
+					}
+				}
+
+				else {
 					throw new IllegalArgumentException("Unable to handle atomic edit: " + s);
 				}
 			}
@@ -303,6 +438,12 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 					} else {
 						throw new IllegalArgumentException("Unable to handle created node: " + cn.getNode());
 					}
+				} else if (t instanceof DeleteNode) {
+					var dn = (DeleteNode<PersonRegister>) t;
+					var rule = personsAPI.getRule_DeletePerson();
+					var mask = rule.mask();
+					mask.addParameter(rule._param__id, dn.getNode().hashCode());
+					rule.apply(mask, mask);
 				} else if (t instanceof CreateEdge) {
 					var ce = (CreateEdge<PersonRegister>) t;
 					if (ce.getType().equals(PersonsPackage.Literals.PERSON_REGISTER__PERSONS)) {
@@ -310,27 +451,35 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 						var mask = rule.mask();
 						mask.addParameter(rule._param__id, ce.getTarget().hashCode());
 						rule.apply(mask, mask);
+					} else {
+						throw new IllegalArgumentException("Unable to handle created edge: " + ce.getType());
+					}
+				} else if (t instanceof DeleteEdge) {
+					var de = (DeleteEdge<PersonRegister>) t;
+					if (de.getType().equals(PersonsPackage.Literals.PERSON_REGISTER__PERSONS)) {
+						var rule = personsAPI.getRule_DeleteRegisterPersonEdge();
+						var mask = rule.mask();
+						mask.addParameter(rule._param__id, de.getTarget().hashCode());
+						rule.apply(mask, mask);
 					}
 				} else if (t instanceof ChangeAttribute) {
-					// FIXME
-					// Change attribute: birthday, name
+					var ca = (ChangeAttribute<PersonRegister>) t;
+					if (ca.getAttribute().equals(PersonsPackage.Literals.PERSON__BIRTHDAY)) {
+						var rule = personsAPI.getRule_ChangeBirthday();
+						var mask = rule.mask();
+						mask.addParameter(rule._param__bday,
+								LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(ca.getNewValue())));
+						mask.addParameter(rule._param__id, ca.getNode().hashCode());
+						rule.apply(mask, mask);
+					} else {
+						throw new IllegalArgumentException("Unable to handle changed attribute: " + ca.getAttribute());
+					}
 				} else {
 					throw new IllegalArgumentException("Unable to handle atomic edit: " + t);
 				}
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
-		try {
-			if (configurator != null) {
-				var mi = new F2P_MI(Optional.of(configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD)),
-						Optional.of(configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW)));
-				mi.runModelIntegration();
-			} else {
-				var mi = new F2P_MI(Optional.empty(), Optional.empty());
-				mi.runModelIntegration();
-			}
+			post.accept(builder);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -353,11 +502,11 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 
 	@Override
 	public FamilyRegister getSourceModel() {
-		return FamiliesFactory.eINSTANCE.createFamilyRegister();
+		return sourceRegister;
 	}
 
 	@Override
 	public PersonRegister getTargetModel() {
-		return PersonsFactory.eINSTANCE.createPersonRegister();
+		return targetRegister;
 	}
 }

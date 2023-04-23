@@ -49,6 +49,13 @@ rule createMale -> createPerson {
 	++ p: Male
 }
 
+rule DeletePerson {
+	p: Person {
+		.id : <id>
+		._de_ := true
+	}
+}
+
 rule createRegisterPersonEdge {
 	r: PersonRegister {
 		++ -persons->p {
@@ -57,6 +64,25 @@ rule createRegisterPersonEdge {
 	}
 	
 	p: Person {
+		.id : <id>
+	}
+}
+
+rule DeleteRegisterPersonEdge {
+	r: PersonRegister {
+		-persons->p {
+			~_de_ := true
+		}
+	}
+	
+	p: Person {
+		.id : <id>
+	}
+}
+
+rule changeBirthday {
+	p: Person {
+		.birthday := <bday>
 		.id : <id>
 	}
 }

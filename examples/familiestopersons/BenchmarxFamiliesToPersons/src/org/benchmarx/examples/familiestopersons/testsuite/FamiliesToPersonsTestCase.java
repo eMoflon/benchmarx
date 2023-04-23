@@ -1,9 +1,7 @@
 package org.benchmarx.examples.familiestopersons.testsuite;
 
-import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Deque;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -13,16 +11,12 @@ import org.benchmarx.BXTool;
 import org.benchmarx.edit.ChangeAttribute;
 import org.benchmarx.edit.CreateEdge;
 import org.benchmarx.edit.CreateNode;
+import org.benchmarx.edit.DeleteEdge;
+import org.benchmarx.edit.DeleteNode;
 import org.benchmarx.edit.Edit;
 import org.benchmarx.edit.IEdit;
-import org.benchmarx.emf.Comparator;
-//import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
-//import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.eneo.ENEoFamiliesToPersons;
-//import org.benchmarx.examples.familiestopersons.implementations.ibextgg.IBeXTGGFamiliesToPersons;
-//import org.benchmarx.examples.familiestopersons.implementations.jtl.JTLFamiliesToPersons;
-//import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
-//import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersonsConfig;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
@@ -46,13 +40,13 @@ import Persons.PersonsPackage;
 public abstract class FamiliesToPersonsTestCase {
 
 	protected BXTool<FamilyRegister, PersonRegister, Decisions> tool;
-	protected Comparator<FamilyRegister> familiesComparator;
-	protected Comparator<PersonRegister> personsComparator;
+	protected BiConsumer<FamilyRegister, FamilyRegister> familiesComparator;
+	protected BiConsumer<PersonRegister, PersonRegister> personsComparator;
 	protected BenchmarxUtil<FamilyRegister, PersonRegister, Decisions> util;
 	protected FamilyHelper helperFamily;
 	protected PersonHelper helperPerson;
-	protected Deque<IEdit<FamilyRegister>> sourceEdit;
-	protected Deque<IEdit<PersonRegister>> targetEdit;
+	protected IEdit<FamilyRegister> sourceEdit;
+	protected IEdit<PersonRegister> targetEdit;
 
 	@Before
 	public void initialise() {
@@ -68,35 +62,37 @@ public abstract class FamiliesToPersonsTestCase {
 		// Initialise the bx tool
 		tool.initiateSynchronisationDialogue();
 
-		FamilyRegister fregister = tool.getSourceModel();
-		sourceEdit = new ArrayDeque<>();
-		Runnable startNewSourceEdit = () -> sourceEdit.push(new Edit<FamilyRegister>());
-		Supplier<IEdit<FamilyRegister>> getSourceEdit = () -> sourceEdit.pop();
-		Consumer<EObject> createSourceNode = (n) -> sourceEdit.peek().getSteps().add(new CreateNode<FamilyRegister>(n));
+		Consumer<EObject> createSourceNode = (n) -> sourceEdit.getSteps().add(new CreateNode<FamilyRegister>(n));
 		BiConsumer<EReference, List<EObject>> createSourceEdge = (ref, sourceTarget) -> {
-			sourceEdit.peek().getSteps().add(new CreateEdge<FamilyRegister>(ref, sourceTarget.get(0), sourceTarget.get(1)));
+			sourceEdit.getSteps().add(new CreateEdge<FamilyRegister>(ref, sourceTarget.get(0), sourceTarget.get(1)));
 		};
 		BiConsumer<EAttribute, List<?>> changeSourceAttribute = (attr, nodeOldNew) -> {
-			sourceEdit.peek().getSteps().add(
-					new ChangeAttribute<FamilyRegister>(attr, (EObject) nodeOldNew.get(0), nodeOldNew.get(1), nodeOldNew.get(2)));
+			sourceEdit.getSteps().add(new ChangeAttribute<FamilyRegister>(attr, (EObject) nodeOldNew.get(0),
+					nodeOldNew.get(1), nodeOldNew.get(2)));
 		};
-		helperFamily = new FamilyHelper(fregister, startNewSourceEdit, getSourceEdit, createSourceNode,
-				createSourceEdge, changeSourceAttribute);
+		Consumer<EObject> deleteSourceNode = (n) -> sourceEdit.getSteps().add(new DeleteNode<FamilyRegister>(n));
+		BiConsumer<EReference, List<EObject>> deleteSourceEdge = (ref, sourceTarget) -> {
+			sourceEdit.getSteps().add(new DeleteEdge<FamilyRegister>(ref, sourceTarget.get(0), sourceTarget.get(1)));
+		};
 
-		PersonRegister pregister = tool.getTargetModel();
-		targetEdit = new ArrayDeque<>();
-		Runnable startNewTargetEdit = () -> targetEdit.push(new Edit<PersonRegister>());
-		Supplier<IEdit<PersonRegister>> getTargetEdit = () -> targetEdit.pop();
-		Consumer<EObject> createTargetNode = (n) -> targetEdit.peek().getSteps().add(new CreateNode<PersonRegister>(n));
+		helperFamily = new FamilyHelper(() -> tool.getSourceModel(), createSourceNode, createSourceEdge, changeSourceAttribute,
+				deleteSourceNode, deleteSourceEdge);
+
+		Consumer<EObject> createTargetNode = (n) -> targetEdit.getSteps().add(new CreateNode<PersonRegister>(n));
 		BiConsumer<EReference, List<EObject>> createTargetEdge = (ref, sourceTarget) -> {
-			targetEdit.peek().getSteps().add(new CreateEdge<PersonRegister>(ref, sourceTarget.get(0), sourceTarget.get(1)));
+			targetEdit.getSteps().add(new CreateEdge<PersonRegister>(ref, sourceTarget.get(0), sourceTarget.get(1)));
 		};
 		BiConsumer<EAttribute, List<?>> changeTargetAttribute = (attr, nodeOldNew) -> {
-			targetEdit.peek().getSteps().add(
-					new ChangeAttribute<PersonRegister>(attr, (EObject) nodeOldNew.get(0), nodeOldNew.get(1), nodeOldNew.get(2)));
+			targetEdit.getSteps().add(new ChangeAttribute<PersonRegister>(attr, (EObject) nodeOldNew.get(0),
+					nodeOldNew.get(1), nodeOldNew.get(2)));
 		};
-		helperPerson = new PersonHelper(pregister, startNewTargetEdit, getTargetEdit, createTargetNode,
-				createTargetEdge, changeTargetAttribute);
+		Consumer<EObject> deleteTargetNode = (n) -> targetEdit.getSteps().add(new DeleteNode<PersonRegister>(n));
+		BiConsumer<EReference, List<EObject>> deleteTargetEdge = (ref, sourceTarget) -> {
+			targetEdit.getSteps().add(new DeleteEdge<PersonRegister>(ref, sourceTarget.get(0), sourceTarget.get(1)));
+		};
+
+		helperPerson = new PersonHelper(() -> tool.getTargetModel(), createTargetNode, createTargetEdge, changeTargetAttribute,
+				deleteTargetNode, deleteTargetEdge);
 	}
 
 	@After
@@ -128,15 +124,36 @@ public abstract class FamiliesToPersonsTestCase {
 				 */
 				// new JTLFamiliesToPersons(), // Currently 11 failures
 
-//				new EMoflonFamiliesToPersons(), // Currently 6 failures
-//				new MediniQVTFamiliesToPersons(), // Currently 19 failures
-//				new MediniQVTFamiliesToPersonsConfig(), // Currently 12 failures
-//				new UbtXtendFamiliesToPersons(), // Currently 0 failures
-//				new IBeXTGGFamiliesToPersons(), // Currently 5 failures
-				new ENEoFamiliesToPersons());
+				// new EMoflonFamiliesToPersons(), // Currently 6 failures
+				// new MediniQVTFamiliesToPersons(), // Currently 19 failures
+				// new MediniQVTFamiliesToPersonsConfig(), // Currently 12 failures
+				new UbtXtendFamiliesToPersons() // Currently 0 failures
+				// new IBeXTGGFamiliesToPersons(), // Currently 5 failures
+				,new ENEoFamiliesToPersons()
+				);
 	}
 
 	protected FamiliesToPersonsTestCase(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
 		this.tool = tool;
+	}
+
+	protected Supplier<IEdit<FamilyRegister>> srcEdit(Runnable... ops) {
+		return () -> {
+			sourceEdit = new Edit<FamilyRegister>();
+			for (var op : ops) {
+				op.run();
+			}
+			return sourceEdit;
+		};
+	}
+
+	protected Supplier<IEdit<PersonRegister>> trgEdit(Runnable... ops) {
+		return () -> {
+			targetEdit = new Edit<PersonRegister>();
+			for (var op : ops) {
+				op.run();
+			}
+			return targetEdit;
+		};
 	}
 }

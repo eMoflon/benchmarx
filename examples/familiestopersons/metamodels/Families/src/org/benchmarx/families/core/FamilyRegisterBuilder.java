@@ -3,6 +3,7 @@ package org.benchmarx.families.core;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -16,12 +17,12 @@ import Families.FamilyRegister;
 public class FamilyRegisterBuilder {
 	private FamiliesFactory f = FamiliesFactory.eINSTANCE;
 
-	private FamilyRegister register;
+	private Supplier<FamilyRegister> register;
 	private Consumer<EObject> createNode;
 	private BiConsumer<EReference, List<EObject>> createEdge;
 	
 	public FamilyRegisterBuilder(
-			FamilyRegister reg, 
+			Supplier<FamilyRegister> reg, 
 			Consumer<EObject> cn, 
 			BiConsumer<EReference, List<EObject>> ce) {
 		register = reg;
@@ -47,8 +48,8 @@ public class FamilyRegisterBuilder {
 			fam.setName(name);
 			createNode.accept(fam);
 			
-			register.getFamilies().add(fam);
-			createEdge.accept(FamiliesPackage.Literals.FAMILY_REGISTER__FAMILIES, List.of(register, fam));
+			register.get().getFamilies().add(fam);
+			createEdge.accept(FamiliesPackage.Literals.FAMILY_REGISTER__FAMILIES, List.of(register.get(), fam));
 		}
 		
 		public FamilyBuilder(Family family) {
@@ -104,7 +105,7 @@ public class FamilyRegisterBuilder {
 		}
 		
 		public FamilyRegister getFamilyRegister() {
-			return register;
+			return register.get();
 		}
 	}
 }

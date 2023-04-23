@@ -9,7 +9,6 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-import org.benchmarx.edit.IEdit;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -19,35 +18,27 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import Persons.Person;
 import Persons.PersonRegister;
+import Persons.PersonsPackage;
 
 public class PersonHelper {
-
 	private PersonRegisterBuilder builder;
-	private PersonRegister register;
-	private Runnable startNewEdit;
-	private Supplier<IEdit<PersonRegister>> getEdit;
+	private Supplier<PersonRegister> register;
 	private BiConsumer<EAttribute, List<?>> changeAttribute;
+	private Consumer<EObject> deleteNode;
+	private BiConsumer<EReference, List<EObject>> deleteEdge;
 
-	public PersonHelper(PersonRegister register, Runnable startNewEdit, Supplier<IEdit<PersonRegister>> getEdit,
-			Consumer<EObject> createNode, BiConsumer<EReference, List<EObject>> createEdge,
-			BiConsumer<EAttribute, List<?>> changeAttribute
-
-	) {
+	public PersonHelper(Supplier<PersonRegister> register, Consumer<EObject> createNode,
+			BiConsumer<EReference, List<EObject>> createEdge, BiConsumer<EAttribute, List<?>> changeAttribute,
+			Consumer<EObject> deleteNode, BiConsumer<EReference, List<EObject>> deleteEdge) {
 		builder = new PersonRegisterBuilder(register, createNode, createEdge);
 		this.register = register;
-		this.startNewEdit = startNewEdit;
-		this.getEdit = getEdit;
 		this.changeAttribute = changeAttribute;
-	}
-
-	private IEdit<PersonRegister> edit(Runnable operations) {
-		startNewEdit.run();
-		operations.run();
-		return getEdit.get();
+		this.deleteEdge = deleteEdge;
+		this.deleteNode = deleteNode;
 	}
 
 	private Person getFromRegister(String name) {
-		Optional<Person> person = register.getPersons().stream().filter(p -> p.getName().equals(name)).findAny();
+		Optional<Person> person = register.get().getPersons().stream().filter(p -> p.getName().equals(name)).findAny();
 
 		if (person.isPresent())
 			return person.get();
@@ -56,119 +47,105 @@ public class PersonHelper {
 	}
 
 	private List<Person> getAllFromRegister(String name) {
-		List<Person> result = register.getPersons().stream().filter(p -> p.getName().equals(name))
+		List<Person> result = register.get().getPersons().stream().filter(p -> p.getName().equals(name))
 				.collect(Collectors.toList());
 
 		return result;
 	}
 
-	public IEdit<PersonRegister> createRod() {
-		return edit(() -> builder.male("Flanders, Rod"));
+	public void createRod() {
+		builder.male("Flanders, Rod");
 	}
 
-	public IEdit<PersonRegister> createHomer() {
-		return edit(() -> builder.male("Simpson, Homer"));
+	public void createHomer() {
+		builder.male("Simpson, Homer");
 	}
 
-	public IEdit<PersonRegister> createBart() {
-		return edit(() -> builder.male("Simpson, Bart"));
+	public void createBart() {
+		builder.male("Simpson, Bart");
 	}
 
-	public IEdit<PersonRegister> createMarge() {
-		return edit(() -> builder.female("Simpson, Marge"));
+	public void createMarge() {
+		builder.female("Simpson, Marge");
 	}
 
-	public IEdit<PersonRegister> createLisa() {
-		return edit(() -> builder.female("Simpson, Lisa"));
+	public void createLisa() {
+		builder.female("Simpson, Lisa");
 	}
 
-	public IEdit<PersonRegister> createMaggie() {
-		return edit(() -> builder.female("Simpson, Maggie"));
+	public void createMaggie() {
+		builder.female("Simpson, Maggie");
 	}
 
-	public IEdit<PersonRegister> createSeymour() {
-		return edit(() -> builder.male("Skinner, Seymour"));
+	public void createSeymour() {
+		builder.male("Skinner, Seymour");
 	}
 
-	//FIXME: Create edit
-	
 	public void changeAllBirthdays() {
 		setBirthdaysOfSimpson();
-		setBirthdayOfRod();
+		Person person = getFromRegister("Flanders, Rod");
+		if(person != null)
+			setBirthdayOfPerson(person, getDate(2013, Calendar.OCTOBER, 1, 10, 11, 12));
+	}
+
+	private void setBirthdayOfPerson(String name, Date date) {
+		Person person = getFromRegister(name);
+		setBirthdayOfPerson(person, date);
+	}
+
+	public void setBirthdayOfPerson(Person person, Date date) {
+		Date oldDate = person.getBirthday();
+		person.setBirthday(date);
+
+		changeAttribute.accept(//
+				PersonsPackage.Literals.PERSON__BIRTHDAY, //
+				List.of(person, oldDate, date));
+	}
+
+	private Date getDate(int year, int month, int day, int hour, int minute, int second) {
+		Calendar cal = Calendar.getInstance();
+		cal.set(year, month, day, hour, minute, second);
+		Date date = cal.getTime();
+		return date;
 	}
 
 	public void setBirthdayOfHomer() {
-		Person person = getFromRegister("Simpson, Homer");
-
-		Calendar cal = Calendar.getInstance();
-		cal.set(2013, Calendar.JANUARY, 9, 10, 11, 12);
-		Date date = cal.getTime();
-		person.setBirthday(date);
+		setBirthdayOfPerson("Simpson, Homer", getDate(2013, Calendar.JANUARY, 9, 10, 11, 12));
 	}
 
 	public void setBirthdayOfMarge() {
-		Person person2 = getFromRegister("Simpson, Marge");
-
-		Calendar cal = Calendar.getInstance();
-		cal.set(2013, Calendar.FEBRUARY, 9, 10, 11, 12);
-		Date date = cal.getTime();
-		person2.setBirthday(date);
+		setBirthdayOfPerson("Simpson, Marge", getDate(2013, Calendar.FEBRUARY, 9, 10, 11, 12));
 	}
 
 	public void setBirthdayOfMaggie() {
-		Person person5 = getFromRegister("Simpson, Maggie");
-
-		Calendar cal = Calendar.getInstance();
-		cal.set(2013, Calendar.MARCH, 7, 10, 11, 12);
-		Date date = cal.getTime();
-		person5.setBirthday(date);
+		setBirthdayOfPerson("Simpson, Maggie", getDate(2013, Calendar.MARCH, 7, 10, 11, 12));
 	}
 
 	public void setBirthdayOfRod() {
-		Calendar cal = Calendar.getInstance();
-		Date date;
-
-		Person person1 = getFromRegister("Flanders, Rod");
-
-		cal.set(2013, Calendar.OCTOBER, 1, 10, 11, 12);
-		date = cal.getTime();
-		person1.setBirthday(date);
+		setBirthdayOfPerson("Flanders, Rod", getDate(2013, Calendar.OCTOBER, 1, 10, 11, 12));
 	}
 
 	public void setBirthdayOfFatherBart() {
-		Calendar cal = Calendar.getInstance();
-		Date date;
-
 		List<Person> barts = getAllFromRegister("Simpson, Bart");
-		Date defaultDate = (Date) EcoreFactory.eINSTANCE.createFromString(EcorePackage.eINSTANCE.getEDate(),
-				"0000-1-1");
+		Date defaultDate = (Date) EcoreFactory.eINSTANCE.createFromString(//
+				EcorePackage.eINSTANCE.getEDate(), "0000-1-1");
 		for (Person bart : barts) {
 			if (bart.getBirthday().equals(defaultDate)) {
-				cal.set(2013, Calendar.MARCH, 9, 10, 11, 12);
-				date = cal.getTime();
-				bart.setBirthday(date);
-				return;
+				setBirthdayOfPerson(bart, getDate(2013, Calendar.MARCH, 9, 10, 11, 12));
 			}
 		}
 	}
 
 	public void setBirthdaysOfSimpson() {
-		Calendar cal = Calendar.getInstance();
-		Date date;
-
 		Person person1 = getFromRegister("Simpson, Homer");
 		if (person1 != null) {
-			cal.set(2013, Calendar.JANUARY, 9, 10, 11, 12);
-			date = cal.getTime();
-			person1.setBirthday(date);
+			setBirthdayOfPerson(person1, getDate(2013, Calendar.JANUARY, 9, 10, 11, 12));
 		}
 
 		Person person2 = getFromRegister("Simpson, Marge");
 
 		if (person2 != null) {
-			cal.set(2013, Calendar.FEBRUARY, 9, 10, 11, 12);
-			date = cal.getTime();
-			person2.setBirthday(date);
+			setBirthdayOfPerson(person2, getDate(2013, Calendar.FEBRUARY, 9, 10, 11, 12));
 		}
 
 		List<Person> barts = getAllFromRegister("Simpson, Bart");
@@ -177,47 +154,45 @@ public class PersonHelper {
 				"0000-1-1");
 		for (Person p : barts) {
 			if (p.getBirthday().equals(defaultDate)) {
-				cal.set(2013, Calendar.MARCH, 10, 10, 11, 12);
-				date = cal.getTime();
-				p.setBirthday(date);
+				setBirthdayOfPerson(p, getDate(2013, Calendar.MARCH, 10, 10, 11, 12));
 			}
 		}
 
 		Person person4 = getFromRegister("Simpson, Lisa");
 
 		if (person4 != null) {
-			cal.set(2013, Calendar.MARCH, 8, 10, 11, 12);
-			date = cal.getTime();
-			person4.setBirthday(date);
+			setBirthdayOfPerson(person4, getDate(2013, Calendar.MARCH, 8, 10, 11, 12));
 		}
 
 		Person person5 = getFromRegister("Simpson, Maggie");
 
 		if (person5 != null) {
-			cal.set(2013, Calendar.MARCH, 7, 10, 11, 12);
-			date = cal.getTime();
-			person5.setBirthday(date);
+			setBirthdayOfPerson(person5, getDate(2013, Calendar.MARCH, 7, 10, 11, 12));
 		}
 	}
 
 	public void setBirthdayOfYoungerBart() {
-		Calendar cal = Calendar.getInstance();
-		Date date;
 		List<Person> barts = getAllFromRegister("Simpson, Bart");
 		Date defaultDate = (Date) EcoreFactory.eINSTANCE.createFromString(EcorePackage.eINSTANCE.getEDate(),
 				"0000-1-1");
 		for (Person p : barts) {
 			if (p.getBirthday().equals(defaultDate)) {
-				cal.set(2013, Calendar.MARCH, 11, 10, 11, 12);
-				date = cal.getTime();
-				p.setBirthday(date);
+				setBirthdayOfPerson(p, getDate(2013, Calendar.MARCH, 11, 10, 11, 12));
 			}
 		}
 	}
 
+	private void setNameOfPerson(Person p, String name) {
+		String oldName = p.getName();
+		p.setName(name);
+		changeAttribute.accept(//
+				PersonsPackage.Literals.PERSON__BIRTHDAY, //
+				List.of(p, oldName, name));
+	}
+
 	public void firstNameChangeOfHomer() {
 		Person person = getFromRegister("Simpson, Homer");
-		person.setName("Simpson, HomerX");
+		setNameOfPerson(person, "Simpson, HomerX");
 	}
 
 	@SuppressWarnings("deprecation")
@@ -229,7 +204,7 @@ public class PersonHelper {
 		List<Person> barts = getAllFromRegister("Simpson, Bart");
 		for (Person bart : barts) {
 			if (bart.getBirthday().getDay() == date.getDay())
-				bart.setName("Simpson, Bartholomew");
+				setNameOfPerson(bart, "Simpson, Bartholomew");
 		}
 	}
 
@@ -242,7 +217,7 @@ public class PersonHelper {
 		List<Person> barts = getAllFromRegister("Simpson, Bart");
 		for (Person bart : barts) {
 			if (bart.getBirthday().getDay() == date.getDay())
-				bart.setName("Skinner, Seymour");
+				setNameOfPerson(bart, "Skinner, Seymour");
 		}
 	}
 
@@ -255,33 +230,39 @@ public class PersonHelper {
 		List<Person> barts = getAllFromRegister("Simpson, Bart");
 		for (Person bart : barts) {
 			if (bart.getBirthday().getDay() == date.getDay())
-				bart.setName("Flanders, Todd");
+				setNameOfPerson(bart, "Flanders, Todd");
 		}
 	}
 
 	public void familyNameChangeOfLisa() {
 		Person person = getFromRegister("Simpson, Lisa");
-		person.setName("Flanders, Lisa");
+		setNameOfPerson(person, "Flanders, Lisa");
 	}
 
 	public void fullNameChangeOfMarge() {
 		Person person = getFromRegister("Simpson, Marge");
-		person.setName("Flanders, Maude");
+		setNameOfPerson(person, "Flanders, Maude");
 	}
 
-	public void deleteMarge(PersonRegister register) {
+	private void deletePersonFromRegister(Person person) {
+		deleteEdge.accept(PersonsPackage.Literals.PERSON_REGISTER__PERSONS, List.of(register.get(), person));
+		deleteNode.accept(person);
+		EcoreUtil.delete(person);
+	}
+
+	public void deleteMarge() {
 		Person person = getFromRegister("Simpson, Marge");
-		EcoreUtil.delete(person);
+		deletePersonFromRegister(person);
 	}
 
-	public void deleteHomer(PersonRegister register) {
+	public void deleteHomer() {
 		Person person = getFromRegister("Simpson, Homer");
-		EcoreUtil.delete(person);
+		deletePersonFromRegister(person);
 	}
 
-	public void deleteMaggie(PersonRegister register) {
+	public void deleteMaggie() {
 		Person person = getFromRegister("Simpson, Maggie");
-		EcoreUtil.delete(person);
+		deletePersonFromRegister(person);
 	}
 
 	public void idleDelta() {
@@ -290,11 +271,8 @@ public class PersonHelper {
 
 	public void hippocraticDelta() {
 		// change birthday for each person
-		for (Person p : register.getPersons()) {
-			Calendar cal = Calendar.getInstance();
-			cal.set(2013, Calendar.MARCH, 9, 10, 11, 12);
-			Date date = cal.getTime();
-			p.setBirthday(date);
+		for (Person p : register.get().getPersons()) {
+			setBirthdayOfPerson(p, getDate(2013, Calendar.MARCH, 9, 10, 11, 12));
 		}
 	}
 

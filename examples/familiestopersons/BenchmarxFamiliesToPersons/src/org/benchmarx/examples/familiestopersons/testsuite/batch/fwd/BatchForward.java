@@ -34,11 +34,11 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testFamilyNameChangeOfEmpty() {
-		tool.performAndPropagateSourceEdit(helperFamily::createSimpsonFamily);
+		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::createSimpsonFamily));
 
 		util.assertPrecondition("Pre_NameChangeFamilyEmpty", "Pre_NameChangePersonEmpty");
 		// ------------
-		tool.performAndPropagateSourceEdit(helperFamily::renameEmptySimpsonToBouvier);
+		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::renameEmptySimpsonToBouvier));
 		// ------------
 		util.assertPostcondition("NameChangeFamilyEmpty", "NameChangePersonEmpty");
 	}
@@ -53,7 +53,7 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	public void testCreateFamily() {
 		// No precondition!
 		// ------------
-		tool.performAndPropagateSourceEdit(helperFamily::createSkinnerFamily);
+		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::createSkinnerFamily));
 		// ------------
 		util.assertPostcondition("OneFamily", "PersonsForOneFamily");
 	}
@@ -70,9 +70,7 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	public void testCreateFamilyMember() {
 		// No precondition!
 		// ------------
-		tool.performAndPropagateSourceEdit(//
-				() -> helperFamily.createFlandersFamily()//
-						.andThen(helperFamily.createSonRod()));
+		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::createFlandersFamily, helperFamily::createSonRod));
 		// ------------
 		util.assertPostcondition("OneFamilyWithOneFamilyMemberSon", "PersonOneMaleMember");
 	}
@@ -86,10 +84,10 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	public void testNewFamilyWithMultiMembers() {
 		// No precondition!
 		// ------------
-		tool.performAndPropagateSourceEdit(//
-				() -> helperFamily.createFlandersFamily()//
-						.andThen(helperFamily.createSonRod())//
-						.andThen(helperFamily.createNewFamilySimpsonWithMembers()));
+		tool.performAndPropagateSourceEdit(srcEdit(//
+				helperFamily::createFlandersFamily, //
+				helperFamily::createSonRod, //
+				helperFamily::createNewFamilySimpsonWithMembers));
 		// ------------
 		util.assertPostcondition("NewFamilyWithMembers", "PersonsMulti");
 	}
@@ -104,10 +102,10 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	public void testNewDuplicateFamilyNames() {
 		// No precondition!
 		// ------------
-		tool.performAndPropagateSourceEdit(//
-				() -> helperFamily.createNewFamilySimpsonWithMembers()//
-						.andThen(helperFamily.createSimpsonFamily())//
-						.andThen(helperFamily.createFatherBart()));
+		tool.performAndPropagateSourceEdit(srcEdit(//
+				helperFamily::createNewFamilySimpsonWithMembers, //
+				helperFamily::createSimpsonFamily, //
+				helperFamily::createFatherBart));
 		// ------------
 		util.assertPostcondition("FamiliesWithSameName", "PersonWithSameName");
 	}
@@ -123,9 +121,9 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	public void testDuplicateFamilyMemberNames() {
 		// No precondition!
 		// ------------
-		tool.performAndPropagateSourceEdit(//
-				() -> helperFamily.createNewFamilySimpsonWithMembers()//
-						.andThen(helperFamily.createSonBart()));
+		tool.performAndPropagateSourceEdit(srcEdit(//
+				helperFamily::createNewFamilySimpsonWithMembers, //
+				helperFamily::createSonBart));
 		// ------------
 		util.assertPostcondition("FamilyWithDuplicateMember", "PersonWithSameName");
 	}

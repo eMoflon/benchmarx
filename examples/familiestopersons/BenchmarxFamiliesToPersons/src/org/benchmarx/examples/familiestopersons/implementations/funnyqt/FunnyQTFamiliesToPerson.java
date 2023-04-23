@@ -1,12 +1,12 @@
 package org.benchmarx.examples.familiestopersons.implementations.funnyqt;
 
 import java.io.File;
+import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
 import org.benchmarx.config.Configurator;
 import org.benchmarx.edit.IEdit;
 import org.benchmarx.emf.BXToolForEMF;
-import org.benchmarx.emf.Comparator;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;
@@ -63,8 +63,8 @@ public class FunnyQTFamiliesToPerson
         this(new FamiliesComparator(), new PersonsComparator());
     }
 
-    public FunnyQTFamiliesToPerson(Comparator<FamilyRegister> src,
-            Comparator<PersonRegister> trg) {
+    public FunnyQTFamiliesToPerson(BiConsumer<FamilyRegister, FamilyRegister> src,
+            BiConsumer<PersonRegister, PersonRegister> trg) {
         super(src, trg);
     }
 

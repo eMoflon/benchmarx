@@ -8,7 +8,6 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import org.benchmarx.edit.IEdit;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -21,37 +20,34 @@ import Families.FamilyRegister;
 
 public class FamilyHelper {
 	private FamilyRegisterBuilder builder;
-	private FamilyRegister register;
+	private Supplier<FamilyRegister> register;
 	private FamilyMember firstBart;
-	private Runnable startNewEdit;
-	private Supplier<IEdit<FamilyRegister>> getEdit;
 	private BiConsumer<EAttribute, List<?>> changeAttribute;
+	private Consumer<EObject> deleteNode;
+	private BiConsumer<EReference, List<EObject>> deleteEdge;
+	BiConsumer<EReference, List<EObject>> createEdge;
 
-	public FamilyHelper(
-			FamilyRegister register,
-			Runnable startNewEdit, 
-			Supplier<IEdit<FamilyRegister>> getEdit, 
-			Consumer<EObject> createNode, 
-			BiConsumer<EReference, List<EObject>> createEdge,
-			BiConsumer<EAttribute, List<?>> changeAttribute
-		) {
+	public FamilyHelper(Supplier<FamilyRegister> register, Consumer<EObject> createNode,
+			BiConsumer<EReference, List<EObject>> createEdge, BiConsumer<EAttribute, List<?>> changeAttribute,
+			Consumer<EObject> deleteNode, BiConsumer<EReference, List<EObject>> deleteEdge) {
 		firstBart = null;
 		builder = new FamilyRegisterBuilder(register, createNode, createEdge);
 		this.register = register;
-		this.startNewEdit = startNewEdit;
-		this.getEdit = getEdit;
 		this.changeAttribute = changeAttribute;
+		this.deleteEdge = deleteEdge;
+		this.deleteNode = deleteNode;
+		this.createEdge = createEdge;
 	}
 
 	private Family getFromRegister(String name) {
-		Optional<Family> family = register.getFamilies().stream().filter(f -> f.getName().equals(name)).findAny();
+		Optional<Family> family = register.get().getFamilies().stream().filter(f -> f.getName().equals(name)).findAny();
 
 		assertTrue(family.isPresent());
 		return family.get();
 	}
 
 	private Family getSimpsonFamily() {
-		Optional<Family> family = register.getFamilies().stream()
+		Optional<Family> family = register.get().getFamilies().stream()
 				.filter(f -> f.getName().equals("Simpson") && f.getFather().getName().equals("Homer")).findAny();
 
 		assertTrue(family.isPresent());
@@ -85,178 +81,171 @@ public class FamilyHelper {
 
 	// helpers required for basic behavior
 
-	private IEdit<FamilyRegister> edit(Runnable operations) {
-		startNewEdit.run();
-		operations.run();
-		return getEdit.get();
+	public void createSkinnerFamily() {
+		builder.family("Skinner");
 	}
 
-	public IEdit<FamilyRegister> createSkinnerFamily() {
-		return edit(() -> builder.family("Skinner"));
+	public void createFlandersFamily() {
+		builder.family("Flanders");
 	}
 
-	public IEdit<FamilyRegister> createFlandersFamily() {
-		return edit(() -> builder.family("Flanders"));
-	}
-
-	public IEdit<FamilyRegister> createFatherNed() {
+	public void createFatherNed() {
 		Family family = getFromRegister("Flanders");
 		assertTrue(family.getName().equals("Flanders"));
-		return edit(() -> builder.family(family).father("Ned"));
+		builder.family(family).father("Ned");
 	}
 
-	public IEdit<FamilyRegister> createMotherMaude() {
+	public void createMotherMaude() {
 		Family family = getFromRegister("Flanders");
 		assertTrue(family.getName().equals("Flanders"));
-		return edit(() -> builder.family(family).mother("Maude"));
+		builder.family(family).mother("Maude");
 	}
 
-	public IEdit<FamilyRegister> createSonTodd() {
+	public void createSonTodd() {
 		Family family = getFromRegister("Flanders");
 		assertTrue(family.getName().equals("Flanders"));
-		return edit(() -> builder.family(family).son("Todd"));
+		builder.family(family).son("Todd");
 	}
 
-	public IEdit<FamilyRegister> createSonRod() {
+	public void createSonRod() {
 		Family family = getFromRegister("Flanders");
 		assertTrue(family.getName().equals("Flanders"));
-		return edit(() -> builder.family(family).son("Rod"));
+		builder.family(family).son("Rod");
 	}
 
-	public IEdit<FamilyRegister> createSimpsonFamily() {
-		return edit(() -> builder.family("Simpson"));
+	public void createSimpsonFamily() {
+		builder.family("Simpson");
 	}
 
-	public IEdit<FamilyRegister> createFatherHomer() {
-		Optional<Family> family = register.getFamilies().stream()
+	public void createFatherHomer() {
+		Optional<Family> family = register.get().getFamilies().stream()
 				.filter(f -> f.getName().equals("Simpson") && f.getFather() == null).findAny();
 
 		assertTrue(family.isPresent());
 		Family fam = family.get();
 
-		return edit(() -> builder.family(fam).father("Homer"));
+		builder.family(fam).father("Homer");
 	}
 
-	public IEdit<FamilyRegister> createMotherMarge() {
+	public void createMotherMarge() {
 		Family family = getSimpsonFamily();
-		return edit(() -> builder.family(family).mother("Marge"));
+		builder.family(family).mother("Marge");
 	}
 
-	public IEdit<FamilyRegister> createSonBart() {
+	public void createSonBart() {
 		Family family = getSimpsonFamily();
-		var edit = edit(() -> builder.family(family).son("Bart"));
+		builder.family(family).son("Bart");
 		if (firstBart == null) {
 			firstBart = family.getSons().get(0);
 		}
-		return edit;
 	}
 
-	public IEdit<FamilyRegister> createDaughterLisa() {
+	public void createDaughterLisa() {
 		Family family = getSimpsonFamily();
-		return edit(() -> builder.family(family).daughter("Lisa"));
+		builder.family(family).daughter("Lisa");
 	}
 
-	public IEdit<FamilyRegister> createDaughterMaggie() {
+	public void createDaughterMaggie() {
 		Family family = getSimpsonFamily();
-		return edit(() -> builder.family(family).daughter("Maggie"));
+		builder.family(family).daughter("Maggie");
 	}
 
-	public IEdit<FamilyRegister> createFatherBart() {
-		Optional<Family> family = register.getFamilies().stream()
+	public void createFatherBart() {
+		Optional<Family> family = register.get().getFamilies().stream()
 				.filter(f -> f.getName().equals("Simpson") && f.getFather() == null).findAny();
 
 		assertTrue(family.isPresent());
 		Family fam = family.get();
-		return edit(() -> builder.family(fam).father("Bart"));
+		builder.family(fam).father("Bart");
 	}
 
-	public IEdit<FamilyRegister> createNewFamilySimpsonWithMembers() {
-		return createSimpsonFamily()//
-				.andThen(createFatherHomer())//
-				.andThen(createMotherMarge())//
-				.andThen(createSonBart())//
-				.andThen(createDaughterLisa())//
-				.andThen(createDaughterMaggie());
+	public void createNewFamilySimpsonWithMembers() {
+		createSimpsonFamily();
+		createFatherHomer();
+		createMotherMarge();
+		createSonBart();
+		createDaughterLisa();
+		createDaughterMaggie();
 	}
 
 	// helpers required for incremental behavior
 
 	public void deleteFirstSonBart() {
 		if (firstBartCanBeIdentifiedInRegister())
-			// FIXME: Create edit for deletion
-			EcoreUtil.delete(firstBart, true);
+			deleteMemberFromFamily(FamiliesPackage.Literals.FAMILY__SONS, firstBart.getSonsInverse(), firstBart);
 		else {
 			// Unable to locate firstBart via object identity, so rely on position-based
 			// heuristics
 			Family family = getSimpsonFamily();
 			assertTrue(family.getName().equals("Simpson"));
-			// FIXME: Create edit for deletion
-			EcoreUtil.delete(family.getSons().get(0), true);
+			deleteMemberFromFamily(FamiliesPackage.Literals.FAMILY__SONS, family, family.getSons().get(0));
 		}
 	}
 
 	private boolean firstBartCanBeIdentifiedInRegister() {
-		return firstBart != null && firstBart.getSonsInverse().getFamiliesInverse().equals(register);
+		return firstBart != null && firstBart.getSonsInverse().getFamiliesInverse().equals(register.get());
 	}
 
-	public IEdit<FamilyRegister> renameEmptySimpsonToBouvier() {
+	public void renameEmptySimpsonToBouvier() {
 		Family fam = getFromRegister("Simpson");
 		assertTrue(fam.getName().equals("Simpson"));
 
-		return edit(() -> {
-			changeAttribute.accept(FamiliesPackage.Literals.FAMILY__NAME, List.of(fam, "Simpson", "Bouvier"));
-			fam.setName("Bouvier");
-		});
+		changeAttribute.accept(FamiliesPackage.Literals.FAMILY__NAME, List.of(fam, "Simpson", "Bouvier"));
+		fam.setName("Bouvier");
 	}
 
-	public IEdit<FamilyRegister> renameSimpsonToBouvier() {
+	public void renameSimpsonToBouvier() {
 		Family family = getSimpsonFamily();
 		assertTrue(family.getName().equals("Simpson"));
 
-		// FIXME: Create edit
-		return edit(() -> family.setName("Bouvier"));
+		changeAttribute.accept(FamiliesPackage.Literals.FAMILY__NAME, List.of(family, "Simpson", "Bouvier"));
+		family.setName("Bouvier");
 	}
 
-	public IEdit<FamilyRegister> moveLisa() {
+	public void moveLisa() {
 		Family fam = getFromRegister("Flanders");
 		FamilyMember lisa = getLisa();
 
-		// FIXME: Create edit
-		return edit(() -> fam.setMother(lisa));
+		deleteEdge.accept(FamiliesPackage.Literals.FAMILY__DAUGHTERS, List.of(lisa.getDaughtersInverse(), lisa));
+		createEdge.accept(FamiliesPackage.Literals.FAMILY__MOTHER, List.of(fam, lisa));
+		fam.setMother(lisa);
 	}
 
-	public IEdit<FamilyRegister> moveMaggieAndChangeRole() {
+	public void moveMaggieAndChangeRole() {
 		Family fam = getFromRegister("Flanders");
 		FamilyMember maggie = getMaggie();
 
-		// FIXME: Create edit
-		return edit(() -> fam.getSons().add(maggie));
+		deleteEdge.accept(FamiliesPackage.Literals.FAMILY__DAUGHTERS, List.of(maggie.getDaughtersInverse(), maggie));
+		createEdge.accept(FamiliesPackage.Literals.FAMILY__SONS, List.of(fam, maggie));
+		fam.getSons().add(maggie);
 	}
 
-	public IEdit<FamilyRegister> moveMarge() {
+	public void moveMarge() {
 		Family skinner = getFromRegister("Skinner");
 		FamilyMember marge = getSimpsonFamily().getMother();
 
-		// FIXME: Create edit
-		return edit(() -> skinner.setMother(marge));
+		deleteEdge.accept(FamiliesPackage.Literals.FAMILY__MOTHER, List.of(marge.getMotherInverse(), marge));
+		createEdge.accept(FamiliesPackage.Literals.FAMILY__MOTHER, List.of(skinner, marge));
+		skinner.setMother(marge);
 	}
 
-	public IEdit<FamilyRegister> deleteFatherHomer() {
+	public void deleteFatherHomer() {
 		Family simpson = getSimpsonFamily();
 		FamilyMember homer = simpson.getFather();
-		return edit(() -> deleteMemberFromFamily(simpson, homer));
+		deleteMemberFromFamily(FamiliesPackage.Literals.FAMILY__FATHER, simpson, homer);
 	}
 
-	private void deleteMemberFromFamily(Family f, FamilyMember m) {
-		// FIXME: Create edit
+	private void deleteMemberFromFamily(EReference ref, Family f, FamilyMember m) {
+		deleteEdge.accept(ref, List.of(f, m));
+		deleteNode.accept(m);
 		EcoreUtil.delete(m, true);
 	}
 
-	public IEdit<FamilyRegister> idleDelta() {
-		return IEdit.idleEdit();
+	public void idleDelta() {
+
 	}
 
-	public IEdit<FamilyRegister> hippocraticDelta() {
-		return edit(() -> builder.family("Van Houten"));
+	public void hippocraticDelta() {
+		builder.family("Van Houten");
 	}
 }

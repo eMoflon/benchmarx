@@ -10,8 +10,8 @@ import Persons.PersonRegister;
 
 /**
  * Test cases for backward transformations with parameters E and P set to true
- * Please note, that in general this leads to non-deterministic behavior,
- * which is hard to test. Thus, we restricted ourselves to a PersonRegister
+ * Please note, that in general this leads to non-deterministic behavior, which
+ * is hard to test. Thus, we restricted ourselves to a PersonRegister
  * configuration, which allows to deterministically execute the backward
  * transformation. (c.f., Test Case 2d on GitHub).
  */
@@ -35,7 +35,7 @@ public class BatchBwdEAndP extends FamiliesToPersonsTestCase {
 		util.configure()//
 				.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
-		tool.performAndPropagateTargetEdit(helperPerson::createRod);
+		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createRod));
 		// ---------------------------------
 		util.assertPostcondition("OneFamilyWithOneFamilyMember", "PersonOneMaleMember");
 	}
@@ -54,10 +54,10 @@ public class BatchBwdEAndP extends FamiliesToPersonsTestCase {
 		util.configure()//
 				.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)//
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
-		tool.performAndPropagateTargetEdit(//
-				() -> helperPerson.createRod()//
-						.andThen(helperPerson.createHomer())//
-						.andThen(helperPerson.createMarge()));
+		tool.performAndPropagateTargetEdit(trgEdit(//
+				helperPerson::createRod, //
+				helperPerson::createHomer, //
+				helperPerson::createMarge));
 		// ---------------------------------
 		util.assertPostcondition("FamilyWithParentsOnly", "PersonsMultiDeterministic");
 	}
