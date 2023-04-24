@@ -81,8 +81,29 @@ rule DeleteRegisterPersonEdge {
 }
 
 rule changeBirthday {
+	r: PersonRegister {
+		-persons->p {
+			~_cr_ := true
+		}
+	}
+	
 	p: Person {
 		.birthday := <bday>
 		.id : <id>
+		._cr_ := true
+	}
+}
+
+rule changeName {
+	r: PersonRegister {
+		-persons->p {
+			~_cr_ := true
+		}
+	}
+	
+	p: Person {
+		.name := <name>
+		.id : <id>
+		._cr_ := true
 	}
 }

@@ -115,6 +115,10 @@ public interface BXTool<S, T, D> {
 	 */
 	public void assertPrecondition(S source, T target);
 
+	default void noPrecondition() {
+		
+	}
+	
 	/**
 	 * Implement to set the name of your tool and improve generated debug messages.
 	 * 

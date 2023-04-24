@@ -21,7 +21,7 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testInitialiseSynchronisation() {
-		// No precondition!
+		tool.noPrecondition();
 		// ------------
 		util.assertPostcondition("RootElementFamilies", "RootElementPersons");
 	}
@@ -51,7 +51,7 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testCreateFamily() {
-		// No precondition!
+		tool.noPrecondition();
 		// ------------
 		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::createSkinnerFamily));
 		// ------------
@@ -68,7 +68,7 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testCreateFamilyMember() {
-		// No precondition!
+		tool.noPrecondition();
 		// ------------
 		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::createFlandersFamily, helperFamily::createSonRod));
 		// ------------
@@ -82,7 +82,7 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testNewFamilyWithMultiMembers() {
-		// No precondition!
+		tool.noPrecondition();
 		// ------------
 		tool.performAndPropagateSourceEdit(srcEdit(//
 				helperFamily::createFlandersFamily, //
@@ -100,7 +100,7 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testNewDuplicateFamilyNames() {
-		// No precondition!
+		tool.noPrecondition();
 		// ------------
 		tool.performAndPropagateSourceEdit(srcEdit(//
 				helperFamily::createNewFamilySimpsonWithMembers, //
@@ -119,7 +119,7 @@ public class BatchForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testDuplicateFamilyMemberNames() {
-		// No precondition!
+		tool.noPrecondition();
 		// ------------
 		tool.performAndPropagateSourceEdit(srcEdit(//
 				helperFamily::createNewFamilySimpsonWithMembers, //

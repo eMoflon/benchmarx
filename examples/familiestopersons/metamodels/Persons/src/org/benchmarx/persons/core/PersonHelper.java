@@ -186,7 +186,7 @@ public class PersonHelper {
 		String oldName = p.getName();
 		p.setName(name);
 		changeAttribute.accept(//
-				PersonsPackage.Literals.PERSON__BIRTHDAY, //
+				PersonsPackage.Literals.PERSON__NAME, //
 				List.of(p, oldName, name));
 	}
 

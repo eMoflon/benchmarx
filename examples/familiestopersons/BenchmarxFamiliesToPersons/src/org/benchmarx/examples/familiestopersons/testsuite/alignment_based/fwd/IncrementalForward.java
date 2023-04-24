@@ -203,7 +203,7 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testStability() {
-		// No precondition!
+		tool.noPrecondition();
 		// ------------
 		tool.performAndPropagateSourceEdit(srcEdit(//
 				helperFamily::createNewFamilySimpsonWithMembers, //
@@ -223,7 +223,7 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testHippocraticness() {
-		// No precondition!
+		tool.noPrecondition();
 		// ------------
 		tool.performAndPropagateSourceEdit(srcEdit(//
 				helperFamily::createNewFamilySimpsonWithMembers, //

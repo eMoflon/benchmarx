@@ -30,7 +30,7 @@ public class BatchBwdEAndP extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testCreateMalePersonAsSon() {
-		// No precondition!
+		tool.noPrecondition();
 		// ---------------------------------
 		util.configure()//
 				.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
@@ -49,7 +49,7 @@ public class BatchBwdEAndP extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testCreateFamilyMembersInExistingFamilyAsParents() {
-		// No precondition!
+		tool.noPrecondition();
 		// ---------------------------------
 		util.configure()//
 				.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)//

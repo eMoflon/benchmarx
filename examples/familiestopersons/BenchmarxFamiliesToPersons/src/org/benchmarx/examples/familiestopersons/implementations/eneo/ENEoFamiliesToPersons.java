@@ -45,8 +45,9 @@ import Persons.PersonsPackage;
 
 public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegister, Decisions> {
 	private Configurator<Decisions> configurator;
-	private FamilyRegister sourceRegister = FamiliesFactory.eINSTANCE.createFamilyRegister();
-	private PersonRegister targetRegister = PersonsFactory.eINSTANCE.createPersonRegister();
+	private FamilyRegister sourceRegister;
+	private PersonRegister targetRegister;
+	private boolean preconditionAchieved;
 
 	@Override
 	public String getName() {
@@ -60,6 +61,10 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 
 	@Override
 	public void initiateSynchronisationDialogue() {
+		sourceRegister = FamiliesFactory.eINSTANCE.createFamilyRegister();
+		targetRegister = PersonsFactory.eINSTANCE.createPersonRegister();
+		preconditionAchieved = false;
+		
 		try (var builder = API_Common.createBuilder()) {
 			builder.clearDataBase();
 			var gen = new F2P_GEN_InitiateSyncDialogue();
@@ -177,6 +182,11 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 	}
 
 	@Override
+	public void noPrecondition() {
+		preconditionAchieved = true;
+	}
+
+	@Override
 	public void assertPrecondition(FamilyRegister source, PersonRegister target) {
 		// Create models in database
 		IEdit<FamilyRegister> sourceEdit = new Edit<>();
@@ -237,24 +247,31 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 
 		sourceRegister = source;
 		targetRegister = target;
+
+		preconditionAchieved = true;
 	}
 
 	@Override
 	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEdit,
 			Supplier<IEdit<PersonRegister>> targetEdit) {
-		createDeltasInDatabase(sourceEdit, targetEdit, (builder) -> {}, (builder) -> {});
-
-		try {
-			if (configurator != null) {
-				var mi = new F2P_MI(Optional.of(configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD)),
-						Optional.of(configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW)));
-				mi.runModelIntegration();
-			} else {
-				var mi = new F2P_MI(Optional.empty(), Optional.empty());
-				mi.runModelIntegration();
+		if (preconditionAchieved) {
+			createDeltasInDatabase(sourceEdit, targetEdit, //
+					(builder) -> {
+					}, //
+					(builder) -> {
+					});
+			try {
+				if (configurator != null) {
+					var mi = new F2P_MI(Optional.of(configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD)),
+							Optional.of(configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW)));
+					mi.runModelIntegration();
+				} else {
+					var mi = new F2P_MI(Optional.empty(), Optional.empty());
+					mi.runModelIntegration();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -469,6 +486,12 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 						var mask = rule.mask();
 						mask.addParameter(rule._param__bday,
 								LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(ca.getNewValue())));
+						mask.addParameter(rule._param__id, ca.getNode().hashCode());
+						rule.apply(mask, mask);
+					} else if (ca.getAttribute().equals(PersonsPackage.Literals.PERSON__NAME)) {
+						var rule = personsAPI.getRule_ChangeName();
+						var mask = rule.mask();
+						mask.addParameter(rule._param__name, ca.getNewValue());
 						mask.addParameter(rule._param__id, ca.getNode().hashCode());
 						rule.apply(mask, mask);
 					} else {

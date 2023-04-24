@@ -204,8 +204,15 @@ rule deleteFamilyFatherEdge -> matchFamilyMemberEdgeForDeletion {
 }
 
 rule changeNameOfFamily {
+	r:FamilyRegister {
+		-families->family {
+			~_cr_ := true
+		}
+	}
+	
 	family: Family {
 		.id : <id>
 		.name := <name>
+		._cr_ := true
 	}	
 }

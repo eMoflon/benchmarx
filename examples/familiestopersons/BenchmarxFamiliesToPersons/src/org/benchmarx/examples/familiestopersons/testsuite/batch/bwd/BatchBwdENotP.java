@@ -23,7 +23,7 @@ public class BatchBwdENotP extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testCreateMalePersonAsSon() {
-		// No precondition!
+		tool.noPrecondition();
 		// ---------------------------------
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
@@ -41,7 +41,7 @@ public class BatchBwdENotP extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testCreateFamilyMembersInExistingFamilyAsChildren() {
-		// No precondition!
+		tool.noPrecondition();
 		// ---------------------------------
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
@@ -65,7 +65,7 @@ public class BatchBwdENotP extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testCreateDuplicateFamilyMembersInExistingFamilyAsChildren() {
-		// No precondition!
+		tool.noPrecondition();
 		// ---------------------------------
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);

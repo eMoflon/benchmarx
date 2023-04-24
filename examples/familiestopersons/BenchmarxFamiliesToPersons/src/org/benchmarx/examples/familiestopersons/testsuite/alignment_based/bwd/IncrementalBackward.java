@@ -235,7 +235,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	 */
 	@Test
 	public void testStability() {
-		// No precondition!
+		tool.noPrecondition();
 		// ---------------------------------
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
@@ -253,7 +253,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 
 	@Test
 	public void testHippocraticness() {
-		// No precondition!
+		tool.noPrecondition();
 		// ---------------------------------
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
