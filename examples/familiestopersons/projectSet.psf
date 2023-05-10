@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <psf version="2.0">
 <provider id="org.eclipse.egit.core.GitProvider">
-<project reference="1.0,https://github.com/eMoflon/benchmarx.git,master,core/Benchmarx"/>
-<project reference="1.0,https://github.com/eMoflon/benchmarx.git,master,examples/familiestopersons/BenchmarxFamiliesToPersons"/>
-<project reference="1.0,https://github.com/eMoflon/benchmarx.git,master,examples/familiestopersons/metamodels/Families"/>
-<project reference="1.0,https://github.com/eMoflon/benchmarx.git,master,examples/familiestopersons/metamodels/Persons"/>
+<project reference="1.0,https://github.com/eMoflon/benchmarx.git,main,core/Benchmarx"/>
+<project reference="1.0,https://github.com/eMoflon/benchmarx.git,main,examples/familiestopersons/BenchmarxFamiliesToPersons"/>
+<project reference="1.0,https://github.com/eMoflon/benchmarx.git,main,examples/familiestopersons/metamodels/Families"/>
+<project reference="1.0,https://github.com/eMoflon/benchmarx.git,main,examples/familiestopersons/metamodels/Persons"/>
 </provider>
 </psf>
