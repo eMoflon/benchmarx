@@ -12,9 +12,10 @@ We have a plug and play (via remote desktop) Share virtual machine available fro
 3.  Start Eclipse in a workspace of your choice and install Xtend (e.g., using `Help/Eclipse market place`). Restart and import the PSF file (`Import/Team/Team Project Set`) in the benchmark example folder you're interested in.  As an example, for **BenchmarxFamiliesToPersons** this would be (`benchmarx/examples/familiestopersons/projectSet.psf`).  If your workspace does not compile then please create an issue for us.
 For all examples, make sure you switch to `UTF 8` as encoding for your Eclipse workspace (`Window/Preferences/General/Workspace/Text file encoding`).
 4.  Choose the tools you want to execute by appropriately manipulating (replace with your benchmark example) `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/testsuite/FamiliesToPersonsTestCase.java/tools()`.
-5.  (Optional) Some bx tools (including BiGUL and NMF) are commented out per default as they require some additional setup.  See the referenced READMEs in the `FamiliesToPersonsTestCase.java/tools()` for the necessary steps.
+5.  (Optional) Some bx tools (including BiGUL and NMF) are commented out per default as they require some additional setup.  See the referenced READMEs in the `FamiliesToPersonsTestCase.java/tools()` for the necessary steps.  As of 10.05.2023, FunnyQT no longer works, probably due to compatibility reasons with the current Java version.
 6.  Choose the project **BenchmarxFamiliesToPersons** and select "Run As/JUnit Test" to execute the benchmarx "Families to Persons" for all tools chosen in Step 5 (replace with your benchmark example).
 7.  You can compare your results with `/BenchmarxFamiliesToPersons/results/TestResults.xlsx`.
+8.  For scalability tests, you can edit and execute `/BenchmarxFamiliesToPersons/src/org/benchmarx/examples/familiestopersons/testsuite/scalability/ScalabilityMeasurements.java` as required.  The referenced tools should of course be setup and working as expected in Step 4/5/6. 
 
 
 ## How to extend the benchmarx by adding a new implementation (and/or new test cases!)
