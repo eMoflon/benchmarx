@@ -193,25 +193,48 @@ version\footnote{\url{https://docs.docker.com/compose/compose-file/}}).
 
 It stands to reason that DevOps model-driven approaches would often aim to
 generate at least some of these configuration files from the high-level
-descriptions of the intended service compositions. Most likely, the high-level
-descriptions will only model the subset of the capabilities of the underlying
-tools that is relevant for their abstractions, as trying to capture all
-capabilities would overcomplicate the models and make them more brittle to minor
-changes in the underlying configuration file formats. From this limitation, it
-follows that users would typically manually customise the generated
-configuration files to cover the aspects not described by the high-level model.
-Users may later want to update the high-level model from the configuration file,
-to use it for visualisation (e.g.\ for onboarding new developers) or for
-reorganising the system in a more approachable notation with domain-specific
-validation rules.
+descriptions of the intended service compositions. Piedade et al.\ observed a
+significant reduction in development effort with a visual notation for
+developing Docker Compose container orchestrations~\cite{piedade_visual_2022},
+while also noticing that several of the existing visual tools for Docker Compose
+lacked support for certain Docker Compose concepts (e.g.\ DockStation did not
+support specifying networks). Their high-level descriptions will only model the
+subset of the capabilities of the underlying tools that is relevant for their
+abstractions, as trying to capture all capabilities would overcomplicate the
+models and make them more brittle to minor changes in the underlying
+configuration file formats. From this limitation, it follows that users would
+typically manually customise the generated configuration files to cover the
+aspects not described by the high-level model. Users may later want to update
+the high-level model from the configuration file, to use it for visualisation
+(e.g.\ for onboarding new developers) or for reorganising the system in a more
+approachable notation with domain-specific validation rules.
 
-This paper proposes a case based on the above scenario, focusing on container
-orchestration with Docker Compose. A high-level graphical domain-specific model
-(implemented with Sirius) is transformed into a Docker Compose YAML file, which
-can be customised by the user using a plain text editor. The high-level model
-can be updated from the YAML file at any time. It should also be possible to
-edit the high-level model and push the changes to the YAML file, while retaining
-any elements that were not part of the high-level graphical DSML.
+It is worth noting that there are some agreed-upon specifications in cloud
+computing that have been adapted into model-driven approaches. Zalila et
+al.~\cite{zalila_model-driven_2019} proposed OCCIware Studio, a model-driven
+toolchain that formalises the concepts in the Open Cloud Computing Interface
+(OCCI, a unified RESTful protocol for cloud computing management) into an
+OCCIware Ecore metamodel, and provides a runtime component for design,
+deployment, execution, and supervision of cloud applications. Challita et
+al.\ later proposed TOSCA Studio~\cite{challita_model-based_2021}, also based on
+OCCIware, which provides a model-driven approach to design OASIS Topology and
+Orchestration Specification for Cloud Applications (TOSCA) descriptions: these
+are usually written in YAML and only describe the structure of cloud
+applications in a declarative manner, leaving the exact implementation up to the
+TOSCA-supporting cloud provider.
+OpenTOSCA\footnote{\url{https://www.opentosca.org/}} is an open-source
+end-to-end toolchain for deploying and managing cloud applications, which
+includes Eclipse Winery, a web-based environment for visual modeling of TOSCA
+cloud application topologies (which generates TOSCA YAML descriptions).
+
+This paper proposes a case based on a scenario inspired by the findings of
+Piedade et al.~\cite{piedade_visual_2022}, focusing on container orchestration
+with Docker Compose. A high-level graphical domain-specific model (implemented
+with Sirius) is transformed into a Docker Compose YAML file, which can be
+customised by the user using a plain text editor. The high-level model can be
+updated from the YAML file at any time. It should also be possible to edit the
+high-level model and push the changes to the YAML file, while retaining any
+elements that were not part of the high-level graphical DSML.
 
 At an essential level, this case implies the definition of a bidirectional
 transformation (``bx'' from now on) between the high-level DSML and Docker
@@ -313,7 +336,7 @@ icon, labelled after their \feature{name}. Note that the \feature{replicas} of a
 \metaclass{Container} is not part of its graphical syntax, but can be edited
 through the Properties view of the Sirius editor.
 
-\lstinputlisting[language=yaml,columns=flexible,float,caption={Example YAML from Figure~\ref{fig:containers-model}},label=lst:yaml-example]{listings/MyContainers.yml}
+\lstinputlisting[language=yaml,columns=flexible,float,caption={Example YAML from Figure~\ref{fig:containers-model}},label=lst:yaml-example,frame=tb]{listings/MyContainers.yml}
 
 The MiniYAML language does not have an explicitly defined concrete syntax: while
 the case artifact includes a tree-based editor autogenerated from the metamodel,
@@ -496,6 +519,18 @@ scalability of the solutions to larger models.
 
 Solutions will be evaluated across the following criteria:
 
+\begin{lstlisting}[language=Java,float,caption={Sample code for measuring AST/ASG side of transformation rules modelled in EMF},label=lst:ast-size-emf,columns=fullflexible,frame=tb]
+public int countNodes(Resource resource) {
+  final TreeIterator<EObject> it = resource.getAllContents();
+  int size = 0;
+  while (it.hasNext()) {
+    it.next();
+    ++size;
+  }
+  return size;
+}
+\end{lstlisting}
+
 \begin{enumerate}
 \item \emph{Correctness}: following the approach from the authors of the
   Benchmarx benchmark~\cite{anjorin_benchmarking_2020}, test cases will check
@@ -506,18 +541,51 @@ Solutions will be evaluated across the following criteria:
   passed. The test cases will cover various scenarios, e.g.\ an initial
   ``batch'' execution in either direction, or the update of the dependent side
   after a certain change in the master side.
-
+  
 \item \emph{Conciseness}: a more concise description of the transformation
   should in principle be more maintainable. Since the statement structure can be
-  significantly different across language, this criteria will be measured as the
-  number of words in the transformation rules, ignoring comments. This is the
-  same approach that was followed in the Families to Persons study cited above.
+  significantly different across languages, the metric will be ``number of nodes
+  in the transformation's abstract syntax, ignoring comments''. This differs
+  from the approach that was followed in the Benchmarx ``Families to Persons''
+  study that is the base of this case~\cite{anjorin_families_2017}, which
+  counted words while ignoring comments. This is to accommodate both textual and
+  graphical transformation notations (e.g.\ triple graph grammars). For
+  instance, if the transformation was implemented as an Eclipse Modeling
+  Framework (EMF) model, the metric would be equivalent to the code in
+  Listing~\ref{lst:ast-size-emf}.
 
-  For reference, the reference implementation includes a \file{count-words.sh}
+  The case includes an \file{ast-counter} Maven project which can count the
+  number of AST nodes in Java code and in the Epsilon languages used for the
+  reference solution. Participants are encouraged to extend this project to
+  measure their source languages (e.g.\ by counting the number of elements in an
+  XMI-serialised model), by adding the relevant implementations of the
+  \javaclass{IFileMeasurer} interface and associating it to the appropriate
+  extension inside the static block of the \javaclass{FolderMeasurer} class. It
+  is also acceptable to produce these AST measurements separately as part of
+  their solution (e.g.\ if no JVM-friendly parsers exist for a transformation
+  language).
+
+  The reference implementation includes an Eclipse launch configuration that
+  measures the number of AST nodes in its Java and Epsilon source code.
+  Participants are encouraged to duplicate this launch configuration for their
+  own solutions, providing it with the root folder of their transformation
+  source code.
+
+  Note that the reference implementation also includes a \file{count-words.sh}
   script which uses the C preprocessor to remove comments for Epsilon / Java
-  programs. In its current version, the reference implementation uses 749 words
-  in its Java code, 480 words in ETL, 162 words in EML, 81 words in EOL and 84
-  words in ECL, for a total of 1556 words.
+  programs. This is only to emulate what the old approach (based on words) would
+  have produced, for the sake of comparison: it will not be used for the
+  contest, as results may not be directly comparable. As an example, these are
+  the results of the two measurement methods at the time of writing for the
+  reference implementation:
+
+  \begin{itemize}
+  \item \emph{AST node counting}: 86 nodes in ECL, 241 nodes in EML, 92 nodes in
+    EOL, 805 nodes in ETL, and 1772 nodes in Java, for a total of 2996 nodes.
+
+  \item \emph{Word counting}: 84 words in ECL, 162 words in EML, 81 words in
+    EOL, 485 words in ETL, and 809 words in Java, for a total of 1621 words.
+  \end{itemize}
 
 \item \emph{Least Change}: beyond just correctness, the transformations should
   avoid making any unnecessary changes that do not impact the consistency of the
@@ -530,8 +598,9 @@ Solutions will be evaluated across the following criteria:
   To measure this, the test suite has been designed to be run in two modes: 1)
   requiring that if the YAML model already exists, the relative order of map
   entries and list items is preserved, and 2) waiving this requirement. Mode 1
-  is intended for evaluating ``least change'', whereas Mode 2 is for evaluating
-  general correctness of the transformation.
+  is intended for evaluating ``least change'' (in terms of \% of tests passed in
+  this mode), whereas Mode 2 is for evaluating general correctness of the
+  transformation.
 
 \item \emph{Scalability}: the transformations should be able to scale to models
   with increasing numbers of containers, volumes, and images. The case materials
@@ -547,7 +616,7 @@ Solutions will be evaluated across the following criteria:
 The prizes will be based on a combination of the three criteria above. The
 ``Most Complete'' prize will go to the solution that passes the most tests
 (resolving ties using the ``Least Change'' criterion). The ``Most Concise''
-prize will go to the solution that requires the least words, while still passing
+prize will go to the solution that requires the least nodes, while still passing
 the correctness tests for adding and deleting elements (the tests for renaming
 elements will not be considered). The ``Most Scalable'' prize will go to the
 solution with the lowest execution times, which is still correct in the batch
@@ -556,7 +625,7 @@ volume mounts, and images.
 
 If there are enough solutions, an overall ranking can be devised by adding their
 rankings in each category, and sorting in ascending order. Ties will be resolved
-by soring in ascending order of standard deviation (therefore, a tool that is
+by sorting in ascending order of standard deviation (therefore, a tool that is
 2nd/2nd would be ranked above a tool that is 1st/3rd). Further ties will be
 resolved by the case author and TTC organizers.
 
