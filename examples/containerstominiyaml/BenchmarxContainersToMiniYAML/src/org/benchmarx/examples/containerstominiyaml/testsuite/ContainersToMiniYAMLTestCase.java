@@ -9,6 +9,7 @@ import org.benchmarx.examples.containerstominiyaml.comparators.MiniYAMLExactComp
 import org.benchmarx.examples.containerstominiyaml.helpers.CompositionsHelper;
 import org.benchmarx.examples.containerstominiyaml.helpers.MiniYAMLHelper;
 import org.benchmarx.examples.containerstominiyaml.implementations.epsilon.EpsilonContainersToMiniYAML;
+import org.benchmarx.examples.containerstominiyaml.implementations.nmf.NMFContainersToMiniYaml;
 import org.benchmarx.util.BenchmarxUtil;
 import org.junit.After;
 import org.junit.Before;
@@ -52,7 +53,9 @@ public abstract class ContainersToMiniYAMLTestCase {
 	public static Collection<BXTool<Composition, miniyaml.Map, Decisions>> tools() {
 		return Arrays.asList(
 				new EpsilonContainersToMiniYAML("Epsilon (ignore order)", new MiniYAMLComparator()), // known to fail IncrementalForward::renameContainer
-				new EpsilonContainersToMiniYAML("Epsilon (exact order)", new MiniYAMLExactComparator())
+				new EpsilonContainersToMiniYAML("Epsilon (exact order)", new MiniYAMLExactComparator()),
+				new NMFContainersToMiniYaml("NMF (ignore order)", new MiniYAMLComparator()),
+				new NMFContainersToMiniYaml("NMF (exact order)", new MiniYAMLExactComparator())
 		);
 	}
 

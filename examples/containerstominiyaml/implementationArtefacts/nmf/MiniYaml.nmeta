@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<nmeta:Namespace xmi:version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Uri="http://york.ac.uk/ttc/miniyaml/1.0.0" Prefix="c" Name="miniyaml" xmlns:xmi="http://www.omg.org/XMI" xmlns:nmeta="http://nmf.codeplex.com/nmeta/">
+  <Types xsi:type="nmeta:Class" IsAbstract="true" Name="Value" />
+  <Types xsi:type="nmeta:Class" BaseTypes="#//Value" Name="Map">
+    <References IsContainment="true" ReferenceType="nmeta:Class #//MapEntry" IsOrdered="true" IsUnique="true" UpperBound="-1" Name="entries" />
+  </Types>
+  <Types xsi:type="nmeta:Class" Name="MapEntry">
+    <References IsContainment="true" ReferenceType="nmeta:Class #//Value" IsOrdered="true" IsUnique="true" Name="value" />
+    <Attributes IsOrdered="true" IsUnique="true" Type="nmeta:PrimitiveType http://nmf.codeplex.com/nmeta/#//String" Name="key" />
+  </Types>
+  <Types xsi:type="nmeta:Class" BaseTypes="#//Value" Name="List">
+    <References IsContainment="true" ReferenceType="nmeta:Class #//Value" IsOrdered="true" IsUnique="true" UpperBound="-1" Name="values" />
+  </Types>
+  <Types xsi:type="nmeta:Class" BaseTypes="#//Value" Name="Scalar">
+    <Attributes IsOrdered="true" IsUnique="true" Type="nmeta:PrimitiveType http://nmf.codeplex.com/nmeta/#//String" Name="value" />
+  </Types>
+</nmeta:Namespace>

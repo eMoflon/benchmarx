@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<nmeta:Namespace xmi:version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Uri="http://york.ac.uk/ttc/containers/1.0.0" Prefix="c" Name="containers" xmlns:xmi="http://www.omg.org/XMI" xmlns:nmeta="http://nmf.codeplex.com/nmeta/">
+  <Types xsi:type="nmeta:Class" Name="Composition">
+    <References IsContainment="true" ReferenceType="nmeta:Class #//Node" IsOrdered="true" IsUnique="true" UpperBound="-1" Name="nodes" />
+  </Types>
+  <Types xsi:type="nmeta:Class" IsAbstract="true" Name="Node" />
+  <Types xsi:type="nmeta:Class" IsAbstract="true" IdentifierScope="Global" Identifier="#//NamedElement/name" Name="NamedElement">
+    <Attributes IsOrdered="true" IsUnique="true" Type="nmeta:PrimitiveType http://nmf.codeplex.com/nmeta/#//String" Name="name" />
+  </Types>
+  <Types xsi:type="nmeta:Class" BaseTypes="#//Node" Name="Image">
+    <Attributes IsOrdered="true" IsUnique="true" Type="nmeta:PrimitiveType http://nmf.codeplex.com/nmeta/#//String" Name="image" />
+  </Types>
+  <Types xsi:type="nmeta:Class" BaseTypes="#//Node #//NamedElement" Name="Container">
+    <References ReferenceType="nmeta:Class #//Image" IsOrdered="true" IsUnique="true" Name="image" />
+    <References ReferenceType="nmeta:Class #//Container" IsOrdered="true" IsUnique="true" UpperBound="-1" Name="dependsOn" />
+    <References IsContainment="true" ReferenceType="nmeta:Class #//VolumeMount" IsOrdered="true" IsUnique="true" UpperBound="-1" Name="volumeMounts" />
+    <Attributes DefaultValue="1" IsOrdered="true" IsUnique="true" Type="nmeta:PrimitiveType http://nmf.codeplex.com/nmeta/#//Integer" Name="replicas" />
+  </Types>
+  <Types xsi:type="nmeta:Class" Name="VolumeMount">
+    <References ReferenceType="nmeta:Class #//Volume" IsOrdered="true" IsUnique="true" Name="volume" />
+    <Attributes IsOrdered="true" IsUnique="true" Type="nmeta:PrimitiveType http://nmf.codeplex.com/nmeta/#//String" Name="path" />
+  </Types>
+  <Types xsi:type="nmeta:Class" BaseTypes="#//Node #//NamedElement" Name="Volume" />
+</nmeta:Namespace>

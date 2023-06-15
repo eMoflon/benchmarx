@@ -1,4 +1,4 @@
-package org.benchmarx.examples.familiestopersons.implementations.nmf;
+package org.benchmarx.examples.containerstominiyaml.implementations.nmf;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,40 +8,64 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.util.function.Supplier;
+import java.util.function.Consumer;
 
-import org.benchmarx.BXTool;
-import org.benchmarx.config.Configurator;
-import org.benchmarx.edit.IEdit;
-import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
-import org.benchmarx.families.core.FamiliesComparator;
-import org.benchmarx.persons.core.PersonsComparator;
+import org.benchmarx.Configurator;
+import org.benchmarx.emf.BXToolForEMF;
+import org.benchmarx.emf.Comparator;
+import org.benchmarx.examples.containerstominiyaml.comparators.CompositionComparator;
+import org.benchmarx.examples.containerstominiyaml.testsuite.Decisions;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.junit.Assert;
+import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 
-import Families.FamiliesFactory;
-import Families.FamilyRegister;
-import Persons.PersonRegister;
-import Persons.PersonsFactory;
+import containers.Composition;
+import containers.ContainersFactory;
 
 /**
  * The NMF solution basically starts a co-program and communicates with it through stdin/stdout plus temporary files
  * 
  * @author Georg Hinkel
  */
-public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, PersonRegister, Decisions> {
-	private static final String NMF_EXE = "../implementationArtefacts/NMF/bin/NMFSolution.exe";
-	private FamilyRegister src;
-	private PersonRegister trg;
-	private FamiliesComparator srcHelper = new FamiliesComparator();
-	private PersonsComparator trgHelper = new PersonsComparator();
+public class NMFContainersToMiniYaml implements BXTool<Composition, miniyaml.Map, Decisions> {
+	private static final String NMF_EXE = "../implementationArtefacts/nmf/bin/NMFSolution.dll";
+    
+	private final String name;
+	private Resource source;
+	private Resource target;
+
+	private Configurator<Decisions> conf;
+	private Configurator<Decisions> defaultConf;
+	
+	private static final String RESULTPATH = "results/nmf";
+	
+	public NMFContainersToMiniYaml(String name, Comparator<miniyaml.Map> yamlComparator) {
+		super(new CompositionComparator(), yamlComparator);
+		this.name = name;
+	}
+	
+	@Override
+	public String getName() {
+		return name;
+    }
+
+	private static final ResourceSet createResourceSet() {
+		ResourceSet rs = new ResourceSetImpl();
+		rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
+			Resource.Factory.Registry.DEFAULT_EXTENSION,
+			new XMIResourceFactoryImpl()
+		);
+		return rs;
+	}
 	
 	private BufferedReader reader;
 	private BufferedWriter writer;
@@ -52,36 +76,46 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 	private Configurator<Decisions> configurator;
 	
 	@Override
-	public String getName() {
-		return "NMF";
-	}
-	
-	@Override
 	public void initiateSynchronisationDialogue() {
-		src = FamiliesFactory.eINSTANCE.createFamilyRegister();
-		trg = PersonsFactory.eINSTANCE.createPersonRegister();
-		
-		configurator = new Configurator<Decisions>();
+        // Fix default preferences (which can be overwritten)
+		setConfigurator(new Configurator<Decisions>());		
+		File fTempSource = File.createTempFile("sourceModel", ".containers");
+		fTempSource.deleteOnExit();
+		source = createResourceSet().createResource(URI.createFileURI(fTempSource.getPath()));
+
+		File fTempTarget = File.createTempFile("targetModel", ".miniyaml");
+		fTempTarget.deleteOnExit();
+		target = createResourceSet().createResource(URI.createFileURI(fTempTarget.getPath()));
+
+		Composition compositionRoot = ContainersFactory.eINSTANCE.createComposition();
+		source.getContents().add(compositionRoot);
+        clearAdapters(source);
+        clearAdapters(target);
+
+		// Fix default preferences (which can be overwritten)
+		setConfigurator(new Configurator<Decisions>());
 		runNMF();
 		
 		propagation = 0;
 		includingSerialization = 0;
 	}
 
+	private void clearAdapters(Resource r) {
+		r.eAdapters().clear();
+		for (TreeIterator<EObject> it = r.getAllContents(); it.hasNext(); ) {
+			it.next().eAdapters().clear();
+		}
+	}
+
 	@Override
-	public void performAndPropagateTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
+	public void performAndPropagateTargetEdit(Consumer<miniyaml.Map> edit) {
 		long start = System.nanoTime();
-		setUpdatePolicy();
-		ChangeRecorder recorder = new ChangeRecorder();
-<<<<<<< HEAD
-		recorder.observePersonsRegister(trg);
-		edit.get();
-=======
+        ChangeRecorder recorder = new ChangeRecorder();
+        var trg = getTargetModel();
 		recorder.observeMiniYaml(trg);
 		edit.accept(trg);
->>>>>>> 4033f86 (Draft of TTC2023 containers to MiniYAML solution)
 		long actual = propagate(recorder);
-		src = readModel("SaveFamilies");
+		src = readModel("SaveContainer");
 		
 		long end = System.nanoTime();
 		
@@ -91,6 +125,16 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 	
 	public long getRunningTimeInNanoSeconds() {
 		return propagation;
+	}
+
+	@Override
+	public Composition getSourceModel() {
+		return (Composition) source.getContents().get(0);
+	} 
+
+	@Override
+	public miniyaml.Map getTargetModel() {
+		return (miniyaml.Map) target.getContents().get(0);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -114,24 +158,19 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 	}
 
 	@Override
-	public void performAndPropagateSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
+	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
 		long start = System.nanoTime();
-		setUpdatePolicy();
-		ChangeRecorder recorder = new ChangeRecorder();
-		recorder.observeFamilyRegister(src);
-		edit.get();
+        ChangeRecorder recorder = new ChangeRecorder();
+        var src = getSourceModel();
+		recorder.observeComposition(src);
+		edit.accept(src);
 		long actual = propagate(recorder);
-		trg = readModel("SavePersons");
+		trg = readModel("SaveYaml");
 		
 		long end = System.nanoTime();
 		
 		propagation += actual;
 		includingSerialization += (end - start);
-	}
-	
-	@Override
-	public void assertPostcondition(FamilyRegister fr, PersonRegister pr) {
-		this.assertPrecondition(fr, pr);
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -150,15 +189,11 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 			Assert.fail();
 		}
 	}
-	
-	private void normaliseAndCompare(String expected, String actual) {
-		Assert.assertEquals(expected.replaceAll("\\s+",""), actual.replaceAll("\\s+",""));
-	}
 
 	private void runNMF() {
 		try {
 			File pathToExecutable = new File(NMF_EXE);
-			ProcessBuilder processBuilder = new ProcessBuilder(pathToExecutable.getAbsoluteFile().toString());
+			ProcessBuilder processBuilder = new ProcessBuilder("dotnet", pathToExecutable.getAbsoluteFile().toString());
 			processBuilder.redirectErrorStream(true);
 			Process process = processBuilder.start();
 			
@@ -172,41 +207,6 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 			e.printStackTrace();
 			Assert.fail();
 		}
-	}
-
-	private void setUpdatePolicy() {
-		try {
-			boolean b = configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
-			boolean e = configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
-			
-			writer.write("SetPreferExistingFamilies ");
-			writer.write(Boolean.toString(e));
-			writer.write("\n");
-			writer.flush();
-			reader.readLine();
-			writer.write("SetPreferCreateParents ");
-			writer.write(Boolean.toString(b));
-			writer.write("\n");
-			writer.flush();
-			reader.readLine();
-		} catch (IllegalArgumentException e) {
-			// swallow this exception. no decision made yet
-		} catch (Exception e) {
-			e.printStackTrace();
-			Assert.fail();
-		}
-	}
-
-	@Override
-	public void assertPrecondition(FamilyRegister source, PersonRegister target) {
-		String resultSrc = srcHelper.familyToString(readModel("SaveFamilies"));
-		String resultTrg = trgHelper.personsToString(readModel("SavePersons"));
-		
-		String expectedFamilyRegister = srcHelper.familyToString(source);
-		String expectedPersonsRegister = trgHelper.personsToString(target);
-		
-		normaliseAndCompare(expectedFamilyRegister, resultSrc);
-		normaliseAndCompare(expectedPersonsRegister, resultTrg);
 	}
 	
 	private <M> M readModel(String command) {
@@ -251,34 +251,37 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 		this.configurator = configurator;
 	}	
 	
+	@Override
 	public void saveModels(String name) {
+		ResourceSet set = new ResourceSetImpl();
+		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
+		URI srcURI = URI.createFileURI(RESULTPATH + "/" + name + "Composition.xmi");
+		URI trgURI = URI.createFileURI(RESULTPATH + "/" + name + "MiniYAML.xmi");
+		Resource resSource = set.createResource(srcURI);
+		Resource resTarget = set.createResource(trgURI);
 		
+		EObject colSource = EcoreUtil.copy(getSourceModel());
+		EObject colTarget = EcoreUtil.copy(getTargetModel());
+		
+		resSource.getContents().add(colSource);
+		resTarget.getContents().add(colTarget);
+		
+		try {
+			resSource.save(null);
+			resTarget.save(null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}			
 	}
 	
 	@Override
-	public void performIdleTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
+	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
 		this.performAndPropagateTargetEdit(edit);
 	}
 
 	@Override
-	public void performIdleSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
+	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
 		this.performAndPropagateSourceEdit(edit);
-	}
-
-	@Override
-	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEdit,
-			Supplier<IEdit<PersonRegister>> targetEdit) {
-		throw new UnsupportedOperationException("Concurrent edits not supported.");		
-	}
-
-	@Override
-	public FamilyRegister getSourceModel() {
-		return src;
-	}
-
-	@Override
-	public PersonRegister getTargetModel() {
-		return trg;
 	}
 }
 
