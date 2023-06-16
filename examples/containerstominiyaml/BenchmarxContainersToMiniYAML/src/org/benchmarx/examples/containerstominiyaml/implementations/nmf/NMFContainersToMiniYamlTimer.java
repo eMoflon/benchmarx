@@ -6,15 +6,15 @@ import org.benchmarx.util.BXToolTimer;
 
 import containers.Composition;
 
-public class NMFFamiliesToPersonsTimer extends BXToolTimer<Composition, miniyaml.Map, Decisions> {
+public class NMFContainersToMiniYamlTimer extends BXToolTimer<Composition, miniyaml.Map, Decisions> {
 
-	public NMFFamiliesToPersonsTimer(BXTool<Composition, miniyaml.Map, Decisions> tool, int repeat) {
+	public NMFContainersToMiniYamlTimer(BXTool<Composition, miniyaml.Map, Decisions> tool, int repeat) {
 		super(tool, repeat);
 	}
 
 	@Override
 	protected long timeAction(Runnable action) {
-		NMFFamiliesToPersonsIncremental nmf = (NMFFamiliesToPersonsIncremental)tool;
+		NMFContainersToMiniYaml nmf = (NMFContainersToMiniYaml)tool;
 		
 		long start = nmf.getRunningTimeInNanoSeconds();
 		try {

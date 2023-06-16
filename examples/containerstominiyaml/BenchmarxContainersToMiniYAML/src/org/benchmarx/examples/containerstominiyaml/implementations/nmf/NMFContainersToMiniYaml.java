@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
+import org.junit.Assert;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
@@ -36,7 +36,7 @@ import containers.ContainersFactory;
  * 
  * @author Georg Hinkel
  */
-public class NMFContainersToMiniYaml implements BXTool<Composition, miniyaml.Map, Decisions> {
+public class NMFContainersToMiniYaml extends BXToolForEMF<Composition, miniyaml.Map, Decisions> {
 	private static final String NMF_EXE = "../implementationArtefacts/nmf/bin/NMFSolution.dll";
     
 	private final String name;
@@ -77,6 +77,7 @@ public class NMFContainersToMiniYaml implements BXTool<Composition, miniyaml.Map
 	
 	@Override
 	public void initiateSynchronisationDialogue() {
+		try {
         // Fix default preferences (which can be overwritten)
 		setConfigurator(new Configurator<Decisions>());		
 		File fTempSource = File.createTempFile("sourceModel", ".containers");
@@ -98,6 +99,10 @@ public class NMFContainersToMiniYaml implements BXTool<Composition, miniyaml.Map
 		
 		propagation = 0;
 		includingSerialization = 0;
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	private void clearAdapters(Resource r) {
@@ -111,11 +116,11 @@ public class NMFContainersToMiniYaml implements BXTool<Composition, miniyaml.Map
 	public void performAndPropagateTargetEdit(Consumer<miniyaml.Map> edit) {
 		long start = System.nanoTime();
         ChangeRecorder recorder = new ChangeRecorder();
-        var trg = getTargetModel();
+        miniyaml.Map trg = getTargetModel();
 		recorder.observeMiniYaml(trg);
 		edit.accept(trg);
 		long actual = propagate(recorder);
-		src = readModel("SaveContainer");
+		source = readModel("SaveContainer");
 		
 		long end = System.nanoTime();
 		
@@ -158,14 +163,14 @@ public class NMFContainersToMiniYaml implements BXTool<Composition, miniyaml.Map
 	}
 
 	@Override
-	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
+	public void performAndPropagateSourceEdit(Consumer<Composition> edit) {
 		long start = System.nanoTime();
         ChangeRecorder recorder = new ChangeRecorder();
-        var src = getSourceModel();
+        Composition src = getSourceModel();
 		recorder.observeComposition(src);
 		edit.accept(src);
 		long actual = propagate(recorder);
-		trg = readModel("SaveYaml");
+		target = readModel("SaveYaml");
 		
 		long end = System.nanoTime();
 		
@@ -275,12 +280,12 @@ public class NMFContainersToMiniYaml implements BXTool<Composition, miniyaml.Map
 	}
 	
 	@Override
-	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
+	public void performIdleTargetEdit(Consumer<miniyaml.Map> edit) {
 		this.performAndPropagateTargetEdit(edit);
 	}
 
 	@Override
-	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
+	public void performIdleSourceEdit(Consumer<Composition> edit) {
 		this.performAndPropagateSourceEdit(edit);
 	}
 }
