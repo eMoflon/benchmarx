@@ -18,9 +18,6 @@
           <entries key="restart">
             <value xsi:type="c:Scalar" value="always"/>
           </entries>
-          <entries key="replicas">
-            <value xsi:type="c:Scalar" value="2"/>
-          </entries>
         </value>
       </entries>
       <entries key="mariadb">
