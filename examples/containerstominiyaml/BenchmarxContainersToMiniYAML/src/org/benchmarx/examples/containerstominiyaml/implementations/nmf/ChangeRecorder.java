@@ -3,6 +3,7 @@ package org.benchmarx.examples.containerstominiyaml.implementations.nmf;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EAttribute;
@@ -84,7 +85,7 @@ class ChangeRecorder extends org.eclipse.emf.ecore.util.EContentAdapter {
         	EReference reference = (EReference)feature;
         	if (reference.getUpperBound() == 1) {
         		if (reference.isContainment()) {
-        			this.WriteStartChange("CompositionChange", feature);
+        			this.WriteStartChange("CompositionPropertyChange", feature);
             		this.WriteElement(affectedElement, "affectedElement");
             		if (n.getOldValue() != null) {
             			this.WriteElement((EObject)n.getOldValue(), "oldValue");
@@ -93,10 +94,10 @@ class ChangeRecorder extends org.eclipse.emf.ecore.util.EContentAdapter {
         			if (n.getNewValue() != null) {
             			this.WriteFullElement((EObject)n.getNewValue(), "newValue");
             		}
-        			this.WriteEndChange("CompositionChange");
+        			this.WriteEndChange("CompositionPropertyChange");
         		} else {
         			if (reference.isContainer()) return;
-        			this.WriteStartChange("AssociationChange", feature);
+        			this.WriteStartChange("AssociationPropertyChange", feature);
             		if (n.getNewValue() != null) {
             			this.WriteElement((EObject)n.getNewValue(), "newValue");
             		}
@@ -173,7 +174,7 @@ class ChangeRecorder extends org.eclipse.emf.ecore.util.EContentAdapter {
         	}
         } else {
         	if (feature.getUpperBound() == 1) {
-        		this.WriteStartChange("AttributeChange", feature);
+        		this.WriteStartChange("AttributePropertyChange", feature);
         		if (n.getNewStringValue() != null) {
         			this.WriteAttribute("newValue", toCompatibleString(n.getNewValue()));
         		}
@@ -214,11 +215,16 @@ class ChangeRecorder extends org.eclipse.emf.ecore.util.EContentAdapter {
     }
     
     private void RegisterNewElement(EObject element, int changeNumber, String property) {
-    	String uri = "#//changes." + Integer.toString(changeNumber) + "/" + property;
+    	String uri = "#//@changes." + Integer.toString(changeNumber) + "/" + property;
     	uris.put(element, uri);
     }
     
     private void WriteFullElement(EObject element, String type) {
+    	this.WriteFullElement(element, type, "@" + type);
+    }
+    
+    @SuppressWarnings("unchecked")
+	private void WriteFullElement(EObject element, String type, String path) {
     	buffer.append("\t\t<");
     	buffer.append(type);
     	buffer.append(" xsi:type=\"");
@@ -238,9 +244,34 @@ class ChangeRecorder extends org.eclipse.emf.ecore.util.EContentAdapter {
     			WriteAttribute(att.getName(), toCompatibleString(value));
     		}
     	}
-    	buffer.append(" />\n");
-    	
-    	this.RegisterNewElement(element, this.changeCounter, type);
+    	for (EReference re : eClass.getEAllReferences()) {
+    		if (element.eIsSet(re)) {
+    			EObject value = (EObject) element.eGet(re);
+    			if (!re.isContainer() && !re.isContainment()) {
+    				this.WriteElement(value, re.getName());
+    			}
+    		}
+    	}
+    	buffer.append(">\n");
+    	for (EReference re : eClass.getEAllContainments()) {
+    		if (element.eIsSet(re)) {
+    			Object value = element.eGet(re);
+    			if (re.getUpperBound() == 1) {
+    				this.WriteFullElement((EObject)value, re.getName(), path + "/@" + re.getName());
+    			} else {
+    				List<EObject> list = (List<EObject>)value;
+    				int index = 0;
+    				for (EObject e : list) {
+    					this.WriteFullElement(e, re.getName(), path + "/@" + re.getName() + "." + index);
+    					index++;
+    				}
+    			}
+    		}
+    	}
+    	buffer.append("\t\t</");
+    	buffer.append(type);
+    	buffer.append(">\n");
+    	this.RegisterNewElement(element, this.changeCounter, path);
     }
 
 	private String toCompatibleString(Object value) {

@@ -20,8 +20,36 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NMF-Basics" Version="2.0.185" />
-    <PackageReference Include="NMF-Synchronizations" Version="2.0.185" />
+    <Reference Include="NMF.Collections">
+      <HintPath>..\..\..\..\..\NMF\Build\net6.0\NMF.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NMF.Expressions">
+      <HintPath>..\..\..\..\..\NMF\Build\net6.0\NMF.Expressions.dll</HintPath>
+    </Reference>
+    <Reference Include="NMF.Expressions.Linq">
+      <HintPath>..\..\..\..\..\NMF\Build\net6.0\NMF.Expressions.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="NMF.Expressions.Utilities">
+      <HintPath>..\..\..\..\..\NMF\Build\net6.0\NMF.Expressions.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="NMF.Models">
+      <HintPath>..\..\..\..\..\NMF\Build\net6.0\NMF.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="NMF.Serialization">
+      <HintPath>..\..\..\..\..\NMF\Build\net6.0\NMF.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="NMF.Synchronizations">
+      <HintPath>..\..\..\..\..\NMF\Build\net6.0\NMF.Synchronizations.dll</HintPath>
+    </Reference>
+    <Reference Include="NMF.Transformations">
+      <HintPath>..\..\..\..\..\NMF\Build\net6.0\NMF.Transformations.dll</HintPath>
+    </Reference>
+    <Reference Include="NMF.Transformations.Core">
+      <HintPath>..\..\..\..\..\NMF\Build\net6.0\NMF.Transformations.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NMF.Utilities">
+      <HintPath>..\..\..\..\..\NMF\Build\net6.0\NMF.Utilities.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

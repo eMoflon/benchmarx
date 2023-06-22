@@ -214,7 +214,7 @@ public class NMFContainersToMiniYaml extends BXToolForEMF<Composition, miniyaml.
 		}
 	}
 	
-	private <M> M readModel(String command) {
+	private Resource readModel(String command) {
 		try {
 			File tempFile = File.createTempFile("model", ".xmi");
 			writer.write(command);
@@ -223,7 +223,7 @@ public class NMFContainersToMiniYaml extends BXToolForEMF<Composition, miniyaml.
 			writer.write("\n");
 			writer.flush();
 			reader.readLine();
-			M result = loadModel(tempFile.getAbsolutePath());
+			Resource result = loadModel(tempFile.getAbsolutePath());
 			tempFile.delete();
 			return result;
 		} catch (IOException e) {
@@ -233,13 +233,13 @@ public class NMFContainersToMiniYaml extends BXToolForEMF<Composition, miniyaml.
 		}
 	}
 	
-	private <M> M loadModel(String path){
+	private Resource loadModel(String path){
 		ResourceSet resourceSet = new ResourceSetImpl();
 		return loadModel(path, resourceSet);
 	}
 	
 	@SuppressWarnings("unchecked")
-	private <M> M loadModel(String path, ResourceSet resourceSet) {
+	private Resource loadModel(String path, ResourceSet resourceSet) {
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 	      
 		Resource resource = resourceSet.createResource(URI.createFileURI(path));
@@ -248,7 +248,7 @@ public class NMFContainersToMiniYaml extends BXToolForEMF<Composition, miniyaml.
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return (M)resource.getContents().get(0);
+		return resource;
 	}
 
 	@Override

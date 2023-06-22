@@ -12,30 +12,50 @@ namespace nmf
 {
     internal static class YamlHelpers
     {
+        [LensPut(typeof(YamlHelpers), nameof(ApplyDefault))]
+        public static T? WithDefault<T>(this T? value, T defaultValue) where T : struct
+        {
+            if (EqualityComparer<T>.Default.Equals(value.GetValueOrDefault(defaultValue), defaultValue))
+            {
+                return null;
+            }
+            return value;
+        }
+
+        public static T? ApplyDefault<T>(this T? value, T defaultValue, T? newValue) where T : struct
+        {
+            return newValue.GetValueOrDefault(defaultValue);
+        }
+
         [LensPut(typeof(YamlHelpers), nameof(SetScalar))]
-        public static IScalar? Scalar(this IMap? map, string key)
+        public static T? Scalar<T>(this IMap? map, string key)
         {
             if (map == null)
             {
-                return null;
+                return default;
             }
             var childEntry = (map.Entries.FirstOrDefault(x => x.Key == key))?.Value as IScalar;
-            if (childEntry == null) { return null; }
-            return childEntry;
+            if (childEntry == null) { return default; }
+            return (T)Convert.ChangeType(childEntry.Value, typeof(T));
         }
 
         [LensPut(typeof(YamlHelpers), nameof(SetScalar))]
-        public static IScalar? Scalar(this IMapEntry? entry, string key)
+        public static T? Scalar<T>(this IMapEntry? entry, string key)
         {
             if (entry == null)
             {
-                return null;
+                return default;
             }
             var map = entry.Value as IMap;
-            return map.Scalar(key);
+            if (map == null)
+            {
+                map = new Map();
+                entry.Value = map;
+            }
+            return map.Scalar<T>(key);
         }
 
-        public static void SetScalar(this IMapEntry? entry, string key, IScalar value)
+        public static void SetScalar<T>(this IMapEntry? entry, string key, T value)
         {
             if (entry == null )
             {
@@ -50,16 +70,27 @@ namespace nmf
             map.SetScalar(key, value);
         }
 
-        public static void SetScalar(this IMap map, string key, IScalar value)
+        public static void SetScalar<T>(this IMap map, string key, T value)
         {
             var childEntry = map.Entries.FirstOrDefault(x => x.Key == key);
-            if (childEntry == null)
+            if (value == null)
             {
-                map.Entries.Add(new MapEntry { Key = key, Value = value });
+                if (childEntry != null)
+                {
+                    map.Entries.Remove(childEntry);
+                }
             }
             else
             {
-                childEntry.Value = value;
+                var scalar = new Scalar { Value = value.ToString() };
+                if (childEntry == null)
+                {
+                    map.Entries.Add(new MapEntry { Key = key, Value = scalar });
+                }
+                else
+                {
+                    childEntry.Value = scalar;
+                }
             }
         }
 
@@ -85,7 +116,7 @@ namespace nmf
             return childMap.Entries;
         }
 
-        public static IList ForceList(this IMapEntry entry, string key)
+        public static IMap ForceMap(this IMapEntry entry)
         {
             var map = entry.Value as IMap;
             if (map == null)
@@ -93,17 +124,7 @@ namespace nmf
                 map = new Map();
                 entry.Value = map;
             }
-            var childEntry = map.Entries.FirstOrDefault(x => x.Key == key);
-            var list = childEntry?.Value as IList ?? new List();
-            if (childEntry == null)
-            {
-                map.Entries.Add(new MapEntry { Key = key, Value = list });
-            }
-            else
-            {
-                childEntry.Value = list;
-            }
-            return list;
+            return map;
         }
     }
 }
