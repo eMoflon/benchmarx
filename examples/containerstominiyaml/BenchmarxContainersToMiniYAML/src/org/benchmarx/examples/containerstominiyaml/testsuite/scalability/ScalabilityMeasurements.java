@@ -129,11 +129,9 @@ public class ScalabilityMeasurements {
 	}
 
 	public void createInitialMap(miniyaml.Map yamlMap) {
-		yamlMap.getEntries().add(mapEntry("version", scalar("2.4")));
-		Map servicesMap = map();
-		yamlMap.getEntries().add(mapEntry("services", servicesMap));
-		Map volumesMap = map();
-		yamlMap.getEntries().add(mapEntry("volumes", volumesMap));
+		// Note: initial version /services / volumes maps are created during initiation of sync dialogue
+		Map servicesMap = getOrCreateMapEntry(yamlMap, "services", MiniyamlFactory.eINSTANCE::createMap);
+		Map volumesMap = getOrCreateMapEntry(yamlMap, "volumes", MiniyamlFactory.eINSTANCE::createMap);
 
 		List<String> images = new ArrayList<>(NO_OF_IMAGES);
 		for (int i = 0; i < NO_OF_IMAGES; i++) {
@@ -142,7 +140,7 @@ public class ScalabilityMeasurements {
 
 		List<String> volumes = new ArrayList<>(NO_OF_VOLUMES);
 		for (int i = 0; i < NO_OF_VOLUMES; i++) {
-			String volumeName = "volume" + i;
+			String volumeName = "volume" + i + ":/path/to/volume" + i;
 			volumesMap.getEntries().add(mapEntry(volumeName, null));
 			volumes.add(volumeName);
 		}
@@ -264,28 +262,30 @@ public class ScalabilityMeasurements {
         System.out.println("n_containers" + DELIMITER + "n_volumes" + DELIMITER + "n_images" + DELIMITER + tool1.getName());
     }
 
-	public static void main(String[] args) {
-		ContainersPackage.eINSTANCE.getName();
-		MiniyamlPackage.eINSTANCE.getName();
-		
-		printHeader("Batch FWD:");
-		for (int i = 50; i < 1000; i+=50) {			
-			runBatchFWDMeasurements(i, 3, 4, 5);
-		}
-		
-		printHeader("Incr. FWD:");
-		for (int i = 50; i < 1000; i+=50) {			
-			runIncrFWDMeasurements(i, 3, 4, 5);
-		}		
-		
-		printHeader("Batch BWD:");
-		for (int i = 50; i < 1000; i+=50) {			
-			runBatchBWDMeasurements(i, 3, 4, 5);
-		}	
-		
-		printHeader("Incr. BWD:");
-		for (int i = 50; i < 1000; i+=50) {			
-			runIncrBWDMeasurements(i, 3, 4, 5);
-		}
-	}
+    public static void main(String[] args) {
+        ContainersPackage.eINSTANCE.getName();
+        MiniyamlPackage.eINSTANCE.getName();
+
+        final int maxSize = 1_000;
+
+        printHeader("Batch FWD:");
+        for (int i = 50; i < maxSize; i += 50) {
+            runBatchFWDMeasurements(i, 3, 4, 5);
+        }
+
+        printHeader("Incr. FWD:");
+        for (int i = 50; i < maxSize; i += 50) {
+            runIncrFWDMeasurements(i, 3, 4, 5);
+        }
+
+        printHeader("Batch BWD:");
+        for (int i = 50; i < maxSize; i += 50) {
+            runBatchBWDMeasurements(i, 3, 4, 5);
+        }
+
+        printHeader("Incr. BWD:");
+        for (int i = 50; i < maxSize; i += 50) {
+            runIncrBWDMeasurements(i, 3, 4, 5);
+        }
+    }
 }
