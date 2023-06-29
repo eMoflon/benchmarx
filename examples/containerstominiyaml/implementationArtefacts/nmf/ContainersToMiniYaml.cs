@@ -46,6 +46,12 @@ namespace nmf
                     me => new ScalarCollection(me, "depends_on"));
             }
 
+            protected override IContainer CreateLeftOutput(IMapEntry input, IEnumerable<IContainer> candidates, ISynchronizationContext context, out bool existing)
+            {
+                existing = false;
+                return new Container { Image = new Image() };
+            }
+
             [LensPut(typeof(Container2MapEntry), nameof(ParseInteger))]
             public static string? AsString(int? value) => value?.ToString();
 
@@ -153,6 +159,7 @@ namespace nmf
                     {
                         _map.Entries.Add(new MapEntry
                         {
+                            Key = _key,
                             Value = _list
                         });
                     }

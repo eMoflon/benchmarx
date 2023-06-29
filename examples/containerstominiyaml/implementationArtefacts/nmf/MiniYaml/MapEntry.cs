@@ -109,7 +109,7 @@ namespace GeneratedCode.Miniyaml
                     this.OnValueChanging(e);
                     this.OnPropertyChanging("Value", e, _valueReference);
                     this._value = value;
-                    if ((old != null))
+                    if ((old != null) && (old.Parent == this))
                     {
                         old.Parent = null;
                         old.ParentChanged -= this.OnResetValue;

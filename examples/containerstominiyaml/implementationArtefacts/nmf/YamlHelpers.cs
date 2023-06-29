@@ -35,7 +35,7 @@ namespace nmf
                 return default;
             }
             var childEntry = (map.Entries.FirstOrDefault(x => x.Key == key))?.Value as IScalar;
-            if (childEntry == null) { return default; }
+            if (childEntry?.Value == null) { return default; }
             return (T)Convert.ChangeType(childEntry.Value, typeof(T));
         }
 
@@ -55,7 +55,7 @@ namespace nmf
             return map.Scalar<T>(key);
         }
 
-        public static void SetScalar<T>(this IMapEntry? entry, string key, T value)
+        public static void SetScalar<T>(this IMapEntry? entry, string key, T? value)
         {
             if (entry == null )
             {
@@ -70,7 +70,7 @@ namespace nmf
             map.SetScalar(key, value);
         }
 
-        public static void SetScalar<T>(this IMap map, string key, T value)
+        public static void SetScalar<T>(this IMap map, string key, T? value)
         {
             var childEntry = map.Entries.FirstOrDefault(x => x.Key == key);
             if (value == null)

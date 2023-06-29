@@ -71,7 +71,7 @@ public class NMFContainersToMiniYaml extends BXToolForEMF<Composition, miniyaml.
 	private BufferedWriter writer;
 	
 	private long propagation;
-	private long includingSerialization;
+	private long serialization;
 	
 	private Configurator<Decisions> configurator;
 	
@@ -97,8 +97,10 @@ public class NMFContainersToMiniYaml extends BXToolForEMF<Composition, miniyaml.
 		setConfigurator(new Configurator<Decisions>());
 		runNMF();
 		
+		this.performAndPropagateSourceEdit(com -> {});
+		
 		propagation = 0;
-		includingSerialization = 0;
+		serialization = 0;
 		}
 		catch (Exception ex) {
 			ex.printStackTrace();
@@ -114,18 +116,13 @@ public class NMFContainersToMiniYaml extends BXToolForEMF<Composition, miniyaml.
 
 	@Override
 	public void performAndPropagateTargetEdit(Consumer<miniyaml.Map> edit) {
+		this.performIdleTargetEdit(edit);
+
 		long start = System.nanoTime();
-        ChangeRecorder recorder = new ChangeRecorder();
-        miniyaml.Map trg = getTargetModel();
-		recorder.observeMiniYaml(trg);
-		edit.accept(trg);
-		long actual = propagate(recorder);
-		source = readModel("SaveContainer");
-		
+		source = readModel("SaveContainer");		
 		long end = System.nanoTime();
 		
-		propagation += actual;
-		includingSerialization += (end - start);
+		serialization += (end - start);
 	}
 	
 	public long getRunningTimeInNanoSeconds() {
@@ -164,25 +161,20 @@ public class NMFContainersToMiniYaml extends BXToolForEMF<Composition, miniyaml.
 
 	@Override
 	public void performAndPropagateSourceEdit(Consumer<Composition> edit) {
+		this.performIdleSourceEdit(edit);
+
 		long start = System.nanoTime();
-        ChangeRecorder recorder = new ChangeRecorder();
-        Composition src = getSourceModel();
-		recorder.observeComposition(src);
-		edit.accept(src);
-		long actual = propagate(recorder);
 		target = readModel("SaveYaml");
-		
 		long end = System.nanoTime();
 		
-		propagation += actual;
-		includingSerialization += (end - start);
+		serialization += (end - start);
 	}
 	
 	@SuppressWarnings("deprecation")
 	@Override
 	public void terminateSynchronisationDialogue() {
 		try {
-			Files.append(String.format("%d;%d\n", this.includingSerialization, this.propagation), new File("nmfresults.csv"), Charsets.UTF_8);
+			Files.append(String.format("%d;%d\n", this.serialization, this.propagation), new File("nmfresults.csv"), Charsets.UTF_8);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -281,12 +273,28 @@ public class NMFContainersToMiniYaml extends BXToolForEMF<Composition, miniyaml.
 	
 	@Override
 	public void performIdleTargetEdit(Consumer<miniyaml.Map> edit) {
-		this.performAndPropagateTargetEdit(edit);
+		long start = System.nanoTime();
+        ChangeRecorder recorder = new ChangeRecorder();
+        miniyaml.Map trg = getTargetModel();
+		recorder.observeMiniYaml(trg);
+		edit.accept(trg);
+		long actual = propagate(recorder);
+		long end = System.nanoTime();
+		propagation += actual;
+		serialization += (end - start);
 	}
 
 	@Override
 	public void performIdleSourceEdit(Consumer<Composition> edit) {
-		this.performAndPropagateSourceEdit(edit);
+		long start = System.nanoTime();
+        ChangeRecorder recorder = new ChangeRecorder();
+        Composition src = getSourceModel();
+		recorder.observeComposition(src);
+		edit.accept(src);
+		long actual = propagate(recorder);
+		long end = System.nanoTime();
+		propagation += actual;
+		serialization += (end - start);
 	}
 }
 

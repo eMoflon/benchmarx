@@ -8,6 +8,8 @@ using NMF.Synchronizations;
 using NMF.Transformations;
 using System.Diagnostics;
 
+//Debugger.Launch();
+
 ModelRepository repository = new ModelRepository();
 var synchronization = new ContainersToMiniYaml();
 
