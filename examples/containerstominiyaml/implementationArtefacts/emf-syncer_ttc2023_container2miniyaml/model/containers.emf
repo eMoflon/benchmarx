@@ -1,0 +1,33 @@
+@namespace(uri="http://york.ac.uk/ttc/containers/1.0.0", prefix="c")
+package containers;
+
+class Composition {
+	val Node[*] nodes;
+}
+
+abstract class Node {}
+
+abstract class NamedElement {
+	id attr String name;
+}
+
+class Image extends Node {
+	attr String image;
+}
+
+class Container extends Node, NamedElement {
+    attr int replicas = 1;
+
+	ref Image image;
+    ref Container[*] dependsOn;
+	val VolumeMount[*] volumeMounts;
+}
+
+class VolumeMount {
+	ref Volume volume;
+	attr String path;
+}
+
+class Volume extends Node, NamedElement {
+	
+}

@@ -1,0 +1,65 @@
+plugins {
+  id 'groovy'
+  id 'eclipse'
+  id 'application'
+}
+
+group = 'yamtl'
+
+eclipse {
+	project {
+	  name = 'emf-syncer_ttc2023_container2miniyaml'
+	  buildCommand 'org.eclipse.jdt.core.javabuilder'
+	  buildCommand 'org.eclipse.jdt.groovy.core.groovyNature'
+	  buildCommand 'org.eclipse.buildship.core.gradleprojectbuilder'
+	  buildCommand 'org.eclipse.wst.common.project.facet.core.builder'
+
+	  natures 'org.eclipse.jdt.core.javanature',
+	  	'org.eclipse.jdt.groovy.core.groovyNature',
+		'org.eclipse.buildship.core.gradleprojectnature',
+		'org.eclipse.wst.common.project.facet.core.nature',
+		'org.eclipse.pde.PluginNature'
+	}
+}
+
+
+mainClassName="emfsyncer.solution.AllJavaFunctionalTests"
+
+
+repositories {
+	maven {
+		url "https://github.com/yamtl/yamtl.github.io/raw/mvn-repo/mvn-repo/snapshot-repo"
+	}
+	mavenLocal()
+	mavenCentral()
+}
+
+sourceSets {
+	main {
+		java.srcDirs = ['src/main/java', 'src/main/emf-gen', 'src/main/xtend-gen']
+	}
+	test {
+		java.srcDirs = ['src/test/java', 'src/test/xtend-gen']
+		resources.srcDirs = ['src/test/resources']
+	}
+}
+
+
+
+dependencies {
+	implementation 'yamtl:emf-syncer.subtyping:1.1.1' 
+	implementation 'yamtl:untyped-models:0.0.25'
+	implementation 'yamtl:yamtl:0.4.5'
+	implementation "org.apache.groovy:groovy-all:4.0.11"
+	implementation("org.eclipse.xtend:org.eclipse.xtend.core:2.31.0") 
+	implementation 'org.eclipse.emf:org.eclipse.emf.common:2.28.0'
+	implementation "org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.17.0"
+	implementation "org.eclipse.emf:org.eclipse.emf.ecore.change:2.14.0"
+	implementation("log4j:log4j:1.2.17")
+	implementation 'org.aspectj:aspectjweaver:1.9.19'
+	implementation 'org.springframework:spring-aop:6.0.9'
+	implementation 'org.springframework:spring-context:6.0.9'
+	implementation 'net.openhft:zero-allocation-hashing:0.16'
+}
+
+
