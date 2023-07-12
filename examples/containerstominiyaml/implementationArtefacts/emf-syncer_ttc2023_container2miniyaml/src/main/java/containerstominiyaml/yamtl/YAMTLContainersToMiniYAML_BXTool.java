@@ -111,9 +111,7 @@ public class YAMTLContainersToMiniYAML_BXTool extends BXToolForEMF<Composition, 
 			// Fix default preferences (which can be overwritten)
 			setConfigurator(new Configurator<Decisions>());
 
-			/*
-			 * YAMTL configuration
-			 */
+			// YAMTL configuration
 			xformForward = new YAMTLContainersToMiniYAML(ContainersPackage.eINSTANCE, MiniyamlPackage.eINSTANCE);
 			YAMTLGroovyExtensions.init(xformForward);
 			xformForward.setExecutionMode(ExecutionMode.INCREMENTAL);
@@ -123,9 +121,7 @@ public class YAMTLContainersToMiniYAML_BXTool extends BXToolForEMF<Composition, 
 			xformForward.execute();
 			xformForward.adaptInputModel("cmm");
 			
-			/*
-			 * EMFSyncer configuration
-			 */
+			// EMFSyncer configuration
 			syncerMiniYAML = new EMFSyncer();
 			syncerMiniYAML.enableEagerMode();
 			var miniyamlDomain = new EMFSyncerParameter_EMF("miniyaml", Map.of("pk", MiniyamlPackage.eINSTANCE));
@@ -173,8 +169,6 @@ public class YAMTLContainersToMiniYAML_BXTool extends BXToolForEMF<Composition, 
 		syncerMiniYAML.forwardSync();
 	}
 	
-	
-	
 
 
 	/**
@@ -209,9 +203,7 @@ public class YAMTLContainersToMiniYAML_BXTool extends BXToolForEMF<Composition, 
 			// clear the source resource
 			source.getContents().clear();
 			
-			/*
-			 * YAMTL configuration
-			 */
+			// YAMTL configuration
 			xformBackward = new MiniYAML2Containers(MiniyamlPackage.eINSTANCE, ContainersPackage.eINSTANCE);
 			YAMTLGroovyExtensions.init(xformBackward);
 			xformBackward.loadInputResources(Map.of("ymm", target2));
@@ -274,9 +266,6 @@ public class YAMTLContainersToMiniYAML_BXTool extends BXToolForEMF<Composition, 
 			e.printStackTrace();
 		}			
 	}
-
-
-	
 	
 	
 	public void saveModel(List<EObject> rootList, String path) {

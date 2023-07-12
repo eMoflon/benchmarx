@@ -94,25 +94,4 @@ class MiniYAML2Containers extends YAMTLModule {
 		root.nodes.add(n)
 	}
 	
-	
-	static void main(args) {
-		def String inputModelPath = '''src/test/resources/ttc23-container2miniyaml/resources/Pre_IncrRenameContainerNoExtrasMiniYAML.xmi'''
-		def String outputModelPath = '''src/test/java/containerstominiyaml/yamtl/containers_output.xmi'''
-		
-		def xform = new MiniYAML2Containers(MiniyamlPackage.eINSTANCE, ContainersPackage.eINSTANCE)
-		xform.setExecutionMode(ExecutionMode.INCREMENTAL);
-		YAMTLGroovyExtensions.init(xform)
-		xform.adviseWithinThisNamespaceExpressions(List.of("miniyaml..*"));
-		xform.loadInputModels(['ymm': inputModelPath])
-		
-		
-		// EXECUTE TRAFO
-		xform.execute()
-		
-		// STORE MODELS
-		xform.saveOutputModels(['cmm' : outputModelPath])
-		
-		// PRINT STATS
-		println(xform.toStringStats())
-	}
 }
