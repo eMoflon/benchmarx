@@ -265,17 +265,17 @@ public class ScalabilityMeasurements {
         ContainersPackage.eINSTANCE.getName();
         MiniyamlPackage.eINSTANCE.getName();
 
-        final int maxSize = 1_000;
+        final int maxSize = 500; // 1_000;
 
-        printHeader("Batch FWD:");
-        for (int i = 50; i < maxSize; i += 50) {
-            runBatchFWDMeasurements(i, 3, 4, 5);
-        }
-
-        printHeader("Incr. FWD:");
-        for (int i = 50; i < maxSize; i += 50) {
-            runIncrFWDMeasurements(i, 3, 4, 5);
-        }
+//        printHeader("Batch FWD:");
+//        for (int i = 50; i < maxSize; i += 50) {
+//            runBatchFWDMeasurements(i, 3, 4, 5);
+//        }
+//
+//        printHeader("Incr. FWD:");
+//        for (int i = 50; i < maxSize; i += 50) {
+//            runIncrFWDMeasurements(i, 3, 4, 5);
+//        }
 
         printHeader("Batch BWD:");
         for (int i = 50; i < maxSize; i += 50) {

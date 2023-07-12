@@ -43,11 +43,16 @@ class MiniYAML2Containers extends YAMTLModule {
 				
 				def dependsOnItem = getFieldValue(m, 'depends_on')?.values?.value
 				if (dependsOnItem) {
-					dependsOnItem.each{ depName ->
-						def list= fetch(allInstances(YMM.mapEntry)).findAll{it instanceof Container}
-						def dep = list.find{ it.name==depName}
-						if (dep) c.dependsOn.add(dep)
-					}
+					fetch(allInstances(YMM.mapEntry))
+						.findAll{
+							it instanceof Container && 
+							dependsOnItem.contains(it.name)}
+						.each{ if (it) c.dependsOn.add(it) }
+//					dependsOnItem.each{ depName ->
+//						def list= fetch(allInstances(YMM.mapEntry)).findAll{it instanceof Container}
+//						def dep = list.find{ it.name==depName}
+//						if (dep) c.dependsOn.add(dep)
+//					}
 				} 
 			}),
 			
