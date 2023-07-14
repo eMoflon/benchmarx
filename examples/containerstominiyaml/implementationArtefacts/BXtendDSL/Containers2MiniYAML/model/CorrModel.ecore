@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="corrmodel" nsURI="http://de/tbuchmann/ttc/corrmodel.ecore" nsPrefix="de.tbuchmann.ttc.corrmodel">
+  <eClassifiers xsi:type="ecore:EClass" name="Transformation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="correspondences" upperBound="-1"
+        eType="#//Corr" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Corr">
+    <eOperations name="flatSrc" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="EList&lt;EObject> flatSource = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xD;&#xA;for (CorrElem element : getSource()) {&#xD;&#xA;&#x9;if (element instanceof de.tbuchmann.ttc.corrmodel.SingleElem) {&#xD;&#xA;&#x9;&#x9;if (((de.tbuchmann.ttc.corrmodel.SingleElem) element).getElement() != null) {&#xD;&#xA;&#x9;&#x9;&#x9;flatSource.add(((de.tbuchmann.ttc.corrmodel.SingleElem) element).getElement());&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;} else {&#xD;&#xA;&#x9;&#x9;flatSource.addAll(((de.tbuchmann.ttc.corrmodel.MultiElem) element).getElements());&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;return flatSource;"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="flatTrg" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="EList&lt;EObject> flatTarget = new org.eclipse.emf.common.util.BasicEList&lt;>();&#xD;&#xA;for (CorrElem element : getTarget()) {&#xD;&#xA;&#x9;if (element instanceof de.tbuchmann.ttc.corrmodel.SingleElem) {&#xD;&#xA;&#x9;&#x9;if (((de.tbuchmann.ttc.corrmodel.SingleElem) element).getElement() != null) {&#xD;&#xA;&#x9;&#x9;&#x9;flatTarget.add(((de.tbuchmann.ttc.corrmodel.SingleElem) element).getElement());&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;} else {&#xD;&#xA;&#x9;&#x9;flatTarget.addAll(((de.tbuchmann.ttc.corrmodel.MultiElem) element).getElements());&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;return flatTarget;"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ruleId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" upperBound="-1"
+        eType="#//CorrElem" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" upperBound="-1"
+        eType="#//CorrElem" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CorrElem" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SingleElem" eSuperTypes="#//CorrElem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiElem" eSuperTypes="#//CorrElem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </eClassifiers>
+</ecore:EPackage>

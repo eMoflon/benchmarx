@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.benchmarx.BXTool;
+import org.benchmarx.examples.containerstominiyaml.comparators.CompositionComparator;
 import org.benchmarx.examples.containerstominiyaml.comparators.MiniYAMLComparator;
 import org.benchmarx.examples.containerstominiyaml.implementations.epsilon.EpsilonContainersToMiniYAML;
 import org.benchmarx.examples.containerstominiyaml.testsuite.Decisions;
@@ -21,6 +22,8 @@ import containers.Image;
 import containers.Node;
 import containers.Volume;
 import containers.VolumeMount;
+import de.tbuchmann.ttc.trafo.Containers2MiniYAML;
+import de.ubt.ai1.m2m.bxtenddsl.connectors.BXToolForBXtendDsl;
 import miniyaml.Map;
 import miniyaml.MapEntry;
 import miniyaml.MiniyamlFactory;
@@ -34,6 +37,9 @@ public class ScalabilityMeasurements {
 	private static final double PROBABILITY_VOLUME_MOUNT = 0.2;
 
 	private static final BXTool<Composition, miniyaml.Map, Decisions> tool1 = new EpsilonContainersToMiniYAML("Epsilon", new MiniYAMLComparator());
+	private static final BXTool<Composition, miniyaml.Map, Decisions> tool2 = new BXToolForBXtendDsl<containers.Composition, miniyaml.Map, Decisions>(
+			() -> new Containers2MiniYAML(), ContainersFactory.eINSTANCE.createComposition(), 
+			Decisions.values(), new CompositionComparator(), new MiniYAMLComparator() );
 	
 	private static final String DELIMITER = ",";
 	private static final String UNIT = "";
@@ -44,6 +50,7 @@ public class ScalabilityMeasurements {
 	private final Random rnd = new Random(1234);
 	
 	private BXToolTimer<Composition, miniyaml.Map, Decisions> timer1;
+	private BXToolTimer<Composition, miniyaml.Map, Decisions> timer2;
 	
 	public ScalabilityMeasurements(int numberOfContainers, int noOfVolumes, int noOfImages, int repeat) {
 		this.NO_OF_CONTAINERS = numberOfContainers;
@@ -51,6 +58,7 @@ public class ScalabilityMeasurements {
 		this.NO_OF_IMAGES = noOfImages;
 
 		timer1 = new BXToolTimer<>(tool1, repeat);
+		timer2 = new BXToolTimer<>(tool2, repeat);
 	}
 
 	public void createInitialComposition(Composition comp) {
@@ -217,25 +225,29 @@ public class ScalabilityMeasurements {
 
 	private void runBatchFWDMeasurements(){
 		System.out.print(NO_OF_CONTAINERS + DELIMITER + NO_OF_VOLUMES + DELIMITER + NO_OF_IMAGES + DELIMITER);
-		System.out.print(timer1.timeSourceEditFromScratchInS(this::createInitialComposition) + UNIT);
+		System.out.print(timer1.timeSourceEditFromScratchInS(this::createInitialComposition) + UNIT + DELIMITER);
+		System.out.print(timer2.timeSourceEditFromScratchInS(this::createInitialComposition) + UNIT);
 		System.out.println();
 	}
 	
 	private void runBatchBWDMeasurements(){
 		System.out.print(NO_OF_CONTAINERS + DELIMITER + NO_OF_VOLUMES + DELIMITER + NO_OF_IMAGES + DELIMITER);
-		System.out.print(timer1.timeTargetEditFromScratchInS(this::createInitialMap) + UNIT);
+		System.out.print(timer1.timeTargetEditFromScratchInS(this::createInitialMap) + UNIT + DELIMITER);
+		System.out.print(timer2.timeTargetEditFromScratchInS(this::createInitialMap) + UNIT);
 		System.out.println();
 	}
 	
 	private void runIncrFWDMeasurements(){
 		System.out.print(NO_OF_CONTAINERS + DELIMITER + NO_OF_VOLUMES + DELIMITER + NO_OF_IMAGES + DELIMITER);
-		System.out.print(timer1.timeSourceEditAfterSetUpInS(this::createInitialComposition, this::createContainer) + UNIT);
+		System.out.print(timer1.timeSourceEditAfterSetUpInS(this::createInitialComposition, this::createContainer) + UNIT + DELIMITER);
+		System.out.print(timer2.timeSourceEditAfterSetUpInS(this::createInitialComposition, this::createContainer) + UNIT);
 		System.out.println();
 	}
 	
 	private void runIncrBWDMeasurements(){
 		System.out.print(NO_OF_CONTAINERS + DELIMITER + NO_OF_VOLUMES + DELIMITER + NO_OF_IMAGES + DELIMITER);
-		System.out.print(timer1.timeTargetEditAfterSetUpInS(this::createInitialMap, this::createContainerEntry) + UNIT);
+		System.out.print(timer1.timeTargetEditAfterSetUpInS(this::createInitialMap, this::createContainerEntry) + UNIT + DELIMITER);
+		System.out.print(timer2.timeTargetEditAfterSetUpInS(this::createInitialMap, this::createContainerEntry) + UNIT);
 		System.out.println();
 	}
 
@@ -259,7 +271,8 @@ public class ScalabilityMeasurements {
         System.out.println("------------------");
         System.out.println(title);
         System.out.println("------------------");
-        System.out.println("n_containers" + DELIMITER + "n_volumes" + DELIMITER + "n_images" + DELIMITER + tool1.getName());
+        System.out.println("n_containers" + DELIMITER + "n_volumes" + DELIMITER + "n_images" + DELIMITER + tool1.getName()
+        	+ DELIMITER + tool2.getName());
     }
 
     public static void main(String[] args) {

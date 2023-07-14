@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: de.ubt.ai1.m2m.bxtenddsl.benchmarx_connector
+Bundle-SymbolicName: de.ubt.ai1.m2m.bxtenddsl.connectors
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: de.ubt.ai1.m2m.bxtenddsl.benchmarx_connector
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.emf.ecore,
+ de.ubt.ai1.m2m.bxtenddsl;bundle-version="1.0.0",
+ Benchmarx,
+ org.eclipse.emf.ecore.xmi
+Export-Package: de.ubt.ai1.m2m.bxtenddsl.connectors

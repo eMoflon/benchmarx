@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="Containers2MiniYAML/BXtend" modelName="CorrModel"
+    complianceLevel="8.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>CorrModel.ecore</foreignModel>
+  <genPackages prefix="CorrModel" basePackage="de.tbuchmann.ttc" disposableProviderFactory="true"
+      ecorePackage="CorrModel.ecore#/">
+    <genClasses ecoreClass="CorrModel.ecore#//Transformation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CorrModel.ecore#//Transformation/correspondences"/>
+    </genClasses>
+    <genClasses ecoreClass="CorrModel.ecore#//Corr">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CorrModel.ecore#//Corr/ruleId"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CorrModel.ecore#//Corr/source"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CorrModel.ecore#//Corr/target"/>
+      <genOperations ecoreOperation="CorrModel.ecore#//Corr/flatSrc"/>
+      <genOperations ecoreOperation="CorrModel.ecore#//Corr/flatTrg"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="CorrModel.ecore#//CorrElem"/>
+    <genClasses ecoreClass="CorrModel.ecore#//SingleElem">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CorrModel.ecore#//SingleElem/element"/>
+    </genClasses>
+    <genClasses ecoreClass="CorrModel.ecore#//MultiElem">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CorrModel.ecore#//MultiElem/elements"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

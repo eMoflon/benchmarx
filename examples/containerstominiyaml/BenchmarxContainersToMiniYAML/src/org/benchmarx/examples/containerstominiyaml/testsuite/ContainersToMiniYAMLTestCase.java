@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.benchmarx.BXTool;
 import org.benchmarx.examples.containerstominiyaml.comparators.MiniYAMLComparator;
 import org.benchmarx.examples.containerstominiyaml.comparators.MiniYAMLExactComparator;
+import org.benchmarx.examples.containerstominiyaml.comparators.CompositionComparator;
 import org.benchmarx.examples.containerstominiyaml.helpers.CompositionsHelper;
 import org.benchmarx.examples.containerstominiyaml.helpers.MiniYAMLHelper;
 import org.benchmarx.examples.containerstominiyaml.implementations.epsilon.EpsilonContainersToMiniYAML;
@@ -18,7 +19,10 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import containers.Composition;
+import containers.ContainersFactory;
 import containers.ContainersPackage;
+import de.tbuchmann.ttc.trafo.Containers2MiniYAML;
+import de.ubt.ai1.m2m.bxtenddsl.connectors.BXToolForBXtendDsl;
 import miniyaml.MiniyamlPackage;
 
 @RunWith(Parameterized.class)
@@ -52,10 +56,16 @@ public abstract class ContainersToMiniYAMLTestCase {
 	@Parameters(name = "{0}")
 	public static Collection<BXTool<Composition, miniyaml.Map, Decisions>> tools() {
 		return Arrays.asList(
-				new EpsilonContainersToMiniYAML("Epsilon (ignore order)", new MiniYAMLComparator()), // known to fail IncrementalForward::renameContainer
-				new EpsilonContainersToMiniYAML("Epsilon (exact order)", new MiniYAMLExactComparator()),
-				new NMFContainersToMiniYaml("NMF (ignore order)", new MiniYAMLComparator()),
-				new NMFContainersToMiniYaml("NMF (exact order)", new MiniYAMLExactComparator())
+				//new EpsilonContainersToMiniYAML("Epsilon (ignore order)", new MiniYAMLComparator()), // known to fail IncrementalForward::renameContainer
+				//new EpsilonContainersToMiniYAML("Epsilon (exact order)", new MiniYAMLExactComparator()),
+				//new NMFContainersToMiniYaml("NMF (ignore order)", new MiniYAMLComparator()),
+				//new NMFContainersToMiniYaml("NMF (exact order)", new MiniYAMLExactComparator()),
+				new BXToolForBXtendDsl<containers.Composition, miniyaml.Map, Decisions>(
+						() -> new Containers2MiniYAML(), ContainersFactory.eINSTANCE.createComposition(), 
+						Decisions.values(), new CompositionComparator(), new MiniYAMLComparator() ),
+				new BXToolForBXtendDsl<containers.Composition, miniyaml.Map, Decisions>(
+						() -> new Containers2MiniYAML(), ContainersFactory.eINSTANCE.createComposition(), 
+						Decisions.values(), new CompositionComparator(), new MiniYAMLExactComparator() )
 		);
 	}
 
