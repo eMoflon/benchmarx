@@ -11,6 +11,8 @@ import org.benchmarx.BXTool;
 import org.benchmarx.examples.containerstominiyaml.comparators.CompositionComparator;
 import org.benchmarx.examples.containerstominiyaml.comparators.MiniYAMLComparator;
 import org.benchmarx.examples.containerstominiyaml.implementations.epsilon.EpsilonContainersToMiniYAML;
+import org.benchmarx.examples.containerstominiyaml.implementations.nmf.NMFContainersToMiniYaml;
+import org.benchmarx.examples.containerstominiyaml.implementations.nmf.NMFContainersToMiniYamlTimer;
 import org.benchmarx.examples.containerstominiyaml.testsuite.Decisions;
 import org.benchmarx.util.BXToolTimer;
 
@@ -40,6 +42,7 @@ public class ScalabilityMeasurements {
 	private static final BXTool<Composition, miniyaml.Map, Decisions> tool2 = new BXToolForBXtendDsl<containers.Composition, miniyaml.Map, Decisions>(
 			() -> new Containers2MiniYAML(), ContainersFactory.eINSTANCE.createComposition(), 
 			Decisions.values(), new CompositionComparator(), new MiniYAMLComparator() );
+	private static final BXTool<Composition, miniyaml.Map, Decisions> tool3 = new NMFContainersToMiniYaml("NMF", new MiniYAMLComparator());
 	
 	private static final String DELIMITER = ",";
 	private static final String UNIT = "";
@@ -49,8 +52,7 @@ public class ScalabilityMeasurements {
 	private final int NO_OF_IMAGES;
 	private final Random rnd = new Random(1234);
 	
-	private BXToolTimer<Composition, miniyaml.Map, Decisions> timer1;
-	private BXToolTimer<Composition, miniyaml.Map, Decisions> timer2;
+	private BXToolTimer<Composition, miniyaml.Map, Decisions> timer1, timer2, timer3;
 	
 	public ScalabilityMeasurements(int numberOfContainers, int noOfVolumes, int noOfImages, int repeat) {
 		this.NO_OF_CONTAINERS = numberOfContainers;
@@ -59,6 +61,7 @@ public class ScalabilityMeasurements {
 
 		timer1 = new BXToolTimer<>(tool1, repeat);
 		timer2 = new BXToolTimer<>(tool2, repeat);
+		timer3 = new NMFContainersToMiniYamlTimer(tool3, repeat);
 	}
 
 	public void createInitialComposition(Composition comp) {
@@ -226,7 +229,8 @@ public class ScalabilityMeasurements {
 	private void runBatchFWDMeasurements(){
 		System.out.print(NO_OF_CONTAINERS + DELIMITER + NO_OF_VOLUMES + DELIMITER + NO_OF_IMAGES + DELIMITER);
 		System.out.print(timer1.timeSourceEditFromScratchInS(this::createInitialComposition) + UNIT + DELIMITER);
-		System.out.print(timer2.timeSourceEditFromScratchInS(this::createInitialComposition) + UNIT);
+		System.out.print(timer2.timeSourceEditFromScratchInS(this::createInitialComposition) + UNIT + DELIMITER);
+		System.out.print(timer3.timeSourceEditFromScratchInS(this::createInitialComposition) + UNIT);
 		System.out.println();
 	}
 	
@@ -234,20 +238,23 @@ public class ScalabilityMeasurements {
 		System.out.print(NO_OF_CONTAINERS + DELIMITER + NO_OF_VOLUMES + DELIMITER + NO_OF_IMAGES + DELIMITER);
 		System.out.print(timer1.timeTargetEditFromScratchInS(this::createInitialMap) + UNIT + DELIMITER);
 		System.out.print(timer2.timeTargetEditFromScratchInS(this::createInitialMap) + UNIT);
+		// NMF backward solution produces "Unresolved reference '$4'" errors
 		System.out.println();
 	}
-	
+
 	private void runIncrFWDMeasurements(){
 		System.out.print(NO_OF_CONTAINERS + DELIMITER + NO_OF_VOLUMES + DELIMITER + NO_OF_IMAGES + DELIMITER);
 		System.out.print(timer1.timeSourceEditAfterSetUpInS(this::createInitialComposition, this::createContainer) + UNIT + DELIMITER);
-		System.out.print(timer2.timeSourceEditAfterSetUpInS(this::createInitialComposition, this::createContainer) + UNIT);
+		System.out.print(timer2.timeSourceEditAfterSetUpInS(this::createInitialComposition, this::createContainer) + UNIT + DELIMITER);
+		System.out.print(timer3.timeSourceEditAfterSetUpInS(this::createInitialComposition, this::createContainer) + UNIT);
 		System.out.println();
 	}
-	
+
 	private void runIncrBWDMeasurements(){
 		System.out.print(NO_OF_CONTAINERS + DELIMITER + NO_OF_VOLUMES + DELIMITER + NO_OF_IMAGES + DELIMITER);
 		System.out.print(timer1.timeTargetEditAfterSetUpInS(this::createInitialMap, this::createContainerEntry) + UNIT + DELIMITER);
 		System.out.print(timer2.timeTargetEditAfterSetUpInS(this::createInitialMap, this::createContainerEntry) + UNIT);
+		// NMF backward solution produces "Unresolved reference '$4'" errors
 		System.out.println();
 	}
 
@@ -267,36 +274,36 @@ public class ScalabilityMeasurements {
 		new ScalabilityMeasurements(numOfFamilies, numOfChildren, numOfImages, repetitions).runIncrBWDMeasurements();
 	}
 	
-    private static void printHeader(String title) {
+    private static void printHeader(String title, boolean hasNMF) {
         System.out.println("------------------");
         System.out.println(title);
         System.out.println("------------------");
         System.out.println("n_containers" + DELIMITER + "n_volumes" + DELIMITER + "n_images" + DELIMITER + tool1.getName()
-        	+ DELIMITER + tool2.getName());
+        	+ DELIMITER + tool2.getName() + (hasNMF ? DELIMITER + tool3.getName() : ""));
     }
 
     public static void main(String[] args) {
         ContainersPackage.eINSTANCE.getName();
         MiniyamlPackage.eINSTANCE.getName();
 
-        final int maxSize = 1_000;
+        final int maxSize = 500;
 
-        printHeader("Batch FWD:");
+        printHeader("Batch FWD:", true);
         for (int i = 50; i < maxSize; i += 50) {
             runBatchFWDMeasurements(i, 3, 4, 5);
         }
 
-        printHeader("Incr. FWD:");
-        for (int i = 50; i < maxSize; i += 50) {
-            runIncrFWDMeasurements(i, 3, 4, 5);
-        }
-
-        printHeader("Batch BWD:");
+        printHeader("Batch BWD:", false);
         for (int i = 50; i < maxSize; i += 50) {
             runBatchBWDMeasurements(i, 3, 4, 5);
         }
 
-        printHeader("Incr. BWD:");
+        printHeader("Incr. FWD:", true);
+        for (int i = 50; i < maxSize; i += 50) {
+            runIncrFWDMeasurements(i, 3, 4, 5);
+        }
+
+        printHeader("Incr. BWD:", false);
         for (int i = 50; i < maxSize; i += 50) {
             runIncrBWDMeasurements(i, 3, 4, 5);
         }
