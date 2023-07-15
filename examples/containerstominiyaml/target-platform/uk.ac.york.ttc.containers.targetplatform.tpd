@@ -75,3 +75,7 @@ location "http://download.eclipse.org/epsilon/interim/" {
 	org.eclipse.epsilon.emc.emf lazy
 	org.eclipse.epsilon.emc.emf.dt lazy
 }
+
+location "https://tbuchmann.github.io/bxtendDSLUpdateSite/" {
+	BXtendDSL Feature.feature.group lazy
+}
