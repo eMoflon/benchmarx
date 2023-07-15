@@ -21,8 +21,6 @@ eclipse {
 		'org.eclipse.pde.PluginNature'
 	}
 }
-
-
 mainClassName="emfsyncer.solution.AllJavaFunctionalTests"
 
 
