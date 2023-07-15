@@ -13,6 +13,7 @@ import containers.Composition;
 import containers.ContainersPackage;
 import containerstominiyaml.comparators.BXTool;
 import containerstominiyaml.comparators.MiniYAMLComparator;
+import containerstominiyaml.comparators.MiniYAMLExactComparator;
 import containerstominiyaml.helpers.CompositionsHelper;
 import containerstominiyaml.helpers.MiniYAMLHelper;
 import containerstominiyaml.yamtl.YAMTLContainersToMiniYAML_BXTool;
@@ -49,8 +50,8 @@ public abstract class ContainersToMiniYAMLTestCase {
 	@Parameters(name = "{0}")
 	public static Collection<BXTool<Composition, miniyaml.Map, Decisions>> tools() {
 		return Arrays.asList(
-				new YAMTLContainersToMiniYAML_BXTool("YAMTL (ignore order)", new MiniYAMLComparator())
-//				new YAMTLContainersToMiniYAML_BXTool("YAMTL (exact order)", new MiniYAMLExactComparator())
+				new YAMTLContainersToMiniYAML_BXTool("YAMTL (ignore order)", new MiniYAMLComparator()),
+				new YAMTLContainersToMiniYAML_BXTool("YAMTL (exact order)", new MiniYAMLExactComparator())
 		);
 	}
 
