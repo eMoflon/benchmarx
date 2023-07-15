@@ -91,6 +91,11 @@ public class BatchForward extends ContainersToMiniYAMLTestCase {
 		util.assertPostcondition("Post_AddContainerVolumeMountContainers", "Post_AddContainerVolumeMountMiniYAML");
 	}
 
+	/*
+	 * The exact order of the options of a service was not properly defined in the
+	 * case description, which is an issue when creating a new MiniYAML from scratch.
+	 * This test should not be used to compare tools for the "exact order" case.
+	 */
 	@Test
 	public void completeModel() {
 		util.assertPrecondition("RootElementContainers", "RootElementMiniYAML");
