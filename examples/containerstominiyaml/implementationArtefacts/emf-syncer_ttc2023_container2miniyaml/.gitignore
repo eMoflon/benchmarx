@@ -6,3 +6,4 @@ bin/
 .classpath
 .gradle
 /results.csv
+scalability*.txt

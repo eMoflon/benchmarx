@@ -42,8 +42,6 @@ sourceSets {
 	}
 }
 
-
-
 dependencies {
 	implementation 'yamtl:emf-syncer.subtyping:1.1.1' 
 	implementation 'yamtl:untyped-models:0.0.25'
@@ -60,4 +58,10 @@ dependencies {
 	implementation 'net.openhft:zero-allocation-hashing:0.16'
 }
 
-
+task runScalabilityTests(type: JavaExec) {
+  group = "Execution"
+  description = "Run the scalability tests"
+  classpath = sourceSets.test.runtimeClasspath
+  main = "containerstominiyaml.testsuite.scalability.ScalabilityMeasurements"
+  standardOutput = new FileOutputStream('scalability-yamtl.txt')
+}
