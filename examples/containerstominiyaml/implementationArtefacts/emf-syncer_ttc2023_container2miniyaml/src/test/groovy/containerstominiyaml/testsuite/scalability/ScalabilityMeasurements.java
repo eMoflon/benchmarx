@@ -265,7 +265,7 @@ public class ScalabilityMeasurements {
         ContainersPackage.eINSTANCE.getName();
         MiniyamlPackage.eINSTANCE.getName();
 
-        final int maxSize = 500; // 1_000;
+        int maxSize = 500;
 
         printHeader("Batch FWD:");
         for (int i = 50; i < maxSize; i += 50) {
@@ -276,6 +276,9 @@ public class ScalabilityMeasurements {
         for (int i = 50; i < maxSize; i += 50) {
             runIncrFWDMeasurements(i, 3, 4, 5);
         }
+
+        // Limited due to StackOverflowException from YAMTL in BWD direction
+        maxSize = 300;
 
         printHeader("Batch BWD:");
         for (int i = 50; i < maxSize; i += 50) {

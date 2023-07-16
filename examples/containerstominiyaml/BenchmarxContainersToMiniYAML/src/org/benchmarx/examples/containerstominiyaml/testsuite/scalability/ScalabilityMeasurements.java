@@ -345,7 +345,7 @@ public class ScalabilityMeasurements {
 		measurements.runBatchFWDMeasurements(sizes, TOOL_EPSILON, TOOL_BXTENDDSL, TOOL_NMF);
 
 		printHeader("Batch BWD:", TOOL_EPSILON, TOOL_BXTENDDSL);
-		measurements.runBatchFWDMeasurements(sizes, TOOL_EPSILON, TOOL_BXTENDDSL);
+		measurements.runBatchBWDMeasurements(sizes, TOOL_EPSILON, TOOL_BXTENDDSL);
 
 		printHeader("Incr. FWD:", TOOL_EPSILON, TOOL_BXTENDDSL, TOOL_NMF);
 		measurements.runIncrFWDMeasurements(sizes, TOOL_EPSILON, TOOL_BXTENDDSL, TOOL_NMF);
