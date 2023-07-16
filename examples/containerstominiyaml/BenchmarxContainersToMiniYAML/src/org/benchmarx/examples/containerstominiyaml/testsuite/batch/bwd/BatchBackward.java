@@ -1,5 +1,7 @@
 package org.benchmarx.examples.containerstominiyaml.testsuite.batch.bwd;
 
+import static org.junit.Assume.assumeFalse;
+
 import org.benchmarx.BXTool;
 import org.benchmarx.examples.containerstominiyaml.testsuite.ContainersToMiniYAMLTestCase;
 import org.benchmarx.examples.containerstominiyaml.testsuite.Decisions;
@@ -87,6 +89,12 @@ public class BatchBackward extends ContainersToMiniYAMLTestCase {
 
 	@Test
 	public void completeModel() {
+		/*
+		 * Skips test in the exact order case - the order of the keys inside a service
+		 * was left unspecified so we shouldn't use it for correctness here.
+		 */
+		assumeFalse(tool.getName().contains("exact"));
+
 		util.assertPrecondition("RootElementContainers", "RootElementMiniYAML");
 		tool.performAndPropagateTargetEdit((yamlMap) -> {
 			Map webServer = miniYAMLHelper.addContainer(yamlMap, "webserver", 2);
