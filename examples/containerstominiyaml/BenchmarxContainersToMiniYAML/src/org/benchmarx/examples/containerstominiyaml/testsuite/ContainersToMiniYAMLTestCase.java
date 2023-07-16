@@ -61,9 +61,11 @@ public abstract class ContainersToMiniYAMLTestCase {
 				new NMFContainersToMiniYaml("NMF (ignore order)", new MiniYAMLComparator()),
 				new NMFContainersToMiniYaml("NMF (exact order)", new MiniYAMLExactComparator()),
 				new BXToolForBXtendDsl<containers.Composition, miniyaml.Map, Decisions>(
+						"BXtendDSL (ignore order)",
 						() -> new Containers2MiniYAML(), ContainersFactory.eINSTANCE.createComposition(), 
 						Decisions.values(), new CompositionComparator(), new MiniYAMLComparator() ),
 				new BXToolForBXtendDsl<containers.Composition, miniyaml.Map, Decisions>(
+						"BXtendDSL (exact order)",
 						() -> new Containers2MiniYAML(), ContainersFactory.eINSTANCE.createComposition(), 
 						Decisions.values(), new CompositionComparator(), new MiniYAMLExactComparator() )
 		);

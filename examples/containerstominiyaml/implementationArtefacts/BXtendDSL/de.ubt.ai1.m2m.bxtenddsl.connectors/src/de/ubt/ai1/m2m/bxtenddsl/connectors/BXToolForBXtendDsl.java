@@ -19,12 +19,15 @@ import de.ubt.ai1.m2m.bxtenddsl.BXtendTransformation;
 
 public class BXToolForBXtendDsl<S extends EObject, T extends EObject, D> extends BXToolForEMF<S, T, D> {	
 	
-	private static final String RESULTPATH = "results/BXtend";	
+	private static final String RESULTPATH = "results/BXtend";
+	private final String name;
 	
-	public BXToolForBXtendDsl(Supplier<? extends BXtendTransformation> trafoFactory, S srcRoot, D[] options,
+	public BXToolForBXtendDsl(String name,
+			Supplier<? extends BXtendTransformation> trafoFactory, S srcRoot, D[] options,
 			Comparator<S> src, Comparator<T> trg) {
 		super(src, trg);
-		
+
+		this.name = name;
 		this.trafoFactory = trafoFactory;
 		this.srcRoot = srcRoot;
 		this.options = options;
@@ -33,7 +36,7 @@ public class BXToolForBXtendDsl<S extends EObject, T extends EObject, D> extends
 
 	@Override
 	public String getName() {
-		return "BXtendDSL";
+		return name;
 	}
 	
 	@Override
