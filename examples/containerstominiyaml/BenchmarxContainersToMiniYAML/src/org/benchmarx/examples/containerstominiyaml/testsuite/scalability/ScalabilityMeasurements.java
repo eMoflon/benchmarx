@@ -43,7 +43,7 @@ public class ScalabilityMeasurements {
 	public static final BXTool<Composition, miniyaml.Map, Decisions> TOOL_EPSILON
 		= new EpsilonContainersToMiniYAML("Epsilon", new MiniYAMLComparator());
 	public static final BXTool<Composition, miniyaml.Map, Decisions> TOOL_BXTENDDSL
-		= new BXToolForBXtendDsl<containers.Composition, miniyaml.Map, Decisions>(
+		= new BXToolForBXtendDsl<containers.Composition, miniyaml.Map, Decisions>("BXtendDSL",
 			() -> new Containers2MiniYAML(), ContainersFactory.eINSTANCE.createComposition(), 
 			Decisions.values(), new CompositionComparator(), new MiniYAMLComparator() );
 	public static final BXTool<Composition, miniyaml.Map, Decisions> TOOL_NMF
