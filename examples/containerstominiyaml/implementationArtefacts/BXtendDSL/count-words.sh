@@ -3,7 +3,7 @@
 files_with_words() {
   find Containers2MiniYAML/src -type f | (while read f; do 
     filename=$(basename "$f");
-    echo "${filename%.*} ${filename##*.} $(cpp "$f" | wc -w)";
+    echo "${filename%.*} ${filename##*.} $(cpp "$f" | grep -v '^#' | wc -w)";
   done) | sort -k2
 }
 

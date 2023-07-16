@@ -1,7 +1,7 @@
 #!/bin/bash
 
 files_with_words() {
-  find src -type f | (while read f; do 
+  find -maxdepth 1 -type f -name '*.cs' | (while read f; do 
     filename=$(basename "$f");
     echo "${filename%.*} ${filename##*.} $(cpp "$f" | grep -v '^#' | wc -w)";
   done) | sort -k2
