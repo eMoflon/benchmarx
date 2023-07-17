@@ -175,10 +175,10 @@ class ChangeRecorder extends org.eclipse.emf.ecore.util.EContentAdapter {
         } else {
         	if (feature.getUpperBound() == 1) {
         		this.WriteStartChange("AttributePropertyChange", feature);
-        		if (n.getNewStringValue() != null) {
+        		if (n.getNewValue() != null) {
         			this.WriteAttribute("newValue", toCompatibleString(n.getNewValue()));
         		}
-        		if (n.getOldStringValue() != null) {
+        		if (n.getOldValue() != null) {
         			this.WriteAttribute("oldValue", toCompatibleString(n.getOldValue()));
         		}
         		this.WriteElement(affectedElement, "affectedElement");

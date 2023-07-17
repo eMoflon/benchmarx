@@ -24,6 +24,10 @@ namespace nmf
 
         public static T? ApplyDefault<T>(this T? value, T defaultValue, T? newValue) where T : struct
         {
+            if (newValue.HasValue && EqualityComparer<T>.Default.Equals(newValue.Value, default(T)))
+            {
+                return defaultValue;
+            }
             return newValue.GetValueOrDefault(defaultValue);
         }
 
@@ -40,6 +44,7 @@ namespace nmf
         }
 
         [LensPut(typeof(YamlHelpers), nameof(SetScalar))]
+        [ObservableProxy(typeof(YamlHelpers), nameof(ScalarIncremental))]
         public static T? Scalar<T>(this IMapEntry? entry, string key)
         {
             if (entry == null)
@@ -53,6 +58,51 @@ namespace nmf
                 entry.Value = map;
             }
             return map.Scalar<T>(key);
+        }
+
+        public static INotifyValue<T?> ScalarIncremental<T>(IMapEntry entry, string key)
+        {
+            var map = entry.Value as IMap;
+            if (map == null)
+            {
+                map = new Map();
+                entry.Value = map;
+            }
+            return new ScalarExpression<T>(map, key);
+        }
+
+        private class ScalarExpression<T> : NotifyExpression<T?>
+        {
+            private readonly INotifyCollection<IMapEntry> _map;
+            private readonly string _key;
+
+            public ScalarExpression(IMap map, string key)
+            {
+                _map = map.Entries.AsNotifiable();
+                _map.Successors.Set(this);
+                _key = key;
+            }
+
+            public override bool IsParameterFree => true;
+
+            public override IEnumerable<INotifiable> Dependencies
+            {
+                get
+                {
+                    yield return _map;
+                }
+            }
+
+            protected override INotifyExpression<T?> ApplyParametersCore(IDictionary<string, object> parameters, IDictionary<INotifiable, INotifiable> trace)
+            {
+                return this;
+            }
+
+            protected override T? GetValue()
+            {
+                var value = (_map.AsEnumerable().FirstOrDefault(entry => entry.Key == _key)?.Value as IScalar)?.Value;
+                return value == null ? default : (T)System.Convert.ChangeType(value, typeof(T));
+            }
         }
 
         public static void SetScalar<T>(this IMapEntry? entry, string key, T? value)
@@ -86,6 +136,10 @@ namespace nmf
                 if (childEntry == null)
                 {
                     map.Entries.Add(new MapEntry { Key = key, Value = scalar });
+                }
+                else if (childEntry.Value is IScalar scal)
+                {
+                    scal.Value = scalar.Value;
                 }
                 else
                 {

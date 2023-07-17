@@ -6,6 +6,7 @@ using NMF.Expressions.Linq;
 using NMF.Synchronizations;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -22,22 +23,66 @@ namespace nmf
                 SynchronizeLeftToRightOnly(_ => "2.4", m => m.Scalar<string>("version"));
 
                 SynchronizeMany(SyncRule<Container2MapEntry>(),
-                    c => c.Nodes.OfType<INode, IContainer>(),
+                    c => new ServicesCollection(c),
                     m => m.ForceEntries("services"));
                 SynchronizeMany(SyncRule<Volume2MapEntry>(),
                     c => c.Nodes.OfType<INode, IVolume>(),
                     m => m.ForceEntries("volumes"));
             }
+
+            private class ServicesCollection : CustomCollection<IContainer>
+            {
+                private readonly Composition _comp;
+
+                public ServicesCollection(Composition comp)
+                    : base(comp.Nodes.OfType<IContainer>())
+                {
+                    _comp = comp;
+                }
+
+                public override void Add(IContainer item)
+                {
+                    _comp.Nodes.Add(item);
+                    if (item.Image != null)
+                    {
+                        var existingImage = _comp.Nodes.OfType<IImage>().SingleOrDefault(i => i.Image_ == item.Image.Image_);
+                        if (existingImage != null)
+                        {
+                            item.Image = existingImage;
+                        }
+                        else
+                        {
+                            _comp.Nodes.Add(item.Image);
+                        }
+                    }
+                }
+
+                public override void Clear()
+                {
+                    foreach (var item in _comp.Nodes.OfType<IContainer>().ToList())
+                    {
+                        _comp.Nodes.Remove(item);
+                    }
+                }
+
+                public override bool Remove(IContainer item)
+                {
+                    return _comp.Nodes.Remove(item);
+                }
+            }
         }
 
         public class Container2MapEntry : SynchronizationRule<IContainer, IMapEntry>
         {
+            private static readonly ObservingFunc<IContainer, string?> _getImage = 
+                ObservingFunc<IContainer, string?>.FromExpression(c => c.Image != null ? c.Image.Image_ : null);
+
             public override void DeclareSynchronization()
             {
                 Synchronize(c => c.Name, me => me.Key);
 
-                Synchronize(c => c.Image.Image_, me => me.Scalar<string>("image"));
-                Synchronize(c => c.Replicas.WithDefault(1), me => me.Scalar<int?>("replicas"));
+                Synchronize(c => GetImage(c), me => me.Scalar<string>("image"));
+                Synchronize(c => c.Replicas.WithDefault(1), me => me.Scalar<int>("replicas"));
 
                 SynchronizeMany(
                     c => new VolumeMountCollection(c),
@@ -46,10 +91,36 @@ namespace nmf
                     me => new ScalarCollection(me, "depends_on"));
             }
 
-            protected override IContainer CreateLeftOutput(IMapEntry input, IEnumerable<IContainer> candidates, ISynchronizationContext context, out bool existing)
+            [ObservableProxy(typeof(Container2MapEntry), nameof(GetImageIncremental))]
+            [LensPut(typeof(Container2MapEntry), nameof(SetImage))]
+            public static string? GetImage(IContainer container) => _getImage.Evaluate(container);
+
+            public static INotifyValue<string?> GetImageIncremental(IContainer container) => _getImage.Observe(container);
+
+            public static void SetImage(IContainer container, string image)
             {
-                existing = false;
-                return new Container { Image = new Image() };
+                if (image == null)
+                {
+                    container.Image = null;
+                }
+                else if (container.Image?.Image_ != image)
+                {
+                    IImage imageElement = null;
+                    if (container.Parent is Composition composition)
+                    {
+                        imageElement = composition.Nodes.OfType<IImage>().SingleOrDefault(i => i.Image_ == image);
+                        if (imageElement == null)
+                        {
+                            imageElement = new Image { Image_ = image };
+                            composition.Nodes.Add(imageElement);
+                        }
+                    }
+                    else
+                    {
+                        imageElement = new Image { Image_ = image };
+                    }
+                    container.Image = imageElement;
+                }
             }
 
             [LensPut(typeof(Container2MapEntry), nameof(ParseInteger))]
