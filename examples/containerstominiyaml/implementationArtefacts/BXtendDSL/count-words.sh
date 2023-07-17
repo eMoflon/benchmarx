@@ -3,7 +3,15 @@
 files_with_words() {
   find Containers2MiniYAML/src -type f | (while read f; do 
     filename=$(basename "$f");
-    echo "${filename%.*} ${filename##*.} $(cpp "$f" | grep -v '^#' | wc -w)";
+    if [[ "$filename" == *.xtend ]]; then
+      # A large part of the .xtend is generated from the .bxtend (imports,
+      # class decl and overridden method declarations). Following a similar
+      # approach to the submitted paper, we only count from after the first
+      # overridden method.
+      echo "${filename%.*} ${filename##*.} $(cpp "$f" | grep -v '^#' | sed -n '/override/,${/override/d; p}' | wc -w)";
+    else
+      echo "${filename%.*} ${filename##*.} $(cpp "$f" | grep -v '^#' | wc -w)";
+    fi
   done) | sort -k2
 }
 
