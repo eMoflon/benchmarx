@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NMF-Dynamic" Version="2.0.188" />
+    <PackageReference Include="NMF-Basics" Version="2.0.188" />
     <PackageReference Include="NMF-Expressions" Version="2.0.188" />
     <PackageReference Include="NMF-Expressions-Utilities" Version="2.0.188" />
     <PackageReference Include="NMF-Synchronizations" Version="2.0.188" />
