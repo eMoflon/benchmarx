@@ -198,41 +198,33 @@ namespace nmf
             {
                 private readonly IMap _map;
                 private readonly string _key;
-                private readonly IList _list;
 
                 public ScalarCollection(IMapEntry entry, string key)
                     : this(entry.ForceMap(), key) { }
 
                 public ScalarCollection(IMap map, string key)
-                    : this(map.Entries.AsEnumerable().FirstOrDefault(e => e.Key == key)?.Value as IList ?? new List(), map, key)
+                    : base(map.Entries
+                              .Where(e => e.Key == key && e.Value is IList)
+                              .SelectMany(e => ((IList)e.Value).Values.OfType<IScalar>())
+                              .Select(s => s.Value))
                 {
-                }
-
-                private ScalarCollection(IList list, IMap map, string key)
-                    : base(list.Values.OfType<IValue, IScalar>()
-                               .Select(s => s.Value))
-                {
-                    _list = list;
                     _map = map;
                     _key = key;
                 }
 
                 public override void Add(string item)
                 {
-                    if (_list.Values.Count == 0)
+                    var entry = _map.Entries.AsEnumerable().FirstOrDefault(e => e.Key == _key);
+                    if (entry == null)
                     {
-                        _map.Entries.Add(new MapEntry
-                        {
-                            Key = _key,
-                            Value = _list
-                        });
+                        entry = new MapEntry { Key = _key, Value = new List() };
+                        _map.Entries.Add(entry);
                     }
-                    _list.Values.Add(new Scalar { Value = item });
+                    ((IList)entry.Value).Values.Add(new Scalar { Value = item });
                 }
 
                 public override void Clear()
                 {
-                    _list.Values.Clear();
                     RemoveEntry();
                 }
 
@@ -247,15 +239,19 @@ namespace nmf
 
                 public override bool Remove(string item)
                 {
-                    var scalar = _list.Values.AsEnumerable().FirstOrDefault(v => v is IScalar s && s.Value == item);
-                    if (scalar != null)
+                    var entry = _map.Entries.AsEnumerable().FirstOrDefault(e => e.Key == _key);
+                    if (entry != null && entry.Value is IList vals)
                     {
-                        var ret = _list.Values.Remove(scalar);
-                        if (_list.Values.Count == 0)
+                        var scalar = vals.Values.AsEnumerable().FirstOrDefault(v => v is IScalar s && s.Value == item);
+                        if (scalar != null)
                         {
-                            RemoveEntry();
+                            var ret = vals.Values.Remove(scalar);
+                            if (vals.Values.Count == 0)
+                            {
+                                _map.Entries.Remove(entry);
+                            }
+                            return ret;
                         }
-                        return ret;
                     }
                     return false;
                 }
