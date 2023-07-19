@@ -4,10 +4,13 @@ import static org.benchmarx.examples.containerstominiyaml.helpers.MiniYAMLHelper
 import static org.benchmarx.examples.containerstominiyaml.helpers.MiniYAMLHelper.scalar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 import org.benchmarx.BXTool;
 import org.benchmarx.examples.containerstominiyaml.comparators.CompositionComparator;
@@ -40,14 +43,18 @@ public class ScalabilityMeasurements {
 	private static final double PROBABILITY_DEPENDS_ON = 0.2;
 	private static final double PROBABILITY_VOLUME_MOUNT = 0.2;
 
-	public static final BXTool<Composition, miniyaml.Map, Decisions> TOOL_EPSILON
-		= new EpsilonContainersToMiniYAML("Epsilon", new MiniYAMLComparator());
-	public static final BXTool<Composition, miniyaml.Map, Decisions> TOOL_BXTENDDSL
-		= new BXToolForBXtendDsl<containers.Composition, miniyaml.Map, Decisions>("BXtendDSL",
+	public static final String TOOL_NAME_NMF = "NMF";
+	public static final String TOOL_NAME_EPSILON = "Epsilon";
+	public static final String TOOL_NAME_BXTENDDSL = "BXtendDSL";
+
+	public static final Supplier<BXTool<Composition, miniyaml.Map, Decisions>> TOOL_EPSILON
+		= () -> new EpsilonContainersToMiniYAML(TOOL_NAME_EPSILON, new MiniYAMLComparator());
+	public static final Supplier<BXTool<Composition, miniyaml.Map, Decisions>> TOOL_BXTENDDSL
+		= () -> new BXToolForBXtendDsl<containers.Composition, miniyaml.Map, Decisions>(TOOL_NAME_BXTENDDSL,
 			() -> new Containers2MiniYAML(), ContainersFactory.eINSTANCE.createComposition(), 
 			Decisions.values(), new CompositionComparator(), new MiniYAMLComparator() );
-	public static final BXTool<Composition, miniyaml.Map, Decisions> TOOL_NMF
-		= new NMFContainersToMiniYaml("NMF", new MiniYAMLComparator());
+	public static final Supplier<BXTool<Composition, miniyaml.Map, Decisions>> TOOL_NMF
+		= () -> new NMFContainersToMiniYaml(TOOL_NAME_NMF, new MiniYAMLComparator());
 
 	private static final String DELIMITER = ",";
 	private static final String UNIT = "";
@@ -261,12 +268,12 @@ public class ScalabilityMeasurements {
 		return me;
 	}
 
-	public void runBatchFWDMeasurements(List<Integer> sizes, BXTool<Composition, miniyaml.Map, Decisions>... tools){
-		timerMeasurements(sizes, createTimers(tools), (timer) -> timer.timeSourceEditFromScratchInS(this::createInitialComposition));
+	public void runBatchFWDMeasurements(List<Integer> sizes, Supplier<BXTool<Composition, miniyaml.Map, Decisions>>... tools){
+		timerMeasurements(sizes, Arrays.asList(tools), (timer) -> timer.timeSourceEditFromScratchInS(this::createInitialComposition));
 	}
 
-	private List<BXToolTimer<Composition, Map, Decisions>> createTimers(BXTool<Composition, Map, Decisions>[] tools) {
-		List<BXToolTimer<Composition, Map, Decisions>> timers = new ArrayList<>(tools.length);
+	private List<BXToolTimer<Composition, Map, Decisions>> createTimers(List<BXTool<Composition, Map, Decisions>> tools) {
+		List<BXToolTimer<Composition, Map, Decisions>> timers = new ArrayList<>(tools.size());
 		for (BXTool<Composition, Map, Decisions> tool : tools) {
 			if (tool == TOOL_NMF) {
 				timers.add(new NMFContainersToMiniYamlTimer(tool, nRepetitions));
@@ -278,48 +285,58 @@ public class ScalabilityMeasurements {
 		return timers;
 	}
 
-	private void timerMeasurements(List<Integer> sizes, List<BXToolTimer<Composition, Map, Decisions>> timers, Function<BXToolTimer<Composition, Map, Decisions>, Double> fn) {
+	private void timerMeasurements(List<Integer> sizes, List<Supplier<BXTool<Composition, Map, Decisions>>> toolSuppliers, Function<BXToolTimer<Composition, Map, Decisions>, Double> fn) {
 		// Initially, we use all timers
 		java.util.Map<BXToolTimer<Composition, Map, Decisions>, Boolean> active = new IdentityHashMap<>();
 
-		for (int size : sizes) {
-			this.setContainers(size);
+		List<BXTool<Composition, Map, Decisions>> tools =
+			toolSuppliers.stream().map(e -> e.get()).collect(Collectors.toList());
+		List<BXToolTimer<Composition, Map, Decisions>> timers = createTimers(tools);
 
-			System.out.print(nContainers + DELIMITER + nVolumes + DELIMITER + nImages);
-			for (BXToolTimer<Composition, Map, Decisions> timer : timers) {
-				Boolean isActive = active.getOrDefault(timer, true);
-				if (isActive) {
-					double time = fn.apply(timer);
-					System.out.print(DELIMITER + time + UNIT);
-					active.put(timer, time <= this.disableToolIfSlowerThanSeconds);
-				} else {
-					System.out.print(DELIMITER + "TIMED_OUT" + UNIT);
+		try {
+			for (int size : sizes) {
+				this.setContainers(size);
+
+				System.out.print(nContainers + DELIMITER + nVolumes + DELIMITER + nImages);
+				for (BXToolTimer<Composition, Map, Decisions> timer : timers) {
+					Boolean isActive = active.getOrDefault(timer, true);
+					if (isActive) {
+						double time = fn.apply(timer);
+						System.out.print(DELIMITER + time + UNIT);
+						active.put(timer, time <= this.disableToolIfSlowerThanSeconds);
+					} else {
+						System.out.print(DELIMITER + "TIMED_OUT" + UNIT);
+					}
 				}
+				System.out.println();
 			}
-			System.out.println();
+		} finally {
+			for (BXTool<Composition, Map, Decisions> tool : tools) {
+				tool.terminateSynchronisationDialogue();
+			}
 		}
 	}
 	
-	public void runBatchBWDMeasurements(List<Integer> sizes, BXTool<Composition, miniyaml.Map, Decisions>... tools){
-		timerMeasurements(sizes, createTimers(tools), (timer) -> timer.timeTargetEditFromScratchInS(this::createInitialMap));
+	public void runBatchBWDMeasurements(List<Integer> sizes, Supplier<BXTool<Composition, miniyaml.Map, Decisions>>... tools){
+		timerMeasurements(sizes, Arrays.asList(tools), (timer) -> timer.timeTargetEditFromScratchInS(this::createInitialMap));
 	}
 
-	public void runIncrFWDMeasurements(List<Integer> sizes, BXTool<Composition, miniyaml.Map, Decisions>... tools){
-		timerMeasurements(sizes, createTimers(tools), (timer) -> timer.timeSourceEditAfterSetUpInS(this::createInitialComposition, this::createContainer));
+	public void runIncrFWDMeasurements(List<Integer> sizes, Supplier<BXTool<Composition, miniyaml.Map, Decisions>>... tools){
+		timerMeasurements(sizes, Arrays.asList(tools), (timer) -> timer.timeSourceEditAfterSetUpInS(this::createInitialComposition, this::createContainer));
 	}
 
-	public void runIncrBWDMeasurements(List<Integer> sizes, BXTool<Composition, miniyaml.Map, Decisions>... tools){
-		timerMeasurements(sizes, createTimers(tools), (timer) -> timer.timeTargetEditAfterSetUpInS(this::createInitialMap, this::createContainerEntry));
+	public void runIncrBWDMeasurements(List<Integer> sizes, Supplier<BXTool<Composition, miniyaml.Map, Decisions>>... tools){
+		timerMeasurements(sizes, Arrays.asList(tools), (timer) -> timer.timeTargetEditAfterSetUpInS(this::createInitialMap, this::createContainerEntry));
 	}
 
     @SafeVarargs
-	private static void printHeader(String title, BXTool<Composition, miniyaml.Map, Decisions>... tools) {
+	private static void printHeader(String title, String... tools) {
         System.out.println("------------------");
         System.out.println(title);
         System.out.println("------------------");
         System.out.print("n_containers" + DELIMITER + "n_volumes" + DELIMITER + "n_images");
-        for (BXTool<Composition, miniyaml.Map, Decisions> tool : tools) {
-        	System.out.print(DELIMITER + tool.getName());
+        for (String tool : tools) {
+        	System.out.print(DELIMITER + tool);
         }
         System.out.println();
     }
@@ -341,16 +358,16 @@ public class ScalabilityMeasurements {
 		measurements.setDisableToolIfSlowerThanSeconds(100);
 
 		// Note: NMF solutions produce errors in backwards mode
-		printHeader("Batch FWD:", TOOL_EPSILON, TOOL_BXTENDDSL, TOOL_NMF);
-		measurements.runBatchFWDMeasurements(sizes, TOOL_EPSILON, TOOL_BXTENDDSL, TOOL_NMF);
+		printHeader("Batch FWD:", TOOL_NAME_NMF);
+		measurements.runBatchFWDMeasurements(sizes, TOOL_NMF);
 
-		printHeader("Batch BWD:", TOOL_EPSILON, TOOL_BXTENDDSL);
-		measurements.runBatchBWDMeasurements(sizes, TOOL_EPSILON, TOOL_BXTENDDSL);
+		printHeader("Batch BWD:", TOOL_NAME_NMF);
+		measurements.runBatchBWDMeasurements(sizes, TOOL_NMF);
 
-		printHeader("Incr. FWD:", TOOL_EPSILON, TOOL_BXTENDDSL, TOOL_NMF);
-		measurements.runIncrFWDMeasurements(sizes, TOOL_EPSILON, TOOL_BXTENDDSL, TOOL_NMF);
+		printHeader("Incr. FWD:", TOOL_NAME_NMF);
+		measurements.runIncrFWDMeasurements(sizes, TOOL_NMF);
 
-		printHeader("Incr. BWD:", TOOL_EPSILON, TOOL_BXTENDDSL);
-		measurements.runIncrBWDMeasurements(sizes, TOOL_EPSILON, TOOL_BXTENDDSL);
+		printHeader("Incr. BWD:", TOOL_NAME_NMF);
+		measurements.runIncrBWDMeasurements(sizes, TOOL_NMF);
 	}
 }
