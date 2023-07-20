@@ -358,16 +358,16 @@ public class ScalabilityMeasurements {
 		measurements.setDisableToolIfSlowerThanSeconds(100);
 
 		// Note: NMF solutions produce errors in backwards mode
-		printHeader("Batch FWD:", TOOL_NAME_NMF);
-		measurements.runBatchFWDMeasurements(sizes, TOOL_NMF);
+		printHeader("Batch FWD:", TOOL_NAME_EPSILON, TOOL_NAME_BXTENDDSL, TOOL_NAME_NMF);
+		measurements.runBatchFWDMeasurements(sizes, TOOL_EPSILON, TOOL_BXTENDDSL, TOOL_NMF);
 
-		printHeader("Batch BWD:", TOOL_NAME_NMF);
-		measurements.runBatchBWDMeasurements(sizes, TOOL_NMF);
+		printHeader("Batch BWD:", TOOL_NAME_EPSILON, TOOL_NAME_BXTENDDSL, TOOL_NAME_NMF);
+		measurements.runBatchBWDMeasurements(sizes, TOOL_EPSILON, TOOL_BXTENDDSL, TOOL_NMF);
 
-		printHeader("Incr. FWD:", TOOL_NAME_NMF);
-		measurements.runIncrFWDMeasurements(sizes, TOOL_NMF);
+		printHeader("Incr. FWD:", TOOL_NAME_EPSILON, TOOL_NAME_BXTENDDSL, TOOL_NAME_NMF);
+		measurements.runIncrFWDMeasurements(sizes, TOOL_EPSILON, TOOL_BXTENDDSL, TOOL_NMF);
 
-		printHeader("Incr. BWD:", TOOL_NAME_NMF);
-		measurements.runIncrBWDMeasurements(sizes, TOOL_NMF);
+		printHeader("Incr. BWD:", TOOL_NAME_EPSILON, TOOL_NAME_BXTENDDSL, TOOL_NAME_NMF);
+		measurements.runIncrBWDMeasurements(sizes, TOOL_EPSILON, TOOL_BXTENDDSL, TOOL_NMF);
 	}
 }
