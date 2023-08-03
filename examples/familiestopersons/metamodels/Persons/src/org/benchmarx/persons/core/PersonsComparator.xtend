@@ -7,11 +7,10 @@ import java.text.SimpleDateFormat
 import java.util.ArrayList
 import java.util.Date
 import java.util.List
-import org.benchmarx.emf.Comparator
-
+import java.util.function.BiConsumer
 import static org.junit.Assert.*
 
-class PersonsComparator implements Comparator<PersonRegister>{
+class PersonsComparator implements BiConsumer<PersonRegister, PersonRegister> {
 	PersonNormaliser comparator
 	PersonStructuralNormaliser structuralComparator
 	boolean checkAttributeValues
@@ -28,7 +27,7 @@ class PersonsComparator implements Comparator<PersonRegister>{
 		this.checkAttributeValues = checkAttributeValues
 	}
 	
-	override assertEquals(PersonRegister expected, PersonRegister actual) {
+	override void accept(PersonRegister expected, PersonRegister actual) {
 		assertTrue(personsToString(expected).startsWith("PersonRegister"))
 		assertEquals(personsToString(expected), personsToString(actual))
 	}

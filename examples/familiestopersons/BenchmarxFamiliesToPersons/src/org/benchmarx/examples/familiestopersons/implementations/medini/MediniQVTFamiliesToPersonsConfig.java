@@ -9,14 +9,15 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import org.apache.commons.io.output.NullOutputStream;
-import org.benchmarx.Configurator;
+import org.benchmarx.config.Configurator;
+import org.benchmarx.edit.IEdit;
 import org.benchmarx.emf.BXToolForEMF;
+import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;
-import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -25,14 +26,15 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+
+import Config.ConfigFactory;
+import Config.ConfigPackage;
+import Config.Configuration;
 import Families.FamiliesFactory;
 import Families.FamiliesPackage;
 import Families.FamilyRegister;
 import Persons.PersonRegister;
 import Persons.PersonsPackage;
-import Config.ConfigFactory;
-import Config.ConfigPackage;
-import Config.Configuration;
 import de.ikv.emf.qvt.EMFQvtProcessorImpl;
 import de.ikv.medini.qvt.QVTProcessorConsts;
 import uk.ac.kent.cs.kmf.util.ILog;
@@ -167,11 +169,9 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	 * @param edit : the source edit delta
 	 */
 	@Override
-	public void performAndPropagateTargetEdit(Consumer<PersonRegister> edit) {
-		edit.accept(getTargetModel());	
-				
+	public void performAndPropagateTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
+		edit.get();	
 		launchBWD();
-		
 	}
 
 	/**
@@ -180,11 +180,9 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	 * @param edit : the source edit delta
 	 */
 	@Override
-	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
-		edit.accept(getSourceModel());
-		
+	public void performAndPropagateSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
+		edit.get();
 		launchFWD();
-		
 	}
 
 	@Override
@@ -321,8 +319,8 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	 * @param edit : the edit delta
 	 */
 	@Override
-	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
-		edit.accept(getTargetModel());
+	public void performIdleTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
+		edit.get();
 	}
 
 	/**
@@ -331,8 +329,8 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	 * @param edit : the edit delta
 	 */
 	@Override
-	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
-		edit.accept(getSourceModel());
+	public void performIdleSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
+		edit.get();
 	}
 	
 	/**
@@ -356,5 +354,11 @@ public class MediniQVTFamiliesToPersonsConfig extends BXToolForEMF<FamilyRegiste
 	
 	public Configurator<Decisions> getConfigurator() {
 		return configurator;
+	}
+
+	@Override
+	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEdit,
+			Supplier<IEdit<PersonRegister>> targetEdit) {
+		throw new UnsupportedOperationException("Concurrent edits not supported.");		
 	}
 }

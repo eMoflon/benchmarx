@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
+import java.util.function.Supplier;
 
-import org.benchmarx.Configurator;
+import org.benchmarx.config.Configurator;
+import org.benchmarx.edit.IEdit;
 import org.benchmarx.emf.BXToolForEMF;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
@@ -31,7 +32,6 @@ import Persons.PersonsFactory;
 import jtl.launcher.Launcher;
 
 public class JTLFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonRegister, Decisions> {
-
 	private static int testNumber = 0;
 
 	private static final String SOURCEPATH = "results/jtl/";
@@ -39,7 +39,7 @@ public class JTLFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonReg
 
 	private ResourceSet resourceSet;
 
-	private Map<String, Object >globalPackageRegistry;
+	private Map<String, Object> globalPackageRegistry;
 
 	private FamilyRegister familiesModel;
 	private PersonRegister personsModel;
@@ -75,35 +75,34 @@ public class JTLFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonReg
 		familiesModel = FamiliesFactory.eINSTANCE.createFamilyRegister();
 		personsModel = PersonsFactory.eINSTANCE.createPersonRegister();
 
-		setConfigurator(new Configurator<Decisions>()
-				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true)
-			    .makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true));
+		setConfigurator(new Configurator<Decisions>().makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true)
+				.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true));
 
 		testNumber++;
 	}
 
 	@Override
-	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
-		edit.accept(familiesModel);
+	public void performAndPropagateSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
+		edit.get();
 		saveModel(familiesModel, "families");
 		personsModel = (PersonRegister) loadModel(launchFWD());
 	}
 
 	@Override
-	public void performAndPropagateTargetEdit(Consumer<PersonRegister> edit) {
-		edit.accept(personsModel);
+	public void performAndPropagateTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
+		edit.get();
 		selectConstraints();
 		saveModel(personsModel, "persons");
 		familiesModel = (FamilyRegister) loadModel(launchBWD());
 	}
 
 	@Override
-	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
+	public void performIdleSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
 		performAndPropagateSourceEdit(edit);
 	}
 
 	@Override
-	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
+	public void performIdleTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
 		performAndPropagateTargetEdit(edit);
 	}
 
@@ -123,12 +122,12 @@ public class JTLFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonReg
 	}
 
 	@Override
-	public void saveModels(String name) { }
+	public void saveModels(String name) {
+	}
 
 	private void saveModel(final EObject model, final String basename) {
 		final String modelPath = SOURCEPATH + basename + testNumber + ".xmi";
-		Resource modelResource = resourceSet.createResource(
-				URI.createFileURI(modelPath));
+		Resource modelResource = resourceSet.createResource(URI.createFileURI(modelPath));
 		modelResource.getContents().add(model);
 		try {
 			modelResource.save(null);
@@ -199,34 +198,32 @@ public class JTLFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonReg
 	}
 
 	private void launch(final List<String> args) {
-		
+
 		// Temporarily suppress System.out
 		final PrintStream tmp = System.out;
 		System.setOut(new PrintStream(new OutputStream() {
-			public void write(int a) { }
+			public void write(int a) {
+			}
 		}));
-		
+
 		// Launch JTL
 		Launcher.main(args.toArray(new String[0]));
-		
+
 		// Restore System.out
 		System.setOut(tmp);
-		
+
 		restoreGlobalPackageRegistry();
 	}
 
 	private void selectConstraints() {
 		additionalConstraints = new ArrayList<String>();
 
-		additionalConstraints.add(artefactsPath + "Families2Persons_prefer_creating_" +
-				(configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD) ?
-						"parent" : "child") + ".dl"
-		);
+		additionalConstraints.add(artefactsPath + "Families2Persons_prefer_creating_"
+				+ (configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD) ? "parent" : "child") + ".dl");
 
-		additionalConstraints.add(artefactsPath + "Families2Persons_prefer_" +
-				(configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW) ?
-						"existing_family" : "new_family") + ".dl"
-		);
+		additionalConstraints.add(artefactsPath + "Families2Persons_prefer_"
+				+ (configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW) ? "existing_family" : "new_family")
+				+ ".dl");
 	}
 
 	private void restoreGlobalPackageRegistry() {
@@ -239,7 +236,7 @@ public class JTLFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonReg
 	private void initResourceSet() {
 		resourceSet = new ResourceSetImpl();
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-			.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new JTLXMIResourceFactoryImpl());
+				.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new JTLXMIResourceFactoryImpl());
 	}
 
 	class JTLXMIResourceFactoryImpl extends XMIResourceFactoryImpl {
@@ -254,11 +251,18 @@ public class JTLFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonReg
 					}
 					setID(eObject, id);
 				}
+
 				@Override
 				protected boolean useUUIDs() {
 					return true;
 				}
 			};
 		}
+	}
+
+	@Override
+	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEdit,
+			Supplier<IEdit<PersonRegister>> targetEdit) {
+		throw new UnsupportedOperationException("Concurrent edits not supported.");
 	}
 }

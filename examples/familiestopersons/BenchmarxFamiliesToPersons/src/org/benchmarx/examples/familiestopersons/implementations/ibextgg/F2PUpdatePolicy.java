@@ -3,7 +3,7 @@ package org.benchmarx.examples.familiestopersons.implementations.ibextgg;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.benchmarx.Configurator;
+import org.benchmarx.config.Configurator;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.emoflon.ibex.tgg.compiler.patterns.PatternSuffixes;
 import org.emoflon.ibex.tgg.operational.matches.IMatch;

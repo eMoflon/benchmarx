@@ -1,0 +1,245 @@
+@Data_API
+
+metamodel Families {
+	FamilyRegister {
+		<>-families(0..*)->Family
+	}
+	
+	Family {
+		.id: EInt
+		.name : EString
+		
+		<>-father(0..1)->FamilyMember
+		<>-mother(0..1)->FamilyMember
+		<>-sons(0..*)->FamilyMember
+		<>-daughters(0..*)->FamilyMember
+	}
+	
+	FamilyMember {
+		.id: EInt
+		.name : EString
+	}
+}
+
+constraint NoTwoMothers = forbid TwoMothers
+pattern TwoMothers {
+	m1:FamilyMember
+	m2:FamilyMember
+	f: Family {
+		-mother->m1
+		-mother->m2
+	}
+}
+
+constraint NoTwoFathers = forbid TwoFathers
+pattern TwoFathers {
+	m1:FamilyMember
+	m2:FamilyMember
+	f: Family {
+		-father->m1
+		-father->m2
+	}
+}
+
+pattern FamilyPattern {
+	register:FamilyRegister {
+		-families->family
+	}
+	
+	family:Family
+}
+
+abstract pattern FamilyMemberPattern {
+	family:Family
+	
+	member:FamilyMember
+}
+
+pattern FatherPattern -> FamilyMemberPattern {
+	family:Family {
+		-father->$member
+	}
+}
+
+pattern MotherPattern -> FamilyMemberPattern {
+	family:Family {
+		-mother->$member
+	}
+}
+
+pattern DaughterPattern -> FamilyMemberPattern {
+	family:Family {
+		-daughters->$member
+	}
+}
+
+pattern SonPattern -> FamilyMemberPattern {
+	family:Family {
+		-sons->$member
+	}
+}
+
+rule createFamily {
+	++ family: Family {
+		.enamespace := <namespace>
+		.name := <name>
+		.id := <id>
+		._cr_ := true
+	}
+}
+
+rule deleteFamily {
+	family: Family {
+		.id : <id>
+		._de_ := true
+	}
+}
+
+rule createFamilyMember {
+	++fm: FamilyMember {
+		.id := <id>
+		.enamespace := <namespace>
+		.name := <name>
+		._cr_ := true
+	}
+}
+
+rule deleteFamilyMember {
+	fm: FamilyMember {
+		.id : <id>
+		._de_ := true
+	}
+}
+
+rule setFamilyMemberAsToBeCreated {
+	fm: FamilyMember {
+		.id : <id>
+		._cr_ := true
+	}
+}
+
+rule createRegisterFamilyEdge {
+	register: FamilyRegister {
+		++ -families->family {
+			~_cr_ := true
+		}
+	}
+	
+	family: Family {
+		.id : <id>
+		.enamespace : <namespace>
+		.name : <name>
+	}
+}
+
+rule deleteRegisterFamilyEdge {
+	register: FamilyRegister {
+		-families->family {
+			~_de_ := true
+		}
+	}
+	
+	family: Family {
+		.id : <id>
+	}
+}
+
+abstract rule matchFamilyMemberEdge {
+	family: Family {
+		.id : <fid>
+		.enamespace : <namespace>
+		.name : <fname>
+	}
+	
+	member: FamilyMember {
+		.id : <id>
+		.enamespace : <namespace>
+		.name : <name>
+	}
+}
+
+abstract rule matchFamilyMemberEdgeForDeletion {
+	family: Family
+	
+	member: FamilyMember {
+		.id : <id>
+	}
+}
+
+rule createFamilySonEdge -> matchFamilyMemberEdge {
+	family: Family {
+		++ -sons->$member {
+			~_cr_ := true
+		}
+	}
+}
+
+rule deleteFamilySonEdge -> matchFamilyMemberEdgeForDeletion {
+	family: Family {
+		-sons->$member {
+			~_de_ := true
+		}
+	}
+}
+
+rule createFamilyDaughterEdge -> matchFamilyMemberEdge {
+	family: Family {
+		++ -daughters->$member {
+			~_cr_ := true
+		}
+	}
+}
+
+rule deleteFamilyDaughterEdge -> matchFamilyMemberEdgeForDeletion {
+	family: Family {
+		-daughters->$member {
+			~_de_ := true
+		}
+	}
+}
+
+rule createFamilyMotherEdge -> matchFamilyMemberEdge {
+	family: Family {
+		++ -mother->$member {
+			~_cr_ := true
+		}
+	}
+}
+
+rule deleteFamilyMotherEdge -> matchFamilyMemberEdgeForDeletion {
+	family: Family {
+		-mother->$member {
+			~_de_ := true
+		}
+	}
+}
+
+rule createFamilyFatherEdge -> matchFamilyMemberEdge {
+	family: Family {
+		++ -father->$member {
+			~_cr_ := true
+		}
+	}
+}
+
+rule deleteFamilyFatherEdge -> matchFamilyMemberEdgeForDeletion {
+	family: Family {
+		-father->$member {
+			~_de_ := true
+		}
+	}
+}
+
+rule changeNameOfFamily {
+	r:FamilyRegister {
+		-families->family {
+			~_cr_ := true
+		}
+	}
+	
+	family: Family {
+		.id : <id>
+		.name := <name>
+		._cr_ := true
+	}	
+}

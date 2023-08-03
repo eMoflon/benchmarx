@@ -1,7 +1,9 @@
-package org.benchmarx;
+package org.benchmarx.config;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.benchmarx.BXTool;
 
 /**
  * Implements a simple update policy that makes decisions based on stored

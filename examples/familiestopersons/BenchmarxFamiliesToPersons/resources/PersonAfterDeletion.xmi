@@ -7,10 +7,10 @@
     xsi:schemaLocation="platform:/plugin/Persons/model/Persons.ecore ../../Persons/model/Persons.ecore">
   <persons xsi:type="Persons:Male"
       name="Flanders, Rod"
-       birthday="2013-10-01T10:11:12.000+0100"/>
+      birthday="2013-10-01T11:11:12.000+0200"/>
   <persons xsi:type="Persons:Male"
       name="Simpson, Bart"
-      birthday="2013-03-09T10:11:12.000+0100"/>
+      birthday="2013-03-10T10:11:12.000+0100"/>
   <persons xsi:type="Persons:Male"
       name="Simpson, Homer"
       birthday="2013-01-09T10:11:12.000+0100"/>
@@ -19,7 +19,7 @@
       birthday="2013-02-09T10:11:12.000+0100"/>
   <persons xsi:type="Persons:Male"
       name="Simpson, Bart"
-      birthday="2013-03-11T10:11:12.000+0100"/>
+      birthday="0001-01-01T00:00:00.000+0100"/>
   <persons xsi:type="Persons:Female"
       name="Simpson, Lisa"
       birthday="2013-03-08T10:11:12.000+0100"/>

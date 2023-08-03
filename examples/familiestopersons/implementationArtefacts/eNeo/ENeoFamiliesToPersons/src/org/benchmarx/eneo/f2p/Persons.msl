@@ -1,0 +1,109 @@
+@Data_API
+
+metamodel Persons {
+	PersonRegister {
+		<>-persons(0..*)->Person
+	}
+	
+	Person {
+		.id : EInt
+		.name : EString
+		.birthday : EDate		
+	}
+	
+	Male : Person
+	Female : Person
+}
+
+abstract pattern PersonPattern {
+	register:PersonRegister {
+		-persons->person
+	}
+	
+	person:Person
+}
+
+pattern MalePattern -> PersonPattern {
+	person:Male
+}
+
+pattern FemalePattern -> PersonPattern {
+	person:Female
+}
+
+abstract rule createPerson {
+	++ p: Person {
+		.enamespace := <namespace>
+		.name := <name>
+		.id := <id>
+		.birthday := <bday>
+		._cr_ := true
+	}
+}
+
+rule createFemale -> createPerson {
+	++ p: Female
+}
+
+rule createMale -> createPerson {
+	++ p: Male
+}
+
+rule DeletePerson {
+	p: Person {
+		.id : <id>
+		._de_ := true
+	}
+}
+
+rule createRegisterPersonEdge {
+	r: PersonRegister {
+		++ -persons->p {
+			~_cr_ := true
+		}
+	}
+	
+	p: Person {
+		.id : <id>
+	}
+}
+
+rule DeleteRegisterPersonEdge {
+	r: PersonRegister {
+		-persons->p {
+			~_de_ := true
+		}
+	}
+	
+	p: Person {
+		.id : <id>
+	}
+}
+
+rule changeBirthday {
+	r: PersonRegister {
+		-persons->p {
+			~_cr_ := true
+		}
+	}
+	
+	p: Person {
+		.birthday := <bday>
+		.id : <id>
+		._cr_ := true
+	}
+}
+
+rule changeName {
+	r: PersonRegister {
+		-persons->p {
+			~_cr_ := true
+		}
+	}
+	
+	p: Person {
+		.name := <name>
+		.id : <id>
+		._cr_ := true
+	}
+}

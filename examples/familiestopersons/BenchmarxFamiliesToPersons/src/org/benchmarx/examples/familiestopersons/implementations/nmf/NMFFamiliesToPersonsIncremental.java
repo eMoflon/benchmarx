@@ -8,9 +8,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.util.function.Consumer;
+import java.util.function.Supplier;
+
 import org.benchmarx.BXTool;
-import org.benchmarx.Configurator;
+import org.benchmarx.config.Configurator;
+import org.benchmarx.edit.IEdit;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;
@@ -67,12 +69,12 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 	}
 
 	@Override
-	public void performAndPropagateTargetEdit(Consumer<PersonRegister> edit) {
+	public void performAndPropagateTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
 		long start = System.nanoTime();
 		setUpdatePolicy();
 		ChangeRecorder recorder = new ChangeRecorder();
 		recorder.observePersonsRegister(trg);
-		edit.accept(trg);
+		edit.get();
 		long actual = propagate(recorder);
 		src = readModel("SaveFamilies");
 		
@@ -107,12 +109,12 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 	}
 
 	@Override
-	public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
+	public void performAndPropagateSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
 		long start = System.nanoTime();
 		setUpdatePolicy();
 		ChangeRecorder recorder = new ChangeRecorder();
 		recorder.observeFamilyRegister(src);
-		edit.accept(src);
+		edit.get();
 		long actual = propagate(recorder);
 		trg = readModel("SavePersons");
 		
@@ -249,13 +251,29 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 	}
 	
 	@Override
-	public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
+	public void performIdleTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
 		this.performAndPropagateTargetEdit(edit);
 	}
 
 	@Override
-	public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
+	public void performIdleSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
 		this.performAndPropagateSourceEdit(edit);
+	}
+
+	@Override
+	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEdit,
+			Supplier<IEdit<PersonRegister>> targetEdit) {
+		throw new UnsupportedOperationException("Concurrent edits not supported.");		
+	}
+
+	@Override
+	public FamilyRegister getSourceModel() {
+		return src;
+	}
+
+	@Override
+	public PersonRegister getTargetModel() {
+		return trg;
 	}
 }
 

@@ -5,11 +5,11 @@ import Families.FamilyMember
 import Families.FamilyRegister
 import java.util.ArrayList
 import java.util.List
-import org.benchmarx.emf.Comparator
+import java.util.function.BiConsumer
 
 import static org.junit.Assert.*
 
-class FamiliesComparator implements Comparator<FamilyRegister> {
+class FamiliesComparator implements BiConsumer<FamilyRegister, FamilyRegister> {
 	FamilyNormaliser comparator
 	FamilyMemberNormaliser familyMemberComparator
 	boolean checkAttributeValues
@@ -26,7 +26,7 @@ class FamiliesComparator implements Comparator<FamilyRegister> {
 		this.checkAttributeValues = checkAttributeValues
 	}
 	
-	override assertEquals(FamilyRegister expected, FamilyRegister actual) {	
+	override accept(FamilyRegister expected, FamilyRegister actual) {	
 		assertTrue(familyToString(expected).startsWith("FamilyRegister"))
 		assertEquals(familyToString(expected), familyToString(actual))
 	}

@@ -1,11 +1,12 @@
 package org.benchmarx.examples.familiestopersons.implementations.funnyqt;
 
 import java.io.File;
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
+import java.util.function.Supplier;
 
-import org.benchmarx.Configurator;
+import org.benchmarx.config.Configurator;
+import org.benchmarx.edit.IEdit;
 import org.benchmarx.emf.BXToolForEMF;
-import org.benchmarx.emf.Comparator;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;
@@ -62,8 +63,8 @@ public class FunnyQTFamiliesToPerson
         this(new FamiliesComparator(), new PersonsComparator());
     }
 
-    public FunnyQTFamiliesToPerson(Comparator<FamilyRegister> src,
-            Comparator<PersonRegister> trg) {
+    public FunnyQTFamiliesToPerson(BiConsumer<FamilyRegister, FamilyRegister> src,
+            BiConsumer<PersonRegister, PersonRegister> trg) {
         super(src, trg);
     }
 
@@ -95,25 +96,25 @@ public class FunnyQTFamiliesToPerson
     }
 
     @Override
-    public void performAndPropagateSourceEdit(Consumer<FamilyRegister> edit) {
-        edit.accept(getSourceModel());
+    public void performAndPropagateSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
+        edit.get();
         transform(RIGHT);
     }
 
     @Override
-    public void performAndPropagateTargetEdit(Consumer<PersonRegister> edit) {
-        edit.accept(getTargetModel());
+    public void performAndPropagateTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
+        edit.get();
         transform(LEFT);
     }
 
     @Override
-    public void performIdleSourceEdit(Consumer<FamilyRegister> edit) {
-        edit.accept(getSourceModel());
+    public void performIdleSourceEdit(Supplier<IEdit<FamilyRegister>> edit) {
+        edit.get();
     }
 
     @Override
-    public void performIdleTargetEdit(Consumer<PersonRegister> edit) {
-        edit.accept(getTargetModel());
+    public void performIdleTargetEdit(Supplier<IEdit<PersonRegister>> edit) {
+        edit.get();
     }
 
     @Override
@@ -138,4 +139,10 @@ public class FunnyQTFamiliesToPerson
         S.invoke(srcModel, RESULTPATH + File.separator + name + "-source.xmi");
         S.invoke(trgModel, RESULTPATH + File.separator + name + "-target.xmi");
     }
+
+	@Override
+	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEdit,
+			Supplier<IEdit<PersonRegister>> targetEdit) {
+		throw new UnsupportedOperationException("Concurrent edits not supported.");		
+	}
 }

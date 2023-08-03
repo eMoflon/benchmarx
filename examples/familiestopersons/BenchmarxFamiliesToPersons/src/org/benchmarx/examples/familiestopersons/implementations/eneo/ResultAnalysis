@@ -1,0 +1,54 @@
+Failing tests and explanation:
+
+[Attribute manipulation]
+
+src-edit: testIncrementalMove:
+	Lisa and Marge are moved from one family to another by deleting and creating the links connecting
+	families to family members.
+	This can be structurally handled by eNeo but fails due to attribute conditions.
+	The connected person has the wrong name as their name attribute contains the old family as a prefix 
+	and this is now wrong.
+	ENeo would have to recompute consistent attributes and cannot do this at the moment.
+	In general attribute handling is a difficult task for ILP-based MI as our old strategy is "eager" and cannot 
+	be used to incorporate all possible solutions.
+	A better solution, theoretically sound, would be to allow attribute only TGG rules; this would allow
+	separating structure and attributes.  In this case the structure could be reused and only attribute values
+	would have to be recomputed.
+	What eNeo does right now is the following:
+		* It is unable to reuse the family member and connected person due to attribute conditions
+		* It decides to retranslate the moved family members resulting in a consistent state but loss of information (birthdays here)
+		
+
+src-edit: testIncrementalRename:
+	The Simpson family is renamed to Bouvier in the source model.
+	As the corresponding persons now have wrong names, a way to propagate this change is to recompute their names.
+	ENeo cannot recompute consistent attributes, however, and the solution of deleting all inconsistent persons and 
+	recreating them correctly is costlier than just deleting them (w.r.t. to the default weights) - or just leaving them as they are (tolerance).
+	* Similar problem as with testIncrementalMove but not exactly the same (no points for propagating creation)!
+	
+[Reusing/transferring information from existing context]	
+	
+src-edit: testIncrementalMoveRoleChange:
+	Maggie is "moved" in a way that her gender changes (female to male).
+	Propagation is reasonable but eNeo is unable to "reuse" or propagate information from an old node (the birthday here of the old female person)
+
+[Preferences and dynamic, fine-grained configuration => decision making in general incompatible with global optimization ]
+
+trg-edit: testIncrementalInsertsFixedConfig:
+	Male person "Seymour, Skinner" is added multiple times to the register. 
+	Preferences are enforced by blacklisting rules in eNeo.  This works for the simple cases in the benchmark but does not work here as the preferred 
+	rule cannot be applied directly (there is already a father in the fitting family for Seymour).
+	ENeo thus creates a new family Skinner with Seymour as its father.  This is consistent but wrong for the benchmarx as the second preference 
+	(reusing families) should take precedence and force Seymour to be a son in the existing Skinner family.
+	Conclusion:  Preferences can be expressed with ENeo's approach to a certain extent but such fine-grained situation-specific configuration 
+	is not possible and probably not compatible with global optimization.
+	
+trg-edit: testIncrementalInsertsDynamicConfig:
+	Similar problem as for testIncrementalInsertsFixedConfig. Impossible to express that an existing family can be used if the second preference (prefer parents) 
+	is ignored.
+	
+trg-edit: testIncrementalOperational:
+	Similar problem as for testIncrementalInsertsDynamicConfig.
+	
+trg-edit: testIncrementalRenamingDynamic
+	Similar problem as for testIncrementalInsertsDynamicConfig.

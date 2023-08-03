@@ -1,7 +1,10 @@
 package org.benchmarx;
 
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
+import org.benchmarx.config.Configurator;
+import org.benchmarx.edit.IEdit;
 import org.junit.Assert;
 
 import junit.framework.AssertionFailedError;
@@ -10,7 +13,6 @@ import junit.framework.AssertionFailedError;
  * This interface describes the expected functionality of a "BXTool" from the
  * perspective of the benchmarx.
  * 
- * @author anthony anjorin
  *
  * @param <S>
  *            The root type of all source models
@@ -40,25 +42,15 @@ public interface BXTool<S, T, D> {
 	 */
 	default public void terminateSynchronisationDialogue() {}
 	
-	/**
-	 * Request the bx tool to perform the source edit on the soure model and to
-	 * propagate it to the target model.
-	 * 
-	 * @param edit
-	 *            The edit to be performed is encoded as a void function. The bx
-	 *            tool can attach listeners to the model to record changes as it
-	 *            is manipulated, supply a special consumer that can be
-	 *            inspected, or only access the resulting model if this is all
-	 *            that is required.
-	 */
-	public void performAndPropagateSourceEdit(Consumer<S> edit);
+	public void performAndPropagateEdit(Supplier<IEdit<S>> sourceEdit, Supplier<IEdit<T>> targetEdit);
 	
-	/**
-	 * See {@link #performAndPropagateTargetEdit(Consumer)}
-	 * 
-	 * @param edit
-	 */	
-	public void performAndPropagateTargetEdit(Consumer<T> edit);
+	default void performAndPropagateSourceEdit(Supplier<IEdit<S>> edit) {
+		performAndPropagateEdit(edit, IEdit::idleEdit);
+	}
+
+	default void performAndPropagateTargetEdit(Supplier<IEdit<T>> edit) {
+		performAndPropagateEdit(IEdit::idleEdit, edit);
+	}
 	
 	/**
 	 * Some testing tasks require performing idle updates on one model, i.e.,
@@ -67,19 +59,19 @@ public interface BXTool<S, T, D> {
 	 * update on the source model and do nothing else, or of course propagate it
 	 * if this is important for internal bookkeeping. This explicit extra method
 	 * for idle updates is important to avoid testing, e.g., the backward
-	 * propagation when testing the forward propagation. testing.
+	 * propagation when testing the forward propagation.
 	 * 
 	 * @param edit
 	 *            See {@link #performAndPropagateSourceEdit(Consumer)}
 	 */
-	public void performIdleSourceEdit(Consumer<S> edit);
+	public void performIdleSourceEdit(Supplier<IEdit<S>> edit);
 
 	/**
 	 * See {@link #performIdleSourceEdit(Consumer)}
 	 * 
 	 * @param edit
 	 */
-	public void performIdleTargetEdit(Consumer<T> edit);
+	public void performIdleTargetEdit(Supplier<IEdit<T>> edit);
 
 	/**
 	 * Used to set the update policy to use for testing. This takes over
@@ -123,10 +115,18 @@ public interface BXTool<S, T, D> {
 	 */
 	public void assertPrecondition(S source, T target);
 
+	default void noPrecondition() {
+		
+	}
+	
 	/**
 	 * Implement to set the name of your tool and improve generated debug messages.
 	 * 
 	 * @return
 	 */
 	default public String getName() { return "Please set the name of your bx tool!"; }
+	
+	public abstract S getSourceModel();
+	
+	public abstract T getTargetModel();
 }

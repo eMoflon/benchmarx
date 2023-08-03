@@ -1,0 +1,368 @@
+import "platform:/plugin/org.emoflon.neo.neocore/model/AttributeConstraintsLibrary.msl"
+import "platform:/resource/EneoFamiliesToPersons/src/org/benchmarx/eneo/f2p/Families.msl"
+import "platform:/resource/EneoFamiliesToPersons/src/org/benchmarx/eneo/f2p/Persons.msl"
+
+
+tripleGrammar F2P {
+	source {
+		Families
+	}
+	
+	target {
+		Persons
+	}
+	
+	correspondence {
+		FamilyRegister <- RegisterToRegisterCorr -> PersonRegister
+		FamilyMember <- MemberToMaleCorr -> Male
+		FamilyMember <- MemberToFemaleCorr -> Female
+	}
+	
+	rules {
+		RegisterToRegisterRule
+		IgnoreFamilyRule
+		SonToMaleRule
+		SonWithFamilyToMaleRule
+		DaughterToFemaleRule
+		DaughterWithFamilyToFemaleRule
+		FatherToMaleRule
+		FatherWithFamilyToMaleRule
+		MotherToFemaleRule
+		MotherWithFamilyToFemaleRule
+	}
+	
+	constraints {
+		NoTwoFathers
+		NoTwoMothers
+	}
+}
+
+tripleRule RegisterToRegisterRule : F2P {
+	source {
+		++ fr:FamilyRegister
+	}
+	
+	target {
+		++ pr:PersonRegister
+	}
+	
+	correspondence {
+		++ fr <- :RegisterToRegisterCorr -> pr
+	}
+}
+
+tripleRule IgnoreFamilyRule : F2P {
+	source {
+		fr:FamilyRegister {
+			++ -families->f
+		}
+		
+		++ f:Family
+	}
+}
+
+
+tripleRule SonToMaleRule : F2P {
+	source {
+		f:Family {			
+			++ -sons->fm
+		}	
+		
+		++ fm:FamilyMember {
+			.name := <memberName>
+		}	
+	}
+	
+	target {
+		pr:PersonRegister {
+			++ -persons->p
+		}
+		
+		++ p:Male {
+			.name := <personName>
+		}
+	}
+	
+	correspondence {
+		++ fm <- :MemberToMaleCorr -> p
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=f::name,
+			right=<memberName>,
+			combined=<personName>
+		)
+	}
+}
+
+tripleRule SonWithFamilyToMaleRule : F2P {
+	source {
+		fr:FamilyRegister {
+			++ -families->f
+		}
+		
+		++ f:Family {
+			.name := <fname>			
+			++ -sons->fm
+		}	
+		
+		++ fm:FamilyMember {
+			.name := <memberName>
+		}	
+	}
+	
+	target {
+		pr:PersonRegister {
+			++ -persons->p
+		}
+		
+		++ p:Male {
+			.name := <personName>
+		}
+	}
+	
+	correspondence {
+		fr <- :RegisterToRegisterCorr -> pr
+		++ fm <- :MemberToMaleCorr -> p
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=<fname>,
+			right=<memberName>,
+			combined=<personName>
+		)
+	}
+}
+
+
+tripleRule FatherToMaleRule : F2P {
+	source {
+		f:Family {			
+			++ -father->fm
+		}	
+		
+		++ fm:FamilyMember {
+			.name := <memberName>
+		}	
+	}
+	
+	target {
+		pr:PersonRegister {
+			++ -persons->p
+		}
+		
+		++ p:Male {
+			.name := <personName>
+		}
+	}
+	
+	correspondence {
+		++ fm <- :MemberToMaleCorr -> p
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=f::name,
+			right=<memberName>,
+			combined=<personName>
+		)
+	}
+}
+
+tripleRule FatherWithFamilyToMaleRule : F2P {
+	source {
+		fr:FamilyRegister {
+			++ -families->f
+		}
+		
+		++ f:Family {	
+			.name := <fname>		
+			++ -father->fm
+		}	
+		
+		++ fm:FamilyMember {
+			.name := <memberName>
+		}	
+	}
+	
+	target {
+		pr:PersonRegister {
+			++ -persons->p
+		}
+		
+		++ p:Male {
+			.name := <personName>
+		}
+	}
+	
+	correspondence {
+		fr <- :RegisterToRegisterCorr -> pr
+		++ fm <- :MemberToMaleCorr -> p
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=<fname>,
+			right=<memberName>,
+			combined=<personName>
+		)
+	}
+}
+
+tripleRule DaughterToFemaleRule : F2P {
+	source {
+		f:Family {			
+			++ -daughters->fm
+		}	
+		
+		++ fm:FamilyMember {
+			.name := <memberName>
+		}	
+	}
+	
+	target {
+		pr:PersonRegister {
+			++ -persons->p
+		}
+		
+		++ p:Female {
+			.name := <personName>
+		}
+	}
+	
+	correspondence {
+		++ fm <- :MemberToFemaleCorr -> p
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=f::name,
+			right=<memberName>,
+			combined=<personName>
+		)
+	}
+}
+
+tripleRule DaughterWithFamilyToFemaleRule : F2P {
+	source {
+		fr:FamilyRegister {
+			++ -families->f
+		}
+		
+		++ f:Family {		
+			.name := <fname>	
+			++ -daughters->fm
+		}	
+		
+		++ fm:FamilyMember {
+			.name := <memberName>
+		}	
+	}
+	
+	target {
+		pr:PersonRegister {
+			++ -persons->p
+		}
+		
+		++ p:Female {
+			.name := <personName>
+		}
+	}
+	
+	correspondence {
+		fr <- :RegisterToRegisterCorr -> pr
+		++ fm <- :MemberToFemaleCorr -> p
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=<fname>,
+			right=<memberName>,
+			combined=<personName>
+		)
+	}
+}
+
+tripleRule MotherToFemaleRule : F2P {
+	source {
+		f:Family {			
+			++ -mother->fm
+		}	
+		
+		++ fm:FamilyMember {
+			.name := <memberName>
+		}	
+	}
+	
+	target {
+		pr:PersonRegister {
+			++ -persons->p
+		}
+		
+		++ p:Female {
+			.name := <personName>
+		}
+	}
+	
+	correspondence {
+		++ fm <- :MemberToFemaleCorr -> p
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=f::name,
+			right=<memberName>,
+			combined=<personName>
+		)
+	}
+}
+
+tripleRule MotherWithFamilyToFemaleRule : F2P {
+	source {
+		fr:FamilyRegister {
+			++ -families->f
+		}
+		
+		++ f:Family {
+			.name := <fname>			
+			++ -mother->fm
+		}	
+		
+		++ fm:FamilyMember {
+			.name := <memberName>
+		}	
+	}
+	
+	target {
+		pr:PersonRegister {
+			++ -persons->p
+		}
+		
+		++ p:Female {
+			.name := <personName>
+		}
+	}
+	
+	correspondence {
+		fr <- :RegisterToRegisterCorr -> pr
+		++ fm <- :MemberToFemaleCorr -> p
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=<fname>,
+			right=<memberName>,
+			combined=<personName>
+		)
+	}
+}

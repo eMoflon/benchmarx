@@ -4,10 +4,12 @@ Bundle-Name: Benchmarx
 Bundle-SymbolicName: Benchmarx
 Bundle-Version: 1.0.0.qualifier
 Export-Package: org.benchmarx,
+ org.benchmarx.config,
+ org.benchmarx.edit,
  org.benchmarx.emf,
  org.benchmarx.util
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.11.2",
  org.eclipse.emf.ecore.xmi;bundle-version="2.11.1",
  org.junit
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-10
 Automatic-Module-Name: Benchmarx
