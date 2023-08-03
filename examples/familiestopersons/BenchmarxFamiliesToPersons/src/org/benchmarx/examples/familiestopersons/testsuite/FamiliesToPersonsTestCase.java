@@ -15,6 +15,7 @@ import org.benchmarx.edit.DeleteEdge;
 import org.benchmarx.edit.DeleteNode;
 import org.benchmarx.edit.Edit;
 import org.benchmarx.edit.IEdit;
+import org.benchmarx.edit.MoveNode;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.eneo.ENEoFamiliesToPersons;
 import org.benchmarx.families.core.FamiliesComparator;
@@ -75,8 +76,13 @@ public abstract class FamiliesToPersonsTestCase {
 			sourceEdit.getSteps().add(new DeleteEdge<FamilyRegister>(ref, sourceTarget.get(0), sourceTarget.get(1)));
 		};
 
-		helperFamily = new FamilyHelper(() -> tool.getSourceModel(), createSourceNode, createSourceEdge, changeSourceAttribute,
-				deleteSourceNode, deleteSourceEdge);
+		BiConsumer<EObject, List<EObject>> moveSourceNode = (n, oldP_oldRef_newP_newRef) -> sourceEdit.getSteps()
+				.add(new MoveNode<FamilyRegister>(n, //
+						oldP_oldRef_newP_newRef.get(0), (EReference) oldP_oldRef_newP_newRef.get(1),
+						oldP_oldRef_newP_newRef.get(2), (EReference) oldP_oldRef_newP_newRef.get(3)));
+
+		helperFamily = new FamilyHelper(() -> tool.getSourceModel(), createSourceNode, createSourceEdge,
+				changeSourceAttribute, deleteSourceNode, moveSourceNode, deleteSourceEdge);
 
 		Consumer<EObject> createTargetNode = (n) -> targetEdit.getSteps().add(new CreateNode<PersonRegister>(n));
 		BiConsumer<EReference, List<EObject>> createTargetEdge = (ref, sourceTarget) -> {
@@ -91,8 +97,8 @@ public abstract class FamiliesToPersonsTestCase {
 			targetEdit.getSteps().add(new DeleteEdge<PersonRegister>(ref, sourceTarget.get(0), sourceTarget.get(1)));
 		};
 
-		helperPerson = new PersonHelper(() -> tool.getTargetModel(), createTargetNode, createTargetEdge, changeTargetAttribute,
-				deleteTargetNode, deleteTargetEdge);
+		helperPerson = new PersonHelper(() -> tool.getTargetModel(), createTargetNode, createTargetEdge,
+				changeTargetAttribute, deleteTargetNode, deleteTargetEdge);
 	}
 
 	@After
@@ -127,9 +133,9 @@ public abstract class FamiliesToPersonsTestCase {
 				// new EMoflonFamiliesToPersons(), // Currently 6 failures
 				// new MediniQVTFamiliesToPersons(), // Currently 19 failures
 				// new MediniQVTFamiliesToPersonsConfig(), // Currently 12 failures
-				new UbtXtendFamiliesToPersons() // Currently 0 failures
+				//new UbtXtendFamiliesToPersons() // Currently 0 failures
 				// new IBeXTGGFamiliesToPersons(), // Currently 5 failures
-				,new ENEoFamiliesToPersons()
+				new ENEoFamiliesToPersons()
 				);
 	}
 

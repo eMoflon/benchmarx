@@ -63,14 +63,12 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 				helperFamily::createSimpsonFamily, //
 				helperFamily::createFatherBart));
 		tool.performIdleTargetEdit(trgEdit(helperPerson::setBirthdayOfRod));
-		tool.performIdleTargetEdit(trgEdit(helperPerson::setBirthdayOfFatherBart));
 		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::createNewFamilySimpsonWithMembers));
 		tool.performIdleTargetEdit(trgEdit(helperPerson::changeAllBirthdays));
-		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::createSonBart));
-		tool.performIdleTargetEdit(trgEdit(helperPerson::setBirthdayOfYoungerBart));
 
-		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
+		util.assertPrecondition("Pre_IncrFwdFamilyForDeletion", "Pre_IncrFwdPersonForDeletion");
 		// ------------
+		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::createSonBart));
 		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::deleteFirstSonBart));
 		// ------------
 		util.assertPostcondition("FamilyAfterDeletion", "PersonAfterDeletion");
@@ -160,7 +158,8 @@ public class IncrementalForward extends FamiliesToPersonsTestCase {
 		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
 		// ------------
 		tool.performAndPropagateSourceEdit(srcEdit(//
-				helperFamily::deleteFatherHomer, //
+				helperFamily::deleteFatherHomer));
+		tool.performAndPropagateSourceEdit(srcEdit(//
 				helperFamily::createFatherHomer));
 		// ------------
 		util.assertPostcondition("FamilyAfterMixed", "PersonAfterMixed");

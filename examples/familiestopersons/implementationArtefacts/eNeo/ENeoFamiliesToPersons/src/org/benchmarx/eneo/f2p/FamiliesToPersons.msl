@@ -30,6 +30,11 @@ tripleGrammar F2P {
 		MotherToFemaleRule
 		MotherWithFamilyToFemaleRule
 	}
+	
+	constraints {
+		NoTwoFathers
+		NoTwoMothers
+	}
 }
 
 tripleRule RegisterToRegisterRule : F2P {

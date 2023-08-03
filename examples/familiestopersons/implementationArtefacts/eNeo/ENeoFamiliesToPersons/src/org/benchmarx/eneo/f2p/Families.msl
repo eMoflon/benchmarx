@@ -21,6 +21,26 @@ metamodel Families {
 	}
 }
 
+constraint NoTwoMothers = forbid TwoMothers
+pattern TwoMothers {
+	m1:FamilyMember
+	m2:FamilyMember
+	f: Family {
+		-mother->m1
+		-mother->m2
+	}
+}
+
+constraint NoTwoFathers = forbid TwoFathers
+pattern TwoFathers {
+	m1:FamilyMember
+	m2:FamilyMember
+	f: Family {
+		-father->m1
+		-father->m2
+	}
+}
+
 pattern FamilyPattern {
 	register:FamilyRegister {
 		-families->family
@@ -88,6 +108,13 @@ rule deleteFamilyMember {
 	fm: FamilyMember {
 		.id : <id>
 		._de_ := true
+	}
+}
+
+rule setFamilyMemberAsToBeCreated {
+	fm: FamilyMember {
+		.id : <id>
+		._cr_ := true
 	}
 }
 

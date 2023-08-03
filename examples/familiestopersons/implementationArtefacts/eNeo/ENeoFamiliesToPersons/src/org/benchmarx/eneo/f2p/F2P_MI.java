@@ -87,13 +87,14 @@ public class F2P_MI extends F2P_MI_Run {
 		});
 
 		preferExistingFamilies.ifPresent((pe) -> {
-			List<String> blacklist = !pe ? //
-					List.of(//
+			List<String> blacklist = pe ? //
+					List.of() // No need, this preference is already induced by least change
+					: //
+					List.of(// Force creation of potentially unnecessary families
 							API_FamiliesToPersons.F2P__FatherToMaleRule, //
 							API_FamiliesToPersons.F2P__MotherToFemaleRule, //
 							API_FamiliesToPersons.F2P__SonToMaleRule, //
-							API_FamiliesToPersons.F2P__DaughterToFemaleRule)
-					: List.of();
+							API_FamiliesToPersons.F2P__DaughterToFemaleRule);
 
 			blacklist.forEach(rn -> {
 				var remove = opRules.stream().filter(r -> r.getName().startsWith(rn)).collect(Collectors.toList());

@@ -18,6 +18,7 @@ import org.benchmarx.edit.DeleteEdge;
 import org.benchmarx.edit.DeleteNode;
 import org.benchmarx.edit.Edit;
 import org.benchmarx.edit.IEdit;
+import org.benchmarx.edit.MoveNode;
 import org.benchmarx.eneo.f2p.F2P_GEN_InitiateSyncDialogue;
 import org.benchmarx.eneo.f2p.F2P_MI;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
@@ -307,65 +308,7 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 					}
 				} else if (s instanceof CreateEdge) {
 					var ce = (CreateEdge<FamilyRegister>) s;
-					if (ce.getType().equals(FamiliesPackage.Literals.FAMILY_REGISTER__FAMILIES)) {
-						var rule = familyAPI.getRule_CreateRegisterFamilyEdge();
-						var family = (Family) ce.getTarget();
-						var mask = rule.mask();
-						mask.addParameter(rule._param__name, family.getName());
-						mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
-						mask.addParameter(rule._param__id, family.hashCode());
-						rule.apply(mask, mask);
-					} else if (ce.getType().equals(FamiliesPackage.Literals.FAMILY__SONS)) {
-						var rule = familyAPI.getRule_CreateFamilySonEdge();
-						var mask = rule.mask();
-						var family = (Family) ce.getSource();
-						mask.addParameter(rule._param__fname, family.getName());
-						mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
-						mask.addParameter(rule._param__fid, family.hashCode());
-						var member = (FamilyMember) ce.getTarget();
-						mask.addParameter(rule._param__name, member.getName());
-						mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
-						mask.addParameter(rule._param__id, member.hashCode());
-						rule.apply(mask, mask);
-					} else if (ce.getType().equals(FamiliesPackage.Literals.FAMILY__DAUGHTERS)) {
-						var rule = familyAPI.getRule_CreateFamilyDaughterEdge();
-						var mask = rule.mask();
-						var family = (Family) ce.getSource();
-						mask.addParameter(rule._param__fname, family.getName());
-						mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
-						mask.addParameter(rule._param__fid, family.hashCode());
-						var member = (FamilyMember) ce.getTarget();
-						mask.addParameter(rule._param__name, member.getName());
-						mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
-						mask.addParameter(rule._param__id, member.hashCode());
-						rule.apply(mask, mask);
-					} else if (ce.getType().equals(FamiliesPackage.Literals.FAMILY__MOTHER)) {
-						var rule = familyAPI.getRule_CreateFamilyMotherEdge();
-						var mask = rule.mask();
-						var family = (Family) ce.getSource();
-						mask.addParameter(rule._param__fname, family.getName());
-						mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
-						mask.addParameter(rule._param__fid, family.hashCode());
-						var member = (FamilyMember) ce.getTarget();
-						mask.addParameter(rule._param__name, member.getName());
-						mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
-						mask.addParameter(rule._param__id, member.hashCode());
-						rule.apply(mask, mask);
-					} else if (ce.getType().equals(FamiliesPackage.Literals.FAMILY__FATHER)) {
-						var rule = familyAPI.getRule_CreateFamilyFatherEdge();
-						var mask = rule.mask();
-						var family = (Family) ce.getSource();
-						mask.addParameter(rule._param__fname, family.getName());
-						mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
-						mask.addParameter(rule._param__fid, family.hashCode());
-						var member = (FamilyMember) ce.getTarget();
-						mask.addParameter(rule._param__name, member.getName());
-						mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
-						mask.addParameter(rule._param__id, member.hashCode());
-						rule.apply(mask, mask);
-					} else {
-						throw new IllegalArgumentException("Unable to handle created edge: " + ce.getType());
-					}
+					createSourceEdge(familyAPI, ce);
 				} else if (s instanceof ChangeAttribute) {
 					var ca = (ChangeAttribute<FamilyRegister>) s;
 					if (ca.getAttribute() == FamiliesPackage.Literals.FAMILY__NAME) {
@@ -392,38 +335,23 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 					} else {
 						throw new IllegalArgumentException("Unable to delete node: " + dn.getNode());
 					}
-				} else if (s instanceof DeleteEdge) {
-					var de = (DeleteEdge<FamilyRegister>) s;
-					if (de.getType() == FamiliesPackage.Literals.FAMILY_REGISTER__FAMILIES) {
-						var rule = familyAPI.getRule_DeleteRegisterFamilyEdge();
+				} else if (s instanceof MoveNode) {
+					var mn = (MoveNode<FamilyRegister>) s;
+					deleteSourceEdge(familyAPI, mn.getDeleteEdge());
+					createSourceEdge(familyAPI, mn.getCreateEdge());
+
+					if (mn.getNode() instanceof FamilyMember) {
+						var rule = familyAPI.getRule_SetFamilyMemberAsToBeCreated();
 						var mask = rule.mask();
-						mask.addParameter(rule._param__id, de.getTarget().hashCode());
-						rule.apply(mask, mask);
-					} else if (de.getType() == FamiliesPackage.Literals.FAMILY__FATHER) {
-						var rule = familyAPI.getRule_DeleteFamilyFatherEdge();
-						var mask = rule.mask();
-						mask.addParameter(rule._param__id, de.getTarget().hashCode());
-						rule.apply(mask, mask);
-					} else if (de.getType() == FamiliesPackage.Literals.FAMILY__MOTHER) {
-						var rule = familyAPI.getRule_DeleteFamilyMotherEdge();
-						var mask = rule.mask();
-						mask.addParameter(rule._param__id, de.getTarget().hashCode());
-						rule.apply(mask, mask);
-					} else if (de.getType() == FamiliesPackage.Literals.FAMILY__SONS) {
-						var rule = familyAPI.getRule_DeleteFamilySonEdge();
-						var mask = rule.mask();
-						mask.addParameter(rule._param__id, de.getTarget().hashCode());
-						rule.apply(mask, mask);
-					} else if (de.getType() == FamiliesPackage.Literals.FAMILY__DAUGHTERS) {
-						var rule = familyAPI.getRule_DeleteFamilyDaughterEdge();
-						var mask = rule.mask();
-						mask.addParameter(rule._param__id, de.getTarget().hashCode());
+						mask.addParameter(rule._param__id, mn.getNode().hashCode());
 						rule.apply(mask, mask);
 					} else {
-						throw new IllegalArgumentException("Unable to delete edge: " + de.getType());
+						throw new IllegalArgumentException("Unable to mark node as created: " + mn.getNode());
 					}
+				} else if (s instanceof DeleteEdge) {
+					var de = (DeleteEdge<FamilyRegister>) s;
+					deleteSourceEdge(familyAPI, de);
 				}
-
 				else {
 					throw new IllegalArgumentException("Unable to handle atomic edit: " + s);
 				}
@@ -505,6 +433,99 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 			post.accept(builder);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	private void createSourceEdge(API_Families familyAPI, CreateEdge<FamilyRegister> ce) {
+		if (ce.getType().equals(FamiliesPackage.Literals.FAMILY_REGISTER__FAMILIES)) {
+			var rule = familyAPI.getRule_CreateRegisterFamilyEdge();
+			var family = (Family) ce.getTarget();
+			var mask = rule.mask();
+			mask.addParameter(rule._param__name, family.getName());
+			mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
+			mask.addParameter(rule._param__id, family.hashCode());
+			rule.apply(mask, mask);
+		} else if (ce.getType().equals(FamiliesPackage.Literals.FAMILY__SONS)) {
+			var rule = familyAPI.getRule_CreateFamilySonEdge();
+			var mask = rule.mask();
+			var family = (Family) ce.getSource();
+			mask.addParameter(rule._param__fname, family.getName());
+			mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
+			mask.addParameter(rule._param__fid, family.hashCode());
+			var member = (FamilyMember) ce.getTarget();
+			mask.addParameter(rule._param__name, member.getName());
+			mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
+			mask.addParameter(rule._param__id, member.hashCode());
+			rule.apply(mask, mask);
+		} else if (ce.getType().equals(FamiliesPackage.Literals.FAMILY__DAUGHTERS)) {
+			var rule = familyAPI.getRule_CreateFamilyDaughterEdge();
+			var mask = rule.mask();
+			var family = (Family) ce.getSource();
+			mask.addParameter(rule._param__fname, family.getName());
+			mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
+			mask.addParameter(rule._param__fid, family.hashCode());
+			var member = (FamilyMember) ce.getTarget();
+			mask.addParameter(rule._param__name, member.getName());
+			mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
+			mask.addParameter(rule._param__id, member.hashCode());
+			rule.apply(mask, mask);
+		} else if (ce.getType().equals(FamiliesPackage.Literals.FAMILY__MOTHER)) {
+			var rule = familyAPI.getRule_CreateFamilyMotherEdge();
+			var mask = rule.mask();
+			var family = (Family) ce.getSource();
+			mask.addParameter(rule._param__fname, family.getName());
+			mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
+			mask.addParameter(rule._param__fid, family.hashCode());
+			var member = (FamilyMember) ce.getTarget();
+			mask.addParameter(rule._param__name, member.getName());
+			mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
+			mask.addParameter(rule._param__id, member.hashCode());
+			rule.apply(mask, mask);
+		} else if (ce.getType().equals(FamiliesPackage.Literals.FAMILY__FATHER)) {
+			var rule = familyAPI.getRule_CreateFamilyFatherEdge();
+			var mask = rule.mask();
+			var family = (Family) ce.getSource();
+			mask.addParameter(rule._param__fname, family.getName());
+			mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
+			mask.addParameter(rule._param__fid, family.hashCode());
+			var member = (FamilyMember) ce.getTarget();
+			mask.addParameter(rule._param__name, member.getName());
+			mask.addParameter(rule._param__namespace, F2P_GEN_Run.SRC_MODEL_NAME);
+			mask.addParameter(rule._param__id, member.hashCode());
+			rule.apply(mask, mask);
+		} else {
+			throw new IllegalArgumentException("Unable to handle created edge: " + ce.getType());
+		}
+	}
+
+	private void deleteSourceEdge(API_Families familyAPI, DeleteEdge<FamilyRegister> de) {
+		if (de.getType() == FamiliesPackage.Literals.FAMILY_REGISTER__FAMILIES) {
+			var rule = familyAPI.getRule_DeleteRegisterFamilyEdge();
+			var mask = rule.mask();
+			mask.addParameter(rule._param__id, de.getTarget().hashCode());
+			rule.apply(mask, mask);
+		} else if (de.getType() == FamiliesPackage.Literals.FAMILY__FATHER) {
+			var rule = familyAPI.getRule_DeleteFamilyFatherEdge();
+			var mask = rule.mask();
+			mask.addParameter(rule._param__id, de.getTarget().hashCode());
+			rule.apply(mask, mask);
+		} else if (de.getType() == FamiliesPackage.Literals.FAMILY__MOTHER) {
+			var rule = familyAPI.getRule_DeleteFamilyMotherEdge();
+			var mask = rule.mask();
+			mask.addParameter(rule._param__id, de.getTarget().hashCode());
+			rule.apply(mask, mask);
+		} else if (de.getType() == FamiliesPackage.Literals.FAMILY__SONS) {
+			var rule = familyAPI.getRule_DeleteFamilySonEdge();
+			var mask = rule.mask();
+			mask.addParameter(rule._param__id, de.getTarget().hashCode());
+			rule.apply(mask, mask);
+		} else if (de.getType() == FamiliesPackage.Literals.FAMILY__DAUGHTERS) {
+			var rule = familyAPI.getRule_DeleteFamilyDaughterEdge();
+			var mask = rule.mask();
+			mask.addParameter(rule._param__id, de.getTarget().hashCode());
+			rule.apply(mask, mask);
+		} else {
+			throw new IllegalArgumentException("Unable to delete edge: " + de.getType());
 		}
 	}
 

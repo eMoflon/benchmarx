@@ -21,21 +21,28 @@ import Families.FamilyRegister;
 public class FamilyHelper {
 	private FamilyRegisterBuilder builder;
 	private Supplier<FamilyRegister> register;
-	private FamilyMember firstBart;
-	private BiConsumer<EAttribute, List<?>> changeAttribute;
+	private BiConsumer<EAttribute /* attribute type */, List<?> /* [owning node, old value, new value] */> changeAttribute;
 	private Consumer<EObject> deleteNode;
-	private BiConsumer<EReference, List<EObject>> deleteEdge;
-	BiConsumer<EReference, List<EObject>> createEdge;
+	private BiConsumer<EObject, List<EObject>
+	/*
+	 * [old parent, old connection (ERef), new parent, new connection (ERef)]
+	 */> moveNode;
+	private BiConsumer<EReference, List<EObject> /* [source, target] */> deleteEdge;
+	@SuppressWarnings("unused")
+	private BiConsumer<EReference, List<EObject /* [source, target] */>> createEdge;
 
+	private FamilyMember firstBart;
+	
 	public FamilyHelper(Supplier<FamilyRegister> register, Consumer<EObject> createNode,
 			BiConsumer<EReference, List<EObject>> createEdge, BiConsumer<EAttribute, List<?>> changeAttribute,
-			Consumer<EObject> deleteNode, BiConsumer<EReference, List<EObject>> deleteEdge) {
-		firstBart = null;
+			Consumer<EObject> deleteNode, BiConsumer<EObject, List<EObject>> moveNode,
+			BiConsumer<EReference, List<EObject>> deleteEdge) {
 		builder = new FamilyRegisterBuilder(register, createNode, createEdge);
 		this.register = register;
 		this.changeAttribute = changeAttribute;
 		this.deleteEdge = deleteEdge;
 		this.deleteNode = deleteNode;
+		this.moveNode = moveNode;
 		this.createEdge = createEdge;
 	}
 
@@ -206,8 +213,9 @@ public class FamilyHelper {
 		Family fam = getFromRegister("Flanders");
 		FamilyMember lisa = getLisa();
 
-		deleteEdge.accept(FamiliesPackage.Literals.FAMILY__DAUGHTERS, List.of(lisa.getDaughtersInverse(), lisa));
-		createEdge.accept(FamiliesPackage.Literals.FAMILY__MOTHER, List.of(fam, lisa));
+		moveNode.accept(lisa, List.of(lisa.getDaughtersInverse(), FamiliesPackage.Literals.FAMILY__DAUGHTERS, fam,
+				FamiliesPackage.Literals.FAMILY__MOTHER));
+
 		fam.setMother(lisa);
 	}
 
@@ -215,8 +223,9 @@ public class FamilyHelper {
 		Family fam = getFromRegister("Flanders");
 		FamilyMember maggie = getMaggie();
 
-		deleteEdge.accept(FamiliesPackage.Literals.FAMILY__DAUGHTERS, List.of(maggie.getDaughtersInverse(), maggie));
-		createEdge.accept(FamiliesPackage.Literals.FAMILY__SONS, List.of(fam, maggie));
+		moveNode.accept(maggie, List.of(maggie.getDaughtersInverse(), FamiliesPackage.Literals.FAMILY__DAUGHTERS, fam,
+				FamiliesPackage.Literals.FAMILY__SONS));
+
 		fam.getSons().add(maggie);
 	}
 
@@ -224,8 +233,9 @@ public class FamilyHelper {
 		Family skinner = getFromRegister("Skinner");
 		FamilyMember marge = getSimpsonFamily().getMother();
 
-		deleteEdge.accept(FamiliesPackage.Literals.FAMILY__MOTHER, List.of(marge.getMotherInverse(), marge));
-		createEdge.accept(FamiliesPackage.Literals.FAMILY__MOTHER, List.of(skinner, marge));
+		moveNode.accept(marge, List.of(marge.getMotherInverse(), FamiliesPackage.Literals.FAMILY__MOTHER, skinner,
+				FamiliesPackage.Literals.FAMILY__MOTHER));
+
 		skinner.setMother(marge);
 	}
 
