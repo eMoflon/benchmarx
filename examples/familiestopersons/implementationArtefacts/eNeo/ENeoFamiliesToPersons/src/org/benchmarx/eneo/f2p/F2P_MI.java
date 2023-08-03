@@ -81,7 +81,7 @@ public class F2P_MI extends F2P_MI_Run {
 							API_FamiliesToPersons.F2P__MotherWithFamilyToFemaleRule);
 
 			blacklist.forEach(rn -> {
-				var remove = opRules.stream().filter(r -> r.getName().startsWith(rn)).collect(Collectors.toList());
+				var remove = opRules.stream().filter(r -> r.getName().startsWith(rn) && !r.getName().equals(rn)).collect(Collectors.toList());
 				opRules.removeAll(remove);
 			});
 		});
@@ -97,7 +97,7 @@ public class F2P_MI extends F2P_MI_Run {
 							API_FamiliesToPersons.F2P__DaughterToFemaleRule);
 
 			blacklist.forEach(rn -> {
-				var remove = opRules.stream().filter(r -> r.getName().startsWith(rn)).collect(Collectors.toList());
+				var remove = opRules.stream().filter(r -> r.getName().startsWith(rn) && !r.getName().equals(rn)).collect(Collectors.toList());
 				opRules.removeAll(remove);
 			});
 		});

@@ -39,3 +39,9 @@ trg-edit: testIncrementalInsertsFixedConfig:
 	Preferences are enforced by blacklisting rules in eNeo.  This works for the simple cases in the benchmark but does not work here as the preferred rule cannot be applied directly (there is already a father in the fitting family for Seymour).
 	ENeo thus creates a new family Skinner with Seymour as its father.  This is consistent but wrong for the benchmarx as the second preference (reusing families) should take precedence and force Seymour to be a son in the existing Skinner family.
 	Conclusion:  Preferences can be expressed with ENeo's approach to a certain extent but such fine-grained situation-specific configuration is not possible and probably not compatible with global optimization.
+	
+trg-edit: testIncrementalInsertsDynamicConfig:
+	Similar problem as for testIncrementalInsertsFixedConfig. Impossible to express that an existing family can be used if the second preference (prefer parents) is ignored.
+	
+trg-edit: testIncrementalOperational:
+	Similar problem as for testIncrementalInsertsDynamicConfig.
