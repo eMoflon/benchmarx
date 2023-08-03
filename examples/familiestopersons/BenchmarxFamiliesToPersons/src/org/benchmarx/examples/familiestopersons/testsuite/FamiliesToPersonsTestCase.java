@@ -134,12 +134,17 @@ public abstract class FamiliesToPersonsTestCase {
 				 */
 				// new JTLFamiliesToPersons(), // Currently 11 failures
 
+				/*
+				 * See setup instructions: /implementations/eneo/README-SETUP
+				 */
+				new ENEoFamiliesToPersons(), // Currently 7 failures
+				
 				new EMoflonFamiliesToPersons(), // Currently 6 failures
 				new MediniQVTFamiliesToPersons(), // Currently 19 failures
 				new MediniQVTFamiliesToPersonsConfig(), // Currently 12 failures
 				new UbtXtendFamiliesToPersons(), // Currently 0 failures
-				new IBeXTGGFamiliesToPersons(), // Currently 5 failures
-				new ENEoFamiliesToPersons()); // Currently 7 failures
+				new IBeXTGGFamiliesToPersons() // Currently 5 failures
+		);
 	}
 
 	protected FamiliesToPersonsTestCase(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {

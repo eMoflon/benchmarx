@@ -1,1 +1,8 @@
-TODO
+1. Follow the instructions on https://github.com/eMoflon/emoflon-neo-updatesite to install eNeo as an Eclipse plugin.
+2. Go to 'File/Import...' and choose 'Existing Projects into Workspace'.  Select 'ENeoFamiliesToPersons' (located at benchmarx/examples/familiestopersons/implementationArtefacts/eNeo/) and import the project.
+3. Open META-INF/MANIFEST.MF and add 'ENeoFamiliesToPersons' as a dependency.
+4. Select 'ENeoFamiliesToPersons.java' in this package, right-click it, and choose 'Build Path/Include'.  Your workspace should compile without errors.
+5. Enable eNeo as a bx tool in FamiliesToPersonsTestCase::tools()
+6. Finally, setup Neo4j as required for eNeo:  
+	- See https://paper.dropbox.com/doc/Meta-Modelling-with-eNeo--B9VY0RnWDn5aZd_jmQyn0PzDAg-jKeVQDlC2BAdD0TDQuF0I#:h2=Install-and-setup-Neo4j
+	- Please choose 'neo4j' as username and 'test' as password for creating a local database.
