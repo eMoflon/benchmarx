@@ -31,6 +31,7 @@ import org.emoflon.neo.api.eneofamiliestopersons.org.benchmarx.eneo.f2p.run.F2P_
 import org.emoflon.neo.api.eneofamiliestopersons.org.benchmarx.eneo.f2p.run.F2P_GEN_Run;
 import org.emoflon.neo.cypher.models.NeoCoreBuilder;
 import org.emoflon.neo.cypher.models.templates.CypherBuilder;
+import org.emoflon.neo.engine.modules.ilp.ILPFactory.SupportedILPSolver;
 import org.emoflon.neo.neocore.util.NeoCoreConstants;
 
 import Families.FamiliesFactory;
@@ -45,6 +46,7 @@ import Persons.PersonsFactory;
 import Persons.PersonsPackage;
 
 public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegister, Decisions> {
+	private SupportedILPSolver solver = SupportedILPSolver.Sat4J;
 	private Configurator<Decisions> configurator;
 	private FamilyRegister sourceRegister;
 	private PersonRegister targetRegister;
@@ -237,7 +239,7 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 				});
 
 		// Perform CC
-		F2P_CC_Run cc = new F2P_CC_Run(F2P_GEN_Run.SRC_MODEL_NAME, F2P_GEN_Run.TRG_MODEL_NAME);
+		F2P_CC_Run cc = new F2P_CC_Run(F2P_GEN_Run.SRC_MODEL_NAME, F2P_GEN_Run.TRG_MODEL_NAME, solver);
 		try {
 			cc.run();
 		} catch (Exception e) {
@@ -264,10 +266,10 @@ public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 			try {
 				if (configurator != null) {
 					var mi = new F2P_MI(Optional.of(configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD)),
-							Optional.of(configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW)));
+							Optional.of(configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW)), solver);
 					mi.runModelIntegration();
 				} else {
-					var mi = new F2P_MI(Optional.empty(), Optional.empty());
+					var mi = new F2P_MI(Optional.empty(), Optional.empty(), solver);
 					mi.runModelIntegration();
 				}
 			} catch (Exception e) {

@@ -20,6 +20,7 @@ import org.emoflon.neo.emsl.util.FlattenerException;
 import org.emoflon.neo.engine.generator.MatchContainer;
 import org.emoflon.neo.engine.modules.NeoGenerator;
 import org.emoflon.neo.engine.modules.analysis.TripleRuleAnalyser;
+import org.emoflon.neo.engine.modules.ilp.ILPFactory.SupportedILPSolver;
 import org.emoflon.neo.engine.modules.matchreprocessors.MIReprocessor;
 import org.emoflon.neo.engine.modules.monitors.HeartBeatAndReportMonitor;
 import org.emoflon.neo.engine.modules.ruleschedulers.MIRuleScheduler;
@@ -35,8 +36,8 @@ public class F2P_MI extends F2P_MI_Run {
 	private Optional<Boolean> preferParents;
 	private Optional<Boolean> preferExistingFamilies;
 
-	public F2P_MI(Optional<Boolean> preferParents, Optional<Boolean> preferExistingFamilies) {
-		super(F2P_GEN_Run.SRC_MODEL_NAME, F2P_GEN_Run.TRG_MODEL_NAME);
+	public F2P_MI(Optional<Boolean> preferParents, Optional<Boolean> preferExistingFamilies, SupportedILPSolver solver) {
+		super(F2P_GEN_Run.SRC_MODEL_NAME, F2P_GEN_Run.TRG_MODEL_NAME, solver);
 		this.preferParents = preferParents;
 		this.preferExistingFamilies = preferExistingFamilies;
 	}

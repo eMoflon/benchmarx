@@ -1,0 +1,430 @@
+import "platform:/resource/EneoFamiliesToPersons/src/org/benchmarx/eneo/f2p/Families.msl"
+import "platform:/resource/EneoFamiliesToPersons/src/org/benchmarx/eneo/f2p/Persons.msl"
+import "platform:/plugin/org.emoflon.neo.neocore/model/AttributeConstraintsLibrary.msl"
+
+grammar F2P_BWD {
+	rules {
+		RegisterToRegisterRule
+		IgnoreFamilyRule
+		SonToMaleRule
+		SonWithFamilyToMaleRule
+		DaughterToFemaleRule
+		DaughterWithFamilyToFemaleRule
+		FatherToMaleRule
+		FatherWithFamilyToMaleRule
+		MotherToFemaleRule
+		MotherWithFamilyToFemaleRule
+	}
+}
+
+  rule RegisterToRegisterRule {
+	++fr:FamilyRegister {
+		.enamespace := <__srcModelName>
+		++-corr->pr
+		{
+			._type_ := "RegisterToRegisterCorr"
+		}
+	}
+
+	pr:PersonRegister {
+		.enamespace : <__trgModelName>
+		~_tr_ : false
+		~_tr_ := true
+	}
+	
+	attributeConstraints {
+	}
+} 
+
+
+  rule IgnoreFamilyRule {
+	fr:FamilyRegister {
+		.enamespace : <__srcModelName>
+		++-families->f
+	}
+	
+	++f:Family {
+		.enamespace := <__srcModelName>
+	}
+
+	
+	attributeConstraints {
+	}
+} 
+
+
+  rule SonToMaleRule {
+	f:Family {
+		.enamespace : <__srcModelName>
+		++-sons->fm
+	}
+	
+	++fm:FamilyMember {
+		.enamespace := <__srcModelName>
+		++-corr->p
+		{
+			._type_ := "MemberToMaleCorr"
+		}
+		.name := <memberName>
+	}
+
+	pr:PersonRegister {
+		.enamespace : <__trgModelName>
+		-persons->p
+		{
+			~_tr_ : false
+			~_tr_ := true
+		}
+		~_tr_ : true
+	}
+	
+	p:Male {
+		.enamespace : <__trgModelName>
+		~_tr_ : false
+		~_tr_ := true
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=f::name,
+			right=<memberName>,
+			combined=p::name
+		)
+	}
+} 
+
+
+  rule SonWithFamilyToMaleRule {
+	fr:FamilyRegister {
+		.enamespace : <__srcModelName>
+		++-families->f
+		-corr->pr
+		{
+			._type_ : "RegisterToRegisterCorr"
+		}
+	}
+	
+	++f:Family {
+		.enamespace := <__srcModelName>
+		++-sons->fm
+		.name := <fname>
+	}
+	
+	++fm:FamilyMember {
+		.enamespace := <__srcModelName>
+		++-corr->p
+		{
+			._type_ := "MemberToMaleCorr"
+		}
+		.name := <memberName>
+	}
+
+	pr:PersonRegister {
+		.enamespace : <__trgModelName>
+		-persons->p
+		{
+			~_tr_ : false
+			~_tr_ := true
+		}
+		~_tr_ : true
+	}
+	
+	p:Male {
+		.enamespace : <__trgModelName>
+		~_tr_ : false
+		~_tr_ := true
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=<fname>,
+			right=<memberName>,
+			combined=p::name
+		)
+	}
+} 
+
+
+  rule DaughterToFemaleRule {
+	f:Family {
+		.enamespace : <__srcModelName>
+		++-daughters->fm
+	}
+	
+	++fm:FamilyMember {
+		.enamespace := <__srcModelName>
+		++-corr->p
+		{
+			._type_ := "MemberToFemaleCorr"
+		}
+		.name := <memberName>
+	}
+
+	pr:PersonRegister {
+		.enamespace : <__trgModelName>
+		-persons->p
+		{
+			~_tr_ : false
+			~_tr_ := true
+		}
+		~_tr_ : true
+	}
+	
+	p:Female {
+		.enamespace : <__trgModelName>
+		~_tr_ : false
+		~_tr_ := true
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=f::name,
+			right=<memberName>,
+			combined=p::name
+		)
+	}
+} 
+
+
+  rule DaughterWithFamilyToFemaleRule {
+	fr:FamilyRegister {
+		.enamespace : <__srcModelName>
+		++-families->f
+		-corr->pr
+		{
+			._type_ : "RegisterToRegisterCorr"
+		}
+	}
+	
+	++f:Family {
+		.enamespace := <__srcModelName>
+		++-daughters->fm
+		.name := <fname>
+	}
+	
+	++fm:FamilyMember {
+		.enamespace := <__srcModelName>
+		++-corr->p
+		{
+			._type_ := "MemberToFemaleCorr"
+		}
+		.name := <memberName>
+	}
+
+	pr:PersonRegister {
+		.enamespace : <__trgModelName>
+		-persons->p
+		{
+			~_tr_ : false
+			~_tr_ := true
+		}
+		~_tr_ : true
+	}
+	
+	p:Female {
+		.enamespace : <__trgModelName>
+		~_tr_ : false
+		~_tr_ := true
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=<fname>,
+			right=<memberName>,
+			combined=p::name
+		)
+	}
+} 
+
+
+  rule FatherToMaleRule {
+	f:Family {
+		.enamespace : <__srcModelName>
+		++-father->fm
+	}
+	
+	++fm:FamilyMember {
+		.enamespace := <__srcModelName>
+		++-corr->p
+		{
+			._type_ := "MemberToMaleCorr"
+		}
+		.name := <memberName>
+	}
+
+	pr:PersonRegister {
+		.enamespace : <__trgModelName>
+		-persons->p
+		{
+			~_tr_ : false
+			~_tr_ := true
+		}
+		~_tr_ : true
+	}
+	
+	p:Male {
+		.enamespace : <__trgModelName>
+		~_tr_ : false
+		~_tr_ := true
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=f::name,
+			right=<memberName>,
+			combined=p::name
+		)
+	}
+} 
+
+
+  rule FatherWithFamilyToMaleRule {
+	fr:FamilyRegister {
+		.enamespace : <__srcModelName>
+		++-families->f
+		-corr->pr
+		{
+			._type_ : "RegisterToRegisterCorr"
+		}
+	}
+	
+	++f:Family {
+		.enamespace := <__srcModelName>
+		++-father->fm
+		.name := <fname>
+	}
+	
+	++fm:FamilyMember {
+		.enamespace := <__srcModelName>
+		++-corr->p
+		{
+			._type_ := "MemberToMaleCorr"
+		}
+		.name := <memberName>
+	}
+
+	pr:PersonRegister {
+		.enamespace : <__trgModelName>
+		-persons->p
+		{
+			~_tr_ : false
+			~_tr_ := true
+		}
+		~_tr_ : true
+	}
+	
+	p:Male {
+		.enamespace : <__trgModelName>
+		~_tr_ : false
+		~_tr_ := true
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=<fname>,
+			right=<memberName>,
+			combined=p::name
+		)
+	}
+} 
+
+
+  rule MotherToFemaleRule {
+	f:Family {
+		.enamespace : <__srcModelName>
+		++-mother->fm
+	}
+	
+	++fm:FamilyMember {
+		.enamespace := <__srcModelName>
+		++-corr->p
+		{
+			._type_ := "MemberToFemaleCorr"
+		}
+		.name := <memberName>
+	}
+
+	pr:PersonRegister {
+		.enamespace : <__trgModelName>
+		-persons->p
+		{
+			~_tr_ : false
+			~_tr_ := true
+		}
+		~_tr_ : true
+	}
+	
+	p:Female {
+		.enamespace : <__trgModelName>
+		~_tr_ : false
+		~_tr_ := true
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=f::name,
+			right=<memberName>,
+			combined=p::name
+		)
+	}
+} 
+
+
+  rule MotherWithFamilyToFemaleRule {
+	fr:FamilyRegister {
+		.enamespace : <__srcModelName>
+		++-families->f
+		-corr->pr
+		{
+			._type_ : "RegisterToRegisterCorr"
+		}
+	}
+	
+	++f:Family {
+		.enamespace := <__srcModelName>
+		++-mother->fm
+		.name := <fname>
+	}
+	
+	++fm:FamilyMember {
+		.enamespace := <__srcModelName>
+		++-corr->p
+		{
+			._type_ := "MemberToFemaleCorr"
+		}
+		.name := <memberName>
+	}
+
+	pr:PersonRegister {
+		.enamespace : <__trgModelName>
+		-persons->p
+		{
+			~_tr_ : false
+			~_tr_ := true
+		}
+		~_tr_ : true
+	}
+	
+	p:Female {
+		.enamespace : <__trgModelName>
+		~_tr_ : false
+		~_tr_ := true
+	}
+	
+	attributeConstraints {
+		concat(
+			separator=", ",
+			left=<fname>,
+			right=<memberName>,
+			combined=p::name
+		)
+	}
+} 
+

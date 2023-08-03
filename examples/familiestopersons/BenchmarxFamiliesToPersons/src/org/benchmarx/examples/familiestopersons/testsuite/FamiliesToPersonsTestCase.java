@@ -17,7 +17,11 @@ import org.benchmarx.edit.Edit;
 import org.benchmarx.edit.IEdit;
 import org.benchmarx.edit.MoveNode;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.eneo.ENEoFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.implementations.ibextgg.IBeXTGGFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersonsConfig;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
@@ -130,13 +134,12 @@ public abstract class FamiliesToPersonsTestCase {
 				 */
 				// new JTLFamiliesToPersons(), // Currently 11 failures
 
-				// new EMoflonFamiliesToPersons(), // Currently 6 failures
-				// new MediniQVTFamiliesToPersons(), // Currently 19 failures
-				// new MediniQVTFamiliesToPersonsConfig(), // Currently 12 failures
-				//new UbtXtendFamiliesToPersons() // Currently 0 failures
-				// new IBeXTGGFamiliesToPersons(), // Currently 5 failures
-				new ENEoFamiliesToPersons()
-				);
+				new EMoflonFamiliesToPersons(), // Currently 6 failures
+				new MediniQVTFamiliesToPersons(), // Currently 19 failures
+				new MediniQVTFamiliesToPersonsConfig(), // Currently 12 failures
+				new UbtXtendFamiliesToPersons(), // Currently 0 failures
+				new IBeXTGGFamiliesToPersons(), // Currently 5 failures
+				new ENEoFamiliesToPersons()); // Currently 7 failures
 	}
 
 	protected FamiliesToPersonsTestCase(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
