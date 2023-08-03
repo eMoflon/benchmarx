@@ -6,3 +6,4 @@
 6. Finally, setup Neo4j as required for eNeo:  
 	- See https://paper.dropbox.com/doc/Meta-Modelling-with-eNeo--B9VY0RnWDn5aZd_jmQyn0PzDAg-jKeVQDlC2BAdD0TDQuF0I#:h2=Install-and-setup-Neo4j
 	- Please choose 'neo4j' as username and 'test' as password for creating a local database.
+7. If you wish to use Gurobi then install it and switch to Gurobi as supported ILP solver in 'ENEoFamiliesToPersons.java'

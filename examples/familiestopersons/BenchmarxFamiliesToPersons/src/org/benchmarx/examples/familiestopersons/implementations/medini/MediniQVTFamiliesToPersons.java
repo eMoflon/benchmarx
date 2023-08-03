@@ -37,7 +37,6 @@ import de.ikv.medini.qvt.QVTProcessorConsts;
 import uk.ac.kent.cs.kmf.util.ILog;
 import uk.ac.kent.cs.kmf.util.OutputStreamLog;
 
-@SuppressWarnings("deprecation")
 public class MediniQVTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonRegister, Decisions> {
 	private static final String RULESET = "families2persons2.qvt";
 	// Version as presented in the BX 2017 paper
