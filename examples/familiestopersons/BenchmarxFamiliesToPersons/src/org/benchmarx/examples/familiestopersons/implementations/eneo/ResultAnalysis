@@ -45,3 +45,6 @@ trg-edit: testIncrementalInsertsDynamicConfig:
 	
 trg-edit: testIncrementalOperational:
 	Similar problem as for testIncrementalInsertsDynamicConfig.
+	
+trg-edit: testIncrementalRenamingDynamic
+	Similar problem as for testIncrementalInsertsDynamicConfig.
