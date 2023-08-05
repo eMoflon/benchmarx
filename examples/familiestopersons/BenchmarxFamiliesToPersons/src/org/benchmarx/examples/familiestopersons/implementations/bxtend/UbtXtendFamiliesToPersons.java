@@ -1,5 +1,7 @@
 package org.benchmarx.examples.familiestopersons.implementations.bxtend;
 
+import static org.junit.Assert.fail;
+
 import java.io.IOException;
 import java.util.function.Supplier;
 
@@ -151,6 +153,6 @@ public class UbtXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Pers
 	@Override
 	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEditOp,
 			Supplier<IEdit<PersonRegister>> targetEditOp) {
-		throw new UnsupportedOperationException("Concurrent edits not supported.");
+		fail("Concurrent edits not supported.");
 	}
 }

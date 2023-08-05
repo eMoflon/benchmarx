@@ -112,6 +112,10 @@ public class PersonHelper {
 	public void setBirthdayOfHomer() {
 		setBirthdayOfPerson("Simpson, Homer", getDate(2013, Calendar.JANUARY, 9, 10, 11, 12));
 	}
+	
+	public void setBirthdayOfSeymour() {
+		setBirthdayOfPerson("Skinner, Seymour", getDate(2013, Calendar.JANUARY, 9, 10, 11, 12));
+	}
 
 	public void setBirthdayOfMarge() {
 		setBirthdayOfPerson("Simpson, Marge", getDate(2013, Calendar.FEBRUARY, 9, 10, 11, 12));
