@@ -244,6 +244,12 @@ public class FamilyHelper {
 		FamilyMember homer = simpson.getFather();
 		deleteMemberFromFamily(FamiliesPackage.Literals.FAMILY__FATHER, simpson, homer);
 	}
+	
+	public void deleteRodAsSon() {
+		Family flanders = getFromRegister("Flanders");
+		FamilyMember rod = flanders.getSons().get(0);
+		deleteMemberFromFamily(FamiliesPackage.Literals.FAMILY__SONS, flanders, rod);
+	}
 
 	private void deleteMemberFromFamily(EReference ref, Family f, FamilyMember m) {
 		deleteEdge.accept(ref, List.of(f, m));
