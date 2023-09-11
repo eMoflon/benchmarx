@@ -11,3 +11,6 @@ acmart-primary/
 *.bbl
 *.blg
 ttc-diagram2compose.pdf
+*.abs
+*.xmpdata
+*.xmpi
