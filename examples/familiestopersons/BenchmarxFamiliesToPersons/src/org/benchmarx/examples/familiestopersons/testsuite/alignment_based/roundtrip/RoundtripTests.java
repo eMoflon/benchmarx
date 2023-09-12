@@ -1,4 +1,4 @@
-package org.benchmarx.examples.familiestopersons.testsuite.roundtrip;
+package org.benchmarx.examples.familiestopersons.testsuite.alignment_based.roundtrip;
 
 import org.benchmarx.BXTool;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
@@ -15,7 +15,7 @@ public class RoundtripTests extends FamiliesToPersonsTestCase {
 	}
 	
 	@Test
-	public void testRoundtripEdit() {
+	public void testRoundtripEdit() {		
 		tool.performAndPropagateSourceEdit(srcEdit(//
 				helperFamily::createSkinnerFamily, //
 				helperFamily::createFlandersFamily, //
@@ -33,13 +33,14 @@ public class RoundtripTests extends FamiliesToPersonsTestCase {
 		
 		//--------------------------
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::firstNameChangeOfHomer));
+		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::renameFlandersFamilyToBouvier));
 		//--------------------------
 		
 		util.assertPostcondition("FamilyAfterRoundtripEdit", "PersonAfterRoundtripEdit");
 	}
 	
 	@Test
-	public void testRoundtripAdd() {
+	public void testRoundtripAdd() {		
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 		.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
 		tool.performAndPropagateSourceEdit(srcEdit(//
@@ -59,13 +60,14 @@ public class RoundtripTests extends FamiliesToPersonsTestCase {
 		
 		//--------------------------
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createSeymour));
+		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::createSonTodd));
 		//--------------------------		
 		
 		util.assertPostcondition("FamilyAfterRoundtripAdd", "PersonAfterRoundtripAdd");
 	}
 	
 	@Test
-	public void testRoundtripDelete() {
+	public void testRoundtripDelete() {		
 		tool.performAndPropagateSourceEdit(srcEdit(//
 				helperFamily::createSkinnerFamily, //
 				helperFamily::createFlandersFamily, //
@@ -83,6 +85,7 @@ public class RoundtripTests extends FamiliesToPersonsTestCase {
 		
 		//--------------------------
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::deleteMarge));
+		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::deleteRodAsSon));
 		//--------------------------		
 		
 		util.assertPostcondition("FamilyAfterRoundtripDelete", "PersonAfterRoundtripDelete");		

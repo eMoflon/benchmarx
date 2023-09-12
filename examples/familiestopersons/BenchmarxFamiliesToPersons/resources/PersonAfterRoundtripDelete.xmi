@@ -5,9 +5,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore">
   <persons xsi:type="Persons:Male"
-      name="Flanders, Rod"
-      birthday="2013-10-01T11:11:12.000+0200"/>
-  <persons xsi:type="Persons:Male"
       name="Simpson, Bart"
       birthday="2013-03-09T10:11:12.000+0100"/>
   <persons xsi:type="Persons:Male"

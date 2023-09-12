@@ -208,6 +208,14 @@ public class FamilyHelper {
 		changeAttribute.accept(FamiliesPackage.Literals.FAMILY__NAME, List.of(family, "Simpson", "Bouvier"));
 		family.setName("Bouvier");
 	}
+	
+	public void renameFlandersFamilyToBouvier(){
+		Family family = getFromRegister("Flanders");
+		assertTrue(family.getName().equals("Flanders"));
+
+		changeAttribute.accept(FamiliesPackage.Literals.FAMILY__NAME, List.of(family, "Flanders", "Bouvier"));
+		family.setName("Bouvier");
+	}
 
 	public void moveLisa() {
 		Family fam = getFromRegister("Flanders");

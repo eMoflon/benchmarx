@@ -6,9 +6,7 @@
   <families
       name="Skinner"/>
   <families
-      name="Flanders">
-    <sons name="Rod"/>
-  </families>
+      name="Flanders"/>
   <families
       name="Simpson">
     <father
