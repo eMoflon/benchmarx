@@ -26,6 +26,12 @@ src-edit: testIncrementalRename:
 	recreating them correctly is costlier than just deleting them (w.r.t. to the default weights) - or just leaving them as they are (tolerance).
 	* Similar problem as with testIncrementalMove but not exactly the same (no points for propagating creation)!
 	
+roundtrip: testRoundtripEdit:
+	Homer's name is changed in the target model, meaning that the corresponding father's name is now inconsistent.
+	Instead of resolving the attribute values, eNeo retranslates the renamed Homer person to a new family member.
+	Due to the preferences, the new Homer is created as a son.
+	The source edit here (Flanders => Bouvier) fails for a similar reason as testIncrementalRename.
+	
 [Reusing/transferring information from existing context]	
 	
 src-edit: testIncrementalMoveRoleChange:
