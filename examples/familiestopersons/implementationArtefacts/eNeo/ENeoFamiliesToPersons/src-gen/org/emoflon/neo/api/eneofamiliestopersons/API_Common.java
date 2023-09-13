@@ -11,6 +11,6 @@ public class API_Common {
 	public static final String PLATFORM_RESOURCE_URI = "../";
 
 	public static NeoCoreBuilder createBuilder() {
-		return new NeoCoreBuilder("bolt://localhost:7687", "neo4j", "testtest", -5.0, 5.0, -1.0);
+		return new NeoCoreBuilder("bolt://localhost:7687", "neo4j", "test", -5.0, 5.0, -1.0);
 	}
 }

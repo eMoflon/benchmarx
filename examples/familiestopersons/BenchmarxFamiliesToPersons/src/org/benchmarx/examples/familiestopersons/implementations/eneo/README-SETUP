@@ -6,4 +6,10 @@
 6. Finally, setup Neo4j as required for eNeo:  
 	- See https://paper.dropbox.com/doc/Meta-Modelling-with-eNeo--B9VY0RnWDn5aZd_jmQyn0PzDAg-jKeVQDlC2BAdD0TDQuF0I#:h2=Install-and-setup-Neo4j
 	- Please choose 'neo4j' as username and 'test' as password for creating a local database.
-7. If you wish to use Gurobi then install it and switch to Gurobi as supported ILP solver in 'ENEoFamiliesToPersons.java'
+	- Please choose 4.4.11 as the version of your local database
+7. Ensure that /EneoFamiliesToPersons/src-gen/org/emoflon/neo/api/eneofamiliestopersons/API_Common.java has been regenerated and contains correct paths on your system.
+   To make sure everything is generated correctly, add and remove a space in /EneoFamiliesToPersons/src/org/benchmarx/eneo/f2p/FamiliesToPersons.msl to trigger code generation.
+   You should only have API_Common.java as a changed file if you git diff (everything else should be exactly the same).
+8. If you wish to use Gurobi then install it and switch to Gurobi as supported ILP solver in 'ENEoFamiliesToPersons.java'
+
+Please create an issue on https://github.com/eMoflon/benchmarx if you have problems or questions.
