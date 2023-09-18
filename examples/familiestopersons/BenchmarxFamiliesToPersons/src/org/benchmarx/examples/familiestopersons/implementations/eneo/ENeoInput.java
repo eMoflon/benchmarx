@@ -130,7 +130,7 @@ public class ENeoInput {
 			} else if (t instanceof CreateEdge) {
 				var ce = (CreateEdge<PersonRegister>) t;
 				if (ce.getType().equals(PersonsPackage.Literals.PERSON_REGISTER__PERSONS)) {
-					ee.setEditType(EDIT_TYPE.DELETE_PERSON);
+					ee.setEditType(EDIT_TYPE.CREATE_PERSON_REGISTER__PERSONS);
 					ee.setId(ce.getTarget().hashCode());
 				} else {
 					throw new IllegalArgumentException("Unable to handle created edge: " + ce.getType());
