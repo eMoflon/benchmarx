@@ -1,0 +1,1 @@
+from .junit_finder import JUnitFinder

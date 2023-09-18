@@ -17,8 +17,6 @@ import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
 import org.benchmarx.util.BXToolTimer;
-import org.benchmarx.util.PerformanceResultImpl;
-import org.benchmarx.util.PerformanceTestSuite;
 
 import Families.FamiliesFactory;
 import Families.Family;
@@ -27,6 +25,9 @@ import Families.FamilyRegister;
 import Persons.Person;
 import Persons.PersonRegister;
 import Persons.PersonsFactory;
+import util.PerformanceResultImpl;
+import util.PerformanceTestSuite;
+import util.PerformanceTestSuite.PerformanceResult;
 
 
 /**

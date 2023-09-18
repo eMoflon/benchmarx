@@ -24,5 +24,6 @@
 	<classpathentry kind="lib" path="lib/eMoflon/org.moflon.tgg.runtime_2.0.0.201611230913.jar"/>
 	<classpathentry kind="lib" path="lib/eMoflon/SDMLanguage_2.0.0.201611230913.jar"/>
 	<classpathentry kind="lib" path="lib/eMoflon/trove-3.1a1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BXRunner"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

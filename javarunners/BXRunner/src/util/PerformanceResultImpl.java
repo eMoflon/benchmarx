@@ -1,12 +1,7 @@
-package org.benchmarx.util;
+package util;
 
-import org.benchmarx.util.PerformanceTestSuite.PerformanceResult;
+import util.PerformanceTestSuite.PerformanceResult;
 
-/**
- * Class that holds the result of a performance test run
- * @author tb
- *
- */
 public class PerformanceResultImpl implements PerformanceResult {
 	
 	private int size;

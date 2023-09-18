@@ -1,4 +1,4 @@
-package org.benchmarx.util;
+package util;
 
 import java.net.MalformedURLException;
 import java.net.URL;

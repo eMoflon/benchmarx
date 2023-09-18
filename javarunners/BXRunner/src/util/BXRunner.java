@@ -1,4 +1,4 @@
-package org.benchmarx.util;
+package util;
 
 import java.util.Arrays;
 
