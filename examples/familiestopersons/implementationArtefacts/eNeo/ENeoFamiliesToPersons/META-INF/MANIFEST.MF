@@ -9,7 +9,8 @@ Export-Package: org.benchmarx.eneo.f2p,
  org.emoflon.neo.api.eneofamiliestopersons,
  org.emoflon.neo.api.eneofamiliestopersons.org.benchmarx.eneo.f2p,
  org.emoflon.neo.api.eneofamiliestopersons.org.benchmarx.eneo.f2p.run
-Require-Bundle: org.emoflon.neo.emf;bundle-version="1.0.0";visibility:=reexport,
+Require-Bundle: com.google.gson;bundle-version="2.9.1",
+ org.emoflon.neo.emf;bundle-version="1.0.0";visibility:=reexport,
  org.eclipse.emf.ecore;bundle-version="2.28.0",
  org.emoflon.neo.neo4j.adapter;visibility:=reexport,
  org.emoflon.neo.engine.modules;visibility:=reexport,
@@ -18,4 +19,7 @@ Require-Bundle: org.emoflon.neo.emf;bundle-version="1.0.0";visibility:=reexport,
  org.apache.commons.logging,
  org.apache.log4j,
  org.apache.commons.lang,
- Benchmarx
+ Benchmarx,
+ BenchmarxFamiliesToPersons;bundle-version="1.0.0",
+ Families,
+ Persons

@@ -14,6 +14,8 @@ Require-Bundle: org.apache.log4j;bundle-version="1.2.15",
  org.eclipse.xtend.lib.macro,
  Benchmarx;bundle-version="1.0.0",
  Families;bundle-version="1.0.0",
- Persons;bundle-version="1.0.0"
+ Persons;bundle-version="1.0.0",
+ com.google.gson;bundle-version="2.9.1"
 Automatic-Module-Name: BenchmarxFamiliesToPersons
-Export-Package: org.benchmarx.examples.familiestopersons.testsuite
+Export-Package: org.benchmarx.examples.familiestopersons.implementations.eneo,
+ org.benchmarx.examples.familiestopersons.testsuite
