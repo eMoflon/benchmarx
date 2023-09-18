@@ -116,33 +116,33 @@ public abstract class FamiliesToPersonsTestCase {
 				/*
 				 * See setup instructions: /implementations/bigul/README-SETUP
 				 */
-				// new BiGULFamiliesToPersons(), // Currently 9 failures
+				// new BiGULFamiliesToPersons(),
 
 				/*
 				 * Excluded due to problems with Closure
 				 */
-				// new FunnyQTFamiliesToPerson(), // Currently 10 failures
+				// new FunnyQTFamiliesToPerson(),
 
 				/*
 				 * See setup instructions: /implementations/nmf/README-SETUP
 				 */
-				// new NMFFamiliesToPersonsIncremental(), // Currently 3 failures
+				// new NMFFamiliesToPersonsIncremental(),
 
 				/*
 				 * Excluded due to problems with Emftext
 				 */
-				// new JTLFamiliesToPersons(), // Currently 11 failures
+				// new JTLFamiliesToPersons()
 
 				/*
 				 * See setup instructions: /implementations/eneo/README-SETUP
 				 */
-				// new ENEoFamiliesToPersons(), // Currently 7 failures
+				// new ENEoFamiliesToPersons() // Currently 8 failures (and some flakiness)
 				
-				new EMoflonFamiliesToPersons(), // Currently 6 failures
-				new MediniQVTFamiliesToPersons(), // Currently 19 failures
-				new MediniQVTFamiliesToPersonsConfig(), // Currently 12 failures
-				new UbtXtendFamiliesToPersons(), // Currently 0 failures
-				new IBeXTGGFamiliesToPersons() // Currently 5 failures
+				new EMoflonFamiliesToPersons(),
+				new MediniQVTFamiliesToPersons(),
+				new MediniQVTFamiliesToPersonsConfig(),
+				new UbtXtendFamiliesToPersons(),
+				new IBeXTGGFamiliesToPersons()
 		);
 	}
 
