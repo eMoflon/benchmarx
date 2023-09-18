@@ -13,6 +13,7 @@ import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendF
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.nmf.NMFFamiliesToPersonsIncremental;
+import org.benchmarx.examples.familiestopersons.implementations.nmf.NMFFamiliesToPersonsTimer;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
@@ -27,7 +28,6 @@ import Persons.PersonRegister;
 import Persons.PersonsFactory;
 import util.PerformanceResultImpl;
 import util.PerformanceTestSuite;
-import util.PerformanceTestSuite.PerformanceResult;
 
 
 /**
@@ -251,11 +251,11 @@ public class ScalabilityMeasurements implements PerformanceTestSuite {
 		BXToolTimer<FamilyRegister, PersonRegister, Decisions> timer;
 		// The following if-clause is only there because NMFFamiliesToPersonsIncremental
 		// doesn't use BXToolTimer like the other tools.
-//		if (tool instanceof NMFFamiliesToPersonsIncremental) {
-//			timer = new NMFFamiliesToPersonsTimer((NMFFamiliesToPersonsIncremental) tool, 1);
-//		} else {
+		if (tool instanceof NMFFamiliesToPersonsIncremental) {
+			timer = new NMFFamiliesToPersonsTimer((NMFFamiliesToPersonsIncremental) tool, 1);
+		} else {
 			timer = new BXToolTimer<FamilyRegister, PersonRegister, Decisions>(tool, 1);
-//		}
+		}
 		
 		familyRegister = tool.getSourceModel();
 		personRegister = tool.getTargetModel();
