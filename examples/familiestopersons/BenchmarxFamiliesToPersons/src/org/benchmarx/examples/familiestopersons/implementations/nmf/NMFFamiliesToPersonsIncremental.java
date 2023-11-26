@@ -73,8 +73,13 @@ public class NMFFamiliesToPersonsIncremental implements BXTool<FamilyRegister, P
 		long start = System.nanoTime();
 		setUpdatePolicy();
 		ChangeRecorder recorder = new ChangeRecorder();
+<<<<<<< HEAD
 		recorder.observePersonsRegister(trg);
 		edit.get();
+=======
+		recorder.observeMiniYaml(trg);
+		edit.accept(trg);
+>>>>>>> 4033f86 (Draft of TTC2023 containers to MiniYAML solution)
 		long actual = propagate(recorder);
 		src = readModel("SaveFamilies");
 		

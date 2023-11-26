@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ASCII"?>
+<c:Map xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://york.ac.uk/ttc/miniyaml/1.0.0">
+  <entries key="version">
+    <value xsi:type="c:Scalar" value="2.4"/>
+  </entries>
+  <entries key="services">
+    <value xsi:type="c:Map">
+      <entries key="webserver">
+        <value xsi:type="c:Map">
+          <entries key="image">
+            <value xsi:type="c:Scalar" value="nginx:latest"/>
+          </entries>
+          <entries key="depends_on">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="database"/>
+            </value>
+          </entries>
+          <entries key="restart">
+            <value xsi:type="c:Scalar" value="always"/>
+          </entries>
+          <entries key="replicas">
+            <value xsi:type="c:Scalar" value="2"/>
+          </entries>
+        </value>
+      </entries>
+      <entries key="database">
+        <value xsi:type="c:Map">
+          <entries key="image">
+            <value xsi:type="c:Scalar" value="mongodb:latest"/>
+          </entries>
+          <entries key="volumes">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="mongo_storage:/mongo/storage"/>
+            </value>
+          </entries>
+          <entries key="tmpfs">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="/tmp"/>
+            </value>
+          </entries>
+        </value>
+      </entries>
+    </value>
+  </entries>
+  <entries key="volumes">
+    <value xsi:type="c:Map">
+      <entries key="mongo_storage"/>
+    </value>
+  </entries>
+</c:Map>

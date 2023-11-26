@@ -1,0 +1,9 @@
+bin/
+/build/
+/.gradle/
+/.classpath
+.project
+.classpath
+.gradle
+/results.csv
+scalability*.txt

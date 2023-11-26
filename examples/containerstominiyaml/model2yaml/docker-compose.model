@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="ASCII"?>
+<c:Map xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://york.ac.uk/ttc/miniyaml/1.0.0">
+  <entries key="x-laravel-base">
+    <value xsi:type="c:Map">
+      <entries key="restart">
+        <value xsi:type="c:Scalar" value="unless-stopped"/>
+      </entries>
+      <entries key="tty">
+        <value xsi:type="c:Scalar" value="true"/>
+      </entries>
+    </value>
+  </entries>
+  <entries key="volumes">
+    <value xsi:type="c:Map">
+      <entries key="redis_data">
+        <value xsi:type="c:Map">
+          <entries key="driver">
+            <value xsi:type="c:Scalar" value="local"/>
+          </entries>
+        </value>
+      </entries>
+      <entries key="mariadb_data">
+        <value xsi:type="c:Map">
+          <entries key="driver">
+            <value xsi:type="c:Scalar" value="local"/>
+          </entries>
+        </value>
+      </entries>
+      <entries key="m2_data">
+        <value xsi:type="c:Map">
+          <entries key="driver">
+            <value xsi:type="c:Scalar" value="local"/>
+          </entries>
+        </value>
+      </entries>
+    </value>
+  </entries>
+  <entries key="services">
+    <value xsi:type="c:Map">
+      <entries key="mariadb">
+        <value xsi:type="c:Map">
+          <entries key="image">
+            <value xsi:type="c:Scalar" value="docker.io/bitnami/mariadb:10.5-debian-10"/>
+          </entries>
+          <entries key="tmpfs">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="/tmp"/>
+            </value>
+          </entries>
+          <entries key="restart">
+            <value xsi:type="c:Scalar" value="unless-stopped"/>
+          </entries>
+          <entries key="volumes">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="mariadb_data:/bitnami/mariadb"/>
+            </value>
+          </entries>
+        </value>
+      </entries>
+      <entries key="app">
+        <value xsi:type="c:Map">
+          <entries key="image">
+            <value xsi:type="c:Scalar" value="autofeedback/app:production"/>
+          </entries>
+          <entries key="tmpfs">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="/tmp"/>
+            </value>
+          </entries>
+          <entries key="depends_on">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="mariadb"/>
+              <values xsi:type="c:Scalar" value="redis"/>
+            </value>
+          </entries>
+          <entries key="restart">
+            <value xsi:type="c:Scalar" value="unless-stopped"/>
+          </entries>
+          <entries key="tty">
+            <value xsi:type="c:Scalar" value="true"/>
+          </entries>
+        </value>
+      </entries>
+      <entries key="nginx">
+        <value xsi:type="c:Map">
+          <entries key="image">
+            <value xsi:type="c:Scalar" value="autofeedback/nginx:production"/>
+          </entries>
+          <entries key="tmpfs">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="/tmp"/>
+              <values xsi:type="c:Scalar" value="/opt/bitnami/nginx/tmp"/>
+              <values xsi:type="c:Scalar" value="/var/cache"/>
+              <values xsi:type="c:Scalar" value="/opt/bitnami/nginx/conf/server_blocks"/>
+            </value>
+          </entries>
+          <entries key="depends_on">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="app"/>
+            </value>
+          </entries>
+          <entries key="restart">
+            <value xsi:type="c:Scalar" value="unless-stopped"/>
+          </entries>
+          <entries key="read_only">
+            <value xsi:type="c:Scalar" value="true"/>
+          </entries>
+        </value>
+      </entries>
+      <entries key="java-worker">
+        <value xsi:type="c:Map">
+          <entries key="image">
+            <value xsi:type="c:Scalar" value="autofeedback/worker:production"/>
+          </entries>
+          <entries key="mem_limit">
+            <value xsi:type="c:Scalar" value="512M"/>
+          </entries>
+          <entries key="tmpfs">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="/tmp:size=100M"/>
+            </value>
+          </entries>
+          <entries key="depends_on">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="app"/>
+            </value>
+          </entries>
+          <entries key="restart">
+            <value xsi:type="c:Scalar" value="unless-stopped"/>
+          </entries>
+          <entries key="security_opt">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="no-new-privileges"/>
+            </value>
+          </entries>
+          <entries key="tty">
+            <value xsi:type="c:Scalar" value="true"/>
+          </entries>
+          <entries key="volumes">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="m2_data:/home/www-data/.m2"/>
+            </value>
+          </entries>
+          <entries key="scale">
+            <value xsi:type="c:Scalar" value="2"/>
+          </entries>
+          <entries key="command">
+            <value xsi:type="c:Scalar" value="php artisan queue:work --max-jobs=1 --queue=javaHigh,java,javaLow redis"/>
+          </entries>
+          <entries key="deploy">
+            <value xsi:type="c:Map">
+              <entries key="replicas">
+                <value xsi:type="c:Scalar" value="2"/>
+              </entries>
+            </value>
+          </entries>
+        </value>
+      </entries>
+      <entries key="echo">
+        <value xsi:type="c:Map">
+          <entries key="image">
+            <value xsi:type="c:Scalar" value="autofeedback/echo:production"/>
+          </entries>
+          <entries key="tmpfs">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="/home/node:uid=1000,gid=1000"/>
+            </value>
+          </entries>
+          <entries key="depends_on">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="redis"/>
+            </value>
+          </entries>
+          <entries key="read_only">
+            <value xsi:type="c:Scalar" value="true"/>
+          </entries>
+        </value>
+      </entries>
+      <entries key="default-worker">
+        <value xsi:type="c:Map">
+          <entries key="image">
+            <value xsi:type="c:Scalar" value="autofeedback/worker:production"/>
+          </entries>
+          <entries key="mem_limit">
+            <value xsi:type="c:Scalar" value="512M"/>
+          </entries>
+          <entries key="tmpfs">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="/tmp"/>
+            </value>
+          </entries>
+          <entries key="depends_on">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="app"/>
+            </value>
+          </entries>
+          <entries key="restart">
+            <value xsi:type="c:Scalar" value="unless-stopped"/>
+          </entries>
+          <entries key="tty">
+            <value xsi:type="c:Scalar" value="true"/>
+          </entries>
+          <entries key="scale">
+            <value xsi:type="c:Scalar" value="2"/>
+          </entries>
+          <entries key="command">
+            <value xsi:type="c:Scalar" value="php artisan queue:work --queue=defaultHigh,default,defaultLow redis"/>
+          </entries>
+          <entries key="deploy">
+            <value xsi:type="c:Map">
+              <entries key="replicas">
+                <value xsi:type="c:Scalar" value="2"/>
+              </entries>
+            </value>
+          </entries>
+        </value>
+      </entries>
+      <entries key="redis">
+        <value xsi:type="c:Map">
+          <entries key="image">
+            <value xsi:type="c:Scalar" value="docker.io/bitnami/redis:6.0-debian-10"/>
+          </entries>
+          <entries key="tmpfs">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="/tmp"/>
+            </value>
+          </entries>
+          <entries key="restart">
+            <value xsi:type="c:Scalar" value="unless-stopped"/>
+          </entries>
+          <entries key="volumes">
+            <value xsi:type="c:List">
+              <values xsi:type="c:Scalar" value="redis_data:/bitnami/redis/data"/>
+            </value>
+          </entries>
+        </value>
+      </entries>
+    </value>
+  </entries>
+  <entries key="version">
+    <value xsi:type="c:Scalar" value="2.4"/>
+  </entries>
+</c:Map>

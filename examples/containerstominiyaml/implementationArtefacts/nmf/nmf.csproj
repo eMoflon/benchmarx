@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <OutDir>bin</OutDir>
+	  <AssemblyName>NMFSolution</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Containers.nmeta" />
+    <None Remove="MiniYaml.nmeta" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Containers.nmeta" />
+    <EmbeddedResource Include="MiniYaml.nmeta" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NMF-Basics" Version="2.0.188" />
+    <PackageReference Include="NMF-Expressions" Version="2.0.188" />
+    <PackageReference Include="NMF-Expressions-Utilities" Version="2.0.188" />
+    <PackageReference Include="NMF-Synchronizations" Version="2.0.188" />
+    <PackageReference Include="NMF-Transformations" Version="2.0.188" />
+  </ItemGroup>
+
+</Project>

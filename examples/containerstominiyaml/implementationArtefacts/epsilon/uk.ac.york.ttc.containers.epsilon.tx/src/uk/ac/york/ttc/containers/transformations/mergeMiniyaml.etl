@@ -1,0 +1,29 @@
+@lazy
+rule TransformMap
+  transform s: Source!`Map`
+  to t: Target!`Map` {
+  t.entries ::= s.entries;
+}
+
+@lazy
+rule TransformMapEntry
+  transform s: Source!MapEntry
+  to t: Target!MapEntry {
+  t.key = s.key;
+  t.value ::= s.value;
+}
+
+@lazy
+rule TransformList
+  transform s: Source!`List`
+  to t: Target!`List`
+{
+  t.values ::= s.values;  
+}
+
+@lazy
+rule TransformScalar
+  transform s: Source!Scalar
+  to t: Target!Scalar {
+  t.value = s.value;
+}

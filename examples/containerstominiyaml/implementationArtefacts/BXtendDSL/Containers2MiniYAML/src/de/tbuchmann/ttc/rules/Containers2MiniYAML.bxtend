@@ -1,0 +1,35 @@
+sourcemodel "http://york.ac.uk/ttc/containers/1.0.0"
+targetmodel "http://york.ac.uk/ttc/miniyaml/1.0.0"
+
+rule Volume2MapEntry
+	src Volume v;
+	trg MapEntry me | filter;
+	
+	v.name <--> me.key;
+
+rule Image2MapEntry
+	src Image img;
+	trg MapEntry me | filter, creation;
+	
+	img.image <--> me.value;
+ 
+rule VolumeMount2Scalar
+	src VolumeMount vm;
+	trg Scalar sc | filter;
+	
+	vm.path vm.volume --> sc.value;
+	
+rule Container2MapEntry
+	src Container c;
+	trg MapEntry me | filter;
+	
+	c.name <--> me.key;
+	c.image c.replicas c.dependsOn {c.volumeMounts: VolumeMount2Scalar} --> me.value {me.value: VolumeMount2Scalar};
+	c.image c.replicas c.dependsOn <-- me.value;
+
+rule Composition2Map
+	src Composition c;
+	trg Map m | filter, creation;
+	
+	{c.nodes: Image2MapEntry, Container2MapEntry, Volume2MapEntry} --> m.entries {m.entries: Image2MapEntry, Container2MapEntry, Volume2MapEntry};
+	c.nodes <-- m.entries {m.entries: Image2MapEntry[img], Container2MapEntry[c], Volume2MapEntry[v]};

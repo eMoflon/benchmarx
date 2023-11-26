@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Model-YAML converters
+Bundle-SymbolicName: uk.ac.york.ttc.miniyaml.model2yaml
+Bundle-Version: 1.0.0.qualifier
+Export-Package: uk.ac.york.ttc.miniyaml.model2yaml
+Require-Bundle: uk.ac.york.ttc.miniyaml.metamodel;bundle-version="1.0.0",
+ org.eclipse.emf.ecore.xmi;bundle-version="2.0.0",
+ org.yaml.snakeyaml;bundle-version="1.27.0"
+Bundle-Vendor: University of York
+Automatic-Module-Name: uk.ac.york.ttc.miniyaml.model2yaml
+Bundle-RequiredExecutionEnvironment: JavaSE-11

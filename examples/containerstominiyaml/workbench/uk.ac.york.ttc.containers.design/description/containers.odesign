@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="containers" version="12.0.0.2017041100">
+  <ownedViewpoints name="MyViewpoint" modelFileExtension="*.containers">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="compositiondiagram" label="Composition Diagram" domainClass="containers::Composition" enablePopupBars="true">
+      <metamodel href="http://york.ac.uk/ttc/containers/1.0.0#/"/>
+      <layout xsi:type="description_1:CustomLayoutConfiguration" id="org.eclipse.elk.layered" label="ELK Layered" description="Layer-based algorithm provided by the Eclipse Layout Kernel. Arranges as many edges as possible into one direction by placing nodes into subsequent layers. This implementation supports different routing styles (straight, orthogonal, splines); if orthogonal routing is selected, arbitrary port constraints are respected, thus enabling the layout of block diagrams such as actor-oriented models or circuit schematics. Furthermore, full layout of compound graphs with cross-hierarchy edges is supported when the respective option is activated on the top level.">
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.direction">
+          <targets>PARENT</targets>
+          <value name="DOWN"/>
+        </layoutOptions>
+      </layout>
+      <defaultLayer name="Default">
+        <nodeMappings name="volumeNode" label="volumeNode" labelDirectEdit="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='editVolumeName']" semanticCandidatesExpression="aql:self.nodes->select(e|e.oclIsKindOf(containers::Volume))" domainClass="containers::Volume">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="aql:self.oclAsType(containers::Volume).name" iconPath="/uk.ac.york.ttc.containers.design/icons/hard-drive.png" sizeComputationExpression="aql:self.name.size()" labelPosition="node" resizeKind="NSEW" width="15" height="4">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="imageNode" labelDirectEdit="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='editImagePath']" semanticCandidatesExpression="aql:self.nodes->select(n|n.oclIsKindOf(containers::Image))" domainClass="containers::Image">
+          <style xsi:type="style:EllipseNodeDescription" labelSize="12" labelExpression="aql:self.oclAsType(containers::Image).image" iconPath="/uk.ac.york.ttc.containers.design/icons/box.png" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="aql:self.oclAsType(containers::Image).image.size() + 2" verticalDiameterComputationExpression="4">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="edgeImage" deletionDescription="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='deleteImageEdge']" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@containerMappings[name='containerContainer']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@nodeMappings[name='imageNode']" targetFinderExpression="feature:image" reconnections="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='reconnectImage']">
+          <style sizeComputationExpression="2" endsCentering="Both">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="edgeVolume" deletionDescription="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='deleteVolumeEdge']" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@containerMappings[name='containerContainer']/@subNodeMappings[name='volumeMountMapping']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@nodeMappings[name='volumeNode']" targetFinderExpression="feature:volume" reconnections="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='reconnectVolume']">
+          <style sizeComputationExpression="2" endsCentering="Both">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="edgeContainerDependOn" deletionDescription="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='deleteDependsOn']" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@containerMappings[name='containerContainer']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@containerMappings[name='containerContainer']" targetFinderExpression="aql:self.dependsOn">
+          <style sizeComputationExpression="2" endsCentering="Both">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="containerContainer" labelDirectEdit="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='editName']" semanticCandidatesExpression="aql:self.nodes->select(e|e.oclIsKindOf(containers::Container))" domainClass="containers::Container">
+          <subNodeMappings name="volumeMountMapping" labelDirectEdit="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='editVolumeMountPath']" semanticCandidatesExpression="feature:volumeMounts" domainClass="containers::VolumeMount">
+            <style xsi:type="style:EllipseNodeDescription" labelSize="12" labelExpression="feature:path" iconPath="/uk.ac.york.ttc.containers.design/icons/folder.png" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="aql:self.path.size() + 2" verticalDiameterComputationExpression="4">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" iconPath="/uk.ac.york.ttc.containers.design/icons/puzzle.png" widthComputationExpression="aql:(self.name.size() + 10)" heightComputationExpression="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="creation" label="Creation Tools">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createImage" label="Create Image" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@nodeMappings[name='imageNode']" iconPath="/uk.ac.york.ttc.containers.design/icons/box.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="containers::Image" referenceName="nodes"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="createContainer" label="Create Container" containerMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@containerMappings[name='containerContainer']" iconPath="/uk.ac.york.ttc.containers.design/icons/puzzle.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="containers::Container" referenceName="nodes"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createVolume" label="Create Volume" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@nodeMappings[name='volumeNode']" iconPath="/uk.ac.york.ttc.containers.design/icons/hard-drive.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="containers::Volume" referenceName="nodes"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createVolumeMount" label="Create Volume Mount" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@containerMappings[name='containerContainer']/@subNodeMappings[name='volumeMountMapping']" iconPath="/uk.ac.york.ttc.containers.design/icons/folder.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="containers::VolumeMount" referenceName="volumeMounts"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="createEdge" label="Create Link" edgeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@edgeMappings[name='edgeImage'] //@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@edgeMappings[name='edgeVolume'] //@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='compositiondiagram']/@defaultLayer/@edgeMappings[name='edgeContainerDependOn']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Switch">
+                <cases conditionExpression="aql:source.oclIsKindOf(containers::Container) and target.oclIsKindOf(containers::Image)">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.oclAsType(containers::Container)">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="image" valueExpression="var:target"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:source.oclIsKindOf(containers::VolumeMount)">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.oclAsType(containers::VolumeMount)">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="volume" valueExpression="var:target"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:source.oclIsKindOf(containers::Container) and target.oclIsKindOf(containers::Container)">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.oclAsType(containers::Container)">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="dependsOn" valueExpression="var:target"/>
+                  </subModelOperations>
+                </cases>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="reconnectImage" label="Reconnect Image">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="image" valueExpression="var:target"/>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="reconnectVolume">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="volume" valueExpression="var:target"/>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="deleteDependsOn" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Let" valueExpression="aql:element.dependsOn->select(e|e.name=elementView.targetNode.toString())->first()">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="dependsOn" elementExpression="var:instance"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="deleteImageEdge">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Unset" featureName="image"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="deleteVolumeEdge">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Unset" featureName="volume"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="editImagePath" inputLabelExpression="feature:image">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="image" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="editName" inputLabelExpression="feature:name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="editVolumeMountPath" inputLabelExpression="feature:path">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="path" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="editVolumeName" inputLabelExpression="feature:name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="uk.ac.york.ttc.containers.design.Services"/>
+  </ownedViewpoints>
+</description:Group>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<c:Map xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://york.ac.uk/ttc/miniyaml/1.0.0">
+  <entries key="version">
+    <value xsi:type="c:Scalar" value="2.4"/>
+  </entries>
+  <entries key="services">
+    <value xsi:type="c:Map"/>
+  </entries>
+  <entries key="volumes">
+    <value xsi:type="c:Map">
+      <entries key="storage"/>
+    </value>
+  </entries>
+</c:Map>
