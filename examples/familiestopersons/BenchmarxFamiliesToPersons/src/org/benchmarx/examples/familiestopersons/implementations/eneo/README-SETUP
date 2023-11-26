@@ -1,18 +1,15 @@
 1. Follow the instructions on https://github.com/eMoflon/emoflon-neo-updatesite to install eNeo as an Eclipse plugin.
 2. Go to 'File/Import...' and choose 'Existing Projects into Workspace'.  Select 'ENeoFamiliesToPersons' (located at benchmarx/examples/familiestopersons/implementationArtefacts/eNeo/) and import the project.
-3. Ensure that /EneoFamiliesToPersons/src-gen/org/emoflon/neo/api/eneofamiliestopersons/API_Common.java has been regenerated and contains correct paths on your system.
-   To make sure everything is generated correctly, add and remove a space in /EneoFamiliesToPersons/src/org/benchmarx/eneo/f2p/FamiliesToPersons.msl to trigger code generation.
-   You should only have API_Common.java as a changed file if you git diff (everything else should be exactly the same).
-4. Setup Neo4j as required for eNeo:  
+3. Open META-INF/MANIFEST.MF and add 'ENeoFamiliesToPersons' as a dependency.
+4. Select 'ENeoFamiliesToPersons.java' in this package, right-click it, and choose 'Build Path/Include'.  Your workspace should compile without errors.
+5. Enable eNeo as a bx tool in FamiliesToPersonsTestCase::tools()
+6. Finally, setup Neo4j as required for eNeo:  
 	- See https://paper.dropbox.com/doc/Meta-Modelling-with-eNeo--B9VY0RnWDn5aZd_jmQyn0PzDAg-jKeVQDlC2BAdD0TDQuF0I#:h2=Install-and-setup-Neo4j
 	- Please choose 'neo4j' as username and 'test' as password for creating a local database.
 	- Please choose 4.4.11 as the version of your local database
-5. If you wish to use Gurobi then install it and switch to Gurobi as supported ILP solver in /EneoFamiliesToPersons/src/org/benchmarx/eneo/f2p/ENeoRunner.java
-6. Enable eNeo as a bx tool in FamiliesToPersonsTestCase::tools()
-7. Fix constants for JAVA and CLASSPATH in /EneoFamiliesToPersons/src/org/benchmarx/eneo/f2p/ENeoRunner.java
-	- Run /EneoFamiliesToPersons/src/org/benchmarx/eneo/f2p/ENeoRunner.java as a Java Application (ignore that it fails)
-	- Open created Run Configuration for ENeoRunner, and click on "Show Command Line" to see the command Eclipse executes
-	- From this command, copy the path to java as the value of JAVA, and the path for -classpath as the value of CLASSPATH
-8. Run the f2p benchmarx 
+7. Ensure that /EneoFamiliesToPersons/src-gen/org/emoflon/neo/api/eneofamiliestopersons/API_Common.java has been regenerated and contains correct paths on your system.
+   To make sure everything is generated correctly, add and remove a space in /EneoFamiliesToPersons/src/org/benchmarx/eneo/f2p/FamiliesToPersons.msl to trigger code generation.
+   You should only have API_Common.java as a changed file if you git diff (everything else should be exactly the same).
+8. If you wish to use Gurobi then install it and switch to Gurobi as supported ILP solver in 'ENEoFamiliesToPersons.java'
 
 Please create an issue on https://github.com/eMoflon/benchmarx if you have problems or questions.
