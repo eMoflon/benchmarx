@@ -1,5 +1,6 @@
 package org.benchmarx.examples.familiestopersons.scalability;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,13 +42,17 @@ public class ScalabilityTests extends FamiliesToPersonsTestCase {
 	@BeforeClass
 	public static void clearResultFolder() {
 		try {
-			Files.walk(Paths.get(resultFolder)).filter(Files::isRegularFile).forEach(t -> {
-				try {
-					Files.delete(t);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			});
+			if (new File(resultFolder).exists()) {
+				Files.walk(Paths.get(resultFolder)).filter(Files::isRegularFile).forEach(t -> {
+					try {
+						Files.delete(t);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				});
+			} else {
+				Files.createDirectory(Paths.get(resultFolder));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -60,5 +65,5 @@ public class ScalabilityTests extends FamiliesToPersonsTestCase {
 
 	public ScalabilityTests(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
 		super(tool);
-	}	
+	}
 }
