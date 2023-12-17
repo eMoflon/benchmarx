@@ -7,6 +7,8 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.benchmarx.BXTool;
 import org.benchmarx.edit.ChangeAttribute;
 import org.benchmarx.edit.CreateEdge;
@@ -55,6 +57,8 @@ public abstract class FamiliesToPersonsTestCase {
 
 	@Before
 	public void initialise() {
+		Logger.getRootLogger().setLevel(Level.INFO);
+		
 		// Make sure packages are registered
 		FamiliesPackage.eINSTANCE.getName();
 		PersonsPackage.eINSTANCE.getName();

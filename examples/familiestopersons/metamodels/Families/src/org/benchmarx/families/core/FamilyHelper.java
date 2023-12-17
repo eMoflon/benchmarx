@@ -32,7 +32,7 @@ public class FamilyHelper {
 	private BiConsumer<EReference, List<EObject /* [source, target] */>> createEdge;
 
 	private FamilyMember firstBart;
-	
+
 	public FamilyHelper(Supplier<FamilyRegister> register, Consumer<EObject> createNode,
 			BiConsumer<EReference, List<EObject>> createEdge, BiConsumer<EAttribute, List<?>> changeAttribute,
 			Consumer<EObject> deleteNode, BiConsumer<EObject, List<EObject>> moveNode,
@@ -123,9 +123,9 @@ public class FamilyHelper {
 	public void createSimpsonFamily() {
 		builder.family("Simpson");
 	}
-	
+
 	public void createSimpsonFamiliesWithMembers(int nrOfFamilies) {
-		for(int i = 0; i < nrOfFamilies; i++) {
+		for (int i = 0; i < nrOfFamilies; i++) {
 			var fam = builder.family("Simpson_" + i);
 			fam.father("Homer");
 			fam.mother("Marge");
@@ -219,8 +219,8 @@ public class FamilyHelper {
 		changeAttribute.accept(FamiliesPackage.Literals.FAMILY__NAME, List.of(family, "Simpson", "Bouvier"));
 		family.setName("Bouvier");
 	}
-	
-	public void renameFlandersFamilyToBouvier(){
+
+	public void renameFlandersFamilyToBouvier() {
 		Family family = getFromRegister("Flanders");
 		assertTrue(family.getName().equals("Flanders"));
 
@@ -263,7 +263,7 @@ public class FamilyHelper {
 		FamilyMember homer = simpson.getFather();
 		deleteMemberFromFamily(FamiliesPackage.Literals.FAMILY__FATHER, simpson, homer);
 	}
-	
+
 	public void deleteRodAsSon() {
 		Family flanders = getFromRegister("Flanders");
 		FamilyMember rod = flanders.getSons().get(0);
@@ -282,5 +282,10 @@ public class FamilyHelper {
 
 	public void hippocraticDelta() {
 		builder.family("Van Houten");
+	}
+
+	public void createOneFamilyMember() {
+		Family f = register.get().getFamilies().get(0);
+		builder.family(f).daughter("Johanna");
 	}
 }

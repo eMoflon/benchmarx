@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import Persons.Person;
 import Persons.PersonRegister;
+import Persons.PersonsFactory;
 import Persons.PersonsPackage;
 
 public class PersonHelper {
@@ -289,5 +290,9 @@ public class PersonHelper {
 					builder.male("Doe_" + i + ", Member_" + j);
 			}
 		}
+	}
+
+	public void createOnePerson() {
+		builder.female("Doe_0, Jane");
 	}
 }

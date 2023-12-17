@@ -16,64 +16,64 @@ import Families.FamilyRegister;
 import Persons.PersonRegister;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class ScalabilityBatchTestsFwd extends ScalabilityTests {
+public class ScalabilityIncrTestsFwd extends ScalabilityTests {
 
-	public ScalabilityBatchTestsFwd(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
+	public ScalabilityIncrTestsFwd(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
 		super(tool);
 	}
 	
-	private void createFamilies(int nrOfFamilies) {
+	private void createOneFamilyMember(int nrOfFamilies) {
 		var timer = new BXToolTimer<>(tool, REPEAT);
 		
 		assertTimeoutPreemptively(Duration.ofSeconds(TIMEOUT * REPEAT), () -> {
 			results.put(nrOfFamilies, //
-					timer.timeSourceEditFromScratchInS(
-							srcEdit(() -> helperFamily.createSimpsonFamiliesWithMembers(nrOfFamilies))));
+					timer.timeSourceEditAfterSetUpInS(
+							srcEdit(() -> helperFamily.createSimpsonFamiliesWithMembers(nrOfFamilies)),
+							srcEdit(() -> helperFamily.createOneFamilyMember())));
 		});
 	}
 
 	@Test
 	public void testCreate0000003FamiliesWithMembers() {
-		createFamilies(3);
+		createOneFamilyMember(3);
 	}
 
 	@Test
 	public void testCreate0000005FamiliesWithMembers() {
-		createFamilies(5);
+		createOneFamilyMember(5);
 	}
 
 	@Test
 	public void testCreate0000010FamiliesWithMembers() {
-		createFamilies(10);
+		createOneFamilyMember(10);
 	}
 
 	@Test
-	@Ignore
 	public void testCreate0000100FamiliesWithMembers() {
-		createFamilies(100);
+		createOneFamilyMember(100);
 	}
 
 	@Test
 	@Ignore
 	public void testCreate0001000FamiliesWithMembers() {
-		createFamilies(1000);
+		createOneFamilyMember(1000);
 	}
 	
 	@Test
 	@Ignore
 	public void testCreate0010000FamiliesWithMembers() {
-		createFamilies(10000);
+		createOneFamilyMember(10000);
 	}
 	
 	@Test
 	@Ignore
 	public void testCreate0100000FamiliesWithMembers() {
-		createFamilies(100000);
+		createOneFamilyMember(100000);
 	}
 	
 	@Test
 	@Ignore
 	public void testCreate1000000FamiliesWithMembers() {
-		createFamilies(1000000);
+		createOneFamilyMember(1000000);
 	}
 }

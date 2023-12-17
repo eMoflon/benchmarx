@@ -56,6 +56,8 @@ public class BXToolTimer<S, T, D> {
 
 	private long timeAfterSetup(Runnable setup, Runnable action) {
 		tool.initiateSynchronisationDialogue();
+		tool.noPrecondition();
+
 		setup.run();
 		return timeAction(action);
 	}
