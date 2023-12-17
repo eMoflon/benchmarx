@@ -84,7 +84,7 @@ public class PersonHelper {
 	public void changeAllBirthdays() {
 		setBirthdaysOfSimpson();
 		Person person = getFromRegister("Flanders, Rod");
-		if(person != null)
+		if (person != null)
 			setBirthdayOfPerson(person, getDate(2013, Calendar.OCTOBER, 1, 10, 11, 12));
 	}
 
@@ -112,7 +112,7 @@ public class PersonHelper {
 	public void setBirthdayOfHomer() {
 		setBirthdayOfPerson("Simpson, Homer", getDate(2013, Calendar.JANUARY, 9, 10, 11, 12));
 	}
-	
+
 	public void setBirthdayOfSeymour() {
 		setBirthdayOfPerson("Skinner, Seymour", getDate(2013, Calendar.JANUARY, 9, 10, 11, 12));
 	}
@@ -280,4 +280,14 @@ public class PersonHelper {
 		}
 	}
 
+	public void createPersons(int nrOfFamilies, int familySize) {
+		for (int i = 0; i < nrOfFamilies; i++) {
+			for (int j = 0; j < familySize; j++) {
+				if (Math.random() < 0.5)
+					builder.female("Doe_" + i + ", Member_" + j);
+				else
+					builder.male("Doe_" + i + ", Member_" + j);
+			}
+		}
+	}
 }

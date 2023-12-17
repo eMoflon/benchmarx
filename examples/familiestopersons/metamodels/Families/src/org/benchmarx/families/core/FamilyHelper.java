@@ -123,6 +123,17 @@ public class FamilyHelper {
 	public void createSimpsonFamily() {
 		builder.family("Simpson");
 	}
+	
+	public void createSimpsonFamiliesWithMembers(int nrOfFamilies) {
+		for(int i = 0; i < nrOfFamilies; i++) {
+			var fam = builder.family("Simpson_" + i);
+			fam.father("Homer");
+			fam.mother("Marge");
+			fam.son("Bart");
+			fam.daughter("Maggie");
+			fam.daughter("Lisa");
+		}
+	}
 
 	public void createFatherHomer() {
 		Optional<Family> family = register.get().getFamilies().stream()

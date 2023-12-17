@@ -1,10 +1,13 @@
-package org.benchmarx.examples.familiestopersons.testsuite.scalability;
+package org.benchmarx.examples.familiestopersons.scalability;
 
 import org.benchmarx.BXTool;
+import org.benchmarx.edit.IEdit;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
+import org.benchmarx.families.core.FamilyHelper;
+import org.benchmarx.persons.core.PersonHelper;
 import org.benchmarx.util.BXToolTimer;
 
 import Families.FamiliesFactory;
@@ -16,6 +19,11 @@ import Persons.PersonRegister;
 import Persons.PersonsFactory;
 
 public class ScalabilityMeasurements {
+	protected FamilyHelper helperFamily;
+	protected PersonHelper helperPerson;
+	protected IEdit<FamilyRegister> sourceEdit;
+	protected IEdit<PersonRegister> targetEdit;
+	
 	//private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool1 = new BiGULFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool2 = new EMoflonFamiliesToPersons();
 	private static final BXTool<FamilyRegister, PersonRegister, Decisions> tool3 = new MediniQVTFamiliesToPersons();
