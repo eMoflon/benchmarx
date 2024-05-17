@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Families:FamilyRegister xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Families="platform:/plugin/Families/model/Families.ecore">
+  <families name="Skinner"/>
+  <families name="Flanders">
+    <sons name="Rod"/>
+  </families>
+  <families name="Simpson">
+    <father name="Bart"/>
+  </families>
+  <families name="Simpson">
+    <mother name="Marge"/>
+    <sons name="Bart"/>
+    <sons name="Bart"/>
+    <daughters name="Lisa"/>
+  </families>
+</Families:FamilyRegister>
