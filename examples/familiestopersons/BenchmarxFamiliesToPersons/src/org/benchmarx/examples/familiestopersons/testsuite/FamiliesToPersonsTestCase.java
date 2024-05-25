@@ -21,6 +21,7 @@ import org.benchmarx.edit.MoveNode;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.BXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
+//import org.benchmarx.examples.familiestopersons.implementations.eneo.ENeoFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.ibextgg.IBeXTGGFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.medini.MediniQVTFamiliesToPersonsConfig;
@@ -154,7 +155,7 @@ public abstract class FamiliesToPersonsTestCase {
 				/*
 				 * See setup instructions: /implementations/eneo/README-SETUP
 				 */
-				//new ENEoFamiliesToPersons()// Currently 8 failures (and a few flaky tests)
+				//new ENEoFamiliesToPersons()// Currently 8 failures (and some non-determinism)
 				//,
 //				new EMoflonFamiliesToPersons(), //
 //				new MediniQVTFamiliesToPersons(), //
