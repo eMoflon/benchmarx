@@ -45,8 +45,8 @@ import Persons.PersonRegister;
 import Persons.PersonsFactory;
 import Persons.PersonsPackage;
 
-public class ENEoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegister, Decisions> {
-	private SupportedILPSolver solver = SupportedILPSolver.Sat4J;
+public class ENeoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegister, Decisions> {
+	private SupportedILPSolver solver = SupportedILPSolver.Gurobi;
 	private Configurator<Decisions> configurator;
 	private FamilyRegister sourceRegister;
 	private PersonRegister targetRegister;
