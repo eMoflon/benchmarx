@@ -1,0 +1,18 @@
+rule Families2Persons {
+	
+	source { 
+		[+] families : Fam.FamilyRegister
+	}
+	
+	target {
+		[+] persons : Per.PersonRegister
+	}
+	
+	correspondence {
+		[+] families2persons : RegisterToRegisterCorr {
+			src->families
+			trg->persons
+		}
+	}
+
+}

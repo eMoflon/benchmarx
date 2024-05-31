@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:FamiliesToPersons_V1="platform:/resource/FamiliesToPersons_V1/model/FamiliesToPersons_V1.ecore">
+  <FamiliesToPersons_V1:ProtocolNode_HandleRegisters>
+    <CREATE__SOURCE__fr href="singleFamilyWithFather.xmi#/"/>
+    <CREATE__TARGET__pr href="PersonRegisterWithMalePerson.xmi#/"/>
+    <CREATE__CORRESPONDENCE__roots href="singlePersonCorr.xmi#/0"/>
+  </FamiliesToPersons_V1:ProtocolNode_HandleRegisters>
+  <FamiliesToPersons_V1:ProtocolNode_CreateFatherInNewFamily>
+    <CREATE__SOURCE__f href="singleFamilyWithFather.xmi#//@families.0/@father"/>
+    <CREATE__SOURCE__family href="singleFamilyWithFather.xmi#//@families.0"/>
+    <CONTEXT__SOURCE__reg href="singleFamilyWithFather.xmi#/"/>
+    <CREATE__TARGET__p href="PersonRegisterWithMalePerson.xmi#//@persons.0"/>
+    <CONTEXT__TARGET__preg href="PersonRegisterWithMalePerson.xmi#/"/>
+    <CREATE__CORRESPONDENCE__m2p href="singlePersonCorr.xmi#/1"/>
+    <CONTEXT__CORRESPONDENCE__reg2reg href="singlePersonCorr.xmi#/0"/>
+  </FamiliesToPersons_V1:ProtocolNode_CreateFatherInNewFamily>
+</xmi:XMI>

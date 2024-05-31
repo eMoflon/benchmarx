@@ -1,0 +1,19 @@
+rule SonToMale refines FamilyMember2Person {
+	
+	source { 
+		@refines+ FamilyMember2Person.f
+		[+] f : Fam.Family {
+			[+] -sons->fm	
+		}
+		
+		@refines+ FamilyMember2Person.fm
+		[+] fm : Fam.FamilyMember
+	}
+	
+	target {
+		@refines+ FamilyMember2Person.p
+		[+] p : Per.Male
+	}
+
+}
+

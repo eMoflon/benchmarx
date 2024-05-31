@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<FamiliesToPersons_V1:ProtocolNode_HandleRegisters xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:FamiliesToPersons_V1="platform:/resource/FamiliesToPersons_V1/model/FamiliesToPersons_V1.ecore">
+  <CREATE__SOURCE__fr href="singleFamilyReg.xmi#/"/>
+  <CREATE__TARGET__pr href="singlePersonReg.xmi#/"/>
+  <CREATE__CORRESPONDENCE__roots href="singleRegCorr.xmi#/"/>
+</FamiliesToPersons_V1:ProtocolNode_HandleRegisters>

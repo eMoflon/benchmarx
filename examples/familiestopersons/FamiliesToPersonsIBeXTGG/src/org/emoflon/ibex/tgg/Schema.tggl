@@ -1,0 +1,32 @@
+import "platform:/resource/Families/model/Families.ecore" using Families as Fam
+import "platform:/resource/Persons/model/Persons.ecore" using Persons as Per
+
+schema FamiliesToPersons_V1 {
+	
+	source {
+		Families
+	}
+	
+	target {
+		Persons
+	}
+	
+	correspondence {
+		RegisterToRegisterCorr {
+			src->Fam.FamilyRegister
+			trg->Per.PersonRegister
+		}
+
+		FamilyToRegisterCorr {
+			src->Fam.Family
+			trg->Per.PersonRegister
+		}
+		
+		FamilyMemberToPersonCorr {
+			src->Fam.FamilyMember
+			trg->Per.Person
+		}
+		
+	}
+	
+}
