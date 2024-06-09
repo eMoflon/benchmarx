@@ -222,6 +222,12 @@ public class FamilyHelper {
 		var lisa = getLisa();
 		deleteMemberFromFamily(FamiliesPackage.Literals.FAMILY__DAUGHTERS, lisa.getDaughtersInverse(), lisa);
 	}
+	
+	public void nameChangeOfLisa() {
+		var lisa = getLisa();
+		changeAttribute.accept(FamiliesPackage.Literals.FAMILY_MEMBER__NAME, List.of(lisa, "Lisa", "Mary"));
+
+	}
 
 	private boolean firstBartCanBeIdentifiedInRegister() {
 		return firstBart != null && firstBart.getSonsInverse().getFamiliesInverse().equals(register.get());

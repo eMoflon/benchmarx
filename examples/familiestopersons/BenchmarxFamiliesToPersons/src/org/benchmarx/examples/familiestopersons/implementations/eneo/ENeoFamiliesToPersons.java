@@ -319,7 +319,20 @@ public class ENeoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 						mask.addParameter(rule._param__name, ca.getNewValue());
 						mask.addParameter(rule._param__id, ca.getNode().hashCode());
 						rule.apply(mask, mask);
-					} else {
+					} else if(ca.getAttribute() == FamiliesPackage.Literals.FAMILY_MEMBER__NAME) {
+						var member = (FamilyMember) ca.getNode();
+						var family = (Family) member.eContainer();
+						if(family.getDaughters().contains(member)) {
+							var rule = familyAPI.getRule_ChangeNameOfDaughter();
+							var mask = rule.mask();
+							mask.addParameter(rule._param__name, ca.getNewValue());
+							mask.addParameter(rule._param__id, ca.getNode().hashCode());
+							rule.apply(mask, mask);
+						} else {
+							throw new IllegalArgumentException("Unable to handle change attribute: " + ca.getAttribute());
+						}
+					}
+					else {
 						throw new IllegalArgumentException("Unable to handle change attribute: " + ca.getAttribute());
 					}
 				} else if (s instanceof DeleteNode) {

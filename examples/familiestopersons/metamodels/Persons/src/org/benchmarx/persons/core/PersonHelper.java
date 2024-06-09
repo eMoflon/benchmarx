@@ -139,6 +139,11 @@ public class PersonHelper {
 			}
 		}
 	}
+	
+	public void setBirthdayOfLisa() {
+		Person lisa = getFromRegister("Simpson, Lisa");
+		setBirthdayOfPerson(lisa, getDate(2013, Calendar.MARCH, 8, 10, 11, 12));
+	}
 
 	public void setBirthdaysOfSimpson() {
 		Person person1 = getFromRegister("Simpson, Homer");
