@@ -2,12 +2,16 @@ package org.benchmarx.util;
 
 import static org.benchmarx.util.EMFUtil.loadExpectedModel;
 
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import org.benchmarx.BXTool;
 import org.benchmarx.config.Configurator;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.junit.ComparisonFailure;
 
 /**
  * A collection of helper methods used by the test framework. See {@link BXTool}
@@ -50,6 +54,7 @@ public class BenchmarxUtil<S, T, D> {
 	 *                     Each entry is a possible postcondition (consistent pair).
 	 */
 	public void assertAnyPostcondition(Map<String, String> alternativePostconditions) {
+		var failures = new ArrayList<ComparisonFailure>();
 		for (var entry : alternativePostconditions.entrySet()) {
 			try {
 				// Attempt to assert post condition
@@ -57,13 +62,18 @@ public class BenchmarxUtil<S, T, D> {
 
 				// Attempt was successful so exit
 				return;
-			} catch (AssertionError failed) {
+			} catch (ComparisonFailure failed) {
 				// Attempt was unsuccessful so continue search
+				failures.add(failed);
 			}
 		}
 
 		// No attempt was successful so fail
-		throw new AssertionError("None of the provided postconditions holds: " + alternativePostconditions);
+		var finalError = new ComparisonFailure("None of the provided postconditions holds.",
+				failures.stream().map(ComparisonFailure::getExpected).collect(Collectors.joining("========>\n")),
+				failures.stream().map(ComparisonFailure::getActual).collect(Collectors.joining("========>\n")));
+
+		throw finalError;
 	}
 
 	/**

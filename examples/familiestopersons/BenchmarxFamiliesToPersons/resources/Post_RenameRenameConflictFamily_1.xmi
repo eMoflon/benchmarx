@@ -25,7 +25,5 @@
         name="Mary"/>
     <daughters
         name="Maggie"/>
-    <daughters
-        name="Marie"/>
   </families>
 </Families:FamilyRegister>

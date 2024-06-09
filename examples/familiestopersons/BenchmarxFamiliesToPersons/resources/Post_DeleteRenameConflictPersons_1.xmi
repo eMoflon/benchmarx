@@ -14,7 +14,8 @@
   <persons xsi:type="Persons:Male"
       name="Simpson, Bart"/>
   <persons xsi:type="Persons:Female"
-      name="Van Houten, Lisa"/>
+      name="Simpson, Marie"
+      birthday="2013-03-08T10:11:12.000+0100"/>
   <persons xsi:type="Persons:Female"
       name="Simpson, Maggie"/>
   <persons xsi:type="Persons:Female"

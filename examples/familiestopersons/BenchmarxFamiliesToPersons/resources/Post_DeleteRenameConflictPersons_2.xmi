@@ -14,8 +14,6 @@
   <persons xsi:type="Persons:Male"
       name="Simpson, Bart"/>
   <persons xsi:type="Persons:Female"
-      name="Simpson, Marie"/>
-  <persons xsi:type="Persons:Female"
       name="Simpson, Maggie"/>
   <persons xsi:type="Persons:Female"
       name="Flanders, Maude"/>
