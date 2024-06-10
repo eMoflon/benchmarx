@@ -98,7 +98,7 @@ public class Conflicts extends FamiliesToPersonsTestCase {
 				// Reject deletion, propagate renaming
 				entry("Post_DeleteRenameConflictFamily_1", "Post_DeleteRenameConflictPersons_1"),
 				// Propagate deletion, reject renaming
-				entry("Post_DeleteRenameConflictFamily_2", "Post_DeleteRenameConflictFamily_2")));
+				entry("Post_DeleteRenameConflictFamily_2", "Post_DeleteRenameConflictPersons_2")));
 	}
 
 	/**
