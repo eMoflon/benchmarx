@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import Persons.Person;
 import Persons.PersonRegister;
-import Persons.PersonsFactory;
 import Persons.PersonsPackage;
 
 public class PersonHelper {
@@ -140,6 +139,11 @@ public class PersonHelper {
 			}
 		}
 	}
+	
+	public void setBirthdayOfLisa() {
+		Person lisa = getFromRegister("Simpson, Lisa");
+		setBirthdayOfPerson(lisa, getDate(2013, Calendar.MARCH, 8, 10, 11, 12));
+	}
 
 	public void setBirthdaysOfSimpson() {
 		Person person1 = getFromRegister("Simpson, Homer");
@@ -243,6 +247,16 @@ public class PersonHelper {
 		Person person = getFromRegister("Simpson, Lisa");
 		setNameOfPerson(person, "Flanders, Lisa");
 	}
+	
+	public void familyNameChangeOfLisaToVanHouten() {
+		Person person = getFromRegister("Simpson, Lisa");
+		setNameOfPerson(person, "Van Houten, Lisa");
+	}
+	
+	public void nameChangeOfLisa() {
+		Person person = getFromRegister("Simpson, Lisa");
+		setNameOfPerson(person, "Simpson, Marie");
+	}
 
 	public void fullNameChangeOfMarge() {
 		Person person = getFromRegister("Simpson, Marge");
@@ -269,6 +283,12 @@ public class PersonHelper {
 		Person person = getFromRegister("Simpson, Maggie");
 		deletePersonFromRegister(person);
 	}
+	
+	public void deleteLisa() {
+		Person person = getFromRegister("Simpson, Lisa");
+		deletePersonFromRegister(person);
+	}
+	
 
 	public void idleDelta() {
 

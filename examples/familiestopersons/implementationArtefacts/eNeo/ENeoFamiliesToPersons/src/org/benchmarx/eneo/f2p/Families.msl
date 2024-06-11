@@ -243,3 +243,17 @@ rule changeNameOfFamily {
 		._cr_ := true
 	}	
 }
+
+rule changeNameOfDaughter {
+	family: Family {
+		-daughters->member {
+			~_cr_ := true
+		}
+	}	
+	
+	member: FamilyMember {
+		.id : <id>
+		.name := <name>
+		._cr_ := true
+	}
+}

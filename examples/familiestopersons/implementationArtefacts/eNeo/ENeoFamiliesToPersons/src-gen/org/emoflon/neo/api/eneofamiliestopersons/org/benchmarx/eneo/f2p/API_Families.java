@@ -3275,4 +3275,179 @@ public class API_Families {
 			return this;
 		}
 	}
+	
+	//:~> platform:/resource/EneoFamiliesToPersons/src/org/benchmarx/eneo/f2p/Families.msl#//@entities.29
+	public ChangeNameOfDaughterAccess getRule_ChangeNameOfDaughter() {
+		return new ChangeNameOfDaughterAccess();
+	}
+	
+	public class ChangeNameOfDaughterAccess extends NeoRuleCoAccess<ChangeNameOfDaughterData, ChangeNameOfDaughterCoData, ChangeNameOfDaughterMask> {
+		public final String _family = "family";
+		public final String _member = "member";
+		
+		public final String _param__id = "id";
+		public final String _param__name = "name";
+		
+		@Override
+		public NeoRule rule(){
+			var r = (Rule) spec.getEntities().get(29);
+			return NeoRuleFactory.createNeoRule(r, builder);
+		}
+		
+		@Override
+		public Stream<ChangeNameOfDaughterData> data(Collection<NeoMatch> matches) {
+			var data = NeoMatch.getData(matches);
+			return data.stream().map(d -> new ChangeNameOfDaughterData(d));
+		}
+			
+		@Override
+		public Stream<ChangeNameOfDaughterCoData> codata(Collection<NeoCoMatch> matches) {
+			var data = NeoMatch.getData(matches);
+			return data.stream().map(d -> new ChangeNameOfDaughterCoData(d));
+		}
+		
+		@Override
+		public ChangeNameOfDaughterMask mask() {
+			return new ChangeNameOfDaughterMask();
+		}
+	}
+	
+	public class ChangeNameOfDaughterData extends NeoData {
+		public final FamilyNode _family;
+		public final Family_daughters_0_memberRel _family_daughters_0_member;
+		public final MemberNode _member;
+		
+		public ChangeNameOfDaughterData(Record data) {
+			var _family = data.get("family");
+			this._family = new FamilyNode(_family);
+			var _family_daughters_0_member = data.get("family_daughters_0_member");
+			this._family_daughters_0_member = new Family_daughters_0_memberRel(_family_daughters_0_member);
+			var _member = data.get("member");
+			this._member = new MemberNode(_member);
+		}
+		
+		
+		public class FamilyNode {
+			public int _id;
+			public String _name;
+			public String _ename;
+			
+			public FamilyNode(Value _family) {
+				if(!_family.get("id").isNull())
+					this._id = _family.get("id").asInt();
+				if(!_family.get("name").isNull())
+					this._name = _family.get("name").asString();
+				if(!_family.get("ename").isNull())
+					this._ename = _family.get("ename").asString();
+			}
+		}
+		
+		public class Family_daughters_0_memberRel {
+		
+			public Family_daughters_0_memberRel(Value _family_daughters_0_member) {
+			}
+		}
+		public class MemberNode {
+			public int _id;
+			public String _name;
+			public String _ename;
+			
+			public MemberNode(Value _member) {
+				if(!_member.get("id").isNull())
+					this._id = _member.get("id").asInt();
+				if(!_member.get("name").isNull())
+					this._name = _member.get("name").asString();
+				if(!_member.get("ename").isNull())
+					this._ename = _member.get("ename").asString();
+			}
+		}
+		
+	}
+	
+	public class ChangeNameOfDaughterCoData extends NeoData {
+		public final FamilyNode _family;
+		public final Family_daughters_0_memberRel _family_daughters_0_member;
+		public final MemberNode _member;
+		
+		public ChangeNameOfDaughterCoData(Record data) {
+			var _family = data.get("family");
+			this._family = new FamilyNode(_family);
+			var _family_daughters_0_member = data.get("family_daughters_0_member");
+			this._family_daughters_0_member = new Family_daughters_0_memberRel(_family_daughters_0_member);
+			var _member = data.get("member");
+			this._member = new MemberNode(_member);
+		}
+		
+		
+		public class FamilyNode {
+			public int _id;
+			public String _name;
+			public String _ename;
+			
+			public FamilyNode(Value _family) {
+				if(!_family.get("id").isNull())
+					this._id = _family.get("id").asInt();
+				if(!_family.get("name").isNull())
+					this._name = _family.get("name").asString();
+				if(!_family.get("ename").isNull())
+					this._ename = _family.get("ename").asString();
+			}
+		}
+		
+		public class Family_daughters_0_memberRel {
+		
+			public Family_daughters_0_memberRel(Value _family_daughters_0_member) {
+			}
+		}
+		public class MemberNode {
+			public int _id;
+			public String _name;
+			public String _ename;
+			
+			public MemberNode(Value _member) {
+				if(!_member.get("id").isNull())
+					this._id = _member.get("id").asInt();
+				if(!_member.get("name").isNull())
+					this._name = _member.get("name").asString();
+				if(!_member.get("ename").isNull())
+					this._ename = _member.get("ename").asString();
+			}
+		}
+		
+	}
+	
+	public class ChangeNameOfDaughterMask extends NeoMask {
+		public ChangeNameOfDaughterMask setFamily(Long value) {
+			nodeMask.put("family", value);
+			return this;
+		}
+		public ChangeNameOfDaughterMask setFamilyId(int value) {
+			attributeMask.put("family.id", value);
+			return this;
+		}
+		public ChangeNameOfDaughterMask setFamilyName(String value) {
+			attributeMask.put("family.name", value);
+			return this;
+		}
+		public ChangeNameOfDaughterMask setFamilyEname(String value) {
+			attributeMask.put("family.ename", value);
+			return this;
+		}
+		public ChangeNameOfDaughterMask setMember(Long value) {
+			nodeMask.put("member", value);
+			return this;
+		}
+		public ChangeNameOfDaughterMask setMemberId(int value) {
+			attributeMask.put("member.id", value);
+			return this;
+		}
+		public ChangeNameOfDaughterMask setMemberName(String value) {
+			attributeMask.put("member.name", value);
+			return this;
+		}
+		public ChangeNameOfDaughterMask setMemberEname(String value) {
+			attributeMask.put("member.ename", value);
+			return this;
+		}
+	}
 }

@@ -185,6 +185,14 @@ public class FamilyHelper {
 		createDaughterLisa();
 		createDaughterMaggie();
 	}
+	
+	public void createNewFamilyFlandersWithMembers() {
+		createFlandersFamily();
+		createFatherNed();
+		createMotherMaude();
+		createSonRod();
+		createSonTodd();
+	}
 
 	// helpers required for incremental behavior
 
@@ -198,6 +206,27 @@ public class FamilyHelper {
 			assertTrue(family.getName().equals("Simpson"));
 			deleteMemberFromFamily(FamiliesPackage.Literals.FAMILY__SONS, family, family.getSons().get(0));
 		}
+	}
+	
+	public void moveLisaToFlandersAsDaughter() {
+		Family fam = getFromRegister("Flanders");
+		FamilyMember lisa = getLisa();
+
+		moveNode.accept(lisa, List.of(lisa.getDaughtersInverse(), FamiliesPackage.Literals.FAMILY__DAUGHTERS, fam,
+				FamiliesPackage.Literals.FAMILY__DAUGHTERS));
+
+		fam.setMother(lisa);
+	}
+	
+	public void deleteLisa() {
+		var lisa = getLisa();
+		deleteMemberFromFamily(FamiliesPackage.Literals.FAMILY__DAUGHTERS, lisa.getDaughtersInverse(), lisa);
+	}
+	
+	public void nameChangeOfLisa() {
+		var lisa = getLisa();
+		changeAttribute.accept(FamiliesPackage.Literals.FAMILY_MEMBER__NAME, List.of(lisa, "Lisa", "Mary"));
+
 	}
 
 	private boolean firstBartCanBeIdentifiedInRegister() {

@@ -1,6 +1,7 @@
 package org.benchmarx.examples.familiestopersons.testsuite.concurrent;
 
 import org.benchmarx.BXTool;
+import org.benchmarx.emf.BXToolForEMF;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.examples.familiestopersons.testsuite.FamiliesToPersonsTestCase;
 import org.junit.Test;
@@ -70,6 +71,9 @@ public class MonotonicDeleting extends FamiliesToPersonsTestCase {
 				srcEdit(helperFamily::deleteFatherHomer), //
 				trgEdit(helperPerson::deleteMaggie));
 		// ------------
+		
+//		if (tool instanceof BXToolForEMF)
+//			((BXToolForEMF)tool).saveModels("NonMatchingDeletion");
 
 		util.assertPostcondition("FamiliesAfterConcSyncNonMatchingDeletion", "PersonsAfterConcSyncNonMatchingDeletion");
 	}
