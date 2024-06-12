@@ -2,19 +2,14 @@ package org.emoflon.ibex.tgg.run.familiestopersonsibextgg;
 
 import java.io.IOException;
 
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.apache.log4j.BasicConfigurator;
-
+import org.emoflon.ibex.tgg.run.familiestopersonsibextgg.config._DefaultRegistrationHelper;
 import org.emoflon.ibex.tgg.runtime.config.IRegistrationHelper;
+import org.emoflon.ibex.tgg.runtime.strategies.gen.MODELGEN;
+import org.emoflon.ibex.tgg.runtime.strategies.gen.MODELGENStopCriterion;
 import org.emoflon.ibex.tgg.runtime.strategies.modules.TGGResourceHandler;
-import org.emoflon.ibex.tgg.runtime.strategies.sync.SYNC;
-import org.emoflon.ibex.tgg.util.ilp.ILPFactory.SupportedILPSolver;
-
-
-import org.emoflon.ibex.tgg.run.familiestopersonsibextgg.config.*;
-import org.emoflon.ibex.tgg.operational.strategies.gen.MODELGEN;
-import org.emoflon.ibex.tgg.operational.strategies.gen.MODELGENStopCriterion;
 
 public class MODELGEN_App extends MODELGEN {
 
