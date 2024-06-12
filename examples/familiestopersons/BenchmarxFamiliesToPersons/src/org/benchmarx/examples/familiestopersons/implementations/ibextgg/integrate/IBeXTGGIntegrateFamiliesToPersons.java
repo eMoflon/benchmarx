@@ -154,8 +154,11 @@ public class IBeXTGGIntegrateFamiliesToPersons extends
 	@Override
 	public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEdit,
 			Supplier<IEdit<PersonRegister>> targetEdit) {
-		sourceEdit.get();
-		targetEdit.get();
+
+		integrate.applyDelta((source, target) -> {
+			sourceEdit.get();
+			targetEdit.get();
+		});
 		
 		// Invoke sync
 		try {
@@ -170,7 +173,6 @@ public class IBeXTGGIntegrateFamiliesToPersons extends
 		try {
 			integrate.terminate();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
