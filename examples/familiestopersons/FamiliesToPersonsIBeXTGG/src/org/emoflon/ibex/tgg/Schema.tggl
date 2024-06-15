@@ -1,14 +1,14 @@
-import "platform:/resource/Families/model/Families.ecore" using Families as Fam
-import "platform:/resource/Persons/model/Persons.ecore" using Persons as Per
+import "platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore" using FamiliesSmartEMF as Fam
+import "platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore" using PersonsSmartEMF as Per
 
 schema FamiliesToPersons_V1 {
 	
 	source {
-		Families
+		FamiliesSmartEMF
 	}
 	
 	target {
-		Persons
+		PersonsSmartEMF
 	}
 	
 	correspondence {

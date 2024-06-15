@@ -16,9 +16,12 @@ import org.emoflon.ibex.tgg.runtime.strategies.opt.BWD_OPT;
 import org.emoflon.ibex.tgg.runtime.strategies.opt.FWD_OPT;
 
 import Families.impl.FamiliesPackageImpl;
+import FamiliesSmartEMF.FamiliesSmartEMFPackage;
+import FamiliesSmartEMF.impl.FamiliesSmartEMFPackageImpl;
 import FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage;
 import FamiliesToPersonsIBeXTGG.impl.FamiliesToPersonsIBeXTGGPackageImpl;
 import Persons.impl.PersonsPackageImpl;
+import PersonsSmartEMF.impl.PersonsSmartEMFPackageImpl;
 
 public class HiPERegistrationHelper implements IRegistrationHelper {
 	
@@ -42,7 +45,7 @@ public class HiPERegistrationHelper implements IRegistrationHelper {
 		EPackage familiestopersonsibextggPack = null;
 		
 		if(executable instanceof FWD_OPT) {
-			Resource res = executable.getResourceHandler().loadResource("platform:/resource/Persons/model/Persons.ecore");
+			Resource res = executable.getResourceHandler().loadResource("platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore");
 			personsPack = (EPackage) res.getContents().get(0);
 			rs.getResources().remove(res);
 			
@@ -52,7 +55,7 @@ public class HiPERegistrationHelper implements IRegistrationHelper {
 		}
 				
 		if(executable instanceof BWD_OPT) {
-			Resource res = executable.getResourceHandler().loadResource("platform:/resource/Families/model/Families.ecore");
+			Resource res = executable.getResourceHandler().loadResource("platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore");
 			familiesPack = (EPackage) res.getContents().get(0);
 			rs.getResources().remove(res);
 			
@@ -62,10 +65,10 @@ public class HiPERegistrationHelper implements IRegistrationHelper {
 		}
 
 		if(familiesPack == null)
-			familiesPack = FamiliesPackageImpl.init();
+			familiesPack = FamiliesSmartEMFPackageImpl.init();
 				
 		if(personsPack == null)
-			personsPack = PersonsPackageImpl.init();
+			personsPack = PersonsSmartEMFPackageImpl.init();
 		
 		if(familiestopersonsibextggPack == null) {
 			familiestopersonsibextggPack = FamiliesToPersonsIBeXTGGPackageImpl.init();
@@ -73,11 +76,11 @@ public class HiPERegistrationHelper implements IRegistrationHelper {
 			rs.getPackageRegistry().put("platform:/plugin/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore", FamiliesToPersonsIBeXTGGPackage.eINSTANCE);
 		}
 			
-		rs.getPackageRegistry().put("platform:/resource/Families/model/Families.ecore", familiesPack);
-	    rs.getPackageRegistry().put("platform:/plugin/Families/model/Families.ecore", familiesPack);	
+		rs.getPackageRegistry().put("platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore", familiesPack);
+	    rs.getPackageRegistry().put("platform:/plugin/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore", familiesPack);	
 			
-		rs.getPackageRegistry().put("platform:/resource/Persons/model/Persons.ecore", personsPack);
-		rs.getPackageRegistry().put("platform:/plugin/Persons/model/Persons.ecore", personsPack);
+		rs.getPackageRegistry().put("platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore", personsPack);
+		rs.getPackageRegistry().put("platform:/plugin/PersonsSmartEMF/model/PersonsSmartEMF.ecore", personsPack);
 	}
 
 	/** Create default options **/
