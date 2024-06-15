@@ -215,7 +215,7 @@ public class FamilyHelper {
 		moveNode.accept(lisa, List.of(lisa.getDaughtersInverse(), FamiliesPackage.Literals.FAMILY__DAUGHTERS, fam,
 				FamiliesPackage.Literals.FAMILY__DAUGHTERS));
 
-		fam.setMother(lisa);
+		fam.getDaughters().add(lisa);
 	}
 	
 	public void deleteLisa() {
