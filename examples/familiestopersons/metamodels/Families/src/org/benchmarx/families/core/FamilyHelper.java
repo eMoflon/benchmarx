@@ -225,6 +225,7 @@ public class FamilyHelper {
 	
 	public void nameChangeOfLisa() {
 		var lisa = getLisa();
+		lisa.setName("Mary");
 		changeAttribute.accept(FamiliesPackage.Literals.FAMILY_MEMBER__NAME, List.of(lisa, "Lisa", "Mary"));
 
 	}

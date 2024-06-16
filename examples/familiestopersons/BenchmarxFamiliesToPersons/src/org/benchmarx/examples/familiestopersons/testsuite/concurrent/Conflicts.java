@@ -4,6 +4,7 @@ import java.util.Map;
 import static java.util.Map.entry;
 
 import org.benchmarx.BXTool;
+import org.benchmarx.emf.BXToolForEMF;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.examples.familiestopersons.testsuite.FamiliesToPersonsTestCase;
 import org.junit.Test;
@@ -119,6 +120,7 @@ public class Conflicts extends FamiliesToPersonsTestCase {
 				srcEdit(helperFamily::nameChangeOfLisa), //
 				trgEdit(helperPerson::nameChangeOfLisa));
 		// ------------
+		//((BXToolForEMF)tool).saveModels("testRenameRename");
 		util.assertAnyPostcondition(Map.ofEntries(//
 				// Source renaming wins
 				entry("Post_RenameRenameConflictFamily_1", "Post_RenameRenameConflictPersons_1"),
