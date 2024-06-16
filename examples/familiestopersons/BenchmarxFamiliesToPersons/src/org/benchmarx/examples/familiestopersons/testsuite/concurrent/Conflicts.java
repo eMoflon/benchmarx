@@ -120,7 +120,6 @@ public class Conflicts extends FamiliesToPersonsTestCase {
 				srcEdit(helperFamily::nameChangeOfLisa), //
 				trgEdit(helperPerson::nameChangeOfLisa));
 		// ------------
-		//((BXToolForEMF)tool).saveModels("testRenameRename");
 		util.assertAnyPostcondition(Map.ofEntries(//
 				// Source renaming wins
 				entry("Post_RenameRenameConflictFamily_1", "Post_RenameRenameConflictPersons_1"),
