@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="\FamiliesToPersonsIBeXTGG/gen/" modelPluginID="FamiliesToPersonsIBeXTGG"
+    modelName="FamiliesToPersonsIBeXTGG" generateSchema="true" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    usedGenPackages="../../FamiliesSmartEMF/model/FamiliesSmartEMF.genmodel#//FamiliesSmartEMF ../../PersonsSmartEMF/model/PersonsSmartEMF.genmodel#//PersonsSmartEMF ../../FamiliesSmartEMF/model/FamiliesSmartEMF.genmodel#//FamiliesSmartEMF platform:/plugin/org.emoflon.ibex.tgg.runtimemodel/model/TGGRuntimeModel.genmodel#//TGGRuntimeModel ../../PersonsSmartEMF/model/PersonsSmartEMF.genmodel#//PersonsSmartEMF platform:/plugin/org.emoflon.ibex.tgg.runtimemodel/model/TGGRuntimeModel.genmodel#//TGGRuntimeModel"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>FamiliesToPersonsIBeXTGG.ecore</foreignModel>
+  <genPackages prefix="FamiliesToPersonsIBeXTGG" disposableProviderFactory="true"
+      ecorePackage="FamiliesToPersonsIBeXTGG.ecore#/">
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/target"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//FamilyToRegisterCorr">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//FamilyToRegisterCorr/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//FamilyToRegisterCorr/target"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/target"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_CreateFamily">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_CreateFamily/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_CreateFamily/CREATE__SOURCE__family"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale/CONTEXT__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale/CREATE__TARGET__p"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale/CREATE__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale/CREATE__TARGET__p"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_Families2Persons">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_Families2Persons/CREATE__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_Families2Persons/CREATE__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_Families2Persons/CREATE__TARGET__persons"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale/CONTEXT__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale/CREATE__TARGET__p"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale/CREATE__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale/CREATE__TARGET__p"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale/CONTEXT__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale/CREATE__TARGET__p"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale/CREATE__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale/CREATE__TARGET__p"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale/CONTEXT__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale/CREATE__TARGET__p"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale/CREATE__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale/CREATE__TARGET__p"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="FamiliesToPersonsIBeXTGG" disposableProviderFactory="true"
+      ecorePackage="FamiliesToPersonsIBeXTGG.ecore#/">
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/target"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//FamilyToRegisterCorr">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//FamilyToRegisterCorr/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//FamilyToRegisterCorr/target"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/target"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_CreateFamily">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_CreateFamily/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_CreateFamily/CREATE__SOURCE__family"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale/CONTEXT__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterOfExistingFamilyToFemale/CREATE__TARGET__p"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale/CREATE__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_DaughterToFemale/CREATE__TARGET__p"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_Families2Persons">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_Families2Persons/CREATE__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_Families2Persons/CREATE__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_Families2Persons/CREATE__TARGET__persons"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale/CONTEXT__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherOfExistingFamilyToMale/CREATE__TARGET__p"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale/CREATE__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_FatherToMale/CREATE__TARGET__p"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale/CONTEXT__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherOfExistingFamilyToFemale/CREATE__TARGET__p"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale/CREATE__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_MotherToFemale/CREATE__TARGET__p"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale/CONTEXT__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonOfExistingFamilyToMale/CREATE__TARGET__p"/>
+    </genClasses>
+    <genClasses ecoreClass="FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale/CONTEXT__SOURCE__families"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale/CREATE__SOURCE__f"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale/CREATE__SOURCE__fm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale/CONTEXT__CORRESPONDENCE__families2persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale/CREATE__CORRESPONDENCE__familyMember2Persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale/CONTEXT__TARGET__persons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FamiliesToPersonsIBeXTGG.ecore#//ProtocolNode_SonToMale/CREATE__TARGET__p"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

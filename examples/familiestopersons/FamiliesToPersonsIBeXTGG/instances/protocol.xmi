@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FamiliesToPersons_V1:ProtocolNode_HandleRegisters xmlns:FamiliesToPersons_V1="platform:/resource/FamiliesToPersons_V1/model/FamiliesToPersons_V1.ecore" xmlns:SimpleFamilies="platform:/resource/SimpleFamilies/model/SimpleFamilies.ecore" xmlns:SimplePersons="platform:/resource/SimplePersons/model/SimplePersons.ecore" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <CREATE__TARGET__pr xsi:type="SimplePersons:PersonRegister" href="platform:/resource/FamiliesToPersons_V1/resources/singlePersonReg.xmi#/" />
+  <CREATE__SOURCE__fr xsi:type="SimpleFamilies:FamilyRegister" href="platform:/resource/FamiliesToPersons_V1/resources/singleFamilyReg.xmi#/" />
+  <CREATE__CORRESPONDENCE__roots href="platform:/resource/FamiliesToPersons_V1/instances/corr.xmi#/" />
+</FamiliesToPersons_V1:ProtocolNode_HandleRegisters>

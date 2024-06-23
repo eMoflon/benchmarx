@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="FamiliesToPersonsIBeXTGG" nsURI="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore"
+    nsPrefix="FamiliesToPersonsIBeXTGG">
+  <eClassifiers xsi:type="ecore:EClass" name="RegisterToRegisterCorr" eSuperTypes="http://www.eMoflon.org/TGGRuntimeModel#//Correspondence">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FamilyToRegisterCorr" eSuperTypes="http://www.eMoflon.org/TGGRuntimeModel#//Correspondence">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FamilyMemberToPersonCorr" eSuperTypes="http://www.eMoflon.org/TGGRuntimeModel#//Correspondence">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProtocolNode_CreateFamily" eSuperTypes="http://www.eMoflon.org/TGGRuntimeModel#//TGGRuleApplication">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__SOURCE__families"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__SOURCE__family"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProtocolNode_DaughterOfExistingFamilyToFemale"
+      eSuperTypes="http://www.eMoflon.org/TGGRuntimeModel#//TGGRuleApplication">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__SOURCE__f" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__SOURCE__families"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__SOURCE__fm" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__CORRESPONDENCE__families2persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__CORRESPONDENCE__familyMember2Persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__TARGET__persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__TARGET__p" lowerBound="1"
+        eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Female"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProtocolNode_DaughterToFemale" eSuperTypes="http://www.eMoflon.org/TGGRuntimeModel#//TGGRuleApplication">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__SOURCE__families"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__SOURCE__f" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__SOURCE__fm" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__CORRESPONDENCE__families2persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__CORRESPONDENCE__familyMember2Persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__TARGET__persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__TARGET__p" lowerBound="1"
+        eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Female"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProtocolNode_Families2Persons" eSuperTypes="http://www.eMoflon.org/TGGRuntimeModel#//TGGRuleApplication">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__SOURCE__families"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__CORRESPONDENCE__families2persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__TARGET__persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProtocolNode_FatherOfExistingFamilyToMale"
+      eSuperTypes="http://www.eMoflon.org/TGGRuntimeModel#//TGGRuleApplication">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__SOURCE__f" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__SOURCE__families"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__SOURCE__fm" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__CORRESPONDENCE__families2persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__CORRESPONDENCE__familyMember2Persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__TARGET__persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__TARGET__p" lowerBound="1"
+        eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Male"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProtocolNode_FatherToMale" eSuperTypes="http://www.eMoflon.org/TGGRuntimeModel#//TGGRuleApplication">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__SOURCE__families"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__SOURCE__f" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__SOURCE__fm" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__CORRESPONDENCE__families2persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__CORRESPONDENCE__familyMember2Persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__TARGET__persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__TARGET__p" lowerBound="1"
+        eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Male"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProtocolNode_MotherOfExistingFamilyToFemale"
+      eSuperTypes="http://www.eMoflon.org/TGGRuntimeModel#//TGGRuleApplication">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__SOURCE__f" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__SOURCE__families"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__SOURCE__fm" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__CORRESPONDENCE__families2persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__CORRESPONDENCE__familyMember2Persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__TARGET__persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__TARGET__p" lowerBound="1"
+        eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Female"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProtocolNode_MotherToFemale" eSuperTypes="http://www.eMoflon.org/TGGRuntimeModel#//TGGRuleApplication">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__SOURCE__families"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__SOURCE__f" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__SOURCE__fm" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__CORRESPONDENCE__families2persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__CORRESPONDENCE__familyMember2Persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__TARGET__persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__TARGET__p" lowerBound="1"
+        eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Female"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProtocolNode_SonOfExistingFamilyToMale"
+      eSuperTypes="http://www.eMoflon.org/TGGRuntimeModel#//TGGRuleApplication">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__SOURCE__f" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__SOURCE__families"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__SOURCE__fm" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__CORRESPONDENCE__families2persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__CORRESPONDENCE__familyMember2Persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__TARGET__persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__TARGET__p" lowerBound="1"
+        eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Male"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProtocolNode_SonToMale" eSuperTypes="http://www.eMoflon.org/TGGRuntimeModel#//TGGRuleApplication">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__SOURCE__families"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__SOURCE__f" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__SOURCE__fm" lowerBound="1"
+        eType="ecore:EClass platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__CORRESPONDENCE__families2persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__CORRESPONDENCE__familyMember2Persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CONTEXT__TARGET__persons"
+        lowerBound="1" eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CREATE__TARGET__p" lowerBound="1"
+        eType="ecore:EClass platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Male"/>
+  </eClassifiers>
+</ecore:EPackage>
