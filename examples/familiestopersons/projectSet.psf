@@ -4,6 +4,20 @@
 <project reference="1.0,https://github.com/eMoflon/benchmarx.git,main,core/Benchmarx"/>
 <project reference="1.0,https://github.com/eMoflon/benchmarx.git,main,examples/familiestopersons/BenchmarxFamiliesToPersons"/>
 <project reference="1.0,https://github.com/eMoflon/benchmarx.git,main,examples/familiestopersons/metamodels/Families"/>
+<project reference="1.0,https://github.com/eMoflon/benchmarx.git,main,examples/familiestopersons/metamodels/FamiliesSmartEMF"/>
+<project reference="1.0,https://github.com/eMoflon/benchmarx.git,main,examples/familiestopersons/FamiliesToPersonsIBeXTGG"/>
 <project reference="1.0,https://github.com/eMoflon/benchmarx.git,main,examples/familiestopersons/metamodels/Persons"/>
+<project reference="1.0,https://github.com/eMoflon/benchmarx.git,main,examples/familiestopersons/metamodels/PersonsSmartEMF"/>
 </provider>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1719134973224_6" label="benchmarx" name="benchmarx">
+<item elementID="=Benchmarx" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Families" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=BenchmarxFamiliesToPersons" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Persons" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1718207115042_5" label="ibex-integrate" name="ibex-integrate">
+<item elementID="=FamiliesToPersonsIBeXTGG" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=FamiliesSmartEMF" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=PersonsSmartEMF" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
 </psf>
