@@ -215,7 +215,7 @@ public class FamilyHelper {
 		moveNode.accept(lisa, List.of(lisa.getDaughtersInverse(), FamiliesPackage.Literals.FAMILY__DAUGHTERS, fam,
 				FamiliesPackage.Literals.FAMILY__DAUGHTERS));
 
-		fam.setMother(lisa);
+		fam.getDaughters().add(lisa);
 	}
 	
 	public void deleteLisa() {
@@ -225,6 +225,7 @@ public class FamilyHelper {
 	
 	public void nameChangeOfLisa() {
 		var lisa = getLisa();
+		lisa.setName("Mary");
 		changeAttribute.accept(FamiliesPackage.Literals.FAMILY_MEMBER__NAME, List.of(lisa, "Lisa", "Mary"));
 
 	}
