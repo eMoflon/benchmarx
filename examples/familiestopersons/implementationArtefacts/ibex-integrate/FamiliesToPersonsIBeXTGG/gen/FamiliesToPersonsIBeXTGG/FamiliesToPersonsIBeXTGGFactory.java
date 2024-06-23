@@ -1,0 +1,52 @@
+package FamiliesToPersonsIBeXTGG;
+
+import FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr;
+import FamiliesToPersonsIBeXTGG.FamilyToRegisterCorr;
+import FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr;
+import FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily;
+import FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale;
+import FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale;
+import FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons;
+import FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale;
+import FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale;
+import FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale;
+import FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale;
+import FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale;
+import FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale;
+
+import org.eclipse.emf.ecore.EFactory;
+
+public interface FamiliesToPersonsIBeXTGGFactory extends EFactory {
+
+	FamiliesToPersonsIBeXTGGFactory eINSTANCE = FamiliesToPersonsIBeXTGG.impl.FamiliesToPersonsIBeXTGGFactoryImpl.init();
+	
+	RegisterToRegisterCorr createRegisterToRegisterCorr();
+	
+	FamilyToRegisterCorr createFamilyToRegisterCorr();
+	
+	FamilyMemberToPersonCorr createFamilyMemberToPersonCorr();
+	
+	ProtocolNode_CreateFamily createProtocolNode_CreateFamily();
+	
+	ProtocolNode_DaughterOfExistingFamilyToFemale createProtocolNode_DaughterOfExistingFamilyToFemale();
+	
+	ProtocolNode_DaughterToFemale createProtocolNode_DaughterToFemale();
+	
+	ProtocolNode_Families2Persons createProtocolNode_Families2Persons();
+	
+	ProtocolNode_FatherOfExistingFamilyToMale createProtocolNode_FatherOfExistingFamilyToMale();
+	
+	ProtocolNode_FatherToMale createProtocolNode_FatherToMale();
+	
+	ProtocolNode_MotherOfExistingFamilyToFemale createProtocolNode_MotherOfExistingFamilyToFemale();
+	
+	ProtocolNode_MotherToFemale createProtocolNode_MotherToFemale();
+	
+	ProtocolNode_SonOfExistingFamilyToMale createProtocolNode_SonOfExistingFamilyToMale();
+	
+	ProtocolNode_SonToMale createProtocolNode_SonToMale();
+	
+	
+	FamiliesToPersonsIBeXTGGPackage getFamiliesToPersonsIBeXTGGPackage();
+
+}

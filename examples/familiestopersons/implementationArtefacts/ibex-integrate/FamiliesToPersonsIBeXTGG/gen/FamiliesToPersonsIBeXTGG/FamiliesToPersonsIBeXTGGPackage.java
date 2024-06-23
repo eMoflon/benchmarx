@@ -1,0 +1,407 @@
+package FamiliesToPersonsIBeXTGG;
+
+import java.lang.String;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EEnum;
+
+
+import org.emoflon.smartemf.runtime.SmartPackage;
+
+public interface FamiliesToPersonsIBeXTGGPackage extends SmartPackage {
+
+	String eNAME = "FamiliesToPersonsIBeXTGG";
+	String eNS_URI = "platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore";
+	String eNS_PREFIX = "FamiliesToPersonsIBeXTGG";
+
+	FamiliesToPersonsIBeXTGGPackage eINSTANCE = FamiliesToPersonsIBeXTGG.impl.FamiliesToPersonsIBeXTGGPackageImpl.init();
+
+	int REGISTER_TO_REGISTER_CORR = 0;
+	int REGISTER_TO_REGISTER_CORR__SOURCE = 0;
+	int REGISTER_TO_REGISTER_CORR__TARGET = 1;
+	int REGISTER_TO_REGISTER_CORR_FEATURE_COUNT = 2;
+	int REGISTER_TO_REGISTER_CORR_OPERATION_COUNT = 0;
+	
+	int FAMILY_TO_REGISTER_CORR = 1;
+	int FAMILY_TO_REGISTER_CORR__SOURCE = 2;
+	int FAMILY_TO_REGISTER_CORR__TARGET = 3;
+	int FAMILY_TO_REGISTER_CORR_FEATURE_COUNT = 2;
+	int FAMILY_TO_REGISTER_CORR_OPERATION_COUNT = 0;
+	
+	int FAMILY_MEMBER_TO_PERSON_CORR = 2;
+	int FAMILY_MEMBER_TO_PERSON_CORR__SOURCE = 4;
+	int FAMILY_MEMBER_TO_PERSON_CORR__TARGET = 5;
+	int FAMILY_MEMBER_TO_PERSON_CORR_FEATURE_COUNT = 2;
+	int FAMILY_MEMBER_TO_PERSON_CORR_OPERATION_COUNT = 0;
+	
+	int PROTOCOL_NODE__CREATE_FAMILY = 3;
+	int PROTOCOL_NODE__CREATE_FAMILY__CONTEX_T__SOURC_E__FAMILIES = 6;
+	int PROTOCOL_NODE__CREATE_FAMILY__CREAT_E__SOURC_E__FAMILY = 7;
+	int PROTOCOL_NODE__CREATE_FAMILY_FEATURE_COUNT = 3;
+	int PROTOCOL_NODE__CREATE_FAMILY_OPERATION_COUNT = 0;
+	
+	int PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE = 4;
+	int PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__SOURC_E__F = 8;
+	int PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__SOURC_E__FAMILIES = 9;
+	int PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__SOURC_E__FM = 10;
+	int PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = 11;
+	int PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = 12;
+	int PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__TARGE_T__PERSONS = 13;
+	int PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__TARGE_T__P = 14;
+	int PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE_FEATURE_COUNT = 8;
+	int PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE_OPERATION_COUNT = 0;
+	
+	int PROTOCOL_NODE__DAUGHTER_TO_FEMALE = 5;
+	int PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CONTEX_T__SOURC_E__FAMILIES = 15;
+	int PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CREAT_E__SOURC_E__F = 16;
+	int PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CREAT_E__SOURC_E__FM = 17;
+	int PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = 18;
+	int PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = 19;
+	int PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CONTEX_T__TARGE_T__PERSONS = 20;
+	int PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CREAT_E__TARGE_T__P = 21;
+	int PROTOCOL_NODE__DAUGHTER_TO_FEMALE_FEATURE_COUNT = 8;
+	int PROTOCOL_NODE__DAUGHTER_TO_FEMALE_OPERATION_COUNT = 0;
+	
+	int PROTOCOL_NODE__FAMILIES2_PERSONS = 6;
+	int PROTOCOL_NODE__FAMILIES2_PERSONS__CREAT_E__SOURC_E__FAMILIES = 22;
+	int PROTOCOL_NODE__FAMILIES2_PERSONS__CREAT_E__CORRESPONDENC_E__FAMILIES2PERSONS = 23;
+	int PROTOCOL_NODE__FAMILIES2_PERSONS__CREAT_E__TARGE_T__PERSONS = 24;
+	int PROTOCOL_NODE__FAMILIES2_PERSONS_FEATURE_COUNT = 4;
+	int PROTOCOL_NODE__FAMILIES2_PERSONS_OPERATION_COUNT = 0;
+	
+	int PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE = 7;
+	int PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__F = 25;
+	int PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__FAMILIES = 26;
+	int PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__SOURC_E__FM = 27;
+	int PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = 28;
+	int PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = 29;
+	int PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__TARGE_T__PERSONS = 30;
+	int PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__TARGE_T__P = 31;
+	int PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE_FEATURE_COUNT = 8;
+	int PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE_OPERATION_COUNT = 0;
+	
+	int PROTOCOL_NODE__FATHER_TO_MALE = 8;
+	int PROTOCOL_NODE__FATHER_TO_MALE__CONTEX_T__SOURC_E__FAMILIES = 32;
+	int PROTOCOL_NODE__FATHER_TO_MALE__CREAT_E__SOURC_E__F = 33;
+	int PROTOCOL_NODE__FATHER_TO_MALE__CREAT_E__SOURC_E__FM = 34;
+	int PROTOCOL_NODE__FATHER_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = 35;
+	int PROTOCOL_NODE__FATHER_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = 36;
+	int PROTOCOL_NODE__FATHER_TO_MALE__CONTEX_T__TARGE_T__PERSONS = 37;
+	int PROTOCOL_NODE__FATHER_TO_MALE__CREAT_E__TARGE_T__P = 38;
+	int PROTOCOL_NODE__FATHER_TO_MALE_FEATURE_COUNT = 8;
+	int PROTOCOL_NODE__FATHER_TO_MALE_OPERATION_COUNT = 0;
+	
+	int PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE = 9;
+	int PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__SOURC_E__F = 39;
+	int PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__SOURC_E__FAMILIES = 40;
+	int PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__SOURC_E__FM = 41;
+	int PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = 42;
+	int PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = 43;
+	int PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__TARGE_T__PERSONS = 44;
+	int PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__TARGE_T__P = 45;
+	int PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE_FEATURE_COUNT = 8;
+	int PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE_OPERATION_COUNT = 0;
+	
+	int PROTOCOL_NODE__MOTHER_TO_FEMALE = 10;
+	int PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__SOURC_E__FAMILIES = 46;
+	int PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__SOURC_E__F = 47;
+	int PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__SOURC_E__FM = 48;
+	int PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = 49;
+	int PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = 50;
+	int PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__TARGE_T__PERSONS = 51;
+	int PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__TARGE_T__P = 52;
+	int PROTOCOL_NODE__MOTHER_TO_FEMALE_FEATURE_COUNT = 8;
+	int PROTOCOL_NODE__MOTHER_TO_FEMALE_OPERATION_COUNT = 0;
+	
+	int PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE = 11;
+	int PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__F = 53;
+	int PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__FAMILIES = 54;
+	int PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__SOURC_E__FM = 55;
+	int PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = 56;
+	int PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = 57;
+	int PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__TARGE_T__PERSONS = 58;
+	int PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__TARGE_T__P = 59;
+	int PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE_FEATURE_COUNT = 8;
+	int PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE_OPERATION_COUNT = 0;
+	
+	int PROTOCOL_NODE__SON_TO_MALE = 12;
+	int PROTOCOL_NODE__SON_TO_MALE__CONTEX_T__SOURC_E__FAMILIES = 60;
+	int PROTOCOL_NODE__SON_TO_MALE__CREAT_E__SOURC_E__F = 61;
+	int PROTOCOL_NODE__SON_TO_MALE__CREAT_E__SOURC_E__FM = 62;
+	int PROTOCOL_NODE__SON_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = 63;
+	int PROTOCOL_NODE__SON_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = 64;
+	int PROTOCOL_NODE__SON_TO_MALE__CONTEX_T__TARGE_T__PERSONS = 65;
+	int PROTOCOL_NODE__SON_TO_MALE__CREAT_E__TARGE_T__P = 66;
+	int PROTOCOL_NODE__SON_TO_MALE_FEATURE_COUNT = 8;
+	int PROTOCOL_NODE__SON_TO_MALE_OPERATION_COUNT = 0;
+	
+	
+
+	EClass getRegisterToRegisterCorr();
+	EReference getRegisterToRegisterCorr_Source();
+	EReference getRegisterToRegisterCorr_Target();
+	
+	EClass getFamilyToRegisterCorr();
+	EReference getFamilyToRegisterCorr_Source();
+	EReference getFamilyToRegisterCorr_Target();
+	
+	EClass getFamilyMemberToPersonCorr();
+	EReference getFamilyMemberToPersonCorr_Source();
+	EReference getFamilyMemberToPersonCorr_Target();
+	
+	EClass getProtocolNode_CreateFamily();
+	EReference getProtocolNode_CreateFamily_CONTEXT__SOURCE__families();
+	EReference getProtocolNode_CreateFamily_CREATE__SOURCE__family();
+	
+	EClass getProtocolNode_DaughterOfExistingFamilyToFemale();
+	EReference getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__f();
+	EReference getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__families();
+	EReference getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__SOURCE__fm();
+	EReference getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__CORRESPONDENCE__families2persons();
+	EReference getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons();
+	EReference getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__TARGET__persons();
+	EReference getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__TARGET__p();
+	
+	EClass getProtocolNode_DaughterToFemale();
+	EReference getProtocolNode_DaughterToFemale_CONTEXT__SOURCE__families();
+	EReference getProtocolNode_DaughterToFemale_CREATE__SOURCE__f();
+	EReference getProtocolNode_DaughterToFemale_CREATE__SOURCE__fm();
+	EReference getProtocolNode_DaughterToFemale_CONTEXT__CORRESPONDENCE__families2persons();
+	EReference getProtocolNode_DaughterToFemale_CREATE__CORRESPONDENCE__familyMember2Persons();
+	EReference getProtocolNode_DaughterToFemale_CONTEXT__TARGET__persons();
+	EReference getProtocolNode_DaughterToFemale_CREATE__TARGET__p();
+	
+	EClass getProtocolNode_Families2Persons();
+	EReference getProtocolNode_Families2Persons_CREATE__SOURCE__families();
+	EReference getProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons();
+	EReference getProtocolNode_Families2Persons_CREATE__TARGET__persons();
+	
+	EClass getProtocolNode_FatherOfExistingFamilyToMale();
+	EReference getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__f();
+	EReference getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__families();
+	EReference getProtocolNode_FatherOfExistingFamilyToMale_CREATE__SOURCE__fm();
+	EReference getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__CORRESPONDENCE__families2persons();
+	EReference getProtocolNode_FatherOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons();
+	EReference getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__TARGET__persons();
+	EReference getProtocolNode_FatherOfExistingFamilyToMale_CREATE__TARGET__p();
+	
+	EClass getProtocolNode_FatherToMale();
+	EReference getProtocolNode_FatherToMale_CONTEXT__SOURCE__families();
+	EReference getProtocolNode_FatherToMale_CREATE__SOURCE__f();
+	EReference getProtocolNode_FatherToMale_CREATE__SOURCE__fm();
+	EReference getProtocolNode_FatherToMale_CONTEXT__CORRESPONDENCE__families2persons();
+	EReference getProtocolNode_FatherToMale_CREATE__CORRESPONDENCE__familyMember2Persons();
+	EReference getProtocolNode_FatherToMale_CONTEXT__TARGET__persons();
+	EReference getProtocolNode_FatherToMale_CREATE__TARGET__p();
+	
+	EClass getProtocolNode_MotherOfExistingFamilyToFemale();
+	EReference getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__f();
+	EReference getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__families();
+	EReference getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__SOURCE__fm();
+	EReference getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__CORRESPONDENCE__families2persons();
+	EReference getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons();
+	EReference getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__TARGET__persons();
+	EReference getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__TARGET__p();
+	
+	EClass getProtocolNode_MotherToFemale();
+	EReference getProtocolNode_MotherToFemale_CONTEXT__SOURCE__families();
+	EReference getProtocolNode_MotherToFemale_CREATE__SOURCE__f();
+	EReference getProtocolNode_MotherToFemale_CREATE__SOURCE__fm();
+	EReference getProtocolNode_MotherToFemale_CONTEXT__CORRESPONDENCE__families2persons();
+	EReference getProtocolNode_MotherToFemale_CREATE__CORRESPONDENCE__familyMember2Persons();
+	EReference getProtocolNode_MotherToFemale_CONTEXT__TARGET__persons();
+	EReference getProtocolNode_MotherToFemale_CREATE__TARGET__p();
+	
+	EClass getProtocolNode_SonOfExistingFamilyToMale();
+	EReference getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__f();
+	EReference getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__families();
+	EReference getProtocolNode_SonOfExistingFamilyToMale_CREATE__SOURCE__fm();
+	EReference getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__CORRESPONDENCE__families2persons();
+	EReference getProtocolNode_SonOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons();
+	EReference getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__TARGET__persons();
+	EReference getProtocolNode_SonOfExistingFamilyToMale_CREATE__TARGET__p();
+	
+	EClass getProtocolNode_SonToMale();
+	EReference getProtocolNode_SonToMale_CONTEXT__SOURCE__families();
+	EReference getProtocolNode_SonToMale_CREATE__SOURCE__f();
+	EReference getProtocolNode_SonToMale_CREATE__SOURCE__fm();
+	EReference getProtocolNode_SonToMale_CONTEXT__CORRESPONDENCE__families2persons();
+	EReference getProtocolNode_SonToMale_CREATE__CORRESPONDENCE__familyMember2Persons();
+	EReference getProtocolNode_SonToMale_CONTEXT__TARGET__persons();
+	EReference getProtocolNode_SonToMale_CREATE__TARGET__p();
+	
+	
+	FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGFactory getFamiliesToPersonsIBeXTGGFactory();
+
+	interface Literals {
+		
+		EClass REGISTER_TO_REGISTER_CORR = eINSTANCE.getRegisterToRegisterCorr();
+		
+		EReference REGISTER_TO_REGISTER_CORR__SOURCE = eINSTANCE.getRegisterToRegisterCorr_Source();
+		
+		EReference REGISTER_TO_REGISTER_CORR__TARGET = eINSTANCE.getRegisterToRegisterCorr_Target();
+		
+		EClass FAMILY_TO_REGISTER_CORR = eINSTANCE.getFamilyToRegisterCorr();
+		
+		EReference FAMILY_TO_REGISTER_CORR__SOURCE = eINSTANCE.getFamilyToRegisterCorr_Source();
+		
+		EReference FAMILY_TO_REGISTER_CORR__TARGET = eINSTANCE.getFamilyToRegisterCorr_Target();
+		
+		EClass FAMILY_MEMBER_TO_PERSON_CORR = eINSTANCE.getFamilyMemberToPersonCorr();
+		
+		EReference FAMILY_MEMBER_TO_PERSON_CORR__SOURCE = eINSTANCE.getFamilyMemberToPersonCorr_Source();
+		
+		EReference FAMILY_MEMBER_TO_PERSON_CORR__TARGET = eINSTANCE.getFamilyMemberToPersonCorr_Target();
+		
+		EClass PROTOCOL_NODE__CREATE_FAMILY = eINSTANCE.getProtocolNode_CreateFamily();
+		
+		EReference PROTOCOL_NODE__CREATE_FAMILY__CONTEX_T__SOURC_E__FAMILIES = eINSTANCE.getProtocolNode_CreateFamily_CONTEXT__SOURCE__families();
+		
+		EReference PROTOCOL_NODE__CREATE_FAMILY__CREAT_E__SOURC_E__FAMILY = eINSTANCE.getProtocolNode_CreateFamily_CREATE__SOURCE__family();
+		
+		EClass PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE = eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale();
+		
+		EReference PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__SOURC_E__F = eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__f();
+		
+		EReference PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__SOURC_E__FAMILIES = eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__families();
+		
+		EReference PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__SOURC_E__FM = eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__SOURCE__fm();
+		
+		EReference PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__CORRESPONDENCE__families2persons();
+		
+		EReference PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons();
+		
+		EReference PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__TARGE_T__PERSONS = eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__TARGET__persons();
+		
+		EReference PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__TARGE_T__P = eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__TARGET__p();
+		
+		EClass PROTOCOL_NODE__DAUGHTER_TO_FEMALE = eINSTANCE.getProtocolNode_DaughterToFemale();
+		
+		EReference PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CONTEX_T__SOURC_E__FAMILIES = eINSTANCE.getProtocolNode_DaughterToFemale_CONTEXT__SOURCE__families();
+		
+		EReference PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CREAT_E__SOURC_E__F = eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__SOURCE__f();
+		
+		EReference PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CREAT_E__SOURC_E__FM = eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__SOURCE__fm();
+		
+		EReference PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = eINSTANCE.getProtocolNode_DaughterToFemale_CONTEXT__CORRESPONDENCE__families2persons();
+		
+		EReference PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__CORRESPONDENCE__familyMember2Persons();
+		
+		EReference PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CONTEX_T__TARGE_T__PERSONS = eINSTANCE.getProtocolNode_DaughterToFemale_CONTEXT__TARGET__persons();
+		
+		EReference PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CREAT_E__TARGE_T__P = eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__TARGET__p();
+		
+		EClass PROTOCOL_NODE__FAMILIES2_PERSONS = eINSTANCE.getProtocolNode_Families2Persons();
+		
+		EReference PROTOCOL_NODE__FAMILIES2_PERSONS__CREAT_E__SOURC_E__FAMILIES = eINSTANCE.getProtocolNode_Families2Persons_CREATE__SOURCE__families();
+		
+		EReference PROTOCOL_NODE__FAMILIES2_PERSONS__CREAT_E__CORRESPONDENC_E__FAMILIES2PERSONS = eINSTANCE.getProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons();
+		
+		EReference PROTOCOL_NODE__FAMILIES2_PERSONS__CREAT_E__TARGE_T__PERSONS = eINSTANCE.getProtocolNode_Families2Persons_CREATE__TARGET__persons();
+		
+		EClass PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE = eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale();
+		
+		EReference PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__F = eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__f();
+		
+		EReference PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__FAMILIES = eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__families();
+		
+		EReference PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__SOURC_E__FM = eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__SOURCE__fm();
+		
+		EReference PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__CORRESPONDENCE__families2persons();
+		
+		EReference PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons();
+		
+		EReference PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__TARGE_T__PERSONS = eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__TARGET__persons();
+		
+		EReference PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__TARGE_T__P = eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__TARGET__p();
+		
+		EClass PROTOCOL_NODE__FATHER_TO_MALE = eINSTANCE.getProtocolNode_FatherToMale();
+		
+		EReference PROTOCOL_NODE__FATHER_TO_MALE__CONTEX_T__SOURC_E__FAMILIES = eINSTANCE.getProtocolNode_FatherToMale_CONTEXT__SOURCE__families();
+		
+		EReference PROTOCOL_NODE__FATHER_TO_MALE__CREAT_E__SOURC_E__F = eINSTANCE.getProtocolNode_FatherToMale_CREATE__SOURCE__f();
+		
+		EReference PROTOCOL_NODE__FATHER_TO_MALE__CREAT_E__SOURC_E__FM = eINSTANCE.getProtocolNode_FatherToMale_CREATE__SOURCE__fm();
+		
+		EReference PROTOCOL_NODE__FATHER_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = eINSTANCE.getProtocolNode_FatherToMale_CONTEXT__CORRESPONDENCE__families2persons();
+		
+		EReference PROTOCOL_NODE__FATHER_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = eINSTANCE.getProtocolNode_FatherToMale_CREATE__CORRESPONDENCE__familyMember2Persons();
+		
+		EReference PROTOCOL_NODE__FATHER_TO_MALE__CONTEX_T__TARGE_T__PERSONS = eINSTANCE.getProtocolNode_FatherToMale_CONTEXT__TARGET__persons();
+		
+		EReference PROTOCOL_NODE__FATHER_TO_MALE__CREAT_E__TARGE_T__P = eINSTANCE.getProtocolNode_FatherToMale_CREATE__TARGET__p();
+		
+		EClass PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE = eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale();
+		
+		EReference PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__SOURC_E__F = eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__f();
+		
+		EReference PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__SOURC_E__FAMILIES = eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__families();
+		
+		EReference PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__SOURC_E__FM = eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__SOURCE__fm();
+		
+		EReference PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__CORRESPONDENCE__families2persons();
+		
+		EReference PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons();
+		
+		EReference PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__TARGE_T__PERSONS = eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__TARGET__persons();
+		
+		EReference PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__TARGE_T__P = eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__TARGET__p();
+		
+		EClass PROTOCOL_NODE__MOTHER_TO_FEMALE = eINSTANCE.getProtocolNode_MotherToFemale();
+		
+		EReference PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__SOURC_E__FAMILIES = eINSTANCE.getProtocolNode_MotherToFemale_CONTEXT__SOURCE__families();
+		
+		EReference PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__SOURC_E__F = eINSTANCE.getProtocolNode_MotherToFemale_CREATE__SOURCE__f();
+		
+		EReference PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__SOURC_E__FM = eINSTANCE.getProtocolNode_MotherToFemale_CREATE__SOURCE__fm();
+		
+		EReference PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = eINSTANCE.getProtocolNode_MotherToFemale_CONTEXT__CORRESPONDENCE__families2persons();
+		
+		EReference PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = eINSTANCE.getProtocolNode_MotherToFemale_CREATE__CORRESPONDENCE__familyMember2Persons();
+		
+		EReference PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__TARGE_T__PERSONS = eINSTANCE.getProtocolNode_MotherToFemale_CONTEXT__TARGET__persons();
+		
+		EReference PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__TARGE_T__P = eINSTANCE.getProtocolNode_MotherToFemale_CREATE__TARGET__p();
+		
+		EClass PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE = eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale();
+		
+		EReference PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__F = eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__f();
+		
+		EReference PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__FAMILIES = eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__families();
+		
+		EReference PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__SOURC_E__FM = eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__SOURCE__fm();
+		
+		EReference PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__CORRESPONDENCE__families2persons();
+		
+		EReference PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons();
+		
+		EReference PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__TARGE_T__PERSONS = eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__TARGET__persons();
+		
+		EReference PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__TARGE_T__P = eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__TARGET__p();
+		
+		EClass PROTOCOL_NODE__SON_TO_MALE = eINSTANCE.getProtocolNode_SonToMale();
+		
+		EReference PROTOCOL_NODE__SON_TO_MALE__CONTEX_T__SOURC_E__FAMILIES = eINSTANCE.getProtocolNode_SonToMale_CONTEXT__SOURCE__families();
+		
+		EReference PROTOCOL_NODE__SON_TO_MALE__CREAT_E__SOURC_E__F = eINSTANCE.getProtocolNode_SonToMale_CREATE__SOURCE__f();
+		
+		EReference PROTOCOL_NODE__SON_TO_MALE__CREAT_E__SOURC_E__FM = eINSTANCE.getProtocolNode_SonToMale_CREATE__SOURCE__fm();
+		
+		EReference PROTOCOL_NODE__SON_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS = eINSTANCE.getProtocolNode_SonToMale_CONTEXT__CORRESPONDENCE__families2persons();
+		
+		EReference PROTOCOL_NODE__SON_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS = eINSTANCE.getProtocolNode_SonToMale_CREATE__CORRESPONDENCE__familyMember2Persons();
+		
+		EReference PROTOCOL_NODE__SON_TO_MALE__CONTEX_T__TARGE_T__PERSONS = eINSTANCE.getProtocolNode_SonToMale_CONTEXT__TARGET__persons();
+		
+		EReference PROTOCOL_NODE__SON_TO_MALE__CREAT_E__TARGE_T__P = eINSTANCE.getProtocolNode_SonToMale_CREATE__TARGET__p();
+		
+		
+		
+		
+	}
+
+} 

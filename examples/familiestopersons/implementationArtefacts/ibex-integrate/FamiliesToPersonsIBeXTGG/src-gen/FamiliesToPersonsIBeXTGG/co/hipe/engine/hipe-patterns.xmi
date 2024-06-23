@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HiPEPattern:HiPEContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:HiPEPattern="platform:/resource/hipe.pattern/model/HiPEPattern" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xsi:schemaLocation="platform:/resource/hipe.pattern/model/HiPEPattern java://hipe.pattern.HiPEPatternPackage http://www.eclipse.org/emf/2002/Ecore java://org.eclipse.emf.ecore.EcorePackage">
+  <patterns xmi:type="HiPEPattern:HiPEPattern" name="CreateFamily__CO" partialPatterns="//@patterns.10" nodes="//@nodes.0 //@nodes.1" edges="//@edges.0" children="//@patterns.10 //@patterns.11 //@patterns.12"/>
+  <patterns xmi:type="HiPEPattern:HiPEPattern" name="DaughterOfExistingFamilyToFemale__CO" partialPatterns="//@patterns.13" attributes="//@attributes.0 //@attributes.1 //@attributes.2 //@attributes.3" nodes="//@nodes.2 //@nodes.3 //@nodes.4 //@nodes.5 //@nodes.6 //@nodes.7 //@nodes.8" edges="//@edges.1 //@edges.2 //@edges.3 //@edges.4 //@edges.5 //@edges.6 //@edges.7" children="//@patterns.13 //@patterns.14 //@patterns.15 //@patterns.16 //@patterns.17 //@patterns.18 //@patterns.19 //@patterns.20"/>
+  <patterns xmi:type="HiPEPattern:HiPEPattern" name="DaughterToFemale__CO" partialPatterns="//@patterns.21" attributes="//@attributes.4 //@attributes.5 //@attributes.6 //@attributes.7" nodes="//@nodes.9 //@nodes.10 //@nodes.11 //@nodes.12 //@nodes.13 //@nodes.14 //@nodes.15" edges="//@edges.8 //@edges.9 //@edges.10 //@edges.11 //@edges.12 //@edges.13 //@edges.14" children="//@patterns.21 //@patterns.22 //@patterns.23 //@patterns.24 //@patterns.25 //@patterns.26 //@patterns.27 //@patterns.28"/>
+  <patterns xmi:type="HiPEPattern:HiPEPattern" name="Families2Persons__CO" partialPatterns="//@patterns.29" nodes="//@nodes.16 //@nodes.17 //@nodes.18" edges="//@edges.15 //@edges.16" children="//@patterns.29 //@patterns.30 //@patterns.31 //@patterns.32"/>
+  <patterns xmi:type="HiPEPattern:HiPEPattern" name="FatherOfExistingFamilyToMale__CO" partialPatterns="//@patterns.33" attributes="//@attributes.8 //@attributes.9 //@attributes.10 //@attributes.11" nodes="//@nodes.19 //@nodes.20 //@nodes.21 //@nodes.22 //@nodes.23 //@nodes.24 //@nodes.25" edges="//@edges.17 //@edges.18 //@edges.19 //@edges.20 //@edges.21 //@edges.22 //@edges.23" children="//@patterns.33 //@patterns.34 //@patterns.35 //@patterns.36 //@patterns.37 //@patterns.38 //@patterns.39 //@patterns.40"/>
+  <patterns xmi:type="HiPEPattern:HiPEPattern" name="FatherToMale__CO" partialPatterns="//@patterns.41" attributes="//@attributes.12 //@attributes.13 //@attributes.14 //@attributes.15" nodes="//@nodes.26 //@nodes.27 //@nodes.28 //@nodes.29 //@nodes.30 //@nodes.31 //@nodes.32" edges="//@edges.24 //@edges.25 //@edges.26 //@edges.27 //@edges.28 //@edges.29 //@edges.30" children="//@patterns.41 //@patterns.42 //@patterns.43 //@patterns.44 //@patterns.45 //@patterns.46 //@patterns.47 //@patterns.48"/>
+  <patterns xmi:type="HiPEPattern:HiPEPattern" name="MotherOfExistingFamilyToFemale__CO" partialPatterns="//@patterns.49" attributes="//@attributes.16 //@attributes.17 //@attributes.18 //@attributes.19" nodes="//@nodes.33 //@nodes.34 //@nodes.35 //@nodes.36 //@nodes.37 //@nodes.38 //@nodes.39" edges="//@edges.31 //@edges.32 //@edges.33 //@edges.34 //@edges.35 //@edges.36 //@edges.37" children="//@patterns.49 //@patterns.50 //@patterns.51 //@patterns.52 //@patterns.53 //@patterns.54 //@patterns.55 //@patterns.56"/>
+  <patterns xmi:type="HiPEPattern:HiPEPattern" name="MotherToFemale__CO" partialPatterns="//@patterns.57" attributes="//@attributes.20 //@attributes.21 //@attributes.22 //@attributes.23" nodes="//@nodes.40 //@nodes.41 //@nodes.42 //@nodes.43 //@nodes.44 //@nodes.45 //@nodes.46" edges="//@edges.38 //@edges.39 //@edges.40 //@edges.41 //@edges.42 //@edges.43 //@edges.44" children="//@patterns.57 //@patterns.58 //@patterns.59 //@patterns.60 //@patterns.61 //@patterns.62 //@patterns.63 //@patterns.64"/>
+  <patterns xmi:type="HiPEPattern:HiPEPattern" name="SonOfExistingFamilyToMale__CO" partialPatterns="//@patterns.65" attributes="//@attributes.24 //@attributes.25 //@attributes.26 //@attributes.27" nodes="//@nodes.47 //@nodes.48 //@nodes.49 //@nodes.50 //@nodes.51 //@nodes.52 //@nodes.53" edges="//@edges.45 //@edges.46 //@edges.47 //@edges.48 //@edges.49 //@edges.50 //@edges.51" children="//@patterns.65 //@patterns.66 //@patterns.67 //@patterns.68 //@patterns.69 //@patterns.70 //@patterns.71 //@patterns.72"/>
+  <patterns xmi:type="HiPEPattern:HiPEPattern" name="SonToMale__CO" partialPatterns="//@patterns.73" attributes="//@attributes.28 //@attributes.29 //@attributes.30 //@attributes.31" nodes="//@nodes.54 //@nodes.55 //@nodes.56 //@nodes.57 //@nodes.58 //@nodes.59 //@nodes.60" edges="//@edges.52 //@edges.53 //@edges.54 //@edges.55 //@edges.56 //@edges.57 //@edges.58" children="//@patterns.73 //@patterns.74 //@patterns.75 //@patterns.76 //@patterns.77 //@patterns.78 //@patterns.79 //@patterns.80"/>
+  <patterns xmi:type="HiPEPattern:HiPELargePattern" name="CreateFamily__CO_1" partialPatterns="//@patterns.11 //@patterns.12" nodes="//@nodes.0 //@nodes.1" edges="//@edges.0" parentPattern="//@patterns.0" invokedNodes="//@nodes.0 //@nodes.1" patternType="EDGE" rootPattern="//@patterns.0"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="CreateFamily__CO_2" nodes="//@nodes.0" parentPattern="//@patterns.10" invokedNodes="//@nodes.0" patternType="NODE" rootPattern="//@patterns.0"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="CreateFamily__CO_3" nodes="//@nodes.1" parentPattern="//@patterns.10" invokedNodes="//@nodes.1" patternType="NODE" rootPattern="//@patterns.0"/>
+  <patterns xmi:type="HiPEPattern:HiPELargePattern" name="DaughterOfExistingFamilyToFemale__CO_4" partialPatterns="//@patterns.14 //@patterns.15 //@patterns.16 //@patterns.17 //@patterns.18 //@patterns.19 //@patterns.20" attributeConstraints="//@attributeConstraints.0" attributes="//@attributes.0 //@attributes.1 //@attributes.2 //@attributes.3" nodes="//@nodes.2 //@nodes.3 //@nodes.4 //@nodes.5 //@nodes.6 //@nodes.7 //@nodes.8" edges="//@edges.5 //@edges.4 //@edges.3 //@edges.1 //@edges.6 //@edges.2 //@edges.7" parentPattern="//@patterns.1" invokedNodes="//@nodes.2 //@nodes.3 //@nodes.4 //@nodes.5 //@nodes.6 //@nodes.7 //@nodes.8" rootPattern="//@patterns.1"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="DaughterOfExistingFamilyToFemale__CO_5" nodes="//@nodes.2" parentPattern="//@patterns.13" invokedNodes="//@nodes.2" patternType="NODE" rootPattern="//@patterns.1"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="DaughterOfExistingFamilyToFemale__CO_6" nodes="//@nodes.3" parentPattern="//@patterns.13" invokedNodes="//@nodes.3" patternType="NODE" rootPattern="//@patterns.1"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="DaughterOfExistingFamilyToFemale__CO_7" nodes="//@nodes.4" parentPattern="//@patterns.13" invokedNodes="//@nodes.4" patternType="NODE" rootPattern="//@patterns.1"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="DaughterOfExistingFamilyToFemale__CO_8" nodes="//@nodes.5" parentPattern="//@patterns.13" invokedNodes="//@nodes.5" patternType="NODE" rootPattern="//@patterns.1"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="DaughterOfExistingFamilyToFemale__CO_9" nodes="//@nodes.6" parentPattern="//@patterns.13" invokedNodes="//@nodes.6" patternType="NODE" rootPattern="//@patterns.1"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="DaughterOfExistingFamilyToFemale__CO_10" nodes="//@nodes.7" parentPattern="//@patterns.13" invokedNodes="//@nodes.7" patternType="NODE" rootPattern="//@patterns.1"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="DaughterOfExistingFamilyToFemale__CO_11" nodes="//@nodes.8" parentPattern="//@patterns.13" invokedNodes="//@nodes.8" patternType="NODE" rootPattern="//@patterns.1"/>
+  <patterns xmi:type="HiPEPattern:HiPELargePattern" name="DaughterToFemale__CO_12" partialPatterns="//@patterns.22 //@patterns.23 //@patterns.24 //@patterns.25 //@patterns.26 //@patterns.27 //@patterns.28" attributeConstraints="//@attributeConstraints.1" attributes="//@attributes.4 //@attributes.5 //@attributes.6 //@attributes.7" nodes="//@nodes.9 //@nodes.10 //@nodes.11 //@nodes.12 //@nodes.13 //@nodes.14 //@nodes.15" edges="//@edges.11 //@edges.12 //@edges.10 //@edges.14 //@edges.8 //@edges.9 //@edges.13" parentPattern="//@patterns.2" invokedNodes="//@nodes.9 //@nodes.10 //@nodes.11 //@nodes.12 //@nodes.13 //@nodes.14 //@nodes.15" rootPattern="//@patterns.2"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="DaughterToFemale__CO_13" nodes="//@nodes.9" parentPattern="//@patterns.21" invokedNodes="//@nodes.9" patternType="NODE" rootPattern="//@patterns.2"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="DaughterToFemale__CO_14" nodes="//@nodes.10" parentPattern="//@patterns.21" invokedNodes="//@nodes.10" patternType="NODE" rootPattern="//@patterns.2"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="DaughterToFemale__CO_15" nodes="//@nodes.11" parentPattern="//@patterns.21" invokedNodes="//@nodes.11" patternType="NODE" rootPattern="//@patterns.2"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="DaughterToFemale__CO_16" nodes="//@nodes.12" parentPattern="//@patterns.21" invokedNodes="//@nodes.12" patternType="NODE" rootPattern="//@patterns.2"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="DaughterToFemale__CO_17" nodes="//@nodes.13" parentPattern="//@patterns.21" invokedNodes="//@nodes.13" patternType="NODE" rootPattern="//@patterns.2"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="DaughterToFemale__CO_18" nodes="//@nodes.14" parentPattern="//@patterns.21" invokedNodes="//@nodes.14" patternType="NODE" rootPattern="//@patterns.2"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="DaughterToFemale__CO_19" nodes="//@nodes.15" parentPattern="//@patterns.21" invokedNodes="//@nodes.15" patternType="NODE" rootPattern="//@patterns.2"/>
+  <patterns xmi:type="HiPEPattern:HiPELargePattern" name="Families2Persons__CO_20" partialPatterns="//@patterns.30 //@patterns.31 //@patterns.32" nodes="//@nodes.16 //@nodes.17 //@nodes.18" edges="//@edges.15 //@edges.16" parentPattern="//@patterns.3" invokedNodes="//@nodes.16 //@nodes.17 //@nodes.18" rootPattern="//@patterns.3"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="Families2Persons__CO_21" nodes="//@nodes.16" parentPattern="//@patterns.29" invokedNodes="//@nodes.16" patternType="NODE" rootPattern="//@patterns.3"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="Families2Persons__CO_22" nodes="//@nodes.17" parentPattern="//@patterns.29" invokedNodes="//@nodes.17" patternType="NODE" rootPattern="//@patterns.3"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="Families2Persons__CO_23" nodes="//@nodes.18" parentPattern="//@patterns.29" invokedNodes="//@nodes.18" patternType="NODE" rootPattern="//@patterns.3"/>
+  <patterns xmi:type="HiPEPattern:HiPELargePattern" name="FatherOfExistingFamilyToMale__CO_24" partialPatterns="//@patterns.34 //@patterns.35 //@patterns.36 //@patterns.37 //@patterns.38 //@patterns.39 //@patterns.40" attributeConstraints="//@attributeConstraints.2" attributes="//@attributes.8 //@attributes.9 //@attributes.10 //@attributes.11" nodes="//@nodes.19 //@nodes.20 //@nodes.21 //@nodes.22 //@nodes.23 //@nodes.24 //@nodes.25" edges="//@edges.20 //@edges.18 //@edges.22 //@edges.21 //@edges.17 //@edges.23 //@edges.19" parentPattern="//@patterns.4" invokedNodes="//@nodes.19 //@nodes.20 //@nodes.21 //@nodes.22 //@nodes.23 //@nodes.24 //@nodes.25" rootPattern="//@patterns.4"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="FatherOfExistingFamilyToMale__CO_25" nodes="//@nodes.19" parentPattern="//@patterns.33" invokedNodes="//@nodes.19" patternType="NODE" rootPattern="//@patterns.4"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="FatherOfExistingFamilyToMale__CO_26" nodes="//@nodes.20" parentPattern="//@patterns.33" invokedNodes="//@nodes.20" patternType="NODE" rootPattern="//@patterns.4"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="FatherOfExistingFamilyToMale__CO_27" nodes="//@nodes.21" parentPattern="//@patterns.33" invokedNodes="//@nodes.21" patternType="NODE" rootPattern="//@patterns.4"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="FatherOfExistingFamilyToMale__CO_28" nodes="//@nodes.22" parentPattern="//@patterns.33" invokedNodes="//@nodes.22" patternType="NODE" rootPattern="//@patterns.4"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="FatherOfExistingFamilyToMale__CO_29" nodes="//@nodes.23" parentPattern="//@patterns.33" invokedNodes="//@nodes.23" patternType="NODE" rootPattern="//@patterns.4"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="FatherOfExistingFamilyToMale__CO_30" nodes="//@nodes.24" parentPattern="//@patterns.33" invokedNodes="//@nodes.24" patternType="NODE" rootPattern="//@patterns.4"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="FatherOfExistingFamilyToMale__CO_31" nodes="//@nodes.25" parentPattern="//@patterns.33" invokedNodes="//@nodes.25" patternType="NODE" rootPattern="//@patterns.4"/>
+  <patterns xmi:type="HiPEPattern:HiPELargePattern" name="FatherToMale__CO_32" partialPatterns="//@patterns.42 //@patterns.43 //@patterns.44 //@patterns.45 //@patterns.46 //@patterns.47 //@patterns.48" attributeConstraints="//@attributeConstraints.3" attributes="//@attributes.12 //@attributes.13 //@attributes.14 //@attributes.15" nodes="//@nodes.26 //@nodes.27 //@nodes.28 //@nodes.29 //@nodes.30 //@nodes.31 //@nodes.32" edges="//@edges.25 //@edges.24 //@edges.26 //@edges.27 //@edges.28 //@edges.30 //@edges.29" parentPattern="//@patterns.5" invokedNodes="//@nodes.26 //@nodes.27 //@nodes.28 //@nodes.29 //@nodes.30 //@nodes.31 //@nodes.32" rootPattern="//@patterns.5"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="FatherToMale__CO_33" nodes="//@nodes.26" parentPattern="//@patterns.41" invokedNodes="//@nodes.26" patternType="NODE" rootPattern="//@patterns.5"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="FatherToMale__CO_34" nodes="//@nodes.27" parentPattern="//@patterns.41" invokedNodes="//@nodes.27" patternType="NODE" rootPattern="//@patterns.5"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="FatherToMale__CO_35" nodes="//@nodes.28" parentPattern="//@patterns.41" invokedNodes="//@nodes.28" patternType="NODE" rootPattern="//@patterns.5"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="FatherToMale__CO_36" nodes="//@nodes.29" parentPattern="//@patterns.41" invokedNodes="//@nodes.29" patternType="NODE" rootPattern="//@patterns.5"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="FatherToMale__CO_37" nodes="//@nodes.30" parentPattern="//@patterns.41" invokedNodes="//@nodes.30" patternType="NODE" rootPattern="//@patterns.5"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="FatherToMale__CO_38" nodes="//@nodes.31" parentPattern="//@patterns.41" invokedNodes="//@nodes.31" patternType="NODE" rootPattern="//@patterns.5"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="FatherToMale__CO_39" nodes="//@nodes.32" parentPattern="//@patterns.41" invokedNodes="//@nodes.32" patternType="NODE" rootPattern="//@patterns.5"/>
+  <patterns xmi:type="HiPEPattern:HiPELargePattern" name="MotherOfExistingFamilyToFemale__CO_40" partialPatterns="//@patterns.50 //@patterns.51 //@patterns.52 //@patterns.53 //@patterns.54 //@patterns.55 //@patterns.56" attributeConstraints="//@attributeConstraints.4" attributes="//@attributes.16 //@attributes.17 //@attributes.18 //@attributes.19" nodes="//@nodes.33 //@nodes.34 //@nodes.35 //@nodes.36 //@nodes.37 //@nodes.38 //@nodes.39" edges="//@edges.34 //@edges.33 //@edges.36 //@edges.35 //@edges.32 //@edges.37 //@edges.31" parentPattern="//@patterns.6" invokedNodes="//@nodes.33 //@nodes.34 //@nodes.35 //@nodes.36 //@nodes.37 //@nodes.38 //@nodes.39" rootPattern="//@patterns.6"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="MotherOfExistingFamilyToFemale__CO_41" nodes="//@nodes.33" parentPattern="//@patterns.49" invokedNodes="//@nodes.33" patternType="NODE" rootPattern="//@patterns.6"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="MotherOfExistingFamilyToFemale__CO_42" nodes="//@nodes.34" parentPattern="//@patterns.49" invokedNodes="//@nodes.34" patternType="NODE" rootPattern="//@patterns.6"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="MotherOfExistingFamilyToFemale__CO_43" nodes="//@nodes.35" parentPattern="//@patterns.49" invokedNodes="//@nodes.35" patternType="NODE" rootPattern="//@patterns.6"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="MotherOfExistingFamilyToFemale__CO_44" nodes="//@nodes.36" parentPattern="//@patterns.49" invokedNodes="//@nodes.36" patternType="NODE" rootPattern="//@patterns.6"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="MotherOfExistingFamilyToFemale__CO_45" nodes="//@nodes.37" parentPattern="//@patterns.49" invokedNodes="//@nodes.37" patternType="NODE" rootPattern="//@patterns.6"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="MotherOfExistingFamilyToFemale__CO_46" nodes="//@nodes.38" parentPattern="//@patterns.49" invokedNodes="//@nodes.38" patternType="NODE" rootPattern="//@patterns.6"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="MotherOfExistingFamilyToFemale__CO_47" nodes="//@nodes.39" parentPattern="//@patterns.49" invokedNodes="//@nodes.39" patternType="NODE" rootPattern="//@patterns.6"/>
+  <patterns xmi:type="HiPEPattern:HiPELargePattern" name="MotherToFemale__CO_48" partialPatterns="//@patterns.58 //@patterns.59 //@patterns.60 //@patterns.61 //@patterns.62 //@patterns.63 //@patterns.64" attributeConstraints="//@attributeConstraints.5" attributes="//@attributes.20 //@attributes.21 //@attributes.22 //@attributes.23" nodes="//@nodes.40 //@nodes.41 //@nodes.42 //@nodes.43 //@nodes.44 //@nodes.45 //@nodes.46" edges="//@edges.39 //@edges.44 //@edges.38 //@edges.41 //@edges.43 //@edges.40 //@edges.42" parentPattern="//@patterns.7" invokedNodes="//@nodes.40 //@nodes.41 //@nodes.42 //@nodes.43 //@nodes.44 //@nodes.45 //@nodes.46" rootPattern="//@patterns.7"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="MotherToFemale__CO_49" nodes="//@nodes.40" parentPattern="//@patterns.57" invokedNodes="//@nodes.40" patternType="NODE" rootPattern="//@patterns.7"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="MotherToFemale__CO_50" nodes="//@nodes.41" parentPattern="//@patterns.57" invokedNodes="//@nodes.41" patternType="NODE" rootPattern="//@patterns.7"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="MotherToFemale__CO_51" nodes="//@nodes.42" parentPattern="//@patterns.57" invokedNodes="//@nodes.42" patternType="NODE" rootPattern="//@patterns.7"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="MotherToFemale__CO_52" nodes="//@nodes.43" parentPattern="//@patterns.57" invokedNodes="//@nodes.43" patternType="NODE" rootPattern="//@patterns.7"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="MotherToFemale__CO_53" nodes="//@nodes.44" parentPattern="//@patterns.57" invokedNodes="//@nodes.44" patternType="NODE" rootPattern="//@patterns.7"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="MotherToFemale__CO_54" nodes="//@nodes.45" parentPattern="//@patterns.57" invokedNodes="//@nodes.45" patternType="NODE" rootPattern="//@patterns.7"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="MotherToFemale__CO_55" nodes="//@nodes.46" parentPattern="//@patterns.57" invokedNodes="//@nodes.46" patternType="NODE" rootPattern="//@patterns.7"/>
+  <patterns xmi:type="HiPEPattern:HiPELargePattern" name="SonOfExistingFamilyToMale__CO_56" partialPatterns="//@patterns.66 //@patterns.67 //@patterns.68 //@patterns.69 //@patterns.70 //@patterns.71 //@patterns.72" attributeConstraints="//@attributeConstraints.6" attributes="//@attributes.24 //@attributes.25 //@attributes.26 //@attributes.27" nodes="//@nodes.47 //@nodes.48 //@nodes.49 //@nodes.50 //@nodes.51 //@nodes.52 //@nodes.53" edges="//@edges.51 //@edges.48 //@edges.50 //@edges.49 //@edges.45 //@edges.46 //@edges.47" parentPattern="//@patterns.8" invokedNodes="//@nodes.47 //@nodes.48 //@nodes.49 //@nodes.50 //@nodes.51 //@nodes.52 //@nodes.53" rootPattern="//@patterns.8"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="SonOfExistingFamilyToMale__CO_57" nodes="//@nodes.47" parentPattern="//@patterns.65" invokedNodes="//@nodes.47" patternType="NODE" rootPattern="//@patterns.8"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="SonOfExistingFamilyToMale__CO_58" nodes="//@nodes.48" parentPattern="//@patterns.65" invokedNodes="//@nodes.48" patternType="NODE" rootPattern="//@patterns.8"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="SonOfExistingFamilyToMale__CO_59" nodes="//@nodes.49" parentPattern="//@patterns.65" invokedNodes="//@nodes.49" patternType="NODE" rootPattern="//@patterns.8"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="SonOfExistingFamilyToMale__CO_60" nodes="//@nodes.50" parentPattern="//@patterns.65" invokedNodes="//@nodes.50" patternType="NODE" rootPattern="//@patterns.8"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="SonOfExistingFamilyToMale__CO_61" nodes="//@nodes.51" parentPattern="//@patterns.65" invokedNodes="//@nodes.51" patternType="NODE" rootPattern="//@patterns.8"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="SonOfExistingFamilyToMale__CO_62" nodes="//@nodes.52" parentPattern="//@patterns.65" invokedNodes="//@nodes.52" patternType="NODE" rootPattern="//@patterns.8"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="SonOfExistingFamilyToMale__CO_63" nodes="//@nodes.53" parentPattern="//@patterns.65" invokedNodes="//@nodes.53" patternType="NODE" rootPattern="//@patterns.8"/>
+  <patterns xmi:type="HiPEPattern:HiPELargePattern" name="SonToMale__CO_64" partialPatterns="//@patterns.74 //@patterns.75 //@patterns.76 //@patterns.77 //@patterns.78 //@patterns.79 //@patterns.80" attributeConstraints="//@attributeConstraints.7" attributes="//@attributes.28 //@attributes.29 //@attributes.30 //@attributes.31" nodes="//@nodes.54 //@nodes.55 //@nodes.56 //@nodes.57 //@nodes.58 //@nodes.59 //@nodes.60" edges="//@edges.56 //@edges.55 //@edges.53 //@edges.58 //@edges.54 //@edges.57 //@edges.52" parentPattern="//@patterns.9" invokedNodes="//@nodes.54 //@nodes.55 //@nodes.56 //@nodes.57 //@nodes.58 //@nodes.59 //@nodes.60" rootPattern="//@patterns.9"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="SonToMale__CO_65" nodes="//@nodes.54" parentPattern="//@patterns.73" invokedNodes="//@nodes.54" patternType="NODE" rootPattern="//@patterns.9"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="SonToMale__CO_66" nodes="//@nodes.55" parentPattern="//@patterns.73" invokedNodes="//@nodes.55" patternType="NODE" rootPattern="//@patterns.9"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="SonToMale__CO_67" nodes="//@nodes.56" parentPattern="//@patterns.73" invokedNodes="//@nodes.56" patternType="NODE" rootPattern="//@patterns.9"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="SonToMale__CO_68" nodes="//@nodes.57" parentPattern="//@patterns.73" invokedNodes="//@nodes.57" patternType="NODE" rootPattern="//@patterns.9"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="SonToMale__CO_69" nodes="//@nodes.58" parentPattern="//@patterns.73" invokedNodes="//@nodes.58" patternType="NODE" rootPattern="//@patterns.9"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="SonToMale__CO_70" nodes="//@nodes.59" parentPattern="//@patterns.73" invokedNodes="//@nodes.59" patternType="NODE" rootPattern="//@patterns.9"/>
+  <patterns xmi:type="HiPEPattern:HiPEPartialPattern" name="SonToMale__CO_71" nodes="//@nodes.60" parentPattern="//@patterns.73" invokedNodes="//@nodes.60" patternType="NODE" rootPattern="//@patterns.9"/>
+  <attributeConstraints xmi:type="HiPEPattern:ComplexConstraint" abstractPatterns="//@patterns.13" targetPatterns="//@patterns.1" attributes="//@attributes.0 //@attributes.1 //@attributes.2 //@attributes.3" predicateCode="csp_0.isSatisfied()" initializationCode="org.emoflon.ibex.tgg.runtime.csp.constraints.Concat csp_0 = new org.emoflon.ibex.tgg.runtime.csp.constraints.Concat();&#xA;csp_0.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, &quot;, &quot;, &quot;java.lang.String&quot;));&#xA;csp_0.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, f_name, &quot;java.lang.String&quot;));&#xA;csp_0.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, fm_name, &quot;java.lang.String&quot;));&#xA;csp_0.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, p_name, &quot;java.lang.String&quot;));&#xA;csp_0.solve();&#xA;"/>
+  <attributeConstraints xmi:type="HiPEPattern:ComplexConstraint" abstractPatterns="//@patterns.21" targetPatterns="//@patterns.2" attributes="//@attributes.4 //@attributes.5 //@attributes.6 //@attributes.7" predicateCode="csp_1.isSatisfied()" initializationCode="org.emoflon.ibex.tgg.runtime.csp.constraints.Concat csp_1 = new org.emoflon.ibex.tgg.runtime.csp.constraints.Concat();&#xA;csp_1.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, &quot;, &quot;, &quot;java.lang.String&quot;));&#xA;csp_1.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, f_name, &quot;java.lang.String&quot;));&#xA;csp_1.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, fm_name, &quot;java.lang.String&quot;));&#xA;csp_1.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, p_name, &quot;java.lang.String&quot;));&#xA;csp_1.solve();&#xA;"/>
+  <attributeConstraints xmi:type="HiPEPattern:ComplexConstraint" abstractPatterns="//@patterns.33" targetPatterns="//@patterns.4" attributes="//@attributes.8 //@attributes.9 //@attributes.10 //@attributes.11" predicateCode="csp_2.isSatisfied()" initializationCode="org.emoflon.ibex.tgg.runtime.csp.constraints.Concat csp_2 = new org.emoflon.ibex.tgg.runtime.csp.constraints.Concat();&#xA;csp_2.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, &quot;, &quot;, &quot;java.lang.String&quot;));&#xA;csp_2.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, f_name, &quot;java.lang.String&quot;));&#xA;csp_2.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, fm_name, &quot;java.lang.String&quot;));&#xA;csp_2.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, p_name, &quot;java.lang.String&quot;));&#xA;csp_2.solve();&#xA;"/>
+  <attributeConstraints xmi:type="HiPEPattern:ComplexConstraint" abstractPatterns="//@patterns.41" targetPatterns="//@patterns.5" attributes="//@attributes.12 //@attributes.13 //@attributes.14 //@attributes.15" predicateCode="csp_3.isSatisfied()" initializationCode="org.emoflon.ibex.tgg.runtime.csp.constraints.Concat csp_3 = new org.emoflon.ibex.tgg.runtime.csp.constraints.Concat();&#xA;csp_3.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, &quot;, &quot;, &quot;java.lang.String&quot;));&#xA;csp_3.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, f_name, &quot;java.lang.String&quot;));&#xA;csp_3.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, fm_name, &quot;java.lang.String&quot;));&#xA;csp_3.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, p_name, &quot;java.lang.String&quot;));&#xA;csp_3.solve();&#xA;"/>
+  <attributeConstraints xmi:type="HiPEPattern:ComplexConstraint" abstractPatterns="//@patterns.49" targetPatterns="//@patterns.6" attributes="//@attributes.16 //@attributes.17 //@attributes.18 //@attributes.19" predicateCode="csp_4.isSatisfied()" initializationCode="org.emoflon.ibex.tgg.runtime.csp.constraints.Concat csp_4 = new org.emoflon.ibex.tgg.runtime.csp.constraints.Concat();&#xA;csp_4.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, &quot;, &quot;, &quot;java.lang.String&quot;));&#xA;csp_4.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, f_name, &quot;java.lang.String&quot;));&#xA;csp_4.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, fm_name, &quot;java.lang.String&quot;));&#xA;csp_4.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, p_name, &quot;java.lang.String&quot;));&#xA;csp_4.solve();&#xA;"/>
+  <attributeConstraints xmi:type="HiPEPattern:ComplexConstraint" abstractPatterns="//@patterns.57" targetPatterns="//@patterns.7" attributes="//@attributes.20 //@attributes.21 //@attributes.22 //@attributes.23" predicateCode="csp_5.isSatisfied()" initializationCode="org.emoflon.ibex.tgg.runtime.csp.constraints.Concat csp_5 = new org.emoflon.ibex.tgg.runtime.csp.constraints.Concat();&#xA;csp_5.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, &quot;, &quot;, &quot;java.lang.String&quot;));&#xA;csp_5.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, f_name, &quot;java.lang.String&quot;));&#xA;csp_5.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, fm_name, &quot;java.lang.String&quot;));&#xA;csp_5.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, p_name, &quot;java.lang.String&quot;));&#xA;csp_5.solve();&#xA;"/>
+  <attributeConstraints xmi:type="HiPEPattern:ComplexConstraint" abstractPatterns="//@patterns.65" targetPatterns="//@patterns.8" attributes="//@attributes.24 //@attributes.25 //@attributes.26 //@attributes.27" predicateCode="csp_6.isSatisfied()" initializationCode="org.emoflon.ibex.tgg.runtime.csp.constraints.Concat csp_6 = new org.emoflon.ibex.tgg.runtime.csp.constraints.Concat();&#xA;csp_6.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, &quot;, &quot;, &quot;java.lang.String&quot;));&#xA;csp_6.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, f_name, &quot;java.lang.String&quot;));&#xA;csp_6.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, fm_name, &quot;java.lang.String&quot;));&#xA;csp_6.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, p_name, &quot;java.lang.String&quot;));&#xA;csp_6.solve();&#xA;"/>
+  <attributeConstraints xmi:type="HiPEPattern:ComplexConstraint" abstractPatterns="//@patterns.73" targetPatterns="//@patterns.9" attributes="//@attributes.28 //@attributes.29 //@attributes.30 //@attributes.31" predicateCode="csp_7.isSatisfied()" initializationCode="org.emoflon.ibex.tgg.runtime.csp.constraints.Concat csp_7 = new org.emoflon.ibex.tgg.runtime.csp.constraints.Concat();&#xA;csp_7.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, &quot;, &quot;, &quot;java.lang.String&quot;));&#xA;csp_7.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, f_name, &quot;java.lang.String&quot;));&#xA;csp_7.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, fm_name, &quot;java.lang.String&quot;));&#xA;csp_7.getVariables().add(new org.emoflon.ibex.tgg.runtime.csp.RuntimeTGGAttributeConstraintVariable(true, p_name, &quot;java.lang.String&quot;));&#xA;csp_7.solve();&#xA;"/>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" value=", " abstractPatterns="//@patterns.1 //@patterns.13"/>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.2" value="org.eclipse.emf.ecore.impl.EAttributeImpl@416d4c65 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.1 //@patterns.13">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.4" value="org.eclipse.emf.ecore.impl.EAttributeImpl@68cf20e3 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.1 //@patterns.13">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.8" value="org.eclipse.emf.ecore.impl.EAttributeImpl@11d12ba0 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.1 //@patterns.13">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" value=", " abstractPatterns="//@patterns.2 //@patterns.21"/>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.10" value="org.eclipse.emf.ecore.impl.EAttributeImpl@416d4c65 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.2 //@patterns.21">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.11" value="org.eclipse.emf.ecore.impl.EAttributeImpl@68cf20e3 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.2 //@patterns.21">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.15" value="org.eclipse.emf.ecore.impl.EAttributeImpl@11d12ba0 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.2 //@patterns.21">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" value=", " abstractPatterns="//@patterns.4 //@patterns.33"/>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.19" value="org.eclipse.emf.ecore.impl.EAttributeImpl@416d4c65 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.4 //@patterns.33">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.21" value="org.eclipse.emf.ecore.impl.EAttributeImpl@68cf20e3 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.4 //@patterns.33">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.25" value="org.eclipse.emf.ecore.impl.EAttributeImpl@11d12ba0 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.4 //@patterns.33">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" value=", " abstractPatterns="//@patterns.5 //@patterns.41"/>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.27" value="org.eclipse.emf.ecore.impl.EAttributeImpl@416d4c65 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.5 //@patterns.41">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.28" value="org.eclipse.emf.ecore.impl.EAttributeImpl@68cf20e3 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.5 //@patterns.41">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.32" value="org.eclipse.emf.ecore.impl.EAttributeImpl@11d12ba0 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.5 //@patterns.41">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" value=", " abstractPatterns="//@patterns.6 //@patterns.49"/>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.33" value="org.eclipse.emf.ecore.impl.EAttributeImpl@416d4c65 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.6 //@patterns.49">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.35" value="org.eclipse.emf.ecore.impl.EAttributeImpl@68cf20e3 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.6 //@patterns.49">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.39" value="org.eclipse.emf.ecore.impl.EAttributeImpl@11d12ba0 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.6 //@patterns.49">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" value=", " abstractPatterns="//@patterns.7 //@patterns.57"/>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.41" value="org.eclipse.emf.ecore.impl.EAttributeImpl@416d4c65 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.7 //@patterns.57">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.42" value="org.eclipse.emf.ecore.impl.EAttributeImpl@68cf20e3 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.7 //@patterns.57">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.46" value="org.eclipse.emf.ecore.impl.EAttributeImpl@11d12ba0 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.7 //@patterns.57">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" value=", " abstractPatterns="//@patterns.8 //@patterns.65"/>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.47" value="org.eclipse.emf.ecore.impl.EAttributeImpl@416d4c65 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.8 //@patterns.65">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.49" value="org.eclipse.emf.ecore.impl.EAttributeImpl@68cf20e3 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.8 //@patterns.65">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.53" value="org.eclipse.emf.ecore.impl.EAttributeImpl@11d12ba0 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.8 //@patterns.65">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" value=", " abstractPatterns="//@patterns.9 //@patterns.73"/>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.55" value="org.eclipse.emf.ecore.impl.EAttributeImpl@416d4c65 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.9 //@patterns.73">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.56" value="org.eclipse.emf.ecore.impl.EAttributeImpl@68cf20e3 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.9 //@patterns.73">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+  </attributes>
+  <attributes xmi:type="HiPEPattern:HiPEAttribute" node="//@nodes.60" value="org.eclipse.emf.ecore.impl.EAttributeImpl@11d12ba0 (name: name) (ordered: true, unique: true, lowerBound: 0, upperBound: 1) (changeable: true, volatile: false, transient: false, defaultValueLiteral: null, unsettable: false, derived: false) (iD: false)" abstractPatterns="//@patterns.9 //@patterns.73">
+    <eAttribute xmi:type="ecore:EAttribute" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+  </attributes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families" abstractPatterns="//@patterns.0 //@patterns.10 //@patterns.11" invokingPartialPatterns="//@patterns.10 //@patterns.11">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="family" abstractPatterns="//@patterns.0 //@patterns.10 //@patterns.12" invokingPartialPatterns="//@patterns.10 //@patterns.12">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="f" attributes="//@attributes.1" abstractPatterns="//@patterns.1 //@patterns.13 //@patterns.14" invokingPartialPatterns="//@patterns.13 //@patterns.14">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families" abstractPatterns="//@patterns.1 //@patterns.13 //@patterns.15" invokingPartialPatterns="//@patterns.13 //@patterns.15">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="fm" attributes="//@attributes.2" abstractPatterns="//@patterns.1 //@patterns.13 //@patterns.16" invokingPartialPatterns="//@patterns.13 //@patterns.16">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families2persons" abstractPatterns="//@patterns.1 //@patterns.13 //@patterns.17" invokingPartialPatterns="//@patterns.13 //@patterns.17">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="familyMember2Persons" abstractPatterns="//@patterns.1 //@patterns.13 //@patterns.18" invokingPartialPatterns="//@patterns.13 //@patterns.18">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="persons" abstractPatterns="//@patterns.1 //@patterns.13 //@patterns.19" invokingPartialPatterns="//@patterns.13 //@patterns.19">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="p" attributes="//@attributes.3" abstractPatterns="//@patterns.1 //@patterns.13 //@patterns.20" invokingPartialPatterns="//@patterns.13 //@patterns.20">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Female"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families" abstractPatterns="//@patterns.2 //@patterns.21 //@patterns.22" invokingPartialPatterns="//@patterns.21 //@patterns.22">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="f" attributes="//@attributes.5" abstractPatterns="//@patterns.2 //@patterns.21 //@patterns.23" invokingPartialPatterns="//@patterns.21 //@patterns.23">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="fm" attributes="//@attributes.6" abstractPatterns="//@patterns.2 //@patterns.21 //@patterns.24" invokingPartialPatterns="//@patterns.21 //@patterns.24">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families2persons" abstractPatterns="//@patterns.2 //@patterns.21 //@patterns.25" invokingPartialPatterns="//@patterns.21 //@patterns.25">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="familyMember2Persons" abstractPatterns="//@patterns.2 //@patterns.21 //@patterns.26" invokingPartialPatterns="//@patterns.21 //@patterns.26">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="persons" abstractPatterns="//@patterns.2 //@patterns.21 //@patterns.27" invokingPartialPatterns="//@patterns.21 //@patterns.27">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="p" attributes="//@attributes.7" abstractPatterns="//@patterns.2 //@patterns.21 //@patterns.28" invokingPartialPatterns="//@patterns.21 //@patterns.28">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Female"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families" abstractPatterns="//@patterns.3 //@patterns.29 //@patterns.30" invokingPartialPatterns="//@patterns.29 //@patterns.30">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families2persons" abstractPatterns="//@patterns.3 //@patterns.29 //@patterns.31" invokingPartialPatterns="//@patterns.29 //@patterns.31">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="persons" abstractPatterns="//@patterns.3 //@patterns.29 //@patterns.32" invokingPartialPatterns="//@patterns.29 //@patterns.32">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="f" attributes="//@attributes.9" abstractPatterns="//@patterns.4 //@patterns.33 //@patterns.34" invokingPartialPatterns="//@patterns.33 //@patterns.34">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families" abstractPatterns="//@patterns.4 //@patterns.33 //@patterns.35" invokingPartialPatterns="//@patterns.33 //@patterns.35">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="fm" attributes="//@attributes.10" abstractPatterns="//@patterns.4 //@patterns.33 //@patterns.36" invokingPartialPatterns="//@patterns.33 //@patterns.36">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families2persons" abstractPatterns="//@patterns.4 //@patterns.33 //@patterns.37" invokingPartialPatterns="//@patterns.33 //@patterns.37">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="familyMember2Persons" abstractPatterns="//@patterns.4 //@patterns.33 //@patterns.38" invokingPartialPatterns="//@patterns.33 //@patterns.38">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="persons" abstractPatterns="//@patterns.4 //@patterns.33 //@patterns.39" invokingPartialPatterns="//@patterns.33 //@patterns.39">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="p" attributes="//@attributes.11" abstractPatterns="//@patterns.4 //@patterns.33 //@patterns.40" invokingPartialPatterns="//@patterns.33 //@patterns.40">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Male"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families" abstractPatterns="//@patterns.5 //@patterns.41 //@patterns.42" invokingPartialPatterns="//@patterns.41 //@patterns.42">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="f" attributes="//@attributes.13" abstractPatterns="//@patterns.5 //@patterns.41 //@patterns.43" invokingPartialPatterns="//@patterns.41 //@patterns.43">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="fm" attributes="//@attributes.14" abstractPatterns="//@patterns.5 //@patterns.41 //@patterns.44" invokingPartialPatterns="//@patterns.41 //@patterns.44">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families2persons" abstractPatterns="//@patterns.5 //@patterns.41 //@patterns.45" invokingPartialPatterns="//@patterns.41 //@patterns.45">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="familyMember2Persons" abstractPatterns="//@patterns.5 //@patterns.41 //@patterns.46" invokingPartialPatterns="//@patterns.41 //@patterns.46">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="persons" abstractPatterns="//@patterns.5 //@patterns.41 //@patterns.47" invokingPartialPatterns="//@patterns.41 //@patterns.47">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="p" attributes="//@attributes.15" abstractPatterns="//@patterns.5 //@patterns.41 //@patterns.48" invokingPartialPatterns="//@patterns.41 //@patterns.48">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Male"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="f" attributes="//@attributes.17" abstractPatterns="//@patterns.6 //@patterns.49 //@patterns.50" invokingPartialPatterns="//@patterns.49 //@patterns.50">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families" abstractPatterns="//@patterns.6 //@patterns.49 //@patterns.51" invokingPartialPatterns="//@patterns.49 //@patterns.51">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="fm" attributes="//@attributes.18" abstractPatterns="//@patterns.6 //@patterns.49 //@patterns.52" invokingPartialPatterns="//@patterns.49 //@patterns.52">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families2persons" abstractPatterns="//@patterns.6 //@patterns.49 //@patterns.53" invokingPartialPatterns="//@patterns.49 //@patterns.53">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="familyMember2Persons" abstractPatterns="//@patterns.6 //@patterns.49 //@patterns.54" invokingPartialPatterns="//@patterns.49 //@patterns.54">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="persons" abstractPatterns="//@patterns.6 //@patterns.49 //@patterns.55" invokingPartialPatterns="//@patterns.49 //@patterns.55">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="p" attributes="//@attributes.19" abstractPatterns="//@patterns.6 //@patterns.49 //@patterns.56" invokingPartialPatterns="//@patterns.49 //@patterns.56">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Female"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families" abstractPatterns="//@patterns.7 //@patterns.57 //@patterns.58" invokingPartialPatterns="//@patterns.57 //@patterns.58">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="f" attributes="//@attributes.21" abstractPatterns="//@patterns.7 //@patterns.57 //@patterns.59" invokingPartialPatterns="//@patterns.57 //@patterns.59">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="fm" attributes="//@attributes.22" abstractPatterns="//@patterns.7 //@patterns.57 //@patterns.60" invokingPartialPatterns="//@patterns.57 //@patterns.60">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families2persons" abstractPatterns="//@patterns.7 //@patterns.57 //@patterns.61" invokingPartialPatterns="//@patterns.57 //@patterns.61">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="familyMember2Persons" abstractPatterns="//@patterns.7 //@patterns.57 //@patterns.62" invokingPartialPatterns="//@patterns.57 //@patterns.62">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="persons" abstractPatterns="//@patterns.7 //@patterns.57 //@patterns.63" invokingPartialPatterns="//@patterns.57 //@patterns.63">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="p" attributes="//@attributes.23" abstractPatterns="//@patterns.7 //@patterns.57 //@patterns.64" invokingPartialPatterns="//@patterns.57 //@patterns.64">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Female"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="f" attributes="//@attributes.25" abstractPatterns="//@patterns.8 //@patterns.65 //@patterns.66" invokingPartialPatterns="//@patterns.65 //@patterns.66">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families" abstractPatterns="//@patterns.8 //@patterns.65 //@patterns.67" invokingPartialPatterns="//@patterns.65 //@patterns.67">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="fm" attributes="//@attributes.26" abstractPatterns="//@patterns.8 //@patterns.65 //@patterns.68" invokingPartialPatterns="//@patterns.65 //@patterns.68">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families2persons" abstractPatterns="//@patterns.8 //@patterns.65 //@patterns.69" invokingPartialPatterns="//@patterns.65 //@patterns.69">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="familyMember2Persons" abstractPatterns="//@patterns.8 //@patterns.65 //@patterns.70" invokingPartialPatterns="//@patterns.65 //@patterns.70">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="persons" abstractPatterns="//@patterns.8 //@patterns.65 //@patterns.71" invokingPartialPatterns="//@patterns.65 //@patterns.71">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="p" attributes="//@attributes.27" abstractPatterns="//@patterns.8 //@patterns.65 //@patterns.72" invokingPartialPatterns="//@patterns.65 //@patterns.72">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Male"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families" abstractPatterns="//@patterns.9 //@patterns.73 //@patterns.74" invokingPartialPatterns="//@patterns.73 //@patterns.74">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="f" attributes="//@attributes.29" abstractPatterns="//@patterns.9 //@patterns.73 //@patterns.75" invokingPartialPatterns="//@patterns.73 //@patterns.75">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="fm" attributes="//@attributes.30" abstractPatterns="//@patterns.9 //@patterns.73 //@patterns.76" invokingPartialPatterns="//@patterns.73 //@patterns.76">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="families2persons" abstractPatterns="//@patterns.9 //@patterns.73 //@patterns.77" invokingPartialPatterns="//@patterns.73 //@patterns.77">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="familyMember2Persons" abstractPatterns="//@patterns.9 //@patterns.73 //@patterns.78" invokingPartialPatterns="//@patterns.73 //@patterns.78">
+    <type xmi:type="ecore:EClass" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="persons" abstractPatterns="//@patterns.9 //@patterns.73 //@patterns.79" invokingPartialPatterns="//@patterns.73 //@patterns.79">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+  </nodes>
+  <nodes xmi:type="HiPEPattern:HiPENode" name="p" attributes="//@attributes.31" abstractPatterns="//@patterns.9 //@patterns.73 //@patterns.80" invokingPartialPatterns="//@patterns.73 //@patterns.80">
+    <type xmi:type="ecore:EClass" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Male"/>
+  </nodes>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families_families_family" source="//@nodes.0" target="//@nodes.1" abstractPatterns="//@patterns.0 //@patterns.10">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="f_daughters_fm" source="//@nodes.2" target="//@nodes.4" abstractPatterns="//@patterns.1 //@patterns.13">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/daughters"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families_families_f" source="//@nodes.3" target="//@nodes.2" abstractPatterns="//@patterns.1 //@patterns.13">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_source_families" source="//@nodes.5" target="//@nodes.3" abstractPatterns="//@patterns.1 //@patterns.13">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_target_persons" source="//@nodes.5" target="//@nodes.7" abstractPatterns="//@patterns.1 //@patterns.13">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_source_fm" source="//@nodes.6" target="//@nodes.4" abstractPatterns="//@patterns.1 //@patterns.13">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_target_p" source="//@nodes.6" target="//@nodes.8" abstractPatterns="//@patterns.1 //@patterns.13">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="persons_persons_p" source="//@nodes.7" target="//@nodes.8" abstractPatterns="//@patterns.1 //@patterns.13">
+    <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families_families_f" source="//@nodes.9" target="//@nodes.10" abstractPatterns="//@patterns.2 //@patterns.21">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="f_daughters_fm" source="//@nodes.10" target="//@nodes.11" abstractPatterns="//@patterns.2 //@patterns.21">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/daughters"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_source_families" source="//@nodes.12" target="//@nodes.9" abstractPatterns="//@patterns.2 //@patterns.21">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_target_persons" source="//@nodes.12" target="//@nodes.14" abstractPatterns="//@patterns.2 //@patterns.21">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_source_fm" source="//@nodes.13" target="//@nodes.11" abstractPatterns="//@patterns.2 //@patterns.21">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_target_p" source="//@nodes.13" target="//@nodes.15" abstractPatterns="//@patterns.2 //@patterns.21">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="persons_persons_p" source="//@nodes.14" target="//@nodes.15" abstractPatterns="//@patterns.2 //@patterns.21">
+    <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_source_families" source="//@nodes.17" target="//@nodes.16" abstractPatterns="//@patterns.3 //@patterns.29">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_target_persons" source="//@nodes.17" target="//@nodes.18" abstractPatterns="//@patterns.3 //@patterns.29">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="f_father_fm" source="//@nodes.19" target="//@nodes.21" abstractPatterns="//@patterns.4 //@patterns.33">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/father"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families_families_f" source="//@nodes.20" target="//@nodes.19" abstractPatterns="//@patterns.4 //@patterns.33">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_source_families" source="//@nodes.22" target="//@nodes.20" abstractPatterns="//@patterns.4 //@patterns.33">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_target_persons" source="//@nodes.22" target="//@nodes.24" abstractPatterns="//@patterns.4 //@patterns.33">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_source_fm" source="//@nodes.23" target="//@nodes.21" abstractPatterns="//@patterns.4 //@patterns.33">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_target_p" source="//@nodes.23" target="//@nodes.25" abstractPatterns="//@patterns.4 //@patterns.33">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="persons_persons_p" source="//@nodes.24" target="//@nodes.25" abstractPatterns="//@patterns.4 //@patterns.33">
+    <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families_families_f" source="//@nodes.26" target="//@nodes.27" abstractPatterns="//@patterns.5 //@patterns.41">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="f_father_fm" source="//@nodes.27" target="//@nodes.28" abstractPatterns="//@patterns.5 //@patterns.41">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/father"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_source_families" source="//@nodes.29" target="//@nodes.26" abstractPatterns="//@patterns.5 //@patterns.41">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_target_persons" source="//@nodes.29" target="//@nodes.31" abstractPatterns="//@patterns.5 //@patterns.41">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_source_fm" source="//@nodes.30" target="//@nodes.28" abstractPatterns="//@patterns.5 //@patterns.41">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_target_p" source="//@nodes.30" target="//@nodes.32" abstractPatterns="//@patterns.5 //@patterns.41">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="persons_persons_p" source="//@nodes.31" target="//@nodes.32" abstractPatterns="//@patterns.5 //@patterns.41">
+    <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="f_mother_fm" source="//@nodes.33" target="//@nodes.35" abstractPatterns="//@patterns.6 //@patterns.49">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/mother"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families_families_f" source="//@nodes.34" target="//@nodes.33" abstractPatterns="//@patterns.6 //@patterns.49">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_source_families" source="//@nodes.36" target="//@nodes.34" abstractPatterns="//@patterns.6 //@patterns.49">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_target_persons" source="//@nodes.36" target="//@nodes.38" abstractPatterns="//@patterns.6 //@patterns.49">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_source_fm" source="//@nodes.37" target="//@nodes.35" abstractPatterns="//@patterns.6 //@patterns.49">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_target_p" source="//@nodes.37" target="//@nodes.39" abstractPatterns="//@patterns.6 //@patterns.49">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="persons_persons_p" source="//@nodes.38" target="//@nodes.39" abstractPatterns="//@patterns.6 //@patterns.49">
+    <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families_families_f" source="//@nodes.40" target="//@nodes.41" abstractPatterns="//@patterns.7 //@patterns.57">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="f_mother_fm" source="//@nodes.41" target="//@nodes.42" abstractPatterns="//@patterns.7 //@patterns.57">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/mother"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_source_families" source="//@nodes.43" target="//@nodes.40" abstractPatterns="//@patterns.7 //@patterns.57">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_target_persons" source="//@nodes.43" target="//@nodes.45" abstractPatterns="//@patterns.7 //@patterns.57">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_source_fm" source="//@nodes.44" target="//@nodes.42" abstractPatterns="//@patterns.7 //@patterns.57">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_target_p" source="//@nodes.44" target="//@nodes.46" abstractPatterns="//@patterns.7 //@patterns.57">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="persons_persons_p" source="//@nodes.45" target="//@nodes.46" abstractPatterns="//@patterns.7 //@patterns.57">
+    <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="f_sons_fm" source="//@nodes.47" target="//@nodes.49" abstractPatterns="//@patterns.8 //@patterns.65">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/sons"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families_families_f" source="//@nodes.48" target="//@nodes.47" abstractPatterns="//@patterns.8 //@patterns.65">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_source_families" source="//@nodes.50" target="//@nodes.48" abstractPatterns="//@patterns.8 //@patterns.65">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_target_persons" source="//@nodes.50" target="//@nodes.52" abstractPatterns="//@patterns.8 //@patterns.65">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_source_fm" source="//@nodes.51" target="//@nodes.49" abstractPatterns="//@patterns.8 //@patterns.65">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_target_p" source="//@nodes.51" target="//@nodes.53" abstractPatterns="//@patterns.8 //@patterns.65">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="persons_persons_p" source="//@nodes.52" target="//@nodes.53" abstractPatterns="//@patterns.8 //@patterns.65">
+    <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families_families_f" source="//@nodes.54" target="//@nodes.55" abstractPatterns="//@patterns.9 //@patterns.73">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="f_sons_fm" source="//@nodes.55" target="//@nodes.56" abstractPatterns="//@patterns.9 //@patterns.73">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/sons"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_source_families" source="//@nodes.57" target="//@nodes.54" abstractPatterns="//@patterns.9 //@patterns.73">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="families2persons_target_persons" source="//@nodes.57" target="//@nodes.59" abstractPatterns="//@patterns.9 //@patterns.73">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//RegisterToRegisterCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_source_fm" source="//@nodes.58" target="//@nodes.56" abstractPatterns="//@patterns.9 //@patterns.73">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/source"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="familyMember2Persons_target_p" source="//@nodes.58" target="//@nodes.60" abstractPatterns="//@patterns.9 //@patterns.73">
+    <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore#//FamilyMemberToPersonCorr/target"/>
+  </edges>
+  <edges xmi:type="HiPEPattern:HiPEEdge" name="persons_persons_p" source="//@nodes.59" target="//@nodes.60" abstractPatterns="//@patterns.9 //@patterns.73">
+    <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+  </edges>
+</HiPEPattern:HiPEContainer>
