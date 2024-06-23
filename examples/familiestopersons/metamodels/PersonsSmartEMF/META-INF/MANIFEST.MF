@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: PersonsSmartEMF;singleton:=true
+Export-Package: PersonsSmartEMF,
+ PersonsSmartEMF.impl,
+ org.benchmarx.persons.smartemf.core
+Bundle-Name: PersonsSmartEMF
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.xmi,
+ org.junit;bundle-version="4.12.0",
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtend.lib.macro,
+ org.emoflon.ibex.common,
+ org.emoflon.smartemf
+Bundle-ManifestVersion: 2
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: lib/org.emoflon.smartemf_1.0.0.202406152335.jar,
+ .
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-Vendor: TU Darmstadt
+Automatic-Module-Name: PersonsSmartEMF
+

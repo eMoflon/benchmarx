@@ -1,0 +1,32 @@
+import "platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore" using FamiliesSmartEMF as Fam
+import "platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore" using PersonsSmartEMF as Per
+
+schema FamiliesToPersons_V1 {
+	
+	source {
+		FamiliesSmartEMF
+	}
+	
+	target {
+		PersonsSmartEMF
+	}
+	
+	correspondence {
+		RegisterToRegisterCorr {
+			src->Fam.FamilyRegister
+			trg->Per.PersonRegister
+		}
+
+		FamilyToRegisterCorr {
+			src->Fam.Family
+			trg->Per.PersonRegister
+		}
+		
+		FamilyMemberToPersonCorr {
+			src->Fam.FamilyMember
+			trg->Per.Person
+		}
+		
+	}
+	
+}

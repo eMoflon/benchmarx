@@ -1,0 +1,35 @@
+abstract rule ExistingFamily2Person {
+	
+	source { 
+		[=] families : Fam.FamilyRegister {
+			[=] -families->f
+		}
+		[=] f : Fam.Family
+		[+] fm : Fam.FamilyMember
+	}
+	
+	target {
+		[=] persons : Per.PersonRegister {
+			[+] -persons->p
+		}
+		[+] p : Per.Person
+	}
+	
+	correspondence {
+		[=] families2persons : RegisterToRegisterCorr {
+			src->families
+			trg->persons
+		}
+		[+] familyMember2Persons : FamilyMemberToPersonCorr {
+			src->fm
+			trg->p 
+		}
+	}
+	
+	attributeConditions {
+		DefaultAttributeConditionLibrary.concat(", ", f.name, fm.name, p.name)
+	}
+
+}
+
+

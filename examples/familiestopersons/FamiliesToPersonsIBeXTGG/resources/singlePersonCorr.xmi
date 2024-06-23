@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FamiliesToPersons_V1="platform:/resource/FamiliesToPersons_V1/model/FamiliesToPersons_V1.ecore" xmlns:SimplePersons="platform:/resource/SimplePersons/model/SimplePersons.ecore">
+  <FamiliesToPersons_V1:RegisterToRegister>
+    <source href="singleFamilyWithFather.xmi#/"/>
+    <target href="PersonRegisterWithMalePerson.xmi#/"/>
+  </FamiliesToPersons_V1:RegisterToRegister>
+  <FamiliesToPersons_V1:FamilyMemberToPerson>
+    <source href="singleFamilyWithFather.xmi#//@families.0/@father"/>
+    <target xsi:type="SimplePersons:Male" href="PersonRegisterWithMalePerson.xmi#//@persons.0"/>
+  </FamiliesToPersons_V1:FamilyMemberToPerson>
+</xmi:XMI>

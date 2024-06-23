@@ -15,3 +15,5 @@ examples/bag1tobag2/metamodels/Bag1/xtend-gen/org/benchmarx/bags1/core/Bag1Compa
 examples/gantttocpm/IBeXTGGGantt2CPM/debug/patterns.xmi
 examples/pdb1topdb2/BenchmarxPdb1ToPdb2/src/org/benchmarx/examples/pdb12pdb2/implementations/medini/base/traces/trace.pdb12pdb2
 *.class
+/examples/familiestopersons/FamiliesToPersonsIBeXTGG/src-gen/
+/examples/familiestopersons/FamiliesToPersonsIBeXTGG/gen/

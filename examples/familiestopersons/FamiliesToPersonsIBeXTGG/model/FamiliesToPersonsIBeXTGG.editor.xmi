@@ -1,0 +1,1792 @@
+<?xml version="1.0" encoding="ASCII"?>
+<tGGL:EditorFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:slimGT="http://www.emoflon.org/ibex/common/slimgt/SlimGT" xmlns:tGGL="http://www.emoflon.org/ibex/tgg/tggl/TGGL">
+  <imports name="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore">
+    <packageAliases xsi:type="slimGT:PackageReferenceAlias" name="Fam">
+      <importedPackage href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#/"/>
+    </packageAliases>
+  </imports>
+  <imports name="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore">
+    <packageAliases xsi:type="slimGT:PackageReferenceAlias" name="Per">
+      <importedPackage href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#/"/>
+    </packageAliases>
+  </imports>
+  <schema name="FamiliesToPersons_V1">
+    <sourceTypes href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#/"/>
+    <targetTypes href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#/"/>
+    <correspondenceTypes name="RegisterToRegisterCorr" hasSource="true" hasTarget="true">
+      <source href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+      <target href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+    </correspondenceTypes>
+    <correspondenceTypes name="FamilyToRegisterCorr" hasSource="true" hasTarget="true">
+      <source href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+      <target href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+    </correspondenceTypes>
+    <correspondenceTypes name="FamilyMemberToPersonCorr" hasSource="true" hasTarget="true">
+      <source href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+      <target href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person"/>
+    </correspondenceTypes>
+  </schema>
+  <libraries name="DefaultAttributeConditionLibrary">
+    <attributeCondDefs name="eq_string">
+      <params name="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <params name="b">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="eq_int">
+      <params name="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </params>
+      <params name="b">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="eq_float">
+      <params name="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+      </params>
+      <params name="b">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="eq_double">
+      <params name="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <params name="b">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="eq_long">
+      <params name="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      </params>
+      <params name="b">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="eq_char">
+      <params name="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EChar"/>
+      </params>
+      <params name="b">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EChar"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="eq_boolean">
+      <params name="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </params>
+      <params name="b">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="addPrefix">
+      <params name="prefix">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <params name="word">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <params name="result">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="addSuffix">
+      <params name="suffix">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <params name="word">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <params name="result">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="concat">
+      <params name="separator">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <params name="leftWord">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <params name="rightWord">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <params name="result">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="setDefaultString">
+      <params name="variableString">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <params name="defaultString">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="setDefaultNumber">
+      <params name="variableNumber">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <params name="defaultNumber">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="stringToDouble">
+      <params name="stringValue">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <params name="doubleValue">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="stringToInt">
+      <params name="stringValue">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <params name="intValue">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="multiply">
+      <params name="operand1">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <params name="operand2">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <params name="result">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="divide">
+      <params name="numerator">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <params name="denominator">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <params name="result">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="add">
+      <params name="summand1">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <params name="summand2">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <params name="result">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="sub">
+      <params name="minuend">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <params name="subtrahend">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <params name="result">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="maximum">
+      <params name="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <params name="b">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <params name="maximum">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="smallerOrEqual">
+      <params name="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <params name="b">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedSyncBindings>
+      <allowedSyncBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>B</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>F</value>
+        <value>F</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+    <attributeCondDefs name="setRandomString">
+      <params name="a">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+      </allowedSyncBindings>
+      <allowedGenBindings>
+        <value>F</value>
+      </allowedGenBindings>
+      <allowedGenBindings>
+        <value>B</value>
+      </allowedGenBindings>
+    </attributeCondDefs>
+  </libraries>
+  <rules name="CreateFamily">
+    <sourceRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="families">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.0/@sourceRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="family">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+        </creation>
+      </createdNodes>
+    </sourceRule>
+    <targetRule/>
+    <corrRule/>
+  </rules>
+  <rules name="DaughterOfExistingFamilyToFemale">
+    <sourceRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="f">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.1/@sourceRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/daughters"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="families">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+          <contextEdges>
+            <context xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.1/@sourceRule/@contextNodes.0/@context">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+            </context>
+          </contextEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="fm">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+        </creation>
+      </createdNodes>
+    </sourceRule>
+    <targetRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="persons">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.1/@targetRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="p">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Female"/>
+        </creation>
+      </createdNodes>
+    </targetRule>
+    <corrRule>
+      <contextCorrespondenceNodes>
+        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.1/@sourceRule/@contextNodes.1/@context" target="//@rules.1/@targetRule/@contextNodes.0/@context"/>
+      </contextCorrespondenceNodes>
+      <createdCorrespondenceNodes>
+        <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.1/@sourceRule/@createdNodes.0/@creation" target="//@rules.1/@targetRule/@createdNodes.0/@creation"/>
+      </createdCorrespondenceNodes>
+    </corrRule>
+    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:ArithmeticLiteral">
+          <value xsi:type="slimGT:StringLiteral" value=", "/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.1/@sourceRule/@contextNodes.0/@context"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.1/@sourceRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.1/@targetRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+        </operand>
+      </values>
+    </attrConditions>
+  </rules>
+  <rules name="DaughterToFemale">
+    <sourceRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="families">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.2/@sourceRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="f">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.2/@sourceRule/@createdNodes.1/@creation">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/daughters"/>
+            </creation>
+          </createdEdges>
+        </creation>
+      </createdNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="fm">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+        </creation>
+      </createdNodes>
+    </sourceRule>
+    <targetRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="persons">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.2/@targetRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="p">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Female"/>
+        </creation>
+      </createdNodes>
+    </targetRule>
+    <corrRule>
+      <contextCorrespondenceNodes>
+        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.2/@sourceRule/@contextNodes.0/@context" target="//@rules.2/@targetRule/@contextNodes.0/@context"/>
+      </contextCorrespondenceNodes>
+      <createdCorrespondenceNodes>
+        <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.2/@sourceRule/@createdNodes.1/@creation" target="//@rules.2/@targetRule/@createdNodes.0/@creation"/>
+      </createdCorrespondenceNodes>
+    </corrRule>
+    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:ArithmeticLiteral">
+          <value xsi:type="slimGT:StringLiteral" value=", "/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.2/@sourceRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.2/@sourceRule/@createdNodes.1/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.2/@targetRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+        </operand>
+      </values>
+    </attrConditions>
+  </rules>
+  <rules abstract="true" name="ExistingFamily2Person">
+    <sourceRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="families">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+          <contextEdges>
+            <context xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.3/@sourceRule/@contextNodes.1/@context">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+            </context>
+          </contextEdges>
+        </context>
+      </contextNodes>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="f">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="fm">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+        </creation>
+      </createdNodes>
+    </sourceRule>
+    <targetRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="persons">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.3/@targetRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="p">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person"/>
+        </creation>
+      </createdNodes>
+    </targetRule>
+    <corrRule>
+      <contextCorrespondenceNodes>
+        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.3/@sourceRule/@contextNodes.0/@context" target="//@rules.3/@targetRule/@contextNodes.0/@context"/>
+      </contextCorrespondenceNodes>
+      <createdCorrespondenceNodes>
+        <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.3/@sourceRule/@createdNodes.0/@creation" target="//@rules.3/@targetRule/@createdNodes.0/@creation"/>
+      </createdCorrespondenceNodes>
+    </corrRule>
+    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:ArithmeticLiteral">
+          <value xsi:type="slimGT:StringLiteral" value=", "/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.3/@sourceRule/@contextNodes.1/@context"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.3/@sourceRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.3/@targetRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+        </operand>
+      </values>
+    </attrConditions>
+  </rules>
+  <rules name="Families2Persons">
+    <sourceRule>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="families">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+        </creation>
+      </createdNodes>
+    </sourceRule>
+    <targetRule>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="persons">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+        </creation>
+      </createdNodes>
+    </targetRule>
+    <corrRule>
+      <createdCorrespondenceNodes>
+        <creation name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.4/@sourceRule/@createdNodes.0/@creation" target="//@rules.4/@targetRule/@createdNodes.0/@creation"/>
+      </createdCorrespondenceNodes>
+    </corrRule>
+  </rules>
+  <rules abstract="true" name="FamilyMember2Person">
+    <sourceRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="families">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.5/@sourceRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="f">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+        </creation>
+      </createdNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="fm">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+        </creation>
+      </createdNodes>
+    </sourceRule>
+    <targetRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="persons">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.5/@targetRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="p">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person"/>
+        </creation>
+      </createdNodes>
+    </targetRule>
+    <corrRule>
+      <contextCorrespondenceNodes>
+        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.5/@sourceRule/@contextNodes.0/@context" target="//@rules.5/@targetRule/@contextNodes.0/@context"/>
+      </contextCorrespondenceNodes>
+      <createdCorrespondenceNodes>
+        <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.5/@sourceRule/@createdNodes.1/@creation" target="//@rules.5/@targetRule/@createdNodes.0/@creation"/>
+      </createdCorrespondenceNodes>
+    </corrRule>
+    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:ArithmeticLiteral">
+          <value xsi:type="slimGT:StringLiteral" value=", "/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.5/@sourceRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.5/@sourceRule/@createdNodes.1/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.5/@targetRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+        </operand>
+      </values>
+    </attrConditions>
+  </rules>
+  <rules name="FatherOfExistingFamilyToMale">
+    <sourceRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="f">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.6/@sourceRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/father"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="families">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+          <contextEdges>
+            <context xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.6/@sourceRule/@contextNodes.0/@context">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+            </context>
+          </contextEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="fm">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+        </creation>
+      </createdNodes>
+    </sourceRule>
+    <targetRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="persons">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.6/@targetRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="p">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Male"/>
+        </creation>
+      </createdNodes>
+    </targetRule>
+    <corrRule>
+      <contextCorrespondenceNodes>
+        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.6/@sourceRule/@contextNodes.1/@context" target="//@rules.6/@targetRule/@contextNodes.0/@context"/>
+      </contextCorrespondenceNodes>
+      <createdCorrespondenceNodes>
+        <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.6/@sourceRule/@createdNodes.0/@creation" target="//@rules.6/@targetRule/@createdNodes.0/@creation"/>
+      </createdCorrespondenceNodes>
+    </corrRule>
+    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:ArithmeticLiteral">
+          <value xsi:type="slimGT:StringLiteral" value=", "/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.6/@sourceRule/@contextNodes.0/@context"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.6/@sourceRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.6/@targetRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+        </operand>
+      </values>
+    </attrConditions>
+  </rules>
+  <rules name="FatherToMale">
+    <sourceRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="families">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.7/@sourceRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="f">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.7/@sourceRule/@createdNodes.1/@creation">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/father"/>
+            </creation>
+          </createdEdges>
+        </creation>
+      </createdNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="fm">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+        </creation>
+      </createdNodes>
+    </sourceRule>
+    <targetRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="persons">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.7/@targetRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="p">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Male"/>
+        </creation>
+      </createdNodes>
+    </targetRule>
+    <corrRule>
+      <contextCorrespondenceNodes>
+        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.7/@sourceRule/@contextNodes.0/@context" target="//@rules.7/@targetRule/@contextNodes.0/@context"/>
+      </contextCorrespondenceNodes>
+      <createdCorrespondenceNodes>
+        <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.7/@sourceRule/@createdNodes.1/@creation" target="//@rules.7/@targetRule/@createdNodes.0/@creation"/>
+      </createdCorrespondenceNodes>
+    </corrRule>
+    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:ArithmeticLiteral">
+          <value xsi:type="slimGT:StringLiteral" value=", "/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.7/@sourceRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.7/@sourceRule/@createdNodes.1/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.7/@targetRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+        </operand>
+      </values>
+    </attrConditions>
+  </rules>
+  <rules name="MotherOfExistingFamilyToFemale">
+    <sourceRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="f">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.8/@sourceRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/mother"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="families">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+          <contextEdges>
+            <context xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.8/@sourceRule/@contextNodes.0/@context">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+            </context>
+          </contextEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="fm">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+        </creation>
+      </createdNodes>
+    </sourceRule>
+    <targetRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="persons">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.8/@targetRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="p">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Female"/>
+        </creation>
+      </createdNodes>
+    </targetRule>
+    <corrRule>
+      <contextCorrespondenceNodes>
+        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.8/@sourceRule/@contextNodes.1/@context" target="//@rules.8/@targetRule/@contextNodes.0/@context"/>
+      </contextCorrespondenceNodes>
+      <createdCorrespondenceNodes>
+        <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.8/@sourceRule/@createdNodes.0/@creation" target="//@rules.8/@targetRule/@createdNodes.0/@creation"/>
+      </createdCorrespondenceNodes>
+    </corrRule>
+    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:ArithmeticLiteral">
+          <value xsi:type="slimGT:StringLiteral" value=", "/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.8/@sourceRule/@contextNodes.0/@context"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.8/@sourceRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.8/@targetRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+        </operand>
+      </values>
+    </attrConditions>
+  </rules>
+  <rules name="MotherToFemale">
+    <sourceRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="families">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.9/@sourceRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="f">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.9/@sourceRule/@createdNodes.1/@creation">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/mother"/>
+            </creation>
+          </createdEdges>
+        </creation>
+      </createdNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="fm">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+        </creation>
+      </createdNodes>
+    </sourceRule>
+    <targetRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="persons">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.9/@targetRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="p">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Female"/>
+        </creation>
+      </createdNodes>
+    </targetRule>
+    <corrRule>
+      <contextCorrespondenceNodes>
+        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.9/@sourceRule/@contextNodes.0/@context" target="//@rules.9/@targetRule/@contextNodes.0/@context"/>
+      </contextCorrespondenceNodes>
+      <createdCorrespondenceNodes>
+        <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.9/@sourceRule/@createdNodes.1/@creation" target="//@rules.9/@targetRule/@createdNodes.0/@creation"/>
+      </createdCorrespondenceNodes>
+    </corrRule>
+    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:ArithmeticLiteral">
+          <value xsi:type="slimGT:StringLiteral" value=", "/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.9/@sourceRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.9/@sourceRule/@createdNodes.1/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.9/@targetRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+        </operand>
+      </values>
+    </attrConditions>
+  </rules>
+  <rules name="SonOfExistingFamilyToMale">
+    <sourceRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="f">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.10/@sourceRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/sons"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="families">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+          <contextEdges>
+            <context xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.10/@sourceRule/@contextNodes.0/@context">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+            </context>
+          </contextEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="fm">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+        </creation>
+      </createdNodes>
+    </sourceRule>
+    <targetRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="persons">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.10/@targetRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="p">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Male"/>
+        </creation>
+      </createdNodes>
+    </targetRule>
+    <corrRule>
+      <contextCorrespondenceNodes>
+        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.10/@sourceRule/@contextNodes.1/@context" target="//@rules.10/@targetRule/@contextNodes.0/@context"/>
+      </contextCorrespondenceNodes>
+      <createdCorrespondenceNodes>
+        <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.10/@sourceRule/@createdNodes.0/@creation" target="//@rules.10/@targetRule/@createdNodes.0/@creation"/>
+      </createdCorrespondenceNodes>
+    </corrRule>
+    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:ArithmeticLiteral">
+          <value xsi:type="slimGT:StringLiteral" value=", "/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.10/@sourceRule/@contextNodes.0/@context"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.10/@sourceRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.10/@targetRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+        </operand>
+      </values>
+    </attrConditions>
+  </rules>
+  <rules name="SonToMale">
+    <sourceRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="families">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.11/@sourceRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="f">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.11/@sourceRule/@createdNodes.1/@creation">
+              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/sons"/>
+            </creation>
+          </createdEdges>
+        </creation>
+      </createdNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="fm">
+          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
+        </creation>
+      </createdNodes>
+    </sourceRule>
+    <targetRule>
+      <contextNodes>
+        <context xsi:type="tGGL:SlimRuleNode" name="persons">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister"/>
+          <createdEdges>
+            <creation xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.11/@targetRule/@createdNodes.0/@creation">
+              <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+            </creation>
+          </createdEdges>
+        </context>
+      </contextNodes>
+      <createdNodes>
+        <creation xsi:type="tGGL:SlimRuleNode" name="p">
+          <type href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Male"/>
+        </creation>
+      </createdNodes>
+    </targetRule>
+    <corrRule>
+      <contextCorrespondenceNodes>
+        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.11/@sourceRule/@contextNodes.0/@context" target="//@rules.11/@targetRule/@contextNodes.0/@context"/>
+      </contextCorrespondenceNodes>
+      <createdCorrespondenceNodes>
+        <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.11/@sourceRule/@createdNodes.1/@creation" target="//@rules.11/@targetRule/@createdNodes.0/@creation"/>
+      </createdCorrespondenceNodes>
+    </corrRule>
+    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:ArithmeticLiteral">
+          <value xsi:type="slimGT:StringLiteral" value=", "/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.11/@sourceRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.11/@sourceRule/@createdNodes.1/@creation"/>
+          <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember/name"/>
+        </operand>
+      </values>
+      <values xsi:type="tGGL:ExpressionOperand">
+        <operand xsi:type="slimGT:NodeAttributeExpression">
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.11/@targetRule/@createdNodes.0/@creation"/>
+          <feature href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person/name"/>
+        </operand>
+      </values>
+    </attrConditions>
+  </rules>
+</tGGL:EditorFile>

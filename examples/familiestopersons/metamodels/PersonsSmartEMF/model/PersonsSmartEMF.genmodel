@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/PersonsSmartEMF/gen" modelPluginID="PersonsSmartEMF"
+    modelName="PersonsSmartEMF" updateClasspath="false" codeFormatting="true" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true">
+  <foreignModel>Persons.ecore</foreignModel>
+  <genPackages prefix="PersonsSmartEMF" disposableProviderFactory="true" ecorePackage="PersonsSmartEMF.ecore#/">
+    <genClasses ecoreClass="PersonsSmartEMF.ecore#//PersonRegister">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PersonsSmartEMF.ecore#//PersonRegister/persons"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PersonsSmartEMF.ecore#//Person">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PersonsSmartEMF.ecore#//Person/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PersonsSmartEMF.ecore#//Person/birthday"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference PersonsSmartEMF.ecore#//Person/personsInverse"/>
+    </genClasses>
+    <genClasses ecoreClass="PersonsSmartEMF.ecore#//Male"/>
+    <genClasses ecoreClass="PersonsSmartEMF.ecore#//Female"/>
+  </genPackages>
+</genmodel:GenModel>

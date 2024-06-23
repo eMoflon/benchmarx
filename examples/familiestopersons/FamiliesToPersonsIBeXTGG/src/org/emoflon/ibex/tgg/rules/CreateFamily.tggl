@@ -1,0 +1,9 @@
+rule CreateFamily {
+	
+	source { 
+		[=] families : Fam.FamilyRegister {
+			[+] -families->family
+		}
+		[+] family : Fam.Family
+	}
+}

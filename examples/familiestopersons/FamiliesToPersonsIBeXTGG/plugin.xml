@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.0"?><!--
+--><plugin>
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package class="FamiliesToPersons_V1.FamiliesToPersons_V1Package" genModel="model/FamiliesToPersons_V1.genmodel" uri="platform:/resource/FamiliesToPersons_V1/model/FamiliesToPersons_V1.ecore"/>
+  </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated FamiliesToPersonsIBeXTGG -->
+      <package
+            uri="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore"
+            class="FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated FamiliesToPersonsIBeXTGG -->
+      <package
+            uri="platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore"
+            class="FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage"/>
+   </extension>
+
+null
+null</plugin>

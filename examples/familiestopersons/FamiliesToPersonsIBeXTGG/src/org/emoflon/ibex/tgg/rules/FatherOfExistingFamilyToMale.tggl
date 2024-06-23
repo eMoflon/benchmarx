@@ -1,0 +1,17 @@
+rule FatherOfExistingFamilyToMale refines ExistingFamily2Person {
+	
+	source {
+		@refines= ExistingFamily2Person.f
+		[=] f : Fam.Family {
+			[+] -father->fm
+		}
+		@refines+ ExistingFamily2Person.fm
+		[+] fm : Fam.FamilyMember
+	}
+	
+	target {
+		@refines+ ExistingFamily2Person.p
+		[+] p : Per.Male
+	}
+	
+}
