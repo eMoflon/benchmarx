@@ -68,8 +68,8 @@ public class GPTFamiliesToPersonsIncremental extends BXToolForEMF<FamilyRegister
 		gptTrans.configure(true, true);
 		gptTrans.transformFamiliesToPersons(familiesRoot, personRoot);
 		// add listeners
-		//gptTrans.addFamilyRegisterListener(familiesRoot, personRoot);
-		//gptTrans.addPersonRegisterListener(personRoot, familiesRoot);
+		gptTrans.addFamilyRegisterListener(familiesRoot, personRoot);
+		gptTrans.addPersonRegisterListener(personRoot, familiesRoot); // wenn aktiv, scheitern die batch backward tests... ohne laufen sie
 	}
 	
 	/**
@@ -109,6 +109,11 @@ public class GPTFamiliesToPersonsIncremental extends BXToolForEMF<FamilyRegister
 		if (defaultConf == null)
 			defaultConf = configurator;
 		conf = configurator;
+	}
+	
+	@Override
+	public void updateConfig() {
+		gptTrans.configure(conf.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD), conf.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW));
 	}
 
 	@Override

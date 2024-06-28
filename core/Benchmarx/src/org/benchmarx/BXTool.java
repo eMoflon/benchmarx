@@ -129,4 +129,6 @@ public interface BXTool<S, T, D> {
 	public abstract S getSourceModel();
 	
 	public abstract T getTargetModel();
+	
+	default public void updateConfig() {}
 }

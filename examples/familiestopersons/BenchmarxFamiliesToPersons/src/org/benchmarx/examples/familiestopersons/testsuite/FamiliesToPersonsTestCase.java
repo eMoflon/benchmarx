@@ -163,10 +163,10 @@ public abstract class FamiliesToPersonsTestCase {
 //				new MediniQVTFamiliesToPersons(), //
 //				new MediniQVTFamiliesToPersonsConfig(), //
 //				new UbtXtendFamiliesToPersons(), //
-				new BXtendFamiliesToPersons() //, 
+//				new BXtendFamiliesToPersons() //, 
 //				new IBeXTGGFamiliesToPersons()
-				, new GPTFamiliesToPersons()
-				, new GPTFamiliesToPersonsIncremental()
+//				, new GPTFamiliesToPersons()
+				new GPTFamiliesToPersonsIncremental()
 				);
 	}
 

@@ -56,6 +56,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	public void testIncrementalInsertsDynamicConfig() {
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(//
 				helperPerson::createHomer, //
 				helperPerson::createMaggie));
@@ -71,24 +72,28 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 		// now setting !e^p
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createSeymour));
 		util.assertPostcondition("FamilyAfterBwdInsertion3", "PersonAfterBwdInsertion3");
 
 		// now setting !e^!p
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createSeymour));
 		util.assertPostcondition("FamilyAfterBwdInsertion4", "PersonAfterBwdInsertion4");
 
 		// now setting e^p
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createSeymour));
 		util.assertPostcondition("FamilyAfterBwdInsertion5", "PersonAfterBwdInsertion5");
 
 		// now setting e^!p
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(//
 				helperPerson::createBart, //
 				helperPerson::createLisa));
@@ -106,10 +111,12 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	public void testIncrementalDeletions() {
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createHomer));
 		// reconfigure, to allow the creation of a child in the existing family
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createMaggie));
 		tool.performIdleTargetEdit(trgEdit(helperPerson::setBirthdaysOfSimpson));
 		util.assertPrecondition("Pre_IncrBwdFamilyFatherChild", "Pre_IncrBwdPerson");
@@ -131,13 +138,16 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	public void testIncrementalRenamingDynamic() {
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createRod));
 		tool.performIdleTargetEdit(trgEdit(helperPerson::setBirthdayOfRod));
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createHomer));
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(//
 				helperPerson::createMarge, //
 				helperPerson::createBart));
@@ -149,6 +159,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 		tool.performIdleTargetEdit(trgEdit(helperPerson::setBirthdayOfYoungerBart));
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createBart));
 		tool.performIdleTargetEdit(trgEdit(helperPerson::setBirthdayOfFatherBart));
 		util.assertPrecondition("Pre_IncrBwdFamilyRenameDynamic", "Pre_IncrBwdPersonRenameDynamic");
@@ -157,15 +168,19 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::firstNameChangeOfBart));
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::fullNameChangeOfOtherBart));
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::fullNameChangeOfFatherBart));
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::familyNameChangeOfLisa));
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::fullNameChangeOfMarge));
 
 		util.assertPostcondition("FamilyAfterBwdIncrRenameDynamic", "PersonAfterBwdIncrRenameDynamic");
@@ -182,6 +197,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	public void testIncrementalMixedDynamic() {
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createMaggie));
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createHomer));
 		tool.performIdleTargetEdit(trgEdit(helperPerson::setBirthdaysOfSimpson));
@@ -190,6 +206,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 		// ------------
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(//
 				helperPerson::deleteHomer, //
 				helperPerson::createHomer));
@@ -208,6 +225,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 	public void testIncrementalOperational() {
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createMaggie));
 		tool.performIdleTargetEdit(trgEdit(helperPerson::setBirthdayOfMaggie));
 		util.assertPrecondition("Pre_IncrBwdOpFamily", "Pre_IncrBwdOpPerson");
@@ -215,6 +233,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 		// ------------
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(//
 				helperPerson::createMarge, //
 				helperPerson::createLisa, //
@@ -224,6 +243,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 				helperPerson::createLisa));
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createLisa));
 		util.assertPostcondition("FamilyAfterIncrOp", "PersonAfterIncrOp");
 	}
@@ -239,6 +259,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 		// ---------------------------------
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(//
 				helperPerson::createRod, //
 				helperPerson::createHomer, //
@@ -257,6 +278,7 @@ public class IncrementalBackward extends FamiliesToPersonsTestCase {
 		// ---------------------------------
 		util.configure().makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true)
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(//
 				helperPerson::createRod, //
 				helperPerson::createHomer, //

@@ -28,6 +28,7 @@ public class BatchBwdNotENotP extends FamiliesToPersonsTestCase {
 		util.configure()//
 				.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)//
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(helperPerson::createRod));
 		// ---------------------------------
 		util.assertPostcondition("OneFamilyWithOneFamilyMemberSon", "PersonOneMaleMember");
@@ -47,6 +48,7 @@ public class BatchBwdNotENotP extends FamiliesToPersonsTestCase {
 		util.configure()//
 				.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)//
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(//
 				helperPerson::createRod, //
 				helperPerson::createHomer, //
@@ -65,6 +67,7 @@ public class BatchBwdNotENotP extends FamiliesToPersonsTestCase {
 		util.configure()//
 				.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, false)//
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, false);
+		tool.updateConfig();
 		tool.performAndPropagateTargetEdit(trgEdit(//
 				helperPerson::createRod, //
 				helperPerson::createBart, //
