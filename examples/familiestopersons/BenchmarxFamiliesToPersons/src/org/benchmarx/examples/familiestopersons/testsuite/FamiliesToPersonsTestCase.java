@@ -20,6 +20,8 @@ import org.benchmarx.edit.IEdit;
 import org.benchmarx.edit.MoveNode;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.BXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.UbtXtendFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.implementations.chatgpt.GPTFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.implementations.chatgpt.GPTFamiliesToPersonsIncremental;
 import org.benchmarx.examples.familiestopersons.implementations.emoflon.EMoflonFamiliesToPersons;
 //import org.benchmarx.examples.familiestopersons.implementations.eneo.ENeoFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.ibextgg.IBeXTGGFamiliesToPersons;
@@ -163,6 +165,8 @@ public abstract class FamiliesToPersonsTestCase {
 //				new UbtXtendFamiliesToPersons(), //
 				new BXtendFamiliesToPersons() //, 
 //				new IBeXTGGFamiliesToPersons()
+				, new GPTFamiliesToPersons()
+				, new GPTFamiliesToPersonsIncremental()
 				);
 	}
 
