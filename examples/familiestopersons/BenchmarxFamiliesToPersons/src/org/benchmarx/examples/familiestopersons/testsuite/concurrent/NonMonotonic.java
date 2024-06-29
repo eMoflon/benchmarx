@@ -43,4 +43,29 @@ public class NonMonotonic extends FamiliesToPersonsTestCase {
 
 		util.assertPostcondition("FamiliesAfterConcSyncCombinedNonMonotonicCases", "PersonsAfterConcSyncCombinedNonMonotonicCases");
 	}
+	
+	@Test
+	public void testCombinedRenameDelete() {
+		tool.performAndPropagateSourceEdit(srcEdit(//
+				helperFamily::createSkinnerFamily, //
+				helperFamily::createFlandersFamily, //
+				helperFamily::createSonRod, //
+				helperFamily::createSimpsonFamily, //
+				helperFamily::createFatherBart));
+		tool.performIdleTargetEdit(trgEdit(helperPerson::setBirthdayOfRod));
+		tool.performIdleTargetEdit(trgEdit(helperPerson::setBirthdayOfFatherBart));
+		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::createNewFamilySimpsonWithMembers));
+		tool.performIdleTargetEdit(trgEdit(helperPerson::changeAllBirthdays));
+		tool.performAndPropagateSourceEdit(srcEdit(helperFamily::createSonBart));
+		tool.performIdleTargetEdit(trgEdit(helperPerson::setBirthdayOfYoungerBart));
+
+		util.assertPrecondition("Pre_IncrFwdFamily", "Pre_IncrFwdPerson");
+		// ------------
+		tool.performAndPropagateEdit(//
+				srcEdit(helperFamily::deleteFatherHomer), //
+				trgEdit(helperPerson::nameChangeOfLisa));
+		// ------------
+
+		util.assertPostcondition("FamiliesAfterConcSyncCombinedNonMonotonicRenameDelete", "PersonsAfterConcSyncCombinedNonMonotonicRenameDelete");
+	}
 }
