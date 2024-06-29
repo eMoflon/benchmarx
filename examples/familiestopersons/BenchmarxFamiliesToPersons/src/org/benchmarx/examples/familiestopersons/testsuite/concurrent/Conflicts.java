@@ -1,10 +1,10 @@
 package org.benchmarx.examples.familiestopersons.testsuite.concurrent;
 
-import java.util.Map;
 import static java.util.Map.entry;
 
+import java.util.Map;
+
 import org.benchmarx.BXTool;
-import org.benchmarx.emf.BXToolForEMF;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.examples.familiestopersons.testsuite.FamiliesToPersonsTestCase;
 import org.junit.Test;
