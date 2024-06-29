@@ -132,6 +132,7 @@ public abstract class FamiliesToPersonsTestCase {
 	@Parameters(name = "{0}")
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
 		return Arrays.asList(//
+				new BXtendFamiliesToPersons() //, 
 				/*
 				 * See setup instructions: /implementations/bigul/README-SETUP
 				 */
@@ -161,7 +162,6 @@ public abstract class FamiliesToPersonsTestCase {
 //				new MediniQVTFamiliesToPersons(), //
 //				new MediniQVTFamiliesToPersonsConfig(), //
 //				new UbtXtendFamiliesToPersons(), //
-				new BXtendFamiliesToPersons() //, 
 //				new IBeXTGGFamiliesToPersons()
 				);
 	}

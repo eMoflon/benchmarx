@@ -20,7 +20,7 @@ import org.junit.runners.Parameterized.BeforeParam;
 import Families.FamilyRegister;
 import Persons.PersonRegister;
 
-public class ScalabilityTests extends FamiliesToPersonsTestCase {
+public abstract class ScalabilityTests extends FamiliesToPersonsTestCase {
 	private static final String DELIMITER = "\n";
 	protected static final int REPEAT = 3;
 	protected static final int TIMEOUT = 300; // seconds
