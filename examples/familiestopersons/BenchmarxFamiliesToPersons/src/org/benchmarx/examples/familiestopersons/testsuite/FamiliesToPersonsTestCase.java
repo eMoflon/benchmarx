@@ -19,6 +19,7 @@ import org.benchmarx.edit.Edit;
 import org.benchmarx.edit.IEdit;
 import org.benchmarx.edit.MoveNode;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.BXtendFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.implementations.ibextgg.integrate.IBeXTGGIntegrateFamiliesToPersons;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
@@ -157,6 +158,11 @@ public abstract class FamiliesToPersonsTestCase {
 //				new MediniQVTFamiliesToPersonsConfig(), //
 //				new UbtXtendFamiliesToPersons(), //
 //				new IBeXTGGFamiliesToPersons()
+				
+				/*
+				 * eMoflon - IBeX - Integrate
+				 */
+//				new IBeXTGGIntegrateFamiliesToPersons()
 				);
 	}
 

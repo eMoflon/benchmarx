@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="org/benchmarx/examples/familiestopersons/scalability/ScalabilityMeasurements.java|org/benchmarx/examples/familiestopersons/implementations/eneo/ENeoFamiliesToPersons.java|org/benchmarx/examples/familiestopersons/implementations/ibextgg/integrate/" kind="src" path="src"/>
+	<classpathentry excluding="org/benchmarx/examples/familiestopersons/scalability/ScalabilityMeasurements.java|org/benchmarx/examples/familiestopersons/implementations/eneo/ENeoFamiliesToPersons.java|org/benchmarx/examples/familiestopersons/implementations/ibextgg/integrate/F2PStandardUpdatePolicy.java|org/benchmarx/examples/familiestopersons/implementations/ibextgg/integrate/F2PUpdatePolicy.java|org/benchmarx/examples/familiestopersons/implementations/ibextgg/integrate/IBeXTGGIntegrateFamiliesToPersons.java" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
