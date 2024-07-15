@@ -1,8 +1,8 @@
 1. Go to 'File/Import...' and choose 'Existing Projects into Workspace'.  
-1.1 Select 'FamiliesToPersonsIBeXTGG', 'FamiliesSmartEMF' and 'PersonsSmartEMF' (located at benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/) and import the projects.
-2. Open META-INF/MANIFEST.MF and add 'FamiliesToPersonsIBeXTGG' as a dependency.
-3. Select all java files in the this package, right-click them, and choose 'Build Path/Include'.  Your workspace should compile without errors.
-4. Enable ibex-integrate as a bx tool in FamiliesToPersonsTestCase::tools()
-5. If you wish to use Gurobi then install it and set the GUROBI_HOME variable
+2. Select 'FamiliesToPersonsIBeXTGG', 'FamiliesSmartEMF' and 'PersonsSmartEMF' (located at benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/) and import the projects.
+3. Open META-INF/MANIFEST.MF and add 'FamiliesToPersonsIBeXTGG' as a dependency.
+4. Select all java files in the this package, right-click them, and choose 'Build Path/Include'.  Your workspace should compile without errors.
+5. Enable ibex-integrate as a bx tool in FamiliesToPersonsTestCase::tools()
+6. If you wish to use Gurobi then install it and set the GUROBI_HOME variable
 
 Please create an issue on https://github.com/eMoflon/benchmarx if you have problems or questions.

@@ -19,7 +19,6 @@ import org.benchmarx.edit.Edit;
 import org.benchmarx.edit.IEdit;
 import org.benchmarx.edit.MoveNode;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.BXtendFamiliesToPersons;
-import org.benchmarx.examples.familiestopersons.implementations.ibextgg.integrate.IBeXTGGIntegrateFamiliesToPersons;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
@@ -127,7 +126,7 @@ public abstract class FamiliesToPersonsTestCase {
 	@Parameters(name = "{0}")
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
 		return Arrays.asList(//
-				new BXtendFamiliesToPersons() //, 
+				new BXtendFamiliesToPersons()
 				/*
 				 * See setup instructions: /implementations/bigul/README-SETUP
 				 */
@@ -153,16 +152,16 @@ public abstract class FamiliesToPersonsTestCase {
 				 */
 				//new ENEoFamiliesToPersons()// Currently 8 failures (and some non-determinism)
 				//,
-//				new EMoflonFamiliesToPersons(), //
-//				new MediniQVTFamiliesToPersons(), //
-//				new MediniQVTFamiliesToPersonsConfig(), //
-//				new UbtXtendFamiliesToPersons(), //
-//				new IBeXTGGFamiliesToPersons()
+				// new EMoflonFamiliesToPersons(), //
+				// new MediniQVTFamiliesToPersons(), //
+				// new MediniQVTFamiliesToPersonsConfig(), //
+				// new UbtXtendFamiliesToPersons(), //
+				// new IBeXTGGFamiliesToPersons()
 				
 				/*
-				 * eMoflon - IBeX - Integrate
+				 * See setup instructions: /implementations/ibextgg/integrate/README-SETUP
 				 */
-//				new IBeXTGGIntegrateFamiliesToPersons()
+				// new IBeXTGGIntegrateFamiliesToPersons()
 				);
 	}
 
