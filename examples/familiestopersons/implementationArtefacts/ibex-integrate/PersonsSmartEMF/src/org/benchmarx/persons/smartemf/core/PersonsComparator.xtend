@@ -34,7 +34,7 @@ class PersonsComparator implements BiConsumer<PersonRegister, PersonRegister> {
 		assertTrue(personsToString(expected).startsWith("PersonRegister"))
 		assertEquals(personsToString(expected), personsToString(actual))
 	}
-	
+	 
 	def personsToString(PersonRegister persons) {
 		return '''
 		PersonRegister {

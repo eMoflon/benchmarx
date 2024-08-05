@@ -23,7 +23,6 @@ import org.emoflon.ibex.tgg.runtime.matches.ITGGMatch;
 import org.emoflon.ibex.tgg.runtime.matches.container.ImmutableMatchContainer;
 import org.emoflon.ibex.tgg.runtime.monitoring.AbstractIbexObservable;
 import org.emoflon.ibex.tgg.runtime.monitoring.IbexObservable;
-import org.junit.Assert;
 
 import Families.FamiliesFactory;
 import Families.FamilyRegister;

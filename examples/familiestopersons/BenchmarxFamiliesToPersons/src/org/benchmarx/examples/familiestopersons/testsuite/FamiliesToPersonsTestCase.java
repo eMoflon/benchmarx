@@ -126,7 +126,7 @@ public abstract class FamiliesToPersonsTestCase {
 	@Parameters(name = "{0}")
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
 		return Arrays.asList(//
-				new BXtendFamiliesToPersons()
+//				new BXtendFamiliesToPersons()
 				/*
 				 * See setup instructions: /implementations/bigul/README-SETUP
 				 */
@@ -161,7 +161,7 @@ public abstract class FamiliesToPersonsTestCase {
 				/*
 				 * See setup instructions: /implementations/ibextgg/integrate/README-SETUP
 				 */
-				// new IBeXTGGIntegrateFamiliesToPersons()
+				new  org.benchmarx.examples.familiestopersons.implementations.ibextgg.integrate.IBeXTGGIntegrateFamiliesToPersons()
 				);
 	}
 
