@@ -36,13 +36,14 @@ public class BXToolTimer<S, T, D> {
 	private long timeFromScratch(Runnable action) {
 		tool.initiateSynchronisationDialogue();
 		tool.noPrecondition();
-
-		return timeAction(action);
+		var time = timeAction(action);
+		tool.terminateSynchronisationDialogue();
+		return time;
 	}
 
 	private long median(Supplier<Long> measurement) {
 		List<Long> measurements = Stream.generate(measurement).limit(REPEAT).sorted().collect(Collectors.toList());
-
+		
 		return measurements.get(REPEAT / 2);
 	}
 
@@ -59,7 +60,9 @@ public class BXToolTimer<S, T, D> {
 		tool.noPrecondition();
 
 		setup.run();
-		return timeAction(action);
+		var time = timeAction(action);
+		tool.terminateSynchronisationDialogue();
+		return time;
 	}
 
 	/**

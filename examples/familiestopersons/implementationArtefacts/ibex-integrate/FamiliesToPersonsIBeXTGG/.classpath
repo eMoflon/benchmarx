@@ -2,6 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="src-gen"/>
+	<classpathentry exported="true" kind="lib" path="lib/hipe.dependencies_1.0.0.202408061838.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hipe.engine_1.0.0.202408061838.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hipe.generator_1.0.0.202408061838.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hipe.network_1.0.0.202408061838.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hipe.pattern_1.0.0.202408061838.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hipe.searchplan_1.0.0.202408061838.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/config-1.3.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/reactive-streams-1.0.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/trove-3.0.3.jar"/>
@@ -10,12 +16,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/scala-java8-compat_2.12-0.8.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/akka-actor_2.12-2.5.19.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/eMoflonIntegrate.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/hipe.dependencies_1.0.0.202405192255.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/hipe.engine_1.0.0.202405192255.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/hipe.generator_1.0.0.202405192255.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/hipe.network_1.0.0.202405192255.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/hipe.pattern_1.0.0.202405192255.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/hipe.searchplan_1.0.0.202405192255.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="gen"/>
