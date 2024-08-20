@@ -1,7 +1,5 @@
 package org.benchmarx.examples.familiestopersons.implementations.bxtend;
 
-import static org.junit.Assert.fail;
-
 import java.io.IOException;
 import java.util.function.Supplier;
 
@@ -154,9 +152,8 @@ public class BXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Person
 		@Override
 		public void performAndPropagateEdit(Supplier<IEdit<FamilyRegister>> sourceEditOp,
 				Supplier<IEdit<PersonRegister>> targetEditOp) {
-			//fail("Concurrent edits not supported.");
-			IEdit<FamilyRegister> sEdit = sourceEditOp.get();
-			IEdit<PersonRegister> tEdit = targetEditOp.get();
+			sourceEditOp.get();
+			targetEditOp.get();
 			f2pt.configure(new ConfigurableTargetToSourceDecision(!conf.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW),
 					conf.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD), false, false));
 			f2pt.synch();
