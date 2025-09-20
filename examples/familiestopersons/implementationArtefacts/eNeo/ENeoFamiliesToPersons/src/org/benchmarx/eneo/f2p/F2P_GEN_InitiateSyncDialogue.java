@@ -12,6 +12,7 @@ import org.emoflon.neo.emsl.util.FlattenerException;
 import org.emoflon.neo.engine.generator.INodeSampler;
 import org.emoflon.neo.engine.modules.NeoGenerator;
 import org.emoflon.neo.engine.modules.cleanup.NoOpCleanup;
+import org.emoflon.neo.engine.modules.ilp.ILPFactory.SupportedILPSolver;
 import org.emoflon.neo.engine.modules.matchreprocessors.ParanoidNeoReprocessor;
 import org.emoflon.neo.engine.modules.monitors.HeartBeatAndReportMonitor;
 import org.emoflon.neo.engine.modules.ruleschedulers.TwoPhaseRuleSchedulerForGEN;

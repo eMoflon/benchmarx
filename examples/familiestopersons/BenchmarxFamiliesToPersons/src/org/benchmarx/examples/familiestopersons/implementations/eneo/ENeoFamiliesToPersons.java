@@ -34,6 +34,8 @@ import org.emoflon.neo.cypher.models.templates.CypherBuilder;
 import org.emoflon.neo.engine.modules.ilp.ILPFactory.SupportedILPSolver;
 import org.emoflon.neo.neocore.util.NeoCoreConstants;
 
+import com.google.ortools.Loader;
+
 import Families.FamiliesFactory;
 import Families.FamiliesPackage;
 import Families.Family;
@@ -46,7 +48,10 @@ import Persons.PersonsFactory;
 import Persons.PersonsPackage;
 
 public class ENeoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegister, Decisions> {
-	private SupportedILPSolver solver = SupportedILPSolver.Gurobi;
+	static {
+		Loader.loadNativeLibraries();
+	}
+	private SupportedILPSolver solver = SupportedILPSolver.Google_OR;
 	private Configurator<Decisions> configurator;
 	private FamilyRegister sourceRegister;
 	private PersonRegister targetRegister;

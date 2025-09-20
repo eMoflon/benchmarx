@@ -103,7 +103,7 @@ public class Conflicts extends FamiliesToPersonsTestCase {
 	}
 
 	/**
-	 * <b>Test</b> for resolution of a delete/rename conflict. <br/>
+	 * <b>Test</b> for resolution of a rename/rename conflict. <br/>
 	 * <b>Expect</b> : One of provided postconditions <br/>
 	 * <b>Features</b>: conflict resolution
 	 */
@@ -124,6 +124,8 @@ public class Conflicts extends FamiliesToPersonsTestCase {
 				// Source renaming wins
 				entry("Post_RenameRenameConflictFamily_1", "Post_RenameRenameConflictPersons_1"),
 				// Target renaming wins
-				entry("Post_RenameRenameConflictFamily_2", "Post_RenameRenameConflictPersons_2")));
+				entry("Post_RenameRenameConflictFamily_2", "Post_RenameRenameConflictPersons_2"),
+				// Keep both renamings by propagating renamed family member vs. person)
+				entry("Post_RenameRenameConflictFamily_3", "Post_RenameRenameConflictPersons_3")));
 	}
 }

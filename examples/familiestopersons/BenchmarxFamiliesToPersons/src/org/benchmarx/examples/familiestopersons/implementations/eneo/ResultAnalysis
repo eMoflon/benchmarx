@@ -30,7 +30,13 @@ roundtrip: testRoundtripEdit:
 	Homer's name is changed in the target model, meaning that the corresponding father's name is now inconsistent.
 	Instead of resolving the attribute values, eNeo retranslates the renamed Homer person to a new family member.
 	Due to the preferences, the new Homer is created as a son.
-	The source edit here (Flanders => Bouvier) fails for a similar reason as testIncrementalRename.
+	The source edit here (Flanders => Bouvier) fails for a similar reason as testIncrementalRename.	
+	
+concurrent: testCombinedRenameDelete:
+	Lisa is renamed to Marie in the Simpson family in the source model.  
+	For similar reasons as testIncrementalMove eNeo retranslates Lisa (now Marie) instead of propagating only the attibute change.
+	This means that she can now be placed in any of the two existing Simpson families, meaning that this test is flaky for eNeo and can either fail or pass,
+	as both options are equally "good".
 	
 [Reusing/transferring information from existing context]	
 	

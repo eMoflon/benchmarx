@@ -1,5 +1,9 @@
 package org.benchmarx.examples.familiestopersons.testsuite.concurrent;
 
+import static java.util.Map.entry;
+
+import java.util.Map;
+
 import org.benchmarx.BXTool;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.examples.familiestopersons.testsuite.FamiliesToPersonsTestCase;
@@ -96,9 +100,12 @@ public class MonotonicCreating extends FamiliesToPersonsTestCase {
 				trgEdit(helperPerson::createHomer, //
 						helperPerson::createSeymour, //
 						helperPerson::changeAllBirthdays, //
-						helperPerson::setBirthdayOfSeymour));
-
-		util.assertPostcondition("FamilyAfterBasicConcurrentEdit4", "PersonsAfterBasicConcurrentEdit4");
+						helperPerson::setBirthdayOfSeymour));		
+		util.assertAnyPostcondition(Map.ofEntries(//
+				// Ignore preference (children over parents) to allow for delta (Homer as father)
+				entry("FamilyAfterBasicConcurrentEdit4", "PersonsAfterBasicConcurrentEdit4"),
+				// Respect preference (children over parents) by adapting delta (Homer as son instead of father)
+				entry("FamilyAfterBasicConcurrentEdit5", "PersonsAfterBasicConcurrentEdit5")));
 		// ------------
 	}
 }
