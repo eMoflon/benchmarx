@@ -134,6 +134,22 @@ public class FamilyHelper {
 			fam.daughter("Lisa");
 		}
 	}
+	
+	public void createFlandersFamiliesWithMembers(int nrOfFamilies) {
+		for (int i = 0; i < nrOfFamilies; i++) {
+			var fam = builder.family("Flanders_" + i);
+			fam.father("Ned");
+			fam.mother("Maude");
+			fam.son("Rod");
+			fam.daughter("Todd");
+		}
+	}
+	
+	public void moveLisaToFlandersAsDaugther(int nrOfFamilies) {
+		for(int i = 0; i < nrOfFamilies; i++) {
+			moveLisaToFlandersAsDaughter("Simpson_" + i, "Flanders_" + i);
+		}
+	}
 
 	public void createFatherHomer() {
 		Optional<Family> family = register.get().getFamilies().stream()
@@ -156,6 +172,17 @@ public class FamilyHelper {
 		if (firstBart == null) {
 			firstBart = family.getSons().get(0);
 		}
+	}
+	
+	public void createSonHugo(int nrOfFamilies) {
+		for(var i = 0; i < nrOfFamilies; i++) {
+			createSonHugo("Simpson_" + i);
+		}
+	}
+	
+	public void createSonHugo(String simpsonFamily) {
+		Family family = getFromRegister(simpsonFamily);
+		builder.family(family).son("Hugo");
 	}
 
 	public void createDaughterLisa() {
@@ -206,6 +233,20 @@ public class FamilyHelper {
 			assertTrue(family.getName().equals("Simpson"));
 			deleteMemberFromFamily(FamiliesPackage.Literals.FAMILY__SONS, family, family.getSons().get(0));
 		}
+	}
+	
+	public void moveLisaToFlandersAsDaughter(String simpsonFamilyName, String flandersFamilyName) {
+		Family simspons = getFromRegister(simpsonFamilyName);
+		Family flanders = getFromRegister(flandersFamilyName);
+		Optional<FamilyMember> liz = simspons.getDaughters().stream().filter(f -> f.getName().equals("Lisa")).findAny();
+
+		assertTrue(liz.isPresent());
+		FamilyMember lisa = liz.get();
+
+		moveNode.accept(lisa, List.of(lisa.getDaughtersInverse(), FamiliesPackage.Literals.FAMILY__DAUGHTERS, flanders,
+				FamiliesPackage.Literals.FAMILY__DAUGHTERS));
+
+		flanders.getDaughters().add(lisa);
 	}
 	
 	public void moveLisaToFlandersAsDaughter() {

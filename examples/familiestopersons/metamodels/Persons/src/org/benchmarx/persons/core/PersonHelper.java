@@ -284,6 +284,17 @@ public class PersonHelper {
 		deletePersonFromRegister(person);
 	}
 	
+	public void deleteLisa(int nrOfFamilies) {
+		for(var i = 0; i < nrOfFamilies; i++) {
+			deleteLisa("Simpson_" + i);
+		}
+	}
+	
+	public void deleteLisa(String familyName) {
+		Person person = getFromRegister(familyName + ", Lisa");
+		deletePersonFromRegister(person);
+	}
+	
 	public void deleteLisa() {
 		Person person = getFromRegister("Simpson, Lisa");
 		deletePersonFromRegister(person);
