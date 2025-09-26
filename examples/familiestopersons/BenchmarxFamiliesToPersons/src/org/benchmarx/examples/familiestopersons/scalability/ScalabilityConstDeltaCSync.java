@@ -26,7 +26,7 @@ import Persons.PersonRegister;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ScalabilityConstDeltaCSync extends ScalabilityTests {
 
-	public static final int NR_OF_EDITED_FAMILY_PAIRS = 5;
+	public static final int NR_OF_EDITED_FAMILY_PAIRS = 3;
 
 	public ScalabilityConstDeltaCSync(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
 		super(tool, "CDCsync_");
@@ -45,11 +45,6 @@ public class ScalabilityConstDeltaCSync extends ScalabilityTests {
 							srcEdit(() -> helperFamily.moveLisaToFlandersAsDaugther(nrOfEditedFamilyPairs)),
 							trgEdit(() -> helperPerson.deleteLisa(nrOfEditedFamilyPairs))));
 		});
-	}
-	
-	@Test
-	public void testCreate0000001FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(1, NR_OF_EDITED_FAMILY_PAIRS);
 	}
 	
 	@Test

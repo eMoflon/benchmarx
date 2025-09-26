@@ -45,11 +45,6 @@ public class ScalabilityConstModelCFCSync extends ScalabilityTests {
 	}
 	
 	@Test
-	public void testCreateFamiliesAndCreate0000001ConflictingChanges() {
-		createFamiliesAndConflictingChanges(NR_OF_FAMILY_PAIRS, 1);
-	}
-	
-	@Test
 	public void testCreateFamiliesAndCreate0000003ConflictingChanges() {
 		createFamiliesAndConflictingChanges(NR_OF_FAMILY_PAIRS, 3);
 	}

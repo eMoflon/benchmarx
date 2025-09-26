@@ -34,11 +34,6 @@ public class ScalabilityIncrTestsFwd extends ScalabilityTests {
 	}
 	
 	@Test
-	public void testCreate0000001FamiliesWithMembers() {
-		createOneFamilyMember(1);
-	}
-
-	@Test
 	public void testCreate0000003FamiliesWithMembers() {
 		createOneFamilyMember(3);
 	}

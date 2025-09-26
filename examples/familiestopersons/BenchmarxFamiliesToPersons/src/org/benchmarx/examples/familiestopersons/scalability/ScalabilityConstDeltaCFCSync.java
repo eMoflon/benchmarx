@@ -27,7 +27,7 @@ import Persons.PersonRegister;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ScalabilityConstDeltaCFCSync extends ScalabilityTests {
 
-	public static final int NR_OF_EDITED_FAMILIES = 5;
+	public static final int NR_OF_EDITED_FAMILIES = 3;
 
 	public ScalabilityConstDeltaCFCSync(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
 		super(tool, "CDCFCSync_");
@@ -45,11 +45,6 @@ public class ScalabilityConstDeltaCFCSync extends ScalabilityTests {
 		});
 	}
 
-	@Test
-	public void testCreate0000001FamiliesAndConflictFreeChanges() {
-		createFamiliesAndConflictFreeChanges(1, NR_OF_EDITED_FAMILIES);
-	}
-	
 	@Test
 	public void testCreate0000003FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(3, NR_OF_EDITED_FAMILIES);

@@ -18,6 +18,7 @@ import org.benchmarx.edit.DeleteNode;
 import org.benchmarx.edit.Edit;
 import org.benchmarx.edit.IEdit;
 import org.benchmarx.edit.MoveNode;
+import org.benchmarx.examples.familiestopersons.implementations.bxtend.BXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.eneo.ENeoFamiliesToPersons;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.families.core.FamilyHelper;
@@ -126,7 +127,7 @@ public abstract class FamiliesToPersonsTestCase {
 	@Parameters(name = "{0}")
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
 		return Arrays.asList(//
-				//new BXtendFamiliesToPersons(),
+				new BXtendFamiliesToPersons(),
 				
 				/*
 				 * See setup instructions: /implementations/bigul/README-SETUP

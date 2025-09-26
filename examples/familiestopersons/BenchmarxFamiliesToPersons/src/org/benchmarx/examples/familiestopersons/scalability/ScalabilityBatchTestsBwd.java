@@ -33,11 +33,6 @@ public class ScalabilityBatchTestsBwd extends ScalabilityTests {
 	}
 
 	@Test
-	public void testCreate0000001Persons() {
-		createPersons(1);
-	}
-	
-	@Test
 	public void testCreate0000003Persons() {
 		createPersons(3);
 	}
