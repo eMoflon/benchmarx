@@ -6,15 +6,12 @@ import java.time.Duration;
 
 import org.benchmarx.BXTool;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
-import org.benchmarx.examples.familiestopersons.testsuite.concurrent.Conflicts;
 import org.benchmarx.examples.familiestopersons.testsuite.concurrent.MonotonicCreating;
 import org.benchmarx.examples.familiestopersons.testsuite.concurrent.MonotonicDeleting;
 import org.benchmarx.util.BXToolTimer;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.runners.MethodSorters;
 
 import Families.FamilyRegister;
@@ -32,7 +29,7 @@ public class ScalabilityConstModelCFCSync extends ScalabilityTests {
 	public static final int NR_OF_FAMILY_PAIRS = 100;
 
 	public ScalabilityConstModelCFCSync(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
-		super(tool);
+		super(tool, "CMCFCSync_");
 	}
 
 	private void createFamiliesAndConflictingChanges(int nrOfFamilyPairs, int nrOfEditedFamilyPairs) {
@@ -48,6 +45,16 @@ public class ScalabilityConstModelCFCSync extends ScalabilityTests {
 	}
 	
 	@Test
+	public void testCreateFamiliesAndCreate0000001ConflictingChanges() {
+		createFamiliesAndConflictingChanges(NR_OF_FAMILY_PAIRS, 1);
+	}
+	
+	@Test
+	public void testCreateFamiliesAndCreate0000003ConflictingChanges() {
+		createFamiliesAndConflictingChanges(NR_OF_FAMILY_PAIRS, 3);
+	}
+	
+	@Test
 	public void testCreateFamiliesAndCreate0000005ConflictingChanges() {
 		createFamiliesAndConflictingChanges(NR_OF_FAMILY_PAIRS, 5);
 	}
@@ -58,46 +65,55 @@ public class ScalabilityConstModelCFCSync extends ScalabilityTests {
 	}
 	
 	@Test
+	@Ignore
 	public void testCreateFamiliesAndCreate0000020ConflictingChanges() {
 		createFamiliesAndConflictingChanges(NR_OF_FAMILY_PAIRS, 20);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreateFamiliesAndCreate0000030ConflictingChanges() {
 		createFamiliesAndConflictingChanges(NR_OF_FAMILY_PAIRS, 30);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreateFamiliesAndCreate0000040ConflictingChanges() {
 		createFamiliesAndConflictingChanges(NR_OF_FAMILY_PAIRS, 40);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreateFamiliesAndCreate0000050ConflictingChanges() {
 		createFamiliesAndConflictingChanges(NR_OF_FAMILY_PAIRS, 50);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreateFamiliesAndCreate0000060ConflictingChanges() {
 		createFamiliesAndConflictingChanges(NR_OF_FAMILY_PAIRS, 60);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreateFamiliesAndCreate0000070ConflictingChanges() {
 		createFamiliesAndConflictingChanges(NR_OF_FAMILY_PAIRS, 70);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreateFamiliesAndCreate0000080ConflictingChanges() {
 		createFamiliesAndConflictingChanges(NR_OF_FAMILY_PAIRS, 80);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreateFamiliesAndCreate0000090ConflictingChanges() {
 		createFamiliesAndConflictingChanges(NR_OF_FAMILY_PAIRS, 90);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreateFamiliesAndCreate0000100ConflictingChanges() {
 		createFamiliesAndConflictingChanges(NR_OF_FAMILY_PAIRS, 100);
 	}

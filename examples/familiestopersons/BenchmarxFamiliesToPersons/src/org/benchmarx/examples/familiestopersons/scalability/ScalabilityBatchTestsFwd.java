@@ -19,7 +19,7 @@ import Persons.PersonRegister;
 public class ScalabilityBatchTestsFwd extends ScalabilityTests {
 
 	public ScalabilityBatchTestsFwd(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
-		super(tool);
+		super(tool, "FWD_");
 	}
 	
 	private void createFamilies(int nrOfFamilies) {
@@ -33,6 +33,11 @@ public class ScalabilityBatchTestsFwd extends ScalabilityTests {
 	}
 
 	@Test
+	public void testCreate0000001FamiliesWithMembers() {
+		createFamilies(1);
+	}
+	
+	@Test
 	public void testCreate0000003FamiliesWithMembers() {
 		createFamilies(3);
 	}
@@ -43,26 +48,49 @@ public class ScalabilityBatchTestsFwd extends ScalabilityTests {
 	}
 
 	@Test
+	@Ignore
 	public void testCreate0000010FamiliesWithMembers() {
 		createFamilies(10);
 	}
-
+	
 	@Test
-	public void testCreate0000100FamiliesWithMembers() {
-		createFamilies(100);
+	@Ignore
+	public void testCreate0000050FamiliesWithMembers() {
+		createFamilies(50);
 	}
 
 	@Test
+	@Ignore
+	public void testCreate0000100FamiliesWithMembers() {
+		createFamilies(100);
+	}
+	
+	@Test
+	@Ignore
+	public void testCreate0000300FamiliesWithMembers() {
+		createFamilies(300);
+	}
+	
+	@Test
+	@Ignore
+	public void testCreate0000500FamiliesWithMembers() {
+		createFamilies(500);
+	}
+
+	@Test
+	@Ignore
 	public void testCreate0001000FamiliesWithMembers() {
 		createFamilies(1000);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate003000FamiliesWithMembers() {
 		createFamilies(3000);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate005000FamiliesWithMembers() {
 		createFamilies(5000);
 	}

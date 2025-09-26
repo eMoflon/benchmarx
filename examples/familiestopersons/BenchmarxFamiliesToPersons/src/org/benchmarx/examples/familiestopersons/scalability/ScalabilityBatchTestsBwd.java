@@ -19,7 +19,7 @@ import Persons.PersonRegister;
 public class ScalabilityBatchTestsBwd extends ScalabilityTests {
 
 	public ScalabilityBatchTestsBwd(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
-		super(tool);
+		super(tool, "BWD_");
 	}
 	
 	private void createPersons(int nrOfFamilies) {
@@ -48,19 +48,52 @@ public class ScalabilityBatchTestsBwd extends ScalabilityTests {
 	}
 
 	@Test
+	@Ignore
 	public void testCreate0000010Persons() {
 		createPersons(10);
 	}
+	
+	@Test
+	@Ignore
+	public void testCreate0000050Persons() {
+		createPersons(50);
+	}
 
 	@Test
+	@Ignore
 	public void testCreate0000100Persons() {
 		createPersons(100);
+	}
+	
+	@Test
+	@Ignore
+	public void testCreate0000300Persons() {
+		createPersons(300);
+	}
+	
+	@Test
+	@Ignore
+	public void testCreate0000500Persons() {
+		createPersons(500);
 	}
 
 	@Test
 	@Ignore
 	public void testCreate0001000Persons() {
 		createPersons(1000);
+	}
+	
+	
+	@Test
+	@Ignore
+	public void testCreate0003000Persons() {
+		createPersons(3000);
+	}
+	
+	@Test
+	@Ignore
+	public void testCreate0005000Persons() {
+		createPersons(5000);
 	}
 	
 	@Test

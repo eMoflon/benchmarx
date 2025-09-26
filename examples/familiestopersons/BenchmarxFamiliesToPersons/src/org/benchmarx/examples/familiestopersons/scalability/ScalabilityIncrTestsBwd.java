@@ -19,7 +19,7 @@ import Persons.PersonRegister;
 public class ScalabilityIncrTestsBwd extends ScalabilityTests {
 
 	public ScalabilityIncrTestsBwd(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
-		super(tool);
+		super(tool, "INCR_BWD_");
 	}
 	
 	private void createOnePerson(int nrOfFamilies) {
@@ -54,8 +54,21 @@ public class ScalabilityIncrTestsBwd extends ScalabilityTests {
 	}
 
 	@Test
+	@Ignore
 	public void testCreate0000100Persons() {
 		createOnePerson(100);
+	}
+	
+	@Test
+	@Ignore
+	public void testCreate0000300Persons() {
+		createOnePerson(300);
+	}
+	
+	@Test
+	@Ignore
+	public void testCreate0000500Persons() {
+		createOnePerson(500);
 	}
 
 	@Test

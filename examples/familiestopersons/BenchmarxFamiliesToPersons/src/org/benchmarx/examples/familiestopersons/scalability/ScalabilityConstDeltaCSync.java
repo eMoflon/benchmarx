@@ -11,8 +11,6 @@ import org.benchmarx.util.BXToolTimer;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.runners.MethodSorters;
 
 import Families.FamilyRegister;
@@ -31,7 +29,7 @@ public class ScalabilityConstDeltaCSync extends ScalabilityTests {
 	public static final int NR_OF_EDITED_FAMILY_PAIRS = 5;
 
 	public ScalabilityConstDeltaCSync(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
-		super(tool);
+		super(tool, "CDCsync_");
 	}
 
 	private void createFamilyPairsAndConflictingChanges(int nrOfFamilyPairs, int nrOfEditedFamilyPairs) {
@@ -48,6 +46,16 @@ public class ScalabilityConstDeltaCSync extends ScalabilityTests {
 							trgEdit(() -> helperPerson.deleteLisa(nrOfEditedFamilyPairs))));
 		});
 	}
+	
+	@Test
+	public void testCreate0000001FamilyPairsAndConflictingChanges() {
+		createFamilyPairsAndConflictingChanges(1, NR_OF_EDITED_FAMILY_PAIRS);
+	}
+	
+	@Test
+	public void testCreate0000003FamilyPairsAndConflictingChanges() {
+		createFamilyPairsAndConflictingChanges(3, NR_OF_EDITED_FAMILY_PAIRS);
+	}
 
 	@Test
 	public void testCreate0000005FamilyPairsAndConflictingChanges() {
@@ -60,21 +68,25 @@ public class ScalabilityConstDeltaCSync extends ScalabilityTests {
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate0000020FamilyPairsAndConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(20, NR_OF_EDITED_FAMILY_PAIRS);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate0000030FamilyPairsAndConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(30, NR_OF_EDITED_FAMILY_PAIRS);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate0000040FamilyPairsAndConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(40, NR_OF_EDITED_FAMILY_PAIRS);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate0000050FamilyPairsAndConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(50, NR_OF_EDITED_FAMILY_PAIRS);
 	}

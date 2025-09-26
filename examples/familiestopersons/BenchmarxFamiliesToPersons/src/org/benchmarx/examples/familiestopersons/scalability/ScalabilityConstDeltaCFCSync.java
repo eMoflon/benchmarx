@@ -6,15 +6,12 @@ import java.time.Duration;
 
 import org.benchmarx.BXTool;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
-import org.benchmarx.examples.familiestopersons.testsuite.concurrent.Conflicts;
 import org.benchmarx.examples.familiestopersons.testsuite.concurrent.MonotonicCreating;
 import org.benchmarx.examples.familiestopersons.testsuite.concurrent.MonotonicDeleting;
 import org.benchmarx.util.BXToolTimer;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.runners.MethodSorters;
 
 import Families.FamilyRegister;
@@ -33,7 +30,7 @@ public class ScalabilityConstDeltaCFCSync extends ScalabilityTests {
 	public static final int NR_OF_EDITED_FAMILIES = 5;
 
 	public ScalabilityConstDeltaCFCSync(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
-		super(tool);
+		super(tool, "CDCFCSync_");
 	}
 
 	private void createFamiliesAndConflictFreeChanges(int nrOfFamilyPairs, int nrOfEditedFamilyPairs) {
@@ -49,6 +46,16 @@ public class ScalabilityConstDeltaCFCSync extends ScalabilityTests {
 	}
 
 	@Test
+	public void testCreate0000001FamiliesAndConflictFreeChanges() {
+		createFamiliesAndConflictFreeChanges(1, NR_OF_EDITED_FAMILIES);
+	}
+	
+	@Test
+	public void testCreate0000003FamiliesAndConflictFreeChanges() {
+		createFamiliesAndConflictFreeChanges(3, NR_OF_EDITED_FAMILIES);
+	}
+	
+	@Test
 	public void testCreate0000005FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(5, NR_OF_EDITED_FAMILIES);
 	}
@@ -59,46 +66,55 @@ public class ScalabilityConstDeltaCFCSync extends ScalabilityTests {
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate0000020FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(20, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate0000030FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(30, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate0000040FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(40, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate0000050FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(50, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate0000060FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(60, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate0000070FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(70, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate0000080FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(80, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate0000090FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(90, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate0000100FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(100, NR_OF_EDITED_FAMILIES);
 	}

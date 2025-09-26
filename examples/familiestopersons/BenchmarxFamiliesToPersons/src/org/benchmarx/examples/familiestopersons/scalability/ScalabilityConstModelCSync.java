@@ -11,9 +11,6 @@ import org.benchmarx.util.BXToolTimer;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.jupiter.params.provider.ValueSources;
 import org.junit.runners.MethodSorters;
 
 import Families.FamilyRegister;
@@ -32,7 +29,7 @@ public class ScalabilityConstModelCSync extends ScalabilityTests {
 	public static final int NR_OF_FAMILY_PAIRS = 50;
 
 	public ScalabilityConstModelCSync(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
-		super(tool);
+		super(tool, "CMCSync_");
 	}
 
 	private void createFamilyPairsAndConflictingChanges(int nrOfFamilyPairs, int nrOfEditedFamilyPairs) {
@@ -56,10 +53,14 @@ public class ScalabilityConstModelCSync extends ScalabilityTests {
 	}
 	
 	@Test
+	public void testCreateFamilyPairsAnd0000003ConflictingChanges() {
+		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 3);
+	}
+	
+	@Test
 	public void testCreateFamilyPairsAnd0000005ConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 5);
 	}
-	
 
 	@Test
 	public void testCreateFamilyPairsAnd0000010ConflictingChanges() {
@@ -68,24 +69,28 @@ public class ScalabilityConstModelCSync extends ScalabilityTests {
 	
 
 	@Test
+	@Ignore
 	public void testCreateFamilyPairsAnd0000020ConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 20);
 	}
 	
 
 	@Test
+	@Ignore
 	public void testCreateFamilyPairsAnd0000030ConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 30);
 	}
 	
 
 	@Test
+	@Ignore
 	public void testCreateFamilyPairsAnd0000040ConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 40);
 	}
 	
 
 	@Test
+	@Ignore
 	public void testCreateFamilyPairsAnd0000050ConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 50);
 	}

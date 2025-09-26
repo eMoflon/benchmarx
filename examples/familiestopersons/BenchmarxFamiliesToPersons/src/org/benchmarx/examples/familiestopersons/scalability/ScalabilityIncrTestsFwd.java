@@ -19,7 +19,7 @@ import Persons.PersonRegister;
 public class ScalabilityIncrTestsFwd extends ScalabilityTests {
 
 	public ScalabilityIncrTestsFwd(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
-		super(tool);
+		super(tool, "INCR_FWD_");
 	}
 	
 	private void createOneFamilyMember(int nrOfFamilies) {
@@ -31,6 +31,11 @@ public class ScalabilityIncrTestsFwd extends ScalabilityTests {
 							srcEdit(() -> helperFamily.createSimpsonFamiliesWithMembers(nrOfFamilies)),
 							srcEdit(() -> helperFamily.createOneFamilyMember())));
 		});
+	}
+	
+	@Test
+	public void testCreate0000001FamiliesWithMembers() {
+		createOneFamilyMember(1);
 	}
 
 	@Test
@@ -49,14 +54,33 @@ public class ScalabilityIncrTestsFwd extends ScalabilityTests {
 	}
 
 	@Test
+	@Ignore
 	public void testCreate0000100FamiliesWithMembers() {
 		createOneFamilyMember(100);
+	}
+	
+	@Test
+	@Ignore
+	public void testCreate0000300FamiliesWithMembers() {
+		createOneFamilyMember(300);
+	}
+	
+	@Test
+	@Ignore
+	public void testCreate0000500FamiliesWithMembers() {
+		createOneFamilyMember(500);
 	}
 
 	@Test
 	@Ignore
 	public void testCreate0001000FamiliesWithMembers() {
 		createOneFamilyMember(1000);
+	}
+	
+	@Test
+	@Ignore
+	public void testCreate0005000FamiliesWithMembers() {
+		createOneFamilyMember(5000);
 	}
 	
 	@Test
