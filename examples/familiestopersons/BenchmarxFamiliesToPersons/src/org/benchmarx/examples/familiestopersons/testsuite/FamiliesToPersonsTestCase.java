@@ -152,7 +152,7 @@ public abstract class FamiliesToPersonsTestCase {
 				/*
 				 * See setup instructions: /implementations/eneo/README-SETUP
 				 */
-				new ENeoFamiliesToPersons()// Currently 8 failures (and some non-determinism)
+				new ENeoFamiliesToPersons()// Currently 9 failures
 				//,
 				// new EMoflonFamiliesToPersons(), //
 				// new MediniQVTFamiliesToPersons(), //
