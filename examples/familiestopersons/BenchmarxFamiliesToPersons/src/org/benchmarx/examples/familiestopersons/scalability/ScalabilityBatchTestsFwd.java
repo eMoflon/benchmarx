@@ -48,7 +48,6 @@ public class ScalabilityBatchTestsFwd extends ScalabilityTests {
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000050FamiliesWithMembers() {
 		createFamilies(50);
 	}

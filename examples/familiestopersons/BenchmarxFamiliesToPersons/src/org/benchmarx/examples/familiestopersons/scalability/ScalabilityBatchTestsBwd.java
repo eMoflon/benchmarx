@@ -48,7 +48,6 @@ public class ScalabilityBatchTestsBwd extends ScalabilityTests {
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000050Persons() {
 		createPersons(50);
 	}

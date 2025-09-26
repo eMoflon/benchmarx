@@ -9,7 +9,6 @@ import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.examples.familiestopersons.testsuite.concurrent.Conflicts;
 import org.benchmarx.util.BXToolTimer;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
@@ -64,28 +63,24 @@ public class ScalabilityConstModelCSync extends ScalabilityTests {
 	
 
 	@Test
-	@Ignore
 	public void testCreateFamilyPairsAnd0000020ConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 20);
 	}
 	
 
 	@Test
-	@Ignore
 	public void testCreateFamilyPairsAnd0000030ConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 30);
 	}
 	
 
 	@Test
-	@Ignore
 	public void testCreateFamilyPairsAnd0000040ConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 40);
 	}
 	
 
 	@Test
-	@Ignore
 	public void testCreateFamilyPairsAnd0000050ConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 50);
 	}

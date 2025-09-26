@@ -61,25 +61,21 @@ public class ScalabilityConstDeltaCFCSync extends ScalabilityTests {
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000020FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(20, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000030FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(30, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000040FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(40, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000050FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(50, NR_OF_EDITED_FAMILIES);
 	}

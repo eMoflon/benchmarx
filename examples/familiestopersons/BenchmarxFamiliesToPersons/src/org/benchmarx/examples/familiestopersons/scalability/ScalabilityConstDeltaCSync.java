@@ -9,7 +9,6 @@ import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.examples.familiestopersons.testsuite.concurrent.Conflicts;
 import org.benchmarx.util.BXToolTimer;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
@@ -63,25 +62,21 @@ public class ScalabilityConstDeltaCSync extends ScalabilityTests {
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000020FamilyPairsAndConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(20, NR_OF_EDITED_FAMILY_PAIRS);
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000030FamilyPairsAndConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(30, NR_OF_EDITED_FAMILY_PAIRS);
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000040FamilyPairsAndConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(40, NR_OF_EDITED_FAMILY_PAIRS);
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000050FamilyPairsAndConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(50, NR_OF_EDITED_FAMILY_PAIRS);
 	}
