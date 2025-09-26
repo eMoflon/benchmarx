@@ -36,7 +36,7 @@ public class ScalabilityConstModelCSync extends ScalabilityTests {
 		var timer = new BXToolTimer<>(tool, REPEAT);
 
 		assertTimeoutPreemptively(Duration.ofSeconds(TIMEOUT * REPEAT), () -> {
-			results.put(nrOfFamilyPairs, //
+			results.put(nrOfEditedFamilyPairs, //
 					timer.timeEditAfterSetUpInS(
 							srcEdit(() -> {
 								helperFamily.createSimpsonFamiliesWithMembers(nrOfFamilyPairs);
