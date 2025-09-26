@@ -133,6 +133,29 @@ public class BXToolTimer<S, T, D> {
 		return timeSourceEditAfterSetUpInMS(setup, edit) / 1000.0;
 	}
 
+	/**
+	 * Perform runtime measurements after an initial setup (i.e., for incremental
+	 * transformations)
+	 * 
+	 * @param setup The initial source edit that is propagated to establish the
+	 *              starting point for the measurement. This is not measured.
+	 * @param sourceEdit  The source edit to be propagated.
+	 * @param targetEdit  The target edit to be propagated.
+	 * @return The median of propagating both edits REPEAT times (each time executed after
+	 *         a fresh setup).
+	 */
+	public long timeEditAfterSetUpInMS(Supplier<IEdit<S>> setup, Supplier<IEdit<S>> sourceEdit, Supplier<IEdit<T>> targetEdit) {
+		return median(() -> timeAfterSetup(() -> tool.performAndPropagateSourceEdit(setup),
+				() -> tool.performAndPropagateEdit(sourceEdit, targetEdit)));
+	}
+	
+	/**
+	 * See {@link #timeSourceEditAfterSetUpInMS(Consumer, Consumer)}
+	 */
+	public double timeEditAfterSetUpInS(Supplier<IEdit<S>> setup, Supplier<IEdit<S>> sourceEdit, Supplier<IEdit<T>> targetEdit) {
+		return timeEditAfterSetUpInMS(setup, sourceEdit, targetEdit) / 1000.0;
+	}
+	
 	public String getName() {
 		return tool.getName();
 	}
