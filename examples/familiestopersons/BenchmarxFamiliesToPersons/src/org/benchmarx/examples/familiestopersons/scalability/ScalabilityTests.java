@@ -25,7 +25,7 @@ import Persons.PersonsPackage;
 public abstract class ScalabilityTests extends FamiliesToPersonsTestCase {
 	private static final String DELIMITER = "\n";
 	protected static final int REPEAT = 3;
-	protected static final int TIMEOUT = 3600; // seconds
+	protected static final int TIMEOUT = 7200; // seconds
 	private static final String resultFolder = "scalability_results";
 
 	protected static Map<Integer, Double> results;

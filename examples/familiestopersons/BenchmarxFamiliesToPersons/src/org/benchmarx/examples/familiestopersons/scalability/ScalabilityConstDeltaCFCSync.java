@@ -10,7 +10,6 @@ import org.benchmarx.examples.familiestopersons.testsuite.concurrent.MonotonicCr
 import org.benchmarx.examples.familiestopersons.testsuite.concurrent.MonotonicDeleting;
 import org.benchmarx.util.BXToolTimer;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
@@ -81,31 +80,26 @@ public class ScalabilityConstDeltaCFCSync extends ScalabilityTests {
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000060FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(60, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000070FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(70, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000080FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(80, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000090FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(90, NR_OF_EDITED_FAMILIES);
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000100FamiliesAndConflictFreeChanges() {
 		createFamiliesAndConflictFreeChanges(100, NR_OF_EDITED_FAMILIES);
 	}

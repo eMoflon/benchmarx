@@ -54,13 +54,11 @@ public class ScalabilityIncrTestsFwd extends ScalabilityTests {
 	}
 
 	@Test
-	@Ignore
 	public void testCreate0000100FamiliesWithMembers() {
 		createOneFamilyMember(100);
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000300FamiliesWithMembers() {
 		createOneFamilyMember(300);
 	}

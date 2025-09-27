@@ -54,13 +54,11 @@ public class ScalabilityIncrTestsBwd extends ScalabilityTests {
 	}
 
 	@Test
-	@Ignore
 	public void testCreate0000100Persons() {
 		createOnePerson(100);
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate0000300Persons() {
 		createOnePerson(300);
 	}
