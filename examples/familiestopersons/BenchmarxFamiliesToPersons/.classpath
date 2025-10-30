@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="org/benchmarx/examples/familiestopersons/scalability/ScalabilityMeasurements.java|org/benchmarx/examples/familiestopersons/implementations/ibextgg/integrate/F2PStandardUpdatePolicy.java|org/benchmarx/examples/familiestopersons/implementations/ibextgg/integrate/F2PUpdatePolicy.java|org/benchmarx/examples/familiestopersons/implementations/ibextgg/integrate/IBeXTGGIntegrateFamiliesToPersons.java|org/benchmarx/examples/familiestopersons/implementations/ibextgg/" kind="src" path="src"/>
+	<classpathentry excluding="org/benchmarx/examples/familiestopersons/scalability/ScalabilityMeasurements.java|org/benchmarx/examples/familiestopersons/implementations/ibextgg/F2PUpdatePolicy.java|org/benchmarx/examples/familiestopersons/implementations/ibextgg/IBeXTGGFamiliesToPersons.java" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -28,5 +28,6 @@
 	<classpathentry kind="lib" path="lib/eneo/ortools-darwin-x86-64-9.12.4544.jar"/>
 	<classpathentry kind="lib" path="lib/eneo/ortools-java-9.12.4544.jar"/>
 	<classpathentry kind="lib" path="lib/eneo/protobuf-java-2.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/eneo/ortools-win32-x86-64-9.12.4544.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

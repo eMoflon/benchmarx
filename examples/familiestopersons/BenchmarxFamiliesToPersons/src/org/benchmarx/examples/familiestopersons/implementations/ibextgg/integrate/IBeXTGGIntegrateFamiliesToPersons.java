@@ -145,4 +145,9 @@ public class IBeXTGGIntegrateFamiliesToPersons implements BXTool<FamilyRegister,
 		assertTrue(expectedTarget.startsWith("PersonRegister"));
 		assertEquals(expectedTarget, actualTarget);
 	}
+	
+	@Override
+	public String getName() {
+		return "IBeX-TGG";
+	}
 }

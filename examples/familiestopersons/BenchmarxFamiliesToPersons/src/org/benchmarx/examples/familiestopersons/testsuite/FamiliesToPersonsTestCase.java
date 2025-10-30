@@ -21,6 +21,7 @@ import org.benchmarx.edit.MoveNode;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.BXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.WrapperOverBXtendWithMerge;
 import org.benchmarx.examples.familiestopersons.implementations.eneo.ENeoFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.implementations.ibextgg.integrate.IBeXTGGIntegrateFamiliesToPersons;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
@@ -162,18 +163,18 @@ public abstract class FamiliesToPersonsTestCase {
 				 * Solutions for CSync
 				 */
 				
-				new BXtendFamiliesToPersons(), // No failures
-				new WrapperOverBXtendWithMerge() // No Failures
+//				new BXtendFamiliesToPersons(), // No failures
+//				new WrapperOverBXtendWithMerge() // No Failures
 				
 				/*
 				 * See setup instructions: /implementations/eneo/README-SETUP
 				 */
-				//new ENeoFamiliesToPersons() // Currently 9 failures
+//				new ENeoFamiliesToPersons(), // Currently 9 failures
 
 				/*
 				 * See setup instructions: /implementations/ibextgg/integrate/README-SETUP
 				 */
-				//new IBeXTGGIntegrateFamiliesToPersons()
+				new IBeXTGGIntegrateFamiliesToPersons()
 				);
 	}
 

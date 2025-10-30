@@ -6,8 +6,8 @@ import org.emoflon.neo.cypher.models.*;
 
 public class API_Common {
 	// Default values (might have to be changed)
-	public static final String PLATFORM_PLUGIN_URI = "/Users/anthonyanjorin/git/emoflon-neo/";
-	public static final String NEOCORE_URI_INSTALLED = "/Users/anthonyanjorin/git/emoflon-neo/org.emoflon.neo.neocore/";
+	public static final String PLATFORM_PLUGIN_URI = "/G:/ES/Eclipse/eclipse-241023/plugins/";
+	public static final String NEOCORE_URI_INSTALLED = "/G:/ES/Eclipse/eclipse-241023/plugins/org.emoflon.neo.neocore_1.0.0.202510231833/";
 	public static final String PLATFORM_RESOURCE_URI = "../";
 
 	public static NeoCoreBuilder createBuilder() {
