@@ -1,14 +1,9 @@
 package org.benchmarx.examples.familiestopersons.scalability;
 
-import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
-
-import java.time.Duration;
-
 import org.benchmarx.BXTool;
+import org.benchmarx.examples.familiestopersons.scalability.cases.IncrTestsBwdTestcase;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
-import org.benchmarx.util.BXToolTimer;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
@@ -23,18 +18,7 @@ public class ScalabilityIncrTestsBwd extends ScalabilityTests {
 	}
 	
 	private void createOnePerson(int nrOfFamilies) {
-		var timer = new BXToolTimer<>(tool, REPEAT);
-		
-		assertLastTestSuccessfull();
-		
-		assertTimeoutPreemptively(Duration.ofSeconds(TIMEOUT * REPEAT), () -> {
-			results.put(nrOfFamilies, //
-					timer.timeTargetEditAfterSetUpInS(
-							trgEdit(() -> helperPerson.createPersons(nrOfFamilies, 5)),
-							trgEdit(() -> helperPerson.createOnePerson())));
-		});
-		
-		setTestSuccessfull();
+		runTest(IncrTestsBwdTestcase.class, tool.getName(), nrOfFamilies);
 	}
 
 	@Test

@@ -1,17 +1,10 @@
 package org.benchmarx.examples.familiestopersons.scalability;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
-
-import java.time.Duration;
-
 import org.benchmarx.BXTool;
+import org.benchmarx.examples.familiestopersons.scalability.cases.ConstModelCSyncTestcase;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.examples.familiestopersons.testsuite.concurrent.Conflicts;
-import org.benchmarx.util.BXToolTimer;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
@@ -34,115 +27,100 @@ public class ScalabilityConstModelCSync extends ScalabilityTests {
 		super(tool, "CMCSync_");
 	}
 
-	private void createFamilyPairsAndConflictingChanges(int nrOfFamilyPairs, int nrOfEditedFamilyPairs) {
-		var timer = new BXToolTimer<>(tool, REPEAT);
-
-		assertLastTestSuccessfull();
-		
-		assertTimeoutPreemptively(Duration.ofSeconds(TIMEOUT * REPEAT), () -> {
-			results.put(nrOfEditedFamilyPairs, //
-					timer.timeEditAfterSetUpInS(
-							srcEdit(() -> {
-								helperFamily.createSimpsonFamiliesWithMembers(nrOfFamilyPairs);
-								helperFamily.createFlandersFamiliesWithMembers(nrOfFamilyPairs);
-								}),
-							srcEdit(() -> helperFamily.moveLisaToFlandersAsDaugther(nrOfEditedFamilyPairs)),
-							trgEdit(() -> helperPerson.deleteLisa(nrOfEditedFamilyPairs))));
-		});
-		
-		setTestSuccessfull();
+	private void createFamilyPairsAndConflictingChanges(int nrOfEditedFamilyPairs) {
+		runTest(ConstModelCSyncTestcase.class, tool.getName(), nrOfEditedFamilyPairs);
 	}
 
 	@Test
 	public void testCreate0000005FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 5);
+		createFamilyPairsAndConflictingChanges(5);
 	}
 	
 	@Test
 	public void testCreate0000010FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 10);
+		createFamilyPairsAndConflictingChanges(10);
 	}
 	
 	@Test
 	public void testCreate0000015FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 15);
+		createFamilyPairsAndConflictingChanges(15);
 	}
 	
 	@Test
 	public void testCreate0000020FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 20);
+		createFamilyPairsAndConflictingChanges(20);
 	}
 	
 	@Test
 	public void testCreate0000025FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 25);
+		createFamilyPairsAndConflictingChanges(25);
 	}
 	
 	@Test
 	public void testCreate0000030FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 30);
+		createFamilyPairsAndConflictingChanges(30);
 	}
 	
 	@Test
 	public void testCreate0000040FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 40);
+		createFamilyPairsAndConflictingChanges(40);
 	}
 	
 	@Test
 	public void testCreate0000050FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 50);
+		createFamilyPairsAndConflictingChanges(50);
 	}
 	
 
 	@Test
 	public void testCreate0000075FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 75);
+		createFamilyPairsAndConflictingChanges(75);
 	}
 	
 	@Test
 	public void testCreate0000100FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 100);
+		createFamilyPairsAndConflictingChanges(100);
 	}
 	
 	@Test
 	public void testCreate0000150FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 150);
+		createFamilyPairsAndConflictingChanges(150);
 	}
 	
 	@Test
 	public void testCreate0000200FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 200);
+		createFamilyPairsAndConflictingChanges(200);
 	}
 	
 
 	@Test
 	public void testCreate0000250FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 250);
+		createFamilyPairsAndConflictingChanges(250);
 	}
 	
 	@Test
 	public void testCreate0000300FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 300);
+		createFamilyPairsAndConflictingChanges(300);
 	}
 	
 	@Test
 	public void testCreate0000350FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 350);
+		createFamilyPairsAndConflictingChanges(350);
 	}
 	
 	@Test
 	public void testCreate0000400FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 400);
+		createFamilyPairsAndConflictingChanges(400);
 	}
 	
 	@Test
 	public void testCreate0000450FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 450);
+		createFamilyPairsAndConflictingChanges(450);
 	}
 	
 	@Test
 	public void testCreate0000500FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(NR_OF_FAMILY_PAIRS, 500);
+		createFamilyPairsAndConflictingChanges(500);
 	}
 	
 }

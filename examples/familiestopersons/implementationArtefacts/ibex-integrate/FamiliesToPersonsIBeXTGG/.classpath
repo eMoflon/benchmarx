@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="src-gen"/>
+	<classpathentry exported="true" kind="lib" path="lib/javabdd-silent.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/hipe.dependencies_1.0.0.202408061838.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/hipe.engine_1.0.0.202408061838.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/hipe.generator_1.0.0.202408061838.jar"/>

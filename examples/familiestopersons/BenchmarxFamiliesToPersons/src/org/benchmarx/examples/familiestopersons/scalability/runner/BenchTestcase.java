@@ -1,6 +1,5 @@
-package org.benchmarx.examples.familiestopersons.testsuite;
+package org.benchmarx.examples.familiestopersons.scalability.runner;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.BiConsumer;
@@ -18,8 +17,7 @@ import org.benchmarx.edit.DeleteNode;
 import org.benchmarx.edit.Edit;
 import org.benchmarx.edit.IEdit;
 import org.benchmarx.edit.MoveNode;
-import org.benchmarx.examples.familiestopersons.implementations.bxtend.BXtendFamiliesToPersons;
-import org.benchmarx.examples.familiestopersons.implementations.ibextgg.integrate.IBeXTGGIntegrateFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
@@ -28,19 +26,13 @@ import org.benchmarx.util.BenchmarxUtil;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
 import Families.FamiliesPackage;
 import Families.FamilyRegister;
 import Persons.PersonRegister;
 import Persons.PersonsPackage;
 
-@RunWith(Parameterized.class)
-public abstract class FamiliesToPersonsTestCase {
+public abstract class BenchTestcase {
 
 	protected BXTool<FamilyRegister, PersonRegister, Decisions> tool;
 	protected BiConsumer<FamilyRegister, FamilyRegister> familiesComparator;
@@ -50,8 +42,24 @@ public abstract class FamiliesToPersonsTestCase {
 	protected PersonHelper helperPerson;
 	protected IEdit<FamilyRegister> sourceEdit;
 	protected IEdit<PersonRegister> targetEdit;
+	
+	protected final int scaleFactor;
 
-	@Before
+	public BenchTestcase(String name, int scaleFactor) {
+		this.tool = getAvailableTools().stream() //
+				.filter(tool -> tool.getName().equals(name)).findFirst() //
+				.orElseThrow(() -> new IllegalArgumentException("Tool %s is not recognized".formatted(name)));
+		this.scaleFactor = scaleFactor;	
+	}
+	
+	protected void execute() {
+		initialise();
+		
+		executeTest(scaleFactor);
+		
+		System.exit(0);
+	}
+	
 	public void initialise() {
 		Logger.getRootLogger().setLevel(Level.INFO);
 		
@@ -70,6 +78,11 @@ public abstract class FamiliesToPersonsTestCase {
 		helperFamily = createAndInitialiseHelperFamily(() -> tool.getSourceModel(), () -> sourceEdit);
 		helperPerson = createAndInitialiseHelperPerson(() -> tool.getTargetModel(), () -> targetEdit);
 	}
+
+
+	protected abstract Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> getAvailableTools();
+
+	public abstract void executeTest(int scaleFactor);
 
 	public static FamilyHelper createAndInitialiseHelperFamily(Supplier<FamilyRegister> familyRegister,
 			Supplier<IEdit<FamilyRegister>> sourceEdit) {
@@ -117,69 +130,8 @@ public abstract class FamiliesToPersonsTestCase {
 		return new PersonHelper(personRegister, createTargetNode, createTargetEdge, changeTargetAttribute,
 				deleteTargetNode, deleteTargetEdge);
 	}
-
-	@After
-	public void terminate() {
-		tool.terminateSynchronisationDialogue();
-	}
-
-	// Solutions requiring additional setup are commented out.
-	@Parameters(name = "{0}")
-	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
-		return Arrays.asList(//
-				// new UbtXtendFamiliesToPersons(),
-				
-				// new IBeXTGGFamiliesToPersons(),
-				
-				/*
-				 * See setup instructions: /implementations/bigul/README-SETUP
-				 */
-				// new BiGULFamiliesToPersons(),
-
-				/*
-				 * Excluded due to problems with Closure
-				 */
-				// new FunnyQTFamiliesToPerson(),
-
-				/*
-				 * See setup instructions: /implementations/nmf/README-SETUP
-				 */
-				// new NMFFamiliesToPersonsIncremental(),
-
-				/*
-				 * Excluded due to problems with Emftext
-				 */
-				// new JTLFamiliesToPersons(),
-
-				// new EMoflonFamiliesToPersons(), 
-				
-				// new MediniQVTFamiliesToPersons(),
-				
-				// new MediniQVTFamiliesToPersonsConfig(), 
-				
-				/*
-				 * Solutions for CSync
-				 */
-				
-//				new BXtendFamiliesToPersons() // No failures
-//				new WrapperOverBXtendWithMerge() // No Failures
-				
-				/*
-				 * See setup instructions: /implementations/eneo/README-SETUP
-				 */
-//				new ENeoFamiliesToPersons(), // Currently 9 failures
-
-				/*
-				 * See setup instructions: /implementations/ibextgg/integrate/README-SETUP
-				 */
-				new IBeXTGGIntegrateFamiliesToPersons()
-				);
-	}
-
-	protected FamiliesToPersonsTestCase(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
-		this.tool = tool;
-	}
-
+	
+	
 	protected Supplier<IEdit<FamilyRegister>> srcEdit(Runnable... ops) {
 		return () -> {
 			sourceEdit = new Edit<FamilyRegister>();

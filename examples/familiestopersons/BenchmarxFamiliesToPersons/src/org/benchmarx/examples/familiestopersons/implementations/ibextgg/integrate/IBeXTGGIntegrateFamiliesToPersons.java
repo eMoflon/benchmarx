@@ -148,6 +148,6 @@ public class IBeXTGGIntegrateFamiliesToPersons implements BXTool<FamilyRegister,
 	
 	@Override
 	public String getName() {
-		return "IBeX-TGG";
+		return "IBeX-TGG-Integrate";
 	}
 }

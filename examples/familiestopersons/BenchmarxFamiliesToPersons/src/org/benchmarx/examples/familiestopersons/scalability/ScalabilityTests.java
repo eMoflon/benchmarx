@@ -5,29 +5,45 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.concurrent.TimeoutException;
+import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.benchmarx.BXTool;
+import org.benchmarx.edit.IEdit;
+import org.benchmarx.examples.familiestopersons.scalability.runner.BenchEntry;
+import org.benchmarx.examples.familiestopersons.scalability.runner.BenchTestcase;
+import org.benchmarx.examples.familiestopersons.scalability.runner.ScalabilityTestRunner;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.examples.familiestopersons.testsuite.FamiliesToPersonsTestCase;
-import org.benchmarx.families.core.FamiliesComparator;
-import org.benchmarx.persons.core.PersonsComparator;
+import org.benchmarx.families.core.FamilyHelper;
+import org.benchmarx.persons.core.PersonHelper;
 import org.benchmarx.util.BenchmarxUtil;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.AfterParam;
 import org.junit.runners.Parameterized.BeforeParam;
+import org.junit.runners.Parameterized.Parameters;
 
-import Families.FamiliesPackage;
 import Families.FamilyRegister;
 import Persons.PersonRegister;
-import Persons.PersonsPackage;
 
-public abstract class ScalabilityTests extends FamiliesToPersonsTestCase {
+@RunWith(Parameterized.class)
+public abstract class ScalabilityTests {
+	protected BXTool<FamilyRegister, PersonRegister, Decisions> tool;
+	protected BiConsumer<FamilyRegister, FamilyRegister> familiesComparator;
+	protected BiConsumer<PersonRegister, PersonRegister> personsComparator;
+	protected BenchmarxUtil<FamilyRegister, PersonRegister, Decisions> util;
+	protected FamilyHelper helperFamily;
+	protected PersonHelper helperPerson;
+	protected IEdit<FamilyRegister> sourceEdit;
+	protected IEdit<PersonRegister> targetEdit;
+	
 	private static final String DELIMITER = "\n";
 	protected static final int REPEAT = 5;
 	protected static final int TIMEOUT = 300; // seconds
@@ -38,30 +54,10 @@ public abstract class ScalabilityTests extends FamiliesToPersonsTestCase {
 	
 	private static boolean lastTestSuccessfull;
 	
-	@Override
-	public void initialise() {
-		Logger.getRootLogger().setLevel(Level.INFO);
-		
-		// Make sure packages are registered
-		FamiliesPackage.eINSTANCE.getName();
-		PersonsPackage.eINSTANCE.getName();
-
-		// Initialise all helpers
-		familiesComparator = new FamiliesComparator();
-		personsComparator = new PersonsComparator();
-		util = new BenchmarxUtil<>(tool);
-
-		// we overwrite the super method to avoid initialising the synchronisationDialog
-		// this happens within each test
-
-		helperFamily = createAndInitialiseHelperFamily(() -> tool.getSourceModel(), () -> sourceEdit);
-		helperPerson = createAndInitialiseHelperPerson(() -> tool.getTargetModel(), () -> targetEdit);
-	}
-	
-	@Override
-	public void terminate() {
-		// we overwrite the super method to avoid terminating the synchronisationDialog
-		// this happens within each test
+	@BeforeParam
+	public static void initResults(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
+		results = new HashMap<>();
+		lastTestSuccessfull = true;
 	}
 	
 	@AfterParam
@@ -83,14 +79,9 @@ public abstract class ScalabilityTests extends FamiliesToPersonsTestCase {
 		}
 	}
 
-	@BeforeParam
-	public static void initResults(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
-		results = new HashMap<>();
-		lastTestSuccessfull = true;
-	}
 
 	public ScalabilityTests(BXTool<FamilyRegister, PersonRegister, Decisions> tool, String l) {
-		super(tool);
+		this.tool = tool;
 		label = l;
 	}
 	
@@ -102,4 +93,38 @@ public abstract class ScalabilityTests extends FamiliesToPersonsTestCase {
 		assertTrue(lastTestSuccessfull);
 		lastTestSuccessfull = false;
 	}
+	
+	protected void runTest(Class<? extends BenchTestcase> testcaseClass, String toolName, int scaleFactor) {
+		assertLastTestSuccessfull();
+
+		var entries = new LinkedList<BenchEntry>();
+		
+		try {			
+			for(var r = 0; r < REPEAT; r++) {
+				var runner = new ScalabilityTestRunner(testcaseClass, Arrays.asList("-Xmx8G"), new String[] {toolName, ""+scaleFactor});
+				entries.add(runner.run());
+			}
+		}
+		catch(TimeoutException timeout) {
+			assertTrue(false);
+			return;
+		}
+		catch(IllegalStateException illegalState) {
+			assertTrue(false);
+			return;
+		} catch (Exception e) {
+			assertTrue(false);
+			e.printStackTrace();
+			return;
+		}
+		
+		results.put(scaleFactor, entries.stream().map(e -> e.resolve).sorted().toList().get((int) (REPEAT / 2)));
+		setTestSuccessfull();
+	}
+	
+	@Parameters(name = "{0}")
+	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
+		return FamiliesToPersonsTestCase.tools();
+	}
+	
 }

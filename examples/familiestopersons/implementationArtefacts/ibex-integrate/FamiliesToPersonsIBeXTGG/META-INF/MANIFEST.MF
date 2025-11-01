@@ -16,7 +16,8 @@ Bundle-ClassPath: .,
  lib/hipe.generator_1.0.0.202408061838.jar,
  lib/hipe.network_1.0.0.202408061838.jar,
  lib/hipe.pattern_1.0.0.202408061838.jar,
- lib/hipe.searchplan_1.0.0.202408061838.jar
+ lib/hipe.searchplan_1.0.0.202408061838.jar,
+ lib/javabdd-silent.jar
 Require-Bundle: org.eclipse.emf.ecore.xmi,
  org.junit,
  Benchmarx;bundle-version="1.0.0",
