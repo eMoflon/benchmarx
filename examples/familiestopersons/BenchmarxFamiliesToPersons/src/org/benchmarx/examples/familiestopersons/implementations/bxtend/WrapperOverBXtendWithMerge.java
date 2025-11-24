@@ -15,7 +15,7 @@ import Persons.Person;
 import Persons.PersonRegister;
 import Persons.PersonsPackage;
 
-public class WrapperOverBXtendWithMerge extends UbtXtendFamiliesToPersons {
+public class WrapperOverBXtendWithMerge extends /*UbtXtendFamiliesToPersons*/ BXtendFamiliesToPersons {
 	private PersonRegister copyOfTarget;
 	private boolean useCopyOfTargetModel;
 

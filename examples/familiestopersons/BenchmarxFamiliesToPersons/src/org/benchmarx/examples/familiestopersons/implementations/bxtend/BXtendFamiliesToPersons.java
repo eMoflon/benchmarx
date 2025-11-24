@@ -26,10 +26,10 @@ import de.tbuchmann.m2m.families2persons.rules.decisions.ConfigurableTargetToSou
 
 public class BXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonRegister, Decisions> {
 		private ResourceSet set = new ResourceSetImpl();
-		private Resource source;
-		private Resource target;
-		private Resource corr;
-		private Families2personsTransformation f2pt;
+		protected Resource source;
+		protected Resource target;
+		protected Resource corr;
+		protected Families2personsTransformation f2pt;
 		private Configurator<Decisions> conf;
 		private Configurator<Decisions> defaultConf;
 
@@ -61,6 +61,9 @@ public class BXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Person
 			set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("person", new XMIResourceFactoryImpl());
 			set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("corr", new XMIResourceFactoryImpl());
 
+			// delete FamiliesMap
+			Families2personsTransformation.familiesMap.clear();
+			
 			source = set.createResource(URI.createURI("sourceModel.family"));
 			target = set.createResource(URI.createURI("targetModel.person"));
 			corr = set.createResource(URI.createURI("corrModel.corr"));
@@ -154,9 +157,15 @@ public class BXtendFamiliesToPersons extends BXToolForEMF<FamilyRegister, Person
 				Supplier<IEdit<PersonRegister>> targetEditOp) {
 			sourceEditOp.get();
 			targetEditOp.get();
+			f2pt.updateFamiliesMap();
 			f2pt.configure(new ConfigurableTargetToSourceDecision(!conf.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW),
 					conf.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD), false, false));
 			f2pt.synch();
 			
+		}
+		
+		@Override
+		public void noPrecondition() {
+			f2pt.updateFamiliesMap();
 		}
 }
