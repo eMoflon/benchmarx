@@ -37,6 +37,7 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: FamiliesToPersonsIBeXTGG,
  FamiliesToPersonsIBeXTGG.impl,
+ hipe.generic.actor.junction.util,
  org.emoflon.ibex.common.engine,
  org.emoflon.ibex.tgg.patterns,
  org.emoflon.ibex.tgg.run.familiestopersonsibextgg,

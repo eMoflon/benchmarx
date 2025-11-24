@@ -28,14 +28,14 @@ public class ConstDeltaCSyncTestcase extends BenchTestcase {
 	}
 
 	@Override
-	public void executeTest(int nrOfFamilyPairs) {
+	public double executeTest(int nrOfFamilyPairs) {
 		var timer = new BXToolTimer<>(tool, 1);
-		System.out.println(timer.timeEditAfterSetUpInS(
+		return timer.timeEditAfterSetUpInS(
 				srcEdit(() -> {
 					helperFamily.createSimpsonFamiliesWithMembers(nrOfFamilyPairs);
 					helperFamily.createFlandersFamiliesWithMembers(nrOfFamilyPairs);
 					}),
 				srcEdit(() -> helperFamily.moveLisaToFlandersAsDaugther(ScalabilityConstDeltaCSync.NR_OF_EDITED_FAMILY_PAIRS)),
-				trgEdit(() -> helperPerson.deleteLisa(ScalabilityConstDeltaCSync.NR_OF_EDITED_FAMILY_PAIRS))));
+				trgEdit(() -> helperPerson.deleteLisa(ScalabilityConstDeltaCSync.NR_OF_EDITED_FAMILY_PAIRS)));
 	}
 }

@@ -28,14 +28,14 @@ public class ConstModelCSyncTestcase extends BenchTestcase {
 	}
 
 	@Override
-	public void executeTest(int nrOfEditedFamilyPairs) {
+	public double executeTest(int nrOfEditedFamilyPairs) {
 		var timer = new BXToolTimer<>(tool, 1);
-		System.out.println(timer.timeEditAfterSetUpInS(
+		return timer.timeEditAfterSetUpInS(
 				srcEdit(() -> {
 					helperFamily.createSimpsonFamiliesWithMembers(ScalabilityConstModelCSync.NR_OF_FAMILY_PAIRS);
 					helperFamily.createFlandersFamiliesWithMembers(ScalabilityConstModelCSync.NR_OF_FAMILY_PAIRS);
 					}),
 				srcEdit(() -> helperFamily.moveLisaToFlandersAsDaugther(nrOfEditedFamilyPairs)),
-				trgEdit(() -> helperPerson.deleteLisa(nrOfEditedFamilyPairs))));
+				trgEdit(() -> helperPerson.deleteLisa(nrOfEditedFamilyPairs)));
 	}
 }

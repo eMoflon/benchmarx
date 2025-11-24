@@ -27,10 +27,10 @@ public class IncrTestsFwdTestcase extends BenchTestcase {
 	}
 
 	@Override
-	public void executeTest(int nrOfFamilies) {
+	public double executeTest(int nrOfFamilies) {
 		var timer = new BXToolTimer<>(tool, 1);
-		System.out.println(timer.timeSourceEditAfterSetUpInS(
+		return timer.timeSourceEditAfterSetUpInS(
 				srcEdit(() -> helperFamily.createSimpsonFamiliesWithMembers(nrOfFamilies)),
-				srcEdit(() -> helperFamily.createOneFamilyMember())));
+				srcEdit(() -> helperFamily.createOneFamilyMember()));
 	}
 }

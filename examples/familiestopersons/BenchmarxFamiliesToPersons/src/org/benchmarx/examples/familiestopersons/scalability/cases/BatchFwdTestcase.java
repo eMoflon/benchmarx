@@ -10,10 +10,12 @@ import org.benchmarx.util.BXToolTimer;
 
 import Families.FamilyRegister;
 import Persons.PersonRegister;
+import hipe.generic.actor.junction.util.HiPEConfig;
 
 
 public class BatchFwdTestcase extends BenchTestcase {
 	public static void main(String args[]) {
+		HiPEConfig.logWorkloadActivated = true;
 		new BatchFwdTestcase(args[0], Integer.valueOf(args[1])).execute();
 	}
 
@@ -27,9 +29,9 @@ public class BatchFwdTestcase extends BenchTestcase {
 	}
 
 	@Override
-	public void executeTest(int nrOfFamilies) {
+	public double executeTest(int nrOfFamilies) {
 		var timer = new BXToolTimer<>(tool, 1);
-		System.out.println(timer.timeSourceEditFromScratchInS(
-				srcEdit(() -> helperFamily.createSimpsonFamiliesWithMembers(nrOfFamilies))));
+		return timer.timeSourceEditFromScratchInS(
+				srcEdit(() -> helperFamily.createSimpsonFamiliesWithMembers(nrOfFamilies)));
 	}
 }

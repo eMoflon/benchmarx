@@ -27,8 +27,8 @@ public class BatchBwdTestcase extends BenchTestcase {
 	}
 
 	@Override
-	public void executeTest(int nrOfFamilies) {
+	public double executeTest(int nrOfFamilies) {
 		var timer = new BXToolTimer<>(tool, 1);
-		System.out.println(timer.timeTargetEditFromScratchInS(trgEdit(() -> helperPerson.createPersons(nrOfFamilies, 5))));
+		return timer.timeTargetEditFromScratchInS(trgEdit(() -> helperPerson.createPersons(nrOfFamilies, 5)));
 	}
 }

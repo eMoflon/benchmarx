@@ -126,7 +126,15 @@ public interface BXTool<S, T, D> {
 	 */
 	default public String getName() { return "Please set the name of your bx tool!"; }
 	
-	public abstract S getSourceModel();
+	public S getSourceModel();
 	
-	public abstract T getTargetModel();
+	public T getTargetModel();
+	
+	default void preExecution() {
+		
+	}
+	
+	default void postExecution() {
+		
+	}
 }

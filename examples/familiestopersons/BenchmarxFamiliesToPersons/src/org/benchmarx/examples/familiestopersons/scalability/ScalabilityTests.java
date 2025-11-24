@@ -46,7 +46,6 @@ public abstract class ScalabilityTests {
 	
 	private static final String DELIMITER = "\n";
 	protected static final int REPEAT = 5;
-	protected static final int TIMEOUT = 300; // seconds
 	private static final String resultFolder = "C:/scalability_results";
 
 	protected static Map<Integer, Double> results;
@@ -94,25 +93,31 @@ public abstract class ScalabilityTests {
 		lastTestSuccessfull = false;
 	}
 	
-	protected void runTest(Class<? extends BenchTestcase> testcaseClass, String toolName, int scaleFactor) {
+	protected void runTest(Class<? extends BenchTestcase> testcaseClass, BXTool tool, int scaleFactor) {
 		assertLastTestSuccessfull();
 
 		var entries = new LinkedList<BenchEntry>();
 		
+		
 		try {			
 			for(var r = 0; r < REPEAT; r++) {
-				var runner = new ScalabilityTestRunner(testcaseClass, Arrays.asList("-Xmx8G"), new String[] {toolName, ""+scaleFactor});
+				tool.preExecution();
+				var runner = new ScalabilityTestRunner(testcaseClass, Arrays.asList("-Xmx32G"), new String[] {tool.getName(), ""+scaleFactor});
 				entries.add(runner.run());
+				tool.postExecution();
 			}
 		}
 		catch(TimeoutException timeout) {
+			tool.postExecution();
 			assertTrue(false);
 			return;
 		}
 		catch(IllegalStateException illegalState) {
+			tool.postExecution();
 			assertTrue(false);
 			return;
 		} catch (Exception e) {
+			tool.postExecution();
 			assertTrue(false);
 			e.printStackTrace();
 			return;

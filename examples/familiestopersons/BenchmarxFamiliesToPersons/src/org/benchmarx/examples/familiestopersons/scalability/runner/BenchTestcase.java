@@ -1,5 +1,7 @@
 package org.benchmarx.examples.familiestopersons.scalability.runner;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.BiConsumer;
@@ -31,6 +33,7 @@ import Families.FamiliesPackage;
 import Families.FamilyRegister;
 import Persons.PersonRegister;
 import Persons.PersonsPackage;
+import de.uni_koblenz.jgralab.gretl.SysOut;
 
 public abstract class BenchTestcase {
 
@@ -52,10 +55,22 @@ public abstract class BenchTestcase {
 		this.scaleFactor = scaleFactor;	
 	}
 	
-	protected void execute() {
+	public void execute() {
+		PrintStream originalOut = System.out;
+//		System.setOut(new PrintStream(new OutputStream() {
+//		    public void write(int b) {
+//		        // Do nothing - suppress output
+//		    }
+//		}));
+
+		
 		initialise();
 		
-		executeTest(scaleFactor);
+		var out = executeTest(scaleFactor);
+		
+		
+//		System.setOut(originalOut);
+		System.out.println(out);
 		
 		System.exit(0);
 	}
@@ -71,7 +86,7 @@ public abstract class BenchTestcase {
 		familiesComparator = new FamiliesComparator();
 		personsComparator = new PersonsComparator();
 		util = new BenchmarxUtil<>(tool);
-
+		
 		// Initialise the bx tool
 		tool.initiateSynchronisationDialogue();
 
@@ -82,7 +97,7 @@ public abstract class BenchTestcase {
 
 	protected abstract Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> getAvailableTools();
 
-	public abstract void executeTest(int scaleFactor);
+	public abstract double executeTest(int scaleFactor);
 
 	public static FamilyHelper createAndInitialiseHelperFamily(Supplier<FamilyRegister> familyRegister,
 			Supplier<IEdit<FamilyRegister>> sourceEdit) {

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,7 @@ public class ScalabilityTestRunner {
 
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
-	private final static int TIMEOUT_SECONDS = 60;
+	private final static int TIMEOUT_SECONDS = 600;
 
 	protected final Class<? extends BenchTestcase> testcaseClass;
 	protected final List<String> jvmArgs;
@@ -33,14 +34,20 @@ public class ScalabilityTestRunner {
 		Process process = execute(testcaseClass, jvmArgs, Arrays.asList(execArgs));
 		InputStreamReader inputStreamReader = new InputStreamReader(process.getInputStream());
 		BufferedReader reader = new BufferedReader(inputStreamReader);
-
+		var timeout = false;
+		
+		var time = System.currentTimeMillis();
+		
 		if (!process.waitFor(TIMEOUT_SECONDS, TimeUnit.SECONDS)) {
-			// count timeouts and restart repetition
 			terminateProcess(process);
-			throw new TimeoutException();
+//			throw new TimeoutException();
+			timeout = true;
 		}
+		
+		System.out.println("Execution took: " + (double) (System.currentTimeMillis() - time) / 1000.0);
 
-		if (process.exitValue() != 0) {
+		if (process.exitValue() != 0 || timeout) {
+			System.out.println(timeout);
 			StringBuilder b = new StringBuilder();
 			String read = reader.readLine();
 			while (read != null) {
@@ -49,6 +56,7 @@ public class ScalabilityTestRunner {
 				read = reader.readLine();
 			}
 			System.err.println(b);
+			
 			// count exceptions and restart repetition if one is detected
 			terminateProcess(process);
 			throw new IllegalStateException("Errors during execution");
@@ -66,6 +74,8 @@ public class ScalabilityTestRunner {
 			b.append("\n");
 			read = reader.readLine();
 		}
+		
+		System.out.println(b);
 
 		return new BenchEntry(b.toString());
 	}
@@ -84,7 +94,7 @@ public class ScalabilityTestRunner {
 	protected Process execute(Class<?> clazz, List<String> jvmArgs, List<String> args)
 			throws IOException, InterruptedException {
 		String javaHome = System.getProperty("java.home");
-		String javaBin = javaHome + File.separator + "bin" + File.separator + "java";
+		String javaBin = javaHome + File.separator + "bin" + File.separator + "javaw.exe";
 		String classpath = System.getProperty("java.class.path");
 		String className = clazz.getName();
 

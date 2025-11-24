@@ -27,10 +27,10 @@ public class IncrTestsBwdTestcase extends BenchTestcase {
 	}
 
 	@Override
-	public void executeTest(int nrOfFamilies) {
+	public double executeTest(int nrOfFamilies) {
 		var timer = new BXToolTimer<>(tool, 1);
-		System.out.println(timer.timeTargetEditAfterSetUpInS(
+		return timer.timeTargetEditAfterSetUpInS(
 				trgEdit(() -> helperPerson.createPersons(nrOfFamilies, 5)),
-				trgEdit(() -> helperPerson.createOnePerson())));
+				trgEdit(() -> helperPerson.createOnePerson()));
 	}
 }

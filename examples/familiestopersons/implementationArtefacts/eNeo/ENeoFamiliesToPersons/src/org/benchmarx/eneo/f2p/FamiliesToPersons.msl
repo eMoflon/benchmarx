@@ -14,7 +14,7 @@ tripleGrammar F2P {
 	
 	correspondence {
 		FamilyRegister <- RegisterToRegisterCorr -> PersonRegister
-		FamilyMember <- MemberToMaleCorr -> Male
+		FamilyMember <- MemberToMaleCorr -> Male 
 		FamilyMember <- MemberToFemaleCorr -> Female
 	}
 	

@@ -18,7 +18,7 @@ public class ScalabilityIncrTestsFwd extends ScalabilityTests {
 	}
 	
 	private void createOneFamilyMember(int nrOfFamilies) {
-		runTest(IncrTestsFwdTestcase.class, tool.getName(), nrOfFamilies);
+		runTest(IncrTestsFwdTestcase.class, tool, nrOfFamilies);
 	}
 	
 	@Test

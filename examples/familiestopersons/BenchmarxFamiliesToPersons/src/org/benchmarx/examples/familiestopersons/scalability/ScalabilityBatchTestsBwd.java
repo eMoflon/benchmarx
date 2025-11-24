@@ -18,7 +18,7 @@ public class ScalabilityBatchTestsBwd extends ScalabilityTests {
 	}
 	
 	private void createPersons(int nrOfFamilies) {
-		runTest(BatchBwdTestcase.class, tool.getName(), nrOfFamilies);
+		runTest(BatchBwdTestcase.class, tool, nrOfFamilies);
 	}
 
 	@Test

@@ -28,11 +28,11 @@ public class ConstDeltaCFCSyncTestcase extends BenchTestcase {
 	}
 
 	@Override
-	public void executeTest(int nrOfFamilyPairs) {
+	public double executeTest(int nrOfFamilyPairs) {
 		var timer = new BXToolTimer<>(tool, 1);
-		System.out.println(timer.timeEditAfterSetUpInS(
+		return timer.timeEditAfterSetUpInS(
 				srcEdit(() -> helperFamily.createSimpsonFamiliesWithMembers(nrOfFamilyPairs)),
 				srcEdit(() -> helperFamily.createSonHugo(ScalabilityConstDeltaCFCSync.NR_OF_EDITED_FAMILIES)),
-				trgEdit(() -> helperPerson.deleteLisa(ScalabilityConstDeltaCFCSync.NR_OF_EDITED_FAMILIES))));
+				trgEdit(() -> helperPerson.deleteLisa(ScalabilityConstDeltaCFCSync.NR_OF_EDITED_FAMILIES)));
 	}
 }

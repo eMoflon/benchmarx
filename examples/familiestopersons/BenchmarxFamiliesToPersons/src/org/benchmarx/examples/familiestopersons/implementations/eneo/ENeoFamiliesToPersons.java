@@ -1,7 +1,12 @@
 package org.benchmarx.examples.familiestopersons.implementations.eneo;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -46,6 +51,7 @@ import Persons.Male;
 import Persons.PersonRegister;
 import Persons.PersonsFactory;
 import Persons.PersonsPackage;
+import de.uni_koblenz.jgralab.gretl.SysOut;
 
 public class ENeoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegister, Decisions> {
 	static {
@@ -72,7 +78,7 @@ public class ENeoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 		sourceRegister = FamiliesFactory.eINSTANCE.createFamilyRegister();
 		targetRegister = PersonsFactory.eINSTANCE.createPersonRegister();
 		preconditionAchieved = false;
-		
+
 		try (var builder = API_Common.createBuilder()) {
 			builder.clearDataBase();
 			var gen = new F2P_GEN_InitiateSyncDialogue();
@@ -324,20 +330,20 @@ public class ENeoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 						mask.addParameter(rule._param__name, ca.getNewValue());
 						mask.addParameter(rule._param__id, ca.getNode().hashCode());
 						rule.apply(mask, mask);
-					} else if(ca.getAttribute() == FamiliesPackage.Literals.FAMILY_MEMBER__NAME) {
+					} else if (ca.getAttribute() == FamiliesPackage.Literals.FAMILY_MEMBER__NAME) {
 						var member = (FamilyMember) ca.getNode();
 						var family = (Family) member.eContainer();
-						if(family.getDaughters().contains(member)) {
+						if (family.getDaughters().contains(member)) {
 							var rule = familyAPI.getRule_ChangeNameOfDaughter();
 							var mask = rule.mask();
 							mask.addParameter(rule._param__name, ca.getNewValue());
 							mask.addParameter(rule._param__id, ca.getNode().hashCode());
 							rule.apply(mask, mask);
 						} else {
-							throw new IllegalArgumentException("Unable to handle change attribute: " + ca.getAttribute());
+							throw new IllegalArgumentException(
+									"Unable to handle change attribute: " + ca.getAttribute());
 						}
-					}
-					else {
+					} else {
 						throw new IllegalArgumentException("Unable to handle change attribute: " + ca.getAttribute());
 					}
 				} else if (s instanceof DeleteNode) {
@@ -371,8 +377,7 @@ public class ENeoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 				} else if (s instanceof DeleteEdge) {
 					var de = (DeleteEdge<FamilyRegister>) s;
 					deleteSourceEdge(familyAPI, de);
-				}
-				else {
+				} else {
 					throw new IllegalArgumentException("Unable to handle atomic edit: " + s);
 				}
 			}
@@ -572,5 +577,58 @@ public class ENeoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 	@Override
 	public PersonRegister getTargetModel() {
 		return targetRegister;
+	}
+
+	private String containerId;
+
+	@Override
+	public void preExecution() {
+		System.out.print("Starting container... ");
+		Process process;
+		try {
+			process = Runtime.getRuntime()
+					.exec("docker run -d -p 7687:7687 -p 7474:7474 -e NEO4J_AUTH=neo4j/testtest neo4j:4.4.11");
+
+			BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+			containerId = reader.readLine(); // Docker returns the full container ID
+			reader.close();
+
+			process.waitFor();
+			System.out.println("DONE");
+			System.out.println("Waiting...");
+			Thread.sleep(Duration.ofSeconds(30));
+			System.out.println("DONE");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("ContainerId: " + containerId);
+	}
+
+	@Override
+	public void postExecution() {
+		System.out.print("Stopping container... ");
+		try {
+			var process = Runtime.getRuntime().exec("docker kill " + containerId);
+			process.waitFor();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("DONE");
+	}
+
+	public boolean isNeo4jReady() {
+		while (true) {
+			try (Socket socket = new Socket()) {
+				socket.connect(new java.net.InetSocketAddress("localhost", 7687), 500);
+			} catch (IOException e) {
+
+			}
+			return true;
+		}
 	}
 }

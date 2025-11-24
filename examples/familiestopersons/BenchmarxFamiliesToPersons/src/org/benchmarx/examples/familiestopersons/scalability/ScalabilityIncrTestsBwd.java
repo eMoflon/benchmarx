@@ -18,7 +18,7 @@ public class ScalabilityIncrTestsBwd extends ScalabilityTests {
 	}
 	
 	private void createOnePerson(int nrOfFamilies) {
-		runTest(IncrTestsBwdTestcase.class, tool.getName(), nrOfFamilies);
+		runTest(IncrTestsBwdTestcase.class, tool, nrOfFamilies);
 	}
 
 	@Test

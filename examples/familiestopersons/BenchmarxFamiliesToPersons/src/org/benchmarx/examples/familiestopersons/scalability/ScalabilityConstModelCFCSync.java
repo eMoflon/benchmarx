@@ -28,7 +28,7 @@ public class ScalabilityConstModelCFCSync extends ScalabilityTests {
 	}
 
 	private void createFamiliesAndConflictingChanges(int nrOfEditedFamilyPairs) {
-		runTest(ConstModelCFCSyncTestcase.class, tool.getName(), nrOfEditedFamilyPairs);
+		runTest(ConstModelCFCSyncTestcase.class, tool, nrOfEditedFamilyPairs);
 	}
 	
 	@Test

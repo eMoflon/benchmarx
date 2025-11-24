@@ -46,7 +46,7 @@ public class F2P_MI extends F2P_MI_Run {
 		var alpha = -5.0; // Present but was deleted by user
 		var beta = 5.0; // Present and was created by user
 		var gamma = -1.0; // Present but was not created by user
-		return new NeoCoreBuilder("bolt://localhost:7687", "neo4j", "test", alpha, beta, gamma);
+		return new NeoCoreBuilder("bolt://localhost:7687", "neo4j", "testtest", alpha, beta, gamma);
 	}
 	
 	@Override

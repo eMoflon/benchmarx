@@ -29,7 +29,7 @@ public class ScalabilityConstDeltaCFCSync extends ScalabilityTests {
 	}
 
 	private void createFamiliesAndConflictFreeChanges(int nrOfFamilyPairs) {
-		runTest(ConstDeltaCFCSyncTestcase.class, tool.getName(), nrOfFamilyPairs);
+		runTest(ConstDeltaCFCSyncTestcase.class, tool, nrOfFamilyPairs);
 	}
 
 	@Test

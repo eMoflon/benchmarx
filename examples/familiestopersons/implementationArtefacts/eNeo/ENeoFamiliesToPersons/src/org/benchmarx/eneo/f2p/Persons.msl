@@ -15,7 +15,7 @@ metamodel Persons {
 	Female : Person
 }
 
-abstract pattern PersonPattern {
+abstract pattern PersonPattern { 
 	register:PersonRegister {
 		-persons->person
 	}

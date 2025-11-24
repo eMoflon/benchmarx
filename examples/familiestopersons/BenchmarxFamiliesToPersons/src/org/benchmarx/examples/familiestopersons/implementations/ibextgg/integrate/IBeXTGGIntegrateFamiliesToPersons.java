@@ -59,6 +59,7 @@ public class IBeXTGGIntegrateFamiliesToPersons implements BXTool<FamilyRegister,
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 	@Override
@@ -72,6 +73,7 @@ public class IBeXTGGIntegrateFamiliesToPersons implements BXTool<FamilyRegister,
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 	@Override
