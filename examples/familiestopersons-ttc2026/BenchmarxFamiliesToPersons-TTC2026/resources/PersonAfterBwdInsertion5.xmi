@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Persons:PersonRegister
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore"
+    xsi:schemaLocation="platform:/plugin/Persons/model/Persons.ecore ../../Persons/model/Persons.ecore">
+  <persons xsi:type="Persons:Male"
+      name="Simpson, Homer"
+      birthday="2013-01-09T10:11:12.000+0100"/>
+  <persons xsi:type="Persons:Female"
+      name="Simpson, Maggie"
+      birthday="2013-03-07T10:11:12.000+0100"/>
+  <persons xsi:type="Persons:Male"
+      name="Skinner, Seymour"/>
+  <persons xsi:type="Persons:Male"
+      name="Skinner, Seymour"/>
+  <persons xsi:type="Persons:Male"
+      name="Skinner, Seymour"/>
+  <persons xsi:type="Persons:Male"
+      name="Skinner, Seymour"/>
+  <persons xsi:type="Persons:Male"
+      name="Skinner, Seymour"/>
+</Persons:PersonRegister>
