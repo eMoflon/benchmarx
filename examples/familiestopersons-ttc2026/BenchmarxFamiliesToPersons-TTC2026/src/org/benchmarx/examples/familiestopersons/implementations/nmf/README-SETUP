@@ -1,0 +1,5 @@
+System requirements:
+
+# .NET 10
+
+To recompile: run `dotnet build nmf --configuration Release` in the directory `implementationArtifacts`
