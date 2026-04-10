@@ -9,6 +9,9 @@
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="lib" path="lib/BXtendFamilies2Persons.jar"/>
+	<classpathentry kind="lib" path="lib/emt-agent-1.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/BXtendDSLSynch.jar"/>
+	<classpathentry kind="lib" path="lib/BXAgent.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Families"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Persons"/>
 	<classpathentry kind="output" path="bin"/>
