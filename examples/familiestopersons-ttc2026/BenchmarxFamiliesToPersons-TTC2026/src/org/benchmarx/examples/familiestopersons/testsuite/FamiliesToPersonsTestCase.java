@@ -20,6 +20,7 @@ import org.benchmarx.edit.IEdit;
 import org.benchmarx.edit.MoveNode;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.BXtendFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.bxtend.WrapperOverBXtendWithMerge;
+import org.benchmarx.examples.familiestopersons.implementations.nmf.NMFFamiliesToPersonsIncremental;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
@@ -133,7 +134,8 @@ public abstract class FamiliesToPersonsTestCase {
 				 */
 				
 				new BXtendFamiliesToPersons(), // No failures
-				new WrapperOverBXtendWithMerge() // No Failures
+				new WrapperOverBXtendWithMerge(), // No Failures
+				new NMFFamiliesToPersonsIncremental()
 
 				);
 	}

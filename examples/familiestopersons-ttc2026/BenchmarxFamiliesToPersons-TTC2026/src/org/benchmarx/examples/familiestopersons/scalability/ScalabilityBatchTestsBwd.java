@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 import java.time.Duration;
 
 import org.benchmarx.BXTool;
+import org.benchmarx.examples.familiestopersons.implementations.nmf.NMFFamiliesToPersonsTimer;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.util.BXToolTimer;
 import org.junit.FixMethodOrder;
@@ -23,7 +24,7 @@ public class ScalabilityBatchTestsBwd extends ScalabilityTests {
 	}
 	
 	private void createPersons(int nrOfFamilies) {
-		var timer = new BXToolTimer<>(tool, REPEAT);
+		var timer = createTimer();
 		
 		assertTimeoutPreemptively(Duration.ofSeconds(TIMEOUT * REPEAT), () -> {
 			results.put(nrOfFamilies, //

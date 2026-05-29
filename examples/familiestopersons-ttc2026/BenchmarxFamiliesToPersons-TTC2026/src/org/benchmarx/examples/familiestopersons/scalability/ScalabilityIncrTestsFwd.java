@@ -23,7 +23,7 @@ public class ScalabilityIncrTestsFwd extends ScalabilityTests {
 	}
 	
 	private void createOneFamilyMember(int nrOfFamilies) {
-		var timer = new BXToolTimer<>(tool, REPEAT);
+		var timer = createTimer();
 		
 		assertTimeoutPreemptively(Duration.ofSeconds(TIMEOUT * REPEAT), () -> {
 			results.put(nrOfFamilies, //

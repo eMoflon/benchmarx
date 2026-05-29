@@ -32,7 +32,7 @@ public class ScalabilityConstDeltaCSync extends ScalabilityTests {
 	}
 
 	private void createFamilyPairsAndConflictingChanges(int nrOfFamilyPairs, int nrOfEditedFamilyPairs) {
-		var timer = new BXToolTimer<>(tool, REPEAT);
+		var timer = createTimer();
 
 		assertTimeoutPreemptively(Duration.ofSeconds(TIMEOUT * REPEAT), () -> {
 			results.put(nrOfFamilyPairs, //

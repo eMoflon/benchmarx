@@ -48,11 +48,11 @@ public class BXToolTimer<S, T, D> {
 	}
 
 	protected long timeAction(Runnable action) {
-		long tic = System.currentTimeMillis();
+		long tic = System.nanoTime();
 		action.run();
-		long toc = System.currentTimeMillis();
+		long toc = System.nanoTime();
 		
-		return toc - tic;
+		return (toc - tic) / 1000;
 	}
 
 	private long timeAfterSetup(Runnable setup, Runnable action) {
