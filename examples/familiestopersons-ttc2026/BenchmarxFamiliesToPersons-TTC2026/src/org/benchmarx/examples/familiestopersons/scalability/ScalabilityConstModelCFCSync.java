@@ -32,7 +32,7 @@ public class ScalabilityConstModelCFCSync extends ScalabilityTests {
 	}
 
 	private void createFamiliesAndConflictingChanges(int nrOfFamilyPairs, int nrOfEditedFamilyPairs) {
-		var timer = new BXToolTimer<>(tool, REPEAT);
+		var timer = createTimer();
 
 		assertTimeoutPreemptively(Duration.ofSeconds(TIMEOUT * REPEAT), () -> {
 			results.put(nrOfEditedFamilyPairs, //

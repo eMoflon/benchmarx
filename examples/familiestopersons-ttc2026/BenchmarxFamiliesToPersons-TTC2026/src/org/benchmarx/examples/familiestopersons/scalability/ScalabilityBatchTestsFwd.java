@@ -23,7 +23,7 @@ public class ScalabilityBatchTestsFwd extends ScalabilityTests {
 	}
 	
 	private void createFamilies(int nrOfFamilies) {
-		var timer = new BXToolTimer<>(tool, REPEAT);
+		var timer = createTimer();
 		
 		assertTimeoutPreemptively(Duration.ofSeconds(TIMEOUT * REPEAT), () -> {
 			results.put(nrOfFamilies, //

@@ -9,10 +9,12 @@ import java.util.stream.Collectors;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.benchmarx.BXTool;
+import org.benchmarx.examples.familiestopersons.implementations.nmf.NMFFamiliesToPersonsTimer;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.examples.familiestopersons.testsuite.FamiliesToPersonsTestCase;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.persons.core.PersonsComparator;
+import org.benchmarx.util.BXToolTimer;
 import org.benchmarx.util.BenchmarxUtil;
 import org.junit.runners.Parameterized.AfterParam;
 import org.junit.runners.Parameterized.BeforeParam;
@@ -69,6 +71,14 @@ public abstract class ScalabilityTests extends FamiliesToPersonsTestCase {
 					.map(k -> k + ", " + results.get(k))//
 					.collect(Collectors.joining(DELIMITER)));
 		}
+	}
+
+	protected BXToolTimer<FamilyRegister, PersonRegister, Decisions> createTimer() {
+		var timer = new BXToolTimer<>(tool, REPEAT);
+		if (tool.getName().equals("NMF")) {
+			timer = new NMFFamiliesToPersonsTimer(tool, REPEAT);
+		}
+		return timer;
 	}
 
 	@BeforeParam
