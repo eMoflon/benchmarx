@@ -16,19 +16,15 @@ abstract rule FamilyMember2Person {
 	}
 	
 	correspondence {
-		[=] families2persons : RegisterToRegisterCorr {
-			src->families
-			trg->persons
-		}
 		[+] familyMember2Persons : FamilyMemberToPersonCorr {
 			src->fm
 			trg->p 
 		}
 	}
-	
+	 
 	attributeConditions {
 		DefaultAttributeConditionLibrary.concat(", ", f.name, fm.name, p.name)
 	}
-
+ 
 }
 

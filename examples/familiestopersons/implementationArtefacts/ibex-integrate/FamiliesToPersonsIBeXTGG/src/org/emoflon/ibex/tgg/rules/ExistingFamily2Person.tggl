@@ -1,9 +1,6 @@
 abstract rule ExistingFamily2Person {
 	
 	source { 
-		[=] families : Fam.FamilyRegister {
-			[=] -families->f
-		}
 		[=] f : Fam.Family
 		[+] fm : Fam.FamilyMember
 	}
@@ -12,14 +9,10 @@ abstract rule ExistingFamily2Person {
 		[=] persons : Per.PersonRegister {
 			[+] -persons->p
 		}
-		[+] p : Per.Person
+		[+] p : Per.Person 
 	}
 	
 	correspondence {
-		[=] families2persons : RegisterToRegisterCorr {
-			src->families
-			trg->persons
-		}
 		[+] familyMember2Persons : FamilyMemberToPersonCorr {
 			src->fm
 			trg->p 

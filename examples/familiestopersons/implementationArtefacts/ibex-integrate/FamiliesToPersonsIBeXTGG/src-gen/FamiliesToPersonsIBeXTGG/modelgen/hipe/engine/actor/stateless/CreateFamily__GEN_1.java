@@ -47,7 +47,7 @@ import org.eclipse.emf.ecore.EObject;
 public class CreateFamily__GEN_1 extends GenericStatelessSearchActor{
 	DisjointExplorer disjoint_explorer;
 	
-	SearchOrchestration<StatelessExplorer> singleNode_orchestration;
+	SearchOrchestration singleNode_orchestration;
 	
 	@Override
 	protected void initializeSearchComponents() {
@@ -58,19 +58,11 @@ public class CreateFamily__GEN_1 extends GenericStatelessSearchActor{
 	@Override
 	protected void initializeOrchestration() {
 		singleNode_orchestration = initializeOrchestration(node.getOrchestrations().get(0).getPlan());
-		singleNode_orchestration.setFieldSetter(x -> singleNode_orchestration = (SearchOrchestration) x);
-		singleNode_orchestration.setFieldGetter(() -> singleNode_orchestration);
-		
 		
 		localNodeOrchestrations = new SearchOrchestration[1];
 		localNodeOrchestrations[0] = initializeOrchestration(node.getLocalNodeOrchestration().get(0).getPlan());
-		localNodeOrchestrations[0].setFieldSetter(x -> localNodeOrchestrations[0] = (SearchOrchestration) x);
-		localNodeOrchestrations[0].setFieldGetter(() -> localNodeOrchestrations[0]);
-				
 		
 		disjointOrchestration = initializeOrchestration(node.getDisjointOrchestration().getPlan());
-		disjointOrchestration.setFieldSetter(x -> disjointOrchestration = (SearchOrchestration) x);
-		disjointOrchestration.setFieldGetter(() -> disjointOrchestration);		
 	}
 	
 	@Override

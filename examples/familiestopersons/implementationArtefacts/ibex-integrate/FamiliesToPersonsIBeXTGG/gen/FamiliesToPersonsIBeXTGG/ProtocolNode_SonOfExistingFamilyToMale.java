@@ -22,17 +22,9 @@ public interface ProtocolNode_SonOfExistingFamilyToMale extends EObject, TGGRunt
     
     public void setCONTEXT__SOURCE__f(FamiliesSmartEMF.Family value);
     
-    public FamiliesSmartEMF.FamilyRegister getCONTEXT__SOURCE__families();
-    
-    public void setCONTEXT__SOURCE__families(FamiliesSmartEMF.FamilyRegister value);
-    
     public FamiliesSmartEMF.FamilyMember getCREATE__SOURCE__fm();
     
     public void setCREATE__SOURCE__fm(FamiliesSmartEMF.FamilyMember value);
-    
-    public FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr getCONTEXT__CORRESPONDENCE__families2persons();
-    
-    public void setCONTEXT__CORRESPONDENCE__families2persons(FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr value);
     
     public FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr getCREATE__CORRESPONDENCE__familyMember2Persons();
     

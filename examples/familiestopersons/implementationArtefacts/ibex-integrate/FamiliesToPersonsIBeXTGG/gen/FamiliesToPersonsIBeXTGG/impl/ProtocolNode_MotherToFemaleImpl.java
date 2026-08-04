@@ -25,7 +25,6 @@ public class ProtocolNode_MotherToFemaleImpl extends SmartObject implements Fami
     protected FamiliesSmartEMF.FamilyRegister CONTEXT__SOURCE__families = null;
     protected FamiliesSmartEMF.Family CREATE__SOURCE__f = null;
     protected FamiliesSmartEMF.FamilyMember CREATE__SOURCE__fm = null;
-    protected FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr CONTEXT__CORRESPONDENCE__families2persons = null;
     protected FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr CREATE__CORRESPONDENCE__familyMember2Persons = null;
     protected PersonsSmartEMF.PersonRegister CONTEXT__TARGET__persons = null;
     protected PersonsSmartEMF.Female CREATE__TARGET__p = null;
@@ -200,41 +199,6 @@ public class ProtocolNode_MotherToFemaleImpl extends SmartObject implements Fami
     
     
     @Override
-    public FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr getCONTEXT__CORRESPONDENCE__families2persons() {
-    	return this.CONTEXT__CORRESPONDENCE__families2persons;
-    }
-    
-    @Override
-    public void setCONTEXT__CORRESPONDENCE__families2persons(FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr value) {
-    	
-    	Object oldValue = this.CONTEXT__CORRESPONDENCE__families2persons;
-    	
-    	if(value == null && oldValue == null)
-    		return;
-    		
-    	if(value != null && value.equals(oldValue))
-    		return;
-    		
-    	
-    	
-    		        this.CONTEXT__CORRESPONDENCE__families2persons = value;
-    		        
-    	
-    	
-    	        	sendNotification(SmartEMFNotification.createSetNotification(this, FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS, oldValue, value, -1));
-    	        	
-    	        	if(FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS.getEOpposite() != null) {
-    	        		if(oldValue != null) {
-    	        			((SmartObject) oldValue).eInverseRemove(this, FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS.getEOpposite());
-    	        		}
-    	        		if(value != null) {
-    	        		    ((SmartObject) value).eInverseAdd(this, FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS.getEOpposite());
-    	        		}
-    	        	}
-    }
-    
-    
-    @Override
     public FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr getCREATE__CORRESPONDENCE__familyMember2Persons() {
     	return this.CREATE__CORRESPONDENCE__familyMember2Persons;
     }
@@ -357,10 +321,6 @@ public class ProtocolNode_MotherToFemaleImpl extends SmartObject implements Fami
     		setCREATE__SOURCE__fm((FamiliesSmartEMF.FamilyMember) newValue); 
     		return;
     	}
-    	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS.equals(eFeature)) {
-    		setCONTEXT__CORRESPONDENCE__families2persons((FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) newValue); 
-    		return;
-    	}
     	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS.equals(eFeature)) {
     		setCREATE__CORRESPONDENCE__familyMember2Persons((FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) newValue); 
     		return;
@@ -394,10 +354,6 @@ public class ProtocolNode_MotherToFemaleImpl extends SmartObject implements Fami
     		setCREATE__SOURCE__fm((FamiliesSmartEMF.FamilyMember)null); 
     		return;
     	}
-    	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS.equals(eFeature)) {
-    		setCONTEXT__CORRESPONDENCE__families2persons((FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr)null); 
-    		return;
-    	}
     	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS.equals(eFeature)) {
     		setCREATE__CORRESPONDENCE__familyMember2Persons((FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr)null); 
     		return;
@@ -428,8 +384,6 @@ public class ProtocolNode_MotherToFemaleImpl extends SmartObject implements Fami
     		return getCREATE__SOURCE__f();
     	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__SOURC_E__FM.equals(eFeature))
     		return getCREATE__SOURCE__fm();
-    	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS.equals(eFeature))
-    		return getCONTEXT__CORRESPONDENCE__families2persons();
     	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS.equals(eFeature))
     		return getCREATE__CORRESPONDENCE__familyMember2Persons();
     	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__TARGE_T__PERSONS.equals(eFeature))

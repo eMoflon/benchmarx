@@ -23,9 +23,7 @@ public class ProtocolNode_FatherOfExistingFamilyToMaleImpl extends SmartObject i
 
     protected TGGRuntimeModel.Protocol protocol = null;
     protected FamiliesSmartEMF.Family CONTEXT__SOURCE__f = null;
-    protected FamiliesSmartEMF.FamilyRegister CONTEXT__SOURCE__families = null;
     protected FamiliesSmartEMF.FamilyMember CREATE__SOURCE__fm = null;
-    protected FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr CONTEXT__CORRESPONDENCE__families2persons = null;
     protected FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr CREATE__CORRESPONDENCE__familyMember2Persons = null;
     protected PersonsSmartEMF.PersonRegister CONTEXT__TARGET__persons = null;
     protected PersonsSmartEMF.Male CREATE__TARGET__p = null;
@@ -130,41 +128,6 @@ public class ProtocolNode_FatherOfExistingFamilyToMaleImpl extends SmartObject i
     
     
     @Override
-    public FamiliesSmartEMF.FamilyRegister getCONTEXT__SOURCE__families() {
-    	return this.CONTEXT__SOURCE__families;
-    }
-    
-    @Override
-    public void setCONTEXT__SOURCE__families(FamiliesSmartEMF.FamilyRegister value) {
-    	
-    	Object oldValue = this.CONTEXT__SOURCE__families;
-    	
-    	if(value == null && oldValue == null)
-    		return;
-    		
-    	if(value != null && value.equals(oldValue))
-    		return;
-    		
-    	
-    	
-    		        this.CONTEXT__SOURCE__families = value;
-    		        
-    	
-    	
-    	        	sendNotification(SmartEMFNotification.createSetNotification(this, FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__FAMILIES, oldValue, value, -1));
-    	        	
-    	        	if(FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__FAMILIES.getEOpposite() != null) {
-    	        		if(oldValue != null) {
-    	        			((SmartObject) oldValue).eInverseRemove(this, FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__FAMILIES.getEOpposite());
-    	        		}
-    	        		if(value != null) {
-    	        		    ((SmartObject) value).eInverseAdd(this, FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__FAMILIES.getEOpposite());
-    	        		}
-    	        	}
-    }
-    
-    
-    @Override
     public FamiliesSmartEMF.FamilyMember getCREATE__SOURCE__fm() {
     	return this.CREATE__SOURCE__fm;
     }
@@ -194,41 +157,6 @@ public class ProtocolNode_FatherOfExistingFamilyToMaleImpl extends SmartObject i
     	        		}
     	        		if(value != null) {
     	        		    ((SmartObject) value).eInverseAdd(this, FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__SOURC_E__FM.getEOpposite());
-    	        		}
-    	        	}
-    }
-    
-    
-    @Override
-    public FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr getCONTEXT__CORRESPONDENCE__families2persons() {
-    	return this.CONTEXT__CORRESPONDENCE__families2persons;
-    }
-    
-    @Override
-    public void setCONTEXT__CORRESPONDENCE__families2persons(FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr value) {
-    	
-    	Object oldValue = this.CONTEXT__CORRESPONDENCE__families2persons;
-    	
-    	if(value == null && oldValue == null)
-    		return;
-    		
-    	if(value != null && value.equals(oldValue))
-    		return;
-    		
-    	
-    	
-    		        this.CONTEXT__CORRESPONDENCE__families2persons = value;
-    		        
-    	
-    	
-    	        	sendNotification(SmartEMFNotification.createSetNotification(this, FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS, oldValue, value, -1));
-    	        	
-    	        	if(FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS.getEOpposite() != null) {
-    	        		if(oldValue != null) {
-    	        			((SmartObject) oldValue).eInverseRemove(this, FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS.getEOpposite());
-    	        		}
-    	        		if(value != null) {
-    	        		    ((SmartObject) value).eInverseAdd(this, FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS.getEOpposite());
     	        		}
     	        	}
     }
@@ -349,16 +277,8 @@ public class ProtocolNode_FatherOfExistingFamilyToMaleImpl extends SmartObject i
     		setCONTEXT__SOURCE__f((FamiliesSmartEMF.Family) newValue); 
     		return;
     	}
-    	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__FAMILIES.equals(eFeature)) {
-    		setCONTEXT__SOURCE__families((FamiliesSmartEMF.FamilyRegister) newValue); 
-    		return;
-    	}
     	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__SOURC_E__FM.equals(eFeature)) {
     		setCREATE__SOURCE__fm((FamiliesSmartEMF.FamilyMember) newValue); 
-    		return;
-    	}
-    	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS.equals(eFeature)) {
-    		setCONTEXT__CORRESPONDENCE__families2persons((FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) newValue); 
     		return;
     	}
     	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS.equals(eFeature)) {
@@ -386,16 +306,8 @@ public class ProtocolNode_FatherOfExistingFamilyToMaleImpl extends SmartObject i
     		setCONTEXT__SOURCE__f((FamiliesSmartEMF.Family)null); 
     		return;
     	}
-    	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__FAMILIES.equals(eFeature)) {
-    		setCONTEXT__SOURCE__families((FamiliesSmartEMF.FamilyRegister)null); 
-    		return;
-    	}
     	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__SOURC_E__FM.equals(eFeature)) {
     		setCREATE__SOURCE__fm((FamiliesSmartEMF.FamilyMember)null); 
-    		return;
-    	}
-    	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS.equals(eFeature)) {
-    		setCONTEXT__CORRESPONDENCE__families2persons((FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr)null); 
     		return;
     	}
     	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS.equals(eFeature)) {
@@ -424,12 +336,8 @@ public class ProtocolNode_FatherOfExistingFamilyToMaleImpl extends SmartObject i
     		return getProtocol();
     	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__F.equals(eFeature))
     		return getCONTEXT__SOURCE__f();
-    	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__FAMILIES.equals(eFeature))
-    		return getCONTEXT__SOURCE__families();
     	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__SOURC_E__FM.equals(eFeature))
     		return getCREATE__SOURCE__fm();
-    	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS.equals(eFeature))
-    		return getCONTEXT__CORRESPONDENCE__families2persons();
     	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS.equals(eFeature))
     		return getCREATE__CORRESPONDENCE__familyMember2Persons();
     	if (FamiliesToPersonsIBeXTGGPackage.Literals.PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__TARGE_T__PERSONS.equals(eFeature))

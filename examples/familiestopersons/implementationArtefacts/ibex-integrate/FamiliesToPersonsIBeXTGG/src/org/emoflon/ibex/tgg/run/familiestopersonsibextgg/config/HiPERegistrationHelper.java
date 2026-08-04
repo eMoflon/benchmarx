@@ -15,12 +15,9 @@ import org.emoflon.ibex.tgg.runtime.strategies.modules.IbexExecutable;
 import org.emoflon.ibex.tgg.runtime.strategies.opt.BWD_OPT;
 import org.emoflon.ibex.tgg.runtime.strategies.opt.FWD_OPT;
 
-import Families.impl.FamiliesPackageImpl;
-import FamiliesSmartEMF.FamiliesSmartEMFPackage;
 import FamiliesSmartEMF.impl.FamiliesSmartEMFPackageImpl;
 import FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage;
 import FamiliesToPersonsIBeXTGG.impl.FamiliesToPersonsIBeXTGGPackageImpl;
-import Persons.impl.PersonsPackageImpl;
 import PersonsSmartEMF.impl.PersonsSmartEMFPackageImpl;
 
 public class HiPERegistrationHelper implements IRegistrationHelper {

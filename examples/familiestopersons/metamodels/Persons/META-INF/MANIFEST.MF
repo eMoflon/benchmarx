@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.emf.ecore,
  org.eclipse.xtend.lib.macro
 Bundle-ManifestVersion: 2
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-Vendor: TU Darmstadt
 Automatic-Module-Name: Persons
 

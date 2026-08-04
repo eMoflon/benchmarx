@@ -164,7 +164,7 @@ public abstract class FamiliesToPersonsTestCase {
 				 */
 				
 //				new BXtendFamiliesToPersons(), // No failures
-//				new WrapperOverBXtendWithMerge(), // No Failures
+//				new WrapperOverBXtendWithMerge() // No Failures
 				
 				/*
 				 * See setup instructions: /implementations/eneo/README-SETUP

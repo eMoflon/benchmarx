@@ -1,6 +1,7 @@
 package org.emoflon.ibex.tgg.run.familiestopersonsibextgg;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -52,6 +53,7 @@ import org.emoflon.ibex.tgg.runtime.strategies.integrate.conflicts.resolution.ut
 import org.emoflon.ibex.tgg.runtime.strategies.integrate.pattern.IntegrationFragment;
 import org.emoflon.ibex.tgg.runtime.strategies.integrate.pattern.IntegrationPattern;
 import org.emoflon.ibex.tgg.runtime.strategies.modules.TGGResourceHandler;
+import org.emoflon.ibex.tgg.runtime.updatepolicy.IUpdatePolicy;
 
 import Families.FamiliesFactory;
 import Families.FamiliesPackage;
@@ -424,6 +426,12 @@ public class INTEGRATE_App extends INTEGRATE {
 	public void initialiseFamilyModel() {
 		// Create initial src and trg models
 		var newFamilyRegister = familyFactory.createFamilyRegister();
+		try {
+			Thread.sleep(1000L);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		getResourceHandler().getSourceResource().getContents().add(newFamilyRegister);
 		try {
 			integrate();

@@ -11,6 +11,7 @@ public class RuntimeTGGAttrConstraintFactoryContainer {
 	private Collection<RuntimeTGGAttrConstraintFactory> factories = new LinkedList<>();
 
 	public RuntimeTGGAttrConstraintFactoryContainer() {
+		factories.add(new CustomAttributeConditionLibraryRuntimeTGGAttrConstraintFactory());
 	}
 	
 	public Collection<RuntimeTGGAttrConstraintFactory> getFactories() {

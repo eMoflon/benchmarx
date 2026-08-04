@@ -48,9 +48,9 @@ public class DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_38 exten
 	DeltaAwareEdgeExplorer edge_explorer;
 	DisjointExplorer disjoint_explorer_0;
 	
-	SearchOrchestration<StatelessExplorer> edge_explorer_0_orchestration;
-	SearchOrchestration<StatelessExplorer> edge_explorer_1_orchestration;
-	SearchOrchestration<StatelessExplorer> edge_explorer_2_orchestration;
+	SearchOrchestration edge_explorer_0_orchestration;
+	SearchOrchestration edge_explorer_1_orchestration;
+	SearchOrchestration edge_explorer_2_orchestration;
 	
 	@Override
 	protected void initializeSearchComponents() {
@@ -68,27 +68,13 @@ public class DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_38 exten
 	@Override
 	protected void initializeOrchestration() {
 		edge_explorer_0_orchestration = initializeOrchestration(node.getOrchestrations().get(0).getPlan());
-		edge_explorer_0_orchestration.setFieldSetter(x -> edge_explorer_0_orchestration = (SearchOrchestration) x);
-		edge_explorer_0_orchestration.setFieldGetter(() -> edge_explorer_0_orchestration);
-		
 		edge_explorer_1_orchestration = initializeOrchestration(node.getOrchestrations().get(1).getPlan());
-		edge_explorer_1_orchestration.setFieldSetter(x -> edge_explorer_1_orchestration = (SearchOrchestration) x);
-		edge_explorer_1_orchestration.setFieldGetter(() -> edge_explorer_1_orchestration);
-		
 		edge_explorer_2_orchestration = initializeOrchestration(node.getOrchestrations().get(2).getPlan());
-		edge_explorer_2_orchestration.setFieldSetter(x -> edge_explorer_2_orchestration = (SearchOrchestration) x);
-		edge_explorer_2_orchestration.setFieldGetter(() -> edge_explorer_2_orchestration);
-		
 		
 		localNodeOrchestrations = new SearchOrchestration[1];
 		localNodeOrchestrations[0] = initializeOrchestration(node.getLocalNodeOrchestration().get(0).getPlan());
-		localNodeOrchestrations[0].setFieldSetter(x -> localNodeOrchestrations[0] = (SearchOrchestration) x);
-		localNodeOrchestrations[0].setFieldGetter(() -> localNodeOrchestrations[0]);
-				
 		
 		disjointOrchestration = initializeOrchestration(node.getDisjointOrchestration().getPlan());
-		disjointOrchestration.setFieldSetter(x -> disjointOrchestration = (SearchOrchestration) x);
-		disjointOrchestration.setFieldGetter(() -> disjointOrchestration);		
 	}
 	
 	@Override
@@ -106,21 +92,19 @@ public class DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_38 exten
 		HMatch match = msg.input;
 		Object[] objs = match.getNodes();
 		outer: switch(match.creator) {
-			case "Family_object_SP9": 
+			case "Family_object_SP11": 
 				{
-					if(!lazy_initialization) {
-						{
-							// FILTER_NAC_NODE
-							var match_0 = new StatelessDeltaMatch(msg, "DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_38", numberOfNodes, 0, UsingDeltaMode.CREATE);
-							match_0.getNodes()[0] = objs[0];
-							if(options.trackMatchingProcess)
-								match_0.registerDelta(UsingDeltaMode.CREATE, objs[0]);
-							start(edge_explorer_1_orchestration, StatelessInputType.OBJECT, match_0);
-						}
+					{
+						// FILTER_NAC_NODE
+						var match_0 = new StatelessDeltaMatch(msg, "DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_38", numberOfNodes, 0, UsingDeltaMode.CREATE);
+						match_0.getNodes()[0] = objs[0];
+						if(options.trackMatchingProcess)
+							match_0.registerDelta(UsingDeltaMode.CREATE, objs[0]);
+						start(edge_explorer_1_orchestration, StatelessInputType.OBJECT, match_0);
 					}
 				}
 				break;
-			case "FamilyMember_object_SP6": 
+			case "FamilyMember_object_SP8": 
 				{
 					{
 						// fm
@@ -147,7 +131,7 @@ public class DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_38 exten
 		Object[] objs = match.getNodes();
 
 		outer: switch(match.creator) {
-			case "Family_object_SP9": 
+			case "Family_object_SP11": 
 				{
 					{
 						// FILTER_NAC_NODE
@@ -159,7 +143,7 @@ public class DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_38 exten
 					}
 				}
 				break;
-			case "FamilyMember_object_SP6": 
+			case "FamilyMember_object_SP8": 
 				{
 					{
 						// fm
@@ -251,9 +235,9 @@ public class DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_38 exten
 		var requestNodes = message.input.getNodes();
 		
 		switch(message.nodeName) {
-			case "DaughterToFemale__FWD_47": {
+			case "DaughterToFemale__FWD_41": {
 				switch(message.queryComponentId) {
-					case 0: {
+					case 2: {
 						var deltaMatch = new StatelessDeltaMatch(message, "DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_38", 2, 0, message.usedDelta);
 						var nodes = deltaMatch.getNodes();
 						var lastFoundIndex = -1;
@@ -273,9 +257,9 @@ public class DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_38 exten
 				}
 				break;
 			}
-			case "DaughterToFemale__CONSISTENCY_58": {
+			case "DaughterToFemale__CONSISTENCY_50": {
 				switch(message.queryComponentId) {
-					case 0: {
+					case 2: {
 						var deltaMatch = new StatelessDeltaMatch(message, "DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_38", 2, 0, message.usedDelta);
 						var nodes = deltaMatch.getNodes();
 						var lastFoundIndex = -1;
@@ -304,9 +288,9 @@ public class DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_38 exten
 	protected boolean checkMatchRequestTypes(MatchRequest request, StatelessDeltaMatch match) {
 		var objs = match.getNodes();
 		switch(request.nodeName) {
-			case "DaughterToFemale__FWD_47": {
+			case "DaughterToFemale__FWD_41": {
 				switch(request.queryComponentId) {
-					case 0: {
+					case 2: {
 						if(!(objs[1] instanceof FamiliesSmartEMF.FamilyMember))
 							return false;
 						break;
@@ -314,9 +298,9 @@ public class DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_38 exten
 				}
 				break;
 			}
-			case "DaughterToFemale__CONSISTENCY_58": {
+			case "DaughterToFemale__CONSISTENCY_50": {
 				switch(request.queryComponentId) {
-					case 0: {
+					case 2: {
 						if(!(objs[1] instanceof FamiliesSmartEMF.FamilyMember))
 							return false;
 						break;
@@ -337,18 +321,18 @@ public class DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_38 exten
 		var requestNodes = requestCopy.getNodes();
 		
 		switch(request.input.creator) {
-			case "DaughterToFemale__FWD_47": {
+			case "DaughterToFemale__FWD_41": {
 				switch(request.queryComponentId) {
-					case 0: {
+					case 2: {
 						requestNodes[2] = resultNodes[1];
 						break;
 					}
 				}
 				break;
 			}
-			case "DaughterToFemale__CONSISTENCY_58": {
+			case "DaughterToFemale__CONSISTENCY_50": {
 				switch(request.queryComponentId) {
-					case 0: {
+					case 2: {
 						requestNodes[2] = resultNodes[1];
 						break;
 					}

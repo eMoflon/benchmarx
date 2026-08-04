@@ -2,6 +2,7 @@ package org.benchmarx.examples.familiestopersons.scalability.runner;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.BiConsumer;
@@ -68,6 +69,14 @@ public abstract class BenchTestcase {
 		
 		var out = executeTest(scaleFactor);
 		
+		tool.terminateSynchronisationDialogue();
+		
+		try {
+			Thread.sleep(Duration.ofSeconds(1L));
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 //		System.setOut(originalOut);
 		System.out.println(out);

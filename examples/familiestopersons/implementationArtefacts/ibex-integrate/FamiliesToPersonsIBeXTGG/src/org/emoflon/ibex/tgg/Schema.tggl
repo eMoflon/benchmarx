@@ -5,7 +5,7 @@ schema FamiliesToPersons_V1 {
 	
 	source {
 		FamiliesSmartEMF
-	}
+	} 
 	
 	target {
 		PersonsSmartEMF
@@ -19,14 +19,18 @@ schema FamiliesToPersons_V1 {
 
 		FamilyToRegisterCorr {
 			src->Fam.Family
-			trg->Per.PersonRegister
+			trg->Per.PersonRegister 
 		}
 		
 		FamilyMemberToPersonCorr {
 			src->Fam.FamilyMember
 			trg->Per.Person
 		}
-		
 	}
-	
 }
+
+library CustomAttributeConditionLibrary {
+	bindFamilyName(separator:EString, familyName:EString, fullName:EString) {
+		sync { [B B B]}
+	}
+} 

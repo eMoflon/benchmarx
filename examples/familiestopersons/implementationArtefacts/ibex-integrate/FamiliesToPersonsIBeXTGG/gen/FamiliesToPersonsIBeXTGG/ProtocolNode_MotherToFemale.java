@@ -30,10 +30,6 @@ public interface ProtocolNode_MotherToFemale extends EObject, TGGRuntimeModel.TG
     
     public void setCREATE__SOURCE__fm(FamiliesSmartEMF.FamilyMember value);
     
-    public FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr getCONTEXT__CORRESPONDENCE__families2persons();
-    
-    public void setCONTEXT__CORRESPONDENCE__families2persons(FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr value);
-    
     public FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr getCREATE__CORRESPONDENCE__familyMember2Persons();
     
     public void setCREATE__CORRESPONDENCE__familyMember2Persons(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr value);

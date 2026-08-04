@@ -51,9 +51,7 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 	private EReference protocolNode_CreateFamily_cREATE__SOURCE__familyEReference = null;
 	private EClass protocolNode_DaughterOfExistingFamilyToFemaleEClass = null;
 	private EReference protocolNode_DaughterOfExistingFamilyToFemale_cONTEXT__SOURCE__fEReference = null;
-	private EReference protocolNode_DaughterOfExistingFamilyToFemale_cONTEXT__SOURCE__familiesEReference = null;
 	private EReference protocolNode_DaughterOfExistingFamilyToFemale_cREATE__SOURCE__fmEReference = null;
-	private EReference protocolNode_DaughterOfExistingFamilyToFemale_cONTEXT__CORRESPONDENCE__families2personsEReference = null;
 	private EReference protocolNode_DaughterOfExistingFamilyToFemale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = null;
 	private EReference protocolNode_DaughterOfExistingFamilyToFemale_cONTEXT__TARGET__personsEReference = null;
 	private EReference protocolNode_DaughterOfExistingFamilyToFemale_cREATE__TARGET__pEReference = null;
@@ -61,7 +59,6 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 	private EReference protocolNode_DaughterToFemale_cONTEXT__SOURCE__familiesEReference = null;
 	private EReference protocolNode_DaughterToFemale_cREATE__SOURCE__fEReference = null;
 	private EReference protocolNode_DaughterToFemale_cREATE__SOURCE__fmEReference = null;
-	private EReference protocolNode_DaughterToFemale_cONTEXT__CORRESPONDENCE__families2personsEReference = null;
 	private EReference protocolNode_DaughterToFemale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = null;
 	private EReference protocolNode_DaughterToFemale_cONTEXT__TARGET__personsEReference = null;
 	private EReference protocolNode_DaughterToFemale_cREATE__TARGET__pEReference = null;
@@ -71,9 +68,7 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 	private EReference protocolNode_Families2Persons_cREATE__TARGET__personsEReference = null;
 	private EClass protocolNode_FatherOfExistingFamilyToMaleEClass = null;
 	private EReference protocolNode_FatherOfExistingFamilyToMale_cONTEXT__SOURCE__fEReference = null;
-	private EReference protocolNode_FatherOfExistingFamilyToMale_cONTEXT__SOURCE__familiesEReference = null;
 	private EReference protocolNode_FatherOfExistingFamilyToMale_cREATE__SOURCE__fmEReference = null;
-	private EReference protocolNode_FatherOfExistingFamilyToMale_cONTEXT__CORRESPONDENCE__families2personsEReference = null;
 	private EReference protocolNode_FatherOfExistingFamilyToMale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = null;
 	private EReference protocolNode_FatherOfExistingFamilyToMale_cONTEXT__TARGET__personsEReference = null;
 	private EReference protocolNode_FatherOfExistingFamilyToMale_cREATE__TARGET__pEReference = null;
@@ -81,15 +76,12 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 	private EReference protocolNode_FatherToMale_cONTEXT__SOURCE__familiesEReference = null;
 	private EReference protocolNode_FatherToMale_cREATE__SOURCE__fEReference = null;
 	private EReference protocolNode_FatherToMale_cREATE__SOURCE__fmEReference = null;
-	private EReference protocolNode_FatherToMale_cONTEXT__CORRESPONDENCE__families2personsEReference = null;
 	private EReference protocolNode_FatherToMale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = null;
 	private EReference protocolNode_FatherToMale_cONTEXT__TARGET__personsEReference = null;
 	private EReference protocolNode_FatherToMale_cREATE__TARGET__pEReference = null;
 	private EClass protocolNode_MotherOfExistingFamilyToFemaleEClass = null;
 	private EReference protocolNode_MotherOfExistingFamilyToFemale_cONTEXT__SOURCE__fEReference = null;
-	private EReference protocolNode_MotherOfExistingFamilyToFemale_cONTEXT__SOURCE__familiesEReference = null;
 	private EReference protocolNode_MotherOfExistingFamilyToFemale_cREATE__SOURCE__fmEReference = null;
-	private EReference protocolNode_MotherOfExistingFamilyToFemale_cONTEXT__CORRESPONDENCE__families2personsEReference = null;
 	private EReference protocolNode_MotherOfExistingFamilyToFemale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = null;
 	private EReference protocolNode_MotherOfExistingFamilyToFemale_cONTEXT__TARGET__personsEReference = null;
 	private EReference protocolNode_MotherOfExistingFamilyToFemale_cREATE__TARGET__pEReference = null;
@@ -97,15 +89,12 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 	private EReference protocolNode_MotherToFemale_cONTEXT__SOURCE__familiesEReference = null;
 	private EReference protocolNode_MotherToFemale_cREATE__SOURCE__fEReference = null;
 	private EReference protocolNode_MotherToFemale_cREATE__SOURCE__fmEReference = null;
-	private EReference protocolNode_MotherToFemale_cONTEXT__CORRESPONDENCE__families2personsEReference = null;
 	private EReference protocolNode_MotherToFemale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = null;
 	private EReference protocolNode_MotherToFemale_cONTEXT__TARGET__personsEReference = null;
 	private EReference protocolNode_MotherToFemale_cREATE__TARGET__pEReference = null;
 	private EClass protocolNode_SonOfExistingFamilyToMaleEClass = null;
 	private EReference protocolNode_SonOfExistingFamilyToMale_cONTEXT__SOURCE__fEReference = null;
-	private EReference protocolNode_SonOfExistingFamilyToMale_cONTEXT__SOURCE__familiesEReference = null;
 	private EReference protocolNode_SonOfExistingFamilyToMale_cREATE__SOURCE__fmEReference = null;
-	private EReference protocolNode_SonOfExistingFamilyToMale_cONTEXT__CORRESPONDENCE__families2personsEReference = null;
 	private EReference protocolNode_SonOfExistingFamilyToMale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = null;
 	private EReference protocolNode_SonOfExistingFamilyToMale_cONTEXT__TARGET__personsEReference = null;
 	private EReference protocolNode_SonOfExistingFamilyToMale_cREATE__TARGET__pEReference = null;
@@ -113,7 +102,6 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 	private EReference protocolNode_SonToMale_cONTEXT__SOURCE__familiesEReference = null;
 	private EReference protocolNode_SonToMale_cREATE__SOURCE__fEReference = null;
 	private EReference protocolNode_SonToMale_cREATE__SOURCE__fmEReference = null;
-	private EReference protocolNode_SonToMale_cONTEXT__CORRESPONDENCE__families2personsEReference = null;
 	private EReference protocolNode_SonToMale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = null;
 	private EReference protocolNode_SonToMale_cONTEXT__TARGET__personsEReference = null;
 	private EReference protocolNode_SonToMale_cREATE__TARGET__pEReference = null;
@@ -221,16 +209,8 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		return protocolNode_DaughterOfExistingFamilyToFemale_cONTEXT__SOURCE__fEReference;	
 	}
 	@Override
-	public EReference getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__families() {
-		return protocolNode_DaughterOfExistingFamilyToFemale_cONTEXT__SOURCE__familiesEReference;	
-	}
-	@Override
 	public EReference getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__SOURCE__fm() {
 		return protocolNode_DaughterOfExistingFamilyToFemale_cREATE__SOURCE__fmEReference;	
-	}
-	@Override
-	public EReference getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__CORRESPONDENCE__families2persons() {
-		return protocolNode_DaughterOfExistingFamilyToFemale_cONTEXT__CORRESPONDENCE__families2personsEReference;	
 	}
 	@Override
 	public EReference getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons() {
@@ -259,10 +239,6 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 	@Override
 	public EReference getProtocolNode_DaughterToFemale_CREATE__SOURCE__fm() {
 		return protocolNode_DaughterToFemale_cREATE__SOURCE__fmEReference;	
-	}
-	@Override
-	public EReference getProtocolNode_DaughterToFemale_CONTEXT__CORRESPONDENCE__families2persons() {
-		return protocolNode_DaughterToFemale_cONTEXT__CORRESPONDENCE__families2personsEReference;	
 	}
 	@Override
 	public EReference getProtocolNode_DaughterToFemale_CREATE__CORRESPONDENCE__familyMember2Persons() {
@@ -301,16 +277,8 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		return protocolNode_FatherOfExistingFamilyToMale_cONTEXT__SOURCE__fEReference;	
 	}
 	@Override
-	public EReference getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__families() {
-		return protocolNode_FatherOfExistingFamilyToMale_cONTEXT__SOURCE__familiesEReference;	
-	}
-	@Override
 	public EReference getProtocolNode_FatherOfExistingFamilyToMale_CREATE__SOURCE__fm() {
 		return protocolNode_FatherOfExistingFamilyToMale_cREATE__SOURCE__fmEReference;	
-	}
-	@Override
-	public EReference getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__CORRESPONDENCE__families2persons() {
-		return protocolNode_FatherOfExistingFamilyToMale_cONTEXT__CORRESPONDENCE__families2personsEReference;	
 	}
 	@Override
 	public EReference getProtocolNode_FatherOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons() {
@@ -341,10 +309,6 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		return protocolNode_FatherToMale_cREATE__SOURCE__fmEReference;	
 	}
 	@Override
-	public EReference getProtocolNode_FatherToMale_CONTEXT__CORRESPONDENCE__families2persons() {
-		return protocolNode_FatherToMale_cONTEXT__CORRESPONDENCE__families2personsEReference;	
-	}
-	@Override
 	public EReference getProtocolNode_FatherToMale_CREATE__CORRESPONDENCE__familyMember2Persons() {
 		return protocolNode_FatherToMale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference;	
 	}
@@ -365,16 +329,8 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		return protocolNode_MotherOfExistingFamilyToFemale_cONTEXT__SOURCE__fEReference;	
 	}
 	@Override
-	public EReference getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__families() {
-		return protocolNode_MotherOfExistingFamilyToFemale_cONTEXT__SOURCE__familiesEReference;	
-	}
-	@Override
 	public EReference getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__SOURCE__fm() {
 		return protocolNode_MotherOfExistingFamilyToFemale_cREATE__SOURCE__fmEReference;	
-	}
-	@Override
-	public EReference getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__CORRESPONDENCE__families2persons() {
-		return protocolNode_MotherOfExistingFamilyToFemale_cONTEXT__CORRESPONDENCE__families2personsEReference;	
 	}
 	@Override
 	public EReference getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons() {
@@ -405,10 +361,6 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		return protocolNode_MotherToFemale_cREATE__SOURCE__fmEReference;	
 	}
 	@Override
-	public EReference getProtocolNode_MotherToFemale_CONTEXT__CORRESPONDENCE__families2persons() {
-		return protocolNode_MotherToFemale_cONTEXT__CORRESPONDENCE__families2personsEReference;	
-	}
-	@Override
 	public EReference getProtocolNode_MotherToFemale_CREATE__CORRESPONDENCE__familyMember2Persons() {
 		return protocolNode_MotherToFemale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference;	
 	}
@@ -429,16 +381,8 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		return protocolNode_SonOfExistingFamilyToMale_cONTEXT__SOURCE__fEReference;	
 	}
 	@Override
-	public EReference getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__families() {
-		return protocolNode_SonOfExistingFamilyToMale_cONTEXT__SOURCE__familiesEReference;	
-	}
-	@Override
 	public EReference getProtocolNode_SonOfExistingFamilyToMale_CREATE__SOURCE__fm() {
 		return protocolNode_SonOfExistingFamilyToMale_cREATE__SOURCE__fmEReference;	
-	}
-	@Override
-	public EReference getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__CORRESPONDENCE__families2persons() {
-		return protocolNode_SonOfExistingFamilyToMale_cONTEXT__CORRESPONDENCE__families2personsEReference;	
 	}
 	@Override
 	public EReference getProtocolNode_SonOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons() {
@@ -467,10 +411,6 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 	@Override
 	public EReference getProtocolNode_SonToMale_CREATE__SOURCE__fm() {
 		return protocolNode_SonToMale_cREATE__SOURCE__fmEReference;	
-	}
-	@Override
-	public EReference getProtocolNode_SonToMale_CONTEXT__CORRESPONDENCE__families2persons() {
-		return protocolNode_SonToMale_cONTEXT__CORRESPONDENCE__families2personsEReference;	
 	}
 	@Override
 	public EReference getProtocolNode_SonToMale_CREATE__CORRESPONDENCE__familyMember2Persons() {
@@ -530,18 +470,14 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		protocolNode_DaughterOfExistingFamilyToFemaleEClass = createEClass(PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE);
 		createEReference(protocolNode_DaughterOfExistingFamilyToFemaleEClass, PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__SOURC_E__F);
 		protocolNode_DaughterOfExistingFamilyToFemale_cONTEXT__SOURCE__fEReference = (EReference) protocolNode_DaughterOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(0);
-		createEReference(protocolNode_DaughterOfExistingFamilyToFemaleEClass, PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__SOURC_E__FAMILIES);
-		protocolNode_DaughterOfExistingFamilyToFemale_cONTEXT__SOURCE__familiesEReference = (EReference) protocolNode_DaughterOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(1);
 		createEReference(protocolNode_DaughterOfExistingFamilyToFemaleEClass, PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__SOURC_E__FM);
-		protocolNode_DaughterOfExistingFamilyToFemale_cREATE__SOURCE__fmEReference = (EReference) protocolNode_DaughterOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(2);
-		createEReference(protocolNode_DaughterOfExistingFamilyToFemaleEClass, PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS);
-		protocolNode_DaughterOfExistingFamilyToFemale_cONTEXT__CORRESPONDENCE__families2personsEReference = (EReference) protocolNode_DaughterOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(3);
+		protocolNode_DaughterOfExistingFamilyToFemale_cREATE__SOURCE__fmEReference = (EReference) protocolNode_DaughterOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(1);
 		createEReference(protocolNode_DaughterOfExistingFamilyToFemaleEClass, PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS);
-		protocolNode_DaughterOfExistingFamilyToFemale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_DaughterOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(4);
+		protocolNode_DaughterOfExistingFamilyToFemale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_DaughterOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(2);
 		createEReference(protocolNode_DaughterOfExistingFamilyToFemaleEClass, PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__TARGE_T__PERSONS);
-		protocolNode_DaughterOfExistingFamilyToFemale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_DaughterOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(5);
+		protocolNode_DaughterOfExistingFamilyToFemale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_DaughterOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(3);
 		createEReference(protocolNode_DaughterOfExistingFamilyToFemaleEClass, PROTOCOL_NODE__DAUGHTER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__TARGE_T__P);
-		protocolNode_DaughterOfExistingFamilyToFemale_cREATE__TARGET__pEReference = (EReference) protocolNode_DaughterOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(6);
+		protocolNode_DaughterOfExistingFamilyToFemale_cREATE__TARGET__pEReference = (EReference) protocolNode_DaughterOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(4);
 		
 		protocolNode_DaughterToFemaleEClass = createEClass(PROTOCOL_NODE__DAUGHTER_TO_FEMALE);
 		createEReference(protocolNode_DaughterToFemaleEClass, PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CONTEX_T__SOURC_E__FAMILIES);
@@ -550,14 +486,12 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		protocolNode_DaughterToFemale_cREATE__SOURCE__fEReference = (EReference) protocolNode_DaughterToFemaleEClass.getEStructuralFeatures().get(1);
 		createEReference(protocolNode_DaughterToFemaleEClass, PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CREAT_E__SOURC_E__FM);
 		protocolNode_DaughterToFemale_cREATE__SOURCE__fmEReference = (EReference) protocolNode_DaughterToFemaleEClass.getEStructuralFeatures().get(2);
-		createEReference(protocolNode_DaughterToFemaleEClass, PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS);
-		protocolNode_DaughterToFemale_cONTEXT__CORRESPONDENCE__families2personsEReference = (EReference) protocolNode_DaughterToFemaleEClass.getEStructuralFeatures().get(3);
 		createEReference(protocolNode_DaughterToFemaleEClass, PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS);
-		protocolNode_DaughterToFemale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_DaughterToFemaleEClass.getEStructuralFeatures().get(4);
+		protocolNode_DaughterToFemale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_DaughterToFemaleEClass.getEStructuralFeatures().get(3);
 		createEReference(protocolNode_DaughterToFemaleEClass, PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CONTEX_T__TARGE_T__PERSONS);
-		protocolNode_DaughterToFemale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_DaughterToFemaleEClass.getEStructuralFeatures().get(5);
+		protocolNode_DaughterToFemale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_DaughterToFemaleEClass.getEStructuralFeatures().get(4);
 		createEReference(protocolNode_DaughterToFemaleEClass, PROTOCOL_NODE__DAUGHTER_TO_FEMALE__CREAT_E__TARGE_T__P);
-		protocolNode_DaughterToFemale_cREATE__TARGET__pEReference = (EReference) protocolNode_DaughterToFemaleEClass.getEStructuralFeatures().get(6);
+		protocolNode_DaughterToFemale_cREATE__TARGET__pEReference = (EReference) protocolNode_DaughterToFemaleEClass.getEStructuralFeatures().get(5);
 		
 		protocolNode_Families2PersonsEClass = createEClass(PROTOCOL_NODE__FAMILIES2_PERSONS);
 		createEReference(protocolNode_Families2PersonsEClass, PROTOCOL_NODE__FAMILIES2_PERSONS__CREAT_E__SOURC_E__FAMILIES);
@@ -570,18 +504,14 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		protocolNode_FatherOfExistingFamilyToMaleEClass = createEClass(PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE);
 		createEReference(protocolNode_FatherOfExistingFamilyToMaleEClass, PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__F);
 		protocolNode_FatherOfExistingFamilyToMale_cONTEXT__SOURCE__fEReference = (EReference) protocolNode_FatherOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(0);
-		createEReference(protocolNode_FatherOfExistingFamilyToMaleEClass, PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__FAMILIES);
-		protocolNode_FatherOfExistingFamilyToMale_cONTEXT__SOURCE__familiesEReference = (EReference) protocolNode_FatherOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(1);
 		createEReference(protocolNode_FatherOfExistingFamilyToMaleEClass, PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__SOURC_E__FM);
-		protocolNode_FatherOfExistingFamilyToMale_cREATE__SOURCE__fmEReference = (EReference) protocolNode_FatherOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(2);
-		createEReference(protocolNode_FatherOfExistingFamilyToMaleEClass, PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS);
-		protocolNode_FatherOfExistingFamilyToMale_cONTEXT__CORRESPONDENCE__families2personsEReference = (EReference) protocolNode_FatherOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(3);
+		protocolNode_FatherOfExistingFamilyToMale_cREATE__SOURCE__fmEReference = (EReference) protocolNode_FatherOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(1);
 		createEReference(protocolNode_FatherOfExistingFamilyToMaleEClass, PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS);
-		protocolNode_FatherOfExistingFamilyToMale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_FatherOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(4);
+		protocolNode_FatherOfExistingFamilyToMale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_FatherOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(2);
 		createEReference(protocolNode_FatherOfExistingFamilyToMaleEClass, PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__TARGE_T__PERSONS);
-		protocolNode_FatherOfExistingFamilyToMale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_FatherOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(5);
+		protocolNode_FatherOfExistingFamilyToMale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_FatherOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(3);
 		createEReference(protocolNode_FatherOfExistingFamilyToMaleEClass, PROTOCOL_NODE__FATHER_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__TARGE_T__P);
-		protocolNode_FatherOfExistingFamilyToMale_cREATE__TARGET__pEReference = (EReference) protocolNode_FatherOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(6);
+		protocolNode_FatherOfExistingFamilyToMale_cREATE__TARGET__pEReference = (EReference) protocolNode_FatherOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(4);
 		
 		protocolNode_FatherToMaleEClass = createEClass(PROTOCOL_NODE__FATHER_TO_MALE);
 		createEReference(protocolNode_FatherToMaleEClass, PROTOCOL_NODE__FATHER_TO_MALE__CONTEX_T__SOURC_E__FAMILIES);
@@ -590,30 +520,24 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		protocolNode_FatherToMale_cREATE__SOURCE__fEReference = (EReference) protocolNode_FatherToMaleEClass.getEStructuralFeatures().get(1);
 		createEReference(protocolNode_FatherToMaleEClass, PROTOCOL_NODE__FATHER_TO_MALE__CREAT_E__SOURC_E__FM);
 		protocolNode_FatherToMale_cREATE__SOURCE__fmEReference = (EReference) protocolNode_FatherToMaleEClass.getEStructuralFeatures().get(2);
-		createEReference(protocolNode_FatherToMaleEClass, PROTOCOL_NODE__FATHER_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS);
-		protocolNode_FatherToMale_cONTEXT__CORRESPONDENCE__families2personsEReference = (EReference) protocolNode_FatherToMaleEClass.getEStructuralFeatures().get(3);
 		createEReference(protocolNode_FatherToMaleEClass, PROTOCOL_NODE__FATHER_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS);
-		protocolNode_FatherToMale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_FatherToMaleEClass.getEStructuralFeatures().get(4);
+		protocolNode_FatherToMale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_FatherToMaleEClass.getEStructuralFeatures().get(3);
 		createEReference(protocolNode_FatherToMaleEClass, PROTOCOL_NODE__FATHER_TO_MALE__CONTEX_T__TARGE_T__PERSONS);
-		protocolNode_FatherToMale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_FatherToMaleEClass.getEStructuralFeatures().get(5);
+		protocolNode_FatherToMale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_FatherToMaleEClass.getEStructuralFeatures().get(4);
 		createEReference(protocolNode_FatherToMaleEClass, PROTOCOL_NODE__FATHER_TO_MALE__CREAT_E__TARGE_T__P);
-		protocolNode_FatherToMale_cREATE__TARGET__pEReference = (EReference) protocolNode_FatherToMaleEClass.getEStructuralFeatures().get(6);
+		protocolNode_FatherToMale_cREATE__TARGET__pEReference = (EReference) protocolNode_FatherToMaleEClass.getEStructuralFeatures().get(5);
 		
 		protocolNode_MotherOfExistingFamilyToFemaleEClass = createEClass(PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE);
 		createEReference(protocolNode_MotherOfExistingFamilyToFemaleEClass, PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__SOURC_E__F);
 		protocolNode_MotherOfExistingFamilyToFemale_cONTEXT__SOURCE__fEReference = (EReference) protocolNode_MotherOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(0);
-		createEReference(protocolNode_MotherOfExistingFamilyToFemaleEClass, PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__SOURC_E__FAMILIES);
-		protocolNode_MotherOfExistingFamilyToFemale_cONTEXT__SOURCE__familiesEReference = (EReference) protocolNode_MotherOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(1);
 		createEReference(protocolNode_MotherOfExistingFamilyToFemaleEClass, PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__SOURC_E__FM);
-		protocolNode_MotherOfExistingFamilyToFemale_cREATE__SOURCE__fmEReference = (EReference) protocolNode_MotherOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(2);
-		createEReference(protocolNode_MotherOfExistingFamilyToFemaleEClass, PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS);
-		protocolNode_MotherOfExistingFamilyToFemale_cONTEXT__CORRESPONDENCE__families2personsEReference = (EReference) protocolNode_MotherOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(3);
+		protocolNode_MotherOfExistingFamilyToFemale_cREATE__SOURCE__fmEReference = (EReference) protocolNode_MotherOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(1);
 		createEReference(protocolNode_MotherOfExistingFamilyToFemaleEClass, PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS);
-		protocolNode_MotherOfExistingFamilyToFemale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_MotherOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(4);
+		protocolNode_MotherOfExistingFamilyToFemale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_MotherOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(2);
 		createEReference(protocolNode_MotherOfExistingFamilyToFemaleEClass, PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CONTEX_T__TARGE_T__PERSONS);
-		protocolNode_MotherOfExistingFamilyToFemale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_MotherOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(5);
+		protocolNode_MotherOfExistingFamilyToFemale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_MotherOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(3);
 		createEReference(protocolNode_MotherOfExistingFamilyToFemaleEClass, PROTOCOL_NODE__MOTHER_OF_EXISTING_FAMILY_TO_FEMALE__CREAT_E__TARGE_T__P);
-		protocolNode_MotherOfExistingFamilyToFemale_cREATE__TARGET__pEReference = (EReference) protocolNode_MotherOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(6);
+		protocolNode_MotherOfExistingFamilyToFemale_cREATE__TARGET__pEReference = (EReference) protocolNode_MotherOfExistingFamilyToFemaleEClass.getEStructuralFeatures().get(4);
 		
 		protocolNode_MotherToFemaleEClass = createEClass(PROTOCOL_NODE__MOTHER_TO_FEMALE);
 		createEReference(protocolNode_MotherToFemaleEClass, PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__SOURC_E__FAMILIES);
@@ -622,30 +546,24 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		protocolNode_MotherToFemale_cREATE__SOURCE__fEReference = (EReference) protocolNode_MotherToFemaleEClass.getEStructuralFeatures().get(1);
 		createEReference(protocolNode_MotherToFemaleEClass, PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__SOURC_E__FM);
 		protocolNode_MotherToFemale_cREATE__SOURCE__fmEReference = (EReference) protocolNode_MotherToFemaleEClass.getEStructuralFeatures().get(2);
-		createEReference(protocolNode_MotherToFemaleEClass, PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS);
-		protocolNode_MotherToFemale_cONTEXT__CORRESPONDENCE__families2personsEReference = (EReference) protocolNode_MotherToFemaleEClass.getEStructuralFeatures().get(3);
 		createEReference(protocolNode_MotherToFemaleEClass, PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS);
-		protocolNode_MotherToFemale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_MotherToFemaleEClass.getEStructuralFeatures().get(4);
+		protocolNode_MotherToFemale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_MotherToFemaleEClass.getEStructuralFeatures().get(3);
 		createEReference(protocolNode_MotherToFemaleEClass, PROTOCOL_NODE__MOTHER_TO_FEMALE__CONTEX_T__TARGE_T__PERSONS);
-		protocolNode_MotherToFemale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_MotherToFemaleEClass.getEStructuralFeatures().get(5);
+		protocolNode_MotherToFemale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_MotherToFemaleEClass.getEStructuralFeatures().get(4);
 		createEReference(protocolNode_MotherToFemaleEClass, PROTOCOL_NODE__MOTHER_TO_FEMALE__CREAT_E__TARGE_T__P);
-		protocolNode_MotherToFemale_cREATE__TARGET__pEReference = (EReference) protocolNode_MotherToFemaleEClass.getEStructuralFeatures().get(6);
+		protocolNode_MotherToFemale_cREATE__TARGET__pEReference = (EReference) protocolNode_MotherToFemaleEClass.getEStructuralFeatures().get(5);
 		
 		protocolNode_SonOfExistingFamilyToMaleEClass = createEClass(PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE);
 		createEReference(protocolNode_SonOfExistingFamilyToMaleEClass, PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__F);
 		protocolNode_SonOfExistingFamilyToMale_cONTEXT__SOURCE__fEReference = (EReference) protocolNode_SonOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(0);
-		createEReference(protocolNode_SonOfExistingFamilyToMaleEClass, PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__SOURC_E__FAMILIES);
-		protocolNode_SonOfExistingFamilyToMale_cONTEXT__SOURCE__familiesEReference = (EReference) protocolNode_SonOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(1);
 		createEReference(protocolNode_SonOfExistingFamilyToMaleEClass, PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__SOURC_E__FM);
-		protocolNode_SonOfExistingFamilyToMale_cREATE__SOURCE__fmEReference = (EReference) protocolNode_SonOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(2);
-		createEReference(protocolNode_SonOfExistingFamilyToMaleEClass, PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS);
-		protocolNode_SonOfExistingFamilyToMale_cONTEXT__CORRESPONDENCE__families2personsEReference = (EReference) protocolNode_SonOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(3);
+		protocolNode_SonOfExistingFamilyToMale_cREATE__SOURCE__fmEReference = (EReference) protocolNode_SonOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(1);
 		createEReference(protocolNode_SonOfExistingFamilyToMaleEClass, PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS);
-		protocolNode_SonOfExistingFamilyToMale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_SonOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(4);
+		protocolNode_SonOfExistingFamilyToMale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_SonOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(2);
 		createEReference(protocolNode_SonOfExistingFamilyToMaleEClass, PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CONTEX_T__TARGE_T__PERSONS);
-		protocolNode_SonOfExistingFamilyToMale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_SonOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(5);
+		protocolNode_SonOfExistingFamilyToMale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_SonOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(3);
 		createEReference(protocolNode_SonOfExistingFamilyToMaleEClass, PROTOCOL_NODE__SON_OF_EXISTING_FAMILY_TO_MALE__CREAT_E__TARGE_T__P);
-		protocolNode_SonOfExistingFamilyToMale_cREATE__TARGET__pEReference = (EReference) protocolNode_SonOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(6);
+		protocolNode_SonOfExistingFamilyToMale_cREATE__TARGET__pEReference = (EReference) protocolNode_SonOfExistingFamilyToMaleEClass.getEStructuralFeatures().get(4);
 		
 		protocolNode_SonToMaleEClass = createEClass(PROTOCOL_NODE__SON_TO_MALE);
 		createEReference(protocolNode_SonToMaleEClass, PROTOCOL_NODE__SON_TO_MALE__CONTEX_T__SOURC_E__FAMILIES);
@@ -654,14 +572,12 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		protocolNode_SonToMale_cREATE__SOURCE__fEReference = (EReference) protocolNode_SonToMaleEClass.getEStructuralFeatures().get(1);
 		createEReference(protocolNode_SonToMaleEClass, PROTOCOL_NODE__SON_TO_MALE__CREAT_E__SOURC_E__FM);
 		protocolNode_SonToMale_cREATE__SOURCE__fmEReference = (EReference) protocolNode_SonToMaleEClass.getEStructuralFeatures().get(2);
-		createEReference(protocolNode_SonToMaleEClass, PROTOCOL_NODE__SON_TO_MALE__CONTEX_T__CORRESPONDENC_E__FAMILIES2PERSONS);
-		protocolNode_SonToMale_cONTEXT__CORRESPONDENCE__families2personsEReference = (EReference) protocolNode_SonToMaleEClass.getEStructuralFeatures().get(3);
 		createEReference(protocolNode_SonToMaleEClass, PROTOCOL_NODE__SON_TO_MALE__CREAT_E__CORRESPONDENC_E__FAMILY_MEMBER2_PERSONS);
-		protocolNode_SonToMale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_SonToMaleEClass.getEStructuralFeatures().get(4);
+		protocolNode_SonToMale_cREATE__CORRESPONDENCE__familyMember2PersonsEReference = (EReference) protocolNode_SonToMaleEClass.getEStructuralFeatures().get(3);
 		createEReference(protocolNode_SonToMaleEClass, PROTOCOL_NODE__SON_TO_MALE__CONTEX_T__TARGE_T__PERSONS);
-		protocolNode_SonToMale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_SonToMaleEClass.getEStructuralFeatures().get(5);
+		protocolNode_SonToMale_cONTEXT__TARGET__personsEReference = (EReference) protocolNode_SonToMaleEClass.getEStructuralFeatures().get(4);
 		createEReference(protocolNode_SonToMaleEClass, PROTOCOL_NODE__SON_TO_MALE__CREAT_E__TARGE_T__P);
-		protocolNode_SonToMale_cREATE__TARGET__pEReference = (EReference) protocolNode_SonToMaleEClass.getEStructuralFeatures().get(6);
+		protocolNode_SonToMale_cREATE__TARGET__pEReference = (EReference) protocolNode_SonToMaleEClass.getEStructuralFeatures().get(5);
 		
 		// Create enums
 		
@@ -744,14 +660,8 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		initEReference(getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__f(), FamiliesSmartEMFPackage.eINSTANCE.getFamily(),  null, 
 			"CONTEXT__SOURCE__f", null, 1, 1, ProtocolNode_DaughterOfExistingFamilyToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__families(), FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister(),  null, 
-			"CONTEXT__SOURCE__families", null, 1, 1, ProtocolNode_DaughterOfExistingFamilyToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__SOURCE__fm(), FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(),  null, 
 			"CREATE__SOURCE__fm", null, 1, 1, ProtocolNode_DaughterOfExistingFamilyToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__CORRESPONDENCE__families2persons(), this.getRegisterToRegisterCorr(),  null, 
-			"CONTEXT__CORRESPONDENCE__families2persons", null, 1, 1, ProtocolNode_DaughterOfExistingFamilyToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), this.getFamilyMemberToPersonCorr(),  null, 
 			"CREATE__CORRESPONDENCE__familyMember2Persons", null, 1, 1, ProtocolNode_DaughterOfExistingFamilyToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
@@ -773,9 +683,6 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProtocolNode_DaughterToFemale_CREATE__SOURCE__fm(), FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(),  null, 
 			"CREATE__SOURCE__fm", null, 1, 1, ProtocolNode_DaughterToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProtocolNode_DaughterToFemale_CONTEXT__CORRESPONDENCE__families2persons(), this.getRegisterToRegisterCorr(),  null, 
-			"CONTEXT__CORRESPONDENCE__families2persons", null, 1, 1, ProtocolNode_DaughterToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProtocolNode_DaughterToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), this.getFamilyMemberToPersonCorr(),  null, 
 			"CREATE__CORRESPONDENCE__familyMember2Persons", null, 1, 1, ProtocolNode_DaughterToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
@@ -804,14 +711,8 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		initEReference(getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__f(), FamiliesSmartEMFPackage.eINSTANCE.getFamily(),  null, 
 			"CONTEXT__SOURCE__f", null, 1, 1, ProtocolNode_FatherOfExistingFamilyToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__families(), FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister(),  null, 
-			"CONTEXT__SOURCE__families", null, 1, 1, ProtocolNode_FatherOfExistingFamilyToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProtocolNode_FatherOfExistingFamilyToMale_CREATE__SOURCE__fm(), FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(),  null, 
 			"CREATE__SOURCE__fm", null, 1, 1, ProtocolNode_FatherOfExistingFamilyToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__CORRESPONDENCE__families2persons(), this.getRegisterToRegisterCorr(),  null, 
-			"CONTEXT__CORRESPONDENCE__families2persons", null, 1, 1, ProtocolNode_FatherOfExistingFamilyToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProtocolNode_FatherOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), this.getFamilyMemberToPersonCorr(),  null, 
 			"CREATE__CORRESPONDENCE__familyMember2Persons", null, 1, 1, ProtocolNode_FatherOfExistingFamilyToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
@@ -834,9 +735,6 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		initEReference(getProtocolNode_FatherToMale_CREATE__SOURCE__fm(), FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(),  null, 
 			"CREATE__SOURCE__fm", null, 1, 1, ProtocolNode_FatherToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProtocolNode_FatherToMale_CONTEXT__CORRESPONDENCE__families2persons(), this.getRegisterToRegisterCorr(),  null, 
-			"CONTEXT__CORRESPONDENCE__families2persons", null, 1, 1, ProtocolNode_FatherToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProtocolNode_FatherToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), this.getFamilyMemberToPersonCorr(),  null, 
 			"CREATE__CORRESPONDENCE__familyMember2Persons", null, 1, 1, ProtocolNode_FatherToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -852,14 +750,8 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		initEReference(getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__f(), FamiliesSmartEMFPackage.eINSTANCE.getFamily(),  null, 
 			"CONTEXT__SOURCE__f", null, 1, 1, ProtocolNode_MotherOfExistingFamilyToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__families(), FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister(),  null, 
-			"CONTEXT__SOURCE__families", null, 1, 1, ProtocolNode_MotherOfExistingFamilyToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__SOURCE__fm(), FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(),  null, 
 			"CREATE__SOURCE__fm", null, 1, 1, ProtocolNode_MotherOfExistingFamilyToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__CORRESPONDENCE__families2persons(), this.getRegisterToRegisterCorr(),  null, 
-			"CONTEXT__CORRESPONDENCE__families2persons", null, 1, 1, ProtocolNode_MotherOfExistingFamilyToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), this.getFamilyMemberToPersonCorr(),  null, 
 			"CREATE__CORRESPONDENCE__familyMember2Persons", null, 1, 1, ProtocolNode_MotherOfExistingFamilyToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
@@ -882,9 +774,6 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		initEReference(getProtocolNode_MotherToFemale_CREATE__SOURCE__fm(), FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(),  null, 
 			"CREATE__SOURCE__fm", null, 1, 1, ProtocolNode_MotherToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProtocolNode_MotherToFemale_CONTEXT__CORRESPONDENCE__families2persons(), this.getRegisterToRegisterCorr(),  null, 
-			"CONTEXT__CORRESPONDENCE__families2persons", null, 1, 1, ProtocolNode_MotherToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProtocolNode_MotherToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), this.getFamilyMemberToPersonCorr(),  null, 
 			"CREATE__CORRESPONDENCE__familyMember2Persons", null, 1, 1, ProtocolNode_MotherToFemale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -900,14 +789,8 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		initEReference(getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__f(), FamiliesSmartEMFPackage.eINSTANCE.getFamily(),  null, 
 			"CONTEXT__SOURCE__f", null, 1, 1, ProtocolNode_SonOfExistingFamilyToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__families(), FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister(),  null, 
-			"CONTEXT__SOURCE__families", null, 1, 1, ProtocolNode_SonOfExistingFamilyToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProtocolNode_SonOfExistingFamilyToMale_CREATE__SOURCE__fm(), FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(),  null, 
 			"CREATE__SOURCE__fm", null, 1, 1, ProtocolNode_SonOfExistingFamilyToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__CORRESPONDENCE__families2persons(), this.getRegisterToRegisterCorr(),  null, 
-			"CONTEXT__CORRESPONDENCE__families2persons", null, 1, 1, ProtocolNode_SonOfExistingFamilyToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProtocolNode_SonOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), this.getFamilyMemberToPersonCorr(),  null, 
 			"CREATE__CORRESPONDENCE__familyMember2Persons", null, 1, 1, ProtocolNode_SonOfExistingFamilyToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
@@ -929,9 +812,6 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProtocolNode_SonToMale_CREATE__SOURCE__fm(), FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(),  null, 
 			"CREATE__SOURCE__fm", null, 1, 1, ProtocolNode_SonToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProtocolNode_SonToMale_CONTEXT__CORRESPONDENCE__families2persons(), this.getRegisterToRegisterCorr(),  null, 
-			"CONTEXT__CORRESPONDENCE__families2persons", null, 1, 1, ProtocolNode_SonToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProtocolNode_SonToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), this.getFamilyMemberToPersonCorr(),  null, 
 			"CREATE__CORRESPONDENCE__familyMember2Persons", null, 1, 1, ProtocolNode_SonToMale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,

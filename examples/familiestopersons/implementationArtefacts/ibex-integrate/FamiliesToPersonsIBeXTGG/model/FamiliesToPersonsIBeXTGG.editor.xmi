@@ -26,6 +26,24 @@
       <target href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//Person"/>
     </correspondenceTypes>
   </schema>
+  <libraries name="CustomAttributeConditionLibrary">
+    <attributeCondDefs name="bindFamilyName">
+      <params name="separator">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <params name="familyName">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <params name="fullName">
+        <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </params>
+      <allowedSyncBindings>
+        <value>B</value>
+        <value>B</value>
+        <value>B</value>
+      </allowedSyncBindings>
+    </attributeCondDefs>
+  </libraries>
   <libraries name="DefaultAttributeConditionLibrary">
     <attributeCondDefs name="eq_string">
       <params name="a">
@@ -1000,16 +1018,6 @@
           </createdEdges>
         </context>
       </contextNodes>
-      <contextNodes>
-        <context xsi:type="tGGL:SlimRuleNode" name="families">
-          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
-          <contextEdges>
-            <context xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.1/@sourceRule/@contextNodes.0/@context">
-              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
-            </context>
-          </contextEdges>
-        </context>
-      </contextNodes>
       <createdNodes>
         <creation xsi:type="tGGL:SlimRuleNode" name="fm">
           <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
@@ -1034,14 +1042,11 @@
       </createdNodes>
     </targetRule>
     <corrRule>
-      <contextCorrespondenceNodes>
-        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.1/@sourceRule/@contextNodes.1/@context" target="//@rules.1/@targetRule/@contextNodes.0/@context"/>
-      </contextCorrespondenceNodes>
       <createdCorrespondenceNodes>
         <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.1/@sourceRule/@createdNodes.0/@creation" target="//@rules.1/@targetRule/@createdNodes.0/@creation"/>
       </createdCorrespondenceNodes>
     </corrRule>
-    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+    <attrConditions name="//@libraries.1/@attributeCondDefs.9">
       <values xsi:type="tGGL:ExpressionOperand">
         <operand xsi:type="slimGT:ArithmeticLiteral">
           <value xsi:type="slimGT:StringLiteral" value=", "/>
@@ -1113,14 +1118,11 @@
       </createdNodes>
     </targetRule>
     <corrRule>
-      <contextCorrespondenceNodes>
-        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.2/@sourceRule/@contextNodes.0/@context" target="//@rules.2/@targetRule/@contextNodes.0/@context"/>
-      </contextCorrespondenceNodes>
       <createdCorrespondenceNodes>
         <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.2/@sourceRule/@createdNodes.1/@creation" target="//@rules.2/@targetRule/@createdNodes.0/@creation"/>
       </createdCorrespondenceNodes>
     </corrRule>
-    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+    <attrConditions name="//@libraries.1/@attributeCondDefs.9">
       <values xsi:type="tGGL:ExpressionOperand">
         <operand xsi:type="slimGT:ArithmeticLiteral">
           <value xsi:type="slimGT:StringLiteral" value=", "/>
@@ -1148,16 +1150,6 @@
   </rules>
   <rules abstract="true" name="ExistingFamily2Person">
     <sourceRule>
-      <contextNodes>
-        <context xsi:type="tGGL:SlimRuleNode" name="families">
-          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
-          <contextEdges>
-            <context xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.3/@sourceRule/@contextNodes.1/@context">
-              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
-            </context>
-          </contextEdges>
-        </context>
-      </contextNodes>
       <contextNodes>
         <context xsi:type="tGGL:SlimRuleNode" name="f">
           <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family"/>
@@ -1187,14 +1179,11 @@
       </createdNodes>
     </targetRule>
     <corrRule>
-      <contextCorrespondenceNodes>
-        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.3/@sourceRule/@contextNodes.0/@context" target="//@rules.3/@targetRule/@contextNodes.0/@context"/>
-      </contextCorrespondenceNodes>
       <createdCorrespondenceNodes>
         <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.3/@sourceRule/@createdNodes.0/@creation" target="//@rules.3/@targetRule/@createdNodes.0/@creation"/>
       </createdCorrespondenceNodes>
     </corrRule>
-    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+    <attrConditions name="//@libraries.1/@attributeCondDefs.9">
       <values xsi:type="tGGL:ExpressionOperand">
         <operand xsi:type="slimGT:ArithmeticLiteral">
           <value xsi:type="slimGT:StringLiteral" value=", "/>
@@ -1202,7 +1191,7 @@
       </values>
       <values xsi:type="tGGL:ExpressionOperand">
         <operand xsi:type="slimGT:NodeAttributeExpression">
-          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.3/@sourceRule/@contextNodes.1/@context"/>
+          <nodeExpression xsi:type="tGGL:NodeExpression" node="//@rules.3/@sourceRule/@contextNodes.0/@context"/>
           <feature href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/name"/>
         </operand>
       </values>
@@ -1282,14 +1271,11 @@
       </createdNodes>
     </targetRule>
     <corrRule>
-      <contextCorrespondenceNodes>
-        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.5/@sourceRule/@contextNodes.0/@context" target="//@rules.5/@targetRule/@contextNodes.0/@context"/>
-      </contextCorrespondenceNodes>
       <createdCorrespondenceNodes>
         <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.5/@sourceRule/@createdNodes.1/@creation" target="//@rules.5/@targetRule/@createdNodes.0/@creation"/>
       </createdCorrespondenceNodes>
     </corrRule>
-    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+    <attrConditions name="//@libraries.1/@attributeCondDefs.9">
       <values xsi:type="tGGL:ExpressionOperand">
         <operand xsi:type="slimGT:ArithmeticLiteral">
           <value xsi:type="slimGT:StringLiteral" value=", "/>
@@ -1327,16 +1313,6 @@
           </createdEdges>
         </context>
       </contextNodes>
-      <contextNodes>
-        <context xsi:type="tGGL:SlimRuleNode" name="families">
-          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
-          <contextEdges>
-            <context xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.6/@sourceRule/@contextNodes.0/@context">
-              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
-            </context>
-          </contextEdges>
-        </context>
-      </contextNodes>
       <createdNodes>
         <creation xsi:type="tGGL:SlimRuleNode" name="fm">
           <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
@@ -1361,14 +1337,11 @@
       </createdNodes>
     </targetRule>
     <corrRule>
-      <contextCorrespondenceNodes>
-        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.6/@sourceRule/@contextNodes.1/@context" target="//@rules.6/@targetRule/@contextNodes.0/@context"/>
-      </contextCorrespondenceNodes>
       <createdCorrespondenceNodes>
         <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.6/@sourceRule/@createdNodes.0/@creation" target="//@rules.6/@targetRule/@createdNodes.0/@creation"/>
       </createdCorrespondenceNodes>
     </corrRule>
-    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+    <attrConditions name="//@libraries.1/@attributeCondDefs.9">
       <values xsi:type="tGGL:ExpressionOperand">
         <operand xsi:type="slimGT:ArithmeticLiteral">
           <value xsi:type="slimGT:StringLiteral" value=", "/>
@@ -1440,14 +1413,11 @@
       </createdNodes>
     </targetRule>
     <corrRule>
-      <contextCorrespondenceNodes>
-        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.7/@sourceRule/@contextNodes.0/@context" target="//@rules.7/@targetRule/@contextNodes.0/@context"/>
-      </contextCorrespondenceNodes>
       <createdCorrespondenceNodes>
         <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.7/@sourceRule/@createdNodes.1/@creation" target="//@rules.7/@targetRule/@createdNodes.0/@creation"/>
       </createdCorrespondenceNodes>
     </corrRule>
-    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+    <attrConditions name="//@libraries.1/@attributeCondDefs.9">
       <values xsi:type="tGGL:ExpressionOperand">
         <operand xsi:type="slimGT:ArithmeticLiteral">
           <value xsi:type="slimGT:StringLiteral" value=", "/>
@@ -1485,16 +1455,6 @@
           </createdEdges>
         </context>
       </contextNodes>
-      <contextNodes>
-        <context xsi:type="tGGL:SlimRuleNode" name="families">
-          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
-          <contextEdges>
-            <context xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.8/@sourceRule/@contextNodes.0/@context">
-              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
-            </context>
-          </contextEdges>
-        </context>
-      </contextNodes>
       <createdNodes>
         <creation xsi:type="tGGL:SlimRuleNode" name="fm">
           <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
@@ -1519,14 +1479,11 @@
       </createdNodes>
     </targetRule>
     <corrRule>
-      <contextCorrespondenceNodes>
-        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.8/@sourceRule/@contextNodes.1/@context" target="//@rules.8/@targetRule/@contextNodes.0/@context"/>
-      </contextCorrespondenceNodes>
       <createdCorrespondenceNodes>
         <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.8/@sourceRule/@createdNodes.0/@creation" target="//@rules.8/@targetRule/@createdNodes.0/@creation"/>
       </createdCorrespondenceNodes>
     </corrRule>
-    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+    <attrConditions name="//@libraries.1/@attributeCondDefs.9">
       <values xsi:type="tGGL:ExpressionOperand">
         <operand xsi:type="slimGT:ArithmeticLiteral">
           <value xsi:type="slimGT:StringLiteral" value=", "/>
@@ -1598,14 +1555,11 @@
       </createdNodes>
     </targetRule>
     <corrRule>
-      <contextCorrespondenceNodes>
-        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.9/@sourceRule/@contextNodes.0/@context" target="//@rules.9/@targetRule/@contextNodes.0/@context"/>
-      </contextCorrespondenceNodes>
       <createdCorrespondenceNodes>
         <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.9/@sourceRule/@createdNodes.1/@creation" target="//@rules.9/@targetRule/@createdNodes.0/@creation"/>
       </createdCorrespondenceNodes>
     </corrRule>
-    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+    <attrConditions name="//@libraries.1/@attributeCondDefs.9">
       <values xsi:type="tGGL:ExpressionOperand">
         <operand xsi:type="slimGT:ArithmeticLiteral">
           <value xsi:type="slimGT:StringLiteral" value=", "/>
@@ -1643,16 +1597,6 @@
           </createdEdges>
         </context>
       </contextNodes>
-      <contextNodes>
-        <context xsi:type="tGGL:SlimRuleNode" name="families">
-          <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister"/>
-          <contextEdges>
-            <context xsi:type="slimGT:SlimRuleSimpleEdge" target="//@rules.10/@sourceRule/@contextNodes.0/@context">
-              <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyRegister/families"/>
-            </context>
-          </contextEdges>
-        </context>
-      </contextNodes>
       <createdNodes>
         <creation xsi:type="tGGL:SlimRuleNode" name="fm">
           <type href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//FamilyMember"/>
@@ -1677,14 +1621,11 @@
       </createdNodes>
     </targetRule>
     <corrRule>
-      <contextCorrespondenceNodes>
-        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.10/@sourceRule/@contextNodes.1/@context" target="//@rules.10/@targetRule/@contextNodes.0/@context"/>
-      </contextCorrespondenceNodes>
       <createdCorrespondenceNodes>
         <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.10/@sourceRule/@createdNodes.0/@creation" target="//@rules.10/@targetRule/@createdNodes.0/@creation"/>
       </createdCorrespondenceNodes>
     </corrRule>
-    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+    <attrConditions name="//@libraries.1/@attributeCondDefs.9">
       <values xsi:type="tGGL:ExpressionOperand">
         <operand xsi:type="slimGT:ArithmeticLiteral">
           <value xsi:type="slimGT:StringLiteral" value=", "/>
@@ -1756,14 +1697,11 @@
       </createdNodes>
     </targetRule>
     <corrRule>
-      <contextCorrespondenceNodes>
-        <context name="families2persons" type="//@schema/@correspondenceTypes.0" source="//@rules.11/@sourceRule/@contextNodes.0/@context" target="//@rules.11/@targetRule/@contextNodes.0/@context"/>
-      </contextCorrespondenceNodes>
       <createdCorrespondenceNodes>
         <creation name="familyMember2Persons" type="//@schema/@correspondenceTypes.2" source="//@rules.11/@sourceRule/@createdNodes.1/@creation" target="//@rules.11/@targetRule/@createdNodes.0/@creation"/>
       </createdCorrespondenceNodes>
     </corrRule>
-    <attrConditions name="//@libraries.0/@attributeCondDefs.9">
+    <attrConditions name="//@libraries.1/@attributeCondDefs.9">
       <values xsi:type="tGGL:ExpressionOperand">
         <operand xsi:type="slimGT:ArithmeticLiteral">
           <value xsi:type="slimGT:StringLiteral" value=", "/>

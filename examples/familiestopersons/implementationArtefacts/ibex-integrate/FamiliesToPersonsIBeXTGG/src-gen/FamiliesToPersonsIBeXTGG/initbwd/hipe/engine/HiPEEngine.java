@@ -6,14 +6,14 @@ import akka.actor.Props;
 import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.NotificationActor;
 import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.DispatchActor;
 import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.DaughterOfExistingFamilyToFemale__BWD_1;
-import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.DaughterToFemale__BWD_7;
-import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.Families2Persons__BWD_12;
-import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.FatherOfExistingFamilyToMale__BWD_14;
-import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.FatherToMale__BWD_20;
-import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.MotherOfExistingFamilyToFemale__BWD_25;
-import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.MotherToFemale__BWD_31;
-import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.SonOfExistingFamilyToMale__BWD_36;
-import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.SonToMale__BWD_42;
+import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.DaughterToFemale__BWD_5;
+import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.Families2Persons__BWD_9;
+import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.FatherOfExistingFamilyToMale__BWD_11;
+import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.FatherToMale__BWD_15;
+import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.MotherOfExistingFamilyToFemale__BWD_19;
+import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.MotherToFemale__BWD_23;
+import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.SonOfExistingFamilyToMale__BWD_27;
+import FamiliesToPersonsIBeXTGG.initbwd.hipe.engine.actor.stateless.SonToMale__BWD_31;
 
 import hipe.engine.IHiPEEngine;
 import hipe.engine.message.InitGenReferenceActor;
@@ -22,7 +22,7 @@ import hipe.generic.actor.GenericObjectActor;
 import hipe.generic.actor.GenericReferenceActor;
 import hipe.generic.actor.GenericProductionActor;
 import hipe.generic.actor.junction.*;
-import hipe.engine.HiPEOptions;
+import hipe.engine.config.HiPEOptions;
 
 import hipe.network.*;
 
@@ -86,14 +86,14 @@ public class HiPEEngine extends IHiPEEngine{
 	@Override
 	public void createJunctionNodes() {
 		classes.put("DaughterOfExistingFamilyToFemale__BWD_1", DaughterOfExistingFamilyToFemale__BWD_1.class);
-		classes.put("DaughterToFemale__BWD_7", DaughterToFemale__BWD_7.class);
-		classes.put("Families2Persons__BWD_12", Families2Persons__BWD_12.class);
-		classes.put("FatherOfExistingFamilyToMale__BWD_14", FatherOfExistingFamilyToMale__BWD_14.class);
-		classes.put("FatherToMale__BWD_20", FatherToMale__BWD_20.class);
-		classes.put("MotherOfExistingFamilyToFemale__BWD_25", MotherOfExistingFamilyToFemale__BWD_25.class);
-		classes.put("MotherToFemale__BWD_31", MotherToFemale__BWD_31.class);
-		classes.put("SonOfExistingFamilyToMale__BWD_36", SonOfExistingFamilyToMale__BWD_36.class);
-		classes.put("SonToMale__BWD_42", SonToMale__BWD_42.class);
+		classes.put("DaughterToFemale__BWD_5", DaughterToFemale__BWD_5.class);
+		classes.put("Families2Persons__BWD_9", Families2Persons__BWD_9.class);
+		classes.put("FatherOfExistingFamilyToMale__BWD_11", FatherOfExistingFamilyToMale__BWD_11.class);
+		classes.put("FatherToMale__BWD_15", FatherToMale__BWD_15.class);
+		classes.put("MotherOfExistingFamilyToFemale__BWD_19", MotherOfExistingFamilyToFemale__BWD_19.class);
+		classes.put("MotherToFemale__BWD_23", MotherToFemale__BWD_23.class);
+		classes.put("SonOfExistingFamilyToMale__BWD_27", SonOfExistingFamilyToMale__BWD_27.class);
+		classes.put("SonToMale__BWD_31", SonToMale__BWD_31.class);
 	}
 	
 	@Override
@@ -105,11 +105,8 @@ public class HiPEEngine extends IHiPEEngine{
 	public void createObjectNodes() {
 		classes.put("Family_object",Family_object.class);
 		classes.put("Female_object",Female_object.class);
+		classes.put("FamilyRegister_object",FamilyRegister_object.class);
 		classes.put("Male_object",Male_object.class);
-		classes.put("FamilyRegister_object_SP0",FamilyRegister_object_SP0.class);
-		classes.put("FamilyRegister_object_SP1",FamilyRegister_object_SP1.class);
-		classes.put("RegisterToRegisterCorr_object_SP0",RegisterToRegisterCorr_object_SP0.class);
-		classes.put("RegisterToRegisterCorr_object_SP1",RegisterToRegisterCorr_object_SP1.class);
 		classes.put("PersonRegister_object_SP0",PersonRegister_object_SP0.class);
 		classes.put("PersonRegister_object_SP1",PersonRegister_object_SP1.class);
 		classes.put("PersonRegister_object_SP2",PersonRegister_object_SP2.class);
@@ -123,11 +120,8 @@ public class HiPEEngine extends IHiPEEngine{
 
 class Family_object extends GenericObjectActor<FamiliesSmartEMF.Family> { }
 class Female_object extends GenericObjectActor<PersonsSmartEMF.Female> { }
+class FamilyRegister_object extends GenericObjectActor<FamiliesSmartEMF.FamilyRegister> { }
 class Male_object extends GenericObjectActor<PersonsSmartEMF.Male> { }
-class FamilyRegister_object_SP0 extends GenericObjectActor<FamiliesSmartEMF.FamilyRegister> { }
-class FamilyRegister_object_SP1 extends GenericObjectActor<FamiliesSmartEMF.FamilyRegister> { }
-class RegisterToRegisterCorr_object_SP0 extends GenericObjectActor<FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr> { }
-class RegisterToRegisterCorr_object_SP1 extends GenericObjectActor<FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr> { }
 class PersonRegister_object_SP0 extends GenericObjectActor<PersonsSmartEMF.PersonRegister> { }
 class PersonRegister_object_SP1 extends GenericObjectActor<PersonsSmartEMF.PersonRegister> { }
 class PersonRegister_object_SP2 extends GenericObjectActor<PersonsSmartEMF.PersonRegister> { }
