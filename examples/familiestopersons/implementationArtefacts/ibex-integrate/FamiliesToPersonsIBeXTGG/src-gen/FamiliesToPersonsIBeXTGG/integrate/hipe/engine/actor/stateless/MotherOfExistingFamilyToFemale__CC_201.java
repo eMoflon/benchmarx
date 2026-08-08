@@ -1,30 +1,48 @@
 package FamiliesToPersonsIBeXTGG.integrate.hipe.engine.actor.stateless;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import org.emoflon.ibex.tgg.run.familiestopersonsibextgg.config.CachedDisjointExplorer;
+import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 
 import hipe.engine.actor.Port;
+import hipe.engine.util.HiPESet;
+import hipe.engine.match.EdgeMatch;
 import hipe.engine.match.HMatch;
+import hipe.engine.match.OverlapMatch;
+import hipe.engine.match.LocalSearchMatch;
+import hipe.engine.actor.junction.PortJunction;
+import hipe.engine.actor.junction.PortJunctionLeft;
+import hipe.engine.actor.junction.PortJunctionRight;
 import hipe.engine.message.input.AttributeChanged;
 import hipe.engine.message.input.ReferenceAdded;
 import hipe.engine.message.input.ReferenceDeleted;
 import hipe.engine.message.production.MatchAdded;
 import hipe.engine.message.production.MatchDeleted;
-import hipe.engine.message.stateless.MatchRequest;
-import hipe.generic.actor.search.misc.EdgeLookupMethods;
-import hipe.generic.actor.search.misc.ModelAttribute;
-import hipe.generic.actor.search.misc.ModelEdge;
-import hipe.generic.actor.search.misc.SearchOrchestration;
-import hipe.generic.actor.stateless.GenericStatelessSearchActor;
-import hipe.generic.actor.stateless.StatelessDeltaMatch;
-import hipe.generic.actor.stateless.StatelessInputType;
-import hipe.generic.actor.stateless.enums.UsingDeltaMode;
-import hipe.generic.actor.stateless.search.ConstraintCheck;
-import hipe.generic.actor.stateless.search.ConstraintChecker;
-import hipe.generic.actor.stateless.search.DeltaAwareEdgeExplorer;
-import hipe.generic.actor.stateless.search.DisjointExplorer;
-import hipe.generic.actor.stateless.search.NACQueryChecker;
+import hipe.engine.message.stateless.*;
+import hipe.engine.util.CollectionUtil;
+
+import hipe.network.LocalSearchNode;
+
+import hipe.generic.match.GenericJunctionMatch;
+import hipe.generic.actor.junction.GenericJunctionActor;
+import hipe.generic.actor.local.GenericLocalSearchActor;
+import hipe.generic.actor.stateless.*;
+import hipe.generic.actor.stateless.enums.*;
+import hipe.generic.actor.stateless.search.*;
+import hipe.generic.actor.search.misc.*;
+
+import org.eclipse.emf.ecore.EObject;
 
 public class MotherOfExistingFamilyToFemale__CC_201 extends GenericStatelessSearchActor{
 	ConstraintChecker constraint_checker;
@@ -64,15 +82,15 @@ public class MotherOfExistingFamilyToFemale__CC_201 extends GenericStatelessSear
 						edge_explorer_3_methods.unique_opposite_lookup = (o) -> ((PersonsSmartEMF.Person) o).getPersonsInverse();
 						edge_explorer_3 = new DeltaAwareEdgeExplorer(this, 2, 3, edge_explorer_3_methods, PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister_Persons());
 		name2explorer.put("edge_explorer_3", edge_explorer_3);
-		nac = new NACQueryChecker(this, 0, "MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_178", name2actor.get("MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_178"), 1);
+		nac = new NACQueryChecker(this, 0, "MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_178", name2actor.get("MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_178"), 1);
 		name2explorer.put("nac", nac);
-		nac_0 = new NACQueryChecker(this, 1, "MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_181", name2actor.get("MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_181"), 1);
+		nac_0 = new NACQueryChecker(this, 1, "MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_181", name2actor.get("MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_181"), 1);
 		name2explorer.put("nac_0", nac_0);
 		nac_1 = new NACQueryChecker(this, 2, "MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_184", name2actor.get("MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_184"), 1);
 		name2explorer.put("nac_1", nac_1);
-		disjoint_explorer_0 = new CachedDisjointExplorer(this, observedResources, 1, (o) -> o instanceof FamiliesSmartEMF.FamilyMember, true, FamiliesSmartEMF.FamilyMember.class);
+		disjoint_explorer_0 = new DisjointExplorer(this, observedResources, 1, (o) -> o instanceof FamiliesSmartEMF.FamilyMember, true);
 		name2explorer.put("disjoint_explorer_0", disjoint_explorer_0);
-		disjoint_explorer_2 = new CachedDisjointExplorer(this, observedResources, 3, (o) -> o instanceof PersonsSmartEMF.Female, true, PersonsSmartEMF.Female.class);
+		disjoint_explorer_2 = new DisjointExplorer(this, observedResources, 3, (o) -> o instanceof PersonsSmartEMF.Female, true);
 		name2explorer.put("disjoint_explorer_2", disjoint_explorer_2);
 	}
 	
@@ -161,7 +179,7 @@ public class MotherOfExistingFamilyToFemale__CC_201 extends GenericStatelessSear
 					}
 				}
 				break;
-			case "MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_178": 
+			case "MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_178": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -180,7 +198,7 @@ public class MotherOfExistingFamilyToFemale__CC_201 extends GenericStatelessSear
 					}
 				}
 				break;
-			case "MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_181": 
+			case "MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_181": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -284,7 +302,7 @@ public class MotherOfExistingFamilyToFemale__CC_201 extends GenericStatelessSear
 					}
 				}
 				break;
-			case "MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_178": 
+			case "MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_178": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -303,7 +321,7 @@ public class MotherOfExistingFamilyToFemale__CC_201 extends GenericStatelessSear
 					}
 				}
 				break;
-			case "MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_181": 
+			case "MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_181": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -449,17 +467,17 @@ public class MotherOfExistingFamilyToFemale__CC_201 extends GenericStatelessSear
 			match_3.getNodes()[3] = obj;
 			start(edge_explorer_3_2_orchestration, StatelessInputType.ATTRIBUTE, match_3);
 		}
-		if(obj instanceof FamiliesSmartEMF.Family) {
-			var match_0 = new StatelessDeltaMatch(initialMessage, "MotherOfExistingFamilyToFemale__CC_201", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
-			match_0.registerSignatureIndex(0);
-			match_0.getNodes()[0] = obj;
-			start(edge_explorer_1_orchestration, StatelessInputType.ATTRIBUTE, match_0);
-		}
 		if(obj instanceof FamiliesSmartEMF.FamilyMember) {
 			var match_1 = new StatelessDeltaMatch(initialMessage, "MotherOfExistingFamilyToFemale__CC_201", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
 			match_1.registerSignatureIndex(1);
 			match_1.getNodes()[1] = obj;
 			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_1);
+		}
+		if(obj instanceof FamiliesSmartEMF.Family) {
+			var match_0 = new StatelessDeltaMatch(initialMessage, "MotherOfExistingFamilyToFemale__CC_201", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
+			match_0.registerSignatureIndex(0);
+			match_0.getNodes()[0] = obj;
+			start(edge_explorer_1_orchestration, StatelessInputType.ATTRIBUTE, match_0);
 		}
 		
 		message.initialMessage.decrement();

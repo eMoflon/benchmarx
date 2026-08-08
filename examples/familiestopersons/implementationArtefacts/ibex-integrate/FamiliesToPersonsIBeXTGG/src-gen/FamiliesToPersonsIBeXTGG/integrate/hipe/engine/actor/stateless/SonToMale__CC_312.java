@@ -1,30 +1,48 @@
 package FamiliesToPersonsIBeXTGG.integrate.hipe.engine.actor.stateless;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import org.emoflon.ibex.tgg.run.familiestopersonsibextgg.config.CachedDisjointExplorer;
+import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 
 import hipe.engine.actor.Port;
+import hipe.engine.util.HiPESet;
+import hipe.engine.match.EdgeMatch;
 import hipe.engine.match.HMatch;
+import hipe.engine.match.OverlapMatch;
+import hipe.engine.match.LocalSearchMatch;
+import hipe.engine.actor.junction.PortJunction;
+import hipe.engine.actor.junction.PortJunctionLeft;
+import hipe.engine.actor.junction.PortJunctionRight;
 import hipe.engine.message.input.AttributeChanged;
 import hipe.engine.message.input.ReferenceAdded;
 import hipe.engine.message.input.ReferenceDeleted;
 import hipe.engine.message.production.MatchAdded;
 import hipe.engine.message.production.MatchDeleted;
-import hipe.engine.message.stateless.MatchRequest;
-import hipe.generic.actor.search.misc.EdgeLookupMethods;
-import hipe.generic.actor.search.misc.ModelAttribute;
-import hipe.generic.actor.search.misc.ModelEdge;
-import hipe.generic.actor.search.misc.SearchOrchestration;
-import hipe.generic.actor.stateless.GenericStatelessSearchActor;
-import hipe.generic.actor.stateless.StatelessDeltaMatch;
-import hipe.generic.actor.stateless.StatelessInputType;
-import hipe.generic.actor.stateless.enums.UsingDeltaMode;
-import hipe.generic.actor.stateless.search.ConstraintCheck;
-import hipe.generic.actor.stateless.search.ConstraintChecker;
-import hipe.generic.actor.stateless.search.DeltaAwareEdgeExplorer;
-import hipe.generic.actor.stateless.search.DisjointExplorer;
-import hipe.generic.actor.stateless.search.NACQueryChecker;
+import hipe.engine.message.stateless.*;
+import hipe.engine.util.CollectionUtil;
+
+import hipe.network.LocalSearchNode;
+
+import hipe.generic.match.GenericJunctionMatch;
+import hipe.generic.actor.junction.GenericJunctionActor;
+import hipe.generic.actor.local.GenericLocalSearchActor;
+import hipe.generic.actor.stateless.*;
+import hipe.generic.actor.stateless.enums.*;
+import hipe.generic.actor.stateless.search.*;
+import hipe.generic.actor.search.misc.*;
+
+import org.eclipse.emf.ecore.EObject;
 
 public class SonToMale__CC_312 extends GenericStatelessSearchActor{
 	ConstraintChecker constraint_checker;
@@ -34,8 +52,8 @@ public class SonToMale__CC_312 extends GenericStatelessSearchActor{
 	NACQueryChecker nac;
 	NACQueryChecker nac_0;
 	NACQueryChecker nac_1;
-	CachedDisjointExplorer disjoint_explorer_1;
-	CachedDisjointExplorer disjoint_explorer_3;
+	DisjointExplorer disjoint_explorer_1;
+	DisjointExplorer disjoint_explorer_3;
 	
 	SearchOrchestration edge_explorer_0_orchestration;
 	SearchOrchestration edge_explorer_1_orchestration;
@@ -74,15 +92,15 @@ public class SonToMale__CC_312 extends GenericStatelessSearchActor{
 						edge_explorer_4_methods.unique_opposite_lookup = (o) -> ((FamiliesSmartEMF.Family) o).getFamiliesInverse();
 						edge_explorer_4 = new DeltaAwareEdgeExplorer(this, 0, 1, edge_explorer_4_methods, FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister_Families());
 		name2explorer.put("edge_explorer_4", edge_explorer_4);
-		nac = new NACQueryChecker(this, 0, "SonToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_287", name2actor.get("SonToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_287"), 2);
+		nac = new NACQueryChecker(this, 0, "SonToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_287", name2actor.get("SonToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_287"), 2);
 		name2explorer.put("nac", nac);
-		nac_0 = new NACQueryChecker(this, 1, "SonToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_290", name2actor.get("SonToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_290"), 2);
+		nac_0 = new NACQueryChecker(this, 1, "SonToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_290", name2actor.get("SonToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_290"), 2);
 		name2explorer.put("nac_0", nac_0);
 		nac_1 = new NACQueryChecker(this, 2, "SonToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_293", name2actor.get("SonToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_293"), 2);
 		name2explorer.put("nac_1", nac_1);
-		disjoint_explorer_1 = new CachedDisjointExplorer(this, observedResources, 2, (o) -> o instanceof FamiliesSmartEMF.FamilyMember, true, FamiliesSmartEMF.FamilyMember.class);
+		disjoint_explorer_1 = new DisjointExplorer(this, observedResources, 2, (o) -> o instanceof FamiliesSmartEMF.FamilyMember, true);
 		name2explorer.put("disjoint_explorer_1", disjoint_explorer_1);
-		disjoint_explorer_3 = new CachedDisjointExplorer(this, observedResources, 4, (o) -> o instanceof PersonsSmartEMF.Male, true, PersonsSmartEMF.Male.class);
+		disjoint_explorer_3 = new DisjointExplorer(this, observedResources, 4, (o) -> o instanceof PersonsSmartEMF.Male, true);
 		name2explorer.put("disjoint_explorer_3", disjoint_explorer_3);
 	}
 	
@@ -186,7 +204,7 @@ public class SonToMale__CC_312 extends GenericStatelessSearchActor{
 					}
 				}
 				break;
-			case "SonToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_287": 
+			case "SonToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_287": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -205,7 +223,7 @@ public class SonToMale__CC_312 extends GenericStatelessSearchActor{
 					}
 				}
 				break;
-			case "SonToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_290": 
+			case "SonToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_290": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -322,7 +340,7 @@ public class SonToMale__CC_312 extends GenericStatelessSearchActor{
 					}
 				}
 				break;
-			case "SonToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_287": 
+			case "SonToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_287": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -341,7 +359,7 @@ public class SonToMale__CC_312 extends GenericStatelessSearchActor{
 					}
 				}
 				break;
-			case "SonToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_290": 
+			case "SonToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_290": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -513,11 +531,11 @@ public class SonToMale__CC_312 extends GenericStatelessSearchActor{
 		}
 		
 		Object obj = message.node;
-		if(obj instanceof PersonsSmartEMF.Male) {
-			var match_4 = new StatelessDeltaMatch(initialMessage, "SonToMale__CC_312", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
-			match_4.registerSignatureIndex(4);
-			match_4.getNodes()[4] = obj;
-			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_4);
+		if(obj instanceof FamiliesSmartEMF.FamilyMember) {
+			var match_2 = new StatelessDeltaMatch(initialMessage, "SonToMale__CC_312", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
+			match_2.registerSignatureIndex(2);
+			match_2.getNodes()[2] = obj;
+			start(edge_explorer_3_2_orchestration, StatelessInputType.ATTRIBUTE, match_2);
 		}
 		if(obj instanceof FamiliesSmartEMF.Family) {
 			var match_1 = new StatelessDeltaMatch(initialMessage, "SonToMale__CC_312", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
@@ -525,11 +543,11 @@ public class SonToMale__CC_312 extends GenericStatelessSearchActor{
 			match_1.getNodes()[1] = obj;
 			start(edge_explorer_3_1_orchestration, StatelessInputType.ATTRIBUTE, match_1);
 		}
-		if(obj instanceof FamiliesSmartEMF.FamilyMember) {
-			var match_2 = new StatelessDeltaMatch(initialMessage, "SonToMale__CC_312", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
-			match_2.registerSignatureIndex(2);
-			match_2.getNodes()[2] = obj;
-			start(edge_explorer_3_2_orchestration, StatelessInputType.ATTRIBUTE, match_2);
+		if(obj instanceof PersonsSmartEMF.Male) {
+			var match_4 = new StatelessDeltaMatch(initialMessage, "SonToMale__CC_312", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
+			match_4.registerSignatureIndex(4);
+			match_4.getNodes()[4] = obj;
+			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_4);
 		}
 		
 		message.initialMessage.decrement();

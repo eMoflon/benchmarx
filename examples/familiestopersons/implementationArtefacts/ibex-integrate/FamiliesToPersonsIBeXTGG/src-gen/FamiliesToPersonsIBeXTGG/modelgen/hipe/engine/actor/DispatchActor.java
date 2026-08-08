@@ -63,10 +63,12 @@ public class DispatchActor extends AbstractActor {
 	}
 	
 	private void initializeAdd() {
-		type2addConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily(), obj -> {
-			FamiliesSmartEMF.Family _family = (FamiliesSmartEMF.Family) obj;
+		type2addConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister(), obj -> {
+			FamiliesSmartEMF.FamilyRegister _familyregister = (FamiliesSmartEMF.FamilyRegister) obj;
 			incUtil.newMessage();
-			name2actor.get("Family_object").tell(new ObjectAdded<FamiliesSmartEMF.Family>(incUtil, _family), getSelf());
+			name2actor.get("FamilyRegister_object_SP0").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyRegister_object_SP1").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
 		});
 		type2addConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister(), obj -> {
 			PersonsSmartEMF.PersonRegister _personregister = (PersonsSmartEMF.PersonRegister) obj;
@@ -75,12 +77,10 @@ public class DispatchActor extends AbstractActor {
 			incUtil.newMessage();
 			name2actor.get("PersonRegister_object_SP1").tell(new ObjectAdded<PersonsSmartEMF.PersonRegister>(incUtil, _personregister), getSelf());
 		});
-		type2addConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister(), obj -> {
-			FamiliesSmartEMF.FamilyRegister _familyregister = (FamiliesSmartEMF.FamilyRegister) obj;
+		type2addConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily(), obj -> {
+			FamiliesSmartEMF.Family _family = (FamiliesSmartEMF.Family) obj;
 			incUtil.newMessage();
-			name2actor.get("FamilyRegister_object_SP0").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyRegister_object_SP1").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
+			name2actor.get("Family_object").tell(new ObjectAdded<FamiliesSmartEMF.Family>(incUtil, _family), getSelf());
 		});
 	}
 	
@@ -187,6 +187,14 @@ public class DispatchActor extends AbstractActor {
 	
 	private void handleRemoveAdapter(Notification notification) {
 		Object node = notification.getNotifier();
+		if (node instanceof PersonsSmartEMF.PersonRegister) {
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP0").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.PersonRegister) {
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP1").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
+		}
 		if (node instanceof FamiliesSmartEMF.Family) {
 			incUtil.newMessage();
 			name2actor.get("Family_object").tell(new ObjectDeleted<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) node), getSelf());
@@ -198,14 +206,6 @@ public class DispatchActor extends AbstractActor {
 		if (node instanceof FamiliesSmartEMF.FamilyRegister) {
 			incUtil.newMessage();
 			name2actor.get("FamilyRegister_object_SP1").tell(new ObjectDeleted<FamiliesSmartEMF.FamilyRegister>(incUtil, (FamiliesSmartEMF.FamilyRegister) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.PersonRegister) {
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP0").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.PersonRegister) {
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP1").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
 		}
 	}
 }

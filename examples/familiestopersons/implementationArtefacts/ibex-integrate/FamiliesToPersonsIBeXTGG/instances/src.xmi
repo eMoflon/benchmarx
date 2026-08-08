@@ -1,8 +1,981 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SimpleFamilies:FamilyRegister xmlns:SimpleFamilies="platform:/resource/SimpleFamilies/model/SimpleFamilies.ecore" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
-  <families name="Test">
-    <mother name="Theresa" />
-    <daughters name="Maria" />
-    <daughters name="Magdalena" />
-  </families>
-</SimpleFamilies:FamilyRegister>
+<xmi:XMI xmlns:xmi="http://www.omg.org/XMI" xmlns:FamiliesSmartEMF="platform:/plugin/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <FamiliesSmartEMF:FamilyRegister />
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/1" name="ridiculus">
+      <mother motherInverse="/1/@families.0" name="scelerisque" />
+      <daughters daughtersInverse="/1/@families.0" name="dolor" />
+    </families>
+    <families familiesInverse="/1" name="est">
+      <daughters daughtersInverse="/1/@families.1" name="habitasse" />
+    </families>
+    <families familiesInverse="/1" name="at">
+      <father fatherInverse="/1/@families.2" name="blandit" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/2" name="posuere">
+      <father fatherInverse="/2/@families.0" name="molestie" />
+      <daughters daughtersInverse="/2/@families.0" name="mattis" />
+      <daughters daughtersInverse="/2/@families.0" name="volutpat" />
+    </families>
+    <families familiesInverse="/2" name="purus">
+      <sons sonsInverse="/2/@families.1" name="orci" />
+      <sons sonsInverse="/2/@families.1" name="odio" />
+      <daughters daughtersInverse="/2/@families.1" name="placerat" />
+    </families>
+    <families familiesInverse="/2" name="non">
+      <sons sonsInverse="/2/@families.2" name="cursus" />
+      <sons sonsInverse="/2/@families.2" name="ridiculus" />
+    </families>
+    <families familiesInverse="/2" name="tempus">
+      <mother motherInverse="/2/@families.3" name="tempus" />
+      <daughters daughtersInverse="/2/@families.3" name="leo" />
+      <daughters daughtersInverse="/2/@families.3" name="aenean" />
+      <daughters daughtersInverse="/2/@families.3" name="dictum" />
+      <daughters daughtersInverse="/2/@families.3" name="etiam" />
+    </families>
+    <families familiesInverse="/2" name="pulvinar">
+      <mother motherInverse="/2/@families.4" name="ac" />
+      <daughters daughtersInverse="/2/@families.4" name="maecenas" />
+    </families>
+    <families familiesInverse="/2" name="sapien">
+      <sons sonsInverse="/2/@families.5" name="ridiculus" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/3">
+      <father fatherInverse="/3/@families.0" name="tempor" />
+    </families>
+    <families familiesInverse="/3" name="ullamcorper">
+      <father fatherInverse="/3/@families.1" name="amet" />
+      <mother motherInverse="/3/@families.1" name="himenaeos" />
+    </families>
+    <families familiesInverse="/3" name="risus">
+      <father fatherInverse="/3/@families.2" name="dui" />
+    </families>
+    <families familiesInverse="/3" name="curae">
+      <daughters daughtersInverse="/3/@families.3" name="morbi" />
+    </families>
+    <families familiesInverse="/3" name="neque">
+      <mother motherInverse="/3/@families.4" name="nibh" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/4" name="nunc">
+      <father fatherInverse="/4/@families.0" name="dapibus" />
+      <sons sonsInverse="/4/@families.0" name="maecenas" />
+      <sons sonsInverse="/4/@families.0" name="platea" />
+    </families>
+    <families familiesInverse="/4" name="amet">
+      <father fatherInverse="/4/@families.1" name="ullamcorper" />
+      <sons sonsInverse="/4/@families.1" name="senectus" />
+    </families>
+    <families familiesInverse="/4" name="sagittis">
+      <father fatherInverse="/4/@families.2" name="lorem" />
+      <daughters daughtersInverse="/4/@families.2" name="aliquam" />
+    </families>
+    <families familiesInverse="/4" name="nullam">
+      <father fatherInverse="/4/@families.3" name="mus" />
+      <sons sonsInverse="/4/@families.3" name="risus" />
+      <daughters daughtersInverse="/4/@families.3" name="nam" />
+    </families>
+    <families familiesInverse="/4" name="consequat">
+      <father fatherInverse="/4/@families.4" name="eget" />
+    </families>
+    <families familiesInverse="/4" name="non">
+      <father fatherInverse="/4/@families.5" name="sodales" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/5" name="sociis">
+      <mother motherInverse="/5/@families.0" name="dictum" />
+      <sons sonsInverse="/5/@families.0" name="lacinia" />
+    </families>
+    <families familiesInverse="/5" name="suspendisse">
+      <father fatherInverse="/5/@families.1" name="pellentesque" />
+      <mother motherInverse="/5/@families.1" name="primis" />
+      <sons sonsInverse="/5/@families.1" name="aliquam" />
+      <daughters daughtersInverse="/5/@families.1" name="integer" />
+    </families>
+    <families familiesInverse="/5" name="consectetur">
+      <father fatherInverse="/5/@families.2" name="duis" />
+      <mother motherInverse="/5/@families.2" name="aenean" />
+      <daughters daughtersInverse="/5/@families.2" name="inceptos" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/6" name="senectus">
+      <mother motherInverse="/6/@families.0" name="torquent" />
+      <sons sonsInverse="/6/@families.0" name="posuere" />
+    </families>
+    <families familiesInverse="/6" name="facilisis">
+      <father fatherInverse="/6/@families.1" name="cursus" />
+      <mother motherInverse="/6/@families.1" name="pellentesque" />
+      <sons sonsInverse="/6/@families.1" name="netus" />
+      <daughters daughtersInverse="/6/@families.1" name="tempus" />
+    </families>
+    <families familiesInverse="/6" name="nulla">
+      <mother motherInverse="/6/@families.2" name="proin" />
+      <sons sonsInverse="/6/@families.2" name="vehicula" />
+      <sons sonsInverse="/6/@families.2" name="mollis" />
+      <daughters daughtersInverse="/6/@families.2" name="vivamus" />
+    </families>
+    <families familiesInverse="/6" name="et">
+      <sons sonsInverse="/6/@families.3" name="dignissim" />
+      <daughters daughtersInverse="/6/@families.3" name="mi" />
+      <daughters daughtersInverse="/6/@families.3" name="tortor" />
+    </families>
+    <families familiesInverse="/6" name="at">
+      <father fatherInverse="/6/@families.4" name="nisi" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/7" name="blandit">
+      <father fatherInverse="/7/@families.0" name="nec" />
+      <mother motherInverse="/7/@families.0" name="et" />
+      <sons sonsInverse="/7/@families.0" name="facilisis" />
+      <sons sonsInverse="/7/@families.0" name="tellus" />
+    </families>
+    <families familiesInverse="/7" name="elementum">
+      <sons sonsInverse="/7/@families.1" name="egestas" />
+      <sons sonsInverse="/7/@families.1" name="ornare" />
+      <sons sonsInverse="/7/@families.1" name="nunc" />
+      <daughters daughtersInverse="/7/@families.1" name="amet" />
+    </families>
+    <families familiesInverse="/7" name="quis">
+      <mother motherInverse="/7/@families.2" name="urna" />
+      <daughters daughtersInverse="/7/@families.2" name="venenatis" />
+    </families>
+    <families familiesInverse="/7" name="velit">
+      <sons sonsInverse="/7/@families.3" name="eros" />
+      <sons sonsInverse="/7/@families.3" name="sem" />
+      <daughters daughtersInverse="/7/@families.3" name="curae" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/8" name="habitasse">
+      <father fatherInverse="/8/@families.0" name="pretium" />
+      <sons sonsInverse="/8/@families.0" name="placerat" />
+      <daughters daughtersInverse="/8/@families.0" name="pretium" />
+    </families>
+    <families familiesInverse="/8" name="vehicula">
+      <daughters daughtersInverse="/8/@families.1" name="magna" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/9" name="habitant">
+      <father fatherInverse="/9/@families.0" name="pretium" />
+      <mother motherInverse="/9/@families.0" name="orci" />
+      <sons sonsInverse="/9/@families.0" name="bibendum" />
+    </families>
+    <families familiesInverse="/9" name="inceptos">
+      <father fatherInverse="/9/@families.1" name="facilisi" />
+      <mother motherInverse="/9/@families.1" name="cum" />
+      <sons sonsInverse="/9/@families.1" name="maecenas" />
+      <sons sonsInverse="/9/@families.1" name="conubia" />
+      <sons sonsInverse="/9/@families.1" name="ridiculus" />
+    </families>
+    <families familiesInverse="/9" name="leo">
+      <father fatherInverse="/9/@families.2" name="magna" />
+      <mother motherInverse="/9/@families.2" name="eleifend" />
+      <sons sonsInverse="/9/@families.2" name="curae" />
+      <sons sonsInverse="/9/@families.2" name="sapien" />
+      <daughters daughtersInverse="/9/@families.2" name="massa" />
+      <daughters daughtersInverse="/9/@families.2" name="ut" />
+      <daughters daughtersInverse="/9/@families.2" name="justo" />
+    </families>
+    <families familiesInverse="/9" name="massa">
+      <father fatherInverse="/9/@families.3" name="posuere" />
+      <sons sonsInverse="/9/@families.3" name="non" />
+      <sons sonsInverse="/9/@families.3" name="vel" />
+    </families>
+    <families familiesInverse="/9" name="mi">
+      <father fatherInverse="/9/@families.4" name="vitae" />
+    </families>
+    <families familiesInverse="/9" name="class">
+      <mother motherInverse="/9/@families.5" name="sociosqu" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/10" name="dui">
+      <mother motherInverse="/10/@families.0" name="scelerisque" />
+      <daughters daughtersInverse="/10/@families.0" name="senectus" />
+    </families>
+    <families familiesInverse="/10" name="faucibus">
+      <daughters daughtersInverse="/10/@families.1" name="lorem" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/11" name="eu">
+      <father fatherInverse="/11/@families.0" name="ad" />
+      <mother motherInverse="/11/@families.0" name="mollis" />
+      <sons sonsInverse="/11/@families.0" name="elit" />
+    </families>
+    <families familiesInverse="/11" name="potenti">
+      <mother motherInverse="/11/@families.1" name="auctor" />
+      <sons sonsInverse="/11/@families.1" name="odio" />
+      <sons sonsInverse="/11/@families.1" name="non" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/12" name="amet">
+      <father fatherInverse="/12/@families.0" name="potenti" />
+    </families>
+    <families familiesInverse="/12" name="aliquet">
+      <father fatherInverse="/12/@families.1" name="quisque" />
+      <daughters daughtersInverse="/12/@families.1" name="sodales" />
+    </families>
+    <families familiesInverse="/12" name="purus">
+      <father fatherInverse="/12/@families.2" name="dignissim" />
+    </families>
+    <families familiesInverse="/12" name="et">
+      <father fatherInverse="/12/@families.3" name="auctor" />
+      <sons sonsInverse="/12/@families.3" name="volutpat" />
+      <daughters daughtersInverse="/12/@families.3" name="torquent" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/13" name="pulvinar">
+      <father fatherInverse="/13/@families.0" name="nibh" />
+      <mother motherInverse="/13/@families.0" name="leo" />
+      <sons sonsInverse="/13/@families.0" name="feugiat" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/14" name="accumsan">
+      <mother motherInverse="/14/@families.0" name="ipsum" />
+      <sons sonsInverse="/14/@families.0" name="iaculis" />
+    </families>
+    <families familiesInverse="/14" name="placerat">
+      <father fatherInverse="/14/@families.1" name="laoreet" />
+      <mother motherInverse="/14/@families.1" name="lobortis" />
+      <sons sonsInverse="/14/@families.1" name="fames" />
+      <sons sonsInverse="/14/@families.1" name="dolor" />
+      <sons sonsInverse="/14/@families.1" name="torquent" />
+      <daughters daughtersInverse="/14/@families.1" name="dui" />
+    </families>
+    <families familiesInverse="/14" name="dis">
+      <father fatherInverse="/14/@families.2" name="condimentum" />
+      <sons sonsInverse="/14/@families.2" name="neque" />
+    </families>
+    <families familiesInverse="/14" name="tortor">
+      <sons sonsInverse="/14/@families.3" name="etiam" />
+      <sons sonsInverse="/14/@families.3" name="tempor" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/15" name="quam">
+      <father fatherInverse="/15/@families.0" name="ac" />
+      <mother motherInverse="/15/@families.0" name="sed" />
+      <daughters daughtersInverse="/15/@families.0" name="sociosqu" />
+      <daughters daughtersInverse="/15/@families.0" name="mattis" />
+    </families>
+    <families familiesInverse="/15" name="aenean">
+      <daughters daughtersInverse="/15/@families.1" name="leo" />
+    </families>
+    <families familiesInverse="/15" name="malesuada">
+      <father fatherInverse="/15/@families.2" name="penatibus" />
+      <daughters daughtersInverse="/15/@families.2" name="lorem" />
+      <daughters daughtersInverse="/15/@families.2" name="luctus" />
+    </families>
+    <families familiesInverse="/15" name="donec">
+      <father fatherInverse="/15/@families.3" name="imperdiet" />
+      <daughters daughtersInverse="/15/@families.3" name="auctor" />
+    </families>
+    <families familiesInverse="/15" name="mauris">
+      <sons sonsInverse="/15/@families.4" name="auctor" />
+      <sons sonsInverse="/15/@families.4" name="magnis" />
+    </families>
+    <families familiesInverse="/15" name="mattis">
+      <mother motherInverse="/15/@families.5" name="porttitor" />
+    </families>
+    <families familiesInverse="/15" name="platea">
+      <father fatherInverse="/15/@families.6" name="sagittis" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/16" name="ipsum">
+      <daughters daughtersInverse="/16/@families.0" name="nascetur" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/17" name="viverra">
+      <sons sonsInverse="/17/@families.0" name="iaculis" />
+      <daughters daughtersInverse="/17/@families.0" name="aenean" />
+    </families>
+    <families familiesInverse="/17" name="velit">
+      <father fatherInverse="/17/@families.1" name="magnis" />
+      <daughters daughtersInverse="/17/@families.1" name="fames" />
+    </families>
+    <families familiesInverse="/17" name="suspendisse">
+      <father fatherInverse="/17/@families.2" name="tristique" />
+      <sons sonsInverse="/17/@families.2" name="mollis" />
+      <sons sonsInverse="/17/@families.2" name="lacus" />
+      <daughters daughtersInverse="/17/@families.2" name="turpis" />
+    </families>
+    <families familiesInverse="/17" name="a">
+      <father fatherInverse="/17/@families.3" name="vitae" />
+      <sons sonsInverse="/17/@families.3" name="sit" />
+      <sons sonsInverse="/17/@families.3" name="porta" />
+    </families>
+    <families familiesInverse="/17" name="libero">
+      <father fatherInverse="/17/@families.4" name="morbi" />
+      <mother motherInverse="/17/@families.4" name="et" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/18" name="ridiculus">
+      <sons sonsInverse="/18/@families.0" name="neque" />
+      <sons sonsInverse="/18/@families.0" name="fames" />
+      <daughters daughtersInverse="/18/@families.0" name="tempor" />
+    </families>
+    <families familiesInverse="/18" name="accumsan">
+      <sons sonsInverse="/18/@families.1" name="viverra" />
+    </families>
+    <families familiesInverse="/18" name="nulla">
+      <sons sonsInverse="/18/@families.2" name="consequat" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/19" name="diam">
+      <father fatherInverse="/19/@families.0" name="vel" />
+      <daughters daughtersInverse="/19/@families.0" name="lobortis" />
+    </families>
+    <families familiesInverse="/19" name="erat">
+      <sons sonsInverse="/19/@families.1" name="habitant" />
+      <daughters daughtersInverse="/19/@families.1" name="mauris" />
+    </families>
+    <families familiesInverse="/19" name="maecenas">
+      <father fatherInverse="/19/@families.2" name="ullamcorper" />
+      <mother motherInverse="/19/@families.2" name="fringilla" />
+      <sons sonsInverse="/19/@families.2" name="quis" />
+      <daughters daughtersInverse="/19/@families.2" name="condimentum" />
+    </families>
+    <families familiesInverse="/19" name="blandit">
+      <father fatherInverse="/19/@families.3" name="gravida" />
+    </families>
+    <families familiesInverse="/19" name="in">
+      <mother motherInverse="/19/@families.4" name="aenean" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/20" name="dis">
+      <father fatherInverse="/20/@families.0" name="nam" />
+      <sons sonsInverse="/20/@families.0" name="auctor" />
+      <daughters daughtersInverse="/20/@families.0" name="libero" />
+      <daughters daughtersInverse="/20/@families.0" name="torquent" />
+      <daughters daughtersInverse="/20/@families.0" name="fames" />
+    </families>
+    <families familiesInverse="/20" name="conubia">
+      <mother motherInverse="/20/@families.1" name="pharetra" />
+      <sons sonsInverse="/20/@families.1" name="aliquam" />
+      <daughters daughtersInverse="/20/@families.1" name="vestibulum" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/21" name="suspendisse">
+      <father fatherInverse="/21/@families.0" name="nunc" />
+      <mother motherInverse="/21/@families.0" name="potenti" />
+      <sons sonsInverse="/21/@families.0" name="aliquam" />
+      <sons sonsInverse="/21/@families.0" name="fringilla" />
+    </families>
+    <families familiesInverse="/21" name="lacus">
+      <father fatherInverse="/21/@families.1" name="pretium" />
+      <mother motherInverse="/21/@families.1" name="quis" />
+      <sons sonsInverse="/21/@families.1" name="fringilla" />
+      <daughters daughtersInverse="/21/@families.1" name="lorem" />
+    </families>
+    <families familiesInverse="/21" name="sollicitudin">
+      <father fatherInverse="/21/@families.2" name="sodales" />
+    </families>
+    <families familiesInverse="/21" name="scelerisque">
+      <father fatherInverse="/21/@families.3" name="libero" />
+    </families>
+    <families familiesInverse="/21" name="tincidunt">
+      <daughters daughtersInverse="/21/@families.4" name="pretium" />
+    </families>
+    <families familiesInverse="/21" name="fermentum">
+      <father fatherInverse="/21/@families.5" name="tincidunt" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/22" name="eleifend">
+      <mother motherInverse="/22/@families.0" name="dictumst" />
+      <sons sonsInverse="/22/@families.0" name="nascetur" />
+      <daughters daughtersInverse="/22/@families.0" name="purus" />
+    </families>
+    <families familiesInverse="/22" name="maecenas">
+      <father fatherInverse="/22/@families.1" name="quis" />
+      <mother motherInverse="/22/@families.1" name="primis" />
+      <daughters daughtersInverse="/22/@families.1" name="sit" />
+      <daughters daughtersInverse="/22/@families.1" name="congue" />
+    </families>
+    <families familiesInverse="/22" name="sem">
+      <father fatherInverse="/22/@families.2" name="elit" />
+    </families>
+    <families familiesInverse="/22" name="ultricies">
+      <mother motherInverse="/22/@families.3" name="praesent" />
+    </families>
+    <families familiesInverse="/22" name="nibh">
+      <daughters daughtersInverse="/22/@families.4" name="pellentesque" />
+    </families>
+    <families familiesInverse="/22" name="posuere">
+      <daughters daughtersInverse="/22/@families.5" name="augue" />
+    </families>
+    <families familiesInverse="/22" name="viverra">
+      <father fatherInverse="/22/@families.6" name="sed" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/23" name="vehicula">
+      <father fatherInverse="/23/@families.0" name="mollis" />
+      <mother motherInverse="/23/@families.0" name="convallis" />
+      <sons sonsInverse="/23/@families.0" name="integer" />
+      <daughters daughtersInverse="/23/@families.0" name="nisi" />
+    </families>
+    <families familiesInverse="/23" name="rutrum">
+      <father fatherInverse="/23/@families.1" name="rhoncus" />
+    </families>
+    <families familiesInverse="/23" name="fringilla">
+      <mother motherInverse="/23/@families.2" name="molestie" />
+    </families>
+    <families familiesInverse="/23" name="netus">
+      <mother motherInverse="/23/@families.3" name="quis" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/24" name="commodo">
+      <father fatherInverse="/24/@families.0" name="mollis" />
+      <daughters daughtersInverse="/24/@families.0" name="porta" />
+      <daughters daughtersInverse="/24/@families.0" name="velit" />
+    </families>
+    <families familiesInverse="/24" name="mollis">
+      <father fatherInverse="/24/@families.1" name="montes" />
+      <mother motherInverse="/24/@families.1" name="quam" />
+      <sons sonsInverse="/24/@families.1" name="mus" />
+    </families>
+    <families familiesInverse="/24" name="odio">
+      <father fatherInverse="/24/@families.2" name="urna" />
+      <daughters daughtersInverse="/24/@families.2" name="ut" />
+      <daughters daughtersInverse="/24/@families.2" name="elementum" />
+      <daughters daughtersInverse="/24/@families.2" name="taciti" />
+    </families>
+    <families familiesInverse="/24" name="euismod">
+      <father fatherInverse="/24/@families.3" name="sagittis" />
+      <mother motherInverse="/24/@families.3" name="dignissim" />
+      <sons sonsInverse="/24/@families.3" name="pulvinar" />
+    </families>
+    <families familiesInverse="/24" name="sagittis">
+      <sons sonsInverse="/24/@families.4" name="pulvinar" />
+    </families>
+    <families familiesInverse="/24" name="felis">
+      <mother motherInverse="/24/@families.5" name="mattis" />
+      <sons sonsInverse="/24/@families.5" name="semper" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/25" name="semper">
+      <father fatherInverse="/25/@families.0" name="libero" />
+      <mother motherInverse="/25/@families.0" name="erat" />
+      <sons sonsInverse="/25/@families.0" name="tempus" />
+      <sons sonsInverse="/25/@families.0" name="himenaeos" />
+      <daughters daughtersInverse="/25/@families.0" name="montes" />
+    </families>
+    <families familiesInverse="/25" name="lacus">
+      <mother motherInverse="/25/@families.1" name="nisl" />
+    </families>
+    <families familiesInverse="/25" name="quisque">
+      <father fatherInverse="/25/@families.2" name="ullamcorper" />
+      <daughters daughtersInverse="/25/@families.2" name="ut" />
+      <daughters daughtersInverse="/25/@families.2" name="sapien" />
+      <daughters daughtersInverse="/25/@families.2" name="morbi" />
+    </families>
+    <families familiesInverse="/25" name="himenaeos">
+      <father fatherInverse="/25/@families.3" name="integer" />
+      <mother motherInverse="/25/@families.3" name="justo" />
+    </families>
+    <families familiesInverse="/25" name="nunc">
+      <daughters daughtersInverse="/25/@families.4" name="varius" />
+      <daughters daughtersInverse="/25/@families.4" name="ullamcorper" />
+    </families>
+    <families familiesInverse="/25" name="arcu">
+      <sons sonsInverse="/25/@families.5" name="pretium" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/26" name="aliquam">
+      <mother motherInverse="/26/@families.0" name="fusce" />
+      <daughters daughtersInverse="/26/@families.0" name="est" />
+      <daughters daughtersInverse="/26/@families.0" name="nisl" />
+    </families>
+    <families familiesInverse="/26" name="tempor">
+      <father fatherInverse="/26/@families.1" name="id" />
+      <mother motherInverse="/26/@families.1" name="natoque" />
+      <sons sonsInverse="/26/@families.1" name="venenatis" />
+      <daughters daughtersInverse="/26/@families.1" name="arcu" />
+    </families>
+    <families familiesInverse="/26" name="eleifend">
+      <daughters daughtersInverse="/26/@families.2" name="tellus" />
+      <daughters daughtersInverse="/26/@families.2" name="nisi" />
+    </families>
+    <families familiesInverse="/26" name="bibendum">
+      <daughters daughtersInverse="/26/@families.3" name="sagittis" />
+    </families>
+    <families familiesInverse="/26" name="non">
+      <mother motherInverse="/26/@families.4" name="aenean" />
+      <sons sonsInverse="/26/@families.4" name="condimentum" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/27" name="eros">
+      <father fatherInverse="/27/@families.0" name="ullamcorper" />
+      <mother motherInverse="/27/@families.0" name="porta" />
+      <sons sonsInverse="/27/@families.0" name="gravida" />
+    </families>
+    <families familiesInverse="/27" name="in">
+      <father fatherInverse="/27/@families.1" name="purus" />
+      <mother motherInverse="/27/@families.1" name="adipiscing" />
+    </families>
+    <families familiesInverse="/27" name="mus">
+      <sons sonsInverse="/27/@families.2" name="posuere" />
+      <sons sonsInverse="/27/@families.2" name="sem" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/28" name="quisque">
+      <sons sonsInverse="/28/@families.0" name="dignissim" />
+      <sons sonsInverse="/28/@families.0" name="tincidunt" />
+      <sons sonsInverse="/28/@families.0" name="hendrerit" />
+      <daughters daughtersInverse="/28/@families.0" name="ligula" />
+    </families>
+    <families familiesInverse="/28" name="adipiscing">
+      <sons sonsInverse="/28/@families.1" name="faucibus" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/29" name="hac">
+      <father fatherInverse="/29/@families.0" name="quam" />
+      <sons sonsInverse="/29/@families.0" name="posuere" />
+      <daughters daughtersInverse="/29/@families.0" name="condimentum" />
+    </families>
+    <families familiesInverse="/29" name="consequat">
+      <mother motherInverse="/29/@families.1" name="felis" />
+      <daughters daughtersInverse="/29/@families.1" name="arcu" />
+      <daughters daughtersInverse="/29/@families.1" name="rhoncus" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/30" name="nisl">
+      <father fatherInverse="/30/@families.0" name="erat" />
+      <mother motherInverse="/30/@families.0" name="suspendisse" />
+      <sons sonsInverse="/30/@families.0" name="placerat" />
+      <daughters daughtersInverse="/30/@families.0" name="lorem" />
+    </families>
+    <families familiesInverse="/30" name="euismod">
+      <father fatherInverse="/30/@families.1" name="libero" />
+      <daughters daughtersInverse="/30/@families.1" name="interdum" />
+    </families>
+    <families familiesInverse="/30" name="penatibus">
+      <father fatherInverse="/30/@families.2" name="faucibus" />
+      <daughters daughtersInverse="/30/@families.2" name="senectus" />
+      <daughters daughtersInverse="/30/@families.2" name="ultricies" />
+    </families>
+    <families familiesInverse="/30" name="mus">
+      <mother motherInverse="/30/@families.3" name="in" />
+      <sons sonsInverse="/30/@families.3" name="sociis" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/31" name="luctus">
+      <mother motherInverse="/31/@families.0" name="dolor" />
+      <sons sonsInverse="/31/@families.0" name="eget" />
+      <daughters daughtersInverse="/31/@families.0" name="natoque" />
+    </families>
+    <families familiesInverse="/31" name="quam">
+      <sons sonsInverse="/31/@families.1" name="lacinia" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/32" name="nascetur">
+      <father fatherInverse="/32/@families.0" name="arcu" />
+      <mother motherInverse="/32/@families.0" name="suspendisse" />
+      <daughters daughtersInverse="/32/@families.0" name="adipiscing" />
+    </families>
+    <families familiesInverse="/32" name="lacinia">
+      <father fatherInverse="/32/@families.1" name="vel" />
+      <sons sonsInverse="/32/@families.1" name="fringilla" />
+      <sons sonsInverse="/32/@families.1" name="nullam" />
+    </families>
+    <families familiesInverse="/32" name="diam">
+      <daughters daughtersInverse="/32/@families.2" name="a" />
+      <daughters daughtersInverse="/32/@families.2" name="etiam" />
+      <daughters daughtersInverse="/32/@families.2" name="nisi" />
+      <daughters daughtersInverse="/32/@families.2" name="fringilla" />
+      <daughters daughtersInverse="/32/@families.2" name="eget" />
+      <daughters daughtersInverse="/32/@families.2" name="ut" />
+    </families>
+    <families familiesInverse="/32" name="magnis">
+      <mother motherInverse="/32/@families.3" name="conubia" />
+      <sons sonsInverse="/32/@families.3" name="ultricies" />
+      <sons sonsInverse="/32/@families.3" name="tristique" />
+      <daughters daughtersInverse="/32/@families.3" name="ipsum" />
+      <daughters daughtersInverse="/32/@families.3" name="ultrices" />
+    </families>
+    <families familiesInverse="/32" name="vivamus">
+      <mother motherInverse="/32/@families.4" name="imperdiet" />
+    </families>
+    <families familiesInverse="/32" name="eu">
+      <mother motherInverse="/32/@families.5" name="dolor" />
+    </families>
+    <families familiesInverse="/32" name="volutpat">
+      <father fatherInverse="/32/@families.6" name="vel" />
+      <daughters daughtersInverse="/32/@families.6" name="elit" />
+    </families>
+    <families familiesInverse="/32" name="ante">
+      <father fatherInverse="/32/@families.7" name="duis" />
+      <mother motherInverse="/32/@families.7" name="cum" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/33" name="ad">
+      <mother motherInverse="/33/@families.0" name="mollis" />
+    </families>
+    <families familiesInverse="/33" name="eget">
+      <mother motherInverse="/33/@families.1" name="class" />
+    </families>
+    <families familiesInverse="/33" name="vivamus">
+      <daughters daughtersInverse="/33/@families.2" name="blandit" />
+      <daughters daughtersInverse="/33/@families.2" name="odio" />
+    </families>
+    <families familiesInverse="/33" name="ultricies">
+      <sons sonsInverse="/33/@families.3" name="et" />
+    </families>
+    <families familiesInverse="/33" name="aenean">
+      <sons sonsInverse="/33/@families.4" name="conubia" />
+    </families>
+    <families familiesInverse="/33" name="platea">
+      <sons sonsInverse="/33/@families.5" name="neque" />
+      <daughters daughtersInverse="/33/@families.5" name="nisl" />
+    </families>
+    <families familiesInverse="/33" name="neque">
+      <daughters daughtersInverse="/33/@families.6" name="iaculis" />
+      <daughters daughtersInverse="/33/@families.6" name="vitae" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/34" name="laoreet">
+      <mother motherInverse="/34/@families.0" name="commodo" />
+      <sons sonsInverse="/34/@families.0" name="auctor" />
+      <daughters daughtersInverse="/34/@families.0" name="tristique" />
+    </families>
+    <families familiesInverse="/34" name="tellus">
+      <mother motherInverse="/34/@families.1" name="adipiscing" />
+      <daughters daughtersInverse="/34/@families.1" name="torquent" />
+      <daughters daughtersInverse="/34/@families.1" name="integer" />
+    </families>
+    <families familiesInverse="/34" name="pharetra">
+      <sons sonsInverse="/34/@families.2" name="condimentum" />
+    </families>
+    <families familiesInverse="/34" name="nisl">
+      <father fatherInverse="/34/@families.3" name="aliquam" />
+    </families>
+    <families familiesInverse="/34" name="eleifend">
+      <father fatherInverse="/34/@families.4" name="donec" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/35" name="felis">
+      <father fatherInverse="/35/@families.0" name="potenti" />
+      <mother motherInverse="/35/@families.0" name="elit" />
+      <sons sonsInverse="/35/@families.0" name="leo" />
+      <daughters daughtersInverse="/35/@families.0" name="class" />
+      <daughters daughtersInverse="/35/@families.0" name="rutrum" />
+      <daughters daughtersInverse="/35/@families.0" name="primis" />
+    </families>
+    <families familiesInverse="/35" name="diam">
+      <father fatherInverse="/35/@families.1" name="amet" />
+      <mother motherInverse="/35/@families.1" name="sed" />
+      <daughters daughtersInverse="/35/@families.1" name="semper" />
+    </families>
+    <families familiesInverse="/35" name="id">
+      <father fatherInverse="/35/@families.2" name="aliquet" />
+      <mother motherInverse="/35/@families.2" name="etiam" />
+      <daughters daughtersInverse="/35/@families.2" name="integer" />
+    </families>
+    <families familiesInverse="/35" name="sociosqu">
+      <daughters daughtersInverse="/35/@families.3" name="facilisi" />
+    </families>
+    <families familiesInverse="/35" name="litora">
+      <sons sonsInverse="/35/@families.4" name="purus" />
+    </families>
+    <families familiesInverse="/35" name="pharetra">
+      <daughters daughtersInverse="/35/@families.5" name="velit" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/36" name="netus">
+      <mother motherInverse="/36/@families.0" name="est" />
+      <sons sonsInverse="/36/@families.0" name="porttitor" />
+    </families>
+    <families familiesInverse="/36" name="fames">
+      <father fatherInverse="/36/@families.1" name="odio" />
+      <sons sonsInverse="/36/@families.1" name="velit" />
+      <daughters daughtersInverse="/36/@families.1" name="sodales" />
+    </families>
+    <families familiesInverse="/36" name="massa">
+      <father fatherInverse="/36/@families.2" name="vitae" />
+      <daughters daughtersInverse="/36/@families.2" name="nulla" />
+    </families>
+    <families familiesInverse="/36" name="a">
+      <father fatherInverse="/36/@families.3" name="vehicula" />
+      <mother motherInverse="/36/@families.3" name="sed" />
+    </families>
+    <families familiesInverse="/36" name="nostra">
+      <father fatherInverse="/36/@families.4" name="odio" />
+      <daughters daughtersInverse="/36/@families.4" name="dictum" />
+      <daughters daughtersInverse="/36/@families.4" name="netus" />
+    </families>
+    <families familiesInverse="/36" name="habitant">
+      <sons sonsInverse="/36/@families.5" name="nostra" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/37" name="lorem">
+      <sons sonsInverse="/37/@families.0" name="dapibus" />
+      <sons sonsInverse="/37/@families.0" name="purus" />
+    </families>
+    <families familiesInverse="/37" name="eros">
+      <father fatherInverse="/37/@families.1" name="justo" />
+      <sons sonsInverse="/37/@families.1" name="habitant" />
+      <daughters daughtersInverse="/37/@families.1" name="porttitor" />
+    </families>
+    <families familiesInverse="/37" name="vehicula">
+      <mother motherInverse="/37/@families.2" name="ad" />
+      <sons sonsInverse="/37/@families.2" name="proin" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/38" name="primis">
+      <father fatherInverse="/38/@families.0" name="turpis" />
+      <mother motherInverse="/38/@families.0" name="nibh" />
+    </families>
+    <families familiesInverse="/38" name="posuere">
+      <mother motherInverse="/38/@families.1" name="duis" />
+    </families>
+    <families familiesInverse="/38" name="congue">
+      <daughters daughtersInverse="/38/@families.2" name="dui" />
+      <daughters daughtersInverse="/38/@families.2" name="id" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/39" name="tempor">
+      <father fatherInverse="/39/@families.0" name="inceptos" />
+      <mother motherInverse="/39/@families.0" name="morbi" />
+      <daughters daughtersInverse="/39/@families.0" name="ridiculus" />
+      <daughters daughtersInverse="/39/@families.0" name="primis" />
+      <daughters daughtersInverse="/39/@families.0" name="metus" />
+    </families>
+    <families familiesInverse="/39" name="curae">
+      <mother motherInverse="/39/@families.1" name="lacinia" />
+      <sons sonsInverse="/39/@families.1" name="ridiculus" />
+      <sons sonsInverse="/39/@families.1" name="ullamcorper" />
+      <daughters daughtersInverse="/39/@families.1" name="etiam" />
+      <daughters daughtersInverse="/39/@families.1" name="quis" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/40" name="justo">
+      <mother motherInverse="/40/@families.0" name="conubia" />
+      <sons sonsInverse="/40/@families.0" name="laoreet" />
+    </families>
+    <families familiesInverse="/40" name="convallis">
+      <father fatherInverse="/40/@families.1" name="porttitor" />
+      <sons sonsInverse="/40/@families.1" name="curabitur" />
+      <sons sonsInverse="/40/@families.1" name="dolor" />
+      <sons sonsInverse="/40/@families.1" name="tincidunt" />
+    </families>
+    <families familiesInverse="/40" name="taciti">
+      <father fatherInverse="/40/@families.2" name="accumsan" />
+      <mother motherInverse="/40/@families.2" name="congue" />
+    </families>
+    <families familiesInverse="/40" name="consectetur">
+      <sons sonsInverse="/40/@families.3" name="pellentesque" />
+      <daughters daughtersInverse="/40/@families.3" name="morbi" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/41" name="in">
+      <father fatherInverse="/41/@families.0" name="dui" />
+      <mother motherInverse="/41/@families.0" name="enim" />
+      <sons sonsInverse="/41/@families.0" name="feugiat" />
+      <daughters daughtersInverse="/41/@families.0" name="gravida" />
+    </families>
+    <families familiesInverse="/41" name="viverra">
+      <mother motherInverse="/41/@families.1" name="eleifend" />
+      <sons sonsInverse="/41/@families.1" name="luctus" />
+      <sons sonsInverse="/41/@families.1" name="vel" />
+    </families>
+    <families familiesInverse="/41" name="class">
+      <mother motherInverse="/41/@families.2" name="facilisis" />
+      <sons sonsInverse="/41/@families.2" name="lorem" />
+      <daughters daughtersInverse="/41/@families.2" name="adipiscing" />
+      <daughters daughtersInverse="/41/@families.2" name="metus" />
+    </families>
+    <families familiesInverse="/41" name="fringilla">
+      <mother motherInverse="/41/@families.3" name="ac" />
+      <sons sonsInverse="/41/@families.3" name="luctus" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/42" name="neque">
+      <mother motherInverse="/42/@families.0" name="ridiculus" />
+      <sons sonsInverse="/42/@families.0" name="lectus" />
+      <daughters daughtersInverse="/42/@families.0" name="et" />
+      <daughters daughtersInverse="/42/@families.0" name="aenean" />
+    </families>
+    <families familiesInverse="/42" name="elit">
+      <father fatherInverse="/42/@families.1" name="volutpat" />
+      <mother motherInverse="/42/@families.1" name="hac" />
+      <sons sonsInverse="/42/@families.1" name="ornare" />
+      <sons sonsInverse="/42/@families.1" name="purus" />
+      <sons sonsInverse="/42/@families.1" name="fermentum" />
+      <sons sonsInverse="/42/@families.1" name="quisque" />
+      <daughters daughtersInverse="/42/@families.1" name="turpis" />
+    </families>
+    <families familiesInverse="/42" name="mollis">
+      <father fatherInverse="/42/@families.2" name="inceptos" />
+    </families>
+    <families familiesInverse="/42" name="placerat">
+      <sons sonsInverse="/42/@families.3" name="porta" />
+    </families>
+    <families familiesInverse="/42" name="orci">
+      <mother motherInverse="/42/@families.4" name="ridiculus" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/43" name="sollicitudin">
+      <father fatherInverse="/43/@families.0" name="consequat" />
+      <sons sonsInverse="/43/@families.0" name="eros" />
+    </families>
+    <families familiesInverse="/43" name="venenatis">
+      <mother motherInverse="/43/@families.1" name="dolor" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/44" name="gravida">
+      <father fatherInverse="/44/@families.0" name="pellentesque" />
+      <daughters daughtersInverse="/44/@families.0" name="magna" />
+    </families>
+    <families familiesInverse="/44" name="ad">
+      <father fatherInverse="/44/@families.1" name="molestie" />
+      <mother motherInverse="/44/@families.1" name="sociis" />
+      <sons sonsInverse="/44/@families.1" name="diam" />
+      <sons sonsInverse="/44/@families.1" name="bibendum" />
+      <daughters daughtersInverse="/44/@families.1" name="auctor" />
+    </families>
+    <families familiesInverse="/44" name="tellus">
+      <father fatherInverse="/44/@families.2" name="donec" />
+      <mother motherInverse="/44/@families.2" name="fringilla" />
+    </families>
+    <families familiesInverse="/44" name="ad">
+      <father fatherInverse="/44/@families.3" name="odio" />
+      <sons sonsInverse="/44/@families.3" name="consequat" />
+      <sons sonsInverse="/44/@families.3" name="elementum" />
+    </families>
+    <families familiesInverse="/44" name="tincidunt">
+      <daughters daughtersInverse="/44/@families.4" name="pharetra" />
+    </families>
+    <families familiesInverse="/44" name="porta">
+      <mother motherInverse="/44/@families.5" name="a" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/45" name="non">
+      <father fatherInverse="/45/@families.0" name="risus" />
+      <daughters daughtersInverse="/45/@families.0" name="tempor" />
+    </families>
+    <families familiesInverse="/45" name="dignissim">
+      <father fatherInverse="/45/@families.1" name="malesuada" />
+      <sons sonsInverse="/45/@families.1" name="amet" />
+      <daughters daughtersInverse="/45/@families.1" name="leo" />
+      <daughters daughtersInverse="/45/@families.1" name="sem" />
+    </families>
+    <families familiesInverse="/45" name="hendrerit">
+      <father fatherInverse="/45/@families.2" name="himenaeos" />
+      <sons sonsInverse="/45/@families.2" name="lacinia" />
+      <daughters daughtersInverse="/45/@families.2" name="mauris" />
+      <daughters daughtersInverse="/45/@families.2" name="leo" />
+    </families>
+    <families familiesInverse="/45" name="ut">
+      <father fatherInverse="/45/@families.3" name="cum" />
+    </families>
+    <families familiesInverse="/45" name="posuere">
+      <mother motherInverse="/45/@families.4" name="scelerisque" />
+      <sons sonsInverse="/45/@families.4" name="inceptos" />
+    </families>
+    <families familiesInverse="/45" name="ut">
+      <mother motherInverse="/45/@families.5" name="metus" />
+    </families>
+    <families familiesInverse="/45" name="egestas">
+      <sons sonsInverse="/45/@families.6" name="fermentum" />
+      <sons sonsInverse="/45/@families.6" name="at" />
+    </families>
+    <families familiesInverse="/45" name="maecenas">
+      <daughters daughtersInverse="/45/@families.7" name="lobortis" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister />
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/47" name="laoreet">
+      <mother motherInverse="/47/@families.0" name="torquent" />
+      <sons sonsInverse="/47/@families.0" name="nostra" />
+      <sons sonsInverse="/47/@families.0" name="libero" />
+      <daughters daughtersInverse="/47/@families.0" name="ipsum" />
+    </families>
+    <families familiesInverse="/47" name="hendrerit">
+      <mother motherInverse="/47/@families.1" name="felis" />
+      <sons sonsInverse="/47/@families.1" name="nam" />
+      <daughters daughtersInverse="/47/@families.1" name="fames" />
+    </families>
+    <families familiesInverse="/47" name="magna">
+      <daughters daughtersInverse="/47/@families.2" name="dolor" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/48" name="arcu">
+      <father fatherInverse="/48/@families.0" name="dictum" />
+      <mother motherInverse="/48/@families.0" name="porttitor" />
+    </families>
+    <families familiesInverse="/48" name="egestas">
+      <father fatherInverse="/48/@families.1" name="vivamus" />
+    </families>
+    <families familiesInverse="/48">
+      <father fatherInverse="/48/@families.2" name="habitasse" />
+      <mother motherInverse="/48/@families.2" name="in" />
+      <daughters daughtersInverse="/48/@families.2" name="mattis" />
+      <daughters daughtersInverse="/48/@families.2" name="eros" />
+    </families>
+    <families familiesInverse="/48" name="in">
+      <sons sonsInverse="/48/@families.3" name="orci" />
+      <sons sonsInverse="/48/@families.3" name="vivamus" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/49" name="non">
+      <mother motherInverse="/49/@families.0" name="nascetur" />
+    </families>
+    <families familiesInverse="/49" name="nisl">
+      <sons sonsInverse="/49/@families.1" name="porttitor" />
+    </families>
+    <families familiesInverse="/49" name="torquent">
+      <sons sonsInverse="/49/@families.2" name="conubia" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+  <FamiliesSmartEMF:FamilyRegister>
+    <families familiesInverse="/50" name="inceptos">
+      <father fatherInverse="/50/@families.0" name="potenti" />
+      <mother motherInverse="/50/@families.0" name="nascetur" />
+    </families>
+  </FamiliesSmartEMF:FamilyRegister>
+</xmi:XMI>

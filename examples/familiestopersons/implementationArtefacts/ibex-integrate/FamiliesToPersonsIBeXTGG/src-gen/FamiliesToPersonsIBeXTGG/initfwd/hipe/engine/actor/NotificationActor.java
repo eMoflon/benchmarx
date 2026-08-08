@@ -20,12 +20,28 @@ public class NotificationActor extends GenericNotificationActor {
 	
 	@Override
 	protected void initializeExploration() {
+		explorationConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			FamiliesSmartEMF.FamilyRegister _familyregister = (FamiliesSmartEMF.FamilyRegister) obj;
+			children.addAll(_familyregister.getFamilies());
+			return children;
+		});
 		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getFemale(), obj -> {
 			Collection<EObject> children = new LinkedList<>();
 			return children;
 		});
-		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getMale(), obj -> {
+		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPerson(), obj -> {
 			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			PersonsSmartEMF.PersonRegister _personregister = (PersonsSmartEMF.PersonRegister) obj;
+			children.addAll(_personregister.getPersons());
 			return children;
 		});
 		explorationConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily(), obj -> {
@@ -39,24 +55,8 @@ public class NotificationActor extends GenericNotificationActor {
 			children.addAll(_family.getDaughters());
 			return children;
 		});
-		explorationConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(), obj -> {
+		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getMale(), obj -> {
 			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			PersonsSmartEMF.PersonRegister _personregister = (PersonsSmartEMF.PersonRegister) obj;
-			children.addAll(_personregister.getPersons());
-			return children;
-		});
-		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPerson(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			FamiliesSmartEMF.FamilyRegister _familyregister = (FamiliesSmartEMF.FamilyRegister) obj;
-			children.addAll(_familyregister.getFamilies());
 			return children;
 		});
 	}

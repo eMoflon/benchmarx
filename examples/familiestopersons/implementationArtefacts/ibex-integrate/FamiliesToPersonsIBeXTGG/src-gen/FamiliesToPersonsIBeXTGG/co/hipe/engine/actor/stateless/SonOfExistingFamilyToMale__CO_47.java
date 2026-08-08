@@ -443,11 +443,11 @@ public class SonOfExistingFamilyToMale__CO_47 extends GenericStatelessSearchActo
 		}
 		
 		Object obj = message.node;
-		if(obj instanceof PersonsSmartEMF.Male) {
-			var match_4 = new StatelessDeltaMatch(initialMessage, "SonOfExistingFamilyToMale__CO_47", numberOfNodes, 0, UsingDeltaMode.ATTRIBUTE);
-			match_4.registerSignatureIndex(4);
-			match_4.getNodes()[4] = obj;
-			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_4);
+		if(obj instanceof FamiliesSmartEMF.FamilyMember) {
+			var match_1 = new StatelessDeltaMatch(initialMessage, "SonOfExistingFamilyToMale__CO_47", numberOfNodes, 0, UsingDeltaMode.ATTRIBUTE);
+			match_1.registerSignatureIndex(1);
+			match_1.getNodes()[1] = obj;
+			start(edge_explorer_3_2_orchestration, StatelessInputType.ATTRIBUTE, match_1);
 		}
 		if(obj instanceof FamiliesSmartEMF.Family) {
 			var match_0 = new StatelessDeltaMatch(initialMessage, "SonOfExistingFamilyToMale__CO_47", numberOfNodes, 0, UsingDeltaMode.ATTRIBUTE);
@@ -455,11 +455,11 @@ public class SonOfExistingFamilyToMale__CO_47 extends GenericStatelessSearchActo
 			match_0.getNodes()[0] = obj;
 			start(edge_explorer_4_1_orchestration, StatelessInputType.ATTRIBUTE, match_0);
 		}
-		if(obj instanceof FamiliesSmartEMF.FamilyMember) {
-			var match_1 = new StatelessDeltaMatch(initialMessage, "SonOfExistingFamilyToMale__CO_47", numberOfNodes, 0, UsingDeltaMode.ATTRIBUTE);
-			match_1.registerSignatureIndex(1);
-			match_1.getNodes()[1] = obj;
-			start(edge_explorer_3_2_orchestration, StatelessInputType.ATTRIBUTE, match_1);
+		if(obj instanceof PersonsSmartEMF.Male) {
+			var match_4 = new StatelessDeltaMatch(initialMessage, "SonOfExistingFamilyToMale__CO_47", numberOfNodes, 0, UsingDeltaMode.ATTRIBUTE);
+			match_4.registerSignatureIndex(4);
+			match_4.getNodes()[4] = obj;
+			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_4);
 		}
 		
 		message.initialMessage.decrement();

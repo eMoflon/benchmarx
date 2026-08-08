@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <hipe.network:HiPENetwork xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:HiPEPattern="platform:/resource/hipe.pattern/model/HiPEPattern" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:hipe.network="platform:/resource/hipe.network/model/hiPENetwork" xsi:schemaLocation="platform:/resource/hipe.pattern/model/HiPEPattern java://hipe.pattern.HiPEPatternPackage http://www.eclipse.org/emf/2002/Ecore java://org.eclipse.emf.ecore.EcorePackage platform:/resource/hipe.network/model/hiPENetwork java://hipe.network.NetworkPackage">
   <networknode xmi:type="hipe.network:DispatchNode" name="DispatchNode" objectNodes="//@networknode.2 //@networknode.3 //@networknode.6 //@networknode.11 //@networknode.24 //@networknode.25 //@networknode.26" notificationNode="//@networknode.1">
-    <metamodels xmi:type="ecore:EPackage" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#/"/>
     <metamodels xmi:type="ecore:EPackage" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#/"/>
+    <metamodels xmi:type="ecore:EPackage" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#/"/>
   </networknode>
   <networknode xmi:type="hipe.network:NotificationNode" name="NotificationNode" dispatchNode="//@networknode.0"/>
   <networknode xmi:type="hipe.network:ObjectNode" name="Family_object" patternName="DaughterOfExistingFamilyToFemale__BWD_2" dispatchnode="//@networknode.0">
@@ -27,30 +27,30 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.5" patternName="DaughterOfExistingFamilyToFemale__BWD_1" matchingNode="//@networknode.4"/>
     </ports>
-    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.9"/>
+    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.9"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.4/@orchestrationComponents.0 //@networknode.4/@orchestrationComponents.1" name="edge_explorer_0_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.0"/>
+      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.0"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.4/@orchestrationComponents.0 //@networknode.4/@orchestrationComponents.1" name="edge_explorer_1_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.1"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.1"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.4/@orchestrationComponents.0 //@networknode.4/@orchestrationComponents.1" name="edge_explorer_2_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.2"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.2"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.4/@orchestrationComponents.2 //@networknode.4/@orchestrationComponents.0" name="disjoint_explorer_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.0"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.0"/>
     </orchestrations>
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>1</indices>
       <indices>2</indices>
       <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
-      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.0"/>
+      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.0"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.0"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.0"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_1" index="2">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.2"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.2"/>
     </orchestrationComponents>
     <localNodeOrchestration xmi:type="hipe.network:SearchOrchestration" name="localSearchOrchestration_0"/>
     <portSignatureMappings xmi:type="hipe.network:PortSignatureMapping" ports="//@networknode.4/@ports/@port.0">
@@ -78,30 +78,30 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.8" patternName="DaughterToFemale__BWD_5" matchingNode="//@networknode.7"/>
     </ports>
-    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.13"/>
+    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.13"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.7/@orchestrationComponents.0 //@networknode.7/@orchestrationComponents.1" name="edge_explorer_0_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.1"/>
+      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.1"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.7/@orchestrationComponents.0 //@networknode.7/@orchestrationComponents.1" name="edge_explorer_1_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.4"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.4"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.7/@orchestrationComponents.0 //@networknode.7/@orchestrationComponents.1" name="edge_explorer_2_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.5"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.5"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.7/@orchestrationComponents.2 //@networknode.7/@orchestrationComponents.0" name="disjoint_explorer_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.3"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.3"/>
     </orchestrations>
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>1</indices>
       <indices>2</indices>
       <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
-      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.1"/>
+      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.1"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.3"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.3"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_1" index="2">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.5"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.5"/>
     </orchestrationComponents>
     <localNodeOrchestration xmi:type="hipe.network:SearchOrchestration" name="localSearchOrchestration_0"/>
     <portSignatureMappings xmi:type="hipe.network:PortSignatureMapping" ports="//@networknode.7/@ports/@port.0">
@@ -120,12 +120,12 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.10" patternName="Families2Persons__BWD_9" matchingNode="//@networknode.9"/>
     </ports>
-    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.17"/>
+    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.17"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" name="singleNode_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.6"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.6"/>
     </orchestrations>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.6"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.6"/>
     </orchestrationComponents>
     <localNodeOrchestration xmi:type="hipe.network:SearchOrchestration" name="localSearchOrchestration_0"/>
     <portSignatureMappings xmi:type="hipe.network:PortSignatureMapping" ports="//@networknode.9/@ports/@port.0">
@@ -149,30 +149,30 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.13" patternName="FatherOfExistingFamilyToMale__BWD_11" matchingNode="//@networknode.12"/>
     </ports>
-    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.19"/>
+    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.19"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.12/@orchestrationComponents.0 //@networknode.12/@orchestrationComponents.1" name="edge_explorer_0_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.2"/>
+      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.2"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.12/@orchestrationComponents.0 //@networknode.12/@orchestrationComponents.1" name="edge_explorer_1_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.8"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.8"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.12/@orchestrationComponents.0 //@networknode.12/@orchestrationComponents.1" name="edge_explorer_2_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.9"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.9"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.12/@orchestrationComponents.2 //@networknode.12/@orchestrationComponents.0" name="disjoint_explorer_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.7"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.7"/>
     </orchestrations>
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>1</indices>
       <indices>2</indices>
       <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
-      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.2"/>
+      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.2"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.7"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.7"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_1" index="2">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.9"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.9"/>
     </orchestrationComponents>
     <localNodeOrchestration xmi:type="hipe.network:SearchOrchestration" name="localSearchOrchestration_0"/>
     <portSignatureMappings xmi:type="hipe.network:PortSignatureMapping" ports="//@networknode.12/@ports/@port.0">
@@ -191,30 +191,30 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.15" patternName="FatherToMale__BWD_15" matchingNode="//@networknode.14"/>
     </ports>
-    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.23"/>
+    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.23"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.14/@orchestrationComponents.0 //@networknode.14/@orchestrationComponents.1" name="edge_explorer_0_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.3"/>
+      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.3"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.14/@orchestrationComponents.0 //@networknode.14/@orchestrationComponents.1" name="edge_explorer_1_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.11"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.11"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.14/@orchestrationComponents.0 //@networknode.14/@orchestrationComponents.1" name="edge_explorer_2_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.12"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.12"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.14/@orchestrationComponents.2 //@networknode.14/@orchestrationComponents.0" name="disjoint_explorer_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.10"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.10"/>
     </orchestrations>
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>1</indices>
       <indices>2</indices>
       <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
-      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.3"/>
+      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.3"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.10"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.10"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_1" index="2">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.12"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.12"/>
     </orchestrationComponents>
     <localNodeOrchestration xmi:type="hipe.network:SearchOrchestration" name="localSearchOrchestration_0"/>
     <portSignatureMappings xmi:type="hipe.network:PortSignatureMapping" ports="//@networknode.14/@ports/@port.0">
@@ -233,30 +233,30 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.17" patternName="MotherOfExistingFamilyToFemale__BWD_19" matchingNode="//@networknode.16"/>
     </ports>
-    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.27"/>
+    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.27"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.16/@orchestrationComponents.0 //@networknode.16/@orchestrationComponents.1" name="edge_explorer_0_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.4"/>
+      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.4"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.16/@orchestrationComponents.0 //@networknode.16/@orchestrationComponents.1" name="edge_explorer_1_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.14"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.14"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.16/@orchestrationComponents.0 //@networknode.16/@orchestrationComponents.1" name="edge_explorer_2_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.15"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.15"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.16/@orchestrationComponents.2 //@networknode.16/@orchestrationComponents.0" name="disjoint_explorer_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.13"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.13"/>
     </orchestrations>
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>1</indices>
       <indices>2</indices>
       <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
-      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.4"/>
+      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.4"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.13"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.13"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_1" index="2">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.15"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.15"/>
     </orchestrationComponents>
     <localNodeOrchestration xmi:type="hipe.network:SearchOrchestration" name="localSearchOrchestration_0"/>
     <portSignatureMappings xmi:type="hipe.network:PortSignatureMapping" ports="//@networknode.16/@ports/@port.0">
@@ -275,30 +275,30 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.19" patternName="MotherToFemale__BWD_23" matchingNode="//@networknode.18"/>
     </ports>
-    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.31"/>
+    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.31"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.18/@orchestrationComponents.0 //@networknode.18/@orchestrationComponents.1" name="edge_explorer_0_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.5"/>
+      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.5"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.18/@orchestrationComponents.0 //@networknode.18/@orchestrationComponents.1" name="edge_explorer_1_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.17"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.17"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.18/@orchestrationComponents.0 //@networknode.18/@orchestrationComponents.1" name="edge_explorer_2_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.18"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.18"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.18/@orchestrationComponents.2 //@networknode.18/@orchestrationComponents.0" name="disjoint_explorer_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.16"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.16"/>
     </orchestrations>
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>1</indices>
       <indices>2</indices>
       <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
-      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.5"/>
+      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.5"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.16"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.16"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_1" index="2">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.18"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.18"/>
     </orchestrationComponents>
     <localNodeOrchestration xmi:type="hipe.network:SearchOrchestration" name="localSearchOrchestration_0"/>
     <portSignatureMappings xmi:type="hipe.network:PortSignatureMapping" ports="//@networknode.18/@ports/@port.0">
@@ -317,30 +317,30 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.21" patternName="SonOfExistingFamilyToMale__BWD_27" matchingNode="//@networknode.20"/>
     </ports>
-    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.35"/>
+    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.35"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.20/@orchestrationComponents.0 //@networknode.20/@orchestrationComponents.1" name="edge_explorer_0_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.6"/>
+      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.6"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.20/@orchestrationComponents.0 //@networknode.20/@orchestrationComponents.1" name="edge_explorer_1_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.20"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.20"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.20/@orchestrationComponents.0 //@networknode.20/@orchestrationComponents.1" name="edge_explorer_2_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.21"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.21"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.20/@orchestrationComponents.2 //@networknode.20/@orchestrationComponents.0" name="disjoint_explorer_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.19"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.19"/>
     </orchestrations>
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>1</indices>
       <indices>2</indices>
       <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
-      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.6"/>
+      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.6"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.19"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.19"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_1" index="2">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.21"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.21"/>
     </orchestrationComponents>
     <localNodeOrchestration xmi:type="hipe.network:SearchOrchestration" name="localSearchOrchestration_0"/>
     <portSignatureMappings xmi:type="hipe.network:PortSignatureMapping" ports="//@networknode.20/@ports/@port.0">
@@ -359,30 +359,30 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.23" patternName="SonToMale__BWD_31" matchingNode="//@networknode.22"/>
     </ports>
-    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.39"/>
+    <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@patterns.39"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.22/@orchestrationComponents.0 //@networknode.22/@orchestrationComponents.1" name="edge_explorer_0_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.7"/>
+      <entryElement xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.7"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.22/@orchestrationComponents.0 //@networknode.22/@orchestrationComponents.1" name="edge_explorer_1_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.23"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.23"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.22/@orchestrationComponents.0 //@networknode.22/@orchestrationComponents.1" name="edge_explorer_2_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.24"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.24"/>
     </orchestrations>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.22/@orchestrationComponents.2 //@networknode.22/@orchestrationComponents.0" name="disjoint_explorer_orchestration">
-      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.22"/>
+      <entryElement xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.22"/>
     </orchestrations>
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>1</indices>
       <indices>2</indices>
       <type xmi:type="ecore:EReference" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#//PersonRegister/persons"/>
-      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.7"/>
+      <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@edges.7"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.22"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.22"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_1" index="2">
-      <node xmi:type="HiPEPattern:HiPENode" href="file:/G:/ES/Workspaces/benchmarx-csync/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.24"/>
+      <node xmi:type="HiPEPattern:HiPENode" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initbwd/hipe/engine//hipe-patterns.xmi#//@nodes.24"/>
     </orchestrationComponents>
     <localNodeOrchestration xmi:type="hipe.network:SearchOrchestration" name="localSearchOrchestration_0"/>
     <portSignatureMappings xmi:type="hipe.network:PortSignatureMapping" ports="//@networknode.22/@ports/@port.0">

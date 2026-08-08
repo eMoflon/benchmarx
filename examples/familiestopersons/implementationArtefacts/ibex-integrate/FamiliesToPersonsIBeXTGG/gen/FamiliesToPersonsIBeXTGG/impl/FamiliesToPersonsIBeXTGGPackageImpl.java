@@ -18,8 +18,8 @@ import FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale;
 import FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGFactory;
 import FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage;
 
-import TGGRuntimeModel.TGGRuntimeModelPackage;
 import FamiliesSmartEMF.FamiliesSmartEMFPackage;
+import TGGRuntimeModel.TGGRuntimeModelPackage;
 import PersonsSmartEMF.PersonsSmartEMFPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -595,8 +595,8 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		setNsURI(eNS_URI);
 		
 		// Obtain other dependent packages
-		TGGRuntimeModelPackage theTGGRuntimeModelPackagePackage = TGGRuntimeModelPackage.eINSTANCE;
 		FamiliesSmartEMFPackage theFamiliesSmartEMFPackagePackage = FamiliesSmartEMFPackage.eINSTANCE;
+		TGGRuntimeModelPackage theTGGRuntimeModelPackagePackage = TGGRuntimeModelPackage.eINSTANCE;
 		PersonsSmartEMFPackage thePersonsSmartEMFPackagePackage = PersonsSmartEMFPackage.eINSTANCE;
 
 		// Create type parameters

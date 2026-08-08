@@ -1,26 +1,48 @@
 package FamiliesToPersonsIBeXTGG.integrate.hipe.engine.actor.stateless;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import org.emoflon.ibex.tgg.run.familiestopersonsibextgg.config.CachedDisjointExplorer;
+import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 
 import hipe.engine.actor.Port;
+import hipe.engine.util.HiPESet;
+import hipe.engine.match.EdgeMatch;
 import hipe.engine.match.HMatch;
+import hipe.engine.match.OverlapMatch;
+import hipe.engine.match.LocalSearchMatch;
+import hipe.engine.actor.junction.PortJunction;
+import hipe.engine.actor.junction.PortJunctionLeft;
+import hipe.engine.actor.junction.PortJunctionRight;
 import hipe.engine.message.input.AttributeChanged;
 import hipe.engine.message.input.ReferenceAdded;
 import hipe.engine.message.input.ReferenceDeleted;
 import hipe.engine.message.production.MatchAdded;
 import hipe.engine.message.production.MatchDeleted;
-import hipe.engine.message.stateless.MatchRequest;
-import hipe.generic.actor.search.misc.EdgeLookupMethods;
-import hipe.generic.actor.search.misc.ModelEdge;
-import hipe.generic.actor.search.misc.SearchOrchestration;
-import hipe.generic.actor.stateless.GenericStatelessSearchActor;
-import hipe.generic.actor.stateless.StatelessDeltaMatch;
-import hipe.generic.actor.stateless.StatelessInputType;
-import hipe.generic.actor.stateless.enums.UsingDeltaMode;
-import hipe.generic.actor.stateless.search.DeltaAwareEdgeExplorer;
-import hipe.generic.actor.stateless.search.DisjointExplorer;
+import hipe.engine.message.stateless.*;
+import hipe.engine.util.CollectionUtil;
+
+import hipe.network.LocalSearchNode;
+
+import hipe.generic.match.GenericJunctionMatch;
+import hipe.generic.actor.junction.GenericJunctionActor;
+import hipe.generic.actor.local.GenericLocalSearchActor;
+import hipe.generic.actor.stateless.*;
+import hipe.generic.actor.stateless.enums.*;
+import hipe.generic.actor.stateless.search.*;
+import hipe.generic.actor.search.misc.*;
+
+import org.eclipse.emf.ecore.EObject;
 
 public class FatherOfExistingFamilyToMale__BWD_123 extends GenericStatelessSearchActor{
 	DeltaAwareEdgeExplorer edge_explorer;
@@ -41,9 +63,9 @@ public class FatherOfExistingFamilyToMale__BWD_123 extends GenericStatelessSearc
 						edge_explorer_methods.unique_opposite_lookup = (o) -> ((PersonsSmartEMF.Person) o).getPersonsInverse();
 						edge_explorer = new DeltaAwareEdgeExplorer(this, 1, 2, edge_explorer_methods, PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister_Persons());
 		name2explorer.put("edge_explorer", edge_explorer);
-		disjoint_explorer = new CachedDisjointExplorer(this, observedResources, 0, (o) -> o instanceof FamiliesSmartEMF.Family, true, FamiliesSmartEMF.Family.class);
+		disjoint_explorer = new DisjointExplorer(this, observedResources, 0, (o) -> o instanceof FamiliesSmartEMF.Family, true);
 		name2explorer.put("disjoint_explorer", disjoint_explorer);
-		disjoint_explorer_1 = new CachedDisjointExplorer(this, observedResources, 2, (o) -> o instanceof PersonsSmartEMF.Male, true, PersonsSmartEMF.Male.class);
+		disjoint_explorer_1 = new DisjointExplorer(this, observedResources, 2, (o) -> o instanceof PersonsSmartEMF.Male, true);
 		name2explorer.put("disjoint_explorer_1", disjoint_explorer_1);
 	}
 	

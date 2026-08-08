@@ -71,9 +71,9 @@ public class SonOfExistingFamilyToMale__FWD_176 extends GenericStatelessSearchAc
 		name2explorer.put("edge_explorer", edge_explorer);
 		nac = new NACQueryChecker(this, 0, "SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_167", name2actor.get("SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_167"), 1);
 		name2explorer.put("nac", nac);
-		nac_0 = new NACQueryChecker(this, 1, "SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_170", name2actor.get("SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_170"), 1);
+		nac_0 = new NACQueryChecker(this, 1, "SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_170", name2actor.get("SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_170"), 1);
 		name2explorer.put("nac_0", nac_0);
-		nac_1 = new NACQueryChecker(this, 2, "SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_173", name2actor.get("SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_173"), 1);
+		nac_1 = new NACQueryChecker(this, 2, "SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_173", name2actor.get("SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_173"), 1);
 		name2explorer.put("nac_1", nac_1);
 		disjoint_explorer_0 = new DisjointExplorer(this, observedResources, 1, (o) -> o instanceof FamiliesSmartEMF.FamilyMember, true);
 		name2explorer.put("disjoint_explorer_0", disjoint_explorer_0);
@@ -170,7 +170,7 @@ public class SonOfExistingFamilyToMale__FWD_176 extends GenericStatelessSearchAc
 					}
 				}
 				break;
-			case "SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_170": 
+			case "SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_170": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -189,7 +189,7 @@ public class SonOfExistingFamilyToMale__FWD_176 extends GenericStatelessSearchAc
 					}
 				}
 				break;
-			case "SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_173": 
+			case "SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_173": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -280,7 +280,7 @@ public class SonOfExistingFamilyToMale__FWD_176 extends GenericStatelessSearchAc
 					}
 				}
 				break;
-			case "SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_170": 
+			case "SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_170": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -299,7 +299,7 @@ public class SonOfExistingFamilyToMale__FWD_176 extends GenericStatelessSearchAc
 					}
 				}
 				break;
-			case "SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_173": 
+			case "SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_173": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{

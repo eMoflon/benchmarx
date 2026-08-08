@@ -43,12 +43,11 @@ import hipe.generic.actor.stateless.search.*;
 import hipe.generic.actor.search.misc.*;
 
 import org.eclipse.emf.ecore.EObject;
-import org.emoflon.ibex.tgg.run.familiestopersonsibextgg.config.CachedDisjointExplorer;
 
 public class SonToMale__BWD_308 extends GenericStatelessSearchActor{
 	DeltaAwareEdgeExplorer edge_explorer;
 	DisjointExplorer disjoint_explorer;
-	CachedDisjointExplorer disjoint_explorer_1;
+	DisjointExplorer disjoint_explorer_1;
 	
 	SearchOrchestration edge_explorer_0_orchestration;
 	SearchOrchestration edge_explorer_1_orchestration;
@@ -64,9 +63,9 @@ public class SonToMale__BWD_308 extends GenericStatelessSearchActor{
 						edge_explorer_methods.unique_opposite_lookup = (o) -> ((PersonsSmartEMF.Person) o).getPersonsInverse();
 						edge_explorer = new DeltaAwareEdgeExplorer(this, 1, 2, edge_explorer_methods, PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister_Persons());
 		name2explorer.put("edge_explorer", edge_explorer);
-		disjoint_explorer = new CachedDisjointExplorer(this, observedResources, 0, (o) -> o instanceof FamiliesSmartEMF.FamilyRegister, true, FamiliesSmartEMF.FamilyRegister.class);
+		disjoint_explorer = new DisjointExplorer(this, observedResources, 0, (o) -> o instanceof FamiliesSmartEMF.FamilyRegister, true);
 		name2explorer.put("disjoint_explorer", disjoint_explorer);
-		disjoint_explorer_1 = new CachedDisjointExplorer(this, observedResources, 2, (o) -> o instanceof PersonsSmartEMF.Male, true, PersonsSmartEMF.Male.class);
+		disjoint_explorer_1 = new DisjointExplorer(this, observedResources, 2, (o) -> o instanceof PersonsSmartEMF.Male, true);
 		name2explorer.put("disjoint_explorer_1", disjoint_explorer_1);
 	}
 	
@@ -102,12 +101,12 @@ public class SonToMale__BWD_308 extends GenericStatelessSearchActor{
 				{
 					{
 						// families
-//						var match_0 = new StatelessDeltaMatch(msg, "SonToMale__BWD_308", numberOfNodes, 0, UsingDeltaMode.CREATE);
-//						match_0.getNodes()[0] = objs[0];
-//						match_0.registerSignatureIndex(0);
-//						if(options.trackMatchingProcess)
-//							match_0.registerDelta(UsingDeltaMode.CREATE, objs[0]);
-//						start(disjoint_explorer_orchestration, StatelessInputType.OBJECT, match_0);
+						var match_0 = new StatelessDeltaMatch(msg, "SonToMale__BWD_308", numberOfNodes, 0, UsingDeltaMode.CREATE);
+						match_0.getNodes()[0] = objs[0];
+						match_0.registerSignatureIndex(0);
+						if(options.trackMatchingProcess)
+							match_0.registerDelta(UsingDeltaMode.CREATE, objs[0]);
+						start(disjoint_explorer_orchestration, StatelessInputType.OBJECT, match_0);
 					}
 				}
 				break;
@@ -115,12 +114,12 @@ public class SonToMale__BWD_308 extends GenericStatelessSearchActor{
 				{
 					{
 						// persons
-//						var match_1 = new StatelessDeltaMatch(msg, "SonToMale__BWD_308", numberOfNodes, 0, UsingDeltaMode.CREATE);
-//						match_1.getNodes()[1] = objs[0];
-//						match_1.registerSignatureIndex(1);
-//						if(options.trackMatchingProcess)
-//							match_1.registerDelta(UsingDeltaMode.CREATE, objs[0]);
-//						start(edge_explorer_1_orchestration, StatelessInputType.OBJECT, match_1);
+						var match_1 = new StatelessDeltaMatch(msg, "SonToMale__BWD_308", numberOfNodes, 0, UsingDeltaMode.CREATE);
+						match_1.getNodes()[1] = objs[0];
+						match_1.registerSignatureIndex(1);
+						if(options.trackMatchingProcess)
+							match_1.registerDelta(UsingDeltaMode.CREATE, objs[0]);
+						start(edge_explorer_1_orchestration, StatelessInputType.OBJECT, match_1);
 					}
 				}
 				break;
