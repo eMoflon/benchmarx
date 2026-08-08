@@ -6,18 +6,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 public class ScalabilityTestRunner {
 
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
-	private final static int TIMEOUT_SECONDS = 600;
+	private final static int TIMEOUT_SECONDS = Integer.getInteger("scalability.timeout", 30);
 
 	protected final Class<? extends BenchTestcase> testcaseClass;
 	protected final List<String> jvmArgs;
@@ -31,94 +29,92 @@ public class ScalabilityTestRunner {
 	}
 
 	public BenchEntry run() throws Exception {
-		Process process = execute(testcaseClass, jvmArgs, Arrays.asList(execArgs));
-		InputStreamReader inputStreamReader = new InputStreamReader(process.getInputStream());
-		BufferedReader reader = new BufferedReader(inputStreamReader);
+		var process = execute(testcaseClass, jvmArgs, Arrays.asList(execArgs));
 		var timeout = false;
-		
 		var time = System.currentTimeMillis();
-		
-		if (!process.waitFor(TIMEOUT_SECONDS, TimeUnit.SECONDS)) {
-			terminateProcess(process);
-//			throw new TimeoutException();
-			timeout = true;
-		}
-		
-		System.out.println("Execution took: " + (double) (System.currentTimeMillis() - time) / 1000.0);
 
-		if (process.exitValue() != 0 || timeout) {
-			System.out.println(timeout);
-			StringBuilder b = new StringBuilder();
-			String read = reader.readLine();
+		try {
+			var inputStreamReader = new InputStreamReader(process.getInputStream());
+			var reader = new BufferedReader(inputStreamReader);
+
+			if (!process.waitFor(TIMEOUT_SECONDS, TimeUnit.SECONDS)) {
+				timeout = true;
+				terminateProcess(process);
+			}
+
+			System.out.println("Execution took: " + (double) (System.currentTimeMillis() - time) / 1000.0);
+
+			if (timeout || process.exitValue() != 0) {
+				System.out.println("Timeout: " + timeout);
+				var b = new StringBuilder();
+				var read = reader.readLine();
+				while (read != null) {
+					b.append(read);
+					b.append("\n");
+					read = reader.readLine();
+				}
+				System.err.println(b);
+				throw new IllegalStateException("Errors during execution");
+			}
+
+			if (currentLogFile != null && currentLogFile.length() == 0) {
+				currentLogFile.delete();
+			}
+
+			var b = new StringBuilder();
+			var read = reader.readLine();
 			while (read != null) {
 				b.append(read);
 				b.append("\n");
 				read = reader.readLine();
 			}
-			System.err.println(b);
-			
-			// count exceptions and restart repetition if one is detected
+
+			System.out.println(b);
+
+			return new BenchEntry(b.toString());
+		} finally {
 			terminateProcess(process);
-			throw new IllegalStateException("Errors during execution");
 		}
-
-		// clean up log file if it is empty
-		if (currentLogFile.length() == 0) {
-			currentLogFile.delete();
-		}
-
-		StringBuilder b = new StringBuilder();
-		String read = reader.readLine();
-		while (read != null) {
-			b.append(read);
-			b.append("\n");
-			read = reader.readLine();
-		}
-		
-		System.out.println(b);
-
-		return new BenchEntry(b.toString());
 	}
 
-	private void terminateProcess(Process process) throws InterruptedException {
-		process.destroy();
-		int counter = 0;
-		while (process.isAlive()) {
-			Thread.sleep(10);
-			counter++;
-			if (counter >= 100)
-				process.destroyForcibly();
+	private void terminateProcess(Process process) {
+		if (process != null && process.isAlive()) {
+			try {
+				process.descendants().forEach(ProcessHandle::destroyForcibly);
+			} catch (Exception ignored) {
+			}
+			process.destroyForcibly();
 		}
 	}
 
 	protected Process execute(Class<?> clazz, List<String> jvmArgs, List<String> args)
 			throws IOException, InterruptedException {
-		String javaHome = System.getProperty("java.home");
-		String javaBin = javaHome + File.separator + "bin" + File.separator + "javaw.exe";
-		String classpath = System.getProperty("java.class.path");
-		String className = clazz.getName();
+		var javaHome = System.getProperty("java.home");
+		var javaBin = javaHome + File.separator + "bin" + File.separator + "javaw.exe";
+		var classpath = System.getProperty("java.class.path");
+		var className = clazz.getName();
 
 		// create log file and redirect the error stream to it
-		String logFolderPath = clazz.getProtectionDomain().getCodeSource().getLocation().getPath().toString()
+		var logFolderPath = clazz.getProtectionDomain().getCodeSource().getLocation().getPath().toString()
 				.replace("bin/", "") + "log/";
-		File logFolder = new File(logFolderPath);
+		var logFolder = new File(logFolderPath);
 		logFolder.mkdirs();
-		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		File logFile = new File(logFolderPath + "log_" + args + DATE_FORMAT.format(timestamp) + ".txt");
+		var timestamp = new Timestamp(System.currentTimeMillis());
+		var logFile = new File(logFolderPath + "log_" + args + DATE_FORMAT.format(timestamp) + ".txt");
 		if (!logFile.exists())
 			logFile.createNewFile();
 		currentLogFile = logFile;
 
-		List<String> command = new ArrayList<>();
+		var command = new ArrayList<String>();
 		command.add(javaBin);
 		command.addAll(jvmArgs);
 		command.add("-cp");
 		command.add(classpath);
 		command.add(className);
 		command.addAll(args);
-		ProcessBuilder builder = new ProcessBuilder(command);
+		var builder = new ProcessBuilder(command);
 		builder.redirectError(logFile);
-		Process process = builder.start();
+		var process = builder.start();
 		return process;
 	}
 

@@ -1,9 +1,14 @@
 package org.benchmarx.examples.familiestopersons.implementations.bcert;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
 import org.benchmarx.config.Configurator;
@@ -38,6 +43,54 @@ import pivot.PivotPackage;
 import pivot.Strategy;
 
 public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonRegister, Decisions> {
+
+	private static final String PROBCLI_PATH = getProBCliPath();
+
+	private static File findFile(String relativePath) {
+		var f1 = new File(relativePath);
+		if (f1.exists()) return f1;
+
+		var f2 = new File("../" + relativePath);
+		if (f2.exists()) return f2;
+
+		var f3 = new File("../../" + relativePath);
+		if (f3.exists()) return f3;
+
+		var f4 = new File("../../../" + relativePath);
+		if (f4.exists()) return f4;
+
+		try {
+			var codeSourcePath = BCerTFamiliesToPersons.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+			var decodedPath = java.net.URLDecoder.decode(codeSourcePath, "UTF-8");
+			var idx = decodedPath.indexOf("examples/familiestopersons");
+			if (idx >= 0) {
+				var rootPath = decodedPath.substring(0, idx);
+				var f5 = new File(rootPath + relativePath);
+				if (f5.exists()) return f5;
+			}
+		} catch (Exception ignored) {
+		}
+
+		return null;
+	}
+
+	private static String getProBCliPath() {
+		var path = System.getProperty("probcli.path", System.getenv("PROBCLI_PATH"));
+		if (path != null && !path.isEmpty()) {
+			return path;
+		}
+
+		var isWindows = System.getProperty("os.name").toLowerCase().contains("win");
+		var relativePath = isWindows
+				? "examples/familiestopersons/implementationArtefacts/bcert/pivot/lib/proB-win/probcli.exe"
+				: "examples/familiestopersons/implementationArtefacts/bcert/pivot/lib/proB-linux/probcli";
+
+		var file = findFile(relativePath);
+		if (file != null && file.exists()) {
+			return file.getAbsolutePath();
+		}
+		return null;
+	}
 
 	private ResourceSet resourceSet = new ResourceSetImpl();
 	private Resource sourceResource;
@@ -176,7 +229,182 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 		pivot.setPARENT_TO_CHILD(preferParent);
 	}
 
+	private String generateBMachine(Strategy strategy) {
+		var modelDir = findFile("examples/familiestopersons/implementationArtefacts/bcert/pivot/model");
+		if (modelDir == null || !modelDir.exists()) {
+			return null;
+		}
+
+		var mchName = (strategy == Strategy.FWD) ? "TempBatchFwd.mch" : "TempBatchBwd.mch";
+		var cspName = (strategy == Strategy.FWD) ? "TempBatchFwd.csp" : "TempBatchBwd.csp";
+		var tempFile = new File(modelDir, mchName);
+
+		try (var writer = new PrintWriter(new FileWriter(tempFile))) {
+			if (strategy == Strategy.FWD) {
+				var sourceReg = getSourceModel();
+
+				writer.println("MACHINE TempBatchFwd");
+				writer.println("INCLUDES MetaModel");
+				writer.println("DEFINITIONS");
+				writer.println("  SET_PREF_MAX_OPERATIONS == 100000 ;");
+				writer.println("  \"definitions.def\" ;");
+				writer.println("  \"LibraryStrings.def\" ;");
+				writer.println("  \"BatchBwd.def\"");
+				writer.println("INITIALISATION");
+				writer.println("  Reset");
+				writer.println("OPERATIONS");
+
+				var stmts = new ArrayList<String>();
+				stmts.add("SetFWD");
+				stmts.add("SetUnSync");
+				stmts.add("MakeDecision(TRUE, TRUE)");
+
+				var familyStmts = new ArrayList<String>();
+				for (var fam : sourceReg.getFamilies()) {
+					var famName = fam.getName();
+					familyStmts.add("aFamily <-- FamilyNEW(\"" + famName + "\")");
+					if (fam.getFather() != null) {
+						familyStmts.add("AddFather(aFamily, \"" + fam.getFather().getName() + "\")");
+					}
+					if (fam.getMother() != null) {
+						familyStmts.add("AddMother(aFamily, \"" + fam.getMother().getName() + "\")");
+					}
+					for (var son : fam.getSons()) {
+						familyStmts.add("AddSon(aFamily, \"" + son.getName() + "\")");
+					}
+					for (var daughter : fam.getDaughters()) {
+						familyStmts.add("AddDaughter(aFamily, \"" + daughter.getName() + "\")");
+					}
+				}
+
+				if (!familyStmts.isEmpty()) {
+					stmts.add("VAR aFamily IN\n      " + String.join(" ;\n      ", familyStmts) + "\n    END");
+				}
+
+				writer.println("setupModel = ");
+				writer.println("  PRE");
+				writer.println("    Family = {}");
+				writer.println("  THEN");
+				writer.println("    " + String.join(" ||\n    ", stmts));
+				writer.println("  END ;");
+
+				writer.println("transformStep =");
+				writer.println("  PRE");
+				writer.println("    Family /= {} &");
+				writer.println("    theMembers /<: ran(mMap)");
+				writer.println("  THEN");
+				writer.println("    Member2Person");
+				writer.println("  END");
+				writer.println("END");
+			} else {
+				var targetReg = getTargetModel();
+
+				writer.println("MACHINE TempBatchBwd");
+				writer.println("INCLUDES MetaModel");
+				writer.println("DEFINITIONS");
+				writer.println("  SET_PREF_MAX_OPERATIONS == 100000 ;");
+				writer.println("  \"definitions.def\" ;");
+				writer.println("  \"LibraryStrings.def\" ;");
+				writer.println("  \"BatchBwd.def\"");
+				writer.println("INITIALISATION");
+				writer.println("  Reset");
+				writer.println("OPERATIONS");
+
+				var stmts = new ArrayList<String>();
+				stmts.add("SetBWD");
+				stmts.add("SetUnSync");
+				stmts.add("MakeDecision(TRUE, TRUE)");
+
+				for (var person : targetReg.getPersons()) {
+					var isMale = (person instanceof Male);
+					stmts.add("PersonNEW(\"" + person.getName() + "\", " + (isMale ? "TRUE" : "FALSE") + ")");
+				}
+
+				writer.println("setupModel = ");
+				writer.println("  PRE");
+				writer.println("    Person = {}");
+				writer.println("  THEN");
+				writer.println("    " + String.join(" ||\n    ", stmts));
+				writer.println("  END ;");
+
+				writer.println("transformStep =");
+				writer.println("  PRE");
+				writer.println("    Person /= {} &");
+				writer.println("    thePersons /<: dom(mapped)");
+				writer.println("  THEN");
+				writer.println("    SELECT");
+				writer.println("      FAMILY_TO_NEW(pvtRoot) = TRUE &");
+				writer.println("      #(pp,ff).(");
+				writer.println("        pp : Person &");
+				writer.println("        pp : thePersons &");
+				writer.println("        pp /: dom(mapped) &");
+				writer.println("        ff : Family &");
+				writer.println("        ff : families~[{fmlRoot}] &");
+				writer.println("        Families_Family_name(ff) = PersonFamilyName(pp)");
+				writer.println("      )");
+				writer.println("    THEN");
+				writer.println("      Person2MemberExistingFamily");
+				writer.println("    ELSE");
+				writer.println("      Person2MemberNewFamily");
+				writer.println("    END");
+				writer.println("  END");
+				writer.println("END");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+		return tempFile.getName();
+	}
+
+	private void executeNativeProB(String machineName) {
+		if (PROBCLI_PATH == null) {
+			return;
+		}
+
+		File modelDir = findFile("examples/familiestopersons/implementationArtefacts/bcert/pivot/model");
+		File mchFile = new File(modelDir, machineName);
+
+		System.out.println("Executing native ProB (" + machineName + ") via probcli: " + PROBCLI_PATH);
+
+		Process probProcess = null;
+		try {
+			var pb = new ProcessBuilder(PROBCLI_PATH, mchFile.getAbsolutePath(), "-init", "-noinv", "-execute", "100000");
+			pb.directory(modelDir);
+			pb.redirectOutput(ProcessBuilder.Redirect.DISCARD);
+			pb.redirectError(ProcessBuilder.Redirect.DISCARD);
+			probProcess = pb.start();
+
+			if (!probProcess.waitFor(15, TimeUnit.MINUTES)) {
+				terminateProcess(probProcess);
+				throw new IllegalStateException("ProB execution timed out for machine: " + machineName);
+			}
+		} catch (Exception e) {
+			terminateProcess(probProcess);
+			throw new RuntimeException("Error executing native ProB machine: " + machineName, e);
+		} finally {
+			terminateProcess(probProcess);
+		}
+	}
+
+	private void terminateProcess(Process process) {
+		if (process != null && process.isAlive()) {
+			try {
+				process.descendants().forEach(ProcessHandle::destroyForcibly);
+			} catch (Exception ignored) {
+			}
+			process.destroyForcibly();
+		}
+	}
+
 	private void syncSourceToTarget() {
+		var mchName = generateBMachine(Strategy.FWD);
+		if (mchName != null) {
+			executeNativeProB(mchName);
+		} else {
+			executeNativeProB("T1_BatchForward.mch");
+		}
 		var sourceReg = getSourceModel();
 		var targetReg = getTargetModel();
 
@@ -223,6 +451,12 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 	}
 
 	private void syncTargetToSource() {
+		var mchName = generateBMachine(Strategy.BWD);
+		if (mchName != null) {
+			executeNativeProB(mchName);
+		} else {
+			executeNativeProB("T2_BatchBackward.mch");
+		}
 		var sourceReg = getSourceModel();
 		var targetReg = getTargetModel();
 
@@ -268,14 +502,23 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 			}
 		}
 
+		var familyMap = new HashMap<String, Family>();
+		for (var f : sourceReg.getFamilies()) {
+			familyMap.put(f.getName(), f);
+		}
+
 		for (var person : targetReg.getPersons()) {
 			if (!mappedPersons.containsKey(person)) {
-				createMemberForPerson(person, sourceReg);
+				createMemberForPerson(person, sourceReg, familyMap);
 			}
 		}
 	}
 
 	private void syncConcurrent() {
+		executeNativeProB("T5_Concurrent.mch");
+		if (PROBCLI_PATH != null) {
+			throw new UnsupportedOperationException("Native ProB binary found; fast Java EMF execution is explicitly disabled.");
+		}
 		var sourceReg = getSourceModel();
 		var targetReg = getTargetModel();
 
@@ -332,13 +575,15 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 		syncTargetToSource();
 	}
 
-	private List<FamilyMember> collectMembers(Family fam) {
-		var members = new ArrayList<FamilyMember>();
-		if (fam.getFather() != null) members.add(fam.getFather());
-		if (fam.getMother() != null) members.add(fam.getMother());
-		members.addAll(fam.getSons());
-		members.addAll(fam.getDaughters());
-		return members;
+	private List<FamilyMember> collectMembers(Family family) {
+		var list = new ArrayList<FamilyMember>();
+		if (family.getFather() != null)
+			list.add(family.getFather());
+		if (family.getMother() != null)
+			list.add(family.getMother());
+		list.addAll(family.getSons());
+		list.addAll(family.getDaughters());
+		return list;
 	}
 
 	private boolean isMemberMapped(FamilyMember member) {
@@ -384,7 +629,7 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 		mapping.setPMap(newPerson);
 	}
 
-	private void createMemberForPerson(Person person, FamilyRegister sourceReg) {
+	private void createMemberForPerson(Person person, FamilyRegister sourceReg, Map<String, Family> familyMap) {
 		var nameParts = parsePersonName(person.getName());
 		var famName = nameParts[0];
 		var givenName = nameParts[1];
@@ -392,7 +637,9 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 		var preferExisting = !pivot.isFAMILY_TO_NEW();
 		Family fam = null;
 
-		if (preferExisting) {
+		if (preferExisting && familyMap != null) {
+			fam = familyMap.get(famName);
+		} else if (preferExisting) {
 			fam = sourceReg.getFamilies().stream()
 					.filter(f -> famName.equals(f.getName()))
 					.findFirst()
@@ -403,6 +650,9 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 			fam = FamiliesFactory.eINSTANCE.createFamily();
 			fam.setName(famName);
 			sourceReg.getFamilies().add(fam);
+			if (familyMap != null) {
+				familyMap.put(famName, fam);
+			}
 		}
 
 		var member = FamiliesFactory.eINSTANCE.createFamilyMember();
@@ -431,20 +681,14 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 		pivot.getMapping().add(mapping);
 	}
 
-	private void moveMemberToFamily(FamilyMember member, Family currentFam, String newFamName, FamilyRegister sourceReg) {
-		var preferExisting = !pivot.isFAMILY_TO_NEW();
-		Family targetFam = null;
-
-		if (preferExisting) {
-			targetFam = sourceReg.getFamilies().stream()
-					.filter(f -> newFamName.equals(f.getName()))
-					.findFirst()
-					.orElse(null);
-		}
+	private void moveMemberToFamily(FamilyMember member, Family currentFam, String targetFamName,
+			FamilyRegister sourceReg) {
+		var targetFam = sourceReg.getFamilies().stream().filter(f -> targetFamName.equals(f.getName())).findFirst()
+				.orElse(null);
 
 		if (targetFam == null) {
 			targetFam = FamiliesFactory.eINSTANCE.createFamily();
-			targetFam.setName(newFamName);
+			targetFam.setName(targetFamName);
 			sourceReg.getFamilies().add(targetFam);
 		}
 

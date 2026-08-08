@@ -1,0 +1,4 @@
+channel setupModel, propagate
+
+MAIN = setupModel -> TRANSFORM
+TRANSFORM = propagate -> TRANSFORM [] SKIP

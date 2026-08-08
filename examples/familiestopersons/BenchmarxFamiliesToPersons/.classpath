@@ -25,5 +25,6 @@
 	<classpathentry kind="lib" path="lib/eneo/ortools-java-9.12.4544.jar"/>
 	<classpathentry kind="lib" path="lib/eneo/protobuf-java-2.5.0.jar"/>
 	<classpathentry kind="lib" path="lib/eneo/ortools-win32-x86-64-9.12.4544.jar"/>
+	<classpathentry kind="lib" path="lib/emf-standalone-2.23.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

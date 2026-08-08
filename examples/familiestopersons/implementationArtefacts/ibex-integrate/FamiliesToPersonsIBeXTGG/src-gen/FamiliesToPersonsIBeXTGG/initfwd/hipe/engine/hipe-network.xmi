@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <hipe.network:HiPENetwork xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:HiPEPattern="platform:/resource/hipe.pattern/model/HiPEPattern" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:hipe.network="platform:/resource/hipe.network/model/hiPENetwork" xsi:schemaLocation="platform:/resource/hipe.pattern/model/HiPEPattern java://hipe.pattern.HiPEPatternPackage http://www.eclipse.org/emf/2002/Ecore java://org.eclipse.emf.ecore.EcorePackage platform:/resource/hipe.network/model/hiPENetwork java://hipe.network.NetworkPackage">
   <networknode xmi:type="hipe.network:DispatchNode" name="DispatchNode" objectNodes="//@networknode.70 //@networknode.71 //@networknode.72 //@networknode.73 //@networknode.74 //@networknode.75 //@networknode.76 //@networknode.77 //@networknode.78 //@networknode.79 //@networknode.80 //@networknode.81 //@networknode.82 //@networknode.83 //@networknode.84 //@networknode.85 //@networknode.86 //@networknode.87 //@networknode.88 //@networknode.89 //@networknode.90" notificationNode="//@networknode.1">
-    <metamodels xmi:type="ecore:EPackage" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#/"/>
     <metamodels xmi:type="ecore:EPackage" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#/"/>
+    <metamodels xmi:type="ecore:EPackage" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#/"/>
   </networknode>
   <networknode xmi:type="hipe.network:NotificationNode" name="NotificationNode" dispatchNode="//@networknode.0"/>
   <networknode xmi:type="hipe.network:StatelessNode" name="CreateFamily__FWD_1" inputPort="//@networknode.70/@ports/@port.0 //@networknode.72/@ports/@port.0" patternName="CreateFamily__FWD_1">
@@ -39,10 +39,10 @@
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="families" value="0"/>
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="family" value="1"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_4" inputPort="//@networknode.74/@ports/@port.0 //@networknode.82/@ports/@port.0" patternName="DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_4" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_4" inputPort="//@networknode.74/@ports/@port.0 //@networknode.82/@ports/@port.0" patternName="DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_4" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.7" patternName="DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_4" matchingNode="//@networknode.4"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.9" patternName="DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_4" matchingNode="//@networknode.4"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.7" patternName="DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_4" matchingNode="//@networknode.4"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.9" patternName="DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_4" matchingNode="//@networknode.4"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.37"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.4/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -57,7 +57,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/sons"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/father"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.1"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -99,10 +99,10 @@
     </portSignatureMappings>
     <disjointOrchestration xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.5/@orchestrationComponents.1 //@networknode.5/@orchestrationComponents.0" name="disjointOrchestration"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_10" inputPort="//@networknode.76/@ports/@port.0 //@networknode.84/@ports/@port.0" patternName="DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_10" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_10" inputPort="//@networknode.76/@ports/@port.0 //@networknode.84/@ports/@port.0" patternName="DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_10" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.7" patternName="DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_10" matchingNode="//@networknode.6"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.11" patternName="DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_10" matchingNode="//@networknode.6"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.7" patternName="DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_10" matchingNode="//@networknode.6"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.11" patternName="DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_10" matchingNode="//@networknode.6"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.43"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.6/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -117,7 +117,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/father"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/sons"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.3"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -133,13 +133,13 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.8" patternName="DaughterOfExistingFamilyToFemale__FWD_13" matchingNode="//@networknode.7"/>
     </ports>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_4">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_4">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="1" rightIndex="1"/>
     </allOverlaps>
     <allOverlaps xmi:type="hipe.network:Overlaps" name="DaughterOfExistingFamilyToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_7">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="1" rightIndex="1"/>
     </allOverlaps>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_10">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_10">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="1" rightIndex="1"/>
     </allOverlaps>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.46"/>
@@ -198,7 +198,7 @@
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="1"/>
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="persons" value="2"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.4/@ports/@port.1" patternName="DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.4/@ports/@port.1" patternName="DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
@@ -206,14 +206,14 @@
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.6/@ports/@port.1" patternName="DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.6/@ports/@port.1" patternName="DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_17" inputPort="//@networknode.78/@ports/@port.0 //@networknode.86/@ports/@port.0" patternName="DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_17" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_17" inputPort="//@networknode.78/@ports/@port.0 //@networknode.86/@ports/@port.0" patternName="DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_17" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.15" patternName="DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_17" matchingNode="//@networknode.12"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.17" patternName="DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_17" matchingNode="//@networknode.12"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.15" patternName="DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_17" matchingNode="//@networknode.12"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.17" patternName="DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_17" matchingNode="//@networknode.12"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.50"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.12/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -228,7 +228,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/father"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/sons"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.5"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -240,10 +240,10 @@
     </portSignatureMappings>
     <disjointOrchestration xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.12/@orchestrationComponents.1 //@networknode.12/@orchestrationComponents.0" name="disjointOrchestration"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_20" inputPort="//@networknode.79/@ports/@port.0 //@networknode.87/@ports/@port.0" patternName="DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_20" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_20" inputPort="//@networknode.79/@ports/@port.0 //@networknode.87/@ports/@port.0" patternName="DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_20" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.15" patternName="DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_20" matchingNode="//@networknode.13"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.18" patternName="DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_20" matchingNode="//@networknode.13"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.15" patternName="DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_20" matchingNode="//@networknode.13"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.18" patternName="DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_20" matchingNode="//@networknode.13"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.53"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.13/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -258,7 +258,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/sons"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/mother"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.6"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -270,10 +270,10 @@
     </portSignatureMappings>
     <disjointOrchestration xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.13/@orchestrationComponents.1 //@networknode.13/@orchestrationComponents.0" name="disjointOrchestration"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_23" inputPort="//@networknode.80/@ports/@port.0 //@networknode.88/@ports/@port.0" patternName="DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_23" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_23" inputPort="//@networknode.80/@ports/@port.0 //@networknode.88/@ports/@port.0" patternName="DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_23" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.15" patternName="DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_23" matchingNode="//@networknode.14"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.19" patternName="DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_23" matchingNode="//@networknode.14"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.15" patternName="DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_23" matchingNode="//@networknode.14"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.19" patternName="DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_23" matchingNode="//@networknode.14"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.56"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.14/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -288,7 +288,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/mother"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/father"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.7"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -304,13 +304,13 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.16" patternName="DaughterToFemale__FWD_26" matchingNode="//@networknode.15"/>
     </ports>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_17">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_17">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="2" rightIndex="1"/>
     </allOverlaps>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_20">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_20">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="2" rightIndex="1"/>
     </allOverlaps>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_23">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_23">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="2" rightIndex="1"/>
     </allOverlaps>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.59"/>
@@ -383,15 +383,15 @@
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="2"/>
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="persons" value="3"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.12/@ports/@port.1" patternName="DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.12/@ports/@port.1" patternName="DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.13/@ports/@port.1" patternName="DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.13/@ports/@port.1" patternName="DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.14/@ports/@port.1" patternName="DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.14/@ports/@port.1" patternName="DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
@@ -415,10 +415,10 @@
   <networknode xmi:type="hipe.network:ProductionNode" name="Families2Persons__FWD_production" inputPort="//@networknode.20/@ports/@port.0" patternName="Families2Persons__FWD">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="families" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_33" inputPort="//@networknode.73/@ports/@port.1 //@networknode.82/@ports/@port.1" patternName="FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_33" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_33" inputPort="//@networknode.73/@ports/@port.1 //@networknode.82/@ports/@port.1" patternName="FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_33" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.25" patternName="FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_33" matchingNode="//@networknode.22"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.27" patternName="FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_33" matchingNode="//@networknode.22"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.25" patternName="FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_33" matchingNode="//@networknode.22"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.27" patternName="FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_33" matchingNode="//@networknode.22"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.66"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.22/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -433,7 +433,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/mother"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/daughters"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.10"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -475,10 +475,10 @@
     </portSignatureMappings>
     <disjointOrchestration xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.23/@orchestrationComponents.1 //@networknode.23/@orchestrationComponents.0" name="disjointOrchestration"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_39" inputPort="//@networknode.75/@ports/@port.1 //@networknode.84/@ports/@port.1" patternName="FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_39" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_39" inputPort="//@networknode.75/@ports/@port.1 //@networknode.84/@ports/@port.1" patternName="FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_39" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.25" patternName="FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_39" matchingNode="//@networknode.24"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.29" patternName="FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_39" matchingNode="//@networknode.24"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.25" patternName="FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_39" matchingNode="//@networknode.24"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.29" patternName="FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_39" matchingNode="//@networknode.24"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.72"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.24/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -493,7 +493,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/daughters"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/mother"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.12"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -509,13 +509,13 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.26" patternName="FatherOfExistingFamilyToMale__FWD_42" matchingNode="//@networknode.25"/>
     </ports>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_33">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_33">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="1" rightIndex="1"/>
     </allOverlaps>
     <allOverlaps xmi:type="hipe.network:Overlaps" name="FatherOfExistingFamilyToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_36">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="1" rightIndex="1"/>
     </allOverlaps>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_39">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_39">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="1" rightIndex="1"/>
     </allOverlaps>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.75"/>
@@ -574,7 +574,7 @@
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="1"/>
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="persons" value="2"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.22/@ports/@port.1" patternName="FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.22/@ports/@port.1" patternName="FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
@@ -582,14 +582,14 @@
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.24/@ports/@port.1" patternName="FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.24/@ports/@port.1" patternName="FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_46" inputPort="//@networknode.77/@ports/@port.1 //@networknode.86/@ports/@port.1" patternName="FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_46" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_46" inputPort="//@networknode.77/@ports/@port.1 //@networknode.86/@ports/@port.1" patternName="FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_46" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.33" patternName="FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_46" matchingNode="//@networknode.30"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.35" patternName="FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_46" matchingNode="//@networknode.30"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.33" patternName="FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_46" matchingNode="//@networknode.30"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.35" patternName="FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_46" matchingNode="//@networknode.30"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.79"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.30/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -604,7 +604,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/daughters"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/sons"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.14"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -646,10 +646,10 @@
     </portSignatureMappings>
     <disjointOrchestration xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.31/@orchestrationComponents.1 //@networknode.31/@orchestrationComponents.0" name="disjointOrchestration"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_52" inputPort="//@networknode.79/@ports/@port.1 //@networknode.88/@ports/@port.1" patternName="FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_52" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_52" inputPort="//@networknode.79/@ports/@port.1 //@networknode.88/@ports/@port.1" patternName="FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_52" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.33" patternName="FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_52" matchingNode="//@networknode.32"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.37" patternName="FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_52" matchingNode="//@networknode.32"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.33" patternName="FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_52" matchingNode="//@networknode.32"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.37" patternName="FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_52" matchingNode="//@networknode.32"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.85"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.32/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -664,7 +664,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/sons"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/daughters"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.16"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -680,13 +680,13 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.34" patternName="FatherToMale__FWD_55" matchingNode="//@networknode.33"/>
     </ports>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_46">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_46">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="2" rightIndex="1"/>
     </allOverlaps>
     <allOverlaps xmi:type="hipe.network:Overlaps" name="FatherToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_49">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="2" rightIndex="1"/>
     </allOverlaps>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_52">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_52">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="2" rightIndex="1"/>
     </allOverlaps>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.88"/>
@@ -759,7 +759,7 @@
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="2"/>
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="persons" value="3"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.30/@ports/@port.1" patternName="FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.30/@ports/@port.1" patternName="FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
@@ -767,14 +767,14 @@
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.32/@ports/@port.1" patternName="FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.32/@ports/@port.1" patternName="FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_60" inputPort="//@networknode.72/@ports/@port.2 //@networknode.82/@ports/@port.2" patternName="MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_60" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_60" inputPort="//@networknode.72/@ports/@port.2 //@networknode.82/@ports/@port.2" patternName="MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_60" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.41" patternName="MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_60" matchingNode="//@networknode.38"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.43" patternName="MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_60" matchingNode="//@networknode.38"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.41" patternName="MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_60" matchingNode="//@networknode.38"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.43" patternName="MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_60" matchingNode="//@networknode.38"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.93"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.38/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -789,7 +789,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/daughters"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/sons"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.19"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -801,10 +801,10 @@
     </portSignatureMappings>
     <disjointOrchestration xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.38/@orchestrationComponents.1 //@networknode.38/@orchestrationComponents.0" name="disjointOrchestration"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_63" inputPort="//@networknode.73/@ports/@port.2 //@networknode.83/@ports/@port.2" patternName="MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_63" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_63" inputPort="//@networknode.73/@ports/@port.2 //@networknode.83/@ports/@port.2" patternName="MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_63" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.41" patternName="MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_63" matchingNode="//@networknode.39"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.44" patternName="MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_63" matchingNode="//@networknode.39"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.41" patternName="MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_63" matchingNode="//@networknode.39"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.44" patternName="MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_63" matchingNode="//@networknode.39"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.96"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.39/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -819,7 +819,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/father"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/daughters"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.20"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -831,10 +831,10 @@
     </portSignatureMappings>
     <disjointOrchestration xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.39/@orchestrationComponents.1 //@networknode.39/@orchestrationComponents.0" name="disjointOrchestration"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_66" inputPort="//@networknode.74/@ports/@port.2 //@networknode.84/@ports/@port.2" patternName="MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_66" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_66" inputPort="//@networknode.74/@ports/@port.2 //@networknode.84/@ports/@port.2" patternName="MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_66" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.41" patternName="MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_66" matchingNode="//@networknode.40"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.45" patternName="MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_66" matchingNode="//@networknode.40"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.41" patternName="MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_66" matchingNode="//@networknode.40"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.45" patternName="MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_66" matchingNode="//@networknode.40"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.99"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.40/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -849,7 +849,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/sons"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/father"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.21"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -865,13 +865,13 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.42" patternName="MotherOfExistingFamilyToFemale__FWD_69" matchingNode="//@networknode.41"/>
     </ports>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_60">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_60">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="1" rightIndex="1"/>
     </allOverlaps>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_63">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_63">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="1" rightIndex="1"/>
     </allOverlaps>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_66">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_66">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="1" rightIndex="1"/>
     </allOverlaps>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.102"/>
@@ -930,22 +930,22 @@
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="1"/>
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="persons" value="2"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.38/@ports/@port.1" patternName="MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.38/@ports/@port.1" patternName="MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.39/@ports/@port.1" patternName="MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.39/@ports/@port.1" patternName="MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.40/@ports/@port.1" patternName="MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.40/@ports/@port.1" patternName="MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_73" inputPort="//@networknode.76/@ports/@port.2 //@networknode.86/@ports/@port.2" patternName="MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_73" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_73" inputPort="//@networknode.76/@ports/@port.2 //@networknode.86/@ports/@port.2" patternName="MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_73" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.49" patternName="MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_73" matchingNode="//@networknode.46"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.51" patternName="MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_73" matchingNode="//@networknode.46"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.49" patternName="MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_73" matchingNode="//@networknode.46"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.51" patternName="MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_73" matchingNode="//@networknode.46"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.106"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.46/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -960,7 +960,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/sons"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/father"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.23"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -1002,10 +1002,10 @@
     </portSignatureMappings>
     <disjointOrchestration xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.47/@orchestrationComponents.1 //@networknode.47/@orchestrationComponents.0" name="disjointOrchestration"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_79" inputPort="//@networknode.78/@ports/@port.2 //@networknode.88/@ports/@port.2" patternName="MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_79" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_79" inputPort="//@networknode.78/@ports/@port.2 //@networknode.88/@ports/@port.2" patternName="MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_79" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.49" patternName="MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_79" matchingNode="//@networknode.48"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.53" patternName="MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_79" matchingNode="//@networknode.48"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.49" patternName="MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_79" matchingNode="//@networknode.48"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.53" patternName="MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_79" matchingNode="//@networknode.48"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.112"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.48/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -1020,7 +1020,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/father"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/sons"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.25"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -1036,13 +1036,13 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.50" patternName="MotherToFemale__FWD_82" matchingNode="//@networknode.49"/>
     </ports>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_73">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_73">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="2" rightIndex="1"/>
     </allOverlaps>
     <allOverlaps xmi:type="hipe.network:Overlaps" name="MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_76">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="2" rightIndex="1"/>
     </allOverlaps>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_79">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_79">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="2" rightIndex="1"/>
     </allOverlaps>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.115"/>
@@ -1115,7 +1115,7 @@
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="2"/>
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="persons" value="3"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.46/@ports/@port.1" patternName="MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.46/@ports/@port.1" patternName="MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
@@ -1123,14 +1123,14 @@
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.48/@ports/@port.1" patternName="MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.48/@ports/@port.1" patternName="MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_87" inputPort="//@networknode.80/@ports/@port.2 //@networknode.82/@ports/@port.3" patternName="SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_87" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_87" inputPort="//@networknode.80/@ports/@port.2 //@networknode.82/@ports/@port.3" patternName="SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_87" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.57" patternName="SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_87" matchingNode="//@networknode.54"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.59" patternName="SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_87" matchingNode="//@networknode.54"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.57" patternName="SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_87" matchingNode="//@networknode.54"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.59" patternName="SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_87" matchingNode="//@networknode.54"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.120"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.54/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -1145,7 +1145,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/mother"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/father"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.28"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -1157,10 +1157,10 @@
     </portSignatureMappings>
     <disjointOrchestration xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.54/@orchestrationComponents.1 //@networknode.54/@orchestrationComponents.0" name="disjointOrchestration"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_90" inputPort="//@networknode.72/@ports/@port.3 //@networknode.83/@ports/@port.3" patternName="SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_90" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_90" inputPort="//@networknode.72/@ports/@port.3 //@networknode.83/@ports/@port.3" patternName="SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_90" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.57" patternName="SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_90" matchingNode="//@networknode.55"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.60" patternName="SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_90" matchingNode="//@networknode.55"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.57" patternName="SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_90" matchingNode="//@networknode.55"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.60" patternName="SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_90" matchingNode="//@networknode.55"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.123"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.55/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -1175,7 +1175,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/daughters"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/mother"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.29"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -1187,10 +1187,10 @@
     </portSignatureMappings>
     <disjointOrchestration xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.55/@orchestrationComponents.1 //@networknode.55/@orchestrationComponents.0" name="disjointOrchestration"/>
   </networknode>
-  <networknode xmi:type="hipe.network:StatelessNode" name="SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_93" inputPort="//@networknode.73/@ports/@port.3 //@networknode.84/@ports/@port.3" patternName="SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_93" hasLocalNodes="true">
+  <networknode xmi:type="hipe.network:StatelessNode" name="SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_93" inputPort="//@networknode.73/@ports/@port.3 //@networknode.84/@ports/@port.3" patternName="SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_93" hasLocalNodes="true">
     <ports xmi:type="hipe.network:Ports">
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.57" patternName="SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_93" matchingNode="//@networknode.56"/>
-      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.61" patternName="SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_93" matchingNode="//@networknode.56"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.57" patternName="SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_93" matchingNode="//@networknode.56"/>
+      <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.61" patternName="SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_93" matchingNode="//@networknode.56"/>
     </ports>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.126"/>
     <orchestrations xmi:type="hipe.network:SearchOrchestration" plan="//@networknode.56/@orchestrationComponents.0" name="edge_explorer_0_orchestration">
@@ -1205,7 +1205,7 @@
     <orchestrationComponents xmi:type="hipe.network:EdgeExplorationComponent" name="edge_explorer">
       <indices>0</indices>
       <indices>1</indices>
-      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/father"/>
+      <type xmi:type="ecore:EReference" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#//Family/daughters"/>
       <edge xmi:type="HiPEPattern:HiPEEdge" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@edges.30"/>
     </orchestrationComponents>
     <orchestrationComponents xmi:type="hipe.network:DisjointExplorer" name="disjoint_explorer_0" index="1">
@@ -1221,13 +1221,13 @@
     <ports xmi:type="hipe.network:Ports">
       <port xmi:type="hipe.network:SimplePort" portSlot="CENTER" portTarget="//@networknode.58" patternName="SonOfExistingFamilyToMale__FWD_96" matchingNode="//@networknode.57"/>
     </ports>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_87">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_87">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="1" rightIndex="1"/>
     </allOverlaps>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_90">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_90">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="1" rightIndex="1"/>
     </allOverlaps>
-    <allOverlaps xmi:type="hipe.network:Overlaps" name="SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_93">
+    <allOverlaps xmi:type="hipe.network:Overlaps" name="SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_93">
       <overlap xmi:type="hipe.network:Overlap" leftIndex="1" rightIndex="1"/>
     </allOverlaps>
     <pattern xmi:type="HiPEPattern:HiPELargePattern" href="file:/C:/Users/Arikae/git/benchmarx/examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/initfwd/hipe/engine//hipe-patterns.xmi#//@patterns.129"/>
@@ -1286,15 +1286,15 @@
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="1"/>
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="persons" value="2"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.54/@ports/@port.1" patternName="SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.54/@ports/@port.1" patternName="SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.55/@ports/@port.1" patternName="SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.55/@ports/@port.1" patternName="SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>
-  <networknode xmi:type="hipe.network:ProductionNode" name="SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.56/@ports/@port.1" patternName="SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC">
+  <networknode xmi:type="hipe.network:ProductionNode" name="SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_production" inputPort="//@networknode.56/@ports/@port.1" patternName="SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC">
     <labelToIndex xmi:type="hipe.network:StringToIntegerMapEntry" key="fm" value="0"/>
     <signatureElts xmi:type="hipe.network:IntegerToIntegerMapEntry" key="1" value="0"/>
   </networknode>

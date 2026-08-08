@@ -18,7 +18,10 @@ Bundle-ClassPath: .,
  lib/hipe.network_2.0.0.202512201814.jar,
  lib/hipe.pattern_2.0.0.202512201814.jar,
  lib/hipe.searchplan_2.0.0.202512201814.jar,
- lib/log4j-1.2.17.jar
+ lib/log4j-1.2.17.jar,
+ lib/emf-standalone-2.23.0.jar,
+ lib/commons-lang3-3.5.jar,
+ lib/commons-io-2.5.jar
 Require-Bundle: org.eclipse.emf.ecore.xmi,
  org.junit,
  Benchmarx;bundle-version="1.0.0",

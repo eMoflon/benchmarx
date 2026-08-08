@@ -9,6 +9,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
 import java.util.function.BiConsumer;
@@ -49,13 +52,15 @@ public abstract class ScalabilityTests {
 	private static final String resultFolder = "C:/scalability_results";
 
 	protected static Map<Integer, Double> results;
+	protected static Map<Integer, List<Double>> allResults;
 	protected static String label;
 	
 	private static boolean lastTestSuccessfull;
 	
 	@BeforeParam
 	public static void initResults(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
-		results = new HashMap<>();
+		results = new LinkedHashMap<>();
+		allResults = new LinkedHashMap<>();
 		lastTestSuccessfull = true;
 	}
 	
@@ -75,6 +80,35 @@ public abstract class ScalabilityTests {
 					.sorted()//
 					.map(k -> k + ", " + results.get(k))//
 					.collect(Collectors.joining(DELIMITER)));
+		}
+
+		if (allResults != null && !allResults.isEmpty()) {
+			var maxRuns = allResults.values().stream().mapToInt(List::size).max().orElse(REPEAT);
+			var header = new StringBuilder("ScaleFactor, Median, Average, StdDev, StdErr");
+			for (var i = 1; i <= maxRuns; i++) {
+				header.append(", Run_").append(i);
+			}
+
+			try (var outDetailed = new PrintWriter(resultFolder + "/" + label + tool.getName() + "_detailed.csv")) {
+				outDetailed.println(header.toString());
+				for (var k : allResults.keySet().stream().sorted().collect(Collectors.toList())) {
+					var values = allResults.get(k);
+					var n = values.size();
+					var sorted = values.stream().sorted().collect(Collectors.toList());
+					var median = (n % 2 == 1) ? sorted.get(n / 2) : (sorted.get(n / 2 - 1) + sorted.get(n / 2)) / 2.0;
+					var average = values.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
+					var variance = (n > 1) ? values.stream().mapToDouble(v -> Math.pow(v - average, 2)).sum() / (n - 1) : 0.0;
+					var stdDev = Math.sqrt(variance);
+					var stdErr = (n > 0) ? stdDev / Math.sqrt(n) : 0.0;
+
+					var sb = new StringBuilder();
+					sb.append(String.format(Locale.US, "%d, %.6f, %.6f, %.6f, %.6f", k, median, average, stdDev, stdErr));
+					for (var v : values) {
+						sb.append(String.format(Locale.US, ", %.6f", v));
+					}
+					outDetailed.println(sb.toString());
+				}
+			}
 		}
 	}
 
@@ -123,7 +157,11 @@ public abstract class ScalabilityTests {
 			return;
 		}
 		
-		results.put(scaleFactor, entries.stream().map(e -> e.resolve).sorted().toList().get((int) (REPEAT / 2)));
+		var times = entries.stream().map(e -> e.resolve).collect(Collectors.toList());
+		allResults.put(scaleFactor, times);
+
+		var sortedTimes = times.stream().sorted().collect(Collectors.toList());
+		results.put(scaleFactor, sortedTimes.get((int) (REPEAT / 2)));
 		setTestSuccessfull();
 	}
 	

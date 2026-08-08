@@ -68,14 +68,10 @@ public class DispatchActor extends AbstractActor {
 			incUtil.newMessage();
 			name2actor.get("Male_object").tell(new ObjectAdded<PersonsSmartEMF.Male>(incUtil, _male), getSelf());
 		});
-		type2addConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister(), obj -> {
-			PersonsSmartEMF.PersonRegister _personregister = (PersonsSmartEMF.PersonRegister) obj;
+		type2addConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getFemale(), obj -> {
+			PersonsSmartEMF.Female _female = (PersonsSmartEMF.Female) obj;
 			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP0").tell(new ObjectAdded<PersonsSmartEMF.PersonRegister>(incUtil, _personregister), getSelf());
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP1").tell(new ObjectAdded<PersonsSmartEMF.PersonRegister>(incUtil, _personregister), getSelf());
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP2").tell(new ObjectAdded<PersonsSmartEMF.PersonRegister>(incUtil, _personregister), getSelf());
+			name2actor.get("Female_object").tell(new ObjectAdded<PersonsSmartEMF.Female>(incUtil, _female), getSelf());
 		});
 		type2addConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily(), obj -> {
 			FamiliesSmartEMF.Family _family = (FamiliesSmartEMF.Family) obj;
@@ -87,10 +83,14 @@ public class DispatchActor extends AbstractActor {
 			incUtil.newMessage();
 			name2actor.get("FamilyRegister_object").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
 		});
-		type2addConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getFemale(), obj -> {
-			PersonsSmartEMF.Female _female = (PersonsSmartEMF.Female) obj;
+		type2addConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister(), obj -> {
+			PersonsSmartEMF.PersonRegister _personregister = (PersonsSmartEMF.PersonRegister) obj;
 			incUtil.newMessage();
-			name2actor.get("Female_object").tell(new ObjectAdded<PersonsSmartEMF.Female>(incUtil, _female), getSelf());
+			name2actor.get("PersonRegister_object_SP0").tell(new ObjectAdded<PersonsSmartEMF.PersonRegister>(incUtil, _personregister), getSelf());
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP1").tell(new ObjectAdded<PersonsSmartEMF.PersonRegister>(incUtil, _personregister), getSelf());
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP2").tell(new ObjectAdded<PersonsSmartEMF.PersonRegister>(incUtil, _personregister), getSelf());
 		});
 	}
 	
@@ -233,14 +233,6 @@ public class DispatchActor extends AbstractActor {
 	
 	private void handleRemoveAdapter(Notification notification) {
 		Object node = notification.getNotifier();
-		if (node instanceof FamiliesSmartEMF.Family) {
-			incUtil.newMessage();
-			name2actor.get("Family_object").tell(new ObjectDeleted<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) node), getSelf());
-		}
-		if (node instanceof FamiliesSmartEMF.FamilyRegister) {
-			incUtil.newMessage();
-			name2actor.get("FamilyRegister_object").tell(new ObjectDeleted<FamiliesSmartEMF.FamilyRegister>(incUtil, (FamiliesSmartEMF.FamilyRegister) node), getSelf());
-		}
 		if (node instanceof PersonsSmartEMF.Female) {
 			incUtil.newMessage();
 			name2actor.get("Female_object").tell(new ObjectDeleted<PersonsSmartEMF.Female>(incUtil, (PersonsSmartEMF.Female) node), getSelf());
@@ -260,6 +252,14 @@ public class DispatchActor extends AbstractActor {
 		if (node instanceof PersonsSmartEMF.PersonRegister) {
 			incUtil.newMessage();
 			name2actor.get("PersonRegister_object_SP2").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
+		}
+		if (node instanceof FamiliesSmartEMF.Family) {
+			incUtil.newMessage();
+			name2actor.get("Family_object").tell(new ObjectDeleted<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) node), getSelf());
+		}
+		if (node instanceof FamiliesSmartEMF.FamilyRegister) {
+			incUtil.newMessage();
+			name2actor.get("FamilyRegister_object").tell(new ObjectDeleted<FamiliesSmartEMF.FamilyRegister>(incUtil, (FamiliesSmartEMF.FamilyRegister) node), getSelf());
 		}
 	}
 }

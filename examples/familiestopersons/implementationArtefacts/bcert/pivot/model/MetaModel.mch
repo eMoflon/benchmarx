@@ -45,14 +45,14 @@ CONSTANTS
 
 PROPERTIES
 	card(FAMILYREGISTER) = 10 &
-	card(FAMILY) = 50 &
-	card(FAMILYMEMBER) = 100 &
+	card(FAMILY) = 500 &
+	card(FAMILYMEMBER) = 1000 &
 	card(PIVOT) = 1 &
 	card(PRECONDITION) = 10 &
 	card(POSTCONDITION) = 10 &
-	card(MAPPING) = card(FAMILYMEMBER)  &
-	card(PERSONREGISTER) = 10  &
-	card(PERSON) = card(FAMILYMEMBER)  &
+	card(MAPPING) = 1000 &
+	card(PERSONREGISTER) = 10 &
+	card(PERSON) = 1000 &
 	
 	FamilyRegister : FIN(FAMILYREGISTER) &
 	PreCondition : FIN(PRECONDITION) &
@@ -213,8 +213,8 @@ Member2Person =
         || Person := Person \/ {aPerson}
 		|| birthday := birthday <+ {aPerson |-> "DEFAULT"}
         || Persons_Person_name(aPerson) := 
-        		STRING_CONC([Families_Family_name(familyOf(aMember)), 
-        					", ", Families_FamilyMember_name(aMember)])
+        		STRING_APPEND(Families_Family_name(familyOf(aMember)), 
+        					STRING_APPEND(", ", Families_FamilyMember_name(aMember)))
         || persons := persons <+ {aPerson |-> prsRoot}
         || Mapping := Mapping \/ {aMapping}
         || mapping := mapping <+ {aMapping |-> pvtRoot}

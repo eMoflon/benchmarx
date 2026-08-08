@@ -1,0 +1,10 @@
+Exception in thread "main" java.lang.Error: Unresolved compilation problems: 
+	FamiliesPackage cannot be resolved
+	PersonsPackage cannot be resolved
+
+	at pivot.impl.PivotPackageImpl.init(PivotPackageImpl.java:112)
+	at pivot.PivotPackage.<clinit>(PivotPackage.java:57)
+	at org.benchmarx.examples.familiestopersons.implementations.bcert.BCerTFamiliesToPersons.initiateSynchronisationDialogue(BCerTFamiliesToPersons.java:79)
+	at org.benchmarx.examples.familiestopersons.scalability.runner.BenchTestcase.initialise(BenchTestcase.java:100)
+	at org.benchmarx.examples.familiestopersons.scalability.runner.BenchTestcase.execute(BenchTestcase.java:68)
+	at org.benchmarx.examples.familiestopersons.scalability.cases.IncrTestsBwdTestcase.main(IncrTestsBwdTestcase.java:17)

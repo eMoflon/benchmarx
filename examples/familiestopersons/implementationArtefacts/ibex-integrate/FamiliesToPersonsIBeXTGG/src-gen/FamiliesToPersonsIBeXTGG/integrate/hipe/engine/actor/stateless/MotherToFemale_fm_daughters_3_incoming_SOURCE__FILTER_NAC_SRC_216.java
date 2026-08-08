@@ -257,28 +257,6 @@ public class MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_216 e
 				}
 				break;
 			}
-			case "MotherToFemale__CONSISTENCY_244": {
-				switch(message.queryComponentId) {
-					case 1: {
-						var deltaMatch = new StatelessDeltaMatch(message, "MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_216", 2, 0, message.usedDelta);
-						var nodes = deltaMatch.getNodes();
-						var lastFoundIndex = -1;
-						
-						nodes[1] = requestNodes[2];
-						if(nodes[1] != null) 
-							lastFoundIndex = 1;
-						
-						switch(lastFoundIndex) {
-							case 1: 
-								startFromRequest(edge_explorer_2_orchestration, StatelessInputType.REQUEST , deltaMatch, message);
-								break;
-							default: throw new RuntimeException("Cannot execute request due to missing node information");
-						}
-						break;
-					}
-				}
-				break;
-			}
 			case "MotherToFemale__CC_238": {
 				switch(message.queryComponentId) {
 					case 1: {
@@ -302,6 +280,28 @@ public class MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_216 e
 				break;
 			}
 			case "MotherToFemale__SOURCE_222": {
+				switch(message.queryComponentId) {
+					case 1: {
+						var deltaMatch = new StatelessDeltaMatch(message, "MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_216", 2, 0, message.usedDelta);
+						var nodes = deltaMatch.getNodes();
+						var lastFoundIndex = -1;
+						
+						nodes[1] = requestNodes[2];
+						if(nodes[1] != null) 
+							lastFoundIndex = 1;
+						
+						switch(lastFoundIndex) {
+							case 1: 
+								startFromRequest(edge_explorer_2_orchestration, StatelessInputType.REQUEST , deltaMatch, message);
+								break;
+							default: throw new RuntimeException("Cannot execute request due to missing node information");
+						}
+						break;
+					}
+				}
+				break;
+			}
+			case "MotherToFemale__CONSISTENCY_244": {
 				switch(message.queryComponentId) {
 					case 1: {
 						var deltaMatch = new StatelessDeltaMatch(message, "MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_216", 2, 0, message.usedDelta);
@@ -342,16 +342,6 @@ public class MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_216 e
 				}
 				break;
 			}
-			case "MotherToFemale__CONSISTENCY_244": {
-				switch(request.queryComponentId) {
-					case 1: {
-						if(!(objs[1] instanceof FamiliesSmartEMF.FamilyMember))
-							return false;
-						break;
-					}
-				}
-				break;
-			}
 			case "MotherToFemale__CC_238": {
 				switch(request.queryComponentId) {
 					case 1: {
@@ -363,6 +353,16 @@ public class MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_216 e
 				break;
 			}
 			case "MotherToFemale__SOURCE_222": {
+				switch(request.queryComponentId) {
+					case 1: {
+						if(!(objs[1] instanceof FamiliesSmartEMF.FamilyMember))
+							return false;
+						break;
+					}
+				}
+				break;
+			}
+			case "MotherToFemale__CONSISTENCY_244": {
 				switch(request.queryComponentId) {
 					case 1: {
 						if(!(objs[1] instanceof FamiliesSmartEMF.FamilyMember))
@@ -394,15 +394,6 @@ public class MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_216 e
 				}
 				break;
 			}
-			case "MotherToFemale__CONSISTENCY_244": {
-				switch(request.queryComponentId) {
-					case 1: {
-						requestNodes[2] = resultNodes[1];
-						break;
-					}
-				}
-				break;
-			}
 			case "MotherToFemale__CC_238": {
 				switch(request.queryComponentId) {
 					case 1: {
@@ -413,6 +404,15 @@ public class MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_216 e
 				break;
 			}
 			case "MotherToFemale__SOURCE_222": {
+				switch(request.queryComponentId) {
+					case 1: {
+						requestNodes[2] = resultNodes[1];
+						break;
+					}
+				}
+				break;
+			}
+			case "MotherToFemale__CONSISTENCY_244": {
 				switch(request.queryComponentId) {
 					case 1: {
 						requestNodes[2] = resultNodes[1];

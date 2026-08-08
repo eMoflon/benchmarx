@@ -36,6 +36,7 @@ import Persons.PersonRegister;
 import Persons.PersonsPackage;
 import de.uni_koblenz.jgralab.gretl.SysOut;
 
+
 public abstract class BenchTestcase {
 
 	protected BXTool<FamilyRegister, PersonRegister, Decisions> tool;
@@ -51,7 +52,7 @@ public abstract class BenchTestcase {
 
 	public BenchTestcase(String name, int scaleFactor) {
 		this.tool = getAvailableTools().stream() //
-				.filter(tool -> tool.getName().equals(name)).findFirst() //
+				.filter(tool -> tool.getName().equalsIgnoreCase(name)).findFirst() //
 				.orElseThrow(() -> new IllegalArgumentException("Tool %s is not recognized".formatted(name)));
 		this.scaleFactor = scaleFactor;	
 	}
@@ -64,7 +65,6 @@ public abstract class BenchTestcase {
 //		    }
 //		}));
 
-		
 		initialise();
 		
 		var out = executeTest(scaleFactor);

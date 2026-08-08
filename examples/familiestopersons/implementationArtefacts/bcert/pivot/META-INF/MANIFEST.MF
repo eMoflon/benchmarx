@@ -4,7 +4,8 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: pivot;singleton:=true
 Automatic-Module-Name: pivot
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: .
+Bundle-ClassPath: lib/emf-standalone-2.23.0.jar,
+ .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-21

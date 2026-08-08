@@ -16,6 +16,7 @@ Require-Bundle: org.eclipse.emf.ecore,
 Bundle-ManifestVersion: 2
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: lib/org.emoflon.smartemf_1.0.0.202406152335.jar,
+ lib/emf-standalone-2.23.0.jar,
  .
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-Vendor: TU Darmstadt
