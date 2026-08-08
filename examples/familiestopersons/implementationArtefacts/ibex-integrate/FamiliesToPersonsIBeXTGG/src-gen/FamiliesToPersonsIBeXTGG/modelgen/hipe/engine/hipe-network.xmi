@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <hipe.network:HiPENetwork xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:HiPEPattern="platform:/resource/hipe.pattern/model/HiPEPattern" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:hipe.network="platform:/resource/hipe.network/model/hiPENetwork" xsi:schemaLocation="platform:/resource/hipe.pattern/model/HiPEPattern java://hipe.pattern.HiPEPatternPackage http://www.eclipse.org/emf/2002/Ecore java://org.eclipse.emf.ecore.EcorePackage platform:/resource/hipe.network/model/hiPENetwork java://hipe.network.NetworkPackage">
   <networknode xmi:type="hipe.network:DispatchNode" name="DispatchNode" objectNodes="//@networknode.4 //@networknode.21 //@networknode.22 //@networknode.23 //@networknode.24" notificationNode="//@networknode.1">
-    <metamodels xmi:type="ecore:EPackage" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#/"/>
     <metamodels xmi:type="ecore:EPackage" href="platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore#/"/>
+    <metamodels xmi:type="ecore:EPackage" href="platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore#/"/>
   </networknode>
   <networknode xmi:type="hipe.network:NotificationNode" name="NotificationNode" dispatchNode="//@networknode.0"/>
   <networknode xmi:type="hipe.network:StatelessNode" name="CreateFamily__GEN_1" inputPort="//@networknode.21/@ports/@port.0" patternName="CreateFamily__GEN_1">

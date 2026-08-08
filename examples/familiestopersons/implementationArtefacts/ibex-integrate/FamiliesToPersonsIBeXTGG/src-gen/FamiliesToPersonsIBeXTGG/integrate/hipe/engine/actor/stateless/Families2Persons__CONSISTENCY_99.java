@@ -65,39 +65,39 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 	@Override
 	protected void initializeSearchComponents() {
 		EdgeLookupMethods edge_explorer_methods = new EdgeLookupMethods();
-						edge_explorer_methods.checkSourceType = (o) -> o instanceof FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr;
+						edge_explorer_methods.checkSourceType = (o) -> o instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons;
 						edge_explorer_methods.checkTargetType = (o) -> o instanceof FamiliesSmartEMF.FamilyRegister;
-						edge_explorer_methods.unique_lookup = (o) -> ((FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) o).getSource();
-						edge_explorer_methods.multi_opposite_lookup = (o) -> (Collection<? extends Object>) ((FamiliesSmartEMF.FamilyRegister) o).eGet(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr_Source().getEOpposite());
-						edge_explorer = new DeltaAwareEdgeExplorer(this, 1, 0, edge_explorer_methods, FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr_Source());
+						edge_explorer_methods.unique_lookup = (o) -> ((FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) o).getCREATE__SOURCE__families();
+						edge_explorer_methods.multi_opposite_lookup = (o) -> (Collection<? extends Object>) ((FamiliesSmartEMF.FamilyRegister) o).eGet(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__SOURCE__families().getEOpposite());
+						edge_explorer = new DeltaAwareEdgeExplorer(this, 3, 0, edge_explorer_methods, FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__SOURCE__families());
 		name2explorer.put("edge_explorer", edge_explorer);
 		EdgeLookupMethods edge_explorer_3_methods = new EdgeLookupMethods();
 						edge_explorer_3_methods.checkSourceType = (o) -> o instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons;
-						edge_explorer_3_methods.checkTargetType = (o) -> o instanceof FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr;
-						edge_explorer_3_methods.unique_lookup = (o) -> ((FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) o).getCREATE__CORRESPONDENCE__families2persons();
-						edge_explorer_3_methods.multi_opposite_lookup = (o) -> (Collection<? extends Object>) ((FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) o).eGet(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons().getEOpposite());
-						edge_explorer_3 = new DeltaAwareEdgeExplorer(this, 3, 1, edge_explorer_3_methods, FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons());
+						edge_explorer_3_methods.checkTargetType = (o) -> o instanceof PersonsSmartEMF.PersonRegister;
+						edge_explorer_3_methods.unique_lookup = (o) -> ((FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) o).getCREATE__TARGET__persons();
+						edge_explorer_3_methods.multi_opposite_lookup = (o) -> (Collection<? extends Object>) ((PersonsSmartEMF.PersonRegister) o).eGet(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__TARGET__persons().getEOpposite());
+						edge_explorer_3 = new DeltaAwareEdgeExplorer(this, 3, 2, edge_explorer_3_methods, FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__TARGET__persons());
 		name2explorer.put("edge_explorer_3", edge_explorer_3);
 		EdgeLookupMethods edge_explorer_4_methods = new EdgeLookupMethods();
-						edge_explorer_4_methods.checkSourceType = (o) -> o instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons;
+						edge_explorer_4_methods.checkSourceType = (o) -> o instanceof FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr;
 						edge_explorer_4_methods.checkTargetType = (o) -> o instanceof PersonsSmartEMF.PersonRegister;
-						edge_explorer_4_methods.unique_lookup = (o) -> ((FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) o).getCREATE__TARGET__persons();
-						edge_explorer_4_methods.multi_opposite_lookup = (o) -> (Collection<? extends Object>) ((PersonsSmartEMF.PersonRegister) o).eGet(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__TARGET__persons().getEOpposite());
-						edge_explorer_4 = new DeltaAwareEdgeExplorer(this, 3, 2, edge_explorer_4_methods, FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__TARGET__persons());
+						edge_explorer_4_methods.unique_lookup = (o) -> ((FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) o).getTarget();
+						edge_explorer_4_methods.multi_opposite_lookup = (o) -> (Collection<? extends Object>) ((PersonsSmartEMF.PersonRegister) o).eGet(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr_Target().getEOpposite());
+						edge_explorer_4 = new DeltaAwareEdgeExplorer(this, 1, 2, edge_explorer_4_methods, FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr_Target());
 		name2explorer.put("edge_explorer_4", edge_explorer_4);
 		EdgeLookupMethods edge_explorer_5_methods = new EdgeLookupMethods();
-						edge_explorer_5_methods.checkSourceType = (o) -> o instanceof FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr;
-						edge_explorer_5_methods.checkTargetType = (o) -> o instanceof PersonsSmartEMF.PersonRegister;
-						edge_explorer_5_methods.unique_lookup = (o) -> ((FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) o).getTarget();
-						edge_explorer_5_methods.multi_opposite_lookup = (o) -> (Collection<? extends Object>) ((PersonsSmartEMF.PersonRegister) o).eGet(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr_Target().getEOpposite());
-						edge_explorer_5 = new DeltaAwareEdgeExplorer(this, 1, 2, edge_explorer_5_methods, FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr_Target());
+						edge_explorer_5_methods.checkSourceType = (o) -> o instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons;
+						edge_explorer_5_methods.checkTargetType = (o) -> o instanceof FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr;
+						edge_explorer_5_methods.unique_lookup = (o) -> ((FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) o).getCREATE__CORRESPONDENCE__families2persons();
+						edge_explorer_5_methods.multi_opposite_lookup = (o) -> (Collection<? extends Object>) ((FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) o).eGet(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons().getEOpposite());
+						edge_explorer_5 = new DeltaAwareEdgeExplorer(this, 3, 1, edge_explorer_5_methods, FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons());
 		name2explorer.put("edge_explorer_5", edge_explorer_5);
 		EdgeLookupMethods edge_explorer_6_methods = new EdgeLookupMethods();
-						edge_explorer_6_methods.checkSourceType = (o) -> o instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons;
+						edge_explorer_6_methods.checkSourceType = (o) -> o instanceof FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr;
 						edge_explorer_6_methods.checkTargetType = (o) -> o instanceof FamiliesSmartEMF.FamilyRegister;
-						edge_explorer_6_methods.unique_lookup = (o) -> ((FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) o).getCREATE__SOURCE__families();
-						edge_explorer_6_methods.multi_opposite_lookup = (o) -> (Collection<? extends Object>) ((FamiliesSmartEMF.FamilyRegister) o).eGet(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__SOURCE__families().getEOpposite());
-						edge_explorer_6 = new DeltaAwareEdgeExplorer(this, 3, 0, edge_explorer_6_methods, FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__SOURCE__families());
+						edge_explorer_6_methods.unique_lookup = (o) -> ((FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) o).getSource();
+						edge_explorer_6_methods.multi_opposite_lookup = (o) -> (Collection<? extends Object>) ((FamiliesSmartEMF.FamilyRegister) o).eGet(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr_Source().getEOpposite());
+						edge_explorer_6 = new DeltaAwareEdgeExplorer(this, 1, 0, edge_explorer_6_methods, FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr_Source());
 		name2explorer.put("edge_explorer_6", edge_explorer_6);
 		disjoint_explorer_2 = new DisjointExplorer(this, observedResources, 3, (o) -> o instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons, true);
 		name2explorer.put("disjoint_explorer_2", disjoint_explorer_2);
@@ -158,7 +158,7 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 						match_1.registerSignatureIndex(1);
 						if(options.trackMatchingProcess)
 							match_1.registerDelta(UsingDeltaMode.CREATE, objs[0]);
-						start(edge_explorer_1_orchestration, StatelessInputType.OBJECT, match_1);
+						start(edge_explorer_4_1_orchestration, StatelessInputType.OBJECT, match_1);
 					}
 				}
 				break;
@@ -171,7 +171,7 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 						match_2.registerSignatureIndex(2);
 						if(options.trackMatchingProcess)
 							match_2.registerDelta(UsingDeltaMode.CREATE, objs[0]);
-						start(edge_explorer_4_1_orchestration, StatelessInputType.OBJECT, match_2);
+						start(edge_explorer_3_1_orchestration, StatelessInputType.OBJECT, match_2);
 					}
 				}
 				break;
@@ -184,7 +184,7 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 						match_3.registerSignatureIndex(3);
 						if(options.trackMatchingProcess)
 							match_3.registerDelta(UsingDeltaMode.CREATE, objs[0]);
-						start(edge_explorer_3_1_orchestration, StatelessInputType.OBJECT, match_3);
+						start(edge_explorer_1_orchestration, StatelessInputType.OBJECT, match_3);
 					}
 				}
 				break;
@@ -224,7 +224,7 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 						match_1.registerSignatureIndex(1);
 						if(options.trackMatchingProcess)
 							match_1.registerDelta(UsingDeltaMode.DELETE, objs[0]);
-						start(edge_explorer_1_orchestration, StatelessInputType.OBJECT, match_1);
+						start(edge_explorer_4_1_orchestration, StatelessInputType.OBJECT, match_1);
 					}
 				}
 				break;
@@ -237,7 +237,7 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 						match_2.registerSignatureIndex(2);
 						if(options.trackMatchingProcess)
 							match_2.registerDelta(UsingDeltaMode.DELETE, objs[0]);
-						start(edge_explorer_4_1_orchestration, StatelessInputType.OBJECT, match_2);
+						start(edge_explorer_3_1_orchestration, StatelessInputType.OBJECT, match_2);
 					}
 				}
 				break;
@@ -250,7 +250,7 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 						match_3.registerSignatureIndex(3);
 						if(options.trackMatchingProcess)
 							match_3.registerDelta(UsingDeltaMode.DELETE, objs[0]);
-						start(edge_explorer_3_1_orchestration, StatelessInputType.OBJECT, match_3);
+						start(edge_explorer_1_orchestration, StatelessInputType.OBJECT, match_3);
 					}
 				}
 				break;
@@ -265,24 +265,7 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 		initialMessage = msg.initialMessage;
 		
 		switch(msg.refName) {
-		case "FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr_source_FamilyRegister": 
-			{
-				{
-					if(notificationIndex.isNew(msg.source) || notificationIndex.isNew(msg.target))
-						break;
-						
-					var match = new StatelessDeltaMatch(msg, "Families2Persons__CONSISTENCY_99", numberOfNodes, 0, UsingDeltaMode.CREATE);
-					Object[] objs = match.getNodes();
-					objs[1] = msg.source;
-					objs[0] = msg.target;
-					if(options.trackMatchingProcess)
-						match.registerDelta(UsingDeltaMode.CREATE, new ModelEdge(msg.source, msg.target, msg.refName));
-					match.registerSignatureEdge(1, 0);
-					start(edge_explorer_0_orchestration, StatelessInputType.EDGE, match);
-				}
-			}
-			break;
-		case "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons_RegisterToRegisterCorr": 
+		case "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__SOURCE__families_FamilyRegister": 
 			{
 				{
 					if(notificationIndex.isNew(msg.source) || notificationIndex.isNew(msg.target))
@@ -291,11 +274,11 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 					var match = new StatelessDeltaMatch(msg, "Families2Persons__CONSISTENCY_99", numberOfNodes, 0, UsingDeltaMode.CREATE);
 					Object[] objs = match.getNodes();
 					objs[3] = msg.source;
-					objs[1] = msg.target;
+					objs[0] = msg.target;
 					if(options.trackMatchingProcess)
 						match.registerDelta(UsingDeltaMode.CREATE, new ModelEdge(msg.source, msg.target, msg.refName));
-					match.registerSignatureEdge(3, 1);
-					start(edge_explorer_3_0_orchestration, StatelessInputType.EDGE, match);
+					match.registerSignatureEdge(3, 0);
+					start(edge_explorer_0_orchestration, StatelessInputType.EDGE, match);
 				}
 			}
 			break;
@@ -312,7 +295,7 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 					if(options.trackMatchingProcess)
 						match.registerDelta(UsingDeltaMode.CREATE, new ModelEdge(msg.source, msg.target, msg.refName));
 					match.registerSignatureEdge(3, 2);
-					start(edge_explorer_4_0_orchestration, StatelessInputType.EDGE, match);
+					start(edge_explorer_3_0_orchestration, StatelessInputType.EDGE, match);
 				}
 			}
 			break;
@@ -329,11 +312,11 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 					if(options.trackMatchingProcess)
 						match.registerDelta(UsingDeltaMode.CREATE, new ModelEdge(msg.source, msg.target, msg.refName));
 					match.registerSignatureEdge(1, 2);
-					start(edge_explorer_5_0_orchestration, StatelessInputType.EDGE, match);
+					start(edge_explorer_4_0_orchestration, StatelessInputType.EDGE, match);
 				}
 			}
 			break;
-		case "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__SOURCE__families_FamilyRegister": 
+		case "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons_RegisterToRegisterCorr": 
 			{
 				{
 					if(notificationIndex.isNew(msg.source) || notificationIndex.isNew(msg.target))
@@ -342,10 +325,27 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 					var match = new StatelessDeltaMatch(msg, "Families2Persons__CONSISTENCY_99", numberOfNodes, 0, UsingDeltaMode.CREATE);
 					Object[] objs = match.getNodes();
 					objs[3] = msg.source;
+					objs[1] = msg.target;
+					if(options.trackMatchingProcess)
+						match.registerDelta(UsingDeltaMode.CREATE, new ModelEdge(msg.source, msg.target, msg.refName));
+					match.registerSignatureEdge(3, 1);
+					start(edge_explorer_5_0_orchestration, StatelessInputType.EDGE, match);
+				}
+			}
+			break;
+		case "FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr_source_FamilyRegister": 
+			{
+				{
+					if(notificationIndex.isNew(msg.source) || notificationIndex.isNew(msg.target))
+						break;
+						
+					var match = new StatelessDeltaMatch(msg, "Families2Persons__CONSISTENCY_99", numberOfNodes, 0, UsingDeltaMode.CREATE);
+					Object[] objs = match.getNodes();
+					objs[1] = msg.source;
 					objs[0] = msg.target;
 					if(options.trackMatchingProcess)
 						match.registerDelta(UsingDeltaMode.CREATE, new ModelEdge(msg.source, msg.target, msg.refName));
-					match.registerSignatureEdge(3, 0);
+					match.registerSignatureEdge(1, 0);
 					start(edge_explorer_6_0_orchestration, StatelessInputType.EDGE, match);
 				}
 			}
@@ -360,22 +360,7 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 		initialMessage = msg.initialMessage;
 		
 		switch(msg.refName) {
-			case "FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr_source_FamilyRegister": 
-		{
-			if(notificationIndex.isDeleted(msg.source) || notificationIndex.isDeleted(msg.target))
-				break;
-							
-			var match = new StatelessDeltaMatch(msg, "Families2Persons__CONSISTENCY_99", numberOfNodes, 0, UsingDeltaMode.DELETE);
-			Object[] objs = match.getNodes();
-			objs[1] = msg.source;
-			objs[0] = msg.target;
-			if(options.trackMatchingProcess)
-				match.registerDelta(UsingDeltaMode.DELETE, new ModelEdge(msg.source, msg.target, msg.refName));
-			match.registerSignatureEdge(1, 0);
-			start(edge_explorer_0_orchestration, StatelessInputType.EDGE, match);
-		}
-		break;
-			case "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons_RegisterToRegisterCorr": 
+			case "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__SOURCE__families_FamilyRegister": 
 		{
 			if(notificationIndex.isDeleted(msg.source) || notificationIndex.isDeleted(msg.target))
 				break;
@@ -383,11 +368,11 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 			var match = new StatelessDeltaMatch(msg, "Families2Persons__CONSISTENCY_99", numberOfNodes, 0, UsingDeltaMode.DELETE);
 			Object[] objs = match.getNodes();
 			objs[3] = msg.source;
-			objs[1] = msg.target;
+			objs[0] = msg.target;
 			if(options.trackMatchingProcess)
 				match.registerDelta(UsingDeltaMode.DELETE, new ModelEdge(msg.source, msg.target, msg.refName));
-			match.registerSignatureEdge(3, 1);
-			start(edge_explorer_3_0_orchestration, StatelessInputType.EDGE, match);
+			match.registerSignatureEdge(3, 0);
+			start(edge_explorer_0_orchestration, StatelessInputType.EDGE, match);
 		}
 		break;
 			case "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__TARGET__persons_PersonRegister": 
@@ -402,7 +387,7 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 			if(options.trackMatchingProcess)
 				match.registerDelta(UsingDeltaMode.DELETE, new ModelEdge(msg.source, msg.target, msg.refName));
 			match.registerSignatureEdge(3, 2);
-			start(edge_explorer_4_0_orchestration, StatelessInputType.EDGE, match);
+			start(edge_explorer_3_0_orchestration, StatelessInputType.EDGE, match);
 		}
 		break;
 			case "FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr_target_PersonRegister": 
@@ -417,10 +402,10 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 			if(options.trackMatchingProcess)
 				match.registerDelta(UsingDeltaMode.DELETE, new ModelEdge(msg.source, msg.target, msg.refName));
 			match.registerSignatureEdge(1, 2);
-			start(edge_explorer_5_0_orchestration, StatelessInputType.EDGE, match);
+			start(edge_explorer_4_0_orchestration, StatelessInputType.EDGE, match);
 		}
 		break;
-			case "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__SOURCE__families_FamilyRegister": 
+			case "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons_RegisterToRegisterCorr": 
 		{
 			if(notificationIndex.isDeleted(msg.source) || notificationIndex.isDeleted(msg.target))
 				break;
@@ -428,10 +413,25 @@ public class Families2Persons__CONSISTENCY_99 extends GenericStatelessSearchActo
 			var match = new StatelessDeltaMatch(msg, "Families2Persons__CONSISTENCY_99", numberOfNodes, 0, UsingDeltaMode.DELETE);
 			Object[] objs = match.getNodes();
 			objs[3] = msg.source;
+			objs[1] = msg.target;
+			if(options.trackMatchingProcess)
+				match.registerDelta(UsingDeltaMode.DELETE, new ModelEdge(msg.source, msg.target, msg.refName));
+			match.registerSignatureEdge(3, 1);
+			start(edge_explorer_5_0_orchestration, StatelessInputType.EDGE, match);
+		}
+		break;
+			case "FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr_source_FamilyRegister": 
+		{
+			if(notificationIndex.isDeleted(msg.source) || notificationIndex.isDeleted(msg.target))
+				break;
+							
+			var match = new StatelessDeltaMatch(msg, "Families2Persons__CONSISTENCY_99", numberOfNodes, 0, UsingDeltaMode.DELETE);
+			Object[] objs = match.getNodes();
+			objs[1] = msg.source;
 			objs[0] = msg.target;
 			if(options.trackMatchingProcess)
 				match.registerDelta(UsingDeltaMode.DELETE, new ModelEdge(msg.source, msg.target, msg.refName));
-			match.registerSignatureEdge(3, 0);
+			match.registerSignatureEdge(1, 0);
 			start(edge_explorer_6_0_orchestration, StatelessInputType.EDGE, match);
 		}
 		break;

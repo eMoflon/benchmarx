@@ -24,16 +24,6 @@ public class NotificationActor extends GenericNotificationActor {
 			Collection<EObject> children = new LinkedList<>();
 			return children;
 		});
-		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getFemale(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			FamiliesSmartEMF.FamilyRegister _familyregister = (FamiliesSmartEMF.FamilyRegister) obj;
-			children.addAll(_familyregister.getFamilies());
-			return children;
-		});
 		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister(), obj -> {
 			Collection<EObject> children = new LinkedList<>();
 			PersonsSmartEMF.PersonRegister _personregister = (PersonsSmartEMF.PersonRegister) obj;
@@ -51,11 +41,21 @@ public class NotificationActor extends GenericNotificationActor {
 			children.addAll(_family.getDaughters());
 			return children;
 		});
+		explorationConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			FamiliesSmartEMF.FamilyRegister _familyregister = (FamiliesSmartEMF.FamilyRegister) obj;
+			children.addAll(_familyregister.getFamilies());
+			return children;
+		});
+		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPerson(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
 		explorationConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(), obj -> {
 			Collection<EObject> children = new LinkedList<>();
 			return children;
 		});
-		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPerson(), obj -> {
+		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getFemale(), obj -> {
 			Collection<EObject> children = new LinkedList<>();
 			return children;
 		});

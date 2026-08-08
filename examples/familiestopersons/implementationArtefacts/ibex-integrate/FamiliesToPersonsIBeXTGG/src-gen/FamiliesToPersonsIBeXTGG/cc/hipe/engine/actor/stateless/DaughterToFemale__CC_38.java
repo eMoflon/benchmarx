@@ -531,12 +531,6 @@ public class DaughterToFemale__CC_38 extends GenericStatelessSearchActor{
 		}
 		
 		Object obj = message.node;
-		if(obj instanceof PersonsSmartEMF.Female) {
-			var match_4 = new StatelessDeltaMatch(initialMessage, "DaughterToFemale__CC_38", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
-			match_4.registerSignatureIndex(4);
-			match_4.getNodes()[4] = obj;
-			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_4);
-		}
 		if(obj instanceof FamiliesSmartEMF.Family) {
 			var match_1 = new StatelessDeltaMatch(initialMessage, "DaughterToFemale__CC_38", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
 			match_1.registerSignatureIndex(1);
@@ -548,6 +542,12 @@ public class DaughterToFemale__CC_38 extends GenericStatelessSearchActor{
 			match_2.registerSignatureIndex(2);
 			match_2.getNodes()[2] = obj;
 			start(edge_explorer_4_1_orchestration, StatelessInputType.ATTRIBUTE, match_2);
+		}
+		if(obj instanceof PersonsSmartEMF.Female) {
+			var match_4 = new StatelessDeltaMatch(initialMessage, "DaughterToFemale__CC_38", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
+			match_4.registerSignatureIndex(4);
+			match_4.getNodes()[4] = obj;
+			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_4);
 		}
 		
 		message.initialMessage.decrement();
