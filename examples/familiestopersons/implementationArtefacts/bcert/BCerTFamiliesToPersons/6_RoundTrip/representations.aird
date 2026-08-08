@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" uid="_HOCQwESOEfGEVO_Kn0ujPQ" version="15.4.1.202403191723">
+  <semanticResources>testRoundtripEdit.pivot</semanticResources>
+  <semanticResources>testRoundtripEditPer.xmi</semanticResources>
+  <semanticResources>testRoundtripEditFam.xmi</semanticResources>
+  <semanticResources>Expected/Pre_IncrFwdFamily.xmi</semanticResources>
+  <semanticResources>Expected/Pre_IncrFwdPerson.xmi</semanticResources>
+  <semanticResources>Expected/FamilyAfterRoundtripEdit.xmi</semanticResources>
+  <semanticResources>Expected/PersonAfterRoundtripEdit.xmi</semanticResources>
+  <semanticResources>testRoundtripAdd.pivot</semanticResources>
+  <semanticResources>testRoundtripAddPer.xmi</semanticResources>
+  <semanticResources>testRoundtripAddFam.xmi</semanticResources>
+  <semanticResources>Expected/FamilyAfterRoundtripAdd.xmi</semanticResources>
+  <semanticResources>Expected/PersonAfterRoundtripAdd.xmi</semanticResources>
+  <semanticResources>testRoundtripDelete.pivot</semanticResources>
+  <semanticResources>testRoundtripDeletePer.xmi</semanticResources>
+  <semanticResources>testRoundtripDeleteFam.xmi</semanticResources>
+  <semanticResources>Expected/FamilyAfterRoundtripDelete.xmi</semanticResources>
+  <semanticResources>Expected/PersonAfterRoundtripDelete.xmi</semanticResources>
+</viewpoint:DAnalysis>

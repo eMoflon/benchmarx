@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pivot:Pivot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pivot="http://pivot" xsi:schemaLocation="http://pivot ../pivot/model/pivot.ecore" name="testInitialiseSynchronisation" strategie="FWD">
+  <familyModel href="testInitialiseSynchronisationFam.xmi#/"/>
+  <personModel href="testInitialiseSynchronisationPer.xmi#/"/>
+  <post name="Post_RootElement">
+    <output href="Expected/RootElementPersons.xmi#/"/>
+    <input href="Expected/RootElementFamilies.xmi#/"/>
+  </post>
+</pivot:Pivot>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pivot:Pivot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore" xmlns:pivot="http://pivot" xsi:schemaLocation="platform:/plugin/Persons/model/Persons.ecore ../Persons/model/Persons.ecore http://pivot ../pivot/model/pivot.ecore" name="testIncrementalMixedDynamic" FAMILY_TO_NEW="true" sync="true">
+  <familyModel href="testIncrementalMixedDynamicFam.xmi#/"/>
+  <personModel href="testIncrementalMixedDynamicPer.xmi#/"/>
+  <pre name="Pre_IncrBwd">
+    <output href="Expected/Pre_IncrBwdPerson.xmi#/"/>
+    <input href="Expected/Pre_IncrBwdFamily.xmi#/"/>
+  </pre>
+  <post name="Post_IncrBwdMixed">
+    <output href="Expected/PersonAfterBwdMixed.xmi#/"/>
+    <input href="Expected/FamilyAfterBwdMixed.xmi#/"/>
+  </post>
+  <mapping>
+    <mMap href="testIncrementalMixedDynamicFam.xmi#//@families.0/@mother"/>
+    <pMap xsi:type="Persons:Female" href="testIncrementalMixedDynamicPer.xmi#//@persons.0"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalMixedDynamicFam.xmi#//@families.0/@sons.0"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalMixedDynamicPer.xmi#//@persons.1"/>
+  </mapping>
+</pivot:Pivot>

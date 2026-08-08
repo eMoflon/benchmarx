@@ -63,26 +63,62 @@ public class DispatchActor extends AbstractActor {
 	}
 	
 	private void initializeAdd() {
-		type2addConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getFemale(), obj -> {
-			PersonsSmartEMF.Female _female = (PersonsSmartEMF.Female) obj;
+		type2addConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getMale(), obj -> {
+			PersonsSmartEMF.Male _male = (PersonsSmartEMF.Male) obj;
 			incUtil.newMessage();
-			name2actor.get("Female_object_SP0").tell(new ObjectAdded<PersonsSmartEMF.Female>(incUtil, _female), getSelf());
+			name2actor.get("Male_object_SP0").tell(new ObjectAdded<PersonsSmartEMF.Male>(incUtil, _male), getSelf());
 			incUtil.newMessage();
-			name2actor.get("Female_object_SP1").tell(new ObjectAdded<PersonsSmartEMF.Female>(incUtil, _female), getSelf());
+			name2actor.get("Male_object_SP1").tell(new ObjectAdded<PersonsSmartEMF.Male>(incUtil, _male), getSelf());
 			incUtil.newMessage();
-			name2actor.get("Female_object_SP2").tell(new ObjectAdded<PersonsSmartEMF.Female>(incUtil, _female), getSelf());
+			name2actor.get("Male_object_SP2").tell(new ObjectAdded<PersonsSmartEMF.Male>(incUtil, _male), getSelf());
 			incUtil.newMessage();
-			name2actor.get("Female_object_SP3").tell(new ObjectAdded<PersonsSmartEMF.Female>(incUtil, _female), getSelf());
+			name2actor.get("Male_object_SP3").tell(new ObjectAdded<PersonsSmartEMF.Male>(incUtil, _male), getSelf());
 		});
 		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons(), obj -> {
 			FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons _protocolnode_families2persons = (FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) obj;
 			incUtil.newMessage();
 			name2actor.get("ProtocolNode_Families2Persons_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons>(incUtil, _protocolnode_families2persons), getSelf());
 		});
+		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale(), obj -> {
+			FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale _protocolnode_sontomale = (FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) obj;
+			incUtil.newMessage();
+			name2actor.get("ProtocolNode_SonToMale_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale>(incUtil, _protocolnode_sontomale), getSelf());
+		});
 		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr(), obj -> {
 			FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr _registertoregistercorr = (FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) obj;
 			incUtil.newMessage();
 			name2actor.get("RegisterToRegisterCorr_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr>(incUtil, _registertoregistercorr), getSelf());
+		});
+		type2addConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(), obj -> {
+			FamiliesSmartEMF.FamilyMember _familymember = (FamiliesSmartEMF.FamilyMember) obj;
+			incUtil.newMessage();
+			name2actor.get("FamilyMember_object_SP0").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyMember_object_SP1").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyMember_object_SP2").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyMember_object_SP3").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyMember_object_SP4").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyMember_object_SP5").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyMember_object_SP6").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyMember_object_SP7").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyMember_object_SP8").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyMember_object_SP9").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyMember_object_SP10").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyMember_object_SP11").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyMember_object_SP12").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyMember_object_SP13").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
 		});
 		type2addConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister(), obj -> {
 			PersonsSmartEMF.PersonRegister _personregister = (PersonsSmartEMF.PersonRegister) obj;
@@ -109,25 +145,58 @@ public class DispatchActor extends AbstractActor {
 			incUtil.newMessage();
 			name2actor.get("PersonRegister_object_SP10").tell(new ObjectAdded<PersonsSmartEMF.PersonRegister>(incUtil, _personregister), getSelf());
 		});
+		type2addConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister(), obj -> {
+			FamiliesSmartEMF.FamilyRegister _familyregister = (FamiliesSmartEMF.FamilyRegister) obj;
+			incUtil.newMessage();
+			name2actor.get("FamilyRegister_object_SP0").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyRegister_object_SP1").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyRegister_object_SP2").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyRegister_object_SP3").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyRegister_object_SP4").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyRegister_object_SP5").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FamilyRegister_object_SP6").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
+		});
+		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale(), obj -> {
+			FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale _protocolnode_motherofexistingfamilytofemale = (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) obj;
+			incUtil.newMessage();
+			name2actor.get("ProtocolNode_MotherOfExistingFamilyToFemale_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale>(incUtil, _protocolnode_motherofexistingfamilytofemale), getSelf());
+		});
 		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_CreateFamily(), obj -> {
 			FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily _protocolnode_createfamily = (FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily) obj;
 			incUtil.newMessage();
 			name2actor.get("ProtocolNode_CreateFamily_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily>(incUtil, _protocolnode_createfamily), getSelf());
-		});
-		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale(), obj -> {
-			FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale _protocolnode_fatherofexistingfamilytomale = (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) obj;
-			incUtil.newMessage();
-			name2actor.get("ProtocolNode_FatherOfExistingFamilyToMale_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale>(incUtil, _protocolnode_fatherofexistingfamilytomale), getSelf());
 		});
 		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale(), obj -> {
 			FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale _protocolnode_daughterofexistingfamilytofemale = (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) obj;
 			incUtil.newMessage();
 			name2actor.get("ProtocolNode_DaughterOfExistingFamilyToFemale_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale>(incUtil, _protocolnode_daughterofexistingfamilytofemale), getSelf());
 		});
-		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale(), obj -> {
-			FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale _protocolnode_sontomale = (FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) obj;
+		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale(), obj -> {
+			FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale _protocolnode_sonofexistingfamilytomale = (FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) obj;
 			incUtil.newMessage();
-			name2actor.get("ProtocolNode_SonToMale_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale>(incUtil, _protocolnode_sontomale), getSelf());
+			name2actor.get("ProtocolNode_SonOfExistingFamilyToMale_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale>(incUtil, _protocolnode_sonofexistingfamilytomale), getSelf());
+		});
+		type2addConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getFemale(), obj -> {
+			PersonsSmartEMF.Female _female = (PersonsSmartEMF.Female) obj;
+			incUtil.newMessage();
+			name2actor.get("Female_object_SP0").tell(new ObjectAdded<PersonsSmartEMF.Female>(incUtil, _female), getSelf());
+			incUtil.newMessage();
+			name2actor.get("Female_object_SP1").tell(new ObjectAdded<PersonsSmartEMF.Female>(incUtil, _female), getSelf());
+			incUtil.newMessage();
+			name2actor.get("Female_object_SP2").tell(new ObjectAdded<PersonsSmartEMF.Female>(incUtil, _female), getSelf());
+			incUtil.newMessage();
+			name2actor.get("Female_object_SP3").tell(new ObjectAdded<PersonsSmartEMF.Female>(incUtil, _female), getSelf());
+		});
+		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale(), obj -> {
+			FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale _protocolnode_daughtertofemale = (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) obj;
+			incUtil.newMessage();
+			name2actor.get("ProtocolNode_DaughterToFemale_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale>(incUtil, _protocolnode_daughtertofemale), getSelf());
 		});
 		type2addConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily(), obj -> {
 			FamiliesSmartEMF.Family _family = (FamiliesSmartEMF.Family) obj;
@@ -164,21 +233,10 @@ public class DispatchActor extends AbstractActor {
 			incUtil.newMessage();
 			name2actor.get("Family_object_SP15").tell(new ObjectAdded<FamiliesSmartEMF.Family>(incUtil, _family), getSelf());
 		});
-		type2addConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getMale(), obj -> {
-			PersonsSmartEMF.Male _male = (PersonsSmartEMF.Male) obj;
+		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale(), obj -> {
+			FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale _protocolnode_fatherofexistingfamilytomale = (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) obj;
 			incUtil.newMessage();
-			name2actor.get("Male_object_SP0").tell(new ObjectAdded<PersonsSmartEMF.Male>(incUtil, _male), getSelf());
-			incUtil.newMessage();
-			name2actor.get("Male_object_SP1").tell(new ObjectAdded<PersonsSmartEMF.Male>(incUtil, _male), getSelf());
-			incUtil.newMessage();
-			name2actor.get("Male_object_SP2").tell(new ObjectAdded<PersonsSmartEMF.Male>(incUtil, _male), getSelf());
-			incUtil.newMessage();
-			name2actor.get("Male_object_SP3").tell(new ObjectAdded<PersonsSmartEMF.Male>(incUtil, _male), getSelf());
-		});
-		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale(), obj -> {
-			FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale _protocolnode_mothertofemale = (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) obj;
-			incUtil.newMessage();
-			name2actor.get("ProtocolNode_MotherToFemale_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale>(incUtil, _protocolnode_mothertofemale), getSelf());
+			name2actor.get("ProtocolNode_FatherOfExistingFamilyToMale_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale>(incUtil, _protocolnode_fatherofexistingfamilytomale), getSelf());
 		});
 		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale(), obj -> {
 			FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale _protocolnode_fathertomale = (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) obj;
@@ -192,88 +250,81 @@ public class DispatchActor extends AbstractActor {
 			incUtil.newMessage();
 			name2actor.get("FamilyMemberToPersonCorr_object_SP1").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, _familymembertopersoncorr), getSelf());
 		});
-		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale(), obj -> {
-			FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale _protocolnode_sonofexistingfamilytomale = (FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) obj;
+		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale(), obj -> {
+			FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale _protocolnode_mothertofemale = (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) obj;
 			incUtil.newMessage();
-			name2actor.get("ProtocolNode_SonOfExistingFamilyToMale_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale>(incUtil, _protocolnode_sonofexistingfamilytomale), getSelf());
-		});
-		type2addConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister(), obj -> {
-			FamiliesSmartEMF.FamilyRegister _familyregister = (FamiliesSmartEMF.FamilyRegister) obj;
-			incUtil.newMessage();
-			name2actor.get("FamilyRegister_object_SP0").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyRegister_object_SP1").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyRegister_object_SP2").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyRegister_object_SP3").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyRegister_object_SP4").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyRegister_object_SP5").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyRegister_object_SP6").tell(new ObjectAdded<FamiliesSmartEMF.FamilyRegister>(incUtil, _familyregister), getSelf());
-		});
-		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale(), obj -> {
-			FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale _protocolnode_daughtertofemale = (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) obj;
-			incUtil.newMessage();
-			name2actor.get("ProtocolNode_DaughterToFemale_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale>(incUtil, _protocolnode_daughtertofemale), getSelf());
-		});
-		type2addConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(), obj -> {
-			FamiliesSmartEMF.FamilyMember _familymember = (FamiliesSmartEMF.FamilyMember) obj;
-			incUtil.newMessage();
-			name2actor.get("FamilyMember_object_SP0").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyMember_object_SP1").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyMember_object_SP2").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyMember_object_SP3").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyMember_object_SP4").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyMember_object_SP5").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyMember_object_SP6").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyMember_object_SP7").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyMember_object_SP8").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyMember_object_SP9").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyMember_object_SP10").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyMember_object_SP11").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyMember_object_SP12").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FamilyMember_object_SP13").tell(new ObjectAdded<FamiliesSmartEMF.FamilyMember>(incUtil, _familymember), getSelf());
-		});
-		type2addConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale(), obj -> {
-			FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale _protocolnode_motherofexistingfamilytofemale = (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) obj;
-			incUtil.newMessage();
-			name2actor.get("ProtocolNode_MotherOfExistingFamilyToFemale_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale>(incUtil, _protocolnode_motherofexistingfamilytofemale), getSelf());
+			name2actor.get("ProtocolNode_MotherToFemale_object").tell(new ObjectAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale>(incUtil, _protocolnode_mothertofemale), getSelf());
 		});
 	}
 	
 	private void initializeSet() {
+		feature2setConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember_Name(), notification -> {
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
+				incUtil.newMessage();
+				name2actor.get("FamilyMember_object_SP3").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
+				incUtil.newMessage();
+				name2actor.get("FamilyMember_object_SP6").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
+				incUtil.newMessage();
+				name2actor.get("FamilyMember_object_SP9").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
+				incUtil.newMessage();
+				name2actor.get("FamilyMember_object_SP8").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
+				incUtil.newMessage();
+				name2actor.get("FamilyMember_object_SP7").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
+				incUtil.newMessage();
+				name2actor.get("FamilyMember_object_SP10").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
+				incUtil.newMessage();
+				name2actor.get("FamilyMember_object_SP1").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
+				incUtil.newMessage();
+				name2actor.get("FamilyMember_object_SP13").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
+				incUtil.newMessage();
+				name2actor.get("FamilyMember_object_SP4").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
+				incUtil.newMessage();
+				name2actor.get("FamilyMember_object_SP0").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
+				incUtil.newMessage();
+				name2actor.get("FamilyMember_object_SP12").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
+				incUtil.newMessage();
+				name2actor.get("FamilyMember_object_SP2").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
+				incUtil.newMessage();
+				name2actor.get("FamilyMember_object_SP5").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
+				incUtil.newMessage();
+				name2actor.get("FamilyMember_object_SP11").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+		});
+		
 		feature2setConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Name(), notification -> {
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
-				incUtil.newMessage();
-				name2actor.get("Family_object_SP12").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
-				incUtil.newMessage();
-				name2actor.get("Family_object_SP0").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
 			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
 				incUtil.newMessage();
 				name2actor.get("Family_object_SP5").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
 			}
 			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
 				incUtil.newMessage();
-				name2actor.get("Family_object_SP2").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
+				name2actor.get("Family_object_SP12").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
 			}
 			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
 				incUtil.newMessage();
@@ -281,15 +332,7 @@ public class DispatchActor extends AbstractActor {
 			}
 			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
 				incUtil.newMessage();
-				name2actor.get("Family_object_SP6").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
-				incUtil.newMessage();
-				name2actor.get("Family_object_SP13").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
-				incUtil.newMessage();
-				name2actor.get("Family_object_SP7").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
+				name2actor.get("Family_object_SP14").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
 			}
 			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
 				incUtil.newMessage();
@@ -301,7 +344,7 @@ public class DispatchActor extends AbstractActor {
 			}
 			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
 				incUtil.newMessage();
-				name2actor.get("Family_object_SP1").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
+				name2actor.get("Family_object_SP2").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
 			}
 			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
 				incUtil.newMessage();
@@ -309,7 +352,15 @@ public class DispatchActor extends AbstractActor {
 			}
 			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
 				incUtil.newMessage();
-				name2actor.get("Family_object_SP14").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
+				name2actor.get("Family_object_SP4").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
+				incUtil.newMessage();
+				name2actor.get("Family_object_SP6").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
+				incUtil.newMessage();
+				name2actor.get("Family_object_SP7").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
 			}
 			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
 				incUtil.newMessage();
@@ -317,7 +368,15 @@ public class DispatchActor extends AbstractActor {
 			}
 			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
 				incUtil.newMessage();
-				name2actor.get("Family_object_SP4").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
+				name2actor.get("Family_object_SP1").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
+				incUtil.newMessage();
+				name2actor.get("Family_object_SP13").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
+				incUtil.newMessage();
+				name2actor.get("Family_object_SP0").tell(new AttributeChanged<FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), notification.getOldValue()), getSelf());
 			}
 			if(notification.getNotifier() instanceof FamiliesSmartEMF.Family) {
 				incUtil.newMessage();
@@ -328,7 +387,27 @@ public class DispatchActor extends AbstractActor {
 		feature2setConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPerson_Name(), notification -> {
 			if(notification.getNotifier() instanceof PersonsSmartEMF.Female) {
 				incUtil.newMessage();
+				name2actor.get("Female_object_SP0").tell(new AttributeChanged<PersonsSmartEMF.Person>(incUtil, (PersonsSmartEMF.Person) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof PersonsSmartEMF.Female) {
+				incUtil.newMessage();
+				name2actor.get("Female_object_SP2").tell(new AttributeChanged<PersonsSmartEMF.Person>(incUtil, (PersonsSmartEMF.Person) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof PersonsSmartEMF.Male) {
+				incUtil.newMessage();
+				name2actor.get("Male_object_SP1").tell(new AttributeChanged<PersonsSmartEMF.Person>(incUtil, (PersonsSmartEMF.Person) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof PersonsSmartEMF.Male) {
+				incUtil.newMessage();
+				name2actor.get("Male_object_SP0").tell(new AttributeChanged<PersonsSmartEMF.Person>(incUtil, (PersonsSmartEMF.Person) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof PersonsSmartEMF.Female) {
+				incUtil.newMessage();
 				name2actor.get("Female_object_SP3").tell(new AttributeChanged<PersonsSmartEMF.Person>(incUtil, (PersonsSmartEMF.Person) notification.getNotifier(), notification.getOldValue()), getSelf());
+			}
+			if(notification.getNotifier() instanceof PersonsSmartEMF.Female) {
+				incUtil.newMessage();
+				name2actor.get("Female_object_SP1").tell(new AttributeChanged<PersonsSmartEMF.Person>(incUtil, (PersonsSmartEMF.Person) notification.getNotifier(), notification.getOldValue()), getSelf());
 			}
 			if(notification.getNotifier() instanceof PersonsSmartEMF.Male) {
 				incUtil.newMessage();
@@ -336,265 +415,114 @@ public class DispatchActor extends AbstractActor {
 			}
 			if(notification.getNotifier() instanceof PersonsSmartEMF.Male) {
 				incUtil.newMessage();
-				name2actor.get("Male_object_SP0").tell(new AttributeChanged<PersonsSmartEMF.Person>(incUtil, (PersonsSmartEMF.Person) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof PersonsSmartEMF.Male) {
-				incUtil.newMessage();
-				name2actor.get("Male_object_SP1").tell(new AttributeChanged<PersonsSmartEMF.Person>(incUtil, (PersonsSmartEMF.Person) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof PersonsSmartEMF.Female) {
-				incUtil.newMessage();
-				name2actor.get("Female_object_SP2").tell(new AttributeChanged<PersonsSmartEMF.Person>(incUtil, (PersonsSmartEMF.Person) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof PersonsSmartEMF.Female) {
-				incUtil.newMessage();
-				name2actor.get("Female_object_SP1").tell(new AttributeChanged<PersonsSmartEMF.Person>(incUtil, (PersonsSmartEMF.Person) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof PersonsSmartEMF.Female) {
-				incUtil.newMessage();
-				name2actor.get("Female_object_SP0").tell(new AttributeChanged<PersonsSmartEMF.Person>(incUtil, (PersonsSmartEMF.Person) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof PersonsSmartEMF.Male) {
-				incUtil.newMessage();
 				name2actor.get("Male_object_SP3").tell(new AttributeChanged<PersonsSmartEMF.Person>(incUtil, (PersonsSmartEMF.Person) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-		});
-		
-		feature2setConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember_Name(), notification -> {
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
-				incUtil.newMessage();
-				name2actor.get("FamilyMember_object_SP4").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
-				incUtil.newMessage();
-				name2actor.get("FamilyMember_object_SP5").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
-				incUtil.newMessage();
-				name2actor.get("FamilyMember_object_SP6").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
-				incUtil.newMessage();
-				name2actor.get("FamilyMember_object_SP10").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
-				incUtil.newMessage();
-				name2actor.get("FamilyMember_object_SP2").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
-				incUtil.newMessage();
-				name2actor.get("FamilyMember_object_SP7").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
-				incUtil.newMessage();
-				name2actor.get("FamilyMember_object_SP13").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
-				incUtil.newMessage();
-				name2actor.get("FamilyMember_object_SP1").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
-				incUtil.newMessage();
-				name2actor.get("FamilyMember_object_SP0").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
-				incUtil.newMessage();
-				name2actor.get("FamilyMember_object_SP3").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
-				incUtil.newMessage();
-				name2actor.get("FamilyMember_object_SP9").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
-				incUtil.newMessage();
-				name2actor.get("FamilyMember_object_SP12").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
-				incUtil.newMessage();
-				name2actor.get("FamilyMember_object_SP11").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
-			}
-			if(notification.getNotifier() instanceof FamiliesSmartEMF.FamilyMember) {
-				incUtil.newMessage();
-				name2actor.get("FamilyMember_object_SP8").tell(new AttributeChanged<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) notification.getNotifier(), notification.getOldValue()), getSelf());
 			}
 		});
 		
 	}
 	
 	private void initializeAddEdge() {
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__SOURCE__fm(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__SOURCE__fm(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CREATE__SOURCE__f(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CREATE__SOURCE__f_Family"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CREATE__TARGET__p(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, PersonsSmartEMF.Male>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CREATE__TARGET__p_Male"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CONTEXT__TARGET__persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CREATE__SOURCE__fm(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__TARGET__persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__TARGET__persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__f(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__f_Family"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__TARGET__p(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, PersonsSmartEMF.Male>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CREATE__TARGET__p_Male"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__TARGET__persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr_Source(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CONTEXT__TARGET__persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__f(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__f_Family"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CONTEXT__TARGET__persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__f(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__f_Family"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__SOURCE__families(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons, FamiliesSmartEMF.FamilyRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__SOURCE__families_FamilyRegister"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
-		});
 		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
 			incUtil.newMessage();
 			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr_Target(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Daughters(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__SOURCE_23").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__FWD_29").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CC_37").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__SOURCE_58").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__FWD_65").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CC_74").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_104").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_145").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_184").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_219").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_258").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_287").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__TARGET__p(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, PersonsSmartEMF.Female>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.Female) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__TARGET__p_Female"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__SOURCE__fm(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
 		});
 		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CREATE__TARGET__p(), notification -> {
 			incUtil.newMessage();
 			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, PersonsSmartEMF.Female>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (PersonsSmartEMF.Female) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CREATE__TARGET__p_Female"), getSelf());
 		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_CreateFamily_CONTEXT__SOURCE__families(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("CreateFamily__CONSISTENCY_10").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily, FamiliesSmartEMF.FamilyRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily_CONTEXT__SOURCE__families_FamilyRegister"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__SOURCE__fm(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__SOURCE__fm(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
+		});
 		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CONTEXT__TARGET__persons(), notification -> {
 			incUtil.newMessage();
 			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_CreateFamily_CREATE__SOURCE__family(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__SOURCE__f(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("CreateFamily__CONSISTENCY_10").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily_CREATE__SOURCE__family_Family"), getSelf());
+			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__SOURCE__f_Family"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__TARGET__persons(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__SOURCE__fm(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
+			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CONTEXT__SOURCE__families(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesSmartEMF.FamilyRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CONTEXT__SOURCE__families_FamilyRegister"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CREATE__SOURCE__f(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CREATE__SOURCE__f_Family"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__TARGET__p(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, PersonsSmartEMF.Male>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__TARGET__p_Male"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__SOURCE__fm(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__TARGET__persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Mother(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterOfExistingFamilyToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_20").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_49").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_104").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_139").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__SOURCE_187").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__FWD_193").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__CC_201").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__SOURCE_222").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__FWD_229").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__CC_238").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_252").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_290").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__TARGET__p(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, PersonsSmartEMF.Female>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.Female) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__TARGET__p_Female"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__TARGET__p(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, PersonsSmartEMF.Male>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CREATE__TARGET__p_Male"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__TARGET__p(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, PersonsSmartEMF.Male>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CREATE__TARGET__p_Male"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__TARGET__persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__TARGET__persons_PersonRegister"), getSelf());
 		});
 		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CONTEXT__SOURCE__families(), notification -> {
 			incUtil.newMessage();
@@ -602,9 +530,9 @@ public class DispatchActor extends AbstractActor {
 		});
 		feature2addEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Father(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_20").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
+			name2actor.get("DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_14").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_49").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
+			name2actor.get("DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_55").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 			incUtil.newMessage();
 			name2actor.get("FatherOfExistingFamilyToMale__SOURCE_113").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 			incUtil.newMessage();
@@ -622,21 +550,29 @@ public class DispatchActor extends AbstractActor {
 			incUtil.newMessage();
 			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_181").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
+			name2actor.get("MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_184").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_216").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
+			name2actor.get("MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_219").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_255").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
+			name2actor.get("SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_258").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("SonToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_290").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
+			name2actor.get("SonToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_287").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__SOURCE__f(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CREATE__SOURCE__f_Family"), getSelf());
+			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CONTEXT__SOURCE__families(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CONTEXT__TARGET__persons(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesSmartEMF.FamilyRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CONTEXT__SOURCE__families_FamilyRegister"), getSelf());
+			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CONTEXT__TARGET__persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
 		});
 		feature2addEdgeConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister_Persons(), notification -> {
 			incUtil.newMessage();
@@ -704,55 +640,55 @@ public class DispatchActor extends AbstractActor {
 			incUtil.newMessage();
 			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<PersonsSmartEMF.PersonRegister, PersonsSmartEMF.Person>(incUtil,(PersonsSmartEMF.PersonRegister) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "PersonsSmartEMF.PersonRegister_persons_Person"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__f(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__f_Family"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Sons(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__f(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_17").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_52").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_110").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_139").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_178").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_213").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__SOURCE_261").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__FWD_267").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CC_275").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonToMale__SOURCE_296").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonToMale__FWD_303").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CC_312").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__f_Family"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr_Source(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CONTEXT__SOURCE__families(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CONTEXT__TARGET__persons(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesSmartEMF.FamilyRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CONTEXT__SOURCE__families_FamilyRegister"), getSelf());
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CREATE__SOURCE__fm(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__SOURCE__fm(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
 		});
 		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__TARGET__p(), notification -> {
 			incUtil.newMessage();
 			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, PersonsSmartEMF.Female>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (PersonsSmartEMF.Female) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CREATE__TARGET__p_Female"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__SOURCE__f(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CREATE__SOURCE__f_Family"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_CreateFamily_CREATE__SOURCE__family(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("CreateFamily__CONSISTENCY_10").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily_CREATE__SOURCE__family_Family"), getSelf());
 		});
 		feature2addEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister_Families(), notification -> {
 			incUtil.newMessage();
@@ -796,276 +732,268 @@ public class DispatchActor extends AbstractActor {
 			incUtil.newMessage();
 			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesSmartEMF.FamilyRegister, FamiliesSmartEMF.Family>(incUtil,(FamiliesSmartEMF.FamilyRegister) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesSmartEMF.FamilyRegister_families_Family"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CONTEXT__SOURCE__families(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons, FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons_RegisterToRegisterCorr"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__SOURCE__fm(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__TARGET__persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__TARGET__persons_PersonRegister"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__TARGET__p(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, PersonsSmartEMF.Male>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CREATE__TARGET__p_Male"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr_Target(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr_target_PersonRegister"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_CreateFamily_CONTEXT__SOURCE__families(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("CreateFamily__CONSISTENCY_10").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily, FamiliesSmartEMF.FamilyRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily_CONTEXT__SOURCE__families_FamilyRegister"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__SOURCE__fm(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__TARGET__p(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, PersonsSmartEMF.Female>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.Female) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CREATE__TARGET__p_Female"), getSelf());
-		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__SOURCE__f(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__SOURCE__f_Family"), getSelf());
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesSmartEMF.FamilyRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CONTEXT__SOURCE__families_FamilyRegister"), getSelf());
 		});
 		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr_Source(), notification -> {
 			incUtil.newMessage();
 			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr, FamiliesSmartEMF.FamilyRegister>(incUtil,(FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr_source_FamilyRegister"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__f(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CREATE__SOURCE__fm(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__f_Family"), getSelf());
+			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CREATE__SOURCE__f(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CREATE__SOURCE__f(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CREATE__SOURCE__f_Family"), getSelf());
+			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CREATE__SOURCE__f_Family"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__SOURCE__fm(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CREATE__SOURCE__fm(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
+			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__TARGET__p(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, PersonsSmartEMF.Male>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__TARGET__p_Male"), getSelf());
+			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons, FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons_RegisterToRegisterCorr"), getSelf());
 		});
-		feature2addEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Mother(), notification -> {
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__f(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_14").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__f_Family"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__TARGET__p(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_55").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, PersonsSmartEMF.Female>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.Female) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CREATE__TARGET__p_Female"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__SOURCE__families(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_107").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons, FamiliesSmartEMF.FamilyRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__SOURCE__families_FamilyRegister"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr_Target(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("FatherToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_142").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr_target_PersonRegister"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__f(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__SOURCE_187").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, FamiliesSmartEMF.Family>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__f_Family"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Daughters(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__FWD_193").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterOfExistingFamilyToFemale__SOURCE_23").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CC_201").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterOfExistingFamilyToFemale__FWD_29").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterOfExistingFamilyToFemale__CC_37").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale__SOURCE_222").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale__FWD_229").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterToFemale__SOURCE_58").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CC_238").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterToFemale__FWD_65").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterToFemale__CC_74").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_252").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("SonToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_293").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_110").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_145").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_178").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_216").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_255").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_293").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr_Target(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil,(FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
 		});
 		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CONTEXT__SOURCE__families(), notification -> {
 			incUtil.newMessage();
 			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, FamiliesSmartEMF.FamilyRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CONTEXT__SOURCE__families_FamilyRegister"), getSelf());
 		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__SOURCE__fm(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Sons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_17").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_52").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherOfExistingFamilyToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_107").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_142").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_181").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_213").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__SOURCE_261").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__FWD_267").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CC_275").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale__SOURCE_296").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale__FWD_303").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale__CC_312").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil,(FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getNewValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__TARGET__persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__TARGET__persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CREATE__TARGET__p(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, PersonsSmartEMF.Male>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CREATE__TARGET__p_Male"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+		});
+		feature2addEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__TARGET__persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceAdded<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, PersonsSmartEMF.PersonRegister>(incUtil,(FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getNewValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
+		});
 	}
 	
 	private void initializeRemoveEdge() {
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__SOURCE__fm(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__SOURCE__fm(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CREATE__SOURCE__f(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CREATE__SOURCE__f_Family"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CREATE__TARGET__p(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, PersonsSmartEMF.Male>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CREATE__TARGET__p_Male"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CONTEXT__TARGET__persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CREATE__SOURCE__fm(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__TARGET__persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__TARGET__persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__f(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__f_Family"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__TARGET__p(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, PersonsSmartEMF.Male>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CREATE__TARGET__p_Male"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__TARGET__persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr_Source(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CONTEXT__TARGET__persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__f(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__f_Family"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CONTEXT__TARGET__persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__f(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__f_Family"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__SOURCE__families(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons, FamiliesSmartEMF.FamilyRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__SOURCE__families_FamilyRegister"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
-		});
 		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
 			incUtil.newMessage();
 			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr_Target(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Daughters(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__SOURCE_23").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__FWD_29").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CC_37").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__SOURCE_58").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__FWD_65").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CC_74").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_104").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_145").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_184").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_219").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_258").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_287").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__TARGET__p(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, PersonsSmartEMF.Female>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.Female) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__TARGET__p_Female"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__SOURCE__fm(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
 		});
 		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CREATE__TARGET__p(), notification -> {
 			incUtil.newMessage();
 			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, PersonsSmartEMF.Female>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (PersonsSmartEMF.Female) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CREATE__TARGET__p_Female"), getSelf());
 		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_CreateFamily_CONTEXT__SOURCE__families(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("CreateFamily__CONSISTENCY_10").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily, FamiliesSmartEMF.FamilyRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily_CONTEXT__SOURCE__families_FamilyRegister"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__SOURCE__fm(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__SOURCE__fm(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
+		});
 		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CONTEXT__TARGET__persons(), notification -> {
 			incUtil.newMessage();
 			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_CreateFamily_CREATE__SOURCE__family(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__SOURCE__f(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("CreateFamily__CONSISTENCY_10").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily_CREATE__SOURCE__family_Family"), getSelf());
+			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__SOURCE__f_Family"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__TARGET__persons(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__SOURCE__fm(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
+			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CONTEXT__SOURCE__families(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesSmartEMF.FamilyRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CONTEXT__SOURCE__families_FamilyRegister"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CREATE__SOURCE__f(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CREATE__SOURCE__f_Family"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__TARGET__p(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, PersonsSmartEMF.Male>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__TARGET__p_Male"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__SOURCE__fm(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__TARGET__persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Mother(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterOfExistingFamilyToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_20").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_49").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_104").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_139").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__SOURCE_187").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__FWD_193").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__CC_201").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__SOURCE_222").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__FWD_229").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__CC_238").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_252").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_290").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__TARGET__p(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, PersonsSmartEMF.Female>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.Female) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__TARGET__p_Female"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__TARGET__p(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, PersonsSmartEMF.Male>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CREATE__TARGET__p_Male"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__TARGET__p(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, PersonsSmartEMF.Male>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CREATE__TARGET__p_Male"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__TARGET__persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__TARGET__persons_PersonRegister"), getSelf());
 		});
 		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CONTEXT__SOURCE__families(), notification -> {
 			incUtil.newMessage();
@@ -1073,9 +1001,9 @@ public class DispatchActor extends AbstractActor {
 		});
 		feature2removeEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Father(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_20").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
+			name2actor.get("DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_14").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_49").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
+			name2actor.get("DaughterToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_55").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 			incUtil.newMessage();
 			name2actor.get("FatherOfExistingFamilyToMale__SOURCE_113").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 			incUtil.newMessage();
@@ -1093,21 +1021,29 @@ public class DispatchActor extends AbstractActor {
 			incUtil.newMessage();
 			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_181").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
+			name2actor.get("MotherOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_184").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_216").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
+			name2actor.get("MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_219").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_255").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
+			name2actor.get("SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_258").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("SonToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_290").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
+			name2actor.get("SonToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_287").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_father_FamilyMember"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__SOURCE__f(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CREATE__SOURCE__f_Family"), getSelf());
+			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CONTEXT__SOURCE__families(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CONTEXT__TARGET__persons(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesSmartEMF.FamilyRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CONTEXT__SOURCE__families_FamilyRegister"), getSelf());
+			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CONTEXT__TARGET__persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
 		});
 		feature2removeEdgeConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister_Persons(), notification -> {
 			incUtil.newMessage();
@@ -1175,55 +1111,55 @@ public class DispatchActor extends AbstractActor {
 			incUtil.newMessage();
 			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<PersonsSmartEMF.PersonRegister, PersonsSmartEMF.Person>(incUtil, (PersonsSmartEMF.PersonRegister) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "PersonsSmartEMF.PersonRegister_persons_Person"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__f(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__f_Family"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Sons(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__f(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_17").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_52").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_110").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_139").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_178").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_213").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__SOURCE_261").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__FWD_267").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CC_275").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonToMale__SOURCE_296").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonToMale__FWD_303").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CC_312").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
-			incUtil.newMessage();
-			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CONTEXT__SOURCE__f_Family"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr_Source(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_source_FamilyMember"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CONTEXT__SOURCE__families(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CONTEXT__TARGET__persons(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesSmartEMF.FamilyRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CONTEXT__SOURCE__families_FamilyRegister"), getSelf());
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CREATE__SOURCE__fm(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__SOURCE__fm(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
 		});
 		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__TARGET__p(), notification -> {
 			incUtil.newMessage();
 			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, PersonsSmartEMF.Female>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (PersonsSmartEMF.Female) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CREATE__TARGET__p_Female"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CREATE__SOURCE__f(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CREATE__SOURCE__f_Family"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_CreateFamily_CREATE__SOURCE__family(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("CreateFamily__CONSISTENCY_10").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily_CREATE__SOURCE__family_Family"), getSelf());
 		});
 		feature2removeEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister_Families(), notification -> {
 			incUtil.newMessage();
@@ -1267,99 +1203,163 @@ public class DispatchActor extends AbstractActor {
 			incUtil.newMessage();
 			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesSmartEMF.FamilyRegister, FamiliesSmartEMF.Family>(incUtil, (FamiliesSmartEMF.FamilyRegister) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesSmartEMF.FamilyRegister_families_Family"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale_CONTEXT__SOURCE__families(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons, FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons_RegisterToRegisterCorr"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__SOURCE__fm(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__TARGET__persons(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__TARGET__persons_PersonRegister"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__TARGET__p(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, PersonsSmartEMF.Male>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CREATE__TARGET__p_Male"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr_Target(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr_target_PersonRegister"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_CreateFamily_CONTEXT__SOURCE__families(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("CreateFamily__CONSISTENCY_10").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily, FamiliesSmartEMF.FamilyRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily_CONTEXT__SOURCE__families_FamilyRegister"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__SOURCE__fm(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__TARGET__p(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, PersonsSmartEMF.Female>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.Female) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CREATE__TARGET__p_Female"), getSelf());
-		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__SOURCE__f(), notification -> {
-			incUtil.newMessage();
-			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__SOURCE__f_Family"), getSelf());
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale, FamiliesSmartEMF.FamilyRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale_CONTEXT__SOURCE__families_FamilyRegister"), getSelf());
 		});
 		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr_Source(), notification -> {
 			incUtil.newMessage();
 			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr, FamiliesSmartEMF.FamilyRegister>(incUtil, (FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr_source_FamilyRegister"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__f(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CREATE__SOURCE__fm(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__SOURCE__f_Family"), getSelf());
+			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CREATE__SOURCE__f(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CREATE__SOURCE__f(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CREATE__SOURCE__f_Family"), getSelf());
+			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CREATE__SOURCE__f_Family"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__SOURCE__fm(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale_CREATE__SOURCE__fm(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
+			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CREATE__TARGET__p(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, PersonsSmartEMF.Male>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CREATE__TARGET__p_Male"), getSelf());
+			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons, FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__CORRESPONDENCE__families2persons_RegisterToRegisterCorr"), getSelf());
 		});
-		feature2removeEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Mother(), notification -> {
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__f(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("DaughterOfExistingFamilyToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_14").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__SOURCE__f_Family"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__TARGET__p(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("DaughterToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_55").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, PersonsSmartEMF.Female>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.Female) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CREATE__TARGET__p_Female"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons_CREATE__SOURCE__families(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("FatherOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_107").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons, FamiliesSmartEMF.FamilyRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons_CREATE__SOURCE__families_FamilyRegister"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr_Target(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("FatherToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_142").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("Families2Persons__CONSISTENCY_99").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr_target_PersonRegister"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__f(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__SOURCE_187").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, FamiliesSmartEMF.Family>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.Family) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CONTEXT__SOURCE__f_Family"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Daughters(), notification -> {
 			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__FWD_193").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterOfExistingFamilyToFemale__SOURCE_23").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CC_201").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterOfExistingFamilyToFemale__FWD_29").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterOfExistingFamilyToFemale__CC_37").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale__SOURCE_222").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale__FWD_229").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterToFemale__SOURCE_58").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CC_238").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterToFemale__FWD_65").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterToFemale__CC_74").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_252").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
 			incUtil.newMessage();
-			name2actor.get("SonToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_293").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_mother_FamilyMember"), getSelf());
+			name2actor.get("FatherOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_110").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_145").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_178").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_216").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_255").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_293").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_daughters_FamilyMember"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr_Target(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("DaughterToFemale__CONSISTENCY_80").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale__CONSISTENCY_244").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr, PersonsSmartEMF.Person>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getNotifier(), (PersonsSmartEMF.Person) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person"), getSelf());
 		});
 		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale_CONTEXT__SOURCE__families(), notification -> {
 			incUtil.newMessage();
 			name2actor.get("FatherToMale__CONSISTENCY_170").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale, FamiliesSmartEMF.FamilyRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) notification.getNotifier(), (FamiliesSmartEMF.FamilyRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale_CONTEXT__SOURCE__families_FamilyRegister"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__SOURCE__fm(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__SOURCE__fm_FamilyMember"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Sons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_17").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("DaughterToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_52").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherOfExistingFamilyToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_107").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("FatherToMale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_142").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_181").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_213").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__SOURCE_261").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__FWD_267").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CC_275").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale__SOURCE_296").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale__FWD_303").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale__CC_312").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+			incUtil.newMessage();
+			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesSmartEMF.Family, FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.Family) notification.getNotifier(), (FamiliesSmartEMF.FamilyMember) notification.getOldValue(), "FamiliesSmartEMF.Family_sons_FamilyMember"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("DaughterOfExistingFamilyToFemale__CONSISTENCY_42").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__TARGET__persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__TARGET__persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("FatherOfExistingFamilyToMale__CONSISTENCY_132").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale_CREATE__TARGET__p(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("SonToMale__CONSISTENCY_318").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale, PersonsSmartEMF.Male>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) notification.getNotifier(), (PersonsSmartEMF.Male) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale_CREATE__TARGET__p_Male"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("MotherOfExistingFamilyToFemale__CONSISTENCY_206").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale, FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) notification.getNotifier(), (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale_CREATE__CORRESPONDENCE__familyMember2Persons_FamilyMemberToPersonCorr"), getSelf());
+		});
+		feature2removeEdgeConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale_CONTEXT__TARGET__persons(), notification -> {
+			incUtil.newMessage();
+			name2actor.get("SonOfExistingFamilyToMale__CONSISTENCY_280").tell(new ReferenceDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale, PersonsSmartEMF.PersonRegister>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) notification.getNotifier(), (PersonsSmartEMF.PersonRegister) notification.getOldValue(), "FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale_CONTEXT__TARGET__persons_PersonRegister"), getSelf());
 		});
 	}
 
@@ -1457,134 +1457,6 @@ public class DispatchActor extends AbstractActor {
 	
 	private void handleRemoveAdapter(Notification notification) {
 		Object node = notification.getNotifier();
-		if (node instanceof PersonsSmartEMF.PersonRegister) {
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP0").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.PersonRegister) {
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP1").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.PersonRegister) {
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP2").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.PersonRegister) {
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP3").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.PersonRegister) {
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP4").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.PersonRegister) {
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP5").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.PersonRegister) {
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP6").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.PersonRegister) {
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP7").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.PersonRegister) {
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP8").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.PersonRegister) {
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP9").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.PersonRegister) {
-			incUtil.newMessage();
-			name2actor.get("PersonRegister_object_SP10").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.Female) {
-			incUtil.newMessage();
-			name2actor.get("Female_object_SP0").tell(new ObjectDeleted<PersonsSmartEMF.Female>(incUtil, (PersonsSmartEMF.Female) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.Female) {
-			incUtil.newMessage();
-			name2actor.get("Female_object_SP1").tell(new ObjectDeleted<PersonsSmartEMF.Female>(incUtil, (PersonsSmartEMF.Female) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.Female) {
-			incUtil.newMessage();
-			name2actor.get("Female_object_SP2").tell(new ObjectDeleted<PersonsSmartEMF.Female>(incUtil, (PersonsSmartEMF.Female) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.Female) {
-			incUtil.newMessage();
-			name2actor.get("Female_object_SP3").tell(new ObjectDeleted<PersonsSmartEMF.Female>(incUtil, (PersonsSmartEMF.Female) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.Male) {
-			incUtil.newMessage();
-			name2actor.get("Male_object_SP0").tell(new ObjectDeleted<PersonsSmartEMF.Male>(incUtil, (PersonsSmartEMF.Male) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.Male) {
-			incUtil.newMessage();
-			name2actor.get("Male_object_SP1").tell(new ObjectDeleted<PersonsSmartEMF.Male>(incUtil, (PersonsSmartEMF.Male) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.Male) {
-			incUtil.newMessage();
-			name2actor.get("Male_object_SP2").tell(new ObjectDeleted<PersonsSmartEMF.Male>(incUtil, (PersonsSmartEMF.Male) node), getSelf());
-		}
-		if (node instanceof PersonsSmartEMF.Male) {
-			incUtil.newMessage();
-			name2actor.get("Male_object_SP3").tell(new ObjectDeleted<PersonsSmartEMF.Male>(incUtil, (PersonsSmartEMF.Male) node), getSelf());
-		}
-		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily) {
-			incUtil.newMessage();
-			name2actor.get("ProtocolNode_CreateFamily_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily) node), getSelf());
-		}
-		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) {
-			incUtil.newMessage();
-			name2actor.get("ProtocolNode_DaughterOfExistingFamilyToFemale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) node), getSelf());
-		}
-		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) {
-			incUtil.newMessage();
-			name2actor.get("ProtocolNode_DaughterToFemale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) node), getSelf());
-		}
-		if (node instanceof FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) {
-			incUtil.newMessage();
-			name2actor.get("RegisterToRegisterCorr_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr>(incUtil, (FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) node), getSelf());
-		}
-		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) {
-			incUtil.newMessage();
-			name2actor.get("ProtocolNode_Families2Persons_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) node), getSelf());
-		}
-		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) {
-			incUtil.newMessage();
-			name2actor.get("ProtocolNode_FatherOfExistingFamilyToMale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) node), getSelf());
-		}
-		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) {
-			incUtil.newMessage();
-			name2actor.get("ProtocolNode_FatherToMale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) node), getSelf());
-		}
-		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) {
-			incUtil.newMessage();
-			name2actor.get("ProtocolNode_MotherOfExistingFamilyToFemale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) node), getSelf());
-		}
-		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) {
-			incUtil.newMessage();
-			name2actor.get("ProtocolNode_MotherToFemale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) node), getSelf());
-		}
-		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) {
-			incUtil.newMessage();
-			name2actor.get("ProtocolNode_SonOfExistingFamilyToMale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) node), getSelf());
-		}
-		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) {
-			incUtil.newMessage();
-			name2actor.get("ProtocolNode_SonToMale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) node), getSelf());
-		}
-		if (node instanceof FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) {
-			incUtil.newMessage();
-			name2actor.get("FamilyMemberToPersonCorr_object_SP0").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) node), getSelf());
-		}
-		if (node instanceof FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) {
-			incUtil.newMessage();
-			name2actor.get("FamilyMemberToPersonCorr_object_SP1").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) node), getSelf());
-		}
 		if (node instanceof FamiliesSmartEMF.FamilyRegister) {
 			incUtil.newMessage();
 			name2actor.get("FamilyRegister_object_SP0").tell(new ObjectDeleted<FamiliesSmartEMF.FamilyRegister>(incUtil, (FamiliesSmartEMF.FamilyRegister) node), getSelf());
@@ -1732,6 +1604,134 @@ public class DispatchActor extends AbstractActor {
 		if (node instanceof FamiliesSmartEMF.FamilyMember) {
 			incUtil.newMessage();
 			name2actor.get("FamilyMember_object_SP13").tell(new ObjectDeleted<FamiliesSmartEMF.FamilyMember>(incUtil, (FamiliesSmartEMF.FamilyMember) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.PersonRegister) {
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP0").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.PersonRegister) {
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP1").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.PersonRegister) {
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP2").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.PersonRegister) {
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP3").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.PersonRegister) {
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP4").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.PersonRegister) {
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP5").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.PersonRegister) {
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP6").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.PersonRegister) {
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP7").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.PersonRegister) {
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP8").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.PersonRegister) {
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP9").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.PersonRegister) {
+			incUtil.newMessage();
+			name2actor.get("PersonRegister_object_SP10").tell(new ObjectDeleted<PersonsSmartEMF.PersonRegister>(incUtil, (PersonsSmartEMF.PersonRegister) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.Female) {
+			incUtil.newMessage();
+			name2actor.get("Female_object_SP0").tell(new ObjectDeleted<PersonsSmartEMF.Female>(incUtil, (PersonsSmartEMF.Female) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.Female) {
+			incUtil.newMessage();
+			name2actor.get("Female_object_SP1").tell(new ObjectDeleted<PersonsSmartEMF.Female>(incUtil, (PersonsSmartEMF.Female) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.Female) {
+			incUtil.newMessage();
+			name2actor.get("Female_object_SP2").tell(new ObjectDeleted<PersonsSmartEMF.Female>(incUtil, (PersonsSmartEMF.Female) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.Female) {
+			incUtil.newMessage();
+			name2actor.get("Female_object_SP3").tell(new ObjectDeleted<PersonsSmartEMF.Female>(incUtil, (PersonsSmartEMF.Female) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.Male) {
+			incUtil.newMessage();
+			name2actor.get("Male_object_SP0").tell(new ObjectDeleted<PersonsSmartEMF.Male>(incUtil, (PersonsSmartEMF.Male) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.Male) {
+			incUtil.newMessage();
+			name2actor.get("Male_object_SP1").tell(new ObjectDeleted<PersonsSmartEMF.Male>(incUtil, (PersonsSmartEMF.Male) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.Male) {
+			incUtil.newMessage();
+			name2actor.get("Male_object_SP2").tell(new ObjectDeleted<PersonsSmartEMF.Male>(incUtil, (PersonsSmartEMF.Male) node), getSelf());
+		}
+		if (node instanceof PersonsSmartEMF.Male) {
+			incUtil.newMessage();
+			name2actor.get("Male_object_SP3").tell(new ObjectDeleted<PersonsSmartEMF.Male>(incUtil, (PersonsSmartEMF.Male) node), getSelf());
+		}
+		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily) {
+			incUtil.newMessage();
+			name2actor.get("ProtocolNode_CreateFamily_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_CreateFamily) node), getSelf());
+		}
+		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) {
+			incUtil.newMessage();
+			name2actor.get("ProtocolNode_DaughterOfExistingFamilyToFemale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterOfExistingFamilyToFemale) node), getSelf());
+		}
+		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) {
+			incUtil.newMessage();
+			name2actor.get("ProtocolNode_DaughterToFemale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_DaughterToFemale) node), getSelf());
+		}
+		if (node instanceof FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) {
+			incUtil.newMessage();
+			name2actor.get("RegisterToRegisterCorr_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr>(incUtil, (FamiliesToPersonsIBeXTGG.RegisterToRegisterCorr) node), getSelf());
+		}
+		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) {
+			incUtil.newMessage();
+			name2actor.get("ProtocolNode_Families2Persons_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_Families2Persons) node), getSelf());
+		}
+		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) {
+			incUtil.newMessage();
+			name2actor.get("ProtocolNode_FatherOfExistingFamilyToMale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherOfExistingFamilyToMale) node), getSelf());
+		}
+		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) {
+			incUtil.newMessage();
+			name2actor.get("ProtocolNode_FatherToMale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_FatherToMale) node), getSelf());
+		}
+		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) {
+			incUtil.newMessage();
+			name2actor.get("ProtocolNode_MotherOfExistingFamilyToFemale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherOfExistingFamilyToFemale) node), getSelf());
+		}
+		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) {
+			incUtil.newMessage();
+			name2actor.get("ProtocolNode_MotherToFemale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_MotherToFemale) node), getSelf());
+		}
+		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) {
+			incUtil.newMessage();
+			name2actor.get("ProtocolNode_SonOfExistingFamilyToMale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonOfExistingFamilyToMale) node), getSelf());
+		}
+		if (node instanceof FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) {
+			incUtil.newMessage();
+			name2actor.get("ProtocolNode_SonToMale_object").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale>(incUtil, (FamiliesToPersonsIBeXTGG.ProtocolNode_SonToMale) node), getSelf());
+		}
+		if (node instanceof FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) {
+			incUtil.newMessage();
+			name2actor.get("FamilyMemberToPersonCorr_object_SP0").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) node), getSelf());
+		}
+		if (node instanceof FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) {
+			incUtil.newMessage();
+			name2actor.get("FamilyMemberToPersonCorr_object_SP1").tell(new ObjectDeleted<FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr>(incUtil, (FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) node), getSelf());
 		}
 	}
 }

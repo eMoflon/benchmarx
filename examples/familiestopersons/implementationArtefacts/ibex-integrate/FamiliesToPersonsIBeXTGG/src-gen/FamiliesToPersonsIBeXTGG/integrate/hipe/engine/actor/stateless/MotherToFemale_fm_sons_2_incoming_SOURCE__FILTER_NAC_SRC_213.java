@@ -235,28 +235,6 @@ public class MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_213 extend
 		var requestNodes = message.input.getNodes();
 		
 		switch(message.nodeName) {
-			case "MotherToFemale__CONSISTENCY_244": {
-				switch(message.queryComponentId) {
-					case 0: {
-						var deltaMatch = new StatelessDeltaMatch(message, "MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_213", 2, 0, message.usedDelta);
-						var nodes = deltaMatch.getNodes();
-						var lastFoundIndex = -1;
-						
-						nodes[1] = requestNodes[2];
-						if(nodes[1] != null) 
-							lastFoundIndex = 1;
-						
-						switch(lastFoundIndex) {
-							case 1: 
-								startFromRequest(edge_explorer_2_orchestration, StatelessInputType.REQUEST , deltaMatch, message);
-								break;
-							default: throw new RuntimeException("Cannot execute request due to missing node information");
-						}
-						break;
-					}
-				}
-				break;
-			}
 			case "MotherToFemale__CC_238": {
 				switch(message.queryComponentId) {
 					case 0: {
@@ -302,6 +280,28 @@ public class MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_213 extend
 				break;
 			}
 			case "MotherToFemale__SOURCE_222": {
+				switch(message.queryComponentId) {
+					case 0: {
+						var deltaMatch = new StatelessDeltaMatch(message, "MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_213", 2, 0, message.usedDelta);
+						var nodes = deltaMatch.getNodes();
+						var lastFoundIndex = -1;
+						
+						nodes[1] = requestNodes[2];
+						if(nodes[1] != null) 
+							lastFoundIndex = 1;
+						
+						switch(lastFoundIndex) {
+							case 1: 
+								startFromRequest(edge_explorer_2_orchestration, StatelessInputType.REQUEST , deltaMatch, message);
+								break;
+							default: throw new RuntimeException("Cannot execute request due to missing node information");
+						}
+						break;
+					}
+				}
+				break;
+			}
+			case "MotherToFemale__CONSISTENCY_244": {
 				switch(message.queryComponentId) {
 					case 0: {
 						var deltaMatch = new StatelessDeltaMatch(message, "MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_213", 2, 0, message.usedDelta);
@@ -332,16 +332,6 @@ public class MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_213 extend
 	protected boolean checkMatchRequestTypes(MatchRequest request, StatelessDeltaMatch match) {
 		var objs = match.getNodes();
 		switch(request.nodeName) {
-			case "MotherToFemale__CONSISTENCY_244": {
-				switch(request.queryComponentId) {
-					case 0: {
-						if(!(objs[1] instanceof FamiliesSmartEMF.FamilyMember))
-							return false;
-						break;
-					}
-				}
-				break;
-			}
 			case "MotherToFemale__CC_238": {
 				switch(request.queryComponentId) {
 					case 0: {
@@ -363,6 +353,16 @@ public class MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_213 extend
 				break;
 			}
 			case "MotherToFemale__SOURCE_222": {
+				switch(request.queryComponentId) {
+					case 0: {
+						if(!(objs[1] instanceof FamiliesSmartEMF.FamilyMember))
+							return false;
+						break;
+					}
+				}
+				break;
+			}
+			case "MotherToFemale__CONSISTENCY_244": {
 				switch(request.queryComponentId) {
 					case 0: {
 						if(!(objs[1] instanceof FamiliesSmartEMF.FamilyMember))
@@ -385,15 +385,6 @@ public class MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_213 extend
 		var requestNodes = requestCopy.getNodes();
 		
 		switch(request.input.creator) {
-			case "MotherToFemale__CONSISTENCY_244": {
-				switch(request.queryComponentId) {
-					case 0: {
-						requestNodes[2] = resultNodes[1];
-						break;
-					}
-				}
-				break;
-			}
 			case "MotherToFemale__CC_238": {
 				switch(request.queryComponentId) {
 					case 0: {
@@ -413,6 +404,15 @@ public class MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_213 extend
 				break;
 			}
 			case "MotherToFemale__SOURCE_222": {
+				switch(request.queryComponentId) {
+					case 0: {
+						requestNodes[2] = resultNodes[1];
+						break;
+					}
+				}
+				break;
+			}
+			case "MotherToFemale__CONSISTENCY_244": {
 				switch(request.queryComponentId) {
 					case 0: {
 						requestNodes[2] = resultNodes[1];

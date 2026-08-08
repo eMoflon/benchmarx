@@ -1,0 +1,11 @@
+﻿THEORY User_Pass IS
+Operation(Member2Person) & ff(2) & dd(1) & mp;
+Operation(Reset) & ff(0) & pp(rp.1 | 60);
+Operation(AddFather) & ff(0) & pp(rp.1 | 60);
+Operation(AddMother) & ff(0) & pp(rp.1 | 60);
+Operation(AddSon) & ff(0) & pp(rp.1 | 60);
+Operation(AddDaughter) & ff(0) & pp(rp.1 | 60);
+Operation(WellDefinedness_Member2Person) & ff(0) & pp(rt.1 | 60);
+Operation(Member2Person) & ff(2) & dd(1) & pr & pp(rp.1 | 60) & pp(rt.1 | 60);
+Operation(Member2Person) & ff(2) & dd(1) & pr & pp(rt.1 | 60)
+END 

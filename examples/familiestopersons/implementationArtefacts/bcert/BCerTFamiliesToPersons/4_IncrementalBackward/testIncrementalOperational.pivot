@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pivot:Pivot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore" xmlns:pivot="http://pivot" xsi:schemaLocation="platform:/plugin/Persons/model/Persons.ecore ../Persons/model/Persons.ecore http://pivot ../pivot/model/pivot.ecore" name="testIncrementalOperational" PARENT_TO_CHILD="true" sync="true">
+  <familyModel href="testIncrementalOperationalFam.xmi#/"/>
+  <personModel href="testIncrementalOperationalPer.xmi#/"/>
+  <pre name="Pre_IncrBwdOp">
+    <output href="Expected/Pre_IncrBwdOpPerson.xmi#/"/>
+    <input href="Expected/Pre_IncrBwdOpFamily.xmi#/"/>
+  </pre>
+  <post name="Post_IncrBwdOperational">
+    <output href="Expected/PersonAfterIncrOp.xmi#/"/>
+    <input href="Expected/FamilyAfterIncrOp.xmi#/"/>
+  </post>
+  <mapping>
+    <mMap href="testIncrementalOperationalFam.xmi#//@families.0/@daughters.0"/>
+    <pMap xsi:type="Persons:Female" href="testIncrementalOperationalPer.xmi#//@persons.0"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalOperationalFam.xmi#//@families.0/@mother"/>
+    <pMap xsi:type="Persons:Female" href="testIncrementalOperationalPer.xmi#//@persons.1"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalOperationalFam.xmi#//@families.0/@daughters.1"/>
+    <pMap xsi:type="Persons:Female" href="testIncrementalOperationalPer.xmi#//@persons.2"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalOperationalFam.xmi#//@families.0/@father"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalOperationalPer.xmi#//@persons.3"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalOperationalFam.xmi#//@families.0/@sons.0"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalOperationalPer.xmi#//@persons.4"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalOperationalFam.xmi#//@families.0/@daughters.2"/>
+    <pMap xsi:type="Persons:Female" href="testIncrementalOperationalPer.xmi#//@persons.5"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalOperationalFam.xmi#//@families.0/@daughters.3"/>
+    <pMap xsi:type="Persons:Female" href="testIncrementalOperationalPer.xmi#//@persons.6"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalOperationalFam.xmi#//@families.1/@mother"/>
+    <pMap xsi:type="Persons:Female" href="testIncrementalOperationalPer.xmi#//@persons.7"/>
+  </mapping>
+</pivot:Pivot>

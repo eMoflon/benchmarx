@@ -1,0 +1,202 @@
+Summary of CSP Syntax supported by ProB
+---------------------------------------
+
+PROCESS DEFINITIONS
+  Process = ProcessExpression
+
+PROCESS EXPRESSIONS
+  STOP      deadlocking process
+  SKIP      terminating process
+  CHAOS(a)	a: set of channel expressions
+
+  ch->P     simple action prefix where ch is a channel name possibly followed
+            by a sequence of outputs "!v" and input "?VAR", where v is a value
+            expression and VAR a variable identifier
+  ch?x:v->P action prefix with set of accepted values
+
+  P ; Q     sequential composition
+  P ||| Q   interleaving
+
+  P [] Q    external choice
+  P |~| Q   internal choice
+
+  P /\ Q           interrupt
+  p [> Q           untimed timeout
+  P [| a |> Q      exception
+
+  P [| a |] Q      parallel composition with synchronisation on set of channel expressions a
+  P [ a || a' ] Q  alphabetised parallel
+  P [ c<->c' ] Q   linked parallel
+  P \ a            hiding of channel expressions in a
+  P [[ c<-c' ]]    renaming of channels c into c'
+
+  if B then P else Q
+
+  b & P    guard using a boolean expression b
+
+  []x:v@P       replicated external choice (x: variable, v: set expression)
+  |~|x:v@P      replicated internal choice (x: variable, v: set expression)
+  |||x:v@P      replicated interleave (x: variable, v: set expression)
+  ;x:s@P        replicated sequential composition (s: sequence expression)
+  ||x:v@[a']P   replicated alphabetised parallel
+  [| a |]x:s@P  replicated sharing
+  [c<->c']x:s@P replicated linked parallel (sequence s must be non empty)
+   
+  let  f1=E1 ... fk=Ek within P
+ 
+BOOLEAN EXPRESSIONS
+   true
+   false
+   b1 and b2
+   b1 or b2
+   b1 <=> b2    equivalence
+   b1 => b2     implication
+   not b
+   v==w        equality of values
+   v!=w        disequality of values
+   v<w,v>w     strict ordering
+   v<=w,v>=w   non-strict ordering  (v=<w also accepted)
+   
+   member(v,w) set membership check
+   empty(a)    set emptiness check
+   
+   null(s)     sequence emptiness check
+   elem(x,s)   sequence member check
+
+VALUE EXPRESSIONS
+   v+w, v-w    addition and subtraction
+   v*w         multiplication
+   v/w         integer division
+   v % w       division remainder
+   
+   bool(b)     convert a boolean expression into a boolean value
+   
+   {v,w,...}   enumerated sets
+   {m..n}      closed range
+   {m..}       open range
+   union(v,w)  set union
+   inter(v,w)  set intersection
+   diff(v,w)   set difference
+   Union(A)    generalized union of a set of sets
+   Inter(A)    generalized intersection
+   card(a)     cardinality of a
+   {x1,...,xn | x<-a,b}
+   Events      all channel expressions on all declared channels
+   {| ... |}   closure of set of channel expressions
+   Set(a)      all subsets of a
+   Bool        the set {true,false}
+   Int         the set of integers
+   
+   <>          empty sequence
+   <v,w,...>   explicit sequence
+   <m..n>      closed range sequence
+   <m..>       open range sequence
+   <....>^s    sequence concatenation (first or last arg has to be an explicit sequence for patterns)
+   #s, length(s)
+   head(s)
+   tail(s)
+   concat(s)
+   set(s)      converts sequence into set
+   seq(s)      converts set into sequence
+
+   \ a1,..,a_n @ e lambda expression
+
+DATATYPES
+   Bool
+   Int
+   datatype TYPE =  CONSTANT | ... | CONSTRUCTOR.Field...Field | ...
+   subtype  TYPE =  CONSTANT | ... | CONSTRUCTOR.Field...Field | ...
+   nametype TYPE =  t1.t2. ... .tn
+
+CHANNEL DECLARATIONS
+   channel NAME : TYPE.TYPE...
+
+COMMENTS
+  -- comment until end of line
+  {-  arbitrary comment -}
+
+PRAGMAS
+  transparent f   where f is a unary function which will then on be ignored by ProB
+  {-# assert_ltl "f" "comment" #-}   where f is an LTL formula and comment an arbitrary comment 
+                                     (f and comment must be surrounded by quotes), the comment
+                                     is optional
+
+ASSERTIONS
+  assert P :[ deadlock free [M] ]   where M is F or FD
+  assert P :[ deterministic [M] ]   where M is F or FD
+  assert P :[ livelock free ]
+  assert SPEC [M= IMPL   where M is T, F, FD, R, or RD
+  assert P |= LTL: "f"   where f is an LTL formula
+  assert P |= CTL: "f"   where f is a  CTL formula
+ 
+
+MAIN POINTS (and differences with FDR):
+---------------------------------------
+ - CSP files can be opened using the "Open..." command in the File menu (be
+   sure to set the file filter so that you can see the files ending in .csp)
+   or by using the commands in the "Open Special" submenu of the File menu:
+    - use CSP file: uses the CSP file to control the current B machine
+      (see below)
+    - use default CSP file: tries to use a CSP with the same name as the current
+      B machine to control it
+ - You can perform divergence checking by running the LTL checker with
+     the formula "G not G [tau]"
+ - For the LTL checker you can specify patterns using the underscore: "G F e(ch._._)"
+ - ProB now supports FDR and ProBE compatible CSP-M syntax, with the
+   following outstanding issues
+ 	* currying and lambda expressions have only been partially tested
+ 	* extensions and productions are not yet supported (but {| |} is)
+ 	* mixing of closure with other set operations (especially diff) not yet
+ 	  fully supported
+ 	* the priority of rename compared to external choice is unfortunately 
+ 	  different than in FDR; please use parentheses
+ 	* input patterns can only contain variables,tuples,integers and
+ 	  constants (ch?(x,1) is ok, ch?(y+1,x) not).
+ 	  Also, for a record all arguments must be provided (e.g., for datatype
+ 	  r.Val.Val you have to write r?x?y you cannot write r?x.y).
+ 	  Finally, for the moment within "ch? x.y:Set" the ":Set" associates
+ 	  only with y; if you want to check that "x.y" is in Set you need to
+ 	  write: "ch?(x.y):Set.
+ 	* channel declarations can either use associative dot tuples or
+ 	  non-associative tuples, not yet both. Also, sets of tuples as channel
+ 	  types will not work the same way as in FDR. I.e., for channel
+ 	  a:LinkData you should not use LinkData = {0.0, 0.1, 1.0, 1.1}
+      but rather nametype LinkData = {0,1}.{0,1}.
+  - Also, in the first phase we have striven for compatibility and coverage.
+    We still need to tune the animator and model checker for efficiency (there
+    are a few known bottlenecks which will be improved; especially with deeply
+    nested CSP synchronisation constructs).
+
+
+When guiding a B Machine using CSP:
+-----------------------------------
+ - To use this: first open a B Machine, then select "Use CSP File to Guide B..."
+   or "Use Default CSP File" in the "Open Special" submenu of the File menu
+   (you must be in normal user mode to see it).
+ - CSP events that have the same name as B Operations will synchronise with B;
+   CSP events that have the same name as a B Variable or Constant can be
+   used to inspect the current value of these, all other CSP
+   events can happen independently of B. In CSP terms the CSP and B are composed
+   as follows:
+       CSP [| {op1,...,opn} |] B
+   where op1,...,opn are the visible operations defined in the B machine.
+ - CSP events do not need to provide all arguments of B operations:
+    add!1 -> will match add(1,1) or add(1,2) or ...
+             (supposing add has 2 parameters in B)
+    add -> will match add(1,2), add(2,1), ...
+    add!1!2 -> will only match add(1,2)
+ - B Output arguments are specified at the end
+    lookup!X!2 will match lookup(X) --> 2
+    Note, however, for non-deterministic operations you generally should only
+    retrieve the output value using a ? and not match against it using a !.
+    Otherwise, the non-determinism of the B operation will be treated as an
+    external choice for the CSP. So, if lookup is non-deterministic then we
+    should do  lookup!X?Res -> Res=2 & Cont  rather than  lookup!X!2 -> Cont.
+ - If you have a variable called vv then you can use vv?VAL to get the value
+   of vv. You can also use, e.g., vv!X to check that the value is equal to X.
+   If vv is a relation or function, then you can also use two values on the
+   channel to check for particular tuples in the relation. E.g., vv!3?Y to
+   check whether tuples (3,Y) are in the relation vv (there will be one
+   possible synchronisation per such value).
+ - see the file "bookstore_guide.csp" in the provided Machines directory
+   for an example.

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pivot:Pivot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore" xmlns:pivot="http://pivot" xsi:schemaLocation="platform:/plugin/Persons/model/Persons.ecore ../Persons/model/Persons.ecore http://pivot ../pivot/model/pivot.ecore" name="testIncrementalInserts" strategie="FWD" sync="true">
+  <familyModel href="testIncrementalInsertsFam.xmi#/"/>
+  <personModel href="testIncrementalInsertsPer.xmi#/"/>
+  <pre name="Pre_IncrFwd">
+    <output href="Expected/Pre_IncrFwdPerson.xmi#/"/>
+    <input href="Expected/Pre_IncrFwdFamily.xmi#/"/>
+  </pre>
+  <post name="Post_IncrFwdInsert">
+    <output href="Expected/PersonAfterInsertion.xmi#/"/>
+    <input href="Expected/FamilyAfterInsertion.xmi#/"/>
+  </post>
+  <mapping>
+    <mMap href="testIncrementalInsertsFam.xmi#//@families.1/@sons.0"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalInsertsPer.xmi#//@persons.0"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsFam.xmi#//@families.0/@father"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalInsertsPer.xmi#//@persons.1"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsFam.xmi#//@families.3/@father"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalInsertsPer.xmi#//@persons.2"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsFam.xmi#//@families.3/@mother"/>
+    <pMap xsi:type="Persons:Female" href="testIncrementalInsertsPer.xmi#//@persons.3"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsFam.xmi#//@families.3/@sons.0"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalInsertsPer.xmi#//@persons.4"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsFam.xmi#//@families.3/@daughters.1"/>
+    <pMap xsi:type="Persons:Female" href="testIncrementalInsertsPer.xmi#//@persons.5"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsFam.xmi#//@families.3/@daughters.0"/>
+    <pMap xsi:type="Persons:Female" href="testIncrementalInsertsPer.xmi#//@persons.6"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsFam.xmi#//@families.3/@sons.1"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalInsertsPer.xmi#//@persons.7"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsFam.xmi#//@families.1/@father"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalInsertsPer.xmi#//@persons.8"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsFam.xmi#//@families.1/@mother"/>
+    <pMap xsi:type="Persons:Female" href="testIncrementalInsertsPer.xmi#//@persons.9"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsFam.xmi#//@families.1/@sons.1"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalInsertsPer.xmi#//@persons.10"/>
+  </mapping>
+</pivot:Pivot>

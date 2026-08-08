@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pivot:Pivot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore" xmlns:pivot="http://pivot" xsi:schemaLocation="platform:/plugin/Persons/model/Persons.ecore ../Persons/model/Persons.ecore http://pivot ../pivot/model/pivot.ecore" name="testRenameRenameConflict" FAMILY_TO_NEW="true" PARENT_TO_CHILD="true" sync="true">
+  <familyModel href="testRenameRenameConflictFam.xmi#/"/>
+  <personModel href="testRenameRenameConflictPer.xmi#/"/>
+  <pre name="Pre_Conflict">
+    <output href="Expected/Pre_ConflictPersons.xmi#/"/>
+    <input href="Expected/Pre_ConflictFamily.xmi#/"/>
+  </pre>
+  <post name="Post_RenameRenameConflict_1">
+    <output href="Expected/Post_RenameRenameConflictPersons_1.xmi#/"/>
+    <input href="Expected/Post_RenameRenameConflictFamily_1.xmi#/"/>
+  </post>
+  <post name="Post_RenameRenameConflict_2">
+    <output href="Expected/Post_RenameRenameConflictPersons_2.xmi#/"/>
+    <input href="Expected/Post_RenameRenameConflictFamily_2.xmi#/"/>
+  </post>
+  <post name="Post_RenameRenameConflict_3">
+    <output href="Expected/Post_RenameRenameConflictPersons_3.xmi#/"/>
+    <input href="Expected/Post_RenameRenameConflictFamily_3.xmi#/"/>
+  </post>
+  <mapping>
+    <mMap href="testRenameRenameConflictFam.xmi#//@families.0/@father"/>
+    <pMap xsi:type="Persons:Male" href="testRenameRenameConflictPer.xmi#//@persons.0"/>
+  </mapping>
+  <mapping>
+    <mMap href="testRenameRenameConflictFam.xmi#//@families.0/@mother"/>
+    <pMap xsi:type="Persons:Female" href="testRenameRenameConflictPer.xmi#//@persons.1"/>
+  </mapping>
+  <mapping>
+    <mMap href="testRenameRenameConflictFam.xmi#//@families.0/@sons.0"/>
+    <pMap xsi:type="Persons:Male" href="testRenameRenameConflictPer.xmi#//@persons.2"/>
+  </mapping>
+  <mapping>
+    <mMap href="testRenameRenameConflictFam.xmi#//@families.0/@daughters.1"/>
+    <pMap xsi:type="Persons:Female" href="testRenameRenameConflictPer.xmi#//@persons.3"/>
+  </mapping>
+  <mapping>
+    <mMap href="testRenameRenameConflictFam.xmi#//@families.0/@daughters.0"/>
+    <pMap xsi:type="Persons:Female" href="testRenameRenameConflictPer.xmi#//@persons.4"/>
+  </mapping>
+  <mapping>
+    <mMap href="testRenameRenameConflictFam.xmi#//@families.1/@father"/>
+    <pMap xsi:type="Persons:Male" href="testRenameRenameConflictPer.xmi#//@persons.5"/>
+  </mapping>
+  <mapping>
+    <mMap href="testRenameRenameConflictFam.xmi#//@families.1/@mother"/>
+    <pMap xsi:type="Persons:Female" href="testRenameRenameConflictPer.xmi#//@persons.6"/>
+  </mapping>
+  <mapping>
+    <mMap href="testRenameRenameConflictFam.xmi#//@families.1/@sons.1"/>
+    <pMap xsi:type="Persons:Male" href="testRenameRenameConflictPer.xmi#//@persons.7"/>
+  </mapping>
+  <mapping>
+    <mMap href="testRenameRenameConflictFam.xmi#//@families.1/@sons.0"/>
+    <pMap xsi:type="Persons:Male" href="testRenameRenameConflictPer.xmi#//@persons.8"/>
+  </mapping>
+</pivot:Pivot>

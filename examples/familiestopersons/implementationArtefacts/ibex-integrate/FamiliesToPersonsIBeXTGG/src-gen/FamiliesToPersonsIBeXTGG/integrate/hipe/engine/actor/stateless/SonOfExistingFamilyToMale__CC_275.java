@@ -84,9 +84,9 @@ public class SonOfExistingFamilyToMale__CC_275 extends GenericStatelessSearchAct
 		name2explorer.put("edge_explorer_3", edge_explorer_3);
 		nac = new NACQueryChecker(this, 0, "SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_252", name2actor.get("SonOfExistingFamilyToMale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_252"), 1);
 		name2explorer.put("nac", nac);
-		nac_0 = new NACQueryChecker(this, 1, "SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_255", name2actor.get("SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_255"), 1);
+		nac_0 = new NACQueryChecker(this, 1, "SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_255", name2actor.get("SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_255"), 1);
 		name2explorer.put("nac_0", nac_0);
-		nac_1 = new NACQueryChecker(this, 2, "SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_258", name2actor.get("SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_258"), 1);
+		nac_1 = new NACQueryChecker(this, 2, "SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_258", name2actor.get("SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_258"), 1);
 		name2explorer.put("nac_1", nac_1);
 		disjoint_explorer_0 = new DisjointExplorer(this, observedResources, 1, (o) -> o instanceof FamiliesSmartEMF.FamilyMember, true);
 		name2explorer.put("disjoint_explorer_0", disjoint_explorer_0);
@@ -198,7 +198,7 @@ public class SonOfExistingFamilyToMale__CC_275 extends GenericStatelessSearchAct
 					}
 				}
 				break;
-			case "SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_255": 
+			case "SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_255": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -217,7 +217,7 @@ public class SonOfExistingFamilyToMale__CC_275 extends GenericStatelessSearchAct
 					}
 				}
 				break;
-			case "SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_258": 
+			case "SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_258": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -321,7 +321,7 @@ public class SonOfExistingFamilyToMale__CC_275 extends GenericStatelessSearchAct
 					}
 				}
 				break;
-			case "SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_255": 
+			case "SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_255": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -340,7 +340,7 @@ public class SonOfExistingFamilyToMale__CC_275 extends GenericStatelessSearchAct
 					}
 				}
 				break;
-			case "SonOfExistingFamilyToMale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_258": 
+			case "SonOfExistingFamilyToMale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_258": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -461,6 +461,12 @@ public class SonOfExistingFamilyToMale__CC_275 extends GenericStatelessSearchAct
 		}
 		
 		Object obj = message.node;
+		if(obj instanceof PersonsSmartEMF.Male) {
+			var match_3 = new StatelessDeltaMatch(initialMessage, "SonOfExistingFamilyToMale__CC_275", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
+			match_3.registerSignatureIndex(3);
+			match_3.getNodes()[3] = obj;
+			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_3);
+		}
 		if(obj instanceof FamiliesSmartEMF.FamilyMember) {
 			var match_1 = new StatelessDeltaMatch(initialMessage, "SonOfExistingFamilyToMale__CC_275", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
 			match_1.registerSignatureIndex(1);
@@ -472,12 +478,6 @@ public class SonOfExistingFamilyToMale__CC_275 extends GenericStatelessSearchAct
 			match_0.registerSignatureIndex(0);
 			match_0.getNodes()[0] = obj;
 			start(edge_explorer_3_1_orchestration, StatelessInputType.ATTRIBUTE, match_0);
-		}
-		if(obj instanceof PersonsSmartEMF.Male) {
-			var match_3 = new StatelessDeltaMatch(initialMessage, "SonOfExistingFamilyToMale__CC_275", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
-			match_3.registerSignatureIndex(3);
-			match_3.getNodes()[3] = obj;
-			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_3);
 		}
 		
 		message.initialMessage.decrement();

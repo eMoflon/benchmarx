@@ -1,0 +1,48 @@
+DEFINITIONS
+    
+    // comment this for AB
+    
+    	STR1 == STRING ; 
+    	sepDef == sep : STR1 & sep = ", "  ;
+    
+    
+    // comment this for ProB
+    /*
+    	sepDef == sep : STR1 ;
+    */
+    
+    
+    STR2 == seq(STR1) ;
+    
+    
+    familyOf == (((theFather \/ theMother) \/ theSons) \/ theDaughters) ;
+    
+    isFemale(self) ==  self : dom(theMother \/ theDaughters) ;
+    familyName(self) == Families_Family_name(familyOf(self)) ;
+    
+    theMembers == familyOf~[families~[{fmlRoot}]] ;
+    thePersons == persons~[{prsRoot}] ;
+    mapped == (pMap~ ; mMap) 
+    
+    
+/*
+
+THEORY User_Pass IS
+Operation(Member2Person) & ff(2) & dd(1) & mp;
+Operation(Reset) & ff(0) & pp(rp.1 | 60);
+Operation(AddFather) & ff(0) & pp(rp.1 | 60);
+Operation(AddMother) & ff(0) & pp(rp.1 | 60);
+Operation(AddSon) & ff(0) & pp(rp.1 | 60);
+Operation(AddDaughter) & ff(0) & pp(rp.1 | 60);
+Operation(WellDefinedness_Member2Person) & ff(0) & pp(rt.1 | 60);
+Operation(Member2Person) & ff(2) & dd(1) & pr & pp(rp.1 | 60) & pp(rt.1 | 60);
+Operation(Member2Person) & ff(2) & dd(1) & pr & pp(rt.1 | 60)
+END 
+
+      VAR aFam, aFat, aMot IN
+        aFam <-- FamilyNEW("Simpson") ;
+        aFat <-- AddFather(aFam, "Homer") ;
+        aMot <-- AddMother(aFam, "Test")
+      END
+      
+*/

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pivot" nsURI="http://pivot" nsPrefix="pivot">
+  <eClassifiers xsi:type="ecore:EClass" name="Pivot">
+    <eAnnotations source="meeduse">
+      <details key="constant"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="familyModel" lowerBound="1"
+        eType="ecore:EClass ../../Families/model/Families.ecore#//FamilyRegister">
+      <eAnnotations source="meeduse">
+        <details key="association" value="familyModel"/>
+        <details key="constant"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="personModel" lowerBound="1"
+        eType="ecore:EClass ../../Persons/model/Persons.ecore#//PersonRegister">
+      <eAnnotations source="meeduse">
+        <details key="association" value="personModel"/>
+        <details key="constant"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pre" upperBound="-1" eType="#//PreCondition"
+        containment="true">
+      <eAnnotations source="meeduse">
+        <details key="association" value="pre"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="post" upperBound="-1" eType="#//PostCondition"
+        containment="true">
+      <eAnnotations source="meeduse">
+        <details key="association" value="post"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapping" upperBound="-1"
+        eType="#//Mapping" containment="true">
+      <eAnnotations source="meeduse">
+        <details key="association" value="mapping"/>
+        <details key="opposite-lower" value="1"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategie" lowerBound="1"
+        eType="#//Strategy"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="FAMILY_TO_NEW" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="PARENT_TO_CHILD" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sync" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PreCondition">
+    <eAnnotations source="meeduse">
+      <details key="constant" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" lowerBound="1"
+        eType="ecore:EClass ../../Persons/model/Persons.ecore#//PersonRegister">
+      <eAnnotations source="meeduse">
+        <details key="constant" value=""/>
+        <details key="association" value="outputPre"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" eType="ecore:EClass ../../Families/model/Families.ecore#//FamilyRegister">
+      <eAnnotations source="meeduse">
+        <details key="constant" value=""/>
+        <details key="association" value="inputPre"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="meeduse">
+        <details key="constant" value=""/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PostCondition">
+    <eAnnotations source="meeduse">
+      <details key="constant" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" lowerBound="1"
+        eType="ecore:EClass ../../Persons/model/Persons.ecore#//PersonRegister">
+      <eAnnotations source="meeduse">
+        <details key="constant" value=""/>
+        <details key="association" value="outputPost"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" eType="ecore:EClass ../../Families/model/Families.ecore#//FamilyRegister">
+      <eAnnotations source="meeduse">
+        <details key="constant" value=""/>
+        <details key="association" value="inputPost"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="meeduse">
+        <details key="constant" value=""/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Mapping">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mMap" eType="ecore:EClass ../../Families/model/Families.ecore#//FamilyMember">
+      <eAnnotations source="meeduse">
+        <details key="association" value="mMap"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pMap" eType="ecore:EClass ../../Persons/model/Persons.ecore#//Person">
+      <eAnnotations source="meeduse">
+        <details key="association" value="pMap"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Strategy">
+    <eLiterals name="BWD"/>
+    <eLiterals name="FWD" value="1"/>
+  </eClassifiers>
+</ecore:EPackage>

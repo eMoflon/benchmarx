@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pivot:Pivot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore" xmlns:pivot="http://pivot" xsi:schemaLocation="platform:/plugin/Persons/model/Persons.ecore ../Persons/model/Persons.ecore http://pivot ../pivot/model/pivot.ecore" name="testIncrementalInsertsDynamicConfig" FAMILY_TO_NEW="true" sync="true">
+  <familyModel href="testIncrementalInsertsDynamicConfigFam.xmi#/"/>
+  <personModel href="testIncrementalInsertsDynamicConfigPer.xmi#/"/>
+  <pre name="Pre_IncrBwd">
+    <output href="Expected/Pre_IncrBwdPerson.xmi#/"/>
+    <input href="Expected/Pre_IncrBwdFamily.xmi#/"/>
+  </pre>
+  <post name="Post_IncrBwdInsertion1">
+    <output href="Expected/PersonAfterBwdInsertion1.xmi#/"/>
+    <input href="Expected/FamilyAfterBwdInsertion1.xmi#/"/>
+  </post>
+  <post name="Post_IncrBwdInsertion2">
+    <output href="Expected/PersonAfterBwdInsertion2.xmi#/"/>
+    <input href="Expected/FamilyAfterBwdInsertion2.xmi#/"/>
+  </post>
+  <post name="Post_IncrBwdInsertion3">
+    <output href="Expected/PersonAfterBwdInsertion3.xmi#/"/>
+    <input href="Expected/FamilyAfterBwdInsertion3.xmi#/"/>
+  </post>
+  <post name="Post_IncrBwdInsertion4">
+    <output href="Expected/PersonAfterBwdInsertion4.xmi#/"/>
+    <input href="Expected/FamilyAfterBwdInsertion4.xmi#/"/>
+  </post>
+  <post name="Post_IncrBwdInsertion5">
+    <output href="Expected/PersonAfterBwdInsertion5.xmi#/"/>
+    <input href="Expected/FamilyAfterBwdInsertion5.xmi#/"/>
+  </post>
+  <post name="Post_IncrBwdInsertion6">
+    <output href="Expected/PersonAfterBwdInsertion6.xmi#/"/>
+    <input href="Expected/FamilyAfterBwdInsertion6.xmi#/"/>
+  </post>
+  <mapping>
+    <mMap href="testIncrementalInsertsDynamicConfigFam.xmi#//@families.0/@father"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalInsertsDynamicConfigPer.xmi#//@persons.0"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsDynamicConfigFam.xmi#//@families.0/@mother"/>
+    <pMap xsi:type="Persons:Female" href="testIncrementalInsertsDynamicConfigPer.xmi#//@persons.1"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsDynamicConfigFam.xmi#//@families.1/@father"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalInsertsDynamicConfigPer.xmi#//@persons.2"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsDynamicConfigFam.xmi#//@families.1/@sons.0"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalInsertsDynamicConfigPer.xmi#//@persons.3"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsDynamicConfigFam.xmi#//@families.2/@father"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalInsertsDynamicConfigPer.xmi#//@persons.4"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsDynamicConfigFam.xmi#//@families.3/@sons.0"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalInsertsDynamicConfigPer.xmi#//@persons.5"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsDynamicConfigFam.xmi#//@families.1/@sons.1"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalInsertsDynamicConfigPer.xmi#//@persons.6"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsDynamicConfigFam.xmi#//@families.0/@sons.0"/>
+    <pMap xsi:type="Persons:Male" href="testIncrementalInsertsDynamicConfigPer.xmi#//@persons.7"/>
+  </mapping>
+  <mapping>
+    <mMap href="testIncrementalInsertsDynamicConfigFam.xmi#//@families.0/@daughters.0"/>
+    <pMap xsi:type="Persons:Female" href="testIncrementalInsertsDynamicConfigPer.xmi#//@persons.8"/>
+  </mapping>
+</pivot:Pivot>

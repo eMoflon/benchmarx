@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pivot:Pivot xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore"
+    xmlns:pivot="http://pivot"
+    xsi:schemaLocation="platform:/plugin/Persons/model/Persons.ecore ../Persons/model/Persons.ecore http://pivot ../pivot/model/pivot.ecore"
+    name="ConcurrentTargetRenameWins"
+    strategie="BWD"
+    FAMILY_TO_NEW="true"
+    PARENT_TO_CHILD="true"
+    sync="false">
+  <familyModel href="ConcurrentTargetRenameWinsFam.xmi#/"/>
+  <personModel href="ConcurrentTargetRenameWinsPer.xmi#/"/>
+  <mapping>
+    <mMap href="ConcurrentTargetRenameWinsFam.xmi#//@families.0/@daughters.0"/>
+    <pMap xsi:type="Persons:Female" href="ConcurrentTargetRenameWinsPer.xmi#//@persons.0"/>
+  </mapping>
+</pivot:Pivot>

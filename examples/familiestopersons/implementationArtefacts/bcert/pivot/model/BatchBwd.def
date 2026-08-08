@@ -1,0 +1,7 @@
+DEFINITIONS
+
+PersonSplit(pp) == STRING_SPLIT(Persons_Person_name(pp), ", ") ;
+
+PersonFamilyName(pp) == PersonSplit(pp)(1) ;
+
+PersonMemberName(pp) == PersonSplit(pp)(2) ;

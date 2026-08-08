@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pivot:Pivot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore" xmlns:pivot="http://pivot" xsi:schemaLocation="platform:/plugin/Persons/model/Persons.ecore ../Persons/model/Persons.ecore http://pivot ../pivot/model/pivot.ecore" name="testCombinedDeletionAndCreation" strategie="FWD" FAMILY_TO_NEW="true" PARENT_TO_CHILD="true" sync="true">
+  <familyModel href="testCombinedDeletionAndCreationFam.xmi#/"/>
+  <personModel href="testCombinedDeletionAndCreationPer.xmi#/"/>
+  <post name="Post_ConcCombinedNonMonotonicCases">
+    <output href="Expected/PersonsAfterConcSyncCombinedNonMonotonicCases.xmi#/"/>
+    <input href="Expected/FamiliesAfterConcSyncCombinedNonMonotonicCases.xmi#/"/>
+  </post>
+  <mapping>
+    <mMap href="testCombinedDeletionAndCreationFam.xmi#//@families.0/@sons.0"/>
+    <pMap xsi:type="Persons:Male" href="testCombinedDeletionAndCreationPer.xmi#//@persons.0"/>
+  </mapping>
+  <mapping>
+    <mMap href="testCombinedDeletionAndCreationFam.xmi#//@families.1/@father"/>
+    <pMap xsi:type="Persons:Male" href="testCombinedDeletionAndCreationPer.xmi#//@persons.1"/>
+  </mapping>
+  <mapping>
+    <mMap href="testCombinedDeletionAndCreationFam.xmi#//@families.3/@sons.0"/>
+    <pMap xsi:type="Persons:Male" href="testCombinedDeletionAndCreationPer.xmi#//@persons.2"/>
+  </mapping>
+  <mapping>
+    <mMap href="testCombinedDeletionAndCreationFam.xmi#//@families.3/@daughters.1"/>
+    <pMap xsi:type="Persons:Female" href="testCombinedDeletionAndCreationPer.xmi#//@persons.3"/>
+  </mapping>
+  <mapping>
+    <mMap href="testCombinedDeletionAndCreationFam.xmi#//@families.3/@daughters.0"/>
+    <pMap xsi:type="Persons:Female" href="testCombinedDeletionAndCreationPer.xmi#//@persons.4"/>
+  </mapping>
+  <mapping>
+    <mMap href="testCombinedDeletionAndCreationFam.xmi#//@families.3/@sons.1"/>
+    <pMap xsi:type="Persons:Male" href="testCombinedDeletionAndCreationPer.xmi#//@persons.5"/>
+  </mapping>
+  <mapping>
+    <mMap href="testCombinedDeletionAndCreationFam.xmi#//@families.0/@father"/>
+    <pMap xsi:type="Persons:Male" href="testCombinedDeletionAndCreationPer.xmi#//@persons.6"/>
+  </mapping>
+</pivot:Pivot>

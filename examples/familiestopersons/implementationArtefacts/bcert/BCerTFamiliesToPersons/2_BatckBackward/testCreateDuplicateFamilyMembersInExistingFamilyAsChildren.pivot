@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pivot:Pivot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore" xmlns:pivot="http://pivot" xsi:schemaLocation="platform:/plugin/Persons/model/Persons.ecore ../Persons/model/Persons.ecore http://pivot ../pivot/model/pivot.ecore" name="testCreateDuplicateFamilyMembersInExistingFamilyAsChildren" FAMILY_TO_NEW="true">
+  <familyModel href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenFam.xmi#/"/>
+  <personModel href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenPer.xmi#/"/>
+  <post name="Post_CreateDuplicateFamilyMembersInExistingFamilyAsChildren">
+    <output href="Expected/PersonsDuplicateMulti.xmi#/"/>
+    <input href="Expected/FamilyWithDuplicateChildrenOnly.xmi#/"/>
+  </post>
+  <mapping>
+    <mMap href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenFam.xmi#//@families.0/@sons.0"/>
+    <pMap xsi:type="Persons:Male" href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenPer.xmi#//@persons.0"/>
+  </mapping>
+  <mapping>
+    <mMap href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenFam.xmi#//@families.1/@sons.0"/>
+    <pMap xsi:type="Persons:Male" href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenPer.xmi#//@persons.1"/>
+  </mapping>
+  <mapping>
+    <mMap href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenFam.xmi#//@families.1/@sons.1"/>
+    <pMap xsi:type="Persons:Male" href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenPer.xmi#//@persons.2"/>
+  </mapping>
+  <mapping>
+    <mMap href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenFam.xmi#//@families.1/@sons.2"/>
+    <pMap xsi:type="Persons:Male" href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenPer.xmi#//@persons.3"/>
+  </mapping>
+  <mapping>
+    <mMap href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenFam.xmi#//@families.1/@sons.3"/>
+    <pMap xsi:type="Persons:Male" href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenPer.xmi#//@persons.4"/>
+  </mapping>
+  <mapping>
+    <mMap href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenFam.xmi#//@families.1/@daughters.0"/>
+    <pMap xsi:type="Persons:Female" href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenPer.xmi#//@persons.5"/>
+  </mapping>
+  <mapping>
+    <mMap href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenFam.xmi#//@families.1/@daughters.1"/>
+    <pMap xsi:type="Persons:Female" href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenPer.xmi#//@persons.6"/>
+  </mapping>
+  <mapping>
+    <mMap href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenFam.xmi#//@families.1/@daughters.2"/>
+    <pMap xsi:type="Persons:Female" href="testCreateDuplicateFamilyMembersInExistingFamilyAsChildrenPer.xmi#//@persons.7"/>
+  </mapping>
+</pivot:Pivot>

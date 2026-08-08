@@ -94,9 +94,9 @@ public class MotherToFemale__CC_134 extends GenericStatelessSearchActor{
 		name2explorer.put("edge_explorer_4", edge_explorer_4);
 		nac = new NACQueryChecker(this, 0, "MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_125", name2actor.get("MotherToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_125"), 2);
 		name2explorer.put("nac", nac);
-		nac_0 = new NACQueryChecker(this, 1, "MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_128", name2actor.get("MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_128"), 2);
+		nac_0 = new NACQueryChecker(this, 1, "MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_128", name2actor.get("MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_128"), 2);
 		name2explorer.put("nac_0", nac_0);
-		nac_1 = new NACQueryChecker(this, 2, "MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_131", name2actor.get("MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_131"), 2);
+		nac_1 = new NACQueryChecker(this, 2, "MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_131", name2actor.get("MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_131"), 2);
 		name2explorer.put("nac_1", nac_1);
 		disjoint_explorer_1 = new DisjointExplorer(this, observedResources, 2, (o) -> o instanceof FamiliesSmartEMF.FamilyMember, true);
 		name2explorer.put("disjoint_explorer_1", disjoint_explorer_1);
@@ -223,7 +223,7 @@ public class MotherToFemale__CC_134 extends GenericStatelessSearchActor{
 					}
 				}
 				break;
-			case "MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_128": 
+			case "MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_128": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -242,7 +242,7 @@ public class MotherToFemale__CC_134 extends GenericStatelessSearchActor{
 					}
 				}
 				break;
-			case "MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_131": 
+			case "MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_131": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -359,7 +359,7 @@ public class MotherToFemale__CC_134 extends GenericStatelessSearchActor{
 					}
 				}
 				break;
-			case "MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_128": 
+			case "MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_128": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -378,7 +378,7 @@ public class MotherToFemale__CC_134 extends GenericStatelessSearchActor{
 					}
 				}
 				break;
-			case "MotherToFemale_fm_daughters_3_incoming_SOURCE__FILTER_NAC_SRC_131": 
+			case "MotherToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_131": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -531,12 +531,6 @@ public class MotherToFemale__CC_134 extends GenericStatelessSearchActor{
 		}
 		
 		Object obj = message.node;
-		if(obj instanceof PersonsSmartEMF.Female) {
-			var match_4 = new StatelessDeltaMatch(initialMessage, "MotherToFemale__CC_134", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
-			match_4.registerSignatureIndex(4);
-			match_4.getNodes()[4] = obj;
-			start(edge_explorer_3_2_orchestration, StatelessInputType.ATTRIBUTE, match_4);
-		}
 		if(obj instanceof FamiliesSmartEMF.FamilyMember) {
 			var match_2 = new StatelessDeltaMatch(initialMessage, "MotherToFemale__CC_134", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
 			match_2.registerSignatureIndex(2);
@@ -548,6 +542,12 @@ public class MotherToFemale__CC_134 extends GenericStatelessSearchActor{
 			match_1.registerSignatureIndex(1);
 			match_1.getNodes()[1] = obj;
 			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_1);
+		}
+		if(obj instanceof PersonsSmartEMF.Female) {
+			var match_4 = new StatelessDeltaMatch(initialMessage, "MotherToFemale__CC_134", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
+			match_4.registerSignatureIndex(4);
+			match_4.getNodes()[4] = obj;
+			start(edge_explorer_3_2_orchestration, StatelessInputType.ATTRIBUTE, match_4);
 		}
 		
 		message.initialMessage.decrement();

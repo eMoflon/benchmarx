@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pivot:Pivot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Persons="platform:/plugin/Persons/model/Persons.ecore" xmlns:pivot="http://pivot" xsi:schemaLocation="platform:/plugin/Persons/model/Persons.ecore ../Persons/model/Persons.ecore http://pivot ../pivot/model/pivot.ecore" name="testCreateMalePersonAsParent2" PARENT_TO_CHILD="true">
+  <familyModel href="testCreateMalePersonAsParent2Fam.xmi#/"/>
+  <personModel href="testCreateMalePersonAsParent2Per.xmi#/"/>
+  <post name="Post_CreateMalePersonAsParent2">
+    <output href="Expected/PersonOneMaleMember.xmi#/"/>
+    <input href="Expected/OneFamilyWithOneFamilyMember.xmi#/"/>
+  </post>
+  <mapping>
+    <mMap href="testCreateMalePersonAsParent2Fam.xmi#//@families.0/@father"/>
+    <pMap xsi:type="Persons:Male" href="testCreateMalePersonAsParent2Per.xmi#//@persons.0"/>
+  </mapping>
+</pivot:Pivot>

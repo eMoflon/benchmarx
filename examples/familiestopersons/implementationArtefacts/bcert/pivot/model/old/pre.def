@@ -1,0 +1,44 @@
+FamiliesOf(rr) ==
+    families~[{rr}] ;
+
+  FatherName(ff) ==
+    Families_FamilyMember_name[
+      dom(theFather) /\ familyOf~[{ff}]
+    ] ;
+
+  MotherName(ff) ==
+    Families_FamilyMember_name[
+      dom(theMother) /\ familyOf~[{ff}]
+    ] ;
+
+  SonNames(ff) ==
+    Families_FamilyMember_name[
+      dom(theSons) /\ familyOf~[{ff}]
+    ] ;
+
+  DaughterNames(ff) ==
+    Families_FamilyMember_name[
+      dom(theDaughters) /\ familyOf~[{ff}]
+    ] ;
+
+  SameFamily(f1,f2) ==
+    (
+      Families_Family_name(f1) = Families_Family_name(f2) &
+      FatherName(f1) = FatherName(f2) &
+      MotherName(f1) = MotherName(f2) &
+      SonNames(f1) = SonNames(f2) &
+      DaughterNames(f1) = DaughterNames(f2)
+    ) ;
+
+  IncludedFamilies(rrExpected, rrActual) ==
+    bool(
+      !fe.(fe : FamiliesOf(rrExpected) =>
+        #(fa).(fa : FamiliesOf(rrActual) & SameFamily(fe,fa))
+      )
+    ) ;
+
+  SameFamilies(rrExpected, rrActual) ==
+    bool(
+      card(FamiliesOf(rrExpected)) = card(FamiliesOf(rrActual)) &
+      IncludedFamilies(rrExpected, rrActual)
+    )

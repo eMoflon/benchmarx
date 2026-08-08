@@ -19,8 +19,8 @@ import FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGFactory;
 import FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage;
 
 import FamiliesSmartEMF.FamiliesSmartEMFPackage;
-import TGGRuntimeModel.TGGRuntimeModelPackage;
 import PersonsSmartEMF.PersonsSmartEMFPackage;
+import TGGRuntimeModel.TGGRuntimeModelPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -596,8 +596,8 @@ public class FamiliesToPersonsIBeXTGGPackageImpl extends SmartPackageImpl
 		
 		// Obtain other dependent packages
 		FamiliesSmartEMFPackage theFamiliesSmartEMFPackagePackage = FamiliesSmartEMFPackage.eINSTANCE;
-		TGGRuntimeModelPackage theTGGRuntimeModelPackagePackage = TGGRuntimeModelPackage.eINSTANCE;
 		PersonsSmartEMFPackage thePersonsSmartEMFPackagePackage = PersonsSmartEMFPackage.eINSTANCE;
+		TGGRuntimeModelPackage theTGGRuntimeModelPackagePackage = TGGRuntimeModelPackage.eINSTANCE;
 
 		// Create type parameters
 

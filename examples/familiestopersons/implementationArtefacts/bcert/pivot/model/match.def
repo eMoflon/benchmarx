@@ -1,0 +1,49 @@
+DEFINITIONS
+
+FamiliesOf(rr) == families~[{rr}] ;
+
+PersonsOf(rr) == persons~[{rr}] ;
+
+FatherName(ff) ==
+  Families_FamilyMember_name[dom(theFather) /\ familyOf~[{ff}]] ; 
+
+MotherName(ff) ==
+  Families_FamilyMember_name[dom(theMother) /\ familyOf~[{ff}]] ;
+
+SonNames(ff) ==
+  Families_FamilyMember_name[dom(theSons) /\ familyOf~[{ff}]] ;
+
+DaughterNames(ff) ==
+  Families_FamilyMember_name[dom(theDaughters) /\ familyOf~[{ff}]] ;
+
+SameFamily(f1,f2) ==
+  (
+    Families_Family_name(f1) = Families_Family_name(f2) &
+    FatherName(f1) = FatherName(f2) &
+    MotherName(f1) = MotherName(f2) &
+    SonNames(f1) = SonNames(f2) &
+    DaughterNames(f1) = DaughterNames(f2)
+  ) ;
+
+SameFamilies(rExpected,rActual) ==
+  bool(
+    card(FamiliesOf(rExpected)) = card(FamiliesOf(rActual)) &
+    !fe.(
+      fe : FamiliesOf(rExpected)
+      =>
+      #(fa).(fa : FamiliesOf(rActual) & SameFamily(fe,fa))
+    )
+  ) ;
+
+MaleNames(rr) ==
+  Persons_Person_name[Male /\ PersonsOf(rr)] ;
+
+FemaleNames(rr) ==
+  Persons_Person_name[Female /\ PersonsOf(rr)] ;
+
+SamePersons(rExpected,rActual) ==
+  bool(
+    card(PersonsOf(rExpected)) = card(PersonsOf(rActual)) &
+    MaleNames(rExpected) = MaleNames(rActual) &
+    FemaleNames(rExpected) = FemaleNames(rActual)
+  ) ;
