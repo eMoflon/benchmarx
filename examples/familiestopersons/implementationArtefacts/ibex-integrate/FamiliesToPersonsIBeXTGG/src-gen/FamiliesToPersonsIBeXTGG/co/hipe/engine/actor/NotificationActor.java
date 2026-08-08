@@ -20,24 +20,10 @@ public class NotificationActor extends GenericNotificationActor {
 	
 	@Override
 	protected void initializeExploration() {
-		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getMale(), obj -> {
+		explorationConsumer.put(TGGRuntimeModel.impl.TGGRuntimeModelPackageImpl.eINSTANCE.getProtocol(), obj -> {
 			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
+			TGGRuntimeModel.Protocol _protocol = (TGGRuntimeModel.Protocol) obj;
+			children.addAll(_protocol.getSteps());
 			return children;
 		});
 		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister(), obj -> {
@@ -46,17 +32,39 @@ public class NotificationActor extends GenericNotificationActor {
 			children.addAll(_personregister.getPersons());
 			return children;
 		});
-		explorationConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			FamiliesSmartEMF.FamilyRegister _familyregister = (FamiliesSmartEMF.FamilyRegister) obj;
-			children.addAll(_familyregister.getFamilies());
-			return children;
-		});
-		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale(), obj -> {
+		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyToRegisterCorr(), obj -> {
 			Collection<EObject> children = new LinkedList<>();
 			return children;
 		});
-		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_CreateFamily(), obj -> {
+		explorationConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyMember(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(TGGRuntimeModel.impl.TGGRuntimeModelPackageImpl.eINSTANCE.getCorrespondence(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_Families2Persons(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale(), obj -> {
 			Collection<EObject> children = new LinkedList<>();
 			return children;
 		});
@@ -64,8 +72,40 @@ public class NotificationActor extends GenericNotificationActor {
 			Collection<EObject> children = new LinkedList<>();
 			return children;
 		});
-		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonOfExistingFamilyToMale(), obj -> {
+		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getFemale(), obj -> {
 			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamilyRegister(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			FamiliesSmartEMF.FamilyRegister _familyregister = (FamiliesSmartEMF.FamilyRegister) obj;
+			children.addAll(_familyregister.getFamilies());
+			return children;
+		});
+		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getRegisterToRegisterCorr(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_CreateFamily(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(TGGRuntimeModel.impl.TGGRuntimeModelPackageImpl.eINSTANCE.getTGGRuleApplication(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getMale(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			return children;
+		});
+		explorationConsumer.put(TGGRuntimeModel.impl.TGGRuntimeModelPackageImpl.eINSTANCE.getTempContainer(), obj -> {
+			Collection<EObject> children = new LinkedList<>();
+			TGGRuntimeModel.TempContainer _tempcontainer = (TGGRuntimeModel.TempContainer) obj;
+			children.addAll(_tempcontainer.getObjects());
 			return children;
 		});
 		explorationConsumer.put(TGGRuntimeModel.impl.TGGRuntimeModelPackageImpl.eINSTANCE.getCorrespondenceSet(), obj -> {
@@ -74,36 +114,8 @@ public class NotificationActor extends GenericNotificationActor {
 			children.addAll(_correspondenceset.getCorrespondences());
 			return children;
 		});
-		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getFemale(), obj -> {
+		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_SonToMale(), obj -> {
 			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(TGGRuntimeModel.impl.TGGRuntimeModelPackageImpl.eINSTANCE.getTGGRuleApplication(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPerson(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_DaughterToFemale(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(TGGRuntimeModel.impl.TGGRuntimeModelPackageImpl.eINSTANCE.getProtocol(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			TGGRuntimeModel.Protocol _protocol = (TGGRuntimeModel.Protocol) obj;
-			children.addAll(_protocol.getSteps());
-			return children;
-		});
-		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyToRegisterCorr(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(TGGRuntimeModel.impl.TGGRuntimeModelPackageImpl.eINSTANCE.getTempContainer(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			TGGRuntimeModel.TempContainer _tempcontainer = (TGGRuntimeModel.TempContainer) obj;
-			children.addAll(_tempcontainer.getObjects());
 			return children;
 		});
 		explorationConsumer.put(FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily(), obj -> {
@@ -117,23 +129,11 @@ public class NotificationActor extends GenericNotificationActor {
 			children.addAll(_family.getDaughters());
 			return children;
 		});
-		explorationConsumer.put(TGGRuntimeModel.impl.TGGRuntimeModelPackageImpl.eINSTANCE.getCorrespondence(), obj -> {
+		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherOfExistingFamilyToFemale(), obj -> {
 			Collection<EObject> children = new LinkedList<>();
 			return children;
 		});
-		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherOfExistingFamilyToMale(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_FatherToMale(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr(), obj -> {
-			Collection<EObject> children = new LinkedList<>();
-			return children;
-		});
-		explorationConsumer.put(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getProtocolNode_MotherToFemale(), obj -> {
+		explorationConsumer.put(PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPerson(), obj -> {
 			Collection<EObject> children = new LinkedList<>();
 			return children;
 		});

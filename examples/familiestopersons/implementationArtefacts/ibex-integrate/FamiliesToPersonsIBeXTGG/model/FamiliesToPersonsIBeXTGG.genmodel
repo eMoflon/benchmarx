@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="\FamiliesToPersonsIBeXTGG/gen/" modelPluginID="FamiliesToPersonsIBeXTGG"
     modelName="FamiliesToPersonsIBeXTGG" generateSchema="true" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" copyrightFields="false"
-    usedGenPackages="../../FamiliesSmartEMF/model/FamiliesSmartEMF.genmodel#//FamiliesSmartEMF ../../FamiliesSmartEMF/model/FamiliesSmartEMF.genmodel#//FamiliesSmartEMF ../../PersonsSmartEMF/model/PersonsSmartEMF.genmodel#//PersonsSmartEMF ../../PersonsSmartEMF/model/PersonsSmartEMF.genmodel#//PersonsSmartEMF platform:/plugin/org.emoflon.ibex.tgg.runtimemodel/model/TGGRuntimeModel.genmodel#//TGGRuntimeModel platform:/plugin/org.emoflon.ibex.tgg.runtimemodel/model/TGGRuntimeModel.genmodel#//TGGRuntimeModel"
+    usedGenPackages="platform:/plugin/org.emoflon.ibex.tgg.runtimemodel/model/TGGRuntimeModel.genmodel#//TGGRuntimeModel ../../PersonsSmartEMF/model/PersonsSmartEMF.genmodel#//PersonsSmartEMF ../../FamiliesSmartEMF/model/FamiliesSmartEMF.genmodel#//FamiliesSmartEMF platform:/plugin/org.emoflon.ibex.tgg.runtimemodel/model/TGGRuntimeModel.genmodel#//TGGRuntimeModel ../../FamiliesSmartEMF/model/FamiliesSmartEMF.genmodel#//FamiliesSmartEMF ../../PersonsSmartEMF/model/PersonsSmartEMF.genmodel#//PersonsSmartEMF"
     operationReflection="true" importOrganizing="true">
   <foreignModel>FamiliesToPersonsIBeXTGG.ecore</foreignModel>
   <genPackages prefix="FamiliesToPersonsIBeXTGG" disposableProviderFactory="true"

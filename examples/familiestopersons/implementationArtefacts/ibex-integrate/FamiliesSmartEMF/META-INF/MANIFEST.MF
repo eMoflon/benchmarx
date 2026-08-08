@@ -12,8 +12,7 @@ Require-Bundle: org.eclipse.emf.ecore,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
  org.junit,
- org.emoflon.smartemf,
- org.apache.commons.lang3;bundle-version="3.16.0"
+ org.emoflon.smartemf
 Bundle-ManifestVersion: 2
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: lib/org.emoflon.smartemf_1.0.0.202406152335.jar,

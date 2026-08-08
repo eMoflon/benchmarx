@@ -537,17 +537,17 @@ public class SonToMale__CC_312 extends GenericStatelessSearchActor{
 			match_4.getNodes()[4] = obj;
 			start(edge_explorer_4_2_orchestration, StatelessInputType.ATTRIBUTE, match_4);
 		}
-		if(obj instanceof FamiliesSmartEMF.FamilyMember) {
-			var match_2 = new StatelessDeltaMatch(initialMessage, "SonToMale__CC_312", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
-			match_2.registerSignatureIndex(2);
-			match_2.getNodes()[2] = obj;
-			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_2);
-		}
 		if(obj instanceof FamiliesSmartEMF.Family) {
 			var match_1 = new StatelessDeltaMatch(initialMessage, "SonToMale__CC_312", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
 			match_1.registerSignatureIndex(1);
 			match_1.getNodes()[1] = obj;
 			start(edge_explorer_1_orchestration, StatelessInputType.ATTRIBUTE, match_1);
+		}
+		if(obj instanceof FamiliesSmartEMF.FamilyMember) {
+			var match_2 = new StatelessDeltaMatch(initialMessage, "SonToMale__CC_312", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
+			match_2.registerSignatureIndex(2);
+			match_2.getNodes()[2] = obj;
+			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_2);
 		}
 		
 		message.initialMessage.decrement();

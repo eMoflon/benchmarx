@@ -57,10 +57,10 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 	SearchOrchestration edge_explorer_2_orchestration;
 	SearchOrchestration edge_explorer_3_0_orchestration;
 	SearchOrchestration edge_explorer_3_1_orchestration;
+	SearchOrchestration edge_explorer_3_2_orchestration;
 	SearchOrchestration edge_explorer_4_0_orchestration;
 	SearchOrchestration edge_explorer_4_1_orchestration;
 	SearchOrchestration edge_explorer_5_0_orchestration;
-	SearchOrchestration edge_explorer_5_1_orchestration;
 	
 	@Override
 	protected void initializeSearchComponents() {
@@ -74,11 +74,11 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 						edge_explorer = new DeltaAwareEdgeExplorer(this, 2, 1, edge_explorer_methods, FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr_Source());
 		name2explorer.put("edge_explorer", edge_explorer);
 		EdgeLookupMethods edge_explorer_3_methods = new EdgeLookupMethods();
-						edge_explorer_3_methods.checkSourceType = (o) -> o instanceof FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr;
+						edge_explorer_3_methods.checkSourceType = (o) -> o instanceof PersonsSmartEMF.PersonRegister;
 						edge_explorer_3_methods.checkTargetType = (o) -> o instanceof PersonsSmartEMF.Male;
-						edge_explorer_3_methods.unique_lookup = (o) -> {EObject result = ((FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) o).getTarget(); return (result instanceof PersonsSmartEMF.Male ? result : null);};
-						edge_explorer_3_methods.multi_opposite_lookup = (o) -> (Collection<? extends Object>) ((PersonsSmartEMF.Person) o).eGet(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr_Target().getEOpposite());
-						edge_explorer_3 = new DeltaAwareEdgeExplorer(this, 2, 4, edge_explorer_3_methods, FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr_Target());
+						edge_explorer_3_methods.multi_lookup = (o) -> ((PersonsSmartEMF.PersonRegister) o).getPersons().stream().filter(obj -> obj instanceof PersonsSmartEMF.Male).collect(Collectors.toList());
+						edge_explorer_3_methods.unique_opposite_lookup = (o) -> ((PersonsSmartEMF.Person) o).getPersonsInverse();
+						edge_explorer_3 = new DeltaAwareEdgeExplorer(this, 3, 4, edge_explorer_3_methods, PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister_Persons());
 		name2explorer.put("edge_explorer_3", edge_explorer_3);
 		EdgeLookupMethods edge_explorer_4_methods = new EdgeLookupMethods();
 						edge_explorer_4_methods.checkSourceType = (o) -> o instanceof FamiliesSmartEMF.Family;
@@ -88,11 +88,11 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 						edge_explorer_4 = new DeltaAwareEdgeExplorer(this, 0, 1, edge_explorer_4_methods, FamiliesSmartEMF.FamiliesSmartEMFPackage.eINSTANCE.getFamily_Father());
 		name2explorer.put("edge_explorer_4", edge_explorer_4);
 		EdgeLookupMethods edge_explorer_5_methods = new EdgeLookupMethods();
-						edge_explorer_5_methods.checkSourceType = (o) -> o instanceof PersonsSmartEMF.PersonRegister;
+						edge_explorer_5_methods.checkSourceType = (o) -> o instanceof FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr;
 						edge_explorer_5_methods.checkTargetType = (o) -> o instanceof PersonsSmartEMF.Male;
-						edge_explorer_5_methods.multi_lookup = (o) -> ((PersonsSmartEMF.PersonRegister) o).getPersons().stream().filter(obj -> obj instanceof PersonsSmartEMF.Male).collect(Collectors.toList());
-						edge_explorer_5_methods.unique_opposite_lookup = (o) -> ((PersonsSmartEMF.Person) o).getPersonsInverse();
-						edge_explorer_5 = new DeltaAwareEdgeExplorer(this, 3, 4, edge_explorer_5_methods, PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister_Persons());
+						edge_explorer_5_methods.unique_lookup = (o) -> {EObject result = ((FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr) o).getTarget(); return (result instanceof PersonsSmartEMF.Male ? result : null);};
+						edge_explorer_5_methods.multi_opposite_lookup = (o) -> (Collection<? extends Object>) ((PersonsSmartEMF.Person) o).eGet(FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr_Target().getEOpposite());
+						edge_explorer_5 = new DeltaAwareEdgeExplorer(this, 2, 4, edge_explorer_5_methods, FamiliesToPersonsIBeXTGG.FamiliesToPersonsIBeXTGGPackage.eINSTANCE.getFamilyMemberToPersonCorr_Target());
 		name2explorer.put("edge_explorer_5", edge_explorer_5);
 		disjoint_explorer_3 = new DisjointExplorer(this, observedResources, 4, (o) -> o instanceof PersonsSmartEMF.Male, true);
 		name2explorer.put("disjoint_explorer_3", disjoint_explorer_3);
@@ -105,10 +105,10 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 		edge_explorer_2_orchestration = initializeOrchestration(node.getOrchestrations().get(2).getPlan());
 		edge_explorer_3_0_orchestration = initializeOrchestration(node.getOrchestrations().get(3).getPlan());
 		edge_explorer_3_1_orchestration = initializeOrchestration(node.getOrchestrations().get(4).getPlan());
-		edge_explorer_4_0_orchestration = initializeOrchestration(node.getOrchestrations().get(5).getPlan());
-		edge_explorer_4_1_orchestration = initializeOrchestration(node.getOrchestrations().get(6).getPlan());
-		edge_explorer_5_0_orchestration = initializeOrchestration(node.getOrchestrations().get(7).getPlan());
-		edge_explorer_5_1_orchestration = initializeOrchestration(node.getOrchestrations().get(8).getPlan());
+		edge_explorer_3_2_orchestration = initializeOrchestration(node.getOrchestrations().get(5).getPlan());
+		edge_explorer_4_0_orchestration = initializeOrchestration(node.getOrchestrations().get(6).getPlan());
+		edge_explorer_4_1_orchestration = initializeOrchestration(node.getOrchestrations().get(7).getPlan());
+		edge_explorer_5_0_orchestration = initializeOrchestration(node.getOrchestrations().get(8).getPlan());
 		
 		localNodeOrchestrations = new SearchOrchestration[1];
 		localNodeOrchestrations[0] = initializeOrchestration(node.getLocalNodeOrchestration().get(0).getPlan());
@@ -179,7 +179,7 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 						match_3.registerSignatureIndex(3);
 						if(options.trackMatchingProcess)
 							match_3.registerDelta(UsingDeltaMode.CREATE, objs[0]);
-						start(edge_explorer_5_1_orchestration, StatelessInputType.OBJECT, match_3);
+						start(edge_explorer_3_1_orchestration, StatelessInputType.OBJECT, match_3);
 					}
 				}
 				break;
@@ -192,7 +192,7 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 						match_4.registerSignatureIndex(4);
 						if(options.trackMatchingProcess)
 							match_4.registerDelta(UsingDeltaMode.CREATE, objs[0]);
-						start(edge_explorer_3_1_orchestration, StatelessInputType.OBJECT, match_4);
+						start(edge_explorer_3_2_orchestration, StatelessInputType.OBJECT, match_4);
 					}
 				}
 				break;
@@ -258,7 +258,7 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 						match_3.registerSignatureIndex(3);
 						if(options.trackMatchingProcess)
 							match_3.registerDelta(UsingDeltaMode.DELETE, objs[0]);
-						start(edge_explorer_5_1_orchestration, StatelessInputType.OBJECT, match_3);
+						start(edge_explorer_3_1_orchestration, StatelessInputType.OBJECT, match_3);
 					}
 				}
 				break;
@@ -271,7 +271,7 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 						match_4.registerSignatureIndex(4);
 						if(options.trackMatchingProcess)
 							match_4.registerDelta(UsingDeltaMode.DELETE, objs[0]);
-						start(edge_explorer_3_1_orchestration, StatelessInputType.OBJECT, match_4);
+						start(edge_explorer_3_2_orchestration, StatelessInputType.OBJECT, match_4);
 					}
 				}
 				break;
@@ -303,7 +303,7 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 				}
 			}
 			break;
-		case "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person": 
+		case "PersonsSmartEMF.PersonRegister_persons_Person": 
 			{
 				if(msg.target instanceof PersonsSmartEMF.Male) 
 				{
@@ -312,11 +312,11 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 						
 					var match = new StatelessDeltaMatch(msg, "FatherOfExistingFamilyToMale__CO_21", numberOfNodes, 0, UsingDeltaMode.CREATE);
 					Object[] objs = match.getNodes();
-					objs[2] = msg.source;
+					objs[3] = msg.source;
 					objs[4] = msg.target;
 					if(options.trackMatchingProcess)
 						match.registerDelta(UsingDeltaMode.CREATE, new ModelEdge(msg.source, msg.target, msg.refName));
-					match.registerSignatureEdge(2, 4);
+					match.registerSignatureEdge(3, 4);
 					start(edge_explorer_3_0_orchestration, StatelessInputType.EDGE, match);
 				}
 			}
@@ -338,7 +338,7 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 				}
 			}
 			break;
-		case "PersonsSmartEMF.PersonRegister_persons_Person": 
+		case "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person": 
 			{
 				if(msg.target instanceof PersonsSmartEMF.Male) 
 				{
@@ -347,11 +347,11 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 						
 					var match = new StatelessDeltaMatch(msg, "FatherOfExistingFamilyToMale__CO_21", numberOfNodes, 0, UsingDeltaMode.CREATE);
 					Object[] objs = match.getNodes();
-					objs[3] = msg.source;
+					objs[2] = msg.source;
 					objs[4] = msg.target;
 					if(options.trackMatchingProcess)
 						match.registerDelta(UsingDeltaMode.CREATE, new ModelEdge(msg.source, msg.target, msg.refName));
-					match.registerSignatureEdge(3, 4);
+					match.registerSignatureEdge(2, 4);
 					start(edge_explorer_5_0_orchestration, StatelessInputType.EDGE, match);
 				}
 			}
@@ -381,7 +381,7 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 			start(edge_explorer_0_orchestration, StatelessInputType.EDGE, match);
 		}
 		break;
-			case "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person": 
+			case "PersonsSmartEMF.PersonRegister_persons_Person": 
 		if(msg.target instanceof PersonsSmartEMF.Male) 
 		{
 			if(notificationIndex.isDeleted(msg.source) || notificationIndex.isDeleted(msg.target))
@@ -389,11 +389,11 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 							
 			var match = new StatelessDeltaMatch(msg, "FatherOfExistingFamilyToMale__CO_21", numberOfNodes, 0, UsingDeltaMode.DELETE);
 			Object[] objs = match.getNodes();
-			objs[2] = msg.source;
+			objs[3] = msg.source;
 			objs[4] = msg.target;
 			if(options.trackMatchingProcess)
 				match.registerDelta(UsingDeltaMode.DELETE, new ModelEdge(msg.source, msg.target, msg.refName));
-			match.registerSignatureEdge(2, 4);
+			match.registerSignatureEdge(3, 4);
 			start(edge_explorer_3_0_orchestration, StatelessInputType.EDGE, match);
 		}
 		break;
@@ -412,7 +412,7 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 			start(edge_explorer_4_0_orchestration, StatelessInputType.EDGE, match);
 		}
 		break;
-			case "PersonsSmartEMF.PersonRegister_persons_Person": 
+			case "FamiliesToPersonsIBeXTGG.FamilyMemberToPersonCorr_target_Person": 
 		if(msg.target instanceof PersonsSmartEMF.Male) 
 		{
 			if(notificationIndex.isDeleted(msg.source) || notificationIndex.isDeleted(msg.target))
@@ -420,11 +420,11 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 							
 			var match = new StatelessDeltaMatch(msg, "FatherOfExistingFamilyToMale__CO_21", numberOfNodes, 0, UsingDeltaMode.DELETE);
 			Object[] objs = match.getNodes();
-			objs[3] = msg.source;
+			objs[2] = msg.source;
 			objs[4] = msg.target;
 			if(options.trackMatchingProcess)
 				match.registerDelta(UsingDeltaMode.DELETE, new ModelEdge(msg.source, msg.target, msg.refName));
-			match.registerSignatureEdge(3, 4);
+			match.registerSignatureEdge(2, 4);
 			start(edge_explorer_5_0_orchestration, StatelessInputType.EDGE, match);
 		}
 		break;
@@ -447,19 +447,19 @@ public class FatherOfExistingFamilyToMale__CO_21 extends GenericStatelessSearchA
 			var match_4 = new StatelessDeltaMatch(initialMessage, "FatherOfExistingFamilyToMale__CO_21", numberOfNodes, 0, UsingDeltaMode.ATTRIBUTE);
 			match_4.registerSignatureIndex(4);
 			match_4.getNodes()[4] = obj;
-			start(edge_explorer_3_1_orchestration, StatelessInputType.ATTRIBUTE, match_4);
-		}
-		if(obj instanceof FamiliesSmartEMF.FamilyMember) {
-			var match_1 = new StatelessDeltaMatch(initialMessage, "FatherOfExistingFamilyToMale__CO_21", numberOfNodes, 0, UsingDeltaMode.ATTRIBUTE);
-			match_1.registerSignatureIndex(1);
-			match_1.getNodes()[1] = obj;
-			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_1);
+			start(edge_explorer_3_2_orchestration, StatelessInputType.ATTRIBUTE, match_4);
 		}
 		if(obj instanceof FamiliesSmartEMF.Family) {
 			var match_0 = new StatelessDeltaMatch(initialMessage, "FatherOfExistingFamilyToMale__CO_21", numberOfNodes, 0, UsingDeltaMode.ATTRIBUTE);
 			match_0.registerSignatureIndex(0);
 			match_0.getNodes()[0] = obj;
 			start(edge_explorer_4_1_orchestration, StatelessInputType.ATTRIBUTE, match_0);
+		}
+		if(obj instanceof FamiliesSmartEMF.FamilyMember) {
+			var match_1 = new StatelessDeltaMatch(initialMessage, "FatherOfExistingFamilyToMale__CO_21", numberOfNodes, 0, UsingDeltaMode.ATTRIBUTE);
+			match_1.registerSignatureIndex(1);
+			match_1.getNodes()[1] = obj;
+			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_1);
 		}
 		
 		message.initialMessage.decrement();

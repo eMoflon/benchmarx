@@ -82,11 +82,11 @@ public class DaughterOfExistingFamilyToFemale__CC_37 extends GenericStatelessSea
 						edge_explorer_3_methods.unique_opposite_lookup = (o) -> ((PersonsSmartEMF.Person) o).getPersonsInverse();
 						edge_explorer_3 = new DeltaAwareEdgeExplorer(this, 2, 3, edge_explorer_3_methods, PersonsSmartEMF.PersonsSmartEMFPackage.eINSTANCE.getPersonRegister_Persons());
 		name2explorer.put("edge_explorer_3", edge_explorer_3);
-		nac = new NACQueryChecker(this, 0, "DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_14", name2actor.get("DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_14"), 1);
+		nac = new NACQueryChecker(this, 0, "DaughterOfExistingFamilyToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_14", name2actor.get("DaughterOfExistingFamilyToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_14"), 1);
 		name2explorer.put("nac", nac);
 		nac_0 = new NACQueryChecker(this, 1, "DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_17", name2actor.get("DaughterOfExistingFamilyToFemale_fm_sons_2_incoming_SOURCE__FILTER_NAC_SRC_17"), 1);
 		name2explorer.put("nac_0", nac_0);
-		nac_1 = new NACQueryChecker(this, 2, "DaughterOfExistingFamilyToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_20", name2actor.get("DaughterOfExistingFamilyToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_20"), 1);
+		nac_1 = new NACQueryChecker(this, 2, "DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_20", name2actor.get("DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_20"), 1);
 		name2explorer.put("nac_1", nac_1);
 		disjoint_explorer_0 = new DisjointExplorer(this, observedResources, 1, (o) -> o instanceof FamiliesSmartEMF.FamilyMember, true);
 		name2explorer.put("disjoint_explorer_0", disjoint_explorer_0);
@@ -179,7 +179,7 @@ public class DaughterOfExistingFamilyToFemale__CC_37 extends GenericStatelessSea
 					}
 				}
 				break;
-			case "DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_14": 
+			case "DaughterOfExistingFamilyToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_14": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -217,7 +217,7 @@ public class DaughterOfExistingFamilyToFemale__CC_37 extends GenericStatelessSea
 					}
 				}
 				break;
-			case "DaughterOfExistingFamilyToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_20": 
+			case "DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_20": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -302,7 +302,7 @@ public class DaughterOfExistingFamilyToFemale__CC_37 extends GenericStatelessSea
 					}
 				}
 				break;
-			case "DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_14": 
+			case "DaughterOfExistingFamilyToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_14": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -340,7 +340,7 @@ public class DaughterOfExistingFamilyToFemale__CC_37 extends GenericStatelessSea
 					}
 				}
 				break;
-			case "DaughterOfExistingFamilyToFemale_fm_mother_1_incoming_SOURCE__FILTER_NAC_SRC_20": 
+			case "DaughterOfExistingFamilyToFemale_fm_father_0_incoming_SOURCE__FILTER_NAC_SRC_20": 
 				{
 					var inputMatch = (StatelessDeltaMatch) match;
 					{
@@ -461,11 +461,11 @@ public class DaughterOfExistingFamilyToFemale__CC_37 extends GenericStatelessSea
 		}
 		
 		Object obj = message.node;
-		if(obj instanceof FamiliesSmartEMF.FamilyMember) {
-			var match_1 = new StatelessDeltaMatch(initialMessage, "DaughterOfExistingFamilyToFemale__CC_37", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
-			match_1.registerSignatureIndex(1);
-			match_1.getNodes()[1] = obj;
-			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_1);
+		if(obj instanceof PersonsSmartEMF.Female) {
+			var match_3 = new StatelessDeltaMatch(initialMessage, "DaughterOfExistingFamilyToFemale__CC_37", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
+			match_3.registerSignatureIndex(3);
+			match_3.getNodes()[3] = obj;
+			start(edge_explorer_3_2_orchestration, StatelessInputType.ATTRIBUTE, match_3);
 		}
 		if(obj instanceof FamiliesSmartEMF.Family) {
 			var match_0 = new StatelessDeltaMatch(initialMessage, "DaughterOfExistingFamilyToFemale__CC_37", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
@@ -473,11 +473,11 @@ public class DaughterOfExistingFamilyToFemale__CC_37 extends GenericStatelessSea
 			match_0.getNodes()[0] = obj;
 			start(edge_explorer_1_orchestration, StatelessInputType.ATTRIBUTE, match_0);
 		}
-		if(obj instanceof PersonsSmartEMF.Female) {
-			var match_3 = new StatelessDeltaMatch(initialMessage, "DaughterOfExistingFamilyToFemale__CC_37", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
-			match_3.registerSignatureIndex(3);
-			match_3.getNodes()[3] = obj;
-			start(edge_explorer_3_2_orchestration, StatelessInputType.ATTRIBUTE, match_3);
+		if(obj instanceof FamiliesSmartEMF.FamilyMember) {
+			var match_1 = new StatelessDeltaMatch(initialMessage, "DaughterOfExistingFamilyToFemale__CC_37", numberOfNodes, 3, UsingDeltaMode.ATTRIBUTE);
+			match_1.registerSignatureIndex(1);
+			match_1.getNodes()[1] = obj;
+			start(edge_explorer_2_orchestration, StatelessInputType.ATTRIBUTE, match_1);
 		}
 		
 		message.initialMessage.decrement();
