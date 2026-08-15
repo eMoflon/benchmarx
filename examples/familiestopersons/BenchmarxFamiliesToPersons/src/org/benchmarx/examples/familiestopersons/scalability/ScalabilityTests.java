@@ -27,6 +27,8 @@ import org.benchmarx.examples.familiestopersons.testsuite.FamiliesToPersonsTestC
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
 import org.benchmarx.util.BenchmarxUtil;
+import org.benchmarx.examples.familiestopersons.categories.PerformanceTest;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.AfterParam;
@@ -36,6 +38,7 @@ import org.junit.runners.Parameterized.Parameters;
 import Families.FamilyRegister;
 import Persons.PersonRegister;
 
+@Category(PerformanceTest.class)
 @RunWith(Parameterized.class)
 public abstract class ScalabilityTests {
 	protected BXTool<FamilyRegister, PersonRegister, Decisions> tool;

@@ -660,12 +660,16 @@ ConcurrentMatchMemberPerson =
     aPerson : thePersons &
     aPerson /: dom(mapped) &
 
-    Persons_Person_name(aPerson) =
-      STRING_CONC([
-        Families_Family_name(familyOf(aMember)),
-        ", ",
-        Families_FamilyMember_name(aMember)
-      ]) &
+    (
+      Persons_Person_name(aPerson) =
+        STRING_CONC([
+          Families_Family_name(familyOf(aMember)),
+          ", ",
+          Families_FamilyMember_name(aMember)
+        ])
+      or
+      #(map).(map : Mapping & pMap(map) = aPerson & mMap(map) = aMember)
+    ) &
 
     aMapping : MAPPING &
     aMapping /: Mapping &
@@ -675,7 +679,8 @@ ConcurrentMatchMemberPerson =
     Mapping := Mapping \/ {aMapping} ||
     mapping := mapping <+ {aMapping |-> pvtRoot} ||
     mMap := mMap <+ {aMapping |-> aMember} ||
-    pMap := pMap <+ {aMapping |-> aPerson}
+    pMap := pMap <+ {aMapping |-> aPerson} ||
+    Families_FamilyMember_name := Families_FamilyMember_name <+ {aMember |-> PersonMemberName(aPerson)}
   END;
 
 ConcurrentDeleteMatched =
@@ -786,18 +791,120 @@ SetFamilyMemberName(aMember, newName) =
       Families_FamilyMember_name <+ {aMember |-> newName}
   END;
 
-SetBirthdayIfExists(aName, aBirthday) =
+SetFatherBirthdayIfExists(aFamilyName, aMemberName, aBirthday) =
   PRE
-    aName : STR1 &
+    aFamilyName : STR1 &
+    aMemberName : STR1 &
     aBirthday : STR1
   THEN
-    IF #pp.(pp : Person & pp : persons~[{prsRoot}] & Persons_Person_name(pp) = aName) THEN
-      ANY aPerson WHERE
-        aPerson : Person &
-        aPerson : persons~[{prsRoot}] &
-        Persons_Person_name(aPerson) = aName
+    IF #mm,map,pp.(mm : dom(theFather) &
+                   Families_Family_name(theFather(mm)) = aFamilyName &
+                   Families_FamilyMember_name(mm) = aMemberName &
+                   map : dom(mMap) &
+                   mMap(map) = mm &
+                   pp = pMap(map) &
+                   birthday(pp) = "DEFAULT") THEN
+      ANY mm,map,pp WHERE
+        mm : dom(theFather) &
+        Families_Family_name(theFather(mm)) = aFamilyName &
+        Families_FamilyMember_name(mm) = aMemberName &
+        map : dom(mMap) &
+        mMap(map) = mm &
+        pp = pMap(map) &
+        birthday(pp) = "DEFAULT"
       THEN
-        birthday := birthday <+ {aPerson |-> aBirthday}
+        birthday := birthday <+ {pp |-> aBirthday}
+      END
+    ELSE
+      skip
+    END
+  END;
+
+SetMotherBirthdayIfExists(aFamilyName, aMemberName, aBirthday) =
+  PRE
+    aFamilyName : STR1 &
+    aMemberName : STR1 &
+    aBirthday : STR1
+  THEN
+    IF #mm,map,pp.(mm : dom(theMother) &
+                   Families_Family_name(theMother(mm)) = aFamilyName &
+                   Families_FamilyMember_name(mm) = aMemberName &
+                   map : dom(mMap) &
+                   mMap(map) = mm &
+                   pp = pMap(map) &
+                   birthday(pp) = "DEFAULT") THEN
+      ANY mm,map,pp WHERE
+        mm : dom(theMother) &
+        Families_Family_name(theMother(mm)) = aFamilyName &
+        Families_FamilyMember_name(mm) = aMemberName &
+        map : dom(mMap) &
+        mMap(map) = mm &
+        pp = pMap(map) &
+        birthday(pp) = "DEFAULT"
+      THEN
+        birthday := birthday <+ {pp |-> aBirthday}
+      END
+    ELSE
+      skip
+    END
+  END;
+
+SetSonBirthdayIfExists(aFamilyName, aMemberName, aBirthday) =
+  PRE
+    aFamilyName : STR1 &
+    aMemberName : STR1 &
+    aBirthday : STR1
+  THEN
+    IF #mm,map,pp.(mm : dom(theSons) &
+                   Families_Family_name(theSons(mm)) = aFamilyName &
+                   Families_FamilyMember_name(mm) = aMemberName &
+                   map : dom(mMap) &
+                   mMap(map) = mm &
+                   pp = pMap(map) &
+                   birthday(pp) = "DEFAULT") THEN
+      VAR firstMM IN
+        firstMM :: {mm | mm : dom(theSons) &
+                         Families_Family_name(theSons(mm)) = aFamilyName &
+                         Families_FamilyMember_name(mm) = aMemberName &
+                         #map,pp.(map : dom(mMap) & mMap(map) = mm & pp = pMap(map) & birthday(pp) = "DEFAULT")} ;
+        ANY map,pp WHERE
+          map : dom(mMap) &
+          mMap(map) = firstMM &
+          pp = pMap(map)
+        THEN
+          birthday := birthday <+ {pp |-> aBirthday}
+        END
+      END
+    ELSE
+      skip
+    END
+  END;
+
+SetDaughterBirthdayIfExists(aFamilyName, aMemberName, aBirthday) =
+  PRE
+    aFamilyName : STR1 &
+    aMemberName : STR1 &
+    aBirthday : STR1
+  THEN
+    IF #mm,map,pp.(mm : dom(theDaughters) &
+                   Families_Family_name(theDaughters(mm)) = aFamilyName &
+                   Families_FamilyMember_name(mm) = aMemberName &
+                   map : dom(mMap) &
+                   mMap(map) = mm &
+                   pp = pMap(map) &
+                   birthday(pp) = "DEFAULT") THEN
+      VAR firstMM IN
+        firstMM :: {mm | mm : dom(theDaughters) &
+                         Families_Family_name(theDaughters(mm)) = aFamilyName &
+                         Families_FamilyMember_name(mm) = aMemberName &
+                         #map,pp.(map : dom(mMap) & mMap(map) = mm & pp = pMap(map) & birthday(pp) = "DEFAULT")} ;
+        ANY map,pp WHERE
+          map : dom(mMap) &
+          mMap(map) = firstMM &
+          pp = pMap(map)
+        THEN
+          birthday := birthday <+ {pp |-> aBirthday}
+        END
       END
     ELSE
       skip
@@ -887,6 +994,31 @@ DeleteFamilyMemberOnly(aMember) =
   PRE
     aMember : FamilyMember &
     aMember : theMembers
+  THEN
+    FamilyMember := FamilyMember - {aMember} ||
+    theFather := {aMember} <<| theFather ||
+    theMother := {aMember} <<| theMother ||
+    theSons := {aMember} <<| theSons ||
+    theDaughters := {aMember} <<| theDaughters ||
+    Families_FamilyMember_name := {aMember} <<| Families_FamilyMember_name ||
+    mMap := mMap |>> {aMember}
+  END ;
+
+  BackwardDeleteFamilyMember =
+  ANY aMember WHERE
+    aMember : theMembers &
+    aMember /: ran(mMap) &
+    not(#pp.(
+      pp : thePersons &
+      pp /: dom(mapped) &
+      (
+        Persons_Person_name(pp) = STRING_CONC([Families_Family_name(familyOf(aMember)), ", ", Families_FamilyMember_name(aMember)])
+        or
+        #(map).(map : Mapping & pMap(map) = pp & mMap(map) = aMember)
+      )
+    )) &
+    strategie(pvtRoot) = BWD &
+    sync(pvtRoot) = FALSE
   THEN
     FamilyMember := FamilyMember - {aMember} ||
     theFather := {aMember} <<| theFather ||
@@ -1130,6 +1262,25 @@ DaughterNEW(aFamilyName, aDaughterName) =
 		FamilyMember := FamilyMember \/ {aMember} ||
 		theDaughters := theDaughters \/ {aMember |-> aFamily} ||
 		Families_FamilyMember_name := Families_FamilyMember_name <+ {aMember |-> aDaughterName} 
+    END
+  END ;
+RegisterMapping(aPersonName, aFamilyName, aMemberName) =
+  PRE
+    aPersonName : STR1 &
+    aFamilyName : STR1 &
+    aMemberName : STR1
+  THEN
+    ANY aPerson, aMember, aMapping WHERE
+      aPerson : thePersons & Persons_Person_name(aPerson) = aPersonName &
+      aMember : theMembers & Families_FamilyMember_name(aMember) = aMemberName &
+      Families_Family_name(familyOf(aMember)) = aFamilyName &
+      aMapping : MAPPING & aMapping /: Mapping &
+      aPerson /: dom(mapped) & aMember /: ran(mMap)
+    THEN
+      Mapping := Mapping \/ {aMapping} ||
+      mapping := mapping <+ {aMapping |-> pvtRoot} ||
+      mMap := mMap <+ {aMapping |-> aMember} ||
+      pMap := pMap <+ {aMapping |-> aPerson}
     END
   END;
 

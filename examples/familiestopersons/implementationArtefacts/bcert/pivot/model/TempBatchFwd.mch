@@ -14,20 +14,7 @@ setupModel =
   THEN
     SetFWD ||
     SetUnSync ||
-    MakeDecision(TRUE, TRUE) ||
-    VAR aFamily IN
-      aFamily <-- FamilyNEW("Simpson") ;
-      AddFather(aFamily, "Homer") ;
-      AddMother(aFamily, "Marge") ;
-      AddSon(aFamily, "Bart") ;
-      AddDaughter(aFamily, "Lisa") ;
-      AddDaughter(aFamily, "Maggie") ;
-      aFamily <-- FamilyNEW("Flanders") ;
-      AddFather(aFamily, "Ned") ;
-      AddMother(aFamily, "Maude") ;
-      AddSon(aFamily, "Rod") ;
-      AddSon(aFamily, "Todd")
-    END
+    MakeDecision(TRUE, TRUE)
   END ;
 transformStep =
   PRE

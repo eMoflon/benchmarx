@@ -1,15 +1,23 @@
 package org.benchmarx.examples.familiestopersons.implementations.bcert;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.benchmarx.config.Configurator;
 import org.benchmarx.edit.IEdit;
@@ -118,6 +126,7 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 
 	@Override
 	public void initiateSynchronisationDialogue() {
+		resourceSet.getResources().clear();
 		defaultConfigurator = new Configurator<Decisions>()
 				.makeDecision(Decisions.PREFER_CREATING_PARENT_TO_CHILD, true)
 				.makeDecision(Decisions.PREFER_EXISTING_FAMILY_TO_NEW, true);
@@ -222,10 +231,13 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 	}
 
 	private void configurePivot() {
+		pivot.getMapping().removeIf(m -> m.getPMap() != null && m.getPMap().eContainer() == null);
+		pivot.getMapping().removeIf(m -> m.getMMap() != null && m.getMMap().eContainer() == null);
+
 		var preferExistingFamily = configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW);
 		var preferParent = configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD);
 
-		pivot.setFAMILY_TO_NEW(!preferExistingFamily);
+		pivot.setFAMILY_TO_NEW(preferExistingFamily);
 		pivot.setPARENT_TO_CHILD(preferParent);
 	}
 
@@ -257,7 +269,11 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 				var stmts = new ArrayList<String>();
 				stmts.add("SetFWD");
 				stmts.add("SetUnSync");
-				stmts.add("MakeDecision(TRUE, TRUE)");
+				var preferExistingFamilyFWD = (configurator != null) ? configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW) : true;
+				var preferParentFWD = (configurator != null) ? configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD) : true;
+				var familyToNewBValFWD = (preferExistingFamilyFWD) ? "TRUE" : "FALSE";
+				var parentToChildBValFWD = (preferParentFWD) ? "TRUE" : "FALSE";
+				stmts.add("MakeDecision(" + familyToNewBValFWD + ", " + parentToChildBValFWD + ")");
 
 				var familyStmts = new ArrayList<String>();
 				for (var fam : sourceReg.getFamilies()) {
@@ -281,6 +297,8 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 					stmts.add("VAR aFamily IN\n      " + String.join(" ;\n      ", familyStmts) + "\n    END");
 				}
 
+
+
 				writer.println("setupModel = ");
 				writer.println("  PRE");
 				writer.println("    Family = {}");
@@ -288,13 +306,55 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 				writer.println("    " + String.join(" ||\n    ", stmts));
 				writer.println("  END ;");
 
+				var birthdayStmts = new ArrayList<String>();
+				for (var person : getTargetModel().getPersons()) {
+					if (person.getBirthday() != null) {
+						var bdayStr = new SimpleDateFormat("yyyy-MM-dd").format(person.getBirthday());
+						if (!bdayStr.isEmpty() && !"0001-01-01".equals(bdayStr)) {
+							var mapping = pivot.getMapping().stream()
+									.filter(m -> m.getPMap() == person)
+									.findFirst().orElse(null);
+							if (mapping != null && mapping.getMMap() != null && mapping.getMMap().eContainer() instanceof Family) {
+								var fam = (Family) mapping.getMMap().eContainer();
+								var m = mapping.getMMap();
+								var featName = m.eContainingFeature().getName();
+								String opName;
+								if ("father".equalsIgnoreCase(featName)) {
+									opName = "SetFatherBirthdayIfExists";
+								} else if ("mother".equalsIgnoreCase(featName)) {
+									opName = "SetMotherBirthdayIfExists";
+								} else if ("sons".equalsIgnoreCase(featName)) {
+									opName = "SetSonBirthdayIfExists";
+								} else {
+									opName = "SetDaughterBirthdayIfExists";
+								}
+								birthdayStmts.add(opName + "(\"" + fam.getName() + "\", \"" + m.getName() + "\", \"" + bdayStr + "\")");
+							}
+						}
+					}
+				}
+
 				writer.println("transformStep =");
 				writer.println("  PRE");
 				writer.println("    Family /= {} &");
 				writer.println("    theMembers /<: ran(mMap)");
 				writer.println("  THEN");
 				writer.println("    Member2Person");
-				writer.println("  END");
+				if (!birthdayStmts.isEmpty()) {
+					writer.println("  END ;");
+					writer.println("setBirthdayStep =");
+					writer.println("  PRE");
+					writer.println("    Family /= {} &");
+					writer.println("    theMembers <: ran(mMap) &");
+					writer.println("    ran(birthday) = {\"DEFAULT\"}");
+					writer.println("  THEN");
+					writer.println("    BEGIN");
+					writer.println("      " + String.join(" ;\n      ", birthdayStmts));
+					writer.println("    END");
+					writer.println("  END");
+				} else {
+					writer.println("  END");
+				}
 				writer.println("END");
 			} else {
 				var targetReg = getTargetModel();
@@ -310,29 +370,115 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 				writer.println("  Reset");
 				writer.println("OPERATIONS");
 
+				var preferExistingFamilyBWD = (configurator != null) ? configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW) : true;
+				var preferParentBWD = (configurator != null) ? configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD) : true;
+				var familyToNewBValBWD = (preferExistingFamilyBWD) ? "TRUE" : "FALSE";
+				var parentToChildBValBWD = (preferParentBWD) ? "TRUE" : "FALSE";
+
 				var stmts = new ArrayList<String>();
-				stmts.add("SetBWD");
-				stmts.add("SetUnSync");
-				stmts.add("MakeDecision(TRUE, TRUE)");
+				var setupSeqStmts = new ArrayList<String>();
+				var mappedPersons = new HashSet<Person>();
+				Map<Family, String> familyMapBWD = new HashMap<>();
+				Map<Family, List<String>> familyStmtsBWD = new HashMap<>();
+				int famVarIndex = 1;
+
+				for (var fam : getSourceModel().getFamilies()) {
+					var famName = fam.getName();
+					String varName = familyMapBWD.get(fam);
+					if (varName == null) {
+						varName = "aFam" + (famVarIndex++);
+						familyMapBWD.put(fam, varName);
+						var famStmts = new ArrayList<String>();
+						familyStmtsBWD.put(fam, famStmts);
+						famStmts.add(varName + " <-- FamilyNEW(\"" + famName + "\")");
+
+						if (fam.getFather() != null && isMappedInPivot(fam.getFather())) {
+							famStmts.add("AddFather(" + varName + ", \"" + fam.getFather().getName() + "\")");
+						}
+						if (fam.getMother() != null && isMappedInPivot(fam.getMother())) {
+							famStmts.add("AddMother(" + varName + ", \"" + fam.getMother().getName() + "\")");
+						}
+						for (var son : fam.getSons()) {
+							if (isMappedInPivot(son)) {
+								famStmts.add("AddSon(" + varName + ", \"" + son.getName() + "\")");
+							}
+						}
+						for (var daughter : fam.getDaughters()) {
+							if (isMappedInPivot(daughter)) {
+								famStmts.add("AddDaughter(" + varName + ", \"" + daughter.getName() + "\")");
+							}
+						}
+					}
+				}
 
 				for (var person : targetReg.getPersons()) {
 					var isMale = (person instanceof Male);
-					stmts.add("PersonNEW(\"" + person.getName() + "\", " + (isMale ? "TRUE" : "FALSE") + ")");
+					setupSeqStmts.add("PersonNEW(\"" + person.getName() + "\", " + (isMale ? "TRUE" : "FALSE") + ")");
+					if (person.getBirthday() != null) {
+						var bdayStr = new SimpleDateFormat("yyyy-MM-dd").format(person.getBirthday());
+						if (!bdayStr.isEmpty() && !"0001-01-01".equals(bdayStr)) {
+							setupSeqStmts.add("SetBirthday(\"" + person.getName() + "\", \"" + bdayStr + "\")");
+						}
+					}
+					var mappingEntry = pivot.getMapping().stream().filter(m -> m.getPMap() == person && m.getMMap() != null).findFirst().orElse(null);
+					if (mappingEntry != null && mappingEntry.getMMap().eContainer() instanceof Family) {
+						var fam = (Family) mappingEntry.getMMap().eContainer();
+						var mem = mappingEntry.getMMap();
+						setupSeqStmts.add("RegisterMapping(\"" + person.getName() + "\", \"" + fam.getName() + "\", \"" + mem.getName() + "\")");
+					}
+				}
+
+				int insertIdx = 0;
+				for (var entry : familyStmtsBWD.entrySet()) {
+					var varName = familyMapBWD.get(entry.getKey());
+					var stmtsList = entry.getValue();
+					setupSeqStmts.add(insertIdx++, "VAR " + varName + " IN " + String.join(" ; ", stmtsList) + " END");
 				}
 
 				writer.println("setupModel = ");
 				writer.println("  PRE");
-				writer.println("    Person = {}");
+				writer.println("    pvtRoot /: dom(strategie)");
 				writer.println("  THEN");
-				writer.println("    " + String.join(" ||\n    ", stmts));
+				writer.println("    SetBWD ||");
+				writer.println("    SetUnSync ||");
+				writer.println("    MakeDecision(" + familyToNewBValBWD + ", " + parentToChildBValBWD + ")" + (setupSeqStmts.isEmpty() ? "" : " ||"));
+				if (!setupSeqStmts.isEmpty()) {
+					writer.println("    BEGIN");
+					writer.println("      " + String.join(" ;\n      ", setupSeqStmts));
+					writer.println("    END");
+				}
 				writer.println("  END ;");
 
 				writer.println("transformStep =");
 				writer.println("  PRE");
-				writer.println("    Person /= {} &");
-				writer.println("    thePersons /<: dom(mapped)");
+				writer.println("    (Person /= {} & thePersons /<: dom(mapped)) or");
+				writer.println("    (theMembers /<: ran(mMap))");
 				writer.println("  THEN");
 				writer.println("    SELECT");
+				writer.println("      #(mm,pp).(");
+				writer.println("        mm : theMembers & mm /: ran(mMap) &");
+				writer.println("        pp : thePersons & pp /: dom(mapped) &");
+				writer.println("        (");
+				writer.println("          Persons_Person_name(pp) = STRING_CONC([Families_Family_name(familyOf(mm)), \", \", Families_FamilyMember_name(mm)]) or");
+				writer.println("          #(map).(map : Mapping & pMap(map) = pp & mMap(map) = mm)");
+				writer.println("        )");
+				writer.println("      )");
+				writer.println("    THEN");
+				writer.println("      ConcurrentMatchMemberPerson");
+				writer.println("    WHEN");
+				writer.println("      #(mm).(");
+				writer.println("        mm : theMembers & mm /: ran(mMap) &");
+				writer.println("        not(#pp.(");
+				writer.println("          pp : thePersons & pp /: dom(mapped) &");
+				writer.println("          (");
+				writer.println("            Persons_Person_name(pp) = STRING_CONC([Families_Family_name(familyOf(mm)), \", \", Families_FamilyMember_name(mm)]) or");
+				writer.println("            #(map).(map : Mapping & pMap(map) = pp & mMap(map) = mm)");
+				writer.println("          )");
+				writer.println("        ))");
+				writer.println("      )");
+				writer.println("    THEN");
+				writer.println("      BackwardDeleteFamilyMember");
+				writer.println("    WHEN");
 				writer.println("      FAMILY_TO_NEW(pvtRoot) = TRUE &");
 				writer.println("      #(pp,ff).(");
 				writer.println("        pp : Person &");
@@ -358,9 +504,38 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 		return tempFile.getName();
 	}
 
-	private void executeNativeProB(String machineName) {
+	private static class BEntityComparator implements java.util.Comparator<String> {
+		@Override
+		public int compare(String s1, String s2) {
+			try {
+				var num1 = Integer.parseInt(s1.replaceAll("\\D+", ""));
+				var num2 = Integer.parseInt(s2.replaceAll("\\D+", ""));
+				return Integer.compare(num1, num2);
+			} catch (Exception e) {
+				return s1.compareTo(s2);
+			}
+		}
+	}
+
+	private static class ProBSolverResult {
+		Map<String, String> personNames = new java.util.TreeMap<>(new BEntityComparator());
+		Set<String> males = new HashSet<>();
+		Set<String> females = new HashSet<>();
+		Map<String, String> pMap = new HashMap<>();
+		Map<String, String> mMap = new HashMap<>();
+		Map<String, String> familyNames = new java.util.TreeMap<>(new BEntityComparator());
+		Map<String, String> memberNames = new java.util.TreeMap<>(new BEntityComparator());
+		Map<String, String> theFather = new HashMap<>();
+		Map<String, String> theMother = new HashMap<>();
+		Map<String, String> theSons = new HashMap<>();
+		Map<String, String> theDaughters = new HashMap<>();
+		Map<String, String> birthdays = new HashMap<>();
+	}
+
+	private ProBSolverResult executeNativeProBAndParse(String machineName) {
+		var result = new ProBSolverResult();
 		if (PROBCLI_PATH == null) {
-			return;
+			return result;
 		}
 
 		File modelDir = findFile("examples/familiestopersons/implementationArtefacts/bcert/pivot/model");
@@ -370,21 +545,482 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 
 		Process probProcess = null;
 		try {
-			var pb = new ProcessBuilder(PROBCLI_PATH, mchFile.getAbsolutePath(), "-init", "-noinv", "-execute", "100000");
+			var pb = new ProcessBuilder(
+				PROBCLI_PATH, mchFile.getAbsolutePath(),
+				"-init", "-noinv", "-execute", "100000",
+				"-eval", "Persons_Person_name",
+				"-eval", "Male",
+				"-eval", "Female",
+				"-eval", "pMap",
+				"-eval", "mMap",
+				"-eval", "Families_Family_name",
+				"-eval", "Families_FamilyMember_name",
+				"-eval", "theFather",
+				"-eval", "theMother",
+				"-eval", "theSons",
+				"-eval", "theDaughters",
+				"-eval", "birthday"
+			);
 			pb.directory(modelDir);
-			pb.redirectOutput(ProcessBuilder.Redirect.DISCARD);
-			pb.redirectError(ProcessBuilder.Redirect.DISCARD);
+			pb.redirectErrorStream(true);
 			probProcess = pb.start();
+
+			var sb = new StringBuilder();
+			try (var reader = new BufferedReader(new InputStreamReader(probProcess.getInputStream(), StandardCharsets.UTF_8))) {
+				String line;
+				while ((line = reader.readLine()) != null) {
+					sb.append(line).append("\n");
+				}
+			}
 
 			if (!probProcess.waitFor(15, TimeUnit.MINUTES)) {
 				terminateProcess(probProcess);
 				throw new IllegalStateException("ProB execution timed out for machine: " + machineName);
 			}
+
+			parseProBOutput(sb.toString(), result);
+			System.out.println("=== DEBUG PROB OUTPUT FOR " + machineName + " ===");
+			System.out.println(sb.toString());
+			System.out.println("==================================================");
 		} catch (Exception e) {
 			terminateProcess(probProcess);
 			throw new RuntimeException("Error executing native ProB machine: " + machineName, e);
 		} finally {
 			terminateProcess(probProcess);
+		}
+
+		return result;
+	}
+
+	private void parseProBOutput(String output, ProBSolverResult result) {
+		parseRelationMap(output, "Persons_Person_name", result.personNames);
+		parseSet(output, "Male", result.males);
+		parseSet(output, "Female", result.females);
+		parseRelationMap(output, "pMap", result.pMap);
+		parseRelationMap(output, "mMap", result.mMap);
+		parseRelationMap(output, "Families_Family_name", result.familyNames);
+		parseRelationMap(output, "Families_FamilyMember_name", result.memberNames);
+		parseRelationMap(output, "theFather", result.theFather);
+		parseRelationMap(output, "theMother", result.theMother);
+		parseRelationMap(output, "theSons", result.theSons);
+		parseRelationMap(output, "theDaughters", result.theDaughters);
+		parseRelationMap(output, "birthday", result.birthdays);
+	}
+
+	private void parseRelationMap(String text, String varName, Map<String, String> targetMap) {
+		var pattern = Pattern.compile("(?s)" + Pattern.quote(varName) + ".*?\\{([^}]*)\\}");
+		var matcher = pattern.matcher(text);
+		if (matcher.find()) {
+			var body = matcher.group(1);
+			var pairPattern = Pattern.compile("\\(([^|]+)\\|\\->(?:\"([^\"]+)\"|([^\\)\\s,]+))\\)");
+			var pairMatcher = pairPattern.matcher(body);
+			while (pairMatcher.find()) {
+				var key = pairMatcher.group(1).trim();
+				var val = (pairMatcher.group(2) != null) ? pairMatcher.group(2).trim() : pairMatcher.group(3).trim();
+				targetMap.put(key, val);
+			}
+		}
+	}
+
+	private void parseSet(String text, String varName, Set<String> targetSet) {
+		var pattern = Pattern.compile("(?s)" + Pattern.quote(varName) + ".*?\\{([^}]*)\\}");
+		var matcher = pattern.matcher(text);
+		if (matcher.find()) {
+			var body = matcher.group(1);
+			var items = body.split(",");
+			for (var item : items) {
+				var val = item.trim();
+				if (!val.isEmpty()) {
+					targetSet.add(val);
+				}
+			}
+		}
+	}
+
+	private void applyProBSolverResults(ProBSolverResult solverResult) {
+		var sourceReg = getSourceModel();
+		var targetReg = getTargetModel();
+
+		// 1. Update Persons in targetReg
+		var activePersonsByBId = new HashMap<String, Person>();
+		var existingPersons = new ArrayList<>(targetReg.getPersons());
+		targetReg.getPersons().clear();
+		var pidToMember = new HashMap<String, FamilyMember>();
+		for (var mapEntry : solverResult.pMap.entrySet()) {
+			var mapId = mapEntry.getKey();
+			var pid = mapEntry.getValue();
+			var mid = solverResult.mMap.get(mapId);
+			if (mid != null) {
+				var memberName = solverResult.memberNames.get(mid);
+				if (memberName != null) {
+					String role = null;
+					String fid = null;
+					if (solverResult.theFather.containsKey(mid)) {
+						role = "father";
+						fid = solverResult.theFather.get(mid);
+					} else if (solverResult.theMother.containsKey(mid)) {
+						role = "mother";
+						fid = solverResult.theMother.get(mid);
+					} else if (solverResult.theSons.containsKey(mid)) {
+						role = "sons";
+						fid = solverResult.theSons.get(mid);
+					} else if (solverResult.theDaughters.containsKey(mid)) {
+						role = "daughters";
+						fid = solverResult.theDaughters.get(mid);
+					}
+					var famName = (fid != null) ? solverResult.familyNames.get(fid) : null;
+					for (var f : sourceReg.getFamilies()) {
+						if (famName != null && !famName.equals(f.getName())) continue;
+						if ("father".equals(role) && f.getFather() != null && memberName.equals(f.getFather().getName())) {
+							pidToMember.put(pid, f.getFather());
+							break;
+						}
+						if ("mother".equals(role) && f.getMother() != null && memberName.equals(f.getMother().getName())) {
+							pidToMember.put(pid, f.getMother());
+							break;
+						}
+						if ("sons".equals(role)) {
+							for (var s : f.getSons()) {
+								if (memberName.equals(s.getName()) && !pidToMember.containsValue(s)) {
+									pidToMember.put(pid, s);
+									break;
+								}
+							}
+							if (pidToMember.containsKey(pid)) break;
+						}
+						if ("daughters".equals(role)) {
+							for (var d : f.getDaughters()) {
+								if (memberName.equals(d.getName()) && !pidToMember.containsValue(d)) {
+									pidToMember.put(pid, d);
+									break;
+								}
+							}
+							if (pidToMember.containsKey(pid)) break;
+						}
+					}
+				}
+			}
+		}
+
+		for (var entry : solverResult.personNames.entrySet()) {
+			var pid = entry.getKey();
+			var personName = entry.getValue();
+			var isMale = solverResult.males.contains(pid);
+
+			var bday = solverResult.birthdays.get(pid);
+			Person person = null;
+
+			// Pass 0: Pivot mapping match (exact EMF object identity & matching gender)
+			var targetMem = pidToMember.get(pid);
+			if (targetMem != null) {
+				for (var m : pivot.getMapping()) {
+					if (m.getMMap() == targetMem && m.getPMap() != null && ((m.getPMap() instanceof Male) == isMale) && existingPersons.contains(m.getPMap())) {
+						person = m.getPMap();
+						existingPersons.remove(person);
+						break;
+					}
+				}
+			}
+
+			// Pass 1: exact match on name, gender, AND birthday
+			if (person == null) {
+				for (var ep : existingPersons) {
+					if (personName.equals(ep.getName()) && (ep instanceof Male) == isMale) {
+						var epBdayStr = (ep.getBirthday() != null) ? new SimpleDateFormat("yyyy-MM-dd").format(ep.getBirthday()) : "DEFAULT";
+						if ("0001-01-01".equals(epBdayStr)) epBdayStr = "DEFAULT";
+						var targetBdayStr = (bday != null && !"DEFAULT".equals(bday)) ? bday : "DEFAULT";
+						if (targetBdayStr.equals(epBdayStr)) {
+							person = ep;
+							existingPersons.remove(ep);
+							break;
+						}
+					}
+				}
+			}
+			// Pass 2: match on name and gender (preferring unmapped existingPersons)
+			if (person == null) {
+				for (var ep : existingPersons) {
+					if (personName.equals(ep.getName()) && (ep instanceof Male) == isMale && !isPersonMapped(ep)) {
+						person = ep;
+						existingPersons.remove(ep);
+						break;
+					}
+				}
+			}
+			if (person == null) {
+				for (var ep : existingPersons) {
+					if (personName.equals(ep.getName()) && (ep instanceof Male) == isMale) {
+						person = ep;
+						existingPersons.remove(ep);
+						break;
+					}
+				}
+			}
+			if (person == null) {
+				for (var ep : existingPersons) {
+					if ((ep instanceof Male) == isMale && !isPersonMapped(ep)) {
+						person = ep;
+						existingPersons.remove(ep);
+						break;
+					}
+				}
+			}
+			if (person == null) {
+				for (var ep : existingPersons) {
+					if ((ep instanceof Male) == isMale) {
+						person = ep;
+						existingPersons.remove(ep);
+						break;
+					}
+				}
+			}
+			if (person == null) {
+				person = isMale ? PersonsFactory.eINSTANCE.createMale() : PersonsFactory.eINSTANCE.createFemale();
+			}
+
+			person.setName(personName);
+			if (bday != null && !"DEFAULT".equals(bday)) {
+				try {
+					person.setBirthday(new SimpleDateFormat("yyyy-MM-dd").parse(bday));
+				} catch (Exception e) {
+					// ignore
+				}
+			} else if (person.getBirthday() == null) {
+				var defaultDate = (java.util.Date) org.eclipse.emf.ecore.EcoreFactory.eINSTANCE.createFromString(
+						org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getEDate(), "0000-1-1");
+				person.setBirthday(defaultDate);
+			}
+			targetReg.getPersons().add(person);
+			activePersonsByBId.put(pid, person);
+		}
+
+		// 2. Update Families in sourceReg
+		var activeFamiliesByBId = new HashMap<String, Family>();
+		var existingFamilies = new ArrayList<>(sourceReg.getFamilies());
+
+		for (var entry : solverResult.familyNames.entrySet()) {
+			var fid = entry.getKey();
+			var famName = entry.getValue();
+
+			Family fam = null;
+			for (var ef : existingFamilies) {
+				if (famName.equals(ef.getName())) {
+					fam = ef;
+					existingFamilies.remove(ef);
+					break;
+				}
+			}
+			if (fam == null && !existingFamilies.isEmpty()) {
+				fam = existingFamilies.remove(0);
+			}
+			if (fam == null) {
+				fam = FamiliesFactory.eINSTANCE.createFamily();
+				sourceReg.getFamilies().add(fam);
+			}
+			fam.setName(famName);
+			// Do not clear family members upfront; reconcile in place to maintain EMF object identities
+			activeFamiliesByBId.put(fid, fam);
+		}
+
+		for (var ef : existingFamilies) {
+			EcoreUtil.delete(ef);
+		}
+
+		// Sync members in families preserving existing FamilyMember instances
+		var usedMembers = new HashSet<FamilyMember>();
+		for (var entry : solverResult.memberNames.entrySet()) {
+			var mid = entry.getKey();
+			var memberName = entry.getValue();
+			var famId = solverResult.theFather.get(mid);
+			var isFather = (famId != null);
+			if (!isFather) famId = solverResult.theMother.get(mid);
+			var isMother = (!isFather && famId != null);
+			if (!isFather && !isMother) famId = solverResult.theSons.get(mid);
+			var isSon = (!isFather && !isMother && famId != null);
+			if (!isFather && !isMother && !isSon) famId = solverResult.theDaughters.get(mid);
+
+			if (famId != null) {
+				var family = activeFamiliesByBId.get(famId);
+				if (family != null) {
+					if (isFather) {
+						var m = family.getFather();
+						if (m == null || usedMembers.contains(m)) {
+							m = FamiliesFactory.eINSTANCE.createFamilyMember();
+							family.setFather(m);
+						}
+						m.setName(memberName);
+						usedMembers.add(m);
+					} else if (isMother) {
+						var m = family.getMother();
+						if (m == null || usedMembers.contains(m)) {
+							m = FamiliesFactory.eINSTANCE.createFamilyMember();
+							family.setMother(m);
+						}
+						m.setName(memberName);
+						usedMembers.add(m);
+					} else if (isSon) {
+						FamilyMember m = null;
+						for (var s : family.getSons()) {
+							if (memberName.equals(s.getName()) && !usedMembers.contains(s)) {
+								m = s;
+								break;
+							}
+						}
+						if (m == null) {
+							for (var s : family.getSons()) {
+								if (!usedMembers.contains(s)) {
+									m = s;
+									break;
+								}
+							}
+						}
+						if (m == null) {
+							m = FamiliesFactory.eINSTANCE.createFamilyMember();
+							family.getSons().add(m);
+						}
+						m.setName(memberName);
+						usedMembers.add(m);
+					} else { // Daughter
+						FamilyMember m = null;
+						for (var d : family.getDaughters()) {
+							if (memberName.equals(d.getName()) && !usedMembers.contains(d)) {
+								m = d;
+								break;
+							}
+						}
+						if (m == null) {
+							for (var d : family.getDaughters()) {
+								if (!usedMembers.contains(d)) {
+									m = d;
+									break;
+								}
+							}
+						}
+						if (m == null) {
+							m = FamiliesFactory.eINSTANCE.createFamilyMember();
+							family.getDaughters().add(m);
+						}
+						m.setName(memberName);
+						usedMembers.add(m);
+					}
+				}
+			}
+		}
+
+		// Remove unused members
+		for (var family : activeFamiliesByBId.values()) {
+			if (family.getFather() != null && !usedMembers.contains(family.getFather())) {
+				family.setFather(null);
+			}
+			if (family.getMother() != null && !usedMembers.contains(family.getMother())) {
+				family.setMother(null);
+			}
+			var sonsToRemove = new ArrayList<FamilyMember>();
+			for (var s : family.getSons()) {
+				if (!usedMembers.contains(s)) sonsToRemove.add(s);
+			}
+			sonsToRemove.forEach(s -> EcoreUtil.delete(s));
+
+			var daughtersToRemove = new ArrayList<FamilyMember>();
+			for (var d : family.getDaughters()) {
+				if (!usedMembers.contains(d)) daughtersToRemove.add(d);
+			}
+			daughtersToRemove.forEach(d -> EcoreUtil.delete(d));
+		}
+
+		// 3. Update Pivot Mappings
+		var mappingsToRemove = new ArrayList<Mapping>();
+		for (var m : pivot.getMapping()) {
+			var memberDeleted = (m.getMMap() == null || m.getMMap().eContainer() == null);
+			var personDeleted = (m.getPMap() == null || m.getPMap().eContainer() == null);
+			if (memberDeleted || personDeleted) {
+				mappingsToRemove.add(m);
+			}
+		}
+		mappingsToRemove.forEach(m -> EcoreUtil.delete(m));
+
+		for (var entry : solverResult.pMap.entrySet()) {
+			var mappingId = entry.getKey();
+			var pid = entry.getValue();
+			var mid = solverResult.mMap.get(mappingId);
+
+			var person = activePersonsByBId.get(pid);
+
+			var memberName = solverResult.memberNames.get(mid);
+			FamilyMember member = null;
+			if (memberName != null) {
+				String role = null;
+				String fid = null;
+				if (solverResult.theFather.containsKey(mid)) {
+					role = "father";
+					fid = solverResult.theFather.get(mid);
+				} else if (solverResult.theMother.containsKey(mid)) {
+					role = "mother";
+					fid = solverResult.theMother.get(mid);
+				} else if (solverResult.theSons.containsKey(mid)) {
+					role = "sons";
+					fid = solverResult.theSons.get(mid);
+				} else if (solverResult.theDaughters.containsKey(mid)) {
+					role = "daughters";
+					fid = solverResult.theDaughters.get(mid);
+				}
+
+				var famName = (fid != null) ? solverResult.familyNames.get(fid) : null;
+
+				for (var f : sourceReg.getFamilies()) {
+					if (famName != null && !famName.equals(f.getName())) continue;
+					if ("father".equals(role) && f.getFather() != null && memberName.equals(f.getFather().getName())) {
+						member = f.getFather();
+						break;
+					}
+					if ("mother".equals(role) && f.getMother() != null && memberName.equals(f.getMother().getName())) {
+						member = f.getMother();
+						break;
+					}
+					if ("sons".equals(role)) {
+						for (var s : f.getSons()) {
+							if (memberName.equals(s.getName())) {
+								final var currentMember = s;
+								var alreadyMapped = pivot.getMapping().stream().anyMatch(m -> m.getMMap() == currentMember && m.getPMap() != person);
+								if (!alreadyMapped) {
+									member = s;
+									break;
+								}
+							}
+						}
+						if (member != null) break;
+					}
+					if ("daughters".equals(role)) {
+						for (var d : f.getDaughters()) {
+							if (memberName.equals(d.getName())) {
+								final var currentMember = d;
+								var alreadyMapped = pivot.getMapping().stream().anyMatch(m -> m.getMMap() == currentMember && m.getPMap() != person);
+								if (!alreadyMapped) {
+									member = d;
+									break;
+								}
+							}
+						}
+						if (member != null) break;
+					}
+				}
+			}
+
+			if (person != null && member != null) {
+				var mapped = false;
+				for (var m : pivot.getMapping()) {
+					if (m.getMMap() == member && m.getPMap() == person) {
+						mapped = true;
+						break;
+					}
+				}
+				if (!mapped) {
+					var mapping = PivotFactory.eINSTANCE.createMapping();
+					mapping.setMMap(member);
+					mapping.setPMap(person);
+					pivot.getMapping().add(mapping);
+				}
+			}
 		}
 	}
 
@@ -400,179 +1036,162 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 
 	private void syncSourceToTarget() {
 		var mchName = generateBMachine(Strategy.FWD);
-		if (mchName != null) {
-			executeNativeProB(mchName);
-		} else {
-			executeNativeProB("T1_BatchForward.mch");
-		}
-		var sourceReg = getSourceModel();
-		var targetReg = getTargetModel();
-
-		// Rule 1: ForwardDelete (remove dangling mappings)
-		var mappingsToRemove = new ArrayList<Mapping>();
-		for (var m : pivot.getMapping()) {
-			var member = m.getMMap();
-			if (member == null || member.eContainer() == null) {
-				if (m.getPMap() != null) {
-					EcoreUtil.delete(m.getPMap());
-				}
-				mappingsToRemove.add(m);
-			}
-		}
-		mappingsToRemove.forEach(m -> EcoreUtil.delete(m));
-
-		// Rule 2: ForwardRename & Member2Person
-		var mappedMembers = new HashMap<FamilyMember, Mapping>();
-		for (var m : pivot.getMapping()) {
-			if (m.getMMap() != null) {
-				mappedMembers.put(m.getMMap(), m);
-			}
-		}
-
-		for (var fam : sourceReg.getFamilies()) {
-			var membersInFamily = collectMembers(fam);
-			for (var member : membersInFamily) {
-				var expectedName = fam.getName() + ", " + member.getName();
-				if (mappedMembers.containsKey(member)) {
-					var mapping = mappedMembers.get(member);
-					var person = mapping.getPMap();
-					if (person != null && !expectedName.equals(person.getName())) {
-						person.setName(expectedName);
-					}
-					if (person != null && !isGenderMatching(member, person)) {
-						repairGender(mapping, member, expectedName, targetReg);
-					}
-				} else {
-					// Rule: Member2Person
-					createPersonForMember(fam, member, expectedName, targetReg);
-				}
-			}
-		}
+		var mchToExec = (mchName != null) ? mchName : "T1_BatchForward.mch";
+		var solverResult = executeNativeProBAndParse(mchToExec);
+		applyProBSolverResults(solverResult);
 	}
 
 	private void syncTargetToSource() {
 		var mchName = generateBMachine(Strategy.BWD);
-		if (mchName != null) {
-			executeNativeProB(mchName);
-		} else {
-			executeNativeProB("T2_BatchBackward.mch");
-		}
-		var sourceReg = getSourceModel();
-		var targetReg = getTargetModel();
+		var mchToExec = (mchName != null) ? mchName : "T2_BatchBackward.mch";
+		var solverResult = executeNativeProBAndParse(mchToExec);
+		applyProBSolverResults(solverResult);
+	}
 
-		// Rule 1: BackwardDelete (remove dangling mappings when Person is deleted)
-		var mappingsToRemove = new ArrayList<Mapping>();
-		for (var m : pivot.getMapping()) {
-			var person = m.getPMap();
-			if (person == null || person.eContainer() == null) {
-				if (m.getMMap() != null) {
-					EcoreUtil.delete(m.getMMap());
+	private String generateConcurrentBMachine() {
+		var modelDir = findFile("examples/familiestopersons/implementationArtefacts/bcert/pivot/model");
+		if (modelDir == null || !modelDir.exists()) {
+			return null;
+		}
+
+		var mchName = "TempConcurrent.mch";
+		var tempFile = new File(modelDir, mchName);
+
+		try (var writer = new PrintWriter(new FileWriter(tempFile))) {
+			var sourceReg = getSourceModel();
+			var targetReg = getTargetModel();
+
+			writer.println("MACHINE TempConcurrent");
+			writer.println("INCLUDES MetaModel");
+			writer.println("DEFINITIONS");
+			writer.println("  SET_PREF_MAX_OPERATIONS == 100000 ;");
+			writer.println("  \"definitions.def\" ;");
+			writer.println("  \"LibraryStrings.def\" ;");
+			writer.println("  \"match.def\" ;");
+			writer.println("  \"BatchBwd.def\" ;");
+			writer.println("  \"concurrent.def\"");
+			writer.println("SETS");
+			writer.println("  RULE = {");
+			writer.println("    ConcurrentDeleteMatched_,");
+			writer.println("    ConcurrentMatchMemberPerson_,");
+			writer.println("    ConcurrentTargetRenameWins_,");
+			writer.println("    Member2Person_,");
+			writer.println("    ForwardDelete_,");
+			writer.println("    ForwardRename_,");
+			writer.println("    Person2MemberExistingFamily_,");
+			writer.println("    Person2MemberNewFamily_,");
+			writer.println("    BackwardDelete_,");
+			writer.println("    BackwardRenameMemberName_");
+			writer.println("  }");
+			writer.println("INITIALISATION");
+			writer.println("  Reset");
+			writer.println("OPERATIONS");
+
+			var stmts = new ArrayList<String>();
+			stmts.add("SetBWD");
+			stmts.add("SetUnSync");
+
+			var preferExistingFamily = (configurator != null) ? configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW) : true;
+			var preferParent = (configurator != null) ? configurator.decide(Decisions.PREFER_CREATING_PARENT_TO_CHILD) : true;
+			var familyToNewBVal = (preferExistingFamily) ? "TRUE" : "FALSE";
+			var parentToChildBVal = (preferParent) ? "TRUE" : "FALSE";
+			stmts.add("MakeDecision(" + familyToNewBVal + ", " + parentToChildBVal + ")");
+
+			var familyStmts = new ArrayList<String>();
+			for (var fam : sourceReg.getFamilies()) {
+				var famName = fam.getName();
+				familyStmts.add("aFamily <-- FamilyNEW(\"" + famName + "\")");
+				if (fam.getFather() != null) {
+					familyStmts.add("AddFather(aFamily, \"" + fam.getFather().getName() + "\")");
 				}
-				mappingsToRemove.add(m);
+				if (fam.getMother() != null) {
+					familyStmts.add("AddMother(aFamily, \"" + fam.getMother().getName() + "\")");
+				}
+				for (var son : fam.getSons()) {
+					familyStmts.add("AddSon(aFamily, \"" + son.getName() + "\")");
+				}
+				for (var daughter : fam.getDaughters()) {
+					familyStmts.add("AddDaughter(aFamily, \"" + daughter.getName() + "\")");
+				}
 			}
-		}
-		mappingsToRemove.forEach(m -> EcoreUtil.delete(m));
 
-		// Rule 2: BackwardRenameMemberName & BackwardMove*
-		for (var mapping : pivot.getMapping()) {
-			var member = mapping.getMMap();
-			var person = mapping.getPMap();
-			if (member != null && person != null) {
-				var nameParts = parsePersonName(person.getName());
-				var targetFamName = nameParts[0];
-				var targetGivenName = nameParts[1];
+			if (!familyStmts.isEmpty()) {
+				stmts.add("VAR aFamily IN\n      " + String.join(" ;\n      ", familyStmts) + "\n    END");
+			}
 
-				var currentFam = (Family) member.eContainer();
-				if (currentFam != null) {
-					if (!member.getName().equals(targetGivenName)) {
-						member.setName(targetGivenName);
-					}
-					if (!currentFam.getName().equals(targetFamName)) {
-						moveMemberToFamily(member, currentFam, targetFamName, sourceReg);
+			var personStmts = new ArrayList<String>();
+			for (var person : targetReg.getPersons()) {
+				var isMale = (person instanceof Male);
+				personStmts.add("PersonNEW(\"" + person.getName() + "\", " + (isMale ? "TRUE" : "FALSE") + ")");
+				if (person.getBirthday() != null) {
+					var bdayStr = new SimpleDateFormat("yyyy-MM-dd").format(person.getBirthday());
+					if (!bdayStr.isEmpty() && !"0001-01-01".equals(bdayStr)) {
+						personStmts.add("SetBirthdayIfExists(\"" + person.getName() + "\", \"" + bdayStr + "\")");
 					}
 				}
 			}
-		}
 
-		// Rule 3: Person2Member (New or Existing Family)
-		var mappedPersons = new HashMap<Person, Mapping>();
-		for (var m : pivot.getMapping()) {
-			if (m.getPMap() != null) {
-				mappedPersons.put(m.getPMap(), m);
+			if (!personStmts.isEmpty()) {
+				stmts.add("BEGIN\n      " + String.join(" ;\n      ", personStmts) + "\n    END");
 			}
+
+			writer.println("setupModel = ");
+			writer.println("  PRE");
+			writer.println("    Family = {} & Person = {}");
+			writer.println("  THEN");
+			writer.println("    " + String.join(" ||\n    ", stmts));
+			writer.println("  END ;");
+
+			writer.println("appliedRule <-- propagate =");
+			writer.println("  SELECT  HasConcurrentDeleteMatched");
+			writer.println("  THEN    ConcurrentDeleteMatched || appliedRule := ConcurrentDeleteMatched_");
+			writer.println("  WHEN    HasConcurrentMatchMemberPerson");
+			writer.println("  THEN    ConcurrentMatchMemberPerson || appliedRule := ConcurrentMatchMemberPerson_");
+			writer.println("  WHEN    HasConcurrentTargetRenameWins");
+			writer.println("  THEN    SetBWD ; ConcurrentTargetRenameWins ; appliedRule := ConcurrentTargetRenameWins_");
+			writer.println("  ELSE");
+			writer.println("    CHOICE");
+			writer.println("      SetFWD ;");
+			writer.println("      SELECT  HasForwardDelete");
+			writer.println("      THEN    ForwardDelete || appliedRule := ForwardDelete_");
+			writer.println("      WHEN    HasForwardRename");
+			writer.println("      THEN    ForwardRename || appliedRule := ForwardRename_");
+			writer.println("      ELSE    Member2Person || appliedRule := Member2Person_");
+			writer.println("      END");
+			writer.println("    OR");
+			writer.println("      SetBWD ;");
+			writer.println("      SELECT  HasBackwardDelete");
+			writer.println("      THEN    BackwardDelete || appliedRule := BackwardDelete_");
+			writer.println("      WHEN    HasBackwardRename");
+			writer.println("      THEN    BackwardRenameMemberName || appliedRule := BackwardRenameMemberName_");
+			writer.println("      ELSE");
+			writer.println("        CHOICE");
+			writer.println("          Person2MemberExistingFamily || appliedRule := Person2MemberExistingFamily_");
+			writer.println("        OR");
+			writer.println("          Person2MemberNewFamily || appliedRule := Person2MemberNewFamily_");
+			writer.println("        END");
+			writer.println("      END");
+			writer.println("    END");
+			writer.println("  END;");
+
+			writer.println("fwd = BEGIN SetFWD END ;");
+			writer.println("bwd = BEGIN SetBWD END ;");
+			writer.println("sync = BEGIN SetSync END;");
+			writer.println("unsync = BEGIN SetUnSync END");
+			writer.println("END");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 
-		var familyMap = new HashMap<String, Family>();
-		for (var f : sourceReg.getFamilies()) {
-			familyMap.put(f.getName(), f);
-		}
-
-		for (var person : targetReg.getPersons()) {
-			if (!mappedPersons.containsKey(person)) {
-				createMemberForPerson(person, sourceReg, familyMap);
-			}
-		}
+		return tempFile.getName();
 	}
 
 	private void syncConcurrent() {
-		executeNativeProB("T5_Concurrent.mch");
-		if (PROBCLI_PATH != null) {
-			throw new UnsupportedOperationException("Native ProB binary found; fast Java EMF execution is explicitly disabled.");
-		}
-		var sourceReg = getSourceModel();
-		var targetReg = getTargetModel();
-
-		// Rule 1: ConcurrentDeleteMatched (clean obsolete mappings)
-		var mappingsToRemove = new ArrayList<Mapping>();
-		for (var m : pivot.getMapping()) {
-			var memberDeleted = (m.getMMap() == null || m.getMMap().eContainer() == null);
-			var personDeleted = (m.getPMap() == null || m.getPMap().eContainer() == null);
-			if (memberDeleted && personDeleted) {
-				mappingsToRemove.add(m);
-			}
-		}
-		mappingsToRemove.forEach(m -> EcoreUtil.delete(m));
-
-		// Rule 2: ConcurrentMatchMemberPerson
-		var unmappedMembers = new HashMap<String, FamilyMember>();
-		for (var fam : sourceReg.getFamilies()) {
-			for (var m : collectMembers(fam)) {
-				if (!isMemberMapped(m)) {
-					unmappedMembers.put(fam.getName() + ", " + m.getName(), m);
-				}
-			}
-		}
-
-		for (var person : targetReg.getPersons()) {
-			if (!isPersonMapped(person) && unmappedMembers.containsKey(person.getName())) {
-				var member = unmappedMembers.get(person.getName());
-				var mapping = PivotFactory.eINSTANCE.createMapping();
-				mapping.setMMap(member);
-				mapping.setPMap(person);
-				pivot.getMapping().add(mapping);
-			}
-		}
-
-		// Rule 3: ConcurrentTargetRenameWins (Target wins conflict)
-		for (var m : pivot.getMapping()) {
-			var member = m.getMMap();
-			var person = m.getPMap();
-			if (member != null && person != null && member.eContainer() != null) {
-				var fam = (Family) member.eContainer();
-				var expected = fam.getName() + ", " + member.getName();
-				if (!expected.equals(person.getName())) {
-					var nameParts = parsePersonName(person.getName());
-					member.setName(nameParts[1]);
-					if (!fam.getName().equals(nameParts[0])) {
-						moveMemberToFamily(member, fam, nameParts[0], sourceReg);
-					}
-				}
-			}
-		}
-
-		// Finish forward and backward propagation
-		syncSourceToTarget();
-		syncTargetToSource();
+		var mchName = generateConcurrentBMachine();
+		var mchToExec = (mchName != null) ? mchName : "T5_Concurrent.mch";
+		var solverResult = executeNativeProBAndParse(mchToExec);
+		applyProBSolverResults(solverResult);
 	}
 
 	private List<FamilyMember> collectMembers(Family family) {
@@ -592,6 +1211,10 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 
 	private boolean isPersonMapped(Person person) {
 		return pivot.getMapping().stream().anyMatch(m -> m.getPMap() == person);
+	}
+
+	private boolean isMappedInPivot(FamilyMember member) {
+		return pivot.getMapping().stream().anyMatch(m -> m.getMMap() == member && m.getPMap() != null && m.getPMap().eContainer() != null && getTargetModel().getPersons().contains(m.getPMap()));
 	}
 
 	private boolean isGenderMatching(FamilyMember member, Person person) {
@@ -634,7 +1257,7 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 		var famName = nameParts[0];
 		var givenName = nameParts[1];
 
-		var preferExisting = !pivot.isFAMILY_TO_NEW();
+		var preferExisting = pivot.isFAMILY_TO_NEW();
 		Family fam = null;
 
 		if (preferExisting && familyMap != null) {
