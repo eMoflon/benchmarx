@@ -3,6 +3,7 @@ package org.benchmarx.examples.familiestopersons.testsuite.alignment_based.bwd;
 import org.benchmarx.BXTool;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.examples.familiestopersons.testsuite.FamiliesToPersonsTestCase;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import Families.FamilyRegister;

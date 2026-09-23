@@ -45,14 +45,14 @@ CONSTANTS
 
 PROPERTIES
 	card(FAMILYREGISTER) = 10 &
-	card(FAMILY) = 500 &
-	card(FAMILYMEMBER) = 1000 &
+	card(FAMILY) = 20 &
+	card(FAMILYMEMBER) = 50 &
 	card(PIVOT) = 1 &
 	card(PRECONDITION) = 10 &
 	card(POSTCONDITION) = 10 &
-	card(MAPPING) = 1000 &
+	card(MAPPING) = 50 &
 	card(PERSONREGISTER) = 10 &
-	card(PERSON) = 1000 &
+	card(PERSON) = 50 &
 	
 	FamilyRegister : FIN(FAMILYREGISTER) &
 	PreCondition : FIN(PRECONDITION) &

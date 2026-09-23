@@ -30,6 +30,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
@@ -365,9 +367,15 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 				writer.println("  SET_PREF_MAX_OPERATIONS == 100000 ;");
 				writer.println("  \"definitions.def\" ;");
 				writer.println("  \"LibraryStrings.def\" ;");
-				writer.println("  \"BatchBwd.def\"");
+				writer.println("  \"BatchBwd.def\" ;");
+				writer.println("  \"concurrent.def\"");
+				writer.println("VARIABLES");
+				writer.println("  setupStep");
+				writer.println("INVARIANT");
+				writer.println("  setupStep : INT");
 				writer.println("INITIALISATION");
-				writer.println("  Reset");
+				writer.println("  Reset ||");
+				writer.println("  setupStep := 0");
 				writer.println("OPERATIONS");
 
 				var preferExistingFamilyBWD = (configurator != null) ? configurator.decide(Decisions.PREFER_EXISTING_FAMILY_TO_NEW) : true;
@@ -375,21 +383,26 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 				var familyToNewBValBWD = (preferExistingFamilyBWD) ? "TRUE" : "FALSE";
 				var parentToChildBValBWD = (preferParentBWD) ? "TRUE" : "FALSE";
 
-				var stmts = new ArrayList<String>();
-				var setupSeqStmts = new ArrayList<String>();
-				var mappedPersons = new HashSet<Person>();
-				Map<Family, String> familyMapBWD = new HashMap<>();
-				Map<Family, List<String>> familyStmtsBWD = new HashMap<>();
-				int famVarIndex = 1;
+				var setupOps = new ArrayList<String>();
+				var currentStep = 0;
+				currentStep++;
+				setupOps.add(
+					"setup_init =\n" +
+					"  PRE setupStep = 0 & pvtRoot /: dom(strategie) THEN\n" +
+					"    SetBWD || SetUnSync || MakeDecision(" + familyToNewBValBWD + ", " + parentToChildBValBWD + ") || setupStep := " + currentStep + "\n" +
+					"  END ;"
+				);
+
+				var familyMapBWD = new HashMap<Family, String>();
+				var famVarIndex = 1;
 
 				for (var fam : getSourceModel().getFamilies()) {
 					var famName = fam.getName();
-					String varName = familyMapBWD.get(fam);
+					var varName = familyMapBWD.get(fam);
 					if (varName == null) {
 						varName = "aFam" + (famVarIndex++);
 						familyMapBWD.put(fam, varName);
 						var famStmts = new ArrayList<String>();
-						familyStmtsBWD.put(fam, famStmts);
 						famStmts.add(varName + " <-- FamilyNEW(\"" + famName + "\")");
 
 						if (fam.getFather() != null && isMappedInPivot(fam.getFather())) {
@@ -408,53 +421,58 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 								famStmts.add("AddDaughter(" + varName + ", \"" + daughter.getName() + "\")");
 							}
 						}
+						var nextStep = ++currentStep;
+						setupOps.add(
+							"setup_fam_" + (famVarIndex - 1) + " =\n" +
+							"  PRE setupStep = " + (nextStep - 1) + " THEN\n" +
+							"    BEGIN VAR " + varName + " IN " + String.join(" ; ", famStmts) + " END || setupStep := " + nextStep + " END\n" +
+							"  END ;"
+						);
 					}
 				}
 
+				var personIdx = 1;
 				for (var person : targetReg.getPersons()) {
 					var isMale = (person instanceof Male);
-					setupSeqStmts.add("PersonNEW(\"" + person.getName() + "\", " + (isMale ? "TRUE" : "FALSE") + ")");
+					var personStmts = new ArrayList<String>();
+					personStmts.add("PersonNEW(\"" + person.getName() + "\", " + (isMale ? "TRUE" : "FALSE") + ")");
 					if (person.getBirthday() != null) {
 						var bdayStr = new SimpleDateFormat("yyyy-MM-dd").format(person.getBirthday());
 						if (!bdayStr.isEmpty() && !"0001-01-01".equals(bdayStr)) {
-							setupSeqStmts.add("SetBirthday(\"" + person.getName() + "\", \"" + bdayStr + "\")");
+							personStmts.add("SetBirthday(\"" + person.getName() + "\", \"" + bdayStr + "\")");
 						}
 					}
 					var mappingEntry = pivot.getMapping().stream().filter(m -> m.getPMap() == person && m.getMMap() != null).findFirst().orElse(null);
 					if (mappingEntry != null && mappingEntry.getMMap().eContainer() instanceof Family) {
 						var fam = (Family) mappingEntry.getMMap().eContainer();
 						var mem = mappingEntry.getMMap();
-						setupSeqStmts.add("RegisterMapping(\"" + person.getName() + "\", \"" + fam.getName() + "\", \"" + mem.getName() + "\")");
+						personStmts.add("RegisterMapping(\"" + person.getName() + "\", \"" + fam.getName() + "\", \"" + mem.getName() + "\")");
 					}
+					var nextStep = ++currentStep;
+					setupOps.add(
+						"setup_person_" + (personIdx++) + " =\n" +
+						"  PRE setupStep = " + (nextStep - 1) + " THEN\n" +
+						"    BEGIN " + String.join(" ; ", personStmts) + " || setupStep := " + nextStep + " END\n" +
+						"  END ;"
+					);
 				}
 
-				int insertIdx = 0;
-				for (var entry : familyStmtsBWD.entrySet()) {
-					var varName = familyMapBWD.get(entry.getKey());
-					var stmtsList = entry.getValue();
-					setupSeqStmts.add(insertIdx++, "VAR " + varName + " IN " + String.join(" ; ", stmtsList) + " END");
+				for (var op : setupOps) {
+					writer.println(op);
 				}
-
-				writer.println("setupModel = ");
-				writer.println("  PRE");
-				writer.println("    pvtRoot /: dom(strategie)");
-				writer.println("  THEN");
-				writer.println("    SetBWD ||");
-				writer.println("    SetUnSync ||");
-				writer.println("    MakeDecision(" + familyToNewBValBWD + ", " + parentToChildBValBWD + ")" + (setupSeqStmts.isEmpty() ? "" : " ||"));
-				if (!setupSeqStmts.isEmpty()) {
-					writer.println("    BEGIN");
-					writer.println("      " + String.join(" ;\n      ", setupSeqStmts));
-					writer.println("    END");
-				}
-				writer.println("  END ;");
 
 				writer.println("transformStep =");
 				writer.println("  PRE");
-				writer.println("    (Person /= {} & thePersons /<: dom(mapped)) or");
-				writer.println("    (theMembers /<: ran(mMap))");
+				writer.println("    setupStep = " + currentStep + " &");
+				writer.println("    ((Person /= {} & thePersons /<: dom(mapped)) or");
+				writer.println("    (theMembers /<: ran(mMap)) or");
+				writer.println("    HasConcurrentTargetRenameWins)");
 				writer.println("  THEN");
 				writer.println("    SELECT");
+				writer.println("      HasConcurrentTargetRenameWins");
+				writer.println("    THEN");
+				writer.println("      ConcurrentTargetRenameWins");
+				writer.println("    WHEN");
 				writer.println("      #(mm,pp).(");
 				writer.println("        mm : theMembers & mm /: ran(mMap) &");
 				writer.println("        pp : thePersons & pp /: dom(mapped) &");
@@ -785,9 +803,9 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 				} catch (Exception e) {
 					// ignore
 				}
-			} else if (person.getBirthday() == null) {
-				var defaultDate = (java.util.Date) org.eclipse.emf.ecore.EcoreFactory.eINSTANCE.createFromString(
-						org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getEDate(), "0000-1-1");
+			} else {
+				var defaultDate = (java.util.Date) EcoreFactory.eINSTANCE.createFromString(
+						EcorePackage.eINSTANCE.getEDate(), "0000-1-1");
 				person.setBirthday(defaultDate);
 			}
 			targetReg.getPersons().add(person);
@@ -966,19 +984,14 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 				}
 
 				var famName = (fid != null) ? solverResult.familyNames.get(fid) : null;
-
-				for (var f : sourceReg.getFamilies()) {
-					if (famName != null && !famName.equals(f.getName())) continue;
-					if ("father".equals(role) && f.getFather() != null && memberName.equals(f.getFather().getName())) {
-						member = f.getFather();
-						break;
-					}
-					if ("mother".equals(role) && f.getMother() != null && memberName.equals(f.getMother().getName())) {
-						member = f.getMother();
-						break;
-					}
-					if ("sons".equals(role)) {
-						for (var s : f.getSons()) {
+				var targetFam = (fid != null) ? activeFamiliesByBId.get(fid) : null;
+				if (targetFam != null) {
+					if ("father".equals(role) && targetFam.getFather() != null && memberName.equals(targetFam.getFather().getName())) {
+						member = targetFam.getFather();
+					} else if ("mother".equals(role) && targetFam.getMother() != null && memberName.equals(targetFam.getMother().getName())) {
+						member = targetFam.getMother();
+					} else if ("sons".equals(role)) {
+						for (var s : targetFam.getSons()) {
 							if (memberName.equals(s.getName())) {
 								final var currentMember = s;
 								var alreadyMapped = pivot.getMapping().stream().anyMatch(m -> m.getMMap() == currentMember && m.getPMap() != person);
@@ -988,10 +1001,8 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 								}
 							}
 						}
-						if (member != null) break;
-					}
-					if ("daughters".equals(role)) {
-						for (var d : f.getDaughters()) {
+					} else if ("daughters".equals(role)) {
+						for (var d : targetFam.getDaughters()) {
 							if (memberName.equals(d.getName())) {
 								final var currentMember = d;
 								var alreadyMapped = pivot.getMapping().stream().anyMatch(m -> m.getMMap() == currentMember && m.getPMap() != person);
@@ -1001,7 +1012,46 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 								}
 							}
 						}
-						if (member != null) break;
+					}
+				}
+
+				if (member == null) {
+					for (var f : sourceReg.getFamilies()) {
+						if (famName != null && !famName.equals(f.getName())) continue;
+						if ("father".equals(role) && f.getFather() != null && memberName.equals(f.getFather().getName())) {
+							member = f.getFather();
+							break;
+						}
+						if ("mother".equals(role) && f.getMother() != null && memberName.equals(f.getMother().getName())) {
+							member = f.getMother();
+							break;
+						}
+						if ("sons".equals(role)) {
+							for (var s : f.getSons()) {
+								if (memberName.equals(s.getName())) {
+									final var currentMember = s;
+									var alreadyMapped = pivot.getMapping().stream().anyMatch(m -> m.getMMap() == currentMember && m.getPMap() != person);
+									if (!alreadyMapped) {
+										member = s;
+										break;
+									}
+								}
+							}
+							if (member != null) break;
+						}
+						if ("daughters".equals(role)) {
+							for (var d : f.getDaughters()) {
+								if (memberName.equals(d.getName())) {
+									final var currentMember = d;
+									var alreadyMapped = pivot.getMapping().stream().anyMatch(m -> m.getMMap() == currentMember && m.getPMap() != person);
+									if (!alreadyMapped) {
+										member = d;
+										break;
+									}
+								}
+							}
+							if (member != null) break;
+						}
 					}
 				}
 			}
@@ -1126,7 +1176,7 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 				if (person.getBirthday() != null) {
 					var bdayStr = new SimpleDateFormat("yyyy-MM-dd").format(person.getBirthday());
 					if (!bdayStr.isEmpty() && !"0001-01-01".equals(bdayStr)) {
-						personStmts.add("SetBirthdayIfExists(\"" + person.getName() + "\", \"" + bdayStr + "\")");
+						personStmts.add("SetBirthday(\"" + person.getName() + "\", \"" + bdayStr + "\")");
 					}
 				}
 			}
