@@ -202,7 +202,6 @@ Member2Person =
         & aPerson /: Person
         & aMapping : MAPPING
         & aMapping /: Mapping
-        & strategie(pvtRoot) = FWD
 		& sync(pvtRoot) = FALSE
     THEN
         IF isFemale(aMember) THEN
@@ -212,9 +211,13 @@ Member2Person =
         END
         || Person := Person \/ {aPerson}
 		|| birthday := birthday <+ {aPerson |-> "DEFAULT"}
-        || Persons_Person_name(aPerson) := 
-        		STRING_APPEND(Families_Family_name(familyOf(aMember)), 
-        					STRING_APPEND(", ", Families_FamilyMember_name(aMember)))
+        || Persons_Person_name := Persons_Person_name <+ {
+             aPerson |-> STRING_CONC([
+               Families_Family_name(familyOf(aMember)),
+               ", ",
+               Families_FamilyMember_name(aMember)
+             ])
+           }
         || persons := persons <+ {aPerson |-> prsRoot}
         || Mapping := Mapping \/ {aMapping}
         || mapping := mapping <+ {aMapping |-> pvtRoot}
@@ -230,7 +233,6 @@ ForwardRepairGender =
     aMapping : dom(pMap) &
     aMember = mMap(aMapping) &
     aPerson = pMap(aMapping) &
-    strategie(pvtRoot) = FWD &
     sync(pvtRoot) = FALSE &
     (
       (aPerson : Female & not(isFemale(aMember))) or
@@ -254,7 +256,6 @@ ForwardDelete =
     mapping(aMapping) = pvtRoot &
     aPerson : Person &
     pMap(aMapping) = aPerson &
-    strategie(pvtRoot) = FWD &
     sync(pvtRoot) = FALSE
   THEN
     Person := Person - {aPerson} ||
@@ -284,7 +285,6 @@ ForwardRename =
         ", ",
         Families_FamilyMember_name(aMember)
       ]) &
-    strategie(pvtRoot) = FWD &
     sync(pvtRoot) = FALSE
   THEN
     Persons_Person_name(aPerson) :=
@@ -307,7 +307,6 @@ ForwardCreateMissingPerson =
     aPerson : PERSON &
     aPerson /: Person &
 
-    strategie(pvtRoot) = FWD &
     sync(pvtRoot) = FALSE
   THEN
     IF isFemale(aMember) THEN
@@ -338,7 +337,6 @@ Person2MemberNewFamily =
     aMember : FAMILYMEMBER & aMember /: FamilyMember &
     aMapping : MAPPING & aMapping /: Mapping &
     
-	strategie(pvtRoot) = BWD &
     sync(pvtRoot) = FALSE &
     aPerson : dom(Persons_Person_name) &
     
@@ -392,13 +390,31 @@ Person2MemberExistingFamily =
     aFamily : families~[{fmlRoot}] &
     Families_Family_name(aFamily) = PersonFamilyName(aPerson) &
 
+    (
+      aPerson : Male =>
+      (
+        (PARENT_TO_CHILD(pvtRoot) = TRUE &
+         #(ff).(ff : Family & ff : families~[{fmlRoot}] & Families_Family_name(ff) = PersonFamilyName(aPerson) & ff /: ran(theFather)))
+        =>
+        aFamily /: ran(theFather)
+      )
+    ) &
+    (
+      aPerson : Female =>
+      (
+        (PARENT_TO_CHILD(pvtRoot) = TRUE &
+         #(ff).(ff : Family & ff : families~[{fmlRoot}] & Families_Family_name(ff) = PersonFamilyName(aPerson) & ff /: ran(theMother)))
+        =>
+        aFamily /: ran(theMother)
+      )
+    ) &
+
     aMember : FAMILYMEMBER &
     aMember /: FamilyMember &
 
     aMapping : MAPPING &
     aMapping /: Mapping &
 
-    strategie(pvtRoot) = BWD &
     FAMILY_TO_NEW(pvtRoot) = TRUE &
     sync(pvtRoot) = FALSE
 
@@ -439,7 +455,6 @@ BackwardDelete =
     aMember : FamilyMember &
     aMember = mMap(aMapping) &
 
-    strategie(pvtRoot) = BWD &
     sync(pvtRoot) = FALSE
   THEN
     FamilyMember := FamilyMember - {aMember} ||
@@ -467,7 +482,6 @@ BackwardRenameMemberName =
     PersonFamilyName(aPerson) = Families_Family_name(familyOf(aMember)) &
     PersonMemberName(aPerson) /= Families_FamilyMember_name(aMember) &
 
-    strategie(pvtRoot) = BWD &
     sync(pvtRoot) = FALSE
   THEN
     Families_FamilyMember_name :=
@@ -491,7 +505,6 @@ BackwardMoveMaleToExistingFamily =
     aFamily : families~[{fmlRoot}] &
     Families_Family_name(aFamily) = PersonFamilyName(aPerson) &
 
-    strategie(pvtRoot) = BWD &
     sync(pvtRoot) = FALSE
   THEN
     Families_FamilyMember_name :=
@@ -526,7 +539,6 @@ BackwardMoveFemaleToExistingFamily =
     aFamily : families~[{fmlRoot}] &
     Families_Family_name(aFamily) = PersonFamilyName(aPerson) &
 
-    strategie(pvtRoot) = BWD &
     sync(pvtRoot) = FALSE
   THEN
     Families_FamilyMember_name :=
@@ -574,7 +586,6 @@ BackwardMoveMaleToNewFamily =
     aFamily : FAMILY &
     aFamily /: Family &
 
-    strategie(pvtRoot) = BWD &
     sync(pvtRoot) = FALSE
   THEN
     Family := Family \/ {aFamily} ||
@@ -629,7 +640,6 @@ BackwardMoveFemaleToNewFamily =
     aFamily : FAMILY &
     aFamily /: Family &
 
-    strategie(pvtRoot) = BWD &
     sync(pvtRoot) = FALSE
   THEN
     Family := Family \/ {aFamily} ||
@@ -1284,6 +1294,46 @@ RegisterMapping(aPersonName, aFamilyName, aMemberName) =
     END
   END;
 
+RegisterMappingPersonOnly(aPersonName) =
+  PRE
+    aPersonName : STR1
+  THEN
+    ANY aPerson, aMapping WHERE
+      aPerson : thePersons & Persons_Person_name(aPerson) = aPersonName &
+      aMapping : MAPPING & aMapping /: Mapping &
+      aPerson /: dom(mapped) & aPerson /: ran(pMap)
+    THEN
+      Mapping := Mapping \/ {aMapping} ||
+      mapping := mapping <+ {aMapping |-> pvtRoot} ||
+      pMap := pMap <+ {aMapping |-> aPerson}
+    END
+  END;
+
+RegisterMappingMemberOnly(aFamilyName, aMemberName) =
+  PRE
+    aFamilyName : STR1 &
+    aMemberName : STR1
+  THEN
+    ANY aMember, aMapping WHERE
+      aMember : theMembers & Families_FamilyMember_name(aMember) = aMemberName &
+      Families_Family_name(familyOf(aMember)) = aFamilyName &
+      aMapping : MAPPING & aMapping /: Mapping &
+      aMember /: ran(mMap)
+    THEN
+      Mapping := Mapping \/ {aMapping} ||
+      mapping := mapping <+ {aMapping |-> pvtRoot} ||
+      mMap := mMap <+ {aMapping |-> aMember}
+    END
+  END;
+
+RegisterMappingDeletedOnly =
+  ANY aMapping WHERE
+    aMapping : MAPPING & aMapping /: Mapping
+  THEN
+    Mapping := Mapping \/ {aMapping} ||
+    mapping := mapping <+ {aMapping |-> pvtRoot}
+  END;
+
 FatherNEW(aFamilyName, aFatherName) =
   PRE
     aFatherName : STR1 &
@@ -1396,6 +1446,28 @@ PersonNEW(aName, isMale) =
       persons := persons <+ {aPerson |-> prsRoot} ||
       Persons_Person_name := Persons_Person_name <+ {aPerson |-> aName} ||
 	  birthday := birthday <+ {aPerson |-> "DEFAULT"} ||
+      IF isMale = TRUE THEN
+        Male := Male \/ {aPerson}
+      ELSE
+        Female := Female \/ {aPerson}
+      END
+    END
+  END ;
+
+PersonWithBirthdayNEW(aName, isMale, aBirthday) =
+  PRE
+    aName : STR1 &
+    isMale : BOOL &
+    aBirthday : STR1
+  THEN
+    ANY aPerson WHERE
+      aPerson : PERSON &
+      aPerson /: Person
+    THEN
+      Person := Person \/ {aPerson} ||
+      persons := persons <+ {aPerson |-> prsRoot} ||
+      Persons_Person_name := Persons_Person_name <+ {aPerson |-> aName} ||
+      birthday := birthday <+ {aPerson |-> aBirthday} ||
       IF isMale = TRUE THEN
         Male := Male \/ {aPerson}
       ELSE

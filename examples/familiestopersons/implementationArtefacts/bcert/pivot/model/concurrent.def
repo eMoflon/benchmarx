@@ -75,4 +75,100 @@ HasBackwardRename ==
       Families_Family_name(familyOf(mMap(aMapping))) &
     PersonMemberName(pMap(aMapping)) /=
       Families_FamilyMember_name(mMap(aMapping))
+  );
+
+HasBackwardMoveMaleToExistingFamily ==
+  #(aMapping, aMember, aPerson, aFamily).(
+    aMapping : Mapping &
+    mapping(aMapping) = pvtRoot &
+    aMapping : dom(mMap) &
+    aMapping : dom(pMap) &
+    aMember = mMap(aMapping) &
+    aPerson = pMap(aMapping) &
+    aPerson : Male &
+    PersonFamilyName(aPerson) /= Families_Family_name(familyOf(aMember)) &
+    FAMILY_TO_NEW(pvtRoot) = TRUE &
+    aFamily : Family &
+    aFamily : families~[{fmlRoot}] &
+    Families_Family_name(aFamily) = PersonFamilyName(aPerson)
+  );
+
+HasBackwardMoveFemaleToExistingFamily ==
+  #(aMapping, aMember, aPerson, aFamily).(
+    aMapping : Mapping &
+    mapping(aMapping) = pvtRoot &
+    aMapping : dom(mMap) &
+    aMapping : dom(pMap) &
+    aMember = mMap(aMapping) &
+    aPerson = pMap(aMapping) &
+    aPerson : Female &
+    PersonFamilyName(aPerson) /= Families_Family_name(familyOf(aMember)) &
+    FAMILY_TO_NEW(pvtRoot) = TRUE &
+    aFamily : Family &
+    aFamily : families~[{fmlRoot}] &
+    Families_Family_name(aFamily) = PersonFamilyName(aPerson)
+  );
+
+HasBackwardMoveMaleToNewFamily ==
+  #(aMapping, aMember, aPerson).(
+    aMapping : Mapping &
+    mapping(aMapping) = pvtRoot &
+    aMapping : dom(mMap) &
+    aMapping : dom(pMap) &
+    aMember = mMap(aMapping) &
+    aPerson = pMap(aMapping) &
+    aPerson : Male &
+    PersonFamilyName(aPerson) /= Families_Family_name(familyOf(aMember)) &
+    (
+      FAMILY_TO_NEW(pvtRoot) = FALSE or
+      not(#ff.(ff : families~[{fmlRoot}] & Families_Family_name(ff) = PersonFamilyName(aPerson)))
+    )
+  );
+
+HasBackwardMoveFemaleToNewFamily ==
+  #(aMapping, aMember, aPerson).(
+    aMapping : Mapping &
+    mapping(aMapping) = pvtRoot &
+    aMapping : dom(mMap) &
+    aMapping : dom(pMap) &
+    aMember = mMap(aMapping) &
+    aPerson = pMap(aMapping) &
+    aPerson : Female &
+    PersonFamilyName(aPerson) /= Families_Family_name(familyOf(aMember)) &
+    (
+      FAMILY_TO_NEW(pvtRoot) = FALSE or
+      not(#ff.(ff : families~[{fmlRoot}] & Families_Family_name(ff) = PersonFamilyName(aPerson)))
+    )
+  ) ;
+
+HasMember2Person ==
+  #(aMember).(
+    aMember : theMembers &
+    aMember /: ran(mMap)
+  );
+
+HasPerson2MemberExistingFamily ==
+  FAMILY_TO_NEW(pvtRoot) = TRUE &
+  #(aPerson, aFamily).(
+    aPerson : thePersons &
+    aPerson /: dom(mapped) &
+    aPerson /: ran(pMap) &
+    aFamily : Family &
+    aFamily : families~[{fmlRoot}] &
+    Families_Family_name(aFamily) = PersonFamilyName(aPerson)
+  );
+
+HasPerson2MemberNewFamily ==
+  #(aPerson).(
+    aPerson : thePersons &
+    aPerson /: dom(mapped) &
+    aPerson /: ran(pMap) &
+    (
+      FAMILY_TO_NEW(pvtRoot) = FALSE or
+      not(#aFamily.(
+        aFamily : Family &
+        aFamily : families~[{fmlRoot}] &
+        Families_Family_name(aFamily) = PersonFamilyName(aPerson)
+      ))
+    )
   ) ;
