@@ -11,13 +11,14 @@ import org.benchmarx.util.BXToolTimer;
 
 import Families.FamilyRegister;
 import Persons.PersonRegister;
-import hipe.generic.actor.junction.util.HiPEConfig;
-
 
 public class ConstDeltaCFCSyncTestcase extends BenchTestcase {
 	public static void main(String args[]) {
-//		System.out.println("Running test...");
-		HiPEConfig.logWorkloadActivated = true;
+		try {
+			var hipeConfig = Class.forName("hipe.generic.actor.junction.util.HiPEConfig");
+			hipeConfig.getField("logWorkloadActivated").set(null, true);
+		} catch (Throwable ignored) {
+		}
 		new ConstDeltaCFCSyncTestcase(args[0], Integer.valueOf(args[1])).execute();
 	}
 

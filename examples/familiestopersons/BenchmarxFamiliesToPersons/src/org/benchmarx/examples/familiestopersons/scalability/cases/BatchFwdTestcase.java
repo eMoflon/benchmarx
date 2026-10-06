@@ -10,12 +10,14 @@ import org.benchmarx.util.BXToolTimer;
 
 import Families.FamilyRegister;
 import Persons.PersonRegister;
-import hipe.generic.actor.junction.util.HiPEConfig;
-
 
 public class BatchFwdTestcase extends BenchTestcase {
 	public static void main(String args[]) {
-		HiPEConfig.logWorkloadActivated = true;
+		try {
+			var hipeConfig = Class.forName("hipe.generic.actor.junction.util.HiPEConfig");
+			hipeConfig.getField("logWorkloadActivated").set(null, true);
+		} catch (Throwable ignored) {
+		}
 		new BatchFwdTestcase(args[0], Integer.valueOf(args[1])).execute();
 	}
 

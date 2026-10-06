@@ -4,18 +4,20 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 public class ScalabilityTestRunner {
 
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
-
-	private final static int TIMEOUT_SECONDS = Integer.getInteger("scalability.timeout", 30);
 
 	protected final Class<? extends BenchTestcase> testcaseClass;
 	protected final List<String> jvmArgs;
@@ -37,7 +39,7 @@ public class ScalabilityTestRunner {
 			var inputStreamReader = new InputStreamReader(process.getInputStream());
 			var reader = new BufferedReader(inputStreamReader);
 
-			if (!process.waitFor(TIMEOUT_SECONDS, TimeUnit.SECONDS)) {
+			if (!process.waitFor(ScalabilityConfig.getTimeoutSeconds(), TimeUnit.SECONDS)) {
 				timeout = true;
 				terminateProcess(process);
 			}
@@ -45,16 +47,25 @@ public class ScalabilityTestRunner {
 			System.out.println("Execution took: " + (double) (System.currentTimeMillis() - time) / 1000.0);
 
 			if (timeout || process.exitValue() != 0) {
-				System.out.println("Timeout: " + timeout);
+				System.err.println("Timeout: " + timeout + ", exit code: " + process.exitValue());
 				var b = new StringBuilder();
 				var read = reader.readLine();
 				while (read != null) {
-					b.append(read);
-					b.append("\n");
+					b.append(read).append("\n");
 					read = reader.readLine();
 				}
-				System.err.println(b);
-				throw new IllegalStateException("Errors during execution");
+				if (b.length() > 0) {
+					System.err.println("Process stdout:\n" + b);
+				}
+
+				if (currentLogFile != null && currentLogFile.exists() && currentLogFile.length() > 0) {
+					try {
+						var errContent = Files.readString(currentLogFile.toPath());
+						System.err.println("Process stderr (log file " + currentLogFile.getAbsolutePath() + "):\n" + errContent);
+					} catch (Exception ignored) {
+					}
+				}
+				throw new IllegalStateException("Errors during execution (exit code: " + process.exitValue() + ")");
 			}
 
 			if (currentLogFile != null && currentLogFile.length() == 0) {
@@ -64,8 +75,7 @@ public class ScalabilityTestRunner {
 			var b = new StringBuilder();
 			var read = reader.readLine();
 			while (read != null) {
-				b.append(read);
-				b.append("\n");
+				b.append(read).append("\n");
 				read = reader.readLine();
 			}
 
@@ -89,20 +99,21 @@ public class ScalabilityTestRunner {
 
 	protected Process execute(Class<?> clazz, List<String> jvmArgs, List<String> args)
 			throws IOException, InterruptedException {
-		var javaHome = System.getProperty("java.home");
-		var javaBin = javaHome + File.separator + "bin" + File.separator + "javaw.exe";
-		var classpath = System.getProperty("java.class.path");
+		var javaBin = resolveJavaBinary();
+		var classpath = buildClasspath(clazz);
 		var className = clazz.getName();
 
-		// create log file and redirect the error stream to it
-		var logFolderPath = clazz.getProtectionDomain().getCodeSource().getLocation().getPath().toString()
-				.replace("bin/", "") + "log/";
+		var logFolderPath = resolveLogFolderPath(clazz);
 		var logFolder = new File(logFolderPath);
-		logFolder.mkdirs();
+		if (!logFolder.exists()) {
+			logFolder.mkdirs();
+		}
 		var timestamp = new Timestamp(System.currentTimeMillis());
-		var logFile = new File(logFolderPath + "log_" + args + DATE_FORMAT.format(timestamp) + ".txt");
-		if (!logFile.exists())
+		var safeArgs = String.join("_", args).replaceAll("[^a-zA-Z0-9_\\-\\.]", "_");
+		var logFile = new File(logFolder, "log_" + safeArgs + "_" + DATE_FORMAT.format(timestamp) + ".txt");
+		if (!logFile.exists()) {
 			logFile.createNewFile();
+		}
 		currentLogFile = logFile;
 
 		var command = new ArrayList<String>();
@@ -112,10 +123,127 @@ public class ScalabilityTestRunner {
 		command.add(classpath);
 		command.add(className);
 		command.addAll(args);
+
 		var builder = new ProcessBuilder(command);
 		builder.redirectError(logFile);
-		var process = builder.start();
-		return process;
+		return builder.start();
 	}
 
+	private String resolveJavaBinary() {
+		var javaHome = System.getProperty("java.home");
+		if (javaHome != null) {
+			var binDir = new File(javaHome, "bin");
+			var javaExe = new File(binDir, "java.exe");
+			if (javaExe.exists()) {
+				return javaExe.getAbsolutePath();
+			}
+			var javawExe = new File(binDir, "javaw.exe");
+			if (javawExe.exists()) {
+				return javawExe.getAbsolutePath();
+			}
+			var javaBin = new File(binDir, "java");
+			if (javaBin.exists()) {
+				return javaBin.getAbsolutePath();
+			}
+		}
+		return "java";
+	}
+
+	private String resolveLogFolderPath(Class<?> clazz) {
+		try {
+			var codeSource = clazz.getProtectionDomain().getCodeSource();
+			if (codeSource != null && codeSource.getLocation() != null) {
+				var file = new File(codeSource.getLocation().toURI());
+				var base = file.isDirectory() ? file.getParentFile() : file.getParentFile().getParentFile();
+				if (base != null && base.exists()) {
+					return new File(base, "log").getAbsolutePath() + File.separator;
+				}
+			}
+		} catch (Exception ignored) {
+		}
+		return "log" + File.separator;
+	}
+
+	private String buildClasspath(Class<?> clazz) {
+		var customClasspath = ScalabilityConfig.getCustomClasspath();
+		if (customClasspath != null && !customClasspath.isBlank()) {
+			return customClasspath;
+		}
+
+		var entries = new LinkedHashSet<String>();
+
+		// 1. Existing System java.class.path
+		var existingCp = System.getProperty("java.class.path");
+		if (existingCp != null && !existingCp.isBlank()) {
+			for (var path : existingCp.split(Pattern.quote(File.pathSeparator))) {
+				if (!path.isBlank()) {
+					entries.add(new File(path).getAbsolutePath());
+				}
+			}
+		}
+
+		// 2. Class location and discover project dependencies
+		try {
+			var codeSource = clazz.getProtectionDomain().getCodeSource();
+			if (codeSource != null && codeSource.getLocation() != null) {
+				var classLoc = new File(codeSource.getLocation().toURI()).getCanonicalFile();
+				entries.add(classLoc.getAbsolutePath());
+
+				// If classLoc is .../BenchmarxFamiliesToPersons/bin
+				var projectDir = classLoc.isDirectory() ? classLoc.getParentFile() : classLoc.getParentFile().getParentFile();
+				if (projectDir != null && projectDir.exists()) {
+					var libDir = new File(projectDir, "lib");
+					if (libDir.exists()) {
+						addJarsRecursively(libDir, entries);
+					}
+
+					var examplesDir = projectDir.getParentFile();
+					if (examplesDir != null && examplesDir.exists()) {
+						addIfExists(new File(examplesDir, "metamodels/Families/bin"), entries);
+						addIfExists(new File(examplesDir, "metamodels/Persons/bin"), entries);
+						addIfExists(new File(examplesDir, "implementationArtefacts/bcert/pivot/bin"), entries);
+						addJarsRecursively(new File(examplesDir, "implementationArtefacts/ibex-integrate"), entries);
+
+						var benchmarxRoot = examplesDir.getParentFile();
+						if (benchmarxRoot != null && benchmarxRoot.exists()) {
+							var coreDir = new File(benchmarxRoot, "core");
+							if (coreDir.exists()) {
+								addIfExists(new File(coreDir, "Benchmarx/bin"), entries);
+							}
+						}
+					}
+				}
+			}
+		} catch (Exception ignored) {
+		}
+
+		return String.join(File.pathSeparator, entries);
+	}
+
+	private void addIfExists(File file, Set<String> entries) {
+		if (file != null && file.exists()) {
+			try {
+				entries.add(file.getCanonicalPath());
+			} catch (IOException e) {
+				entries.add(file.getAbsolutePath());
+			}
+		}
+	}
+
+	private void addJarsRecursively(File dir, Set<String> entries) {
+		if (dir == null || !dir.exists()) {
+			return;
+		}
+		var files = dir.listFiles();
+		if (files == null) {
+			return;
+		}
+		for (var file : files) {
+			if (file.isDirectory()) {
+				addJarsRecursively(file, entries);
+			} else if (file.getName().endsWith(".jar") && !file.getName().endsWith("-sources.jar")) {
+				addIfExists(file, entries);
+			}
+		}
+	}
 }

@@ -34,8 +34,6 @@ import Families.FamiliesPackage;
 import Families.FamilyRegister;
 import Persons.PersonRegister;
 import Persons.PersonsPackage;
-import de.uni_koblenz.jgralab.gretl.SysOut;
-
 
 public abstract class BenchTestcase {
 

@@ -21,6 +21,7 @@ import org.benchmarx.BXTool;
 import org.benchmarx.edit.IEdit;
 import org.benchmarx.examples.familiestopersons.scalability.runner.BenchEntry;
 import org.benchmarx.examples.familiestopersons.scalability.runner.BenchTestcase;
+import org.benchmarx.examples.familiestopersons.scalability.runner.ScalabilityConfig;
 import org.benchmarx.examples.familiestopersons.scalability.runner.ScalabilityTestRunner;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.benchmarx.examples.familiestopersons.testsuite.FamiliesToPersonsTestCase;
@@ -51,8 +52,6 @@ public abstract class ScalabilityTests {
 	protected IEdit<PersonRegister> targetEdit;
 	
 	private static final String DELIMITER = "\n";
-	protected static final int REPEAT = 5;
-	private static final String resultFolder = "C:/scalability_results";
 
 	protected static Map<Integer, Double> results;
 	protected static Map<Integer, List<Double>> allResults;
@@ -73,12 +72,12 @@ public abstract class ScalabilityTests {
 		if(results.isEmpty())
 			return;
 					
-		var file = new File(resultFolder + "/");
+		var file = new File(ScalabilityConfig.getResultFolder() + "/");
 		if(!file.exists()) {
 			file.mkdirs();
 		}
 		
-		try (PrintWriter out = new PrintWriter(resultFolder + "/" + label + tool.getName() + ".txt")) {
+		try (PrintWriter out = new PrintWriter(ScalabilityConfig.getResultFolder() + "/" + label + tool.getName() + ".txt")) {
 			out.println(results.keySet().stream()//
 					.sorted()//
 					.map(k -> k + ", " + results.get(k))//
@@ -86,13 +85,13 @@ public abstract class ScalabilityTests {
 		}
 
 		if (allResults != null && !allResults.isEmpty()) {
-			var maxRuns = allResults.values().stream().mapToInt(List::size).max().orElse(REPEAT);
+			var maxRuns = allResults.values().stream().mapToInt(List::size).max().orElse(ScalabilityConfig.getRepeatCount());
 			var header = new StringBuilder("ScaleFactor, Median, Average, StdDev, StdErr");
 			for (var i = 1; i <= maxRuns; i++) {
 				header.append(", Run_").append(i);
 			}
 
-			try (var outDetailed = new PrintWriter(resultFolder + "/" + label + tool.getName() + "_detailed.csv")) {
+			try (var outDetailed = new PrintWriter(ScalabilityConfig.getResultFolder() + "/" + label + tool.getName() + "_detailed.csv")) {
 				outDetailed.println(header.toString());
 				for (var k : allResults.keySet().stream().sorted().collect(Collectors.toList())) {
 					var values = allResults.get(k);
@@ -134,12 +133,12 @@ public abstract class ScalabilityTests {
 		assertLastTestSuccessfull();
 
 		var entries = new LinkedList<BenchEntry>();
-		
+		var repeat = ScalabilityConfig.getRepeatCount();
 		
 		try {			
-			for(var r = 0; r < REPEAT; r++) {
+			for(var r = 0; r < repeat; r++) {
 				tool.preExecution();
-				var runner = new ScalabilityTestRunner(testcaseClass, Arrays.asList("-Xmx32G"), new String[] {tool.getName(), ""+scaleFactor});
+				var runner = new ScalabilityTestRunner(testcaseClass, ScalabilityConfig.getJvmArgs(), new String[] {tool.getName(), ""+scaleFactor});
 				entries.add(runner.run());
 				tool.postExecution();
 			}
@@ -164,7 +163,7 @@ public abstract class ScalabilityTests {
 		allResults.put(scaleFactor, times);
 
 		var sortedTimes = times.stream().sorted().collect(Collectors.toList());
-		results.put(scaleFactor, sortedTimes.get((int) (REPEAT / 2)));
+		results.put(scaleFactor, sortedTimes.get((int) (repeat / 2)));
 		setTestSuccessfull();
 	}
 	

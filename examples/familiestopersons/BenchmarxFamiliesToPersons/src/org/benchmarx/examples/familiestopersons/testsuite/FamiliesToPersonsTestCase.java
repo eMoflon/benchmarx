@@ -18,7 +18,8 @@ import org.benchmarx.edit.DeleteNode;
 import org.benchmarx.edit.Edit;
 import org.benchmarx.edit.IEdit;
 import org.benchmarx.edit.MoveNode;
-import org.benchmarx.examples.familiestopersons.implementations.bcert.BCerTFamiliesToPersons;
+import org.benchmarx.examples.familiestopersons.categories.CapabilityTest;
+import org.benchmarx.examples.familiestopersons.implementations.ibextgg.integrate.IBeXTGGIntegrateFamiliesToPersons;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.families.core.FamilyHelper;
 import org.benchmarx.persons.core.PersonHelper;
@@ -27,7 +28,6 @@ import org.benchmarx.util.BenchmarxUtil;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.benchmarx.examples.familiestopersons.categories.CapabilityTest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.experimental.categories.Category;
@@ -174,9 +174,10 @@ public abstract class FamiliesToPersonsTestCase {
 				/*
 				 * See setup instructions: /implementations/ibextgg/integrate/README-SETUP
 				 */
-				// new IBeXTGGIntegrateFamiliesToPersons(),
+				 new IBeXTGGIntegrateFamiliesToPersons()
 
-				new BCerTFamiliesToPersons()
+				// new BCerTFamiliesToPersons()
+//				new BXtendFamiliesToPersons()
 				);
 	}
 
