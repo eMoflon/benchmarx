@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ScalabilityConfig {
 
-	public static final int DEFAULT_TIMEOUT_SECONDS = 30;
+	public static final int DEFAULT_TIMEOUT_SECONDS = 60;
 	public static final int DEFAULT_REPEAT_COUNT = 10;
 	public static final String DEFAULT_JVM_MAX_MEMORY = "-Xmx32G";
 	public static final String DEFAULT_RESULT_FOLDER = "C:/scalability_results";

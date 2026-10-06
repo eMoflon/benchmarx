@@ -4,6 +4,7 @@ import org.benchmarx.BXTool;
 import org.benchmarx.examples.familiestopersons.scalability.cases.BatchFwdTestcase;
 import org.benchmarx.examples.familiestopersons.testsuite.Decisions;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 

@@ -48,7 +48,10 @@ import org.emoflon.ibex.tgg.runtime.strategies.integrate.conflicts.DelPreserveAt
 import org.emoflon.ibex.tgg.runtime.strategies.integrate.conflicts.DelPreserveEdgeConflict;
 import org.emoflon.ibex.tgg.runtime.strategies.integrate.conflicts.DeletePreserveConflict;
 import org.emoflon.ibex.tgg.runtime.strategies.integrate.conflicts.OperationalMultiplicityConflict;
+import org.emoflon.ibex.tgg.runtime.strategies.integrate.conflicts.resolution.CRS_DeleteCorrs;
 import org.emoflon.ibex.tgg.runtime.strategies.integrate.conflicts.resolution.CRS_PreferTarget;
+import org.emoflon.ibex.tgg.runtime.strategies.integrate.conflicts.resolution.CRS_RevokeAddition;
+import org.emoflon.ibex.tgg.runtime.strategies.integrate.conflicts.resolution.CRS_RevokeDeletion;
 import org.emoflon.ibex.tgg.runtime.strategies.integrate.conflicts.resolution.util.ConflictResolver;
 import org.emoflon.ibex.tgg.runtime.strategies.integrate.pattern.IntegrationFragment;
 import org.emoflon.ibex.tgg.runtime.strategies.integrate.pattern.IntegrationPattern;
@@ -109,12 +112,24 @@ public class INTEGRATE_App extends INTEGRATE {
 						continue;
 					else
 					if(conflict instanceof CRS_PreferTarget preferTarget) {
-						preferTarget.crs_preferTarget();
+						try {
+							preferTarget.crs_preferTarget();
+						} catch (RuntimeException e) {
+							if (conflict instanceof CRS_DeleteCorrs deleteCorrs) {
+								deleteCorrs.crs_deleteCorrs();
+							} else if (conflict instanceof CRS_RevokeDeletion revokeDeletion) {
+								revokeDeletion.crs_revokeDeletion();
+							} else if (conflict instanceof CRS_RevokeAddition revokeAddition) {
+								revokeAddition.crs_revokeAddition();
+							} else {
+								throw e;
+							}
+						}
 					}
 				}
 			}
 			
-		}).repair.usePGbasedSCruleCreation(false));
+		}).repair.useShortcutRules(false));
 	}
 	
 	@Override

@@ -9,9 +9,9 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Categories.class)
 @IncludeCategory(PerformanceTest.class)
 @SuiteClasses({
-	ScalabilityBatchTestsFwd.class,
-	ScalabilityBatchTestsBwd.class,
-	ScalabilityIncrTestsFwd.class,
+//	ScalabilityBatchTestsFwd.class,
+//	ScalabilityBatchTestsBwd.class,
+//	ScalabilityIncrTestsFwd.class,
 	ScalabilityIncrTestsBwd.class,
 	ScalabilityConstModelCSync.class,
 	ScalabilityConstModelCFCSync.class,

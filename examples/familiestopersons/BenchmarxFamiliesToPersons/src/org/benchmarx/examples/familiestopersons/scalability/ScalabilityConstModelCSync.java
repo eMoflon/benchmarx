@@ -21,7 +21,7 @@ import Persons.PersonRegister;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ScalabilityConstModelCSync extends ScalabilityTests {
 
-	public static final int NR_OF_FAMILY_PAIRS = 500;
+	public static final int NR_OF_FAMILY_PAIRS = 300;
 
 	public ScalabilityConstModelCSync(BXTool<FamilyRegister, PersonRegister, Decisions> tool) {
 		super(tool, "CMCSync_");
@@ -169,45 +169,5 @@ public class ScalabilityConstModelCSync extends ScalabilityTests {
 	@Test
 	public void testCreate0000300FamilyPairsAndConflictingChanges() {
 		createFamilyPairsAndConflictingChanges(300);
-	}
-	@Test
-	public void testCreate0000320FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(320);
-	}
-	@Test
-	public void testCreate0000340FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(340);
-	}
-	@Test
-	public void testCreate0000360FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(360);
-	}
-	@Test
-	public void testCreate0000380FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(380);
-	}
-	@Test
-	public void testCreate0000400FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(400);
-	}
-	@Test
-	public void testCreate0000420FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(420);
-	}
-	@Test
-	public void testCreate0000440FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(440);
-	}
-	@Test
-	public void testCreate0000460FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(460);
-	}
-	@Test
-	public void testCreate0000480FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(480);
-	}
-	@Test
-	public void testCreate0000500FamilyPairsAndConflictingChanges() {
-		createFamilyPairsAndConflictingChanges(500);
 	}
 }

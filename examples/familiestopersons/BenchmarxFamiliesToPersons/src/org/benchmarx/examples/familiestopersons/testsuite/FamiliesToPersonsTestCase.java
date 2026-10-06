@@ -19,6 +19,7 @@ import org.benchmarx.edit.Edit;
 import org.benchmarx.edit.IEdit;
 import org.benchmarx.edit.MoveNode;
 import org.benchmarx.examples.familiestopersons.categories.CapabilityTest;
+import org.benchmarx.examples.familiestopersons.implementations.eneo.ENeoFamiliesToPersons;
 import org.benchmarx.examples.familiestopersons.implementations.ibextgg.integrate.IBeXTGGIntegrateFamiliesToPersons;
 import org.benchmarx.families.core.FamiliesComparator;
 import org.benchmarx.families.core.FamilyHelper;
@@ -169,12 +170,12 @@ public abstract class FamiliesToPersonsTestCase {
 				/*
 				 * See setup instructions: /implementations/eneo/README-SETUP
 				 */
-				// new ENeoFamiliesToPersons(), // Currently 9 failures
+				 new ENeoFamiliesToPersons() // Currently 9 failures
 
 				/*
 				 * See setup instructions: /implementations/ibextgg/integrate/README-SETUP
 				 */
-				 new IBeXTGGIntegrateFamiliesToPersons()
+//				 new IBeXTGGIntegrateFamiliesToPersons()
 
 				// new BCerTFamiliesToPersons()
 //				new BXtendFamiliesToPersons()

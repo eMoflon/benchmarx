@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
@@ -35,10 +36,20 @@ public class ScalabilityTestRunner {
 		var timeout = false;
 		var time = System.currentTimeMillis();
 
-		try {
-			var inputStreamReader = new InputStreamReader(process.getInputStream());
-			var reader = new BufferedReader(inputStreamReader);
+		var stdoutFuture = CompletableFuture.supplyAsync(() -> {
+			var b = new StringBuilder();
+			try (var reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+				var line = reader.readLine();
+				while (line != null) {
+					b.append(line).append("\n");
+					line = reader.readLine();
+				}
+			} catch (Exception ignored) {
+			}
+			return b.toString();
+		});
 
+		try {
 			if (!process.waitFor(ScalabilityConfig.getTimeoutSeconds(), TimeUnit.SECONDS)) {
 				timeout = true;
 				terminateProcess(process);
@@ -46,16 +57,16 @@ public class ScalabilityTestRunner {
 
 			System.out.println("Execution took: " + (double) (System.currentTimeMillis() - time) / 1000.0);
 
+			var stdoutContent = "";
+			try {
+				stdoutContent = stdoutFuture.get(2, TimeUnit.SECONDS);
+			} catch (Exception ignored) {
+			}
+
 			if (timeout || process.exitValue() != 0) {
 				System.err.println("Timeout: " + timeout + ", exit code: " + process.exitValue());
-				var b = new StringBuilder();
-				var read = reader.readLine();
-				while (read != null) {
-					b.append(read).append("\n");
-					read = reader.readLine();
-				}
-				if (b.length() > 0) {
-					System.err.println("Process stdout:\n" + b);
+				if (!stdoutContent.isBlank()) {
+					System.err.println("Process stdout:\n" + stdoutContent);
 				}
 
 				if (currentLogFile != null && currentLogFile.exists() && currentLogFile.length() > 0) {
@@ -72,16 +83,9 @@ public class ScalabilityTestRunner {
 				currentLogFile.delete();
 			}
 
-			var b = new StringBuilder();
-			var read = reader.readLine();
-			while (read != null) {
-				b.append(read).append("\n");
-				read = reader.readLine();
-			}
+			System.out.println(stdoutContent);
 
-			System.out.println(b);
-
-			return new BenchEntry(b.toString());
+			return new BenchEntry(stdoutContent);
 		} finally {
 			terminateProcess(process);
 		}
@@ -202,6 +206,9 @@ public class ScalabilityTestRunner {
 						addIfExists(new File(examplesDir, "metamodels/Families/bin"), entries);
 						addIfExists(new File(examplesDir, "metamodels/Persons/bin"), entries);
 						addIfExists(new File(examplesDir, "implementationArtefacts/bcert/pivot/bin"), entries);
+						addIfExists(new File(examplesDir, "implementationArtefacts/ibex-integrate/FamiliesSmartEMF/bin"), entries);
+						addIfExists(new File(examplesDir, "implementationArtefacts/ibex-integrate/PersonsSmartEMF/bin"), entries);
+						addIfExists(new File(examplesDir, "implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/bin"), entries);
 						addJarsRecursively(new File(examplesDir, "implementationArtefacts/ibex-integrate"), entries);
 
 						var benchmarxRoot = examplesDir.getParentFile();
@@ -241,7 +248,8 @@ public class ScalabilityTestRunner {
 		for (var file : files) {
 			if (file.isDirectory()) {
 				addJarsRecursively(file, entries);
-			} else if (file.getName().endsWith(".jar") && !file.getName().endsWith("-sources.jar")) {
+			} else if (file.getName().endsWith(".jar") && !file.getName().endsWith("-sources.jar")
+					&& !file.getName().startsWith("org.eclipse.equinox.common_")) {
 				addIfExists(file, entries);
 			}
 		}

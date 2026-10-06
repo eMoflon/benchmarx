@@ -137,10 +137,13 @@ public abstract class ScalabilityTests {
 		
 		try {			
 			for(var r = 0; r < repeat; r++) {
+				System.out.println(String.format("--> [%s] Scale: %d, Repetition %d/%d starting...", tool.getName(), scaleFactor, (r + 1), repeat));
 				tool.preExecution();
 				var runner = new ScalabilityTestRunner(testcaseClass, ScalabilityConfig.getJvmArgs(), new String[] {tool.getName(), ""+scaleFactor});
-				entries.add(runner.run());
+				var entry = runner.run();
+				entries.add(entry);
 				tool.postExecution();
+				System.out.println(String.format("<-- [%s] Scale: %d, Repetition %d/%d completed: %.6f s", tool.getName(), scaleFactor, (r + 1), repeat, entry.resolve));
 			}
 		}
 		catch(TimeoutException timeout) {

@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry excluding="org/benchmarx/examples/familiestopersons/scalability/ScalabilityMeasurements.java|org/benchmarx/examples/familiestopersons/implementations/ibextgg/F2PUpdatePolicy.java|org/benchmarx/examples/familiestopersons/implementations/ibextgg/IBeXTGGFamiliesToPersons.java" kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Benchmarx"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Families"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Persons"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/FamiliesSmartEMF"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/PersonsSmartEMF"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/FamiliesToPersonsIBeXTGG"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/pivot"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="lib" path="lib/UBTBxTendFamilies2Persons.jar"/>
 	<classpathentry kind="lib" path="lib/FunnyQT/ttc17-families2persons-bx-1.0.0-standalone.jar"/>

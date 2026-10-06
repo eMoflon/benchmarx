@@ -23,6 +23,10 @@
 	<classpathentry exported="true" kind="lib" path="lib/commons-io-2.5.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Families"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Persons"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/FamiliesSmartEMF"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/PersonsSmartEMF"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

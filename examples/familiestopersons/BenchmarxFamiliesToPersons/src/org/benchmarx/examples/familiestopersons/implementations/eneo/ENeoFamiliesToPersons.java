@@ -53,9 +53,16 @@ import Persons.PersonsFactory;
 import Persons.PersonsPackage;
 import de.uni_koblenz.jgralab.gretl.SysOut;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
 public class ENeoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegister, Decisions> {
 	static {
 		Loader.loadNativeLibraries();
+		var neocorePath = API_Common.NEOCORE_URI_INSTALLED.startsWith("/")
+				? API_Common.NEOCORE_URI_INSTALLED.substring(1)
+				: API_Common.NEOCORE_URI_INSTALLED;
+		EcorePlugin.getPlatformResourceMap().put("org.emoflon.neo.neocore", URI.createFileURI(neocorePath));
 	}
 	private SupportedILPSolver solver = SupportedILPSolver.Google_OR;
 	private Configurator<Decisions> configurator;
@@ -587,7 +594,7 @@ public class ENeoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 		Process process;
 		try {
 			process = Runtime.getRuntime()
-					.exec("docker run -d -p 7687:7687 -p 7474:7474 -e NEO4J_AUTH=neo4j/testtest neo4j:4.4.11");
+					.exec("docker run -d -p 7687:7687 -p 7474:7474 -e NEO4J_AUTH=neo4j/test neo4j:4.4.11");
 
 			BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 

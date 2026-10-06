@@ -56,28 +56,23 @@ public abstract class BenchTestcase {
 	}
 	
 	public void execute() {
-		PrintStream originalOut = System.out;
-//		System.setOut(new PrintStream(new OutputStream() {
-//		    public void write(int b) {
-//		        // Do nothing - suppress output
-//		    }
-//		}));
+		var originalOut = System.out;
+		System.setOut(new PrintStream(new OutputStream() {
+			public void write(int b) {
+				// Do nothing - suppress output
+			}
+		}));
 
-		initialise();
-		
-		var out = executeTest(scaleFactor);
-		
-		tool.terminateSynchronisationDialogue();
-		
 		try {
-			Thread.sleep(Duration.ofSeconds(1L));
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			initialise();
+			var out = executeTest(scaleFactor);
+			tool.terminateSynchronisationDialogue();
+
+			System.setOut(originalOut);
+			System.out.println(out);
+		} finally {
+			System.setOut(originalOut);
 		}
-		
-//		System.setOut(originalOut);
-		System.out.println(out);
 		
 		System.exit(0);
 	}
