@@ -49,13 +49,13 @@ public interface Person extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Birthday</b></em>' attribute.
-	 * The default value is <code>"0000-1-1"</code>.
+	 * The default value is <code>"0001-1-1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Birthday</em>' attribute.
 	 * @see #setBirthday(Date)
 	 * @see Persons.PersonsPackage#getPerson_Birthday()
-	 * @model default="0000-1-1"
+	 * @model default="0001-1-1"
 	 * @generated
 	 */
 	Date getBirthday();

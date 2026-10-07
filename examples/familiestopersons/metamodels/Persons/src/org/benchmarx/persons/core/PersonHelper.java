@@ -132,7 +132,7 @@ public class PersonHelper {
 	public void setBirthdayOfFatherBart() {
 		List<Person> barts = getAllFromRegister("Simpson, Bart");
 		Date defaultDate = (Date) EcoreFactory.eINSTANCE.createFromString(//
-				EcorePackage.eINSTANCE.getEDate(), "0000-1-1");
+				EcorePackage.eINSTANCE.getEDate(), "0001-1-1");
 		for (Person bart : barts) {
 			if (bart.getBirthday().equals(defaultDate)) {
 				setBirthdayOfPerson(bart, getDate(2013, Calendar.MARCH, 9, 10, 11, 12));
@@ -160,7 +160,7 @@ public class PersonHelper {
 		List<Person> barts = getAllFromRegister("Simpson, Bart");
 
 		Date defaultDate = (Date) EcoreFactory.eINSTANCE.createFromString(EcorePackage.eINSTANCE.getEDate(),
-				"0000-1-1");
+				"0001-1-1");
 		for (Person p : barts) {
 			if (p.getBirthday().equals(defaultDate)) {
 				setBirthdayOfPerson(p, getDate(2013, Calendar.MARCH, 10, 10, 11, 12));
@@ -183,7 +183,7 @@ public class PersonHelper {
 	public void setBirthdayOfYoungerBart() {
 		List<Person> barts = getAllFromRegister("Simpson, Bart");
 		Date defaultDate = (Date) EcoreFactory.eINSTANCE.createFromString(EcorePackage.eINSTANCE.getEDate(),
-				"0000-1-1");
+				"0001-1-1");
 		for (Person p : barts) {
 			if (p.getBirthday().equals(defaultDate)) {
 				setBirthdayOfPerson(p, getDate(2013, Calendar.MARCH, 11, 10, 11, 12));
