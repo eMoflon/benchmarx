@@ -4,16 +4,20 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: pivot;singleton:=true
 Automatic-Module-Name: pivot
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: lib/emf-standalone-2.23.0.jar,
- .
+Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-21
-Export-Package: pivot,
+Export-Package: fr.liglab.bcert.ttc.familiespersons,
+ pivot,
  pivot.impl,
  pivot.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- Families,
- Persons
+ Families;visibility:=reexport,
+ Persons;visibility:=reexport,
+ fr.lig.vasco.banim;bundle-version="1.0.0",
+ fr.lig.vasco.becore;bundle-version="1.0.0",
+ fr.liglab.vasco.b4msecure.b;bundle-version="2.0.7",
+ fr.liglab.vasco.b4msecure.ctm.trace;bundle-version="2.0.7"
 Bundle-ActivationPolicy: lazy

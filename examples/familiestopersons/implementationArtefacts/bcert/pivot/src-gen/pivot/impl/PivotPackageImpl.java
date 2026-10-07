@@ -479,6 +479,7 @@ public class PivotPackageImpl extends EPackageImpl implements PivotPackage {
 		initEEnum(strategyEEnum, Strategy.class, "Strategy");
 		addEEnumLiteral(strategyEEnum, Strategy.BWD);
 		addEEnumLiteral(strategyEEnum, Strategy.FWD);
+		addEEnumLiteral(strategyEEnum, Strategy.BWD_FWD);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -500,19 +501,21 @@ public class PivotPackageImpl extends EPackageImpl implements PivotPackage {
 		  (pivotEClass,
 		   source,
 		   new String[] {
-			   "constant", ""
+			   "constant", null
 		   });
 		addAnnotation
 		  (getPivot_FamilyModel(),
 		   source,
 		   new String[] {
-			   "association", "familyModel"
+			   "association", "familyModel",
+			   "constant", null
 		   });
 		addAnnotation
 		  (getPivot_PersonModel(),
 		   source,
 		   new String[] {
-			   "association", "personModel"
+			   "association", "personModel",
+			   "constant", null
 		   });
 		addAnnotation
 		  (getPivot_Pre(),

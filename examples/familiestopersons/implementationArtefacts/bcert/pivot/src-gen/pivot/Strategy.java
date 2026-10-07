@@ -36,7 +36,15 @@ public enum Strategy implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	FWD(1, "FWD", "FWD");
+	FWD(1, "FWD", "FWD"), /**
+	 * The '<em><b>BWD FWD</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BWD_FWD_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	BWD_FWD(0, "BWD_FWD", "BWD_FWD");
 
 	/**
 	 * The '<em><b>BWD</b></em>' literal value.
@@ -61,6 +69,17 @@ public enum Strategy implements Enumerator {
 	public static final int FWD_VALUE = 1;
 
 	/**
+	 * The '<em><b>BWD FWD</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BWD_FWD
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BWD_FWD_VALUE = 0;
+
+	/**
 	 * An array of all the '<em><b>Strategy</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -70,6 +89,7 @@ public enum Strategy implements Enumerator {
 		new Strategy[] {
 			BWD,
 			FWD,
+			BWD_FWD,
 		};
 
 	/**
