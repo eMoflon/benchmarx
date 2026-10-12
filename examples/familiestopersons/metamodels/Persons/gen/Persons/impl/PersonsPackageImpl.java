@@ -280,7 +280,7 @@ public class PersonsPackageImpl extends EPackageImpl implements PersonsPackage {
 		initEClass(personEClass, Person.class, "Person", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPerson_Name(), ecorePackage.getEString(), "name", null, 0, 1, Person.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPerson_Birthday(), ecorePackage.getEDate(), "birthday", "0000-1-1", 0, 1, Person.class,
+		initEAttribute(getPerson_Birthday(), ecorePackage.getEDate(), "birthday", "0001-1-1", 0, 1, Person.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPerson_PersonsInverse(), this.getPersonRegister(), this.getPersonRegister_Persons(),
 				"personsInverse", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,

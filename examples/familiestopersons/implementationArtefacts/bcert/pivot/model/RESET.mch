@@ -1,7 +1,0 @@
-MACHINE
-    RESET
-INCLUDES
-    MetaModel
-INITIALISATION
-    Reset
-END

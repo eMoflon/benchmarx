@@ -66,7 +66,7 @@ public abstract class PersonImpl extends EObjectImpl implements Person {
 	 * @ordered
 	 */
 	protected static final Date BIRTHDAY_EDEFAULT = (Date) EcoreFactory.eINSTANCE
-			.createFromString(EcorePackage.eINSTANCE.getEDate(), "0000-1-1");
+			.createFromString(EcorePackage.eINSTANCE.getEDate(), "0001-1-1");
 
 	/**
 	 * The cached value of the '{@link #getBirthday() <em>Birthday</em>}' attribute.

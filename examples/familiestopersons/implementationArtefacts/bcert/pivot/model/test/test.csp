@@ -1,8 +1,0 @@
-channel tesOP
-channel ok : Bool
-channel nothing
-
-MAIN = 
-	ok.true -> tesOP -> SKIP
-	[]
-	ok.false -> nothing -> SKIP

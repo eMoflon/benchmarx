@@ -108,5 +108,6 @@
   <eClassifiers xsi:type="ecore:EEnum" name="Strategy">
     <eLiterals name="BWD"/>
     <eLiterals name="FWD" value="1"/>
+    <eLiterals name="BWD_FWD" literal="BWD_FWD"/>
   </eClassifiers>
 </ecore:EPackage>

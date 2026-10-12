@@ -1,0 +1,2692 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bmethod:BSpec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bmethod="http://fr.liglab.vasco/b4msecure/2.0/models/bmethod" xmlns:ctm.trace="http://fr.liglab.vasco/b4msecure/2.0/models/ctm/trace" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" systemMachine="//@machines.0">
+  <eAnnotations source="http://fr.liglab.vasco/b4msecure/2.0/transformation/metadata">
+    <details key="date" value="Wednesday, April 29, 2026, 7:27&#x202f;PM"/>
+    <details key="options" value="&lt;null>[!use fully qualified names,inline role definitions]"/>
+    <contents xsi:type="ecore:EAnnotation" source="transformation/configuration">
+      <references href="http://fr.liglab.vasco/b4msecure/2.0/transformation/functional/B4MSecure.transformationconfig#B4MSecureConfiguration"/>
+    </contents>
+    <contents xsi:type="ecore:EAnnotation" source="transformation/trace" references="//%meeduse%/%trace%/@contents.0"/>
+  </eAnnotations>
+  <eAnnotations source="meeduse">
+    <details key="options" value="protected.sections=definitions,invariant,operations;definitions.external=false"/>
+    <contents xsi:type="ecore:EAnnotation" source="trace">
+      <contents xsi:type="ctm.trace:TransformationTrace">
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.1" source="//%meeduse%/%trace%/@contents.0/@references.0" rule="fr.lig.vasco.becore.BEcoreTransformation#toMachine"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.3" source="//%meeduse%/%trace%/@contents.0/@references.2" rule="fr.lig.vasco.becore.BEcoreTransformation#toSet"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.5" source="//%meeduse%/%trace%/@contents.0/@references.4" rule="fr.lig.vasco.becore.BEcoreTransformation#toSet"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.7" source="//%meeduse%/%trace%/@contents.0/@references.6" rule="fr.lig.vasco.becore.BEcoreTransformation#toSet"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.9" source="//%meeduse%/%trace%/@contents.0/@references.8" rule="fr.lig.vasco.becore.BEcoreTransformation#toSet"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.11" source="//%meeduse%/%trace%/@contents.0/@references.10" rule="fr.lig.vasco.becore.BEcoreTransformation#toSet"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.11" source="//%meeduse%/%trace%/@contents.0/@references.12" rule="fr.lig.vasco.becore.BEcoreTransformation#toSet"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.11" source="//%meeduse%/%trace%/@contents.0/@references.13" rule="fr.lig.vasco.becore.BEcoreTransformation#toSet"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.15" source="//%meeduse%/%trace%/@contents.0/@references.14" rule="fr.lig.vasco.becore.BEcoreTransformation#toSet"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.17" source="//%meeduse%/%trace%/@contents.0/@references.16" rule="fr.lig.vasco.becore.BEcoreTransformation#toSet"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.19" source="//%meeduse%/%trace%/@contents.0/@references.18" rule="fr.lig.vasco.becore.BEcoreTransformation#toSet"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.21" source="//%meeduse%/%trace%/@contents.0/@references.20" rule="fr.lig.vasco.becore.BEcoreTransformation#toSet"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.23" source="//%meeduse%/%trace%/@contents.0/@references.22" rule="fr.lig.vasco.becore.BEcoreTransformation#toSet"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.24" source="//%meeduse%/%trace%/@contents.0/@references.22" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.25" source="//%meeduse%/%trace%/@contents.0/@references.13" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.26" source="//%meeduse%/%trace%/@contents.0/@references.16" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.27" source="//%meeduse%/%trace%/@contents.0/@references.14" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.28" source="//%meeduse%/%trace%/@contents.0/@references.20" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.29" source="//%meeduse%/%trace%/@contents.0/@references.18" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.30" source="//%meeduse%/%trace%/@contents.0/@references.6" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.31" source="//%meeduse%/%trace%/@contents.0/@references.12" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.32" source="//%meeduse%/%trace%/@contents.0/@references.10" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.33" source="//%meeduse%/%trace%/@contents.0/@references.8" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.34" source="//%meeduse%/%trace%/@contents.0/@references.4" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.36" source="//%meeduse%/%trace%/@contents.0/@references.35" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.38" source="//%meeduse%/%trace%/@contents.0/@references.37" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.40" source="//%meeduse%/%trace%/@contents.0/@references.39" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.42" source="//%meeduse%/%trace%/@contents.0/@references.41" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.44" source="//%meeduse%/%trace%/@contents.0/@references.43" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.46" source="//%meeduse%/%trace%/@contents.0/@references.45" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.46" source="//%meeduse%/%trace%/@contents.0/@references.47" rule="fr.lig.vasco.becore.BEcoreTransformation#toInverseVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.49" source="//%meeduse%/%trace%/@contents.0/@references.48" rule="fr.lig.vasco.becore.BEcoreTransformation#toInverseVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.51" source="//%meeduse%/%trace%/@contents.0/@references.50" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.51" source="//%meeduse%/%trace%/@contents.0/@references.52" rule="fr.lig.vasco.becore.BEcoreTransformation#toInverseVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.54" source="//%meeduse%/%trace%/@contents.0/@references.53" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.56" source="//%meeduse%/%trace%/@contents.0/@references.55" rule="fr.lig.vasco.becore.BEcoreTransformation#toInverseVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.58" source="//%meeduse%/%trace%/@contents.0/@references.57" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.58" source="//%meeduse%/%trace%/@contents.0/@references.59" rule="fr.lig.vasco.becore.BEcoreTransformation#toInverseVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.61" source="//%meeduse%/%trace%/@contents.0/@references.60" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.61" source="//%meeduse%/%trace%/@contents.0/@references.62" rule="fr.lig.vasco.becore.BEcoreTransformation#toInverseVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.64" source="//%meeduse%/%trace%/@contents.0/@references.63" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.66" source="//%meeduse%/%trace%/@contents.0/@references.65" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.66" source="//%meeduse%/%trace%/@contents.0/@references.67" rule="fr.lig.vasco.becore.BEcoreTransformation#toInverseVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.69" source="//%meeduse%/%trace%/@contents.0/@references.68" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.69" source="//%meeduse%/%trace%/@contents.0/@references.70" rule="fr.lig.vasco.becore.BEcoreTransformation#toInverseVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.72" source="//%meeduse%/%trace%/@contents.0/@references.71" rule="fr.lig.vasco.becore.BEcoreTransformation#toInverseVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.74" source="//%meeduse%/%trace%/@contents.0/@references.73" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.76" source="//%meeduse%/%trace%/@contents.0/@references.75" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.78" source="//%meeduse%/%trace%/@contents.0/@references.77" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.80" source="//%meeduse%/%trace%/@contents.0/@references.79" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.82" source="//%meeduse%/%trace%/@contents.0/@references.81" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.84" source="//%meeduse%/%trace%/@contents.0/@references.83" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.86" source="//%meeduse%/%trace%/@contents.0/@references.85" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.88" source="//%meeduse%/%trace%/@contents.0/@references.87" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.90" source="//%meeduse%/%trace%/@contents.0/@references.89" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.92" source="//%meeduse%/%trace%/@contents.0/@references.91" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.94" source="//%meeduse%/%trace%/@contents.0/@references.93" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.96" source="//%meeduse%/%trace%/@contents.0/@references.95" rule="fr.lig.vasco.becore.BEcoreTransformation#toVariable"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.97" source="//%meeduse%/%trace%/@contents.0/@references.22" rule="fr.lig.vasco.becore.BEcoreTransformation#toConstructor"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.98" source="//%meeduse%/%trace%/@contents.0/@references.14" rule="fr.lig.vasco.becore.BEcoreTransformation#toConstructor"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.99" source="//%meeduse%/%trace%/@contents.0/@references.12" rule="fr.lig.vasco.becore.BEcoreTransformation#toConstructor"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.100" source="//%meeduse%/%trace%/@contents.0/@references.10" rule="fr.lig.vasco.becore.BEcoreTransformation#toConstructor"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.101" source="//%meeduse%/%trace%/@contents.0/@references.4" rule="fr.lig.vasco.becore.BEcoreTransformation#toConstructor"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.102" source="//%meeduse%/%trace%/@contents.0/@references.22" rule="fr.lig.vasco.becore.BEcoreTransformation#toDestructor"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.103" source="//%meeduse%/%trace%/@contents.0/@references.14" rule="fr.lig.vasco.becore.BEcoreTransformation#toDestructor"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.104" source="//%meeduse%/%trace%/@contents.0/@references.12" rule="fr.lig.vasco.becore.BEcoreTransformation#toDestructor"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.105" source="//%meeduse%/%trace%/@contents.0/@references.10" rule="fr.lig.vasco.becore.BEcoreTransformation#toDestructor"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.106" source="//%meeduse%/%trace%/@contents.0/@references.4" rule="fr.lig.vasco.becore.BEcoreTransformation#toDestructor"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.107" source="//%meeduse%/%trace%/@contents.0/@references.75" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.108" source="//%meeduse%/%trace%/@contents.0/@references.77" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.109" source="//%meeduse%/%trace%/@contents.0/@references.79" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.110" source="//%meeduse%/%trace%/@contents.0/@references.81" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.111" source="//%meeduse%/%trace%/@contents.0/@references.83" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.112" source="//%meeduse%/%trace%/@contents.0/@references.87" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.113" source="//%meeduse%/%trace%/@contents.0/@references.85" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.114" source="//%meeduse%/%trace%/@contents.0/@references.89" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.115" source="//%meeduse%/%trace%/@contents.0/@references.91" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.116" source="//%meeduse%/%trace%/@contents.0/@references.93" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.117" source="//%meeduse%/%trace%/@contents.0/@references.95" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.118" source="//%meeduse%/%trace%/@contents.0/@references.70" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.119" source="//%meeduse%/%trace%/@contents.0/@references.52" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.120" source="//%meeduse%/%trace%/@contents.0/@references.73" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.121" source="//%meeduse%/%trace%/@contents.0/@references.60" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.122" source="//%meeduse%/%trace%/@contents.0/@references.37" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.123" source="//%meeduse%/%trace%/@contents.0/@references.45" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.124" source="//%meeduse%/%trace%/@contents.0/@references.50" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.125" source="//%meeduse%/%trace%/@contents.0/@references.65" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.126" source="//%meeduse%/%trace%/@contents.0/@references.63" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.127" source="//%meeduse%/%trace%/@contents.0/@references.57" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.128" source="//%meeduse%/%trace%/@contents.0/@references.41" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.129" source="//%meeduse%/%trace%/@contents.0/@references.71" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.130" source="//%meeduse%/%trace%/@contents.0/@references.55" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.131" source="//%meeduse%/%trace%/@contents.0/@references.35" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.132" source="//%meeduse%/%trace%/@contents.0/@references.39" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.133" source="//%meeduse%/%trace%/@contents.0/@references.48" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.134" source="//%meeduse%/%trace%/@contents.0/@references.67" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.135" source="//%meeduse%/%trace%/@contents.0/@references.68" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.136" source="//%meeduse%/%trace%/@contents.0/@references.43" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.137" source="//%meeduse%/%trace%/@contents.0/@references.59" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.138" source="//%meeduse%/%trace%/@contents.0/@references.62" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.139" source="//%meeduse%/%trace%/@contents.0/@references.47" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.140" source="//%meeduse%/%trace%/@contents.0/@references.53" rule="fr.lig.vasco.becore.BEcoreTransformation#toGetter"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.141" source="//%meeduse%/%trace%/@contents.0/@references.75" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.142 //%meeduse%/%trace%/@contents.0/@references.143 //%meeduse%/%trace%/@contents.0/@references.144" source="//%meeduse%/%trace%/@contents.0/@references.81" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.145 //%meeduse%/%trace%/@contents.0/@references.146 //%meeduse%/%trace%/@contents.0/@references.147" source="//%meeduse%/%trace%/@contents.0/@references.79" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.148" source="//%meeduse%/%trace%/@contents.0/@references.83" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.149 //%meeduse%/%trace%/@contents.0/@references.150 //%meeduse%/%trace%/@contents.0/@references.151" source="//%meeduse%/%trace%/@contents.0/@references.87" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.152" source="//%meeduse%/%trace%/@contents.0/@references.89" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.153" source="//%meeduse%/%trace%/@contents.0/@references.91" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.154" source="//%meeduse%/%trace%/@contents.0/@references.93" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.155 //%meeduse%/%trace%/@contents.0/@references.156 //%meeduse%/%trace%/@contents.0/@references.157" source="//%meeduse%/%trace%/@contents.0/@references.95" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.158 //%meeduse%/%trace%/@contents.0/@references.159 //%meeduse%/%trace%/@contents.0/@references.160" source="//%meeduse%/%trace%/@contents.0/@references.70" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.161 //%meeduse%/%trace%/@contents.0/@references.162 //%meeduse%/%trace%/@contents.0/@references.163" source="//%meeduse%/%trace%/@contents.0/@references.52" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.164 //%meeduse%/%trace%/@contents.0/@references.165 //%meeduse%/%trace%/@contents.0/@references.166" source="//%meeduse%/%trace%/@contents.0/@references.60" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.167 //%meeduse%/%trace%/@contents.0/@references.168 //%meeduse%/%trace%/@contents.0/@references.169" source="//%meeduse%/%trace%/@contents.0/@references.45" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.170 //%meeduse%/%trace%/@contents.0/@references.171 //%meeduse%/%trace%/@contents.0/@references.172" source="//%meeduse%/%trace%/@contents.0/@references.50" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.173 //%meeduse%/%trace%/@contents.0/@references.174 //%meeduse%/%trace%/@contents.0/@references.175" source="//%meeduse%/%trace%/@contents.0/@references.65" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.176 //%meeduse%/%trace%/@contents.0/@references.177 //%meeduse%/%trace%/@contents.0/@references.178" source="//%meeduse%/%trace%/@contents.0/@references.63" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.179 //%meeduse%/%trace%/@contents.0/@references.180 //%meeduse%/%trace%/@contents.0/@references.181" source="//%meeduse%/%trace%/@contents.0/@references.57" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.182 //%meeduse%/%trace%/@contents.0/@references.183 //%meeduse%/%trace%/@contents.0/@references.184 //%meeduse%/%trace%/@contents.0/@references.185" source="//%meeduse%/%trace%/@contents.0/@references.71" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.186 //%meeduse%/%trace%/@contents.0/@references.187 //%meeduse%/%trace%/@contents.0/@references.188 //%meeduse%/%trace%/@contents.0/@references.189" source="//%meeduse%/%trace%/@contents.0/@references.55" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.190 //%meeduse%/%trace%/@contents.0/@references.191 //%meeduse%/%trace%/@contents.0/@references.192 //%meeduse%/%trace%/@contents.0/@references.193" source="//%meeduse%/%trace%/@contents.0/@references.67" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.194 //%meeduse%/%trace%/@contents.0/@references.195 //%meeduse%/%trace%/@contents.0/@references.196 //%meeduse%/%trace%/@contents.0/@references.197" source="//%meeduse%/%trace%/@contents.0/@references.48" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.198 //%meeduse%/%trace%/@contents.0/@references.199 //%meeduse%/%trace%/@contents.0/@references.200" source="//%meeduse%/%trace%/@contents.0/@references.68" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.201 //%meeduse%/%trace%/@contents.0/@references.202 //%meeduse%/%trace%/@contents.0/@references.203" source="//%meeduse%/%trace%/@contents.0/@references.43" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.204 //%meeduse%/%trace%/@contents.0/@references.205 //%meeduse%/%trace%/@contents.0/@references.206 //%meeduse%/%trace%/@contents.0/@references.207" source="//%meeduse%/%trace%/@contents.0/@references.62" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.208 //%meeduse%/%trace%/@contents.0/@references.209 //%meeduse%/%trace%/@contents.0/@references.210 //%meeduse%/%trace%/@contents.0/@references.211" source="//%meeduse%/%trace%/@contents.0/@references.59" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <maps targets="//%meeduse%/%trace%/@contents.0/@references.212 //%meeduse%/%trace%/@contents.0/@references.213 //%meeduse%/%trace%/@contents.0/@references.214 //%meeduse%/%trace%/@contents.0/@references.215" source="//%meeduse%/%trace%/@contents.0/@references.47" rule="fr.lig.vasco.becore.BEcoreTransformation#toSetters"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.0">
+          <object href="pivot.ecore#/"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.0" object="//@machines.0"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.1">
+          <object href="pivot.ecore#//Strategy"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.1" object="//@machines.0/@data.0"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.2 //%meeduse%/%trace%/@contents.0/@maps.23 //%meeduse%/%trace%/@contents.0/@maps.62 //%meeduse%/%trace%/@contents.0/@maps.67">
+          <object href="../../Families/model/Families.ecore#//Family"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.2" object="//@machines.0/@data.2"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.3 //%meeduse%/%trace%/@contents.0/@maps.19">
+          <object href="../../Persons/model/Persons.ecore#//PersonRegister"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.3" object="//@machines.0/@data.9"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.4 //%meeduse%/%trace%/@contents.0/@maps.22">
+          <object href="pivot.ecore#//PostCondition"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.4" object="//@machines.0/@data.6"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.5 //%meeduse%/%trace%/@contents.0/@maps.21 //%meeduse%/%trace%/@contents.0/@maps.61 //%meeduse%/%trace%/@contents.0/@maps.66">
+          <object href="../../Persons/model/Persons.ecore#//Female"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.5 //%meeduse%/%trace%/@contents.0/@maps.6 //%meeduse%/%trace%/@contents.0/@maps.7" object="//@machines.0/@data.8"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.6 //%meeduse%/%trace%/@contents.0/@maps.20 //%meeduse%/%trace%/@contents.0/@maps.60 //%meeduse%/%trace%/@contents.0/@maps.65">
+          <object href="../../Persons/model/Persons.ecore#//Male"/>
+        </references>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.7 //%meeduse%/%trace%/@contents.0/@maps.14">
+          <object href="../../Persons/model/Persons.ecore#//Person"/>
+        </references>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.8 //%meeduse%/%trace%/@contents.0/@maps.16 //%meeduse%/%trace%/@contents.0/@maps.59 //%meeduse%/%trace%/@contents.0/@maps.64">
+          <object href="../../Families/model/Families.ecore#//FamilyMember"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.8" object="//@machines.0/@data.3"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.9 //%meeduse%/%trace%/@contents.0/@maps.15">
+          <object href="../../Families/model/Families.ecore#//FamilyRegister"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.9" object="//@machines.0/@data.1"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.10 //%meeduse%/%trace%/@contents.0/@maps.18">
+          <object href="pivot.ecore#//PreCondition"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.10" object="//@machines.0/@data.5"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.11 //%meeduse%/%trace%/@contents.0/@maps.17">
+          <object href="pivot.ecore#//Pivot"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.11" object="//@machines.0/@data.4"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.12 //%meeduse%/%trace%/@contents.0/@maps.13 //%meeduse%/%trace%/@contents.0/@maps.58 //%meeduse%/%trace%/@contents.0/@maps.63">
+          <object href="pivot.ecore#//Mapping"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.12" object="//@machines.0/@data.7"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.13" object="//@machines.0/@data.12"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.14" object="//@machines.0/@data.13"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.15" object="//@machines.0/@data.36"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.16" object="//@machines.0/@data.11"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.17" object="//@machines.0/@data.37"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.18" object="//@machines.0/@data.38"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.19" object="//@machines.0/@data.40"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.20" object="//@machines.0/@data.14"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.21" object="//@machines.0/@data.15"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.22" object="//@machines.0/@data.39"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.23" object="//@machines.0/@data.10"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.24 //%meeduse%/%trace%/@contents.0/@maps.92">
+          <object href="pivot.ecore#//Pivot/personModel"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.24" object="//@machines.0/@data.44"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.25 //%meeduse%/%trace%/@contents.0/@maps.83">
+          <object href="pivot.ecore#//PreCondition/output"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.25" object="//@machines.0/@data.45"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.26 //%meeduse%/%trace%/@contents.0/@maps.93">
+          <object href="pivot.ecore#//PreCondition/input"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.26" object="//@machines.0/@data.46"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.27 //%meeduse%/%trace%/@contents.0/@maps.89">
+          <object href="pivot.ecore#//PostCondition/output"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.27" object="//@machines.0/@data.47"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.28 //%meeduse%/%trace%/@contents.0/@maps.97 //%meeduse%/%trace%/@contents.0/@maps.124">
+          <object href="pivot.ecore#//Mapping/mMap"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.28" object="//@machines.0/@data.23"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.29 //%meeduse%/%trace%/@contents.0/@maps.84 //%meeduse%/%trace%/@contents.0/@maps.114">
+          <object href="../../Persons/model/Persons.ecore#//Person/personsInverse"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.29 //%meeduse%/%trace%/@contents.0/@maps.30" object="//@machines.0/@data.26"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.30 //%meeduse%/%trace%/@contents.0/@maps.100 //%meeduse%/%trace%/@contents.0/@maps.127">
+          <object href="../../Persons/model/Persons.ecore#//PersonRegister/persons"/>
+        </references>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.31 //%meeduse%/%trace%/@contents.0/@maps.94 //%meeduse%/%trace%/@contents.0/@maps.122">
+          <object href="pivot.ecore#//Pivot/post"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.31" object="//@machines.0/@data.22"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.32 //%meeduse%/%trace%/@contents.0/@maps.85 //%meeduse%/%trace%/@contents.0/@maps.115">
+          <object href="../../Families/model/Families.ecore#//FamilyMember/motherInverse"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.32 //%meeduse%/%trace%/@contents.0/@maps.33" object="//@machines.0/@data.17"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.33 //%meeduse%/%trace%/@contents.0/@maps.80 //%meeduse%/%trace%/@contents.0/@maps.112">
+          <object href="../../Families/model/Families.ecore#//Family/mother"/>
+        </references>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.34 //%meeduse%/%trace%/@contents.0/@maps.101">
+          <object href="pivot.ecore#//PostCondition/input"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.34" object="//@machines.0/@data.48"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.35 //%meeduse%/%trace%/@contents.0/@maps.91 //%meeduse%/%trace%/@contents.0/@maps.120">
+          <object href="pivot.ecore#//Pivot/mapping"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.35" object="//@machines.0/@data.25"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.36 //%meeduse%/%trace%/@contents.0/@maps.88 //%meeduse%/%trace%/@contents.0/@maps.118">
+          <object href="../../Families/model/Families.ecore#//FamilyMember/daughtersInverse"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.36 //%meeduse%/%trace%/@contents.0/@maps.37" object="//@machines.0/@data.19"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.37 //%meeduse%/%trace%/@contents.0/@maps.98 //%meeduse%/%trace%/@contents.0/@maps.126">
+          <object href="../../Families/model/Families.ecore#//Family/daughters"/>
+        </references>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.38 //%meeduse%/%trace%/@contents.0/@maps.82 //%meeduse%/%trace%/@contents.0/@maps.113">
+          <object href="../../Families/model/Families.ecore#//FamilyMember/sonsInverse"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.38 //%meeduse%/%trace%/@contents.0/@maps.39" object="//@machines.0/@data.18"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.39 //%meeduse%/%trace%/@contents.0/@maps.99 //%meeduse%/%trace%/@contents.0/@maps.125">
+          <object href="../../Families/model/Families.ecore#//Family/sons"/>
+        </references>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.40 //%meeduse%/%trace%/@contents.0/@maps.87 //%meeduse%/%trace%/@contents.0/@maps.117">
+          <object href="pivot.ecore#//Mapping/pMap"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.40" object="//@machines.0/@data.24"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.41 //%meeduse%/%trace%/@contents.0/@maps.86 //%meeduse%/%trace%/@contents.0/@maps.116">
+          <object href="../../Families/model/Families.ecore#//Family/familiesInverse"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.41 //%meeduse%/%trace%/@contents.0/@maps.42" object="//@machines.0/@data.20"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.42 //%meeduse%/%trace%/@contents.0/@maps.95 //%meeduse%/%trace%/@contents.0/@maps.121">
+          <object href="../../Families/model/Families.ecore#//FamilyRegister/families"/>
+        </references>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.43 //%meeduse%/%trace%/@contents.0/@maps.96 //%meeduse%/%trace%/@contents.0/@maps.123">
+          <object href="../../Families/model/Families.ecore#//FamilyMember/fatherInverse"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.43 //%meeduse%/%trace%/@contents.0/@maps.44" object="//@machines.0/@data.16"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.44 //%meeduse%/%trace%/@contents.0/@maps.79 //%meeduse%/%trace%/@contents.0/@maps.111">
+          <object href="../../Families/model/Families.ecore#//Family/father"/>
+        </references>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.45 //%meeduse%/%trace%/@contents.0/@maps.90 //%meeduse%/%trace%/@contents.0/@maps.119">
+          <object href="pivot.ecore#//Pivot/pre"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.45" object="//@machines.0/@data.21"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.46 //%meeduse%/%trace%/@contents.0/@maps.81">
+          <object href="pivot.ecore#//Pivot/familyModel"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.46" object="//@machines.0/@data.43"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.47 //%meeduse%/%trace%/@contents.0/@maps.68 //%meeduse%/%trace%/@contents.0/@maps.102">
+          <object href="pivot.ecore#//Pivot/FAMILY_TO_NEW"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.47" object="//@machines.0/@data.31"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.48 //%meeduse%/%trace%/@contents.0/@maps.69">
+          <object href="pivot.ecore#//PostCondition/name"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.48" object="//@machines.0/@data.42"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.49 //%meeduse%/%trace%/@contents.0/@maps.70 //%meeduse%/%trace%/@contents.0/@maps.104">
+          <object href="../../Persons/model/Persons.ecore#//Person/birthday"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.49" object="//@machines.0/@data.35"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.50 //%meeduse%/%trace%/@contents.0/@maps.71 //%meeduse%/%trace%/@contents.0/@maps.103">
+          <object href="../../Persons/model/Persons.ecore#//Person/name"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.50" object="//@machines.0/@data.34"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.51 //%meeduse%/%trace%/@contents.0/@maps.72 //%meeduse%/%trace%/@contents.0/@maps.105">
+          <object href="pivot.ecore#//Pivot/sync"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.51" object="//@machines.0/@data.33"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.52 //%meeduse%/%trace%/@contents.0/@maps.74">
+          <object href="pivot.ecore#//PreCondition/name"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.52" object="//@machines.0/@data.41"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.53 //%meeduse%/%trace%/@contents.0/@maps.73 //%meeduse%/%trace%/@contents.0/@maps.106">
+          <object href="../../Families/model/Families.ecore#//FamilyMember/name"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.53" object="//@machines.0/@data.28"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.54 //%meeduse%/%trace%/@contents.0/@maps.75 //%meeduse%/%trace%/@contents.0/@maps.107">
+          <object href="pivot.ecore#//Pivot/strategie"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.54" object="//@machines.0/@data.30"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.55 //%meeduse%/%trace%/@contents.0/@maps.76 //%meeduse%/%trace%/@contents.0/@maps.108">
+          <object href="../../Families/model/Families.ecore#//Family/name"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.55" object="//@machines.0/@data.27"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.56 //%meeduse%/%trace%/@contents.0/@maps.77 //%meeduse%/%trace%/@contents.0/@maps.109">
+          <object href="pivot.ecore#//Pivot/PARENT_TO_CHILD"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.56" object="//@machines.0/@data.32"/>
+        <references outgoing="//%meeduse%/%trace%/@contents.0/@maps.57 //%meeduse%/%trace%/@contents.0/@maps.78 //%meeduse%/%trace%/@contents.0/@maps.110">
+          <object href="pivot.ecore#//Pivot/name"/>
+        </references>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.57" object="//@machines.0/@data.29"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.58" object="//@machines.0/@operations.2"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.59" object="//@machines.0/@operations.1"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.60" object="//@machines.0/@operations.3"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.61" object="//@machines.0/@operations.4"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.62" object="//@machines.0/@operations.0"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.63" object="//@machines.0/@operations.7"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.64" object="//@machines.0/@operations.6"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.65" object="//@machines.0/@operations.8"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.66" object="//@machines.0/@operations.9"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.67" object="//@machines.0/@operations.5"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.68" object="//@machines.0/@operations.95"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.69" object="//@machines.0/@operations.99"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.70" object="//@machines.0/@operations.101"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.71" object="//@machines.0/@operations.100"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.72" object="//@machines.0/@operations.97"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.73" object="//@machines.0/@operations.92"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.74" object="//@machines.0/@operations.98"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.75" object="//@machines.0/@operations.94"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.76" object="//@machines.0/@operations.91"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.77" object="//@machines.0/@operations.96"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.78" object="//@machines.0/@operations.93"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.79" object="//@machines.0/@operations.11"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.80" object="//@machines.0/@operations.12"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.81" object="//@machines.0/@operations.20"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.82" object="//@machines.0/@operations.18"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.83" object="//@machines.0/@operations.25"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.84" object="//@machines.0/@operations.31"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.85" object="//@machines.0/@operations.17"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.86" object="//@machines.0/@operations.15"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.87" object="//@machines.0/@operations.30"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.88" object="//@machines.0/@operations.19"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.89" object="//@machines.0/@operations.27"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.90" object="//@machines.0/@operations.22"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.91" object="//@machines.0/@operations.24"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.92" object="//@machines.0/@operations.21"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.93" object="//@machines.0/@operations.26"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.94" object="//@machines.0/@operations.23"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.95" object="//@machines.0/@operations.10"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.96" object="//@machines.0/@operations.16"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.97" object="//@machines.0/@operations.29"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.98" object="//@machines.0/@operations.14"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.99" object="//@machines.0/@operations.13"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.100" object="//@machines.0/@operations.32"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.101" object="//@machines.0/@operations.28"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.102" object="//@machines.0/@operations.106"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.103" object="//@machines.0/@operations.113"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.103" object="//@machines.0/@operations.109"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.103" object="//@machines.0/@operations.117"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.104" object="//@machines.0/@operations.110"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.104" object="//@machines.0/@operations.118"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.104" object="//@machines.0/@operations.114"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.105" object="//@machines.0/@operations.108"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.106" object="//@machines.0/@operations.111"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.106" object="//@machines.0/@operations.115"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.106" object="//@machines.0/@operations.103"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.107" object="//@machines.0/@operations.105"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.108" object="//@machines.0/@operations.102"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.109" object="//@machines.0/@operations.107"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.110" object="//@machines.0/@operations.112"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.110" object="//@machines.0/@operations.104"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.110" object="//@machines.0/@operations.116"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.111" object="//@machines.0/@operations.34"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.111" object="//@machines.0/@operations.75"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.111" object="//@machines.0/@operations.51"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.112" object="//@machines.0/@operations.76"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.112" object="//@machines.0/@operations.52"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.112" object="//@machines.0/@operations.35"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.113" object="//@machines.0/@operations.58"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.113" object="//@machines.0/@operations.82"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.113" object="//@machines.0/@operations.41"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.114" object="//@machines.0/@operations.89"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.114" object="//@machines.0/@operations.65"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.114" object="//@machines.0/@operations.48"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.115" object="//@machines.0/@operations.57"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.115" object="//@machines.0/@operations.40"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.115" object="//@machines.0/@operations.81"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.116" object="//@machines.0/@operations.38"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.116" object="//@machines.0/@operations.55"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.116" object="//@machines.0/@operations.79"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.117" object="//@machines.0/@operations.47"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.117" object="//@machines.0/@operations.88"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.117" object="//@machines.0/@operations.64"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.118" object="//@machines.0/@operations.59"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.118" object="//@machines.0/@operations.83"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.118" object="//@machines.0/@operations.42"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.119" object="//@machines.0/@operations.84"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.119" object="//@machines.0/@operations.70"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.119" object="//@machines.0/@operations.60"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.119" object="//@machines.0/@operations.43"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.120" object="//@machines.0/@operations.72"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.120" object="//@machines.0/@operations.62"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.120" object="//@machines.0/@operations.86"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.120" object="//@machines.0/@operations.45"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.121" object="//@machines.0/@operations.33"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.121" object="//@machines.0/@operations.67"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.121" object="//@machines.0/@operations.74"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.121" object="//@machines.0/@operations.50"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.122" object="//@machines.0/@operations.44"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.122" object="//@machines.0/@operations.61"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.122" object="//@machines.0/@operations.85"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.122" object="//@machines.0/@operations.71"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.123" object="//@machines.0/@operations.80"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.123" object="//@machines.0/@operations.39"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.123" object="//@machines.0/@operations.56"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.124" object="//@machines.0/@operations.87"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.124" object="//@machines.0/@operations.63"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.124" object="//@machines.0/@operations.46"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.125" object="//@machines.0/@operations.68"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.125" object="//@machines.0/@operations.36"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.125" object="//@machines.0/@operations.53"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.125" object="//@machines.0/@operations.77"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.126" object="//@machines.0/@operations.69"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.126" object="//@machines.0/@operations.54"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.126" object="//@machines.0/@operations.37"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.126" object="//@machines.0/@operations.78"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.127" object="//@machines.0/@operations.90"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.127" object="//@machines.0/@operations.73"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.127" object="//@machines.0/@operations.66"/>
+        <references incoming="//%meeduse%/%trace%/@contents.0/@maps.127" object="//@machines.0/@operations.49"/>
+      </contents>
+    </contents>
+  </eAnnotations>
+  <machines name="pivot">
+    <data xsi:type="bmethod:BEnumSet" name="Strategy" typing="//@machines.0/@data.0/@values.0 //@machines.0/@data.0/@values.1 //@machines.0/@operations.105/@param.1">
+      <values name="BWD" type="//@machines.0/@data.0"/>
+      <values name="FWD" type="//@machines.0/@data.0"/>
+      <values name="BWD_FWD" type="//@machines.0/@data.0"/>
+    </data>
+    <data xsi:type="bmethod:BAbstractSet" name="FAMILYREGISTER"/>
+    <data xsi:type="bmethod:BAbstractSet" name="FAMILY" typing="//@machines.0/@operations.0/@param.0"/>
+    <data xsi:type="bmethod:BAbstractSet" name="FAMILYMEMBER" typing="//@machines.0/@operations.1/@param.0"/>
+    <data xsi:type="bmethod:BAbstractSet" name="PIVOT"/>
+    <data xsi:type="bmethod:BAbstractSet" name="PRECONDITION"/>
+    <data xsi:type="bmethod:BAbstractSet" name="POSTCONDITION"/>
+    <data xsi:type="bmethod:BAbstractSet" name="MAPPING" typing="//@machines.0/@operations.2/@param.0"/>
+    <data xsi:type="bmethod:BAbstractSet" name="PERSON" typing="//@machines.0/@operations.3/@param.0 //@machines.0/@operations.4/@param.0"/>
+    <data xsi:type="bmethod:BAbstractSet" name="PERSONREGISTER"/>
+    <data xsi:type="bmethod:BVariable" name="Family" type="//@sharedTypes.5" typing="//@machines.0/@operations.5/@param.0 //@machines.0/@operations.11/@param.0 //@machines.0/@operations.12/@param.0 //@machines.0/@operations.13/@param.0 //@machines.0/@operations.14/@param.0 //@machines.0/@operations.15/@param.0 //@machines.0/@operations.34/@param.0 //@machines.0/@operations.35/@param.0 //@machines.0/@operations.36/@param.0 //@machines.0/@operations.37/@param.0 //@machines.0/@operations.38/@param.0 //@machines.0/@operations.39/@param.1 //@machines.0/@operations.40/@param.1 //@machines.0/@operations.41/@param.1 //@machines.0/@operations.42/@param.1 //@machines.0/@operations.51/@param.0 //@machines.0/@operations.52/@param.0 //@machines.0/@operations.53/@param.0 //@machines.0/@operations.54/@param.0 //@machines.0/@operations.55/@param.0 //@machines.0/@operations.67/@param.1 //@machines.0/@operations.68/@param.0 //@machines.0/@operations.69/@param.0 //@machines.0/@operations.74/@param.1 //@machines.0/@operations.75/@param.0 //@machines.0/@operations.76/@param.0 //@machines.0/@operations.77/@param.0 //@machines.0/@operations.78/@param.0 //@machines.0/@operations.79/@param.0 //@machines.0/@operations.80/@param.1 //@machines.0/@operations.81/@param.1 //@machines.0/@operations.82/@param.1 //@machines.0/@operations.83/@param.1 //@machines.0/@operations.91/@param.0 //@machines.0/@operations.102/@param.0">
+      <typingPredicate operator="In" type="//@sharedTypes.5"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="FamilyMember" type="//@sharedTypes.7" typing="//@machines.0/@operations.6/@param.0 //@machines.0/@operations.16/@param.0 //@machines.0/@operations.17/@param.0 //@machines.0/@operations.18/@param.0 //@machines.0/@operations.19/@param.0 //@machines.0/@operations.34/@param.1 //@machines.0/@operations.35/@param.1 //@machines.0/@operations.39/@param.0 //@machines.0/@operations.40/@param.0 //@machines.0/@operations.41/@param.0 //@machines.0/@operations.42/@param.0 //@machines.0/@operations.46/@param.1 //@machines.0/@operations.56/@param.0 //@machines.0/@operations.57/@param.0 //@machines.0/@operations.58/@param.0 //@machines.0/@operations.59/@param.0 //@machines.0/@operations.68/@param.1 //@machines.0/@operations.69/@param.1 //@machines.0/@operations.75/@param.1 //@machines.0/@operations.76/@param.1 //@machines.0/@operations.77/@param.1 //@machines.0/@operations.78/@param.1 //@machines.0/@operations.80/@param.0 //@machines.0/@operations.81/@param.0 //@machines.0/@operations.82/@param.0 //@machines.0/@operations.83/@param.0 //@machines.0/@operations.87/@param.1 //@machines.0/@operations.92/@param.0 //@machines.0/@operations.103/@param.0 //@machines.0/@operations.111/@param.0 //@machines.0/@operations.115/@param.0">
+      <typingPredicate operator="In" type="//@sharedTypes.7"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="Mapping" type="//@sharedTypes.15" typing="//@machines.0/@operations.7/@param.0 //@machines.0/@operations.29/@param.0 //@machines.0/@operations.30/@param.0 //@machines.0/@operations.46/@param.0 //@machines.0/@operations.47/@param.0 //@machines.0/@operations.63/@param.0 //@machines.0/@operations.64/@param.0 //@machines.0/@operations.72/@param.1 //@machines.0/@operations.86/@param.1 //@machines.0/@operations.87/@param.0 //@machines.0/@operations.88/@param.0">
+      <typingPredicate operator="In" type="//@sharedTypes.15"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="Person" type="//@sharedTypes.17" typing="//@machines.0/@data.14 //@machines.0/@data.15 //@machines.0/@operations.31/@param.0 //@machines.0/@operations.47/@param.1 //@machines.0/@operations.48/@param.0 //@machines.0/@operations.65/@param.0 //@machines.0/@operations.73/@param.1 //@machines.0/@operations.88/@param.1 //@machines.0/@operations.89/@param.0 //@machines.0/@operations.90/@param.1 //@machines.0/@operations.100/@param.0 //@machines.0/@operations.101/@param.0 //@machines.0/@operations.109/@param.0 //@machines.0/@operations.110/@param.0 //@machines.0/@operations.113/@param.0 //@machines.0/@operations.114/@param.0 //@machines.0/@operations.117/@param.0 //@machines.0/@operations.118/@param.0">
+      <typingPredicate operator="In" type="//@sharedTypes.17"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="Male" type="//@machines.0/@data.13" typing="//@machines.0/@operations.8/@param.0">
+      <typingPredicate type="//@machines.0/@data.13"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="Female" type="//@machines.0/@data.13" typing="//@machines.0/@operations.9/@param.0">
+      <typingPredicate type="//@machines.0/@data.13"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="theFather" type="//@sharedTypes.20">
+      <typingPredicate operator="In" type="//@sharedTypes.20"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="theMother" type="//@sharedTypes.21">
+      <typingPredicate operator="In" type="//@sharedTypes.21"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="theSons" type="//@sharedTypes.22">
+      <typingPredicate operator="In" type="//@sharedTypes.22"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="theDaughters" type="//@sharedTypes.23">
+      <typingPredicate operator="In" type="//@sharedTypes.23"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="families" type="//@sharedTypes.24">
+      <typingPredicate operator="In" type="//@sharedTypes.24"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="pre" type="//@sharedTypes.29">
+      <typingPredicate operator="In" type="//@sharedTypes.29"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="post" type="//@sharedTypes.32">
+      <typingPredicate operator="In" type="//@sharedTypes.32"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="mMap" type="//@sharedTypes.33">
+      <typingPredicate operator="In" type="//@sharedTypes.33"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="pMap" type="//@sharedTypes.34">
+      <typingPredicate operator="In" type="//@sharedTypes.34"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="mapping" type="//@sharedTypes.35">
+      <typingPredicate operator="In" type="//@sharedTypes.35"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="persons" type="//@sharedTypes.36">
+      <typingPredicate operator="In" type="//@sharedTypes.36"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="Families_Family_name" type="//@sharedTypes.37">
+      <typingPredicate operator="In" type="//@sharedTypes.37"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="Families_FamilyMember_name" type="//@sharedTypes.38">
+      <typingPredicate operator="In" type="//@sharedTypes.38"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="Pivot_name" type="//@sharedTypes.39">
+      <typingPredicate operator="In" type="//@sharedTypes.39"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="strategie" type="//@sharedTypes.40">
+      <typingPredicate operator="In" type="//@sharedTypes.40"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="FAMILY_TO_NEW" type="//@sharedTypes.41">
+      <typingPredicate operator="In" type="//@sharedTypes.41"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="PARENT_TO_CHILD" type="//@sharedTypes.42">
+      <typingPredicate operator="In" type="//@sharedTypes.42"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="sync" type="//@sharedTypes.43">
+      <typingPredicate operator="In" type="//@sharedTypes.43"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="Persons_Person_name" type="//@sharedTypes.46">
+      <typingPredicate operator="In" type="//@sharedTypes.46"/>
+    </data>
+    <data xsi:type="bmethod:BVariable" name="birthday" type="//@sharedTypes.47">
+      <typingPredicate operator="In" type="//@sharedTypes.47"/>
+    </data>
+    <data xsi:type="bmethod:BConstant" name="FamilyRegister" type="//@sharedTypes.3" typing="//@machines.0/@operations.10/@param.0 //@machines.0/@operations.33/@param.0 //@machines.0/@operations.38/@param.1 //@machines.0/@operations.50/@param.0 //@machines.0/@operations.67/@param.0 //@machines.0/@operations.74/@param.0 //@machines.0/@operations.79/@param.1">
+      <typingPredicate operator="In" type="//@sharedTypes.3"/>
+    </data>
+    <data xsi:type="bmethod:BConstant" name="Pivot" type="//@sharedTypes.9" typing="//@machines.0/@operations.2/@param.1 //@machines.0/@operations.20/@param.0 //@machines.0/@operations.21/@param.0 //@machines.0/@operations.22/@param.0 //@machines.0/@operations.23/@param.0 //@machines.0/@operations.24/@param.0 //@machines.0/@operations.43/@param.0 //@machines.0/@operations.44/@param.0 //@machines.0/@operations.45/@param.0 //@machines.0/@operations.60/@param.0 //@machines.0/@operations.61/@param.0 //@machines.0/@operations.62/@param.0 //@machines.0/@operations.70/@param.0 //@machines.0/@operations.71/@param.0 //@machines.0/@operations.72/@param.0 //@machines.0/@operations.84/@param.0 //@machines.0/@operations.85/@param.0 //@machines.0/@operations.86/@param.0 //@machines.0/@operations.93/@param.0 //@machines.0/@operations.94/@param.0 //@machines.0/@operations.95/@param.0 //@machines.0/@operations.96/@param.0 //@machines.0/@operations.97/@param.0 //@machines.0/@operations.104/@param.0 //@machines.0/@operations.105/@param.0 //@machines.0/@operations.106/@param.0 //@machines.0/@operations.107/@param.0 //@machines.0/@operations.108/@param.0 //@machines.0/@operations.112/@param.0 //@machines.0/@operations.116/@param.0">
+      <typingPredicate operator="In" type="//@sharedTypes.9"/>
+    </data>
+    <data xsi:type="bmethod:BConstant" name="PreCondition" type="//@sharedTypes.11" typing="//@machines.0/@operations.25/@param.0 //@machines.0/@operations.26/@param.0 //@machines.0/@operations.70/@param.1 //@machines.0/@operations.84/@param.1 //@machines.0/@operations.98/@param.0">
+      <typingPredicate operator="In" type="//@sharedTypes.11"/>
+    </data>
+    <data xsi:type="bmethod:BConstant" name="PostCondition" type="//@sharedTypes.13" typing="//@machines.0/@operations.27/@param.0 //@machines.0/@operations.28/@param.0 //@machines.0/@operations.71/@param.1 //@machines.0/@operations.85/@param.1 //@machines.0/@operations.99/@param.0">
+      <typingPredicate operator="In" type="//@sharedTypes.13"/>
+    </data>
+    <data xsi:type="bmethod:BConstant" name="PersonRegister" type="//@sharedTypes.19" typing="//@machines.0/@operations.32/@param.0 //@machines.0/@operations.48/@param.1 //@machines.0/@operations.49/@param.0 //@machines.0/@operations.66/@param.0 //@machines.0/@operations.73/@param.0 //@machines.0/@operations.89/@param.1 //@machines.0/@operations.90/@param.0">
+      <typingPredicate operator="In" type="//@sharedTypes.19"/>
+    </data>
+    <data xsi:type="bmethod:BConstant" name="PreCondition_name" type="//@sharedTypes.44">
+      <typingPredicate operator="In" type="//@sharedTypes.44"/>
+    </data>
+    <data xsi:type="bmethod:BConstant" name="PostCondition_name" type="//@sharedTypes.45">
+      <typingPredicate operator="In" type="//@sharedTypes.45"/>
+    </data>
+    <data xsi:type="bmethod:BConstant" name="familyModel" type="//@sharedTypes.25">
+      <typingPredicate operator="In" type="//@sharedTypes.25"/>
+    </data>
+    <data xsi:type="bmethod:BConstant" name="personModel" type="//@sharedTypes.26">
+      <typingPredicate operator="In" type="//@sharedTypes.26"/>
+    </data>
+    <data xsi:type="bmethod:BConstant" name="outputPre" type="//@sharedTypes.27">
+      <typingPredicate operator="In" type="//@sharedTypes.27"/>
+    </data>
+    <data xsi:type="bmethod:BConstant" name="inputPre" type="//@sharedTypes.28">
+      <typingPredicate operator="In" type="//@sharedTypes.28"/>
+    </data>
+    <data xsi:type="bmethod:BConstant" name="outputPost" type="//@sharedTypes.30">
+      <typingPredicate operator="In" type="//@sharedTypes.30"/>
+    </data>
+    <data xsi:type="bmethod:BConstant" name="inputPost" type="//@sharedTypes.31">
+      <typingPredicate operator="In" type="//@sharedTypes.31"/>
+    </data>
+    <invariant body="Female /\ Male = {}"/>
+    <operations name="Family_NEW">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.10">
+            <value name="Family \/ {aFamily}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.27">
+            <value name="Families_Family_name \/ {(aFamily |-> aName)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFamily /: Family"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.2">
+        <typingPredicate operator="In" type="//@machines.0/@data.2"/>
+      </param>
+      <param name="aName" type="//@sharedTypes.0">
+        <typingPredicate operator="In" type="//@sharedTypes.0"/>
+      </param>
+    </operations>
+    <operations name="FamilyMember_NEW">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.11">
+            <value name="FamilyMember \/ {aFamilyMember}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFamilyMember /: FamilyMember"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.3">
+        <typingPredicate operator="In" type="//@machines.0/@data.3"/>
+      </param>
+    </operations>
+    <operations name="Mapping_NEW">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.12">
+            <value name="Mapping \/ {aMapping}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.25">
+            <value name="mapping \/ {(aMapping |-> aPivot)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aMapping /: Mapping"/>
+        </precondition>
+      </substitution>
+      <param name="aMapping" type="//@machines.0/@data.7">
+        <typingPredicate operator="In" type="//@machines.0/@data.7"/>
+      </param>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="Male_NEW">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.14">
+            <value name="Male \/ {aMale}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.13">
+            <value name="Person \/ {aMale}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aMale /: Person"/>
+        </precondition>
+      </substitution>
+      <param name="aMale" type="//@machines.0/@data.8">
+        <typingPredicate operator="In" type="//@machines.0/@data.8"/>
+      </param>
+    </operations>
+    <operations name="Female_NEW">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.15">
+            <value name="Female \/ {aFemale}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.13">
+            <value name="Person \/ {aFemale}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFemale /: Person"/>
+        </precondition>
+      </substitution>
+      <param name="aFemale" type="//@machines.0/@data.8">
+        <typingPredicate operator="In" type="//@machines.0/@data.8"/>
+      </param>
+    </operations>
+    <operations name="Family_Free">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.10">
+            <value name="Family - {aFamily}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.16">
+            <value name="theFather |>> {aFamily}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.17">
+            <value name="theMother |>> {aFamily}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.18">
+            <value name="theSons |>> {aFamily}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.19">
+            <value name="theDaughters |>> {aFamily}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.20">
+            <value name="{aFamily} &lt;&lt;| families"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.27">
+            <value name="{aFamily} &lt;&lt;| Families_Family_name"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="FamilyMember_Free">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.11">
+            <value name="FamilyMember - {aFamilyMember}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.16">
+            <value name="{aFamilyMember} &lt;&lt;| theFather"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.17">
+            <value name="{aFamilyMember} &lt;&lt;| theMother"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.18">
+            <value name="{aFamilyMember} &lt;&lt;| theSons"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.19">
+            <value name="{aFamilyMember} &lt;&lt;| theDaughters"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.23">
+            <value name="mMap |>> {aFamilyMember}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.28">
+            <value name="{aFamilyMember} &lt;&lt;| Families_FamilyMember_name"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="Mapping_Free">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.12">
+            <value name="Mapping - {aMapping}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.23">
+            <value name="{aMapping} &lt;&lt;| mMap"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.24">
+            <value name="{aMapping} &lt;&lt;| pMap"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.25">
+            <value name="{aMapping} &lt;&lt;| mapping"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aMapping" type="//@machines.0/@data.12">
+        <typingPredicate operator="In" type="//@machines.0/@data.12"/>
+      </param>
+    </operations>
+    <operations name="Male_Free">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.14">
+            <value name="Male - {aMale}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.13">
+            <value name="Person - {aMale}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.24">
+            <value name="pMap |>> {aMale}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.26">
+            <value name="{aMale} &lt;&lt;| persons"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.34">
+            <value name="{aMale} &lt;&lt;| Persons_Person_name"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.35">
+            <value name="{aMale} &lt;&lt;| birthday"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aMale" type="//@machines.0/@data.14">
+        <typingPredicate operator="In" type="//@machines.0/@data.14"/>
+      </param>
+    </operations>
+    <operations name="Female_Free">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.15">
+            <value name="Female - {aFemale}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.13">
+            <value name="Person - {aFemale}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.24">
+            <value name="pMap |>> {aFemale}"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.26">
+            <value name="{aFemale} &lt;&lt;| persons"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.34">
+            <value name="{aFemale} &lt;&lt;| Persons_Person_name"/>
+          </expression>
+        </substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.35">
+            <value name="{aFemale} &lt;&lt;| birthday"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFemale" type="//@machines.0/@data.15">
+        <typingPredicate operator="In" type="//@machines.0/@data.15"/>
+      </param>
+    </operations>
+    <operations name="GetFamilies">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := families~[{aFamilyRegister}]"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFamilyRegister : ran(families)"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyRegister" type="//@machines.0/@data.36">
+        <typingPredicate operator="In" type="//@machines.0/@data.36"/>
+      </param>
+    </operations>
+    <operations name="GetFather">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := theFather~(aFamily)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFamily : ran(theFather)"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="GetMother">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := theMother~(aFamily)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFamily : ran(theMother)"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="GetSons">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := theSons~[{aFamily}]"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFamily : ran(theSons)"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="GetDaughters">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := theDaughters~[{aFamily}]"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFamily : ran(theDaughters)"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="GetFamiliesInverse">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := families(aFamily)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFamily : dom(families)"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="GetFatherInverse">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := theFather(aFamilyMember)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFamilyMember : dom(theFather)"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="GetMotherInverse">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := theMother(aFamilyMember)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFamilyMember : dom(theMother)"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="GetSonsInverse">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := theSons(aFamilyMember)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFamilyMember : dom(theSons)"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="GetDaughtersInverse">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := theDaughters(aFamilyMember)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFamilyMember : dom(theDaughters)"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="GetFamilyModel">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := familyModel(aPivot)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPivot : dom(familyModel)"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="GetPersonModel">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := personModel(aPivot)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPivot : dom(personModel)"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="GetPre">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := pre~[{aPivot}]"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPivot : ran(pre)"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="GetPost">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := post~[{aPivot}]"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPivot : ran(post)"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="GetMapping">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := mapping~[{aPivot}]"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPivot : ran(mapping)"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="PreCondition_GetOutput">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := outputPre(aPreCondition)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPreCondition : dom(outputPre)"/>
+        </precondition>
+      </substitution>
+      <param name="aPreCondition" type="//@machines.0/@data.38">
+        <typingPredicate operator="In" type="//@machines.0/@data.38"/>
+      </param>
+    </operations>
+    <operations name="PreCondition_GetInput">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := inputPre(aPreCondition)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPreCondition : dom(inputPre)"/>
+        </precondition>
+      </substitution>
+      <param name="aPreCondition" type="//@machines.0/@data.38">
+        <typingPredicate operator="In" type="//@machines.0/@data.38"/>
+      </param>
+    </operations>
+    <operations name="PostCondition_GetOutput">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := outputPost(aPostCondition)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPostCondition : dom(outputPost)"/>
+        </precondition>
+      </substitution>
+      <param name="aPostCondition" type="//@machines.0/@data.39">
+        <typingPredicate operator="In" type="//@machines.0/@data.39"/>
+      </param>
+    </operations>
+    <operations name="PostCondition_GetInput">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := inputPost(aPostCondition)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPostCondition : dom(inputPost)"/>
+        </precondition>
+      </substitution>
+      <param name="aPostCondition" type="//@machines.0/@data.39">
+        <typingPredicate operator="In" type="//@machines.0/@data.39"/>
+      </param>
+    </operations>
+    <operations name="GetMMap">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := mMap(aMapping)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aMapping : dom(mMap)"/>
+        </precondition>
+      </substitution>
+      <param name="aMapping" type="//@machines.0/@data.12">
+        <typingPredicate operator="In" type="//@machines.0/@data.12"/>
+      </param>
+    </operations>
+    <operations name="GetPMap">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := pMap(aMapping)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aMapping : dom(pMap)"/>
+        </precondition>
+      </substitution>
+      <param name="aMapping" type="//@machines.0/@data.12">
+        <typingPredicate operator="In" type="//@machines.0/@data.12"/>
+      </param>
+    </operations>
+    <operations name="GetPersonsInverse">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := persons(aPerson)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPerson : dom(persons)"/>
+        </precondition>
+      </substitution>
+      <param name="aPerson" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+    </operations>
+    <operations name="GetPersons">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := persons~[{aPersonRegister}]"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPersonRegister : ran(persons)"/>
+        </precondition>
+      </substitution>
+      <param name="aPersonRegister" type="//@machines.0/@data.40">
+        <typingPredicate operator="In" type="//@machines.0/@data.40"/>
+      </param>
+    </operations>
+    <operations name="SetFamilies">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.20">
+            <value name="(families |>> {aFamilyRegister}) \/ (theFamilies * {aFamilyRegister})"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(theFamilies * {aFamilyRegister}) /&lt;: families"/>
+          <typingPredicate body="!added.( added : theFamilies => families[{added}] = {})"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyRegister" type="//@machines.0/@data.36">
+        <typingPredicate operator="In" type="//@machines.0/@data.36"/>
+      </param>
+      <param name="theFamilies" type="//@sharedTypes.49">
+        <typingPredicate operator="In" type="//@sharedTypes.49"/>
+      </param>
+    </operations>
+    <operations name="SetFather">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.16">
+            <value name="(theFather |>> {aFamily}) \/ {(aFather |-> aFamily)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="{(aFather |-> aFamily)} /&lt;: theFather"/>
+          <typingPredicate body="theFather[{aFather}] = {}"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+      <param name="aFather" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="SetMother">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.17">
+            <value name="(theMother |>> {aFamily}) \/ {(aMother |-> aFamily)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="{(aMother |-> aFamily)} /&lt;: theMother"/>
+          <typingPredicate body="theMother[{aMother}] = {}"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+      <param name="aMother" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="SetSons">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.18">
+            <value name="(theSons |>> {aFamily}) \/ (theSons * {aFamily})"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(theSons * {aFamily}) /&lt;: theSons"/>
+          <typingPredicate body="!added.( added : theSons => theSons[{added}] = {})"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+      <param name="theSons" type="//@sharedTypes.51">
+        <typingPredicate operator="In" type="//@sharedTypes.51"/>
+      </param>
+    </operations>
+    <operations name="SetDaughters">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.19">
+            <value name="(theDaughters |>> {aFamily}) \/ (theDaughters * {aFamily})"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(theDaughters * {aFamily}) /&lt;: theDaughters"/>
+          <typingPredicate body="!added.( added : theDaughters => theDaughters[{added}] = {})"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+      <param name="theDaughters" type="//@sharedTypes.51">
+        <typingPredicate operator="In" type="//@sharedTypes.51"/>
+      </param>
+    </operations>
+    <operations name="SetFamiliesInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.20">
+            <value name="({aFamily} &lt;&lt;| families) \/ {(aFamily |-> aFamiliesInverse)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="{(aFamily |-> aFamiliesInverse)} /&lt;: families"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+      <param name="aFamiliesInverse" type="//@machines.0/@data.36">
+        <typingPredicate operator="In" type="//@machines.0/@data.36"/>
+      </param>
+    </operations>
+    <operations name="SetFatherInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.16">
+            <value name="({aFamilyMember} &lt;&lt;| theFather) \/ {(aFamilyMember |-> aFatherInverse)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="{(aFamilyMember |-> aFatherInverse)} /&lt;: theFather"/>
+          <typingPredicate body="theFather~[{aFatherInverse}] = {}"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+      <param name="aFatherInverse" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="SetMotherInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.17">
+            <value name="({aFamilyMember} &lt;&lt;| theMother) \/ {(aFamilyMember |-> aMotherInverse)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="{(aFamilyMember |-> aMotherInverse)} /&lt;: theMother"/>
+          <typingPredicate body="theMother~[{aMotherInverse}] = {}"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+      <param name="aMotherInverse" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="SetSonsInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.18">
+            <value name="({aFamilyMember} &lt;&lt;| theSons) \/ {(aFamilyMember |-> aSonsInverse)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="{(aFamilyMember |-> aSonsInverse)} /&lt;: theSons"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+      <param name="aSonsInverse" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="SetDaughtersInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.19">
+            <value name="({aFamilyMember} &lt;&lt;| theDaughters) \/ {(aFamilyMember |-> aDaughtersInverse)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="{(aFamilyMember |-> aDaughtersInverse)} /&lt;: theDaughters"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+      <param name="aDaughtersInverse" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="SetPre">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.21">
+            <value name="(pre |>> {aPivot}) \/ (thePre * {aPivot})"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(thePre * {aPivot}) /&lt;: pre"/>
+          <typingPredicate body="!added.( added : thePre => pre[{added}] = {})"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="thePre" type="//@sharedTypes.53">
+        <typingPredicate operator="In" type="//@sharedTypes.53"/>
+      </param>
+    </operations>
+    <operations name="SetPost">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.22">
+            <value name="(post |>> {aPivot}) \/ (thePost * {aPivot})"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(thePost * {aPivot}) /&lt;: post"/>
+          <typingPredicate body="!added.( added : thePost => post[{added}] = {})"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="thePost" type="//@sharedTypes.55">
+        <typingPredicate operator="In" type="//@sharedTypes.55"/>
+      </param>
+    </operations>
+    <operations name="SetMapping">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.25">
+            <value name="(mapping |>> {aPivot}) \/ (theMapping * {aPivot})"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(theMapping * {aPivot}) /&lt;: mapping"/>
+          <typingPredicate body="mapping~[{aPivot}] = {}"/>
+          <typingPredicate body="!added.( added : theMapping => mapping[{added}] = {})"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="theMapping" type="//@sharedTypes.57">
+        <typingPredicate operator="In" type="//@sharedTypes.57"/>
+      </param>
+    </operations>
+    <operations name="SetMMap">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.23">
+            <value name="({aMapping} &lt;&lt;| mMap) \/ {(aMapping |-> aMMap)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="{(aMapping |-> aMMap)} /&lt;: mMap"/>
+        </precondition>
+      </substitution>
+      <param name="aMapping" type="//@machines.0/@data.12">
+        <typingPredicate operator="In" type="//@machines.0/@data.12"/>
+      </param>
+      <param name="aMMap" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="SetPMap">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.24">
+            <value name="({aMapping} &lt;&lt;| pMap) \/ {(aMapping |-> aPMap)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="{(aMapping |-> aPMap)} /&lt;: pMap"/>
+        </precondition>
+      </substitution>
+      <param name="aMapping" type="//@machines.0/@data.12">
+        <typingPredicate operator="In" type="//@machines.0/@data.12"/>
+      </param>
+      <param name="aPMap" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+    </operations>
+    <operations name="SetPersonsInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.26">
+            <value name="({aPerson} &lt;&lt;| persons) \/ {(aPerson |-> aPersonsInverse)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="{(aPerson |-> aPersonsInverse)} /&lt;: persons"/>
+        </precondition>
+      </substitution>
+      <param name="aPerson" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+      <param name="aPersonsInverse" type="//@machines.0/@data.40">
+        <typingPredicate operator="In" type="//@machines.0/@data.40"/>
+      </param>
+    </operations>
+    <operations name="SetPersons">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.26">
+            <value name="(persons |>> {aPersonRegister}) \/ (thePersons * {aPersonRegister})"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(thePersons * {aPersonRegister}) /&lt;: persons"/>
+          <typingPredicate body="!added.( added : thePersons => persons[{added}] = {})"/>
+        </precondition>
+      </substitution>
+      <param name="aPersonRegister" type="//@machines.0/@data.40">
+        <typingPredicate operator="In" type="//@machines.0/@data.40"/>
+      </param>
+      <param name="thePersons" type="//@sharedTypes.59">
+        <typingPredicate operator="In" type="//@sharedTypes.59"/>
+      </param>
+    </operations>
+    <operations name="UnsetFamilies">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.20">
+            <value name="families |>> {aFamilyRegister}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamilyRegister" type="//@machines.0/@data.36">
+        <typingPredicate operator="In" type="//@machines.0/@data.36"/>
+      </param>
+    </operations>
+    <operations name="UnsetFather">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.16">
+            <value name="theFather |>> {aFamily}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="UnsetMother">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.17">
+            <value name="theMother |>> {aFamily}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="UnsetSons">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.18">
+            <value name="theSons |>> {aFamily}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="UnsetDaughters">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.19">
+            <value name="theDaughters |>> {aFamily}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="UnsetFamiliesInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.20">
+            <value name="{aFamily} &lt;&lt;| families"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="UnsetFatherInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.16">
+            <value name="{aFamilyMember} &lt;&lt;| theFather"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="UnsetMotherInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.17">
+            <value name="{aFamilyMember} &lt;&lt;| theMother"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="UnsetSonsInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.18">
+            <value name="{aFamilyMember} &lt;&lt;| theSons"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="UnsetDaughtersInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.19">
+            <value name="{aFamilyMember} &lt;&lt;| theDaughters"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="UnsetPre">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.21">
+            <value name="pre |>> {aPivot}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="UnsetPost">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.22">
+            <value name="post |>> {aPivot}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="UnsetMapping">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.25">
+            <value name="mapping |>> {aPivot}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="mapping~[{aPivot}] = {}"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="UnsetMMap">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.23">
+            <value name="{aMapping} &lt;&lt;| mMap"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aMapping" type="//@machines.0/@data.12">
+        <typingPredicate operator="In" type="//@machines.0/@data.12"/>
+      </param>
+    </operations>
+    <operations name="UnsetPMap">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.24">
+            <value name="{aMapping} &lt;&lt;| pMap"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aMapping" type="//@machines.0/@data.12">
+        <typingPredicate operator="In" type="//@machines.0/@data.12"/>
+      </param>
+    </operations>
+    <operations name="UnsetPersonsInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.26">
+            <value name="{aPerson} &lt;&lt;| persons"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aPerson" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+    </operations>
+    <operations name="UnsetPersons">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.26">
+            <value name="persons |>> {aPersonRegister}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aPersonRegister" type="//@machines.0/@data.40">
+        <typingPredicate operator="In" type="//@machines.0/@data.40"/>
+      </param>
+    </operations>
+    <operations name="AddFamilies">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.20">
+            <value name="families \/ {(aFamilies |-> aFamilyRegister)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aFamilies |-> aFamilyRegister) /: families"/>
+          <typingPredicate body="families[{aFamilies}] = {}"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyRegister" type="//@machines.0/@data.36">
+        <typingPredicate operator="In" type="//@machines.0/@data.36"/>
+      </param>
+      <param name="aFamilies" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="AddSons">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.18">
+            <value name="theSons \/ {(aSons |-> aFamily)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aSons |-> aFamily) /: theSons"/>
+          <typingPredicate body="theSons[{aSons}] = {}"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+      <param name="aSons" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="AddDaughters">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.19">
+            <value name="theDaughters \/ {(aDaughters |-> aFamily)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aDaughters |-> aFamily) /: theDaughters"/>
+          <typingPredicate body="theDaughters[{aDaughters}] = {}"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+      <param name="aDaughters" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="AddPre">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.21">
+            <value name="pre \/ {(aPre |-> aPivot)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aPre |-> aPivot) /: pre"/>
+          <typingPredicate body="pre[{aPre}] = {}"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="aPre" type="//@machines.0/@data.38">
+        <typingPredicate operator="In" type="//@machines.0/@data.38"/>
+      </param>
+    </operations>
+    <operations name="AddPost">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.22">
+            <value name="post \/ {(aPost |-> aPivot)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aPost |-> aPivot) /: post"/>
+          <typingPredicate body="post[{aPost}] = {}"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="aPost" type="//@machines.0/@data.39">
+        <typingPredicate operator="In" type="//@machines.0/@data.39"/>
+      </param>
+    </operations>
+    <operations name="AddMapping">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.25">
+            <value name="mapping \/ {(aMapping |-> aPivot)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aMapping |-> aPivot) /: mapping"/>
+          <typingPredicate body="mapping[{aMapping}] = {}"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="aMapping" type="//@machines.0/@data.12">
+        <typingPredicate operator="In" type="//@machines.0/@data.12"/>
+      </param>
+    </operations>
+    <operations name="AddPersons">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.26">
+            <value name="persons \/ {(aPersons |-> aPersonRegister)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aPersons |-> aPersonRegister) /: persons"/>
+          <typingPredicate body="persons[{aPersons}] = {}"/>
+        </precondition>
+      </substitution>
+      <param name="aPersonRegister" type="//@machines.0/@data.40">
+        <typingPredicate operator="In" type="//@machines.0/@data.40"/>
+      </param>
+      <param name="aPersons" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+    </operations>
+    <operations name="RemoveFamilies">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.20">
+            <value name="families - {(aFamilies |-> aFamilyRegister)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aFamilies |-> aFamilyRegister) : families"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyRegister" type="//@machines.0/@data.36">
+        <typingPredicate operator="In" type="//@machines.0/@data.36"/>
+      </param>
+      <param name="aFamilies" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="RemoveFather">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.16">
+            <value name="theFather - {(aFather |-> aFamily)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aFather |-> aFamily) : theFather"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+      <param name="aFather" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="RemoveMother">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.17">
+            <value name="theMother - {(aMother |-> aFamily)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aMother |-> aFamily) : theMother"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+      <param name="aMother" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="RemoveSons">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.18">
+            <value name="theSons - {(aSons |-> aFamily)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aSons |-> aFamily) : theSons"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+      <param name="aSons" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="RemoveDaughters">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.19">
+            <value name="theDaughters - {(aDaughters |-> aFamily)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aDaughters |-> aFamily) : theDaughters"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+      <param name="aDaughters" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="RemoveFamiliesInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.20">
+            <value name="families - {(aFamily |-> aFamiliesInverse)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aFamily |-> aFamiliesInverse) : families"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+      <param name="aFamiliesInverse" type="//@machines.0/@data.36">
+        <typingPredicate operator="In" type="//@machines.0/@data.36"/>
+      </param>
+    </operations>
+    <operations name="RemoveFatherInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.16">
+            <value name="theFather - {(aFamilyMember |-> aFatherInverse)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aFamilyMember |-> aFatherInverse) : theFather"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+      <param name="aFatherInverse" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="RemoveMotherInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.17">
+            <value name="theMother - {(aFamilyMember |-> aMotherInverse)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aFamilyMember |-> aMotherInverse) : theMother"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+      <param name="aMotherInverse" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="RemoveSonsInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.18">
+            <value name="theSons - {(aFamilyMember |-> aSonsInverse)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aFamilyMember |-> aSonsInverse) : theSons"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+      <param name="aSonsInverse" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="RemoveDaughtersInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.19">
+            <value name="theDaughters - {(aFamilyMember |-> aDaughtersInverse)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aFamilyMember |-> aDaughtersInverse) : theDaughters"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+      <param name="aDaughtersInverse" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="RemovePre">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.21">
+            <value name="pre - {(aPre |-> aPivot)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aPre |-> aPivot) : pre"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="aPre" type="//@machines.0/@data.38">
+        <typingPredicate operator="In" type="//@machines.0/@data.38"/>
+      </param>
+    </operations>
+    <operations name="RemovePost">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.22">
+            <value name="post - {(aPost |-> aPivot)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aPost |-> aPivot) : post"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="aPost" type="//@machines.0/@data.39">
+        <typingPredicate operator="In" type="//@machines.0/@data.39"/>
+      </param>
+    </operations>
+    <operations name="RemoveMapping">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.25">
+            <value name="mapping - {(aMapping |-> aPivot)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aMapping |-> aPivot) : mapping"/>
+          <typingPredicate body="card(mapping[{aMapping}]) >= 2"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="aMapping" type="//@machines.0/@data.12">
+        <typingPredicate operator="In" type="//@machines.0/@data.12"/>
+      </param>
+    </operations>
+    <operations name="RemoveMMap">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.23">
+            <value name="mMap - {(aMapping |-> aMMap)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aMapping |-> aMMap) : mMap"/>
+        </precondition>
+      </substitution>
+      <param name="aMapping" type="//@machines.0/@data.12">
+        <typingPredicate operator="In" type="//@machines.0/@data.12"/>
+      </param>
+      <param name="aMMap" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="RemovePMap">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.24">
+            <value name="pMap - {(aMapping |-> aPMap)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aMapping |-> aPMap) : pMap"/>
+        </precondition>
+      </substitution>
+      <param name="aMapping" type="//@machines.0/@data.12">
+        <typingPredicate operator="In" type="//@machines.0/@data.12"/>
+      </param>
+      <param name="aPMap" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+    </operations>
+    <operations name="RemovePersonsInverse">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.26">
+            <value name="persons - {(aPerson |-> aPersonsInverse)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aPerson |-> aPersonsInverse) : persons"/>
+        </precondition>
+      </substitution>
+      <param name="aPerson" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+      <param name="aPersonsInverse" type="//@machines.0/@data.40">
+        <typingPredicate operator="In" type="//@machines.0/@data.40"/>
+      </param>
+    </operations>
+    <operations name="RemovePersons">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.26">
+            <value name="persons - {(aPersons |-> aPersonRegister)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="(aPersons |-> aPersonRegister) : persons"/>
+        </precondition>
+      </substitution>
+      <param name="aPersonRegister" type="//@machines.0/@data.40">
+        <typingPredicate operator="In" type="//@machines.0/@data.40"/>
+      </param>
+      <param name="aPersons" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+    </operations>
+    <operations name="Families_Family_GetName">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := Families_Family_name(aFamily)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFamily : dom(Families_Family_name)"/>
+        </precondition>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+    </operations>
+    <operations name="Families_FamilyMember_GetName">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := Families_FamilyMember_name(aFamilyMember)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aFamilyMember : dom(Families_FamilyMember_name)"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="Pivot_GetName">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := Pivot_name(aPivot)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPivot : dom(Pivot_name)"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="GetStrategie">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := strategie(aPivot)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPivot : dom(strategie)"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="GetFAMILY_TO_NEW">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := FAMILY_TO_NEW(aPivot)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPivot : dom(FAMILY_TO_NEW)"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="GetPARENT_TO_CHILD">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := PARENT_TO_CHILD(aPivot)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPivot : dom(PARENT_TO_CHILD)"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="GetSync">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := sync(aPivot)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPivot : dom(sync)"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="PreCondition_GetName">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := PreCondition_name(aPreCondition)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPreCondition : dom(PreCondition_name)"/>
+        </precondition>
+      </substitution>
+      <param name="aPreCondition" type="//@machines.0/@data.38">
+        <typingPredicate operator="In" type="//@machines.0/@data.38"/>
+      </param>
+    </operations>
+    <operations name="PostCondition_GetName">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := PostCondition_name(aPostCondition)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPostCondition : dom(PostCondition_name)"/>
+        </precondition>
+      </substitution>
+      <param name="aPostCondition" type="//@machines.0/@data.39">
+        <typingPredicate operator="In" type="//@machines.0/@data.39"/>
+      </param>
+    </operations>
+    <operations name="Persons_Person_GetName">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := Persons_Person_name(aPerson)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPerson : dom(Persons_Person_name)"/>
+        </precondition>
+      </substitution>
+      <param name="aPerson" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+    </operations>
+    <operations name="GetBirthday">
+      <substitution>
+        <substitution>
+          <expression>
+            <value name="result := birthday(aPerson)"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="aPerson : dom(birthday)"/>
+        </precondition>
+      </substitution>
+      <param name="aPerson" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+    </operations>
+    <operations name="Families_Family_SetName">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.27">
+            <value name="({aFamily} &lt;&lt;| Families_Family_name)  \/ {(aFamily |-> aName)}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamily" type="//@machines.0/@data.10">
+        <typingPredicate operator="In" type="//@machines.0/@data.10"/>
+      </param>
+      <param name="aName" type="//@sharedTypes.0">
+        <typingPredicate operator="In" type="//@sharedTypes.0"/>
+      </param>
+    </operations>
+    <operations name="Families_FamilyMember_SetName">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.28">
+            <value name="({aFamilyMember} &lt;&lt;| Families_FamilyMember_name)  \/ {(aFamilyMember |-> aName)}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+      <param name="aName" type="//@sharedTypes.0">
+        <typingPredicate operator="In" type="//@sharedTypes.0"/>
+      </param>
+    </operations>
+    <operations name="Pivot_SetName">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.29">
+            <value name="({aPivot} &lt;&lt;| Pivot_name)  \/ {(aPivot |-> aName)}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="aName" type="//@sharedTypes.0">
+        <typingPredicate operator="In" type="//@sharedTypes.0"/>
+      </param>
+    </operations>
+    <operations name="SetStrategie">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.30">
+            <value name="({aPivot} &lt;&lt;| strategie)  \/ {(aPivot |-> aStrategie)}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="aStrategie" type="//@machines.0/@data.0">
+        <typingPredicate operator="In" type="//@machines.0/@data.0"/>
+      </param>
+    </operations>
+    <operations name="SetFAMILY_TO_NEW">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.31">
+            <value name="({aPivot} &lt;&lt;| FAMILY_TO_NEW)  \/ {(aPivot |-> aFAMILY_TO_NEW)}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="aFAMILY_TO_NEW" type="//@sharedTypes.1">
+        <typingPredicate operator="In" type="//@sharedTypes.1"/>
+      </param>
+    </operations>
+    <operations name="SetPARENT_TO_CHILD">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.32">
+            <value name="({aPivot} &lt;&lt;| PARENT_TO_CHILD)  \/ {(aPivot |-> aPARENT_TO_CHILD)}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="aPARENT_TO_CHILD" type="//@sharedTypes.1">
+        <typingPredicate operator="In" type="//@sharedTypes.1"/>
+      </param>
+    </operations>
+    <operations name="SetSync">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.33">
+            <value name="({aPivot} &lt;&lt;| sync)  \/ {(aPivot |-> aSync)}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="aSync" type="//@sharedTypes.1">
+        <typingPredicate operator="In" type="//@sharedTypes.1"/>
+      </param>
+    </operations>
+    <operations name="Persons_Person_SetName">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.34">
+            <value name="({aPerson} &lt;&lt;| Persons_Person_name)  \/ {(aPerson |-> aName)}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aPerson" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+      <param name="aName" type="//@sharedTypes.0">
+        <typingPredicate operator="In" type="//@sharedTypes.0"/>
+      </param>
+    </operations>
+    <operations name="SetBirthday">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.35">
+            <value name="({aPerson} &lt;&lt;| birthday)  \/ {(aPerson |-> aBirthday)}"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aPerson" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+      <param name="aBirthday" type="//@sharedTypes.0">
+        <typingPredicate operator="In" type="//@sharedTypes.0"/>
+      </param>
+    </operations>
+    <operations name="Families_FamilyMember_UnsetName">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.28">
+            <value name="{aFamilyMember} &lt;&lt;| Families_FamilyMember_name"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+    </operations>
+    <operations name="Pivot_UnsetName">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.29">
+            <value name="{aPivot} &lt;&lt;| Pivot_name"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+    </operations>
+    <operations name="Persons_Person_UnsetName">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.34">
+            <value name="{aPerson} &lt;&lt;| Persons_Person_name"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aPerson" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+    </operations>
+    <operations name="UnsetBirthday">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.35">
+            <value name="{aPerson} &lt;&lt;| birthday"/>
+          </expression>
+        </substitution>
+      </substitution>
+      <param name="aPerson" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+    </operations>
+    <operations name="Families_FamilyMember_RemoveName">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.28">
+            <value name="Families_FamilyMember_name - {(aFamilyMember |-> aName)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="{(aFamilyMember |-> aName)} &lt;: Families_FamilyMember_name"/>
+        </precondition>
+      </substitution>
+      <param name="aFamilyMember" type="//@machines.0/@data.11">
+        <typingPredicate operator="In" type="//@machines.0/@data.11"/>
+      </param>
+      <param name="aName" type="//@sharedTypes.0">
+        <typingPredicate operator="In" type="//@sharedTypes.0"/>
+      </param>
+    </operations>
+    <operations name="Pivot_RemoveName">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.29">
+            <value name="Pivot_name - {(aPivot |-> aName)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="{(aPivot |-> aName)} &lt;: Pivot_name"/>
+        </precondition>
+      </substitution>
+      <param name="aPivot" type="//@machines.0/@data.37">
+        <typingPredicate operator="In" type="//@machines.0/@data.37"/>
+      </param>
+      <param name="aName" type="//@sharedTypes.0">
+        <typingPredicate operator="In" type="//@sharedTypes.0"/>
+      </param>
+    </operations>
+    <operations name="Persons_Person_RemoveName">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.34">
+            <value name="Persons_Person_name - {(aPerson |-> aName)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="{(aPerson |-> aName)} &lt;: Persons_Person_name"/>
+        </precondition>
+      </substitution>
+      <param name="aPerson" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+      <param name="aName" type="//@sharedTypes.0">
+        <typingPredicate operator="In" type="//@sharedTypes.0"/>
+      </param>
+    </operations>
+    <operations name="RemoveBirthday">
+      <substitution>
+        <substitution>
+          <expression data="//@machines.0/@data.35">
+            <value name="birthday - {(aPerson |-> aBirthday)}"/>
+          </expression>
+        </substitution>
+        <precondition>
+          <typingPredicate body="{(aPerson |-> aBirthday)} &lt;: birthday"/>
+        </precondition>
+      </substitution>
+      <param name="aPerson" type="//@machines.0/@data.13">
+        <typingPredicate operator="In" type="//@machines.0/@data.13"/>
+      </param>
+      <param name="aBirthday" type="//@sharedTypes.0">
+        <typingPredicate operator="In" type="//@sharedTypes.0"/>
+      </param>
+    </operations>
+    <initialisation init="//@machines.0/@data.10"/>
+    <initialisation init="//@machines.0/@data.11"/>
+    <initialisation init="//@machines.0/@data.12"/>
+    <initialisation init="//@machines.0/@data.13"/>
+    <initialisation init="//@machines.0/@data.14"/>
+    <initialisation init="//@machines.0/@data.15"/>
+    <initialisation init="//@machines.0/@data.16"/>
+    <initialisation init="//@machines.0/@data.17"/>
+    <initialisation init="//@machines.0/@data.18"/>
+    <initialisation init="//@machines.0/@data.19"/>
+    <initialisation init="//@machines.0/@data.20"/>
+    <initialisation init="//@machines.0/@data.21"/>
+    <initialisation init="//@machines.0/@data.22"/>
+    <initialisation init="//@machines.0/@data.23"/>
+    <initialisation init="//@machines.0/@data.24"/>
+    <initialisation init="//@machines.0/@data.25"/>
+    <initialisation init="//@machines.0/@data.26"/>
+    <initialisation init="//@machines.0/@data.27"/>
+    <initialisation init="//@machines.0/@data.28"/>
+    <initialisation init="//@machines.0/@data.29"/>
+    <initialisation init="//@machines.0/@data.30"/>
+    <initialisation init="//@machines.0/@data.31"/>
+    <initialisation init="//@machines.0/@data.32"/>
+    <initialisation init="//@machines.0/@data.33"/>
+    <initialisation init="//@machines.0/@data.34"/>
+    <initialisation init="//@machines.0/@data.35"/>
+  </machines>
+  <sharedTypes xsi:type="bmethod:String" typing="//@machines.0/@operations.0/@param.1 //@machines.0/@operations.102/@param.1 //@machines.0/@operations.103/@param.1 //@machines.0/@operations.104/@param.1 //@machines.0/@operations.109/@param.1 //@machines.0/@operations.110/@param.1 //@machines.0/@operations.115/@param.1 //@machines.0/@operations.116/@param.1 //@machines.0/@operations.117/@param.1 //@machines.0/@operations.118/@param.1"/>
+  <sharedTypes xsi:type="bmethod:Bool" typing="//@machines.0/@operations.106/@param.1 //@machines.0/@operations.107/@param.1 //@machines.0/@operations.108/@param.1"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.1"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@data.36" base="//@machines.0/@data.1" finite="true"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.2"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@data.10" base="//@machines.0/@data.2" finite="true"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.3"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@data.11" base="//@machines.0/@data.3" finite="true"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.4"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@data.37" base="//@machines.0/@data.4" finite="true"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.5"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@data.38" base="//@machines.0/@data.5" finite="true"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.6"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@data.39" base="//@machines.0/@data.6" finite="true"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.7"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@data.12" base="//@machines.0/@data.7" finite="true"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.8"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@data.13" base="//@machines.0/@data.8" finite="true"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.9"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@data.40" base="//@machines.0/@data.9" finite="true"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.16" expression="PartialInjection" dom="//@machines.0/@data.11" ran="//@machines.0/@data.10"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.17" expression="PartialInjection" dom="//@machines.0/@data.11" ran="//@machines.0/@data.10"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.18" expression="PartialFunction" dom="//@machines.0/@data.11" ran="//@machines.0/@data.10"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.19" expression="PartialFunction" dom="//@machines.0/@data.11" ran="//@machines.0/@data.10"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.20" expression="PartialFunction" dom="//@machines.0/@data.10" ran="//@machines.0/@data.36"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.43" expression="TotalFunction" dom="//@machines.0/@data.37" ran="//@machines.0/@data.36"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.44" expression="TotalFunction" dom="//@machines.0/@data.37" ran="//@machines.0/@data.40"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.45" expression="TotalFunction" dom="//@machines.0/@data.38" ran="//@machines.0/@data.40"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.46" expression="TotalFunction" dom="//@machines.0/@data.38" ran="//@machines.0/@data.36"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.21" expression="PartialFunction" dom="//@machines.0/@data.38" ran="//@machines.0/@data.37"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.47" expression="TotalFunction" dom="//@machines.0/@data.39" ran="//@machines.0/@data.40"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.48" expression="TotalFunction" dom="//@machines.0/@data.39" ran="//@machines.0/@data.36"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.22" expression="PartialFunction" dom="//@machines.0/@data.39" ran="//@machines.0/@data.37"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.23" expression="PartialFunction" dom="//@machines.0/@data.12" ran="//@machines.0/@data.11"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.24" expression="PartialFunction" dom="//@machines.0/@data.12" ran="//@machines.0/@data.13"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.25" expression="TotalFunction" dom="//@machines.0/@data.12" ran="//@machines.0/@data.37"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.26" expression="PartialFunction" dom="//@machines.0/@data.13" ran="//@machines.0/@data.40"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.27" expression="TotalFunction" dom="//@machines.0/@data.10" ran="//@sharedTypes.0"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.28" expression="PartialFunction" dom="//@machines.0/@data.11" ran="//@sharedTypes.0"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.29" expression="PartialFunction" dom="//@machines.0/@data.37" ran="//@sharedTypes.0"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.30" expression="TotalFunction" dom="//@machines.0/@data.37" ran="//@machines.0/@data.0"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.31" expression="TotalFunction" dom="//@machines.0/@data.37" ran="//@sharedTypes.1"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.32" expression="TotalFunction" dom="//@machines.0/@data.37" ran="//@sharedTypes.1"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.33" expression="TotalFunction" dom="//@machines.0/@data.37" ran="//@sharedTypes.1"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.41" expression="TotalFunction" dom="//@machines.0/@data.38" ran="//@sharedTypes.0"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.42" expression="TotalFunction" dom="//@machines.0/@data.39" ran="//@sharedTypes.0"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.34" expression="PartialFunction" dom="//@machines.0/@data.13" ran="//@sharedTypes.0"/>
+  <sharedTypes xsi:type="bmethod:BComposedType" typing="//@machines.0/@data.35" expression="PartialFunction" dom="//@machines.0/@data.13" ran="//@sharedTypes.0"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.10"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@operations.33/@param.1" base="//@machines.0/@data.10" finite="true"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.11"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@operations.36/@param.1 //@machines.0/@operations.37/@param.1" base="//@machines.0/@data.11" finite="true"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.38"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@operations.43/@param.1" base="//@machines.0/@data.38" finite="true"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.39"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@operations.44/@param.1" base="//@machines.0/@data.39" finite="true"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.12"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@operations.45/@param.1" base="//@machines.0/@data.12" finite="true"/>
+  <sharedTypes xsi:type="bmethod:BPowType" base="//@machines.0/@data.13"/>
+  <sharedTypes xsi:type="bmethod:BPowType" typing="//@machines.0/@operations.49/@param.1" base="//@machines.0/@data.13" finite="true"/>
+</bmethod:BSpec>

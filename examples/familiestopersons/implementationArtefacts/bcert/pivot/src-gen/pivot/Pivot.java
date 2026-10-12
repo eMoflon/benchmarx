@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see pivot.PivotPackage#getPivot()
- * @model annotation="meeduse constant=''"
+ * @model annotation="meeduse constant='null'"
  * @generated
  */
 public interface Pivot extends EObject {
@@ -43,7 +43,7 @@ public interface Pivot extends EObject {
 	 * @see #setFamilyModel(FamilyRegister)
 	 * @see pivot.PivotPackage#getPivot_FamilyModel()
 	 * @model required="true"
-	 *        annotation="meeduse association='familyModel'"
+	 *        annotation="meeduse association='familyModel' constant='null'"
 	 * @generated
 	 */
 	FamilyRegister getFamilyModel();
@@ -66,7 +66,7 @@ public interface Pivot extends EObject {
 	 * @see #setPersonModel(PersonRegister)
 	 * @see pivot.PivotPackage#getPivot_PersonModel()
 	 * @model required="true"
-	 *        annotation="meeduse association='personModel'"
+	 *        annotation="meeduse association='personModel' constant='null'"
 	 * @generated
 	 */
 	PersonRegister getPersonModel();
