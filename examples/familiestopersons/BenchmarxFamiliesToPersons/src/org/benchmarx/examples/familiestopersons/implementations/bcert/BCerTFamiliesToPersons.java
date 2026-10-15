@@ -1,7 +1,6 @@
 package org.benchmarx.examples.familiestopersons.implementations.bcert;
 
 
-
 import java.util.function.Supplier;
 
 import org.benchmarx.config.Configurator;
@@ -41,13 +40,14 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 
 	
 	private final FamiliesToPersonsTransformation transformation;
-	
+
 	private Configurator<Decisions> configurator;
 	private Pivot pivot;
 
 	private static final String RESULT_PATH = "results/BCerT";
 
 	public BCerTFamiliesToPersons() throws RuntimeException {
+
 		super(new FamiliesComparator(), new PersonsComparator());
 		
 		try {
@@ -101,7 +101,7 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 		sandbox.createResource(URI.createURI("test.families")).getContents().add(this.pivot.getFamilyModel());
 		
 	}
-
+	
 	@Override
 	public FamilyRegister getSourceModel() {
 		return pivot.getFamilyModel();
@@ -122,7 +122,7 @@ public class BCerTFamiliesToPersons extends BXToolForEMF<FamilyRegister, PersonR
 		pivot.setStrategie(strategy);
 		
 		try {
-			transformation.apply(pivot,10000,50000,50000);
+			transformation.apply(pivot,10000,100000,100000);
 		} catch (Exception e) {
 			throw new IllegalArgumentException(e);
 		}
