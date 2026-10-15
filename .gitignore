@@ -17,3 +17,7 @@ examples/pdb1topdb2/BenchmarxPdb1ToPdb2/src/org/benchmarx/examples/pdb12pdb2/imp
 *.class
 /examples/familiestopersons/FamiliesToPersonsIBeXTGG/src-gen/
 /examples/familiestopersons/FamiliesToPersonsIBeXTGG/gen/
+/.metadata/
+/*.zip
+/dist
+/build

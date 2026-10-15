@@ -148,17 +148,20 @@ public abstract class ScalabilityTests {
 		}
 		catch(TimeoutException timeout) {
 			tool.postExecution();
+			System.err.println(String.format("xxx [%s] Scale: %d TIMED OUT after %ds", tool.getName(), scaleFactor, ScalabilityConfig.getTimeoutSeconds()));
 			assertTrue(false);
 			return;
 		}
 		catch(IllegalStateException illegalState) {
 			tool.postExecution();
+			System.err.println(String.format("xxx [%s] Scale: %d FAILED: %s", tool.getName(), scaleFactor, illegalState.getMessage()));
 			assertTrue(false);
 			return;
 		} catch (Exception e) {
 			tool.postExecution();
-			assertTrue(false);
+			System.err.println(String.format("xxx [%s] Scale: %d ERROR: %s", tool.getName(), scaleFactor, e.getMessage()));
 			e.printStackTrace();
+			assertTrue(false);
 			return;
 		}
 		
@@ -172,7 +175,35 @@ public abstract class ScalabilityTests {
 	
 	@Parameters(name = "{0}")
 	public static Collection<BXTool<FamilyRegister, PersonRegister, Decisions>> tools() {
-		return FamiliesToPersonsTestCase.tools();
+		var allTools = FamiliesToPersonsTestCase.tools();
+		String include = System.getProperty("scalability.tools.include");
+		String exclude = System.getProperty("scalability.tools.exclude");
+
+		if ((include == null || include.isBlank()) && (exclude == null || exclude.isBlank())) {
+			return allTools;
+		}
+
+		return allTools.stream().filter(t -> {
+			String name = t.getName().toLowerCase();
+			if (exclude != null && !exclude.isBlank()) {
+				for (String token : exclude.split(",")) {
+					String trimmed = token.trim().toLowerCase();
+					if (!trimmed.isEmpty() && name.contains(trimmed)) {
+						return false;
+					}
+				}
+			}
+			if (include != null && !include.isBlank()) {
+				for (String token : include.split(",")) {
+					String trimmed = token.trim().toLowerCase();
+					if (!trimmed.isEmpty() && name.contains(trimmed)) {
+						return true;
+					}
+				}
+				return false;
+			}
+			return true;
+		}).collect(Collectors.toList());
 	}
 	
 }

@@ -51,7 +51,6 @@ import Persons.Male;
 import Persons.PersonRegister;
 import Persons.PersonsFactory;
 import Persons.PersonsPackage;
-import de.uni_koblenz.jgralab.gretl.SysOut;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
@@ -590,7 +589,11 @@ public class ENeoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 
 	@Override
 	public void preExecution() {
-		System.out.print("Starting container... ");
+		if (isNeo4jReady()) {
+			System.out.println("--> Neo4j is already reachable on localhost:7687. Reusing active instance.");
+			return;
+		}
+		System.out.print("Starting Neo4j container... ");
 		Process process;
 		try {
 			process = Runtime.getRuntime()
@@ -602,12 +605,18 @@ public class ENeoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 			reader.close();
 
 			process.waitFor();
-			System.out.println("DONE");
-			System.out.println("Waiting...");
-			Thread.sleep(Duration.ofSeconds(30));
-			System.out.println("DONE");
+			System.out.println("DONE (container: " + containerId + ")");
+			System.out.print("Waiting for Neo4j to accept connections...");
+			for (int i = 0; i < 30; i++) {
+				if (isNeo4jReady()) {
+					System.out.println(" Ready!");
+					return;
+				}
+				Thread.sleep(1000);
+			}
+			System.out.println(" Timeout waiting for Neo4j.");
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println("Could not run docker command: " + e.getMessage());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -616,26 +625,28 @@ public class ENeoFamiliesToPersons implements BXTool<FamilyRegister, PersonRegis
 
 	@Override
 	public void postExecution() {
-		System.out.print("Stopping container... ");
-		try {
-			var process = Runtime.getRuntime().exec("docker kill " + containerId);
-			process.waitFor();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		if (containerId != null && !containerId.isBlank()) {
+			System.out.print("Stopping container " + containerId + "... ");
+			try {
+				var process = Runtime.getRuntime().exec("docker kill " + containerId);
+				process.waitFor();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println("DONE");
+			containerId = null;
 		}
-		System.out.println("DONE");
 	}
 
 	public boolean isNeo4jReady() {
-		while (true) {
-			try (Socket socket = new Socket()) {
-				socket.connect(new java.net.InetSocketAddress("localhost", 7687), 500);
-			} catch (IOException e) {
-
-			}
+		try (Socket socket = new Socket()) {
+			socket.connect(new java.net.InetSocketAddress("localhost", 7687), 500);
 			return true;
+		} catch (IOException e) {
+			return false;
 		}
 	}
 }
+

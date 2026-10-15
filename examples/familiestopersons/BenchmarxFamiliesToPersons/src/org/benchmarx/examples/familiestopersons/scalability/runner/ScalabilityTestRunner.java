@@ -109,14 +109,17 @@ public class ScalabilityTestRunner {
 
 		var logFolderPath = resolveLogFolderPath(clazz);
 		var logFolder = new File(logFolderPath);
-		if (!logFolder.exists()) {
-			logFolder.mkdirs();
-		}
+		logFolder.mkdirs();
 		var timestamp = new Timestamp(System.currentTimeMillis());
 		var safeArgs = String.join("_", args).replaceAll("[^a-zA-Z0-9_\\-\\.]", "_");
-		var logFile = new File(logFolder, "log_" + safeArgs + "_" + DATE_FORMAT.format(timestamp) + ".txt");
-		if (!logFile.exists()) {
-			logFile.createNewFile();
+		File logFile = new File(logFolder, "log_" + safeArgs + "_" + DATE_FORMAT.format(timestamp) + ".txt");
+		try {
+			if (!logFile.exists()) {
+				logFile.createNewFile();
+			}
+		} catch (IOException ioException) {
+			System.err.println("Warning: Could not create log file in " + logFolder.getAbsolutePath() + ": " + ioException.getMessage());
+			logFile = File.createTempFile("benchmarx_log_", ".txt");
 		}
 		currentLogFile = logFile;
 
@@ -155,17 +158,33 @@ public class ScalabilityTestRunner {
 
 	private String resolveLogFolderPath(Class<?> clazz) {
 		try {
+			var resultFolder = ScalabilityConfig.getResultFolder();
+			if (resultFolder != null && !resultFolder.isBlank()) {
+				var rf = new File(resultFolder);
+				var logDir = new File(rf, "log");
+				if (logDir.mkdirs() || logDir.exists()) {
+					if (logDir.canWrite()) {
+						return logDir.getAbsolutePath() + File.separator;
+					}
+				}
+			}
+
 			var codeSource = clazz.getProtectionDomain().getCodeSource();
 			if (codeSource != null && codeSource.getLocation() != null) {
 				var file = new File(codeSource.getLocation().toURI());
-				var base = file.isDirectory() ? file.getParentFile() : file.getParentFile().getParentFile();
-				if (base != null && base.exists()) {
-					return new File(base, "log").getAbsolutePath() + File.separator;
+				var base = file.isDirectory() ? file.getParentFile() : file.getParentFile();
+				if (base != null && base.exists() && base.canWrite()) {
+					var logDir = new File(base, "log");
+					if (logDir.mkdirs() || logDir.exists()) {
+						return logDir.getAbsolutePath() + File.separator;
+					}
 				}
 			}
 		} catch (Exception ignored) {
 		}
-		return "log" + File.separator;
+		var fallback = new File("log");
+		fallback.mkdirs();
+		return fallback.getAbsolutePath() + File.separator;
 	}
 
 	private String buildClasspath(Class<?> clazz) {

@@ -1,6 +1,10 @@
 package org.emoflon.ibex.tgg.run.familiestopersonsibextgg;
 
+import java.io.File;
 import java.io.IOException;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import hipe.engine.config.HiPEPathOptions;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collection;
@@ -87,8 +91,41 @@ public class INTEGRATE_App extends INTEGRATE {
 	// eMoflon supports other pattern matching engines. Replace _DefaultRegistrationHelper with one of the other registrationHelpers from the *.config-package to choose between them. Default: Democles 
 	public static IRegistrationHelper registrationHelper = new _DefaultRegistrationHelper();
 
-	public INTEGRATE_App() throws IOException {
-		super(registrationHelper.createIbexOptions().resourceHandler(new TGGResourceHandler() {
+	private static File getModelFile(String fileName, String resourcePath) throws IOException {
+		File direct = new File(fileName);
+		if (direct.exists()) return direct;
+		File inModel = new File("model", fileName);
+		if (inModel.exists()) return inModel;
+
+		File devPath = new File("examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/model", fileName);
+		if (devPath.exists()) return devPath;
+		File devGenPath = new File("examples/familiestopersons/implementationArtefacts/ibex-integrate/FamiliesToPersonsIBeXTGG/src-gen/FamiliesToPersonsIBeXTGG/integrate/hipe/engine", fileName);
+		if (devGenPath.exists()) return devGenPath;
+
+		File tempDir = new File(System.getProperty("java.io.tmpdir"), "ibex_models");
+		tempDir.mkdirs();
+		File tempFile = new File(tempDir, fileName);
+		if (!tempFile.exists() || tempFile.length() == 0) {
+			String clean = resourcePath.startsWith("/") ? resourcePath.substring(1) : resourcePath;
+			ClassLoader cl = INTEGRATE_App.class.getClassLoader();
+			if (cl == null) cl = ClassLoader.getSystemClassLoader();
+			try (var in = cl.getResourceAsStream(clean)) {
+				if (in != null) {
+					java.nio.file.Files.copy(in, tempFile.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+				}
+			}
+		}
+		if (tempFile.exists() && tempFile.length() > 0) return tempFile;
+		return null;
+	}
+
+	private static org.emoflon.ibex.tgg.runtime.config.options.IbexOptions createIbexOptions() throws IOException {
+		File networkFile = getModelFile("hipe-network.xmi", "FamiliesToPersonsIBeXTGG/integrate/hipe/engine/hipe-network.xmi");
+		if (networkFile != null) {
+			HiPEPathOptions.getInstance().setNetworkPath(URI.createFileURI(networkFile.getCanonicalPath()));
+		}
+
+		return registrationHelper.createIbexOptions().resourceHandler(new TGGResourceHandler() {
 			@Override
 			public void saveModels() throws IOException {
 				super.saveModels();
@@ -100,6 +137,22 @@ public class INTEGRATE_App extends INTEGRATE {
 				target = createResource(options.project.path() + "/instances/trg.xmi");
 				corr = createResource(options.project.path() + "/instances/corr.xmi");
 				protocol = createResource(options.project.path() + "/instances/protocol.xmi");
+			}
+
+			@Override
+			protected Resource loadTGGResource(String extension) throws IOException {
+				File tggFile = getModelFile("FamiliesToPersonsIBeXTGG" + extension, "model/FamiliesToPersonsIBeXTGG" + extension);
+				if (tggFile != null && tggFile.exists()) {
+					URI uri = URI.createFileURI(tggFile.getCanonicalPath());
+					Resource res = specificationRS.getResource(uri, false);
+					if (res == null) {
+						res = specificationRS.createResource(uri);
+					}
+					res.load(null);
+					EcoreUtil.resolveAll(res);
+					return res;
+				}
+				return super.loadTGGResource(extension);
 			}
 		}).integration.conflictSolver(new ConflictResolver() {
 			
@@ -129,7 +182,11 @@ public class INTEGRATE_App extends INTEGRATE {
 				}
 			}
 			
-		}).repair.useShortcutRules(false));
+		}).repair.useShortcutRules(false);
+	}
+
+	public INTEGRATE_App() throws IOException {
+		super(createIbexOptions());
 	}
 	
 	@Override

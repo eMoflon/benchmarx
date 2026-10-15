@@ -25,8 +25,12 @@ public class HiPERegistrationHelper implements IRegistrationHelper {
 	/** Create default options **/
 	public final void setWorkspaceRootDirectory(ResourceSet resourceSet) throws IOException {
 		final String root = "../";
+		File f = new File(root);
+		if (!f.exists()) {
+			f = new File(".");
+		}
 		URI key = URI.createPlatformResourceURI("/", true);
-		URI value = URI.createFileURI(new File(root).getCanonicalPath() + File.separatorChar);
+		URI value = URI.createFileURI(f.getCanonicalPath() + File.separatorChar);
 		resourceSet.getURIConverter().getURIMap().put(key, value);
 	}
 
@@ -78,6 +82,13 @@ public class HiPERegistrationHelper implements IRegistrationHelper {
 			
 		rs.getPackageRegistry().put("platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore", personsPack);
 		rs.getPackageRegistry().put("platform:/plugin/PersonsSmartEMF/model/PersonsSmartEMF.ecore", personsPack);
+
+		EPackage.Registry.INSTANCE.put("platform:/resource/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore", FamiliesToPersonsIBeXTGGPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put("platform:/plugin/FamiliesToPersonsIBeXTGG/model/FamiliesToPersonsIBeXTGG.ecore", FamiliesToPersonsIBeXTGGPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put("platform:/resource/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore", familiesPack);
+		EPackage.Registry.INSTANCE.put("platform:/plugin/FamiliesSmartEMF/model/FamiliesSmartEMF.ecore", familiesPack);
+		EPackage.Registry.INSTANCE.put("platform:/resource/PersonsSmartEMF/model/PersonsSmartEMF.ecore", personsPack);
+		EPackage.Registry.INSTANCE.put("platform:/plugin/PersonsSmartEMF/model/PersonsSmartEMF.ecore", personsPack);
 	}
 
 	/** Create default options **/

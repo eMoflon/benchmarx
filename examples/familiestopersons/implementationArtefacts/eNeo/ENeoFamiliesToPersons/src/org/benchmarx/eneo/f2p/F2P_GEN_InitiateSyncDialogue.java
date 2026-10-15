@@ -48,7 +48,7 @@ public class F2P_GEN_InitiateSyncDialogue extends F2P_GEN_Run {
 		} catch (FlattenerException e) {
 			e.printStackTrace();
 		}
-		var allRules = new API_F2P_GEN(builder, "../", API_Common.PLATFORM_PLUGIN_URI, API_Common.NEOCORE_URI_INSTALLED).getAllRulesForF2P_GEN();
+		var allRules = new API_F2P_GEN(builder, API_Common.PLATFORM_RESOURCE_URI, API_Common.PLATFORM_PLUGIN_URI, API_Common.NEOCORE_URI_INSTALLED).getAllRulesForF2P_GEN();
 		var maxRuleApps = new MaximalRuleApplicationsTerminationCondition(allRules, 0);
 		maxRuleApps.setMax(API_FamiliesToPersons.F2P__RegisterToRegisterRule, 1);
 		
