@@ -2,6 +2,7 @@ package fr.liglab.bcert.ttc.familiespersons;
 
 
 import pivot.PivotPackage;
+import pivot.impl.PivotPackageImpl;
 import Families.FamiliesPackage;
 import Persons.PersonsPackage;
 
@@ -37,7 +38,6 @@ import org.eclipse.emf.ecore.EPackage;
 
 import java.net.URL;
 import java.nio.file.Path;
-
 import java.io.IOException;
 
 import java.nio.file.Files;
@@ -71,7 +71,6 @@ public class FamiliesToPersonsTransformation {
 		
 	}
 
-	
 	public void apply(Pivot pivot, int expectedFamilies, int expectedMembers, int expectedPersons) throws Exception {
 		
 		Extent input = Extent.of(pivot.eResource(),true);
@@ -113,7 +112,7 @@ public class FamiliesToPersonsTransformation {
 	}
 	
 	
-	private static ProBPlatform PlatformProB = new ProBPlatform();
+	private static ProBPlatform PlatformProB = new ProBPlatform(false);
 
 	private static Interpreter getInterpreter(Path machine, EPackage metamodel, Trace mapping) throws Exception {	
 		return PlatformProB.getInperpreter(URI.createFileURI(machine.toFile().getAbsolutePath()),metamodel,mapping);
@@ -132,12 +131,21 @@ public class FamiliesToPersonsTransformation {
 			@Override
 			public Resource getResource(URI uri, boolean loadOnDemand) {
 				
+				if (uri.toString().equals(PivotPackageImpl.eNS_URI))
+					return PivotPackage.eINSTANCE.eResource();
+				
 				if (uri.lastSegment().equals("pivot.ecore"))
 					return PivotPackage.eINSTANCE.eResource();
+
+				if (uri.toString().equals(FamiliesPackage.eNS_URI))
+					return FamiliesPackage.eINSTANCE.eResource();
 
 				if (uri.lastSegment().equals("Families.ecore"))
 					return FamiliesPackage.eINSTANCE.eResource();
 
+				if (uri.toString().equals(PersonsPackage.eNS_URI))
+					return PersonsPackage.eINSTANCE.eResource();
+				
 				if (uri.lastSegment().equals("Persons.ecore"))
 					return PersonsPackage.eINSTANCE.eResource();
 				
